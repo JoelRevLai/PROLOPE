@@ -795,14 +795,36 @@ nav.main-nav > ul > li:hover .dropdown {
   font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 500;
   color: var(--azul);
-  margin-top: 56px;
-  margin-bottom: 24px;
+  margin-top: 36px;
+  margin-bottom: 20px;
   padding-bottom: 14px;
   border-bottom: 2px solid var(--gris-claro);
 }
 
-.article-main h2:first-of-type {
-  margin-top: 0;
+.article-main h3 {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+  font-weight: 600;
+  color: var(--azul);
+  margin-top: 28px;
+  margin-bottom: 14px;
+}
+
+/* En article-main el texto y los epígrafes fluyen alrededor de los floats,
+   evitando espacios en blanco a la izquierda de las imágenes flotantes. */
+.article-main .clearfix::after { clear: none; }
+
+/* Sub-ítems de índice en sidebar */
+.sidebar-nav-list li.sidebar-nav-sub a {
+  padding-left: 32px;
+  font-size: 11px;
+  color: var(--gris-texto);
+  border-left-color: transparent;
+}
+
+.sidebar-nav-list li.sidebar-nav-sub a:hover {
+  color: var(--azul);
+  border-left-color: rgba(200,164,90,0.4);
 }
 
 /* Figura con imagen ampliable */
