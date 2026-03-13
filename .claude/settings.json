@@ -1,0 +1,49 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/media/264939\" -o \"c:/Users/joelr/Desktop/Archivo_Digital/PROLOPE/tmp_media.json\")",
+      "Bash(node -e \"const m=require\\(''c:/Users/joelr/Desktop/Archivo_Digital/PROLOPE/tmp_media.json''\\); console.log\\(m.source_url\\);\")",
+      "Bash(curl -s -o \"c:/Users/joelr/Desktop/Archivo_Digital/PROLOPE/media/Premios2024-humanidades-digitales_cuellar.jpg\" \"https://prolope.uab.cat/wp-content/uploads/2024/07/Premios2024-humnidades-digitales_cuellar.jpg\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/posts?slug=seminario-escriptura-i-rescriptura-en-el-barroc\" -o \"c:/Users/joelr/Desktop/Archivo_Digital/PROLOPE/tmp_api.json\")",
+      "Bash(node -e \"const p=require\\(''c:/Users/joelr/Desktop/Archivo_Digital/PROLOPE/tmp_api.json''\\)[0]; console.log\\(''DATE:'',p.date\\); console.log\\(''TITLE:'',p.title.rendered\\); console.log\\(''IMG_ID:'',p.featured_media\\); console.log\\(''CATS:'',p.categories\\); console.log\\(''CONTENT:'',p.content.rendered\\);\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/media/264726\")",
+      "Bash(node -e \"const chunks=[]; process.stdin.on\\(''''data'''',c=>chunks.push\\(c\\)\\); process.stdin.on\\(''''end'''',\\(\\)=>{const m=JSON.parse\\(chunks.join\\(''''''''\\)\\); console.log\\(m.source_url\\);}\\)\")",
+      "Bash(curl -s -o \"c:/Users/joelr/Desktop/Archivo_Digital/PROLOPE/media/escriptura-reescriptura-barroc.jpg\" \"https://prolope.uab.cat/wp-content/uploads/2024/06/escriptures-i-reescriptures-en-el-barroc.jpg\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/posts?slug=seminario-del-profesor-pedro-martin-banos\" -o \"c:/Users/joelr/Desktop/Archivo_Digital/PROLOPE/tmp_api.json\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/media/264730\")",
+      "Bash(node -e \"const c=[]; process.stdin.on\\(''''data'''',d=>c.push\\(d\\)\\); process.stdin.on\\(''''end'''',\\(\\)=>{const m=JSON.parse\\(c.join\\(''''''''\\)\\); console.log\\(m.source_url\\);}\\)\")",
+      "Bash(curl -s -o \"c:/Users/joelr/Desktop/Archivo_Digital/PROLOPE/media/seminario-pedro-martin-banos.jpg\" \"https://prolope.uab.cat/wp-content/uploads/2024/06/Seminari-Pedro-Martin.jpg\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/posts?slug=documental-sobre-lope-de-vega-en-informe-semanal\" -o \"C:/temp/post_documental.json\")",
+      "Bash(node -e \"const d=require\\(''C:/temp/post_documental.json''\\)[0]; console.log\\(''DATE:'',d.date\\); console.log\\(''TITLE:'',d.title.rendered\\); console.log\\(''CATS:'',JSON.stringify\\(d.categories\\)\\); console.log\\(''FEATURED:'',d.featured_media\\); console.log\\(''CONTENT:'',d.content.rendered\\)\")",
+      "Bash(mkdir -p \"C:/Users/joelr/AppData/Local/Temp\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/posts?slug=documental-sobre-lope-de-vega-en-informe-semanal\" -o \"C:/Users/joelr/AppData/Local/Temp/post_documental.json\")",
+      "Bash(node -e \"const d=require\\(''C:/Users/joelr/AppData/Local/Temp/post_documental.json''\\)[0]; console.log\\(''DATE:'',d.date\\); console.log\\(''TITLE:'',d.title.rendered\\); console.log\\(''CATS:'',JSON.stringify\\(d.categories\\)\\); console.log\\(''FEATURED:'',d.featured_media\\); console.log\\(''CONTENT:'',d.content.rendered\\)\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/media/264735\" -o \"C:/Users/joelr/AppData/Local/Temp/media_documental.json\")",
+      "Bash(node -e \"const d=require\\(''C:/Users/joelr/AppData/Local/Temp/media_documental.json''\\); console.log\\(''URL:'',d.source_url\\); console.log\\(''SLUG:'',d.slug\\)\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-content/uploads/2024/06/documental-lope_rtve.jpg\" -o \"C:/Users/joelr/Desktop/Archivo_Digital/PROLOPE/media/documental-lope_rtve.jpg\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/posts?slug=seminario-inteligencia-artificial-y-patrimonio-cultural\" -o \"C:/Users/joelr/AppData/Local/Temp/post_ia_patrimonio.json\")",
+      "Bash(node -e \"const d=require\\(''C:/Users/joelr/AppData/Local/Temp/post_ia_patrimonio.json''\\)[0]; console.log\\(''DATE:'',d.date\\); console.log\\(''TITLE:'',d.title.rendered\\); console.log\\(''CATS:'',JSON.stringify\\(d.categories\\)\\); console.log\\(''FEATURED:'',d.featured_media\\); console.log\\(''CONTENT:'',d.content.rendered\\)\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/media/264757\" -o \"C:/Users/joelr/AppData/Local/Temp/media_ia_patrimonio.json\")",
+      "Bash(node -e \"const d=require\\(''C:/Users/joelr/AppData/Local/Temp/media_ia_patrimonio.json''\\); console.log\\(''URL:'',d.source_url\\)\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-content/uploads/2024/06/SeminarioIA.jpg\" -o \"C:/Users/joelr/Desktop/Archivo_Digital/PROLOPE/media/SeminarioIA.jpg\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/posts?slug=conferencia-de-david-merino-todos-a-una\" -o \"C:/Users/joelr/AppData/Local/Temp/post_merino.json\")",
+      "Bash(node -e \"const d=require\\(''C:/Users/joelr/AppData/Local/Temp/post_merino.json''\\)[0]; console.log\\(''DATE:'',d.date\\); console.log\\(''TITLE:'',d.title.rendered\\); console.log\\(''CATS:'',JSON.stringify\\(d.categories\\)\\); console.log\\(''FEATURED:'',d.featured_media\\); console.log\\(''CONTENT:'',d.content.rendered\\)\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/media/264815\")",
+      "Bash(node -e \"process.stdin.resume\\(\\);let d='''''''';process.stdin.on\\(''''data'''',c=>d+=c\\);process.stdin.on\\(''''end'''',\\(\\)=>{const o=JSON.parse\\(d\\);console.log\\(''''URL:'''',o.source_url\\)}\\)\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-content/uploads/2024/06/conferencia_merino_fuenteovejuna.jpg\" -o \"C:/Users/joelr/Desktop/Archivo_Digital/PROLOPE/media/conferencia_merino_fuenteovejuna.jpg\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/posts?slug=el-anuario-lope-de-vega-publica-su-volumen-xxx\" -o \"C:/Users/joelr/AppData/Local/Temp/post_anuario.json\")",
+      "Bash(node -e \"const d=require\\(''C:/Users/joelr/AppData/Local/Temp/post_anuario.json''\\)[0]; console.log\\(''DATE:'',d.date\\); console.log\\(''TITLE:'',d.title.rendered\\); console.log\\(''CATS:'',JSON.stringify\\(d.categories\\)\\); console.log\\(''FEATURED:'',d.featured_media\\); console.log\\(''CONTENT:'',d.content.rendered\\)\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/media/265220\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-content/uploads/2024/07/AnuarioLopedeVega_V30.jpg\" -o \"C:/Users/joelr/Desktop/Archivo_Digital/PROLOPE/media/AnuarioLopedeVega_V30.jpg\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/posts?slug=la-profesora-sonia-boadas-dirigira-el-proyecto-thal-ia-2\" -o \"C:/Users/joelr/AppData/Local/Temp/post_thal2.json\")",
+      "Bash(node -e \"const d=require\\(''C:/Users/joelr/AppData/Local/Temp/post_thal2.json''\\)[0]; console.log\\(''DATE:'',d.date\\); console.log\\(''TITLE:'',d.title.rendered\\); console.log\\(''CATS:'',JSON.stringify\\(d.categories\\)\\); console.log\\(''FEATURED:'',d.featured_media\\); console.log\\(''CONTENT:'',d.content.rendered\\)\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/media/264760\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-content/uploads/2024/06/projecte-Thal-IA.jpg\" -o \"C:/Users/joelr/Desktop/Archivo_Digital/PROLOPE/media/projecte-Thal-IA.jpg\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/posts?slug=call-for-papers-para-el-xi-congreso-internacional-lope-de-vega\" -o \"C:/Users/joelr/AppData/Local/Temp/post_cfp.json\")",
+      "Bash(node -e \"const d=require\\(''C:/Users/joelr/AppData/Local/Temp/post_cfp.json''\\)[0]; console.log\\(''DATE:'',d.date\\); console.log\\(''TITLE:'',d.title.rendered\\); console.log\\(''CATS:'',JSON.stringify\\(d.categories\\)\\); console.log\\(''FEATURED:'',d.featured_media\\); console.log\\(''CONTENT:'',d.content.rendered\\)\")"
+    ],
+    "additionalDirectories": [
+      "\\tmp"
+    ]
+  }
+}

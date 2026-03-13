@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:prolope.uab.cat)",
+      "Bash(curl -s \"https://prolope.uab.cat/convocadas-dos-plazas-postdoctorales-para-el-proyecto-thal-ia/\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/posts?slug=alvaro-cuellar-mejor-articulo-cientifico-en-los-premios-hdh2024\")",
+      "Bash(node -e \"const d=JSON.parse\\(require\\(''''fs''''\\).readFileSync\\(''''/dev/stdin'''',''''utf8''''\\)\\); const p=d[0]; console.log\\(''''DATE:'''',p.date\\); console.log\\(''''TITLE:'''',p.title.rendered\\); console.log\\(''''IMG_ID:'''',p.featured_media\\); console.log\\(''''CONTENT:'''',p.content.rendered.substring\\(0,3000\\)\\);\")",
+      "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/posts?slug=alvaro-cuellar-mejor-articulo-cientifico-en-los-premios-hdh2024\" -o \"c:/Users/joelr/Desktop/Archivo_Digital/PROLOPE/tmp_api.json\")",
+      "Bash(node -e \"const p=require\\(''c:/Users/joelr/Desktop/Archivo_Digital/PROLOPE/tmp_api.json''\\)[0]; console.log\\(''DATE:'',p.date\\); console.log\\(''TITLE:'',p.title.rendered\\); console.log\\(''IMG_ID:'',p.featured_media\\); console.log\\(''CONTENT:'',p.content.rendered.substring\\(0,4000\\)\\);\")"
+    ]
+  }
+}
