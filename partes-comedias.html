@@ -103,18 +103,18 @@
   <section class="page-hero">
     <div class="page-hero-bg"></div>
     <div class="page-hero-inner">
-      <p class="page-hero-breadcrumb">
-        Inicio<span>›</span>
-        Publicaciones<span>›</span>
+      <div class="breadcrumb">
+        <a href="index.html">Inicio</a><span>›</span>
+        <a href="publicaciones.html">Publicaciones</a><span>›</span>
         Partes de comedias
-      </p>
+      </div>
       <h1>Partes de comedias</h1>
       <div class="page-hero-rule"></div>
     </div>
   </section>
 
   <!-- CONTENT -->
-  <div class="page-content">
+  <div class="page-content page-content-full">
 
     <p class="intro-text">
       Dado que las <em>Partes de comedias</em> constituyen el centro de atención preferente de
@@ -842,13 +842,11 @@
     return `
       <div class="parte-card" id="${id}" data-num="${parte.num}">
         ${coverHTML}
+        <div class="parte-card-hint">Ver detalle →</div>
         <div class="parte-info">
           <div class="parte-info-title">Parte ${escape(parte.roman)} · ${parte.year}</div>
           <div class="parte-info-meta">${parte.coord ? `Coord. ${escape(parte.coord)}<br>` : ''}${escape(parte.editorial)}, ${escape(parte.city)}</div>
         </div>
-        <button class="parte-toggle" data-num="${parte.num}" aria-expanded="false" aria-controls="${panelId}">
-          Ver contenido <span class="chevron">▼</span>
-        </button>
       </div>`;
   }
 
@@ -870,14 +868,7 @@
   }
 
   function closeAll() {
-    document.querySelectorAll('.parte-toggle.open').forEach(btn => {
-      btn.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.querySelector('.chevron').textContent = '▼';
-    });
-    document.querySelectorAll('.parte-cover[aria-expanded="true"]').forEach(c => {
-      c.setAttribute('aria-expanded', 'false');
-    });
+    document.querySelectorAll('.parte-card.open').forEach(c => c.classList.remove('open'));
     modalOverlay.classList.remove('open');
     document.removeEventListener('keydown', trapFocus);
     if (prevFocus) { prevFocus.focus(); prevFocus = null; }
@@ -890,21 +881,11 @@
 
     if (openCardNum === num) { closeAll(); return; }
 
-    // Reset previous active state
-    document.querySelectorAll('.parte-toggle.open').forEach(btn => {
-      btn.classList.remove('open'); btn.setAttribute('aria-expanded', 'false');
-      btn.querySelector('.chevron').textContent = '▼';
-    });
-    document.querySelectorAll('.parte-cover[aria-expanded="true"]').forEach(c => c.setAttribute('aria-expanded', 'false'));
+    document.querySelectorAll('.parte-card.open').forEach(c => c.classList.remove('open'));
 
     openCardNum = num;
     const card = document.getElementById(`parte-${num}`);
-    const btn = card.querySelector('.parte-toggle');
-    const cover = card.querySelector('.parte-cover');
-    btn.classList.add('open');
-    btn.setAttribute('aria-expanded', 'true');
-    btn.querySelector('.chevron').textContent = '▼';
-    cover.setAttribute('aria-expanded', 'true');
+    card.classList.add('open');
 
     // Show modal
     modalBox.innerHTML = buildPanelHTML(parte, q || '');
@@ -931,10 +912,7 @@
       if (stillVisible && !stillVisible.classList.contains('hidden')) {
         const parte = PARTES.find(p => p.num === openCardNum);
         if (parte) {
-          const btn = stillVisible.querySelector('.parte-toggle');
-          const cover = stillVisible.querySelector('.parte-cover');
-          btn.classList.add('open'); btn.setAttribute('aria-expanded', 'true');
-          cover.setAttribute('aria-expanded', 'true');
+          stillVisible.classList.add('open');
           modalBox.innerHTML = buildPanelHTML(parte, q);
           modalBox.querySelector('.panel-close').addEventListener('click', closeAll);
         }
@@ -943,8 +921,8 @@
       }
     }
 
-    // Events
-    grid.querySelectorAll('.parte-toggle, .parte-cover').forEach(el => {
+    // Events — toda la tarjeta es clicable
+    grid.querySelectorAll('.parte-card').forEach(el => {
       el.addEventListener('click', () => {
         const num = parseInt(el.dataset.num, 10);
         openCard(num, q);
@@ -1019,21 +997,6 @@
   });
   </script>
 
-  <script>
-    // Mobile menu toggle
-    const toggle = document.getElementById('menuToggle');
-    const nav = document.getElementById('mainNav');
-    toggle.addEventListener('click', () => nav.classList.toggle('open'));
-
-    // Accordion dropdowns on mobile
-    document.querySelectorAll('.has-dropdown > span').forEach(function(el) {
-      el.addEventListener('click', function() {
-        if (window.innerWidth <= 900) {
-          el.parentElement.classList.toggle('open');
-        }
-      });
-    });
-  </script>
 
 </body>
 </html>
