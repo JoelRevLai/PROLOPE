@@ -103,17 +103,20 @@
   <section class="page-hero">
     <div class="page-hero-bg"></div>
     <div class="page-hero-inner">
-      <p class="page-hero-breadcrumb">
-        Inicio<span>›</span>
-        Eventos<span>›</span>Congresos
-      </p>
+      <div class="breadcrumb">
+        Inicio
+        <span>/</span>
+        Eventos
+        <span>/</span>
+        Congresos
+      </div>
       <h1>Congresos</h1>
       <div class="page-hero-rule"></div>
     </div>
   </section>
 
   <!-- CONTENT -->
-  <div class="page-content">
+  <div class="page-content page-content-full">
 
     <p class="intro-text">
       PROLOPE organiza periódicamente congresos internacionales sobre Lope de Vega y el teatro del
@@ -409,7 +412,7 @@
 
     </div>
 
-  </div><!-- /page-content -->
+  </div><!-- /page-content-full -->
 
   <!-- MODAL -->
   <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
@@ -777,21 +780,6 @@
     });
   </script>
 
-  <script>
-    // Mobile menu toggle
-    const toggle = document.getElementById('menuToggle');
-    const nav = document.getElementById('mainNav');
-    toggle.addEventListener('click', () => nav.classList.toggle('open'));
-
-    // Accordion dropdowns on mobile
-    document.querySelectorAll('.has-dropdown > span').forEach(function(el) {
-      el.addEventListener('click', function() {
-        if (window.innerWidth <= 900) {
-          el.parentElement.classList.toggle('open');
-        }
-      });
-    });
-  </script>
 
 </body>
 </html>

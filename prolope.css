@@ -2531,7 +2531,11 @@ footer > .footer-bottom {
   margin-top: 4px;
 }
 
-.seminar-pdf-btn:hover { background: var(--dorado); }
+.seminar-pdf-btn,
+.page-content .seminar-pdf-btn { color: var(--blanco); text-decoration: none; }
+
+.seminar-pdf-btn:hover,
+.page-content .seminar-pdf-btn:hover { background: var(--dorado); color: var(--blanco); text-decoration: none; }
 
 
 /* ============================================================
