@@ -790,6 +790,21 @@ nav.main-nav > ul > li:hover .dropdown {
   border-left: 3px solid var(--dorado);
 }
 
+.article-main h2 {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 500;
+  color: var(--azul);
+  margin-top: 56px;
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--gris-claro);
+}
+
+.article-main h2:first-of-type {
+  margin-top: 0;
+}
+
 /* Figura con imagen ampliable */
 .article-figure {
   margin: 0 0 32px;
