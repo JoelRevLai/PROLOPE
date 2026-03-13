@@ -1356,6 +1356,22 @@ nav.main-nav > ul > li:hover .dropdown {
   border-bottom: none;
 }
 
+/* Reading progress line on TOC items */
+.toc-progress-list li {
+  position: relative;
+}
+.toc-progress-list li::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--dorado);
+  width: var(--progress, 0%);
+  transition: width 0.15s linear;
+  pointer-events: none;
+}
+
 .sidebar-nav-list li a {
   display: block;
   padding: 10px 20px;
@@ -4156,6 +4172,8 @@ h2[id] { scroll-margin-top: 88px; }
 .mscroll::-webkit-scrollbar-thumb { background: var(--azul); border-radius: 3px; }
 .mblabel { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dorado); margin-bottom: 14px; }
 .mbio { font-size: 1rem; color: var(--texto); line-height: 1.8; }
+.mbio a { color: var(--azul); text-decoration: underline; text-underline-offset: 3px; }
+.mbio a:hover { color: var(--dorado); }
 .mbio p { margin-bottom: 1em; }
 .mbio p:last-child { margin-bottom: 0; }
 .mbio ol, .mbio ul { padding-left: 20px; margin-bottom: 1em; }
@@ -4315,8 +4333,7 @@ nav.mn > ul > li:hover .dd { opacity: 1; visibility: visible; transform: transla
 }
 .btn:hover { background: var(--dorado); }
 
-/* --- has-dropdown indicator --- */
-.has-dropdown > a::after, .has-dropdown > span::after { content: '\25BE'; margin-left: 5px; font-size: 9px; opacity: 0.7; }
+
 
 /* --- activeFilter (news filter JS class) --- */
 .activeFilter { background: var(--azul); color: var(--blanco); border-color: var(--azul); }
