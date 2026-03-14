@@ -950,9 +950,8 @@ nav.main-nav > ul > li:hover .dropdown {
 
 /* Volver atrás */
 .back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  display: block;
+  clear: both;
   font-family: 'Raleway', sans-serif;
   font-size: 11px;
   font-weight: 700;
@@ -4276,6 +4275,7 @@ nav.mn > ul > li:hover .dd { opacity: 1; visibility: visible; transform: transla
 .inline-figure-left figcaption { font-family: 'Raleway', sans-serif; font-size: 10.5px; font-weight: 500; letter-spacing: 0.04em; color: var(--gris-texto); text-align: center; padding: 7px 8px 0; line-height: 1.45; }
 .clearfix::after { content: ''; display: table; clear: both; }
 .figure-wide { margin: 36px 0; }
+.figure-wide .article-figure-img-wrap { max-width: 100%; }
 .figure-wide img { width: 100%; border: 1px solid #ddd; display: block; box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
 .figure-wide figcaption { font-family: 'Raleway', sans-serif; font-size: 10.5px; font-weight: 500; letter-spacing: 0.04em; color: var(--gris-texto); text-align: center; padding: 10px 8px 0; line-height: 1.45; }
 .article-sidebar { position: sticky; top: 90px; }
@@ -4404,8 +4404,8 @@ nav.mn > ul > li:hover .dd { opacity: 1; visibility: visible; transform: transla
 .toc-date { display: block; font-size: 10px; font-weight: 400; color: #999; margin-top: 1px; letter-spacing: 0.05em; }
 
 /* --- article-lead-title / subtitle (noticias) --- */
-.article-lead-title { font-family: 'EB Garamond', serif; font-size: 1.25rem; font-weight: 600; color: var(--azul); line-height: 1.35; margin-bottom: 10px; }
-.article-lead-subtitle { font-family: 'EB Garamond', serif; font-size: 1.05rem; font-style: italic; color: var(--gris-texto); line-height: 1.5; margin-bottom: 24px; }
+.article-body .article-lead-title { font-family: 'EB Garamond', serif; font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 500; color: var(--azul); margin-top: 36px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 2px solid var(--gris-claro); line-height: 1.35; }
+.article-body .article-lead-subtitle { font-family: 'EB Garamond', serif; font-size: clamp(1.1rem, 1.8vw, 1.3rem); font-weight: 600; color: var(--azul); margin-top: 28px; margin-bottom: 14px; line-height: 1.5; }
 
 /* --- modal-title (congresos — modal header) --- */
 .modal-title { font-family: 'EB Garamond', serif; font-size: 1.35rem; font-weight: 400; color: var(--blanco); line-height: 1.25; }
