@@ -107,7 +107,7 @@
   </section>
 
   <!-- CONTENT -->
-  <div class="page-content">
+  <div class="page-content-full">
 
     <div class="filter-bar" id="filterBar"></div>
     <p class="page-info" id="pageInfo"></p>
@@ -211,7 +211,7 @@
   </div>
 
   <script>
-  const POSTS_PER_PAGE = 9;
+  const POSTS_PER_PAGE = 12;
   let currentPage = 1;
   let activeFilter = 'todas';
 
@@ -539,9 +539,7 @@
           <h2 class="news-card-title">${p.title}</h2>
           <p class="news-card-excerpt">${p.excerpt}</p>
         </div>
-        <div class="news-card-footer">
-          <span class="news-card-link">Leer más →</span>
-        </div>
+        <span class="news-hint">Leer más →</span>
       </article>
     `).join('');
 
