@@ -1636,7 +1636,7 @@ nav.main-nav > ul > li:hover .dropdown {
 .parte-card:hover {
   box-shadow: 0 8px 28px rgba(26,58,92,0.14);
   transform: translateY(-4px);
-  border-color: var(--dorado);
+  border-color: var(--azul);
 }
 
 .parte-card.hidden {
@@ -1649,8 +1649,8 @@ nav.main-nav > ul > li:hover .dropdown {
   bottom: 0;
   left: 0;
   right: 0;
-  background: var(--dorado);
-  color: var(--azul);
+  background: var(--azul);
+  color: var(--blanco);
   font-family: 'Raleway', sans-serif;
   font-size: 10px;
   font-weight: 700;
@@ -3979,8 +3979,8 @@ h2[id] { scroll-margin-top: 88px; }
    ============================================================ */
 
 .congress-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 22px; margin-bottom: 64px; }
-.congress-card { background: var(--blanco); border: 1px solid #ddd; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 0.2s, transform 0.2s; cursor: pointer; }
-.congress-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.14); transform: translateY(-2px); }
+.congress-card { background: var(--blanco); border: 1px solid #e4e0d8; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s; cursor: pointer; position: relative; }
+.congress-card:hover { box-shadow: 0 8px 28px rgba(26,58,92,0.14); transform: translateY(-4px); border-color: var(--azul); }
 .congress-poster { position: relative; overflow: hidden; aspect-ratio: 3/2; background: var(--azul); flex-shrink: 0; }
 .congress-poster img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.35s ease; }
 .congress-card:hover .congress-poster img { transform: scale(1.05); }
@@ -3990,17 +3990,15 @@ h2[id] { scroll-margin-top: 88px; }
 .placeholder-divider { width: 36px; height: 2px; background: var(--dorado); margin: 0 auto 10px; }
 .placeholder-label { font-family: 'Raleway', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); text-align: center; line-height: 1.5; }
 .congress-year-badge { position: absolute; top: 10px; left: 10px; font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blanco); background: rgba(200,164,90,0.92); padding: 3px 9px; border-radius: 2px; }
-.congress-info { padding: 14px 16px 18px; border-top: 1px solid var(--gris-claro); flex: 1; display: flex; flex-direction: column; }
+.congress-info { padding: 14px 16px 15px; border-top: 2px solid transparent; flex: 1; display: flex; flex-direction: column; transition: border-top-color 0.25s; }
+.congress-card:hover .congress-info { border-top-color: var(--azul); }
 .congress-edition { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dorado); margin-bottom: 5px; }
 .congress-name { font-family: 'EB Garamond', serif; font-size: 1.02rem; font-weight: 500; color: var(--azul); line-height: 1.4; flex: 1; margin-bottom: 8px; }
 .congress-name em { font-style: italic; }
 .congress-meta-small { font-family: 'Raleway', sans-serif; font-size: 10.5px; color: var(--gris-texto); line-height: 1.5; }
 .congress-meta-small strong { font-weight: 600; color: #444; }
-.congress-toggle-btn { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; border: none; border-top: 1px solid var(--gris-claro); background: none; padding: 12px 16px; cursor: pointer; font-family: 'Raleway', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--azul); transition: background 0.15s, color 0.15s; }
-.congress-toggle-btn:hover { background: var(--azul); color: var(--blanco); }
-.congress-toggle-btn.open { background: var(--azul); color: var(--blanco); }
-.congress-toggle-btn .chevron { font-size: 10px; transition: transform 0.25s; }
-.congress-toggle-btn.open .chevron { transform: rotate(180deg); }
+.congress-hint { position: absolute; bottom: 0; left: 0; right: 0; background: var(--azul); color: var(--blanco); font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-align: center; padding: 7px 0; transform: translateY(100%); transition: transform 0.25s; }
+.congress-card:hover .congress-hint { transform: translateY(0); }
 .modal-edition-badge { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dorado); margin-bottom: 6px; }
 .modal-subtitle { font-family: 'Raleway', sans-serif; font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 6px; line-height: 1.5; }
 .modal-content-wrap { display: grid; grid-template-columns: 300px 1fr; flex: 1; min-height: 0; overflow: hidden; }
@@ -4280,7 +4278,8 @@ nav.mn > ul > li:hover .dd { opacity: 1; visibility: visible; transform: transla
    44. PARTES COMEDIAS — Panel drawer (partes-comedias.html)
    ============================================================ */
 
-.parte-info { padding: 14px 16px; border-top: 1px solid var(--gris-claro); }
+.parte-info { padding: 14px 16px; border-top: 2px solid transparent; transition: border-top-color 0.25s; }
+.parte-card:hover .parte-info { border-top-color: var(--azul); }
 .parte-info-title { font-family: 'Raleway', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; color: var(--azul); margin-bottom: 4px; }
 .parte-info-meta { font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 400; color: var(--gris-texto); line-height: 1.5; }
 .parte-panel { background: var(--blanco); flex: 1; overflow-y: auto; animation: fadeIn 0.18s ease; }
