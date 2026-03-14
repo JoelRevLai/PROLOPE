@@ -55,6 +55,183 @@
   --blanco:     #fff;
 }
 
+/* Modo noche */
+[data-theme="dark"] {
+  --azul:       #7a9dbc;
+  --azul-medio: #6893b5;
+  --azul-claro: #5a8aad;
+  --dorado:     #d4b36a;
+  --crema:      #1a1a2e;
+  --gris-claro: #252540;
+  --gris-texto: #b0b0b0;
+  --texto:      #e0e0e0;
+  --texto-secundario: #c0c0c0;
+  --enlace:     #7ab8e8;
+  --blanco:     #16162b;
+}
+
+[data-theme="dark"] header {
+  border-bottom-color: #2a2a45;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .dropdown {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+[data-theme="dark"] .site-search-dropdown {
+  border-color: #333;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+[data-theme="dark"] .site-search-item {
+  border-bottom-color: #2a2a45;
+}
+
+[data-theme="dark"] .site-search-inline input::placeholder { color: #666; }
+[data-theme="dark"] .site-search-close { color: #666; }
+[data-theme="dark"] .site-search-item-desc { color: #999; }
+
+[data-theme="dark"] .news-card {
+  background: #1e1e36;
+  border-color: #2a2a45;
+}
+
+[data-theme="dark"] .news-card:hover {
+  box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+}
+
+[data-theme="dark"] .menu-toggle span {
+  background: var(--texto);
+}
+
+[data-theme="dark"] img {
+  opacity: 0.9;
+}
+
+[data-theme="dark"] footer {
+  background: #0e1e2e;
+}
+
+[data-theme="dark"] .funders {
+  background: #2a2a45;
+  border-top-color: #3a3a55;
+}
+
+[data-theme="dark"] .funders-logos img {
+  filter: brightness(1.15) contrast(1.05);
+}
+
+[data-theme="dark"] .funders-logos img[alt="Fundación March"] {
+  content: url('media/fundacion-juan-march-nit.png');
+  filter: none;
+}
+
+[data-theme="dark"] .funders-logos img[alt="ACE"] {
+  content: url('media/ace-logo-nit.png');
+  filter: none;
+}
+
+/* Badges dorados: texto negro en modo noche */
+[data-theme="dark"] .article-cat-badge,
+[data-theme="dark"] .news-cat-badge,
+[data-theme="dark"] .art-cat-badge,
+[data-theme="dark"] .congress-year-badge {
+  color: #1a1a2e;
+}
+
+/* Sidebar: tono más suave en modo noche */
+[data-theme="dark"] .sidebar-card-header,
+[data-theme="dark"] .sidebar-card-head {
+  background: #1e2d42;
+}
+
+[data-theme="dark"] .sidebar-card-page,
+[data-theme="dark"] .sidebar-card,
+[data-theme="dark"] .toc {
+  border-color: #2a2a45;
+}
+
+[data-theme="dark"] .sidebar-news-item {
+  border-bottom-color: #2a2a45;
+}
+
+[data-theme="dark"] .sidebar-links li,
+[data-theme="dark"] .sidebar-nav-list li {
+  border-bottom-color: #2a2a45;
+}
+
+/* Logo noche en header */
+[data-theme="dark"] .logo-link img {
+  content: url('media/logo-menu-nit.png');
+  opacity: 1;
+}
+
+/* Partes comedias panel: fondo oscuro en modo noche */
+[data-theme="dark"] .parte-panel {
+  background: #1e1e36;
+}
+
+[data-theme="dark"] .panel-body {
+  background: #1e1e36;
+}
+
+[data-theme="dark"] .volume-header {
+  border-bottom-color: #2a2a45;
+}
+
+[data-theme="dark"] .play-item {
+  border-bottom-color: #2a2a45;
+}
+
+[data-theme="dark"] .panel-header {
+  background: #0e1e2e;
+}
+
+[data-theme="dark"] .play-item.history-item {
+  background: #22223a;
+}
+
+[data-theme="dark"] .parte-card {
+  border-color: #2a2a45;
+}
+
+/* Tesis internacional: fondo suave en modo noche */
+[data-theme="dark"] .thesis-tag.internacional {
+  color: #c0d0e0;
+  border-color: #3a5068;
+  background: #1e2d42;
+}
+
+[data-theme="dark"] .news-card-body {
+  border-top-color: #2a2a45;
+}
+
+[data-theme="dark"] .footer-social a {
+  border-color: rgba(255,255,255,0.15);
+}
+
+/* Botón modo noche */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  margin-left: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: var(--azul);
+  opacity: 0.65;
+  transition: opacity 0.2s, color 0.2s;
+  flex-shrink: 0;
+  font-size: 14px;
+  line-height: 1;
+}
+.theme-toggle:hover { opacity: 1; }
+
 
 /* ============================================================
    2. BASE Y TIPOGRAFÍA
