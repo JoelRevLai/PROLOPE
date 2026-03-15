@@ -2421,6 +2421,7 @@ footer > .footer-bottom {
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 1000;
     background: var(--blanco);
     overflow-y: auto;
     flex-direction: column;
@@ -2570,6 +2571,14 @@ footer > .footer-bottom {
 
   .partes-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .search-bar-wrap {
+    max-width: 100%;
+  }
+
+  #searchInput {
+    min-width: 0;
   }
 
   .img-gallery {
@@ -3970,6 +3979,10 @@ h2[id] { scroll-margin-top: 88px; }
   z-index: 2;
 }
 
+.year-text-mobile {
+  display: none;
+}
+
 .project-card {
   background: var(--blanco);
   border: 1px solid #e4e0d8;
@@ -4049,10 +4062,18 @@ h2[id] { scroll-margin-top: 88px; }
 
 /* Responsive del timeline */
 @media (max-width: 540px) {
-  .project-item { grid-template-columns: 1fr; }
-  .project-year { padding: 0 0 8px 0; align-items: flex-start; }
-  .project-year::before, .project-year::after { display: none; }
-  .year-text { padding-top: 0; font-size: 10px; }
+  .project-item { display: block; }
+  .project-year { display: none; }
+  .project-card { margin: 0 0 12px; }
+  .year-text-mobile {
+    display: block;
+    font-family: 'Raleway', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--dorado);
+    margin-bottom: 8px;
+  }
 }
 
 
@@ -4441,7 +4462,7 @@ h2[id] { scroll-margin-top: 88px; }
   .contact-info { padding: 20px 24px; }
 
   /* Timeline */
-  .project-item { grid-template-columns: 70px 1fr; }
+  .project-item { grid-template-columns: 80px 1fr; }
 
   /* Figure row */
   .figure-row { grid-template-columns: 1fr; }
@@ -4929,13 +4950,16 @@ nav.mn > ul > li:hover .dd { opacity: 1; visibility: visible; transform: transla
    INDEX — HEADER ANIMATION
    ============================================================ */
 
-@keyframes idxHeaderSlide {
-  from { transform: translateY(-100%); opacity: 0; }
-  to   { transform: translateY(0); opacity: 1; }
+@keyframes idxHeaderFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-.idx-page header {
-  animation: idxHeaderSlide 0.7s ease-out 0.2s both;
+.idx-page .logo-link,
+.idx-page .menu-toggle,
+.idx-page .theme-toggle,
+.idx-page .site-search-btn {
+  animation: idxHeaderFade 0.7s ease-out 0.2s backwards;
 }
 
 /* ============================================================
