@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <link rel="icon" href="media/favicon_5.gif" type="image/gif" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Partes de comedias | PROLOPE</title>
@@ -861,6 +862,7 @@
   function closeAll() {
     document.querySelectorAll('.parte-card.open').forEach(c => c.classList.remove('open'));
     modalOverlay.classList.remove('open');
+    document.body.style.overflow = '';
     document.removeEventListener('keydown', trapFocus);
     if (prevFocus) { prevFocus.focus(); prevFocus = null; }
     openCardNum = null;
@@ -882,6 +884,7 @@
     modalBox.innerHTML = buildPanelHTML(parte, q || '');
     modalBox.scrollTop = 0;
     modalOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
     prevFocus = document.activeElement;
     const closeBtn = modalBox.querySelector('.panel-close');
     closeBtn.addEventListener('click', closeAll);
