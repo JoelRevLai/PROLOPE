@@ -3,6 +3,7 @@
 <head>
   <link rel="icon" href="media/favicon_5.gif" type="image/gif" />
   <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; base-uri 'self'; connect-src 'self'" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Congresos | PROLOPE</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -58,7 +59,7 @@
             <div class="dropdown">
               <ul>
                 <li><a href="partes-comedias.html">Partes de comedias</a></li>
-                <li><a href="https://revistes.uab.cat/anuariolopedevega/index" target="_blank" rel="noopener">Anuario Lope de Vega</a></li>
+                <li><a href="https://revistes.uab.cat/anuariolopedevega/index" target="_blank" rel="noopener noreferrer">Anuario Lope de Vega</a></li>
                 <li><a href="otras-publicaciones.html">Otras publicaciones</a></li>
               </ul>
             </div>
@@ -68,9 +69,9 @@
             <div class="dropdown">
               <ul>
                 <li><a href="biblioteca-virtual.html">Biblioteca virtual</a></li>
-                <li><a href="https://prolope.uab.cat/biblioteca/" target="_blank" rel="noopener">Biblioteca Digital Prolope</a></li>
+                <li><a href="https://prolope.uab.cat/biblioteca/" target="_blank" rel="noopener noreferrer">Biblioteca Digital Prolope</a></li>
                 <li><a href="mujeres-criados.html">Mujeres y criados</a></li>
-                <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener">AUTESO</a></li>
+                <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO</a></li>
                 <li><a href="dama-boba.html">La dama boba</a></li>
                 <li><a href="gondomar.html">Gondomar Digital</a></li>
               </ul>
@@ -449,19 +450,19 @@
     <div class="funders-inner">
       <p class="funders-title">Entidades financiadoras</p>
       <div class="funders-logos">
-        <a class="funder-logo-link" href="https://www.march.es/" target="_blank" rel="noopener">
+        <a class="funder-logo-link" href="https://www.march.es/" target="_blank" rel="noopener noreferrer">
           <img src="media/fundacion-march.png" alt="Fundación March" />
         </a>
-        <a class="funder-logo-link" href="https://www.culturaydeporte.gob.es/" target="_blank" rel="noopener">
+        <a class="funder-logo-link" href="https://www.culturaydeporte.gob.es/" target="_blank" rel="noopener noreferrer">
           <img src="media/ace.png" alt="ACE" />
         </a>
-        <a class="funder-logo-link" href="https://agaur.gencat.cat/" target="_blank" rel="noopener">
+        <a class="funder-logo-link" href="https://agaur.gencat.cat/" target="_blank" rel="noopener noreferrer">
           <img src="media/agaur_gencat.png" alt="AGAUR Gencat" />
         </a>
-        <a class="funder-logo-link" href="https://www.ciencia.gob.es/" target="_blank" rel="noopener">
+        <a class="funder-logo-link" href="https://www.ciencia.gob.es/" target="_blank" rel="noopener noreferrer">
           <img src="media/ministerio-feder.png" alt="Ministerio / FEDER" />
         </a>
-        <a class="funder-logo-link" href="https://www.uab.cat/" target="_blank" rel="noopener">
+        <a class="funder-logo-link" href="https://www.uab.cat/" target="_blank" rel="noopener noreferrer">
           <img src="media/uab.png" alt="UAB" />
         </a>
       </div>
@@ -486,8 +487,8 @@
           Correo: <a href="mailto:prolope@uab.es">prolope@uab.es</a>
         </address>
         <div class="footer-social">
-          <a href="https://twitter.com/ProlopeUab" target="_blank" rel="noopener" title="Seguir en X">𝕏</a>
-          <a href="https://www.facebook.com/prolope.uab" target="_blank" rel="noopener" title="Seguir en Facebook">f</a>
+          <a href="https://twitter.com/ProlopeUab" target="_blank" rel="noopener noreferrer" title="Seguir en X">𝕏</a>
+          <a href="https://www.facebook.com/prolope.uab" target="_blank" rel="noopener noreferrer" title="Seguir en Facebook">f</a>
         </div>
       </div>
     </div>
@@ -736,27 +737,31 @@
     };
 
     /* ====== MODAL FUNCTIONS ====== */
+    function esc(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    }
+
     function openModal(id) {
       const c = congresses[id];
       if (!c) return;
 
       document.getElementById('modalEdition').textContent = c.edition;
-      document.getElementById('modalTitle').innerHTML = c.title;
+      document.getElementById('modalTitle').textContent = c.title;
       document.getElementById('modalSubtitle').textContent = '';
 
       // Build links HTML
       let linksHTML = '';
       if (c.links && c.links.length > 0) {
         linksHTML = `<div class="modal-links">` +
-          c.links.map(l => `<a class="modal-link-btn" href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`).join('') +
+          c.links.map(l => `<a class="modal-link-btn" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">${esc(l.label)}</a>`).join('') +
           `</div>`;
       }
 
       const bodyHTML = `
         <div class="modal-content-wrap">
           <div class="modal-poster-col">
-            <div class="article-figure-img-wrap" onclick="openLightbox('${c.img}')" style="cursor:zoom-in">
-            <img class="modal-poster" src="${c.img}" alt="${c.edition}" />
+            <div class="article-figure-img-wrap" onclick="openLightbox('${esc(c.img)}')" style="cursor:zoom-in">
+            <img class="modal-poster" src="${esc(c.img)}" alt="${esc(c.edition)}" />
               <span class="zoom-hint" aria-hidden="true">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
               </span>
@@ -766,16 +771,16 @@
             <div class="modal-section">
               <div class="modal-info-item">
                 <div class="label">Fechas</div>
-                <div class="value">${c.dates}</div>
+                <div class="value">${esc(c.dates)}</div>
               </div>
               <div class="modal-info-item">
                 <div class="label">Sede</div>
-                <div class="value">${c.location}</div>
+                <div class="value">${esc(c.location)}</div>
               </div>
             </div>
             <div class="modal-section" style="flex:1;">
               <div class="modal-section-label">Sobre el congreso</div>
-              <div class="modal-description">${c.description}</div>
+              <div class="modal-description">${esc(c.description)}</div>
             </div>
             ${linksHTML}
           </div>
