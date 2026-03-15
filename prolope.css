@@ -4956,6 +4956,53 @@ nav.mn > ul > li:hover .dd { opacity: 1; visibility: visible; transform: transla
 
 
 /* ============================================================
+   PAGE ENTRY ANIMATIONS (non-index pages)
+   ============================================================ */
+
+@keyframes pageFadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pageFadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pageRuleIn {
+  from { opacity: 0; transform: scaleX(0); }
+  to   { opacity: 0.85; transform: scaleX(1); }
+}
+@keyframes pageContentIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero content cascade */
+.page-hero-inner .breadcrumb,
+.page-hero-inner .page-hero-breadcrumb {
+  animation: pageFadeDown 0.7s ease-out 0.1s both;
+}
+.page-hero-inner h1 {
+  animation: pageFadeDown 0.8s ease-out 0.2s both;
+}
+.page-hero-rule {
+  transform-origin: left;
+  animation: pageRuleIn 0.6s ease-out 0.45s both;
+}
+.page-hero-inner .page-hero-byline,
+.page-hero-inner .page-hero-desc,
+.page-hero-inner .page-hero-meta {
+  animation: pageFadeUp 0.7s ease-out 0.55s both;
+}
+
+/* Main content block fade-in on load */
+.article-wrap,
+.page-layout,
+.page-content-full {
+  animation: pageContentIn 0.6s ease-out 0.3s both;
+}
+
+
+/* ============================================================
    INDEX — HEADER ANIMATION
    ============================================================ */
 
