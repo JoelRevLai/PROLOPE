@@ -1792,7 +1792,9 @@ a.news-card,
 
 .founder-card img {
   width: 100%;
-  height: auto;
+  max-height: 280px;
+  object-fit: contain;
+  background: var(--azul);
   display: block;
 }
 
@@ -2473,23 +2475,6 @@ footer > .footer-bottom {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Imagen flotante: apilada */
-  .img-float,
-  .img-float.float-right {
-    flex-direction: column;
-  }
-
-  .img-float figure {
-    flex: none;
-    width: 260px;
-    max-width: 100%;
-    margin: 0 auto;
-  }
-
-  .img-float figure img {
-    height: auto;
-    object-fit: contain;
-  }
 }
 
 /* Móvil pequeño */
@@ -4672,8 +4657,13 @@ nav.mn > ul > li:hover .dd { opacity: 1; visibility: visible; transform: transla
   .article-wrap { grid-template-columns: 1fr; gap: 0; }
   .article-sidebar { position: static; margin-top: 48px; }
 }
-@media (max-width: 900px) {
+@media (max-width: 540px) {
   .inline-figure, .inline-figure-left { float: none; max-width: 100%; margin: 0 auto 28px; }
+
+  .img-float,
+  .img-float.float-right { flex-direction: column; }
+  .img-float figure { flex: none; width: 260px; max-width: 100%; margin: 0 auto; }
+  .img-float figure img { height: auto; object-fit: contain; }
 }
 
 
