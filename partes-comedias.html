@@ -980,10 +980,10 @@
   // ─────────────────────────────────────────────────────────────────────────────
   const toggle = document.getElementById('menuToggle');
   const nav = document.getElementById('mainNav');
-  toggle.addEventListener('click', () => nav.classList.toggle('open'));
+  toggle.addEventListener('click', () => { nav.classList.toggle('open'); document.body.classList.toggle('menu-open', nav.classList.contains('open')); });
   document.querySelectorAll('.has-dropdown > span').forEach(el => {
     el.addEventListener('click', () => {
-      if (window.innerWidth <= 900) el.parentElement.classList.toggle('open');
+      if (window.innerWidth <= 1100) el.parentElement.classList.toggle('open');
     });
   });
   </script>

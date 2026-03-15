@@ -118,9 +118,9 @@
     <div class="page-hero-inner">
       <div class="breadcrumb">
         Inicio
-        <span>/</span>
+        <span>›</span>
         El grupo
-        <span>/</span>
+        <span>›</span>
         Estatutos del grupo
       </div>
       <h1>Estatutos del grupo de investigación PROLOPE</h1>
@@ -703,10 +703,10 @@
     // ── Mobile nav ──
     const toggle = document.getElementById('menuToggle');
     const nav    = document.getElementById('mainNav');
-    toggle.addEventListener('click', () => nav.classList.toggle('open'));
+    toggle.addEventListener('click', () => { nav.classList.toggle('open'); document.body.classList.toggle('menu-open', nav.classList.contains('open')); });
     document.querySelectorAll('.has-dropdown > span').forEach(el => {
       el.addEventListener('click', () => {
-        if (window.innerWidth <= 900) el.parentElement.classList.toggle('open');
+        if (window.innerWidth <= 1100) el.parentElement.classList.toggle('open');
       });
     });
 
@@ -773,12 +773,12 @@
     // Mobile menu toggle
     const toggle = document.getElementById('menuToggle');
     const nav = document.getElementById('mainNav');
-    toggle.addEventListener('click', () => nav.classList.toggle('open'));
+    toggle.addEventListener('click', () => { nav.classList.toggle('open'); document.body.classList.toggle('menu-open', nav.classList.contains('open')); });
 
     // Accordion dropdowns on mobile
     document.querySelectorAll('.has-dropdown > span').forEach(function(el) {
       el.addEventListener('click', function() {
-        if (window.innerWidth <= 900) {
+        if (window.innerWidth <= 1100) {
           el.parentElement.classList.toggle('open');
         }
       });
