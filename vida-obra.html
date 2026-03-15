@@ -353,7 +353,7 @@
 
       <div class="sidebar-card">
         <p class="sidebar-card-title">Índice</p>
-        <ul class="sidebar-nav-list toc-progress-list">
+        <ul class="sidebar-nav-list">
           <li><a href="#s-infancia" data-section="s-infancia">Infancia y primeros versos<span class="toc-date">1562–1587</span></a></li>
           <li><a href="#s-destierro" data-section="s-destierro">El destierro y la Armada<span class="toc-date">1587–1595</span></a></li>
           <li><a href="#s-alba" data-section="s-alba">Al servicio del duque de Alba<span class="toc-date">1590–1595</span></a></li>
@@ -463,31 +463,6 @@
       });
     });
 
-    // ── TOC reading progress ────────
-    const sections    = Array.from(document.querySelectorAll('.article-main h2[id]'));
-    const tocLinks    = Array.from(document.querySelectorAll('.toc-progress-list a[data-section]'));
-    const articleMain = document.getElementById('article-main');
-
-    function onScroll() {
-      const OFFSET     = 120;
-      const mainBottom = articleMain.getBoundingClientRect().bottom;
-
-      sections.forEach((sec, i) => {
-        const link = tocLinks.find(l => l.dataset.section === sec.id);
-        if (!link) return;
-        const secTop    = sec.getBoundingClientRect().top;
-        const secBottom = sections[i + 1] ? sections[i + 1].getBoundingClientRect().top : mainBottom;
-        const secHeight = secBottom - secTop;
-        let pct;
-        if (secBottom <= OFFSET)   pct = 100;
-        else if (secTop >= OFFSET) pct = 0;
-        else pct = Math.min(100, Math.max(0, ((OFFSET - secTop) / secHeight) * 100));
-        link.parentElement.style.setProperty('--progress', pct + '%');
-      });
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
   </script>
   <script>
 /**

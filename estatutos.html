@@ -134,6 +134,8 @@
   <!-- MAIN LAYOUT -->
   <div class="page-layout">
 
+    <button class="expand-all-btn expand-all-btn-mobile" id="expandAllBtnMobile">Expandir todos los artículos</button>
+
     <main id="estatutos-content">
 
       <!-- ══════════════════════════════
@@ -739,16 +741,22 @@
 
     // ── Expand / Collapse all ──
     const expandBtn = document.getElementById('expandAllBtn');
+    const expandBtnMobile = document.getElementById('expandAllBtnMobile');
     let allExpanded = false;
 
-    expandBtn.addEventListener('click', () => {
+    function toggleAll() {
       allExpanded = !allExpanded;
       document.querySelectorAll('.accordion-item').forEach(item => {
         item.classList.toggle('open', allExpanded);
         item.querySelector('.accordion-trigger').setAttribute('aria-expanded', String(allExpanded));
       });
-      expandBtn.textContent = allExpanded ? 'Contraer todos los artículos' : 'Expandir todos los artículos';
-    });
+      const label = allExpanded ? 'Contraer todos los artículos' : 'Expandir todos los artículos';
+      expandBtn.textContent = label;
+      expandBtnMobile.textContent = label;
+    }
+
+    expandBtn.addEventListener('click', toggleAll);
+    expandBtnMobile.addEventListener('click', toggleAll);
 
     // ── Open article if URL hash matches ──
     if (window.location.hash) {
