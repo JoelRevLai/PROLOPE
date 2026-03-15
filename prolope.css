@@ -2627,7 +2627,8 @@ footer > .footer-bottom {
   transition: color 0.2s, text-decoration-color 0.2s;
 }
 
-.article-main a:hover {
+.article-main a:hover,
+.article-main a:hover strong {
   color: var(--dorado);
   text-decoration-color: var(--dorado);
 }
