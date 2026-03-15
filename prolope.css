@@ -1295,6 +1295,15 @@ a.news-card,
   flex-shrink: 0;
 }
 
+/* Icono enlace externo (dropdown + sidebar) */
+.ext-link-icon {
+  width: 11px;
+  height: 11px;
+  vertical-align: middle;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
 /* Volver atrás */
 .back-link {
   display: block;
