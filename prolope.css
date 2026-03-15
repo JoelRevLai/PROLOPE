@@ -4657,7 +4657,13 @@ nav.mn > ul > li:hover .dd { opacity: 1; visibility: visible; transform: transla
 @media (max-width: 1024px) {
   .article-wrap { grid-template-columns: 1fr; gap: 0; }
   .article-sidebar { position: static; margin-top: 48px; }
-  .founder-card { max-width: 260px; }
+  .founder-card { max-width: 680px; display: flex; flex-direction: row; }
+  .founder-card img { width: 280px; height: 100%; aspect-ratio: auto; object-fit: cover; object-position: top; flex-shrink: 0; }
+  .founder-card-body { display: flex; flex-direction: column; justify-content: center; }
+}
+@media (max-width: 540px) {
+  .founder-card { flex-direction: column; max-width: 260px; }
+  .founder-card img { width: 100%; height: auto; aspect-ratio: 4/3; }
 }
 @media (max-width: 540px) {
   .inline-figure, .inline-figure-left { float: none; max-width: 100%; margin: 0 auto 28px; }
