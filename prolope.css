@@ -196,6 +196,33 @@
   border-color: #2a2a45;
 }
 
+[data-theme="dark"] .intro-block p {
+  color: var(--texto);
+}
+
+[data-theme="dark"] .intro-block h2 {
+  border-bottom-color: #2a2a45;
+}
+
+/* Proyecto vigente: fondo adaptado en modo noche */
+[data-theme="dark"] .project-card.current {
+  background: #2a2a45;
+  border-left-color: var(--dorado);
+}
+
+[data-theme="dark"] .project-card {
+  border-color: #2a2a45;
+}
+
+[data-theme="dark"] .project-meta-item .value {
+  color: var(--texto);
+}
+
+[data-theme="dark"] .project-desc {
+  color: var(--texto);
+  border-top-color: #2a2a45;
+}
+
 /* Tesis internacional: fondo suave en modo noche */
 [data-theme="dark"] .thesis-tag.internacional {
   color: #c0d0e0;
@@ -1134,6 +1161,7 @@ a.news-card,
   padding-bottom: 14px;
   border-bottom: 2px solid var(--gris-claro);
 }
+.article-main h2:first-child { margin-top: 0; }
 
 .article-main h3 {
   font-family: 'EB Garamond', serif;
@@ -2257,7 +2285,7 @@ footer > .footer-bottom {
    ============================================================ */
 
 .lightbox {
-  display: none;
+  display: flex;
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.92);
@@ -2266,10 +2294,14 @@ footer > .footer-bottom {
   justify-content: center;
   cursor: zoom-out;
   padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
 }
 
 .lightbox.open {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
 }
 
 .lightbox img {
@@ -2278,6 +2310,12 @@ footer > .footer-bottom {
   object-fit: contain;
   border-radius: 2px;
   box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  transform: scale(0.92);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lightbox.open img {
+  transform: scale(1);
 }
 
 .lightbox-close {
