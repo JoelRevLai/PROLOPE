@@ -724,7 +724,7 @@ nav.main-nav > ul > li:hover .dropdown {
   padding: 56px 24px 52px;
   position: relative;
   overflow: hidden;
-  min-height: 220px;
+  min-height: 340px;
   display: flex;
   align-items: flex-end;
 }
@@ -4478,9 +4478,16 @@ h2[id] { scroll-margin-top: 88px; }
   .figure-row { grid-template-columns: 1fr; }
 }
 
+@media (max-width: 900px) {
+  .page-hero,
+  .article-hero { min-height: 260px; }
+}
+
 @media (max-width: 600px) {
   .page-wrap { padding: 40px 16px 64px; }
   .page-hero-inner { padding: 40px 16px 36px; }
+  .page-hero,
+  .article-hero { min-height: 200px; }
 }
 
 
