@@ -223,5 +223,11 @@ var SEARCH_INDEX = [
     url: "noticia-xi-congreso-call-for-papers-2024.html",
     description: "Convocatoria de ponencias para el XI Congreso Internacional Lope de Vega.",
     content: "Call for papers XI Congreso Internacional Lope de Vega. 27-29 noviembre 2024. UAB. Investigación teatro Siglo de Oro. Lope de Vega como estandarte."
+  },
+  {
+    title: "Seminario — De la periferia al centro",
+    url: "noticia-seminario-periferia-centro-2023.html",
+    description: "Seminario Internacional sobre imprenta y literatura española en los siglos XVI y XVII.",
+    content: "Seminario Internacional «De la periferia al centro: imprenta y literatura española en los siglos XVI y XVII». 24 de marzo de 2023. Universidad de Trento. Coordinado por Claudia Demattè, Arantxa Llàcer y Marco Presotto."
   }
 ];

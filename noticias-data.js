@@ -274,4 +274,19 @@ const news = [
       { label: 'Más información', url: 'https://dfe.uab.cat/los-dramaturgos-aureos-a-traves-de-sus-autografos/' }
     ]
   },
+  {
+    id: 19,
+    cat: 'Seminario',
+    date: '24 mar. 2023',
+    title: 'Seminario Internacional «De la periferia al centro»',
+    excerpt: 'Seminario Internacional «De la periferia al centro: imprenta y literatura española en los siglos XVI y XVII» en la Universidad de Trento.',
+    img: 'media/fondo-noticias.jpg',
+    url: 'noticia-seminario-periferia-centro-2023.html',
+    content: [
+      'El próximo día 24 de marzo de 2023 se celebra el Seminario Internacional «De la periferia al centro: imprenta y literatura española en los siglos XVI y XVII», en la Universidad de Trento, coordinado por Claudia Demattè, Arantxa Llàcer y Marco Presotto.',
+    ],
+    links: [
+      { label: 'Más información y programa', url: 'https://prolope.uab.cat/wp-content/uploads/2023/03/Programa-Seminario-Trento.pdf' }
+    ]
+  },
 ];
