@@ -289,4 +289,17 @@ const news = [
       { label: 'Más información y programa', url: 'https://prolope.uab.cat/wp-content/uploads/2023/03/Programa-Seminario-Trento.pdf' }
     ]
   },
+  {
+    id: 20,
+    cat: 'Noticias',
+    date: 'Mar. 2023',
+    title: 'Alba Carmona recibe una ayuda Marie Skłodowska-Curie',
+    excerpt: 'La investigadora de PROLOPE Alba Carmona recibe una ayuda Marie Skłodowska-Curie para realizar el proyecto EXODUS en la University of Leeds.',
+    img: 'media/Alba-Carmona.jpg',
+    url: 'noticia-alba-carmona-marie-curie-2023.html',
+    content: [
+      'La investigadora de PROLOPE Alba Carmona acaba de recibir una ayuda del prestigioso programa europeo Marie Skłodowska-Curie, para realizar el proyecto EXODUS, en la University of Leeds, con la supervisión del prof. Duncan Wheeler.',
+    ],
+    links: []
+  },
 ];

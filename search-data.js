@@ -229,5 +229,11 @@ var SEARCH_INDEX = [
     url: "noticia-seminario-periferia-centro-2023.html",
     description: "Seminario Internacional sobre imprenta y literatura española en los siglos XVI y XVII.",
     content: "Seminario Internacional «De la periferia al centro: imprenta y literatura española en los siglos XVI y XVII». 24 de marzo de 2023. Universidad de Trento. Coordinado por Claudia Demattè, Arantxa Llàcer y Marco Presotto."
+  },
+  {
+    title: "Alba Carmona — Ayuda Marie Skłodowska-Curie",
+    url: "noticia-alba-carmona-marie-curie-2023.html",
+    description: "Alba Carmona recibe una ayuda Marie Skłodowska-Curie para el proyecto EXODUS.",
+    content: "Alba Carmona ayuda Marie Skłodowska-Curie proyecto EXODUS University of Leeds. Teatro del Siglo de Oro exilio español republicano 1939-1975."
   }
 ];
