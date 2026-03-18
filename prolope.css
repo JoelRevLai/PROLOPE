@@ -4216,6 +4216,7 @@ h2[id] { scroll-margin-top: 88px; }
 
 .book-highlight .btn-consultar {
   display: inline-block;
+  text-align: center;
   margin-top: 14px;
   font-family: 'Raleway', sans-serif;
   font-size: 12px;
@@ -4857,6 +4858,7 @@ nav.mn > ul > li:hover .dd { opacity: 1; visibility: visible; transform: transla
 /* --- Generic button (.btn) --- */
 .btn {
   display: inline-block;
+  text-align: center;
   font-family: 'Raleway', sans-serif;
   font-size: 12px;
   font-weight: 700;
