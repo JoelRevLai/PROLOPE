@@ -3,16 +3,16 @@
 <head>
   <link rel="icon" href="media/favicon_5.gif" type="image/gif" />
   <meta charset="UTF-8" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; base-uri 'self'; connect-src 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://mappinglope.github.io https://britishlibrary.github.io; base-uri 'self'; connect-src 'self'" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Conferencia de David Merino: ¡Todos a una! | PROLOPE</title>
+  <title>Mapping Lope | PROLOPE</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="prolope.css" />
   <!-- early theme -->
   <script>
-    (function(){var t=localStorage.getItem('theme');if(t==='dark'||(! t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.setAttribute('data-theme','dark');})();
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.setAttribute('data-theme','dark');})();
   </script>
 
 </head>
@@ -73,8 +73,8 @@
                 <li><a href="mujeres-criados.html">Mujeres y criados</a></li>
                 <li><a href="mapping-lope.html">Mapping Lope</a></li>
                 <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
-                <li><a href="dama-boba.html">La dama boba <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
-                <li><a href="gondomar.html">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="https://damaboba.unibo.it/" target="_blank" rel="noopener noreferrer">La dama boba</a></li>
+                <li><a href="https://gondomar.tespasiglodeoro.it/" target="_blank" rel="noopener noreferrer">Gondomar Digital</a></li>
               </ul>
             </div>
           </li>
@@ -116,80 +116,155 @@
   </header>
 
   <!-- HERO -->
-  <section class="article-hero">
-    <div class="article-hero-bg" style="background-image: url('media/fondo-noticias.jpg'); background-size: fill; background-repeat: no-repeat; background-position: right; opacity: 0.15;"></div>
-    <div class="article-hero-inner">
-      <p class="article-breadcrumb">
-        <a href="index.html">Inicio</a><span>›</span>
-        <a href="noticias.html">Noticias</a><span>›</span>
-        Conferencia Merino 2024
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('media/mapping_lope_1.png'); background-size: fill; background-repeat: no-repeat; background-position: right; opacity: 0.15;"></div>
+    <div class="page-hero-inner">
+      <p class="page-hero-breadcrumb">
+        Inicio
+        <span>›</span>
+        Proyectos digitales
+        <span>›</span>
+        Mapping Lope
       </p>
-      <span class="article-cat-badge">Noticias</span>
-      <h1>Conferencia de David Merino: ¡Todos a una! Hacia la edición y el archivo social de <em>Fuente Ovejuna</em> de Lope de Vega</h1>
-      <div class="article-hero-meta">
-        <span class="article-date">27 de febrero de 2024</span>
-      </div>
-      <div class="article-hero-rule"></div>
+      <h1><em>Mapping Lope</em>: A Cartographic Exploration of the Comedia Nueva</h1>
+      <p class="page-hero-byline">Miguel Betti</p>
+      <div class="page-hero-rule"></div>
     </div>
   </section>
 
-  <!-- LAYOUT -->
-  <div class="article-layout">
+  <!-- CONTENT -->
+  <div class="article-wrap">
 
-    <!-- MAIN CONTENT -->
-    <article class="article-body">
+    <main class="article-main" id="article-main">
 
-      <div class="article-figure">
-        <div class="article-figure-img-wrap" onclick="openLightbox('media/conferencia_merino_fuenteovejuna.jpg')">
-          <img src="media/conferencia_merino_fuenteovejuna.jpg" alt="Conferencia de David Merino: ¡Todos a una!" />
-          <span class="zoom-hint" aria-hidden="true">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-          </span>
+      <p class="article-lead">
+        <em>Mapping Lope: A Cartographic Exploration of the Comedia Nueva</em> (2025–2027) es un proyecto de investigación posdoctoral dirigido por Miguel Betti y financiado por la beca Postdoc.Mobility del Fondo Nacional Suizo para la Investigación Científica (SNSF). Se enmarca en las actividades de innovación del grupo PROLOPE, bajo la supervisión de Sònia Boadas.
+      </p>
+
+      <p>Combinando filología, geografía literaria y aprendizaje automático, el proyecto aplica herramientas de las Humanidades Digitales para extraer topónimos de las obras dramáticas de Lope de Vega, generar análisis estadísticos y crear mapas interactivos y dinámicos.</p>
+
+      <p>El proyecto tiene dos objetivos principales. En primer lugar, en el plano filológico, analizar el papel del espacio verbal, imaginado y diegético en este corpus, así como las relaciones entre la toponimia y la clasificación de las obras en diversos géneros y subgéneros. En segundo lugar, en el plano histórico, examinar la relación entre el uso de la toponimia y el contexto político, social y cultural del Siglo de Oro.</p>
+
+      <p>Los topónimos han sido extraídos automáticamente mediante el entrenamiento de un modelo de reconocimiento de entidades nombradas (NER) con la biblioteca Flair. El modelo más preciso (F1-score: 95%) permitió identificar más de 1000 nombres distintos de imperios, reinos, ciudades, villas, parques, calles, edificios y accidentes geográficos, en 364 obras.</p>
+
+
+      
+
+      <p>El mapa presentado a continuación, desarrollado con la biblioteca Peripleo, permite a los usuarios explorar esta lista de topónimos y, gracias a su sistema de filtros, realizar búsquedas por lugar, género, subgénero, título de la obra y periodo o fecha de composición.</p>
+
+      <figure class="figure-wide">
+        <a href="https://mappinglope.github.io/peripleo-lope/#/?/?/?/mode=points" target="_blank" rel="noopener noreferrer">
+          <img src="media/mapping_lope_1.png" alt="Haga clic para acceder al mapa interactivo de Mapping Lope" />
+        </a>
+        <figcaption>Haga clic en la imagen para acceder al <a href="https://mappinglope.github.io/peripleo-lope/#/?/?/?/mode=points" target="_blank" rel="noopener noreferrer">mapa interactivo</a>.</figcaption>
+      </figure>
+
+      <iframe src="https://mappinglope.github.io/peripleo-lope" title="Mapping Lope — Mapa interactivo" width="100%" height="800px" allowfullscreen="true" style="border: 1px solid var(--borde); border-radius: 6px; margin-top: 1.5rem;"></iframe>
+
+      <p style="margin-top: 1rem;">Para más información sobre el proyecto:
+        <a href="https://revistes.uab.cat/anuariolopedevega/article/view/v32-betti" target="_blank" rel="noopener noreferrer"><strong>Anuario Lope de Vega ↗</strong></a>
+      </p>
+
+      <!-- SECCIÓN 2: ESTADÍSTICAS -->
+      <h2 id="s-estadisticas">Estadísticas</h2>
+
+      <p>Los gráficos que siguen se han desarrollado a partir de nuestra base de datos y mediante la biblioteca ggplot2 en R. Asimismo, se ofrecen estadísticas que reflejan la relevancia y distribución de cada topónimo o región geográfica en la obra dramática de Lope.</p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <figure class="inline-figure" style="float: none; width: 100%; margin: 0;">
+          <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="media/mapping_lope_2.jpg" alt="Estadísticas de topónimos en la obra de Lope de Vega" />
+            <span class="zoom-hint" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </span>
+          </div>
+        </figure>
+        <figure class="inline-figure" style="float: none; width: 100%; margin: 0;">
+          <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="media/mapping_lope_3.jpg" alt="Distribución geográfica de topónimos en Lope de Vega" />
+            <span class="zoom-hint" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </span>
+          </div>
+        </figure>
+        <figure class="inline-figure" style="float: none; width: 100%; margin: 0;">
+          <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="media/mapping_lope_4.jpg" alt="Análisis estadístico de topónimos por género" />
+            <span class="zoom-hint" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </span>
+          </div>
+        </figure>
+        <figure class="inline-figure" style="float: none; width: 100%; margin: 0;">
+          <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="media/mapping_lope_5.jpg" alt="Topónimos y contexto histórico del Siglo de Oro" />
+            <span class="zoom-hint" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </span>
+          </div>
+        </figure>
+      </div>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="article-sidebar">
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-head">
+          <h2>En esta sección</h2>
         </div>
+        <ul class="sidebar-links">
+          <li>
+            <a href="biblioteca-virtual.html">
+              Biblioteca virtual
+              <span class="link-label">Ediciones digitales de PROLOPE</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://prolope.uab.cat/biblioteca/" target="_blank" rel="noopener noreferrer">
+              Biblioteca Digital Prolope <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              <span class="link-label">Visualización web de las ediciones de PROLOPE</span>
+            </a>
+          </li>
+          <li>
+            <a href="mujeres-criados.html">
+              Mujeres y criados
+              <span class="link-label">Edición en línea</span>
+            </a>
+          </li>
+          <li>
+            <a href="mapping-lope.html" class="current">
+              Mapping Lope
+              <span class="link-label">Exploración cartográfica de la Comedia Nueva</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">
+              AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              <span class="link-label">Base de datos de autógrafos</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://damaboba.unibo.it" target="_blank" rel="noopener noreferrer">
+              La dama boba <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              <span class="link-label">Edición crítica y archivo digital</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://gondomar.tespasiglodeoro.it" target="_blank" rel="noopener noreferrer">
+              Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              <span class="link-label">Biblioteca digital de la colección del conde de Gondomar</span>
+            </a>
+          </li>
+        </ul>
       </div>
 
       
 
-      <p>El martes 27 de febrero de 2024, a las 13h en la Sala de Graus de la Facultad de Filosofía y Letras, <strong>David Merino Recalde</strong>, alumno del Programa de Doctorado en Filología Española, presentará su proyecto de tesis doctoral, un proyecto en el ámbito de la ciencia ciudadana para realizar una edición digital y un archivo social digital de la obra de Lope de Vega Fuente Ovejuna.</p>
-
-      <p>Es un proyecto en el ámbito del grupo de investigación PROLOPE-LT&amp;T-HEURESIS.</p>
-
-      <a class="back-link" href="noticias.html">← Volver a todas las noticias</a>
-
-    </article>
-
-    <!-- SIDEBAR -->
-    <aside class="article-sidebar">
-      <div class="sidebar-card">
-        <div class="sidebar-card-header">
-          <h3>Noticias recientes</h3>
-        </div>
-        <ul class="sidebar-news-list">
-        </ul>
-        <a class="sidebar-all-link" href="noticias.html">Ver todas las noticias →</a>
-      </div>
     </aside>
 
   </div>
-
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">✕</button>
-    <img id="lightbox-img" src="" alt="" />
-  </div>
-
-  <script>
-    function openLightbox(src) {
-      document.getElementById('lightbox-img').src = src;
-      document.getElementById('lightbox').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
-  </script>
 
 
   <!-- FUNDERS -->
@@ -244,11 +319,32 @@
     </div>
   </footer>
 
+
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">✕</button>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+
   <script>
     /* ---- Page reveal animations ---- */
     (function () {
       if (!('IntersectionObserver' in window)) return;
-      var els = document.querySelectorAll('.card, .sidebar-card, .founder-card, .news-card, .video-card, .congress-card, .funders, .inline-figure, .inline-figure-left, .event-box, .article-figure');
+      var els = document.querySelectorAll('.card, .sidebar-card, .founder-card, .news-card, .video-card, .congress-card, .funders, .inline-figure, .inline-figure-left');
       if (!els.length) return;
       els.forEach(function (el) {
         el.style.opacity = '0';
@@ -280,10 +376,8 @@
         }
       });
     });
-  </script>
 
-  <script src="noticias-data.js"></script>
-  <script src="sidebar-noticias.js"></script>
+  </script>
   <script>
 /**
  * search-data.js — Índice de búsqueda del sitio PROLOPE
