@@ -96,7 +96,7 @@
 
     var html = '';
     scored.forEach(function (item) {
-      html += '<a class="site-search-item" href="' + item.page.url + '">' +
+      html += '<a class="site-search-item" href="' + (typeof SITE_ROOT !== 'undefined' ? SITE_ROOT : '') + item.page.url + '">' +
         '<span class="site-search-item-title">' + escapeHtml(item.page.title) + '</span>' +
         '<span class="site-search-item-desc">' + escapeHtml(item.page.description) + '</span>' +
         '</a>';

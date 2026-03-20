@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" href="../media/favicon_5.gif" type="image/gif" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; base-uri 'self'; connect-src 'self'" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noticias | PROLOPE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../prolope.css" />
+  <!-- early theme -->
+  <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'||(! t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.setAttribute('data-theme','dark');})();
+  </script>
+
+</head>
+<body>
+
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="logo-link">
+        <img src="../media/logo-menu.png" alt="PROLOPE" />
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li class="has-dropdown">
+            <span>El grupo <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../el-grupo/el-grupo.html">El grupo de investigación</a></li>
+                <li><a href="../el-grupo/historial-proyectos.html">Historial de proyectos</a></li>
+                <li><a href="../el-grupo/estatutos.html">Estatutos del grupo</a></li>
+                <li><a href="../el-grupo/miembros.html">Miembros</a></li>
+                <li><a href="../el-grupo/contacto.html">Contacto y ubicación</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Objetivos <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../objetivos/vida-obra.html">Vida y obra de Lope de Vega</a></li>
+                <li><a href="../objetivos/transmision.html">Transmisión y edición del teatro de Lope de Vega</a></li>
+                <li><a href="../objetivos/criterios.html">Criterios y materiales para la edición</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Publicaciones <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../publicaciones/partes-comedias.html">Partes de comedias</a></li>
+                <li><a href="https://revistes.uab.cat/anuariolopedevega/index" target="_blank" rel="noopener noreferrer">Anuario Lope de Vega <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="../publicaciones/otras-publicaciones.html">Otras publicaciones</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Proyectos digitales <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../proyectos-digitales/biblioteca-virtual.html">Biblioteca virtual</a></li>
+                <li><a href="https://prolope.uab.cat/biblioteca/" target="_blank" rel="noopener noreferrer">Biblioteca Digital Prolope <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="../proyectos-digitales/mujeres-criados.html">Mujeres y criados</a></li>
+                <li><a href="../proyectos-digitales/mapping-lope.html">Mapping Lope</a></li>
+                <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="../proyectos-digitales/la-dama-boba.html">La dama boba <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="../proyectos-digitales/gondomar.html">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Formación <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../formacion/tesis.html">Tesis</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Eventos <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../eventos/congresos.html">Congresos</a></li>
+                <li><a href="../eventos/seminarios.html">Seminarios</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="../multimedia/multimedia.html">Multimedia</a></li>
+          <li><a href="noticias.html">Noticias</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo noche" title="Modo noche"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+      <button class="site-search-btn" id="siteSearchBtn" aria-label="Buscar en el sitio">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <div class="site-search-inline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="siteSearchInput" placeholder="Buscar en el sitio…" autocomplete="off" />
+        <button class="site-search-close" id="siteSearchClose" aria-label="Cerrar búsqueda">✕</button>
+        <div class="site-search-dropdown" id="siteSearchDropdown">
+          <div id="siteSearchCount" class="site-search-count"></div>
+          <div id="siteSearchResults" class="site-search-results"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('../media/fondo-noticias.jpg'); background-size: fill; background-repeat: no-repeat; background-position: right; opacity: 0.15;"></div>
+    <div class="page-hero-inner">
+      <p class="page-hero-breadcrumb">
+        Inicio<span>›</span>Noticias
+      </p>
+      <h1>Noticias</h1>
+      <div class="page-hero-rule"></div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <div class="page-content-full">
+
+    <div class="filter-bar" id="filterBar"></div>
+    <p class="page-info" id="pageInfo"></p>
+    <div class="news-grid" id="newsGrid"></div>
+    <div class="pagination" id="pagination"></div>
+
+  </div>
+
+
+  <!-- FUNDERS -->
+  <section class="funders">
+    <div class="funders-inner">
+      <p class="funders-title">Entidades financiadoras</p>
+      <div class="funders-logos">
+        <a class="funder-logo-link" href="https://www.march.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/fundacion-march.png" alt="Fundación March" />
+        </a>
+        <a class="funder-logo-link" href="https://www.culturaydeporte.gob.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/ace.png" alt="ACE" />
+        </a>
+        <a class="funder-logo-link" href="https://agaur.gencat.cat/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/agaur_gencat.png" alt="AGAUR Gencat" />
+        </a>
+        <a class="funder-logo-link" href="https://www.ciencia.gob.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/ministerio-feder.png" alt="Ministerio / FEDER" />
+        </a>
+        <a class="funder-logo-link" href="https://www.uab.cat/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/uab.png" alt="UAB" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <img src="../media/logo-prolope_inici.png" alt="PROLOPE" />
+        </div>
+        <address class="footer-address" style="font-style:normal;">
+          Grupo de investigación PROLOPE.<br />
+          Departament de Filologia Espanyola.<br /><br />
+          Facultat de Filosofia i Lletres UAB<br />
+          CAMPUS DE LA UAB<br />
+          Carrer de la fortuna s/n<br />
+          08193 Bellaterra (Barcelona)<br /><br />
+          Teléfono (Secretaría): <a href="tel:+34935811034">93 581 10 34</a><br />
+          Correo: <a href="mailto:prolope@uab.es">prolope@uab.es</a>
+        </address>
+        <div class="footer-social">
+          <a href="https://twitter.com/ProlopeUab" target="_blank" rel="noopener noreferrer" title="Seguir en X">𝕏</a>
+          <a href="https://www.facebook.com/prolope.uab" target="_blank" rel="noopener noreferrer" title="Seguir en Facebook">f</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Grupo de Investigación PROLOPE – Universitat Autònoma de Barcelona
+    </div>
+  </footer>
+
+  <!-- ARTICLE OVERLAY -->
+  <div class="art-overlay" id="artOverlay" onclick="closeArtOnOverlay(event)">
+    <div class="art-modal" role="dialog" aria-modal="true">
+      <div class="art-img" id="artImg"></div>
+      <div class="art-header">
+        <div class="art-header-text">
+          <div class="art-meta">
+            <span class="art-cat-badge" id="artCat"></span>
+            <span class="art-date" id="artDate"></span>
+          </div>
+          <h2 id="artTitle"></h2>
+        </div>
+        <button class="art-close" onclick="closeModal()" aria-label="Cerrar">✕</button>
+      </div>
+      <div class="art-body" id="artBody"></div>
+    </div>
+  </div>
+
+  <script src="../noticias-data.js"></script>
+  <script>
+  const POSTS_PER_PAGE = 12;
+  let currentPage = 1;
+  let activeFilter = 'todas';
+
+  // ── CATEGORIES ─────────────────────────────────────────────────────────────
+  const ALL_CATS = ['todas', ...new Set(news.map(p => p.cat))];
+
+  // ── FILTER / PAGINATION ────────────────────────────────────────────────────
+  function filteredNews() {
+    if (activeFilter === 'todas') return news;
+    return news.filter(p => p.cat === activeFilter);
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+
+  function renderFilterBar() {
+    const allCats = ['todas', ...new Set(news.map(p => p.cat))];
+    document.getElementById('filterBar').innerHTML = allCats.map(c =>
+      `<button class="filter-btn ${c === activeFilter ? 'active' : ''}" onclick="setFilter('${esc(c)}')">${c === 'todas' ? 'Todas' : esc(c)}</button>`
+    ).join('');
+  }
+
+  function setFilter(cat) {
+    activeFilter = cat;
+    currentPage = 1;
+    renderAll();
+  }
+
+  function renderAll() {
+    renderFilterBar();
+    const posts = filteredNews();
+    const total = posts.length;
+    const totalPages = Math.ceil(total / POSTS_PER_PAGE);
+    const start = (currentPage - 1) * POSTS_PER_PAGE;
+    const slice = posts.slice(start, start + POSTS_PER_PAGE);
+
+    document.getElementById('pageInfo').textContent =
+      `Mostrando ${total === 0 ? 0 : start + 1}–${Math.min(start + POSTS_PER_PAGE, total)} de ${total} ${total === 1 ? 'noticia' : 'noticias'}`;
+
+    const PLACEHOLDER = `<div class="news-card-img-placeholder"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="white" stroke-width="1.5"/><path d="M4 16l4-4 4 4 4-6 4 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`;
+
+    document.getElementById('newsGrid').innerHTML = slice.map(p => `
+      <a class="news-card" href="${esc(p.url || '#')}">
+        <div class="news-card-img">
+          ${p.img ? `<img src="${esc(p.img)}" alt="${esc(p.title)}" loading="lazy" />` : PLACEHOLDER}
+          <span class="news-cat-badge">${esc(p.cat)}</span>
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-date">${esc(p.date)}</div>
+          <h2 class="news-card-title">${esc(p.title)}</h2>
+          <p class="news-card-excerpt">${esc(p.excerpt)}</p>
+        </div>
+        <span class="news-hint">Leer más →</span>
+      </a>
+    `).join('');
+
+    renderPagination(totalPages);
+  }
+
+  function renderPagination(totalPages) {
+    if (totalPages <= 1) { document.getElementById('pagination').innerHTML = ''; return; }
+    let html = `<button class="page-btn" onclick="goPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>‹ Anterior</button>`;
+    for (let i = 1; i <= totalPages; i++) {
+      if (i === 1 || i === totalPages || Math.abs(i - currentPage) <= 2) {
+        html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goPage(${i})">${i}</button>`;
+      } else if (Math.abs(i - currentPage) === 3) {
+        html += `<span class="page-dots">…</span>`;
+      }
+    }
+    html += `<button class="page-btn" onclick="goPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Siguiente ›</button>`;
+    document.getElementById('pagination').innerHTML = html;
+  }
+
+  function goPage(p) {
+    currentPage = p;
+    renderAll();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── ARTICLE OVERLAY ────────────────────────────────────────────────────────
+  function openModal(id) {
+    const p = news.find(n => n.id === id);
+    if (!p) return;
+
+    // Image banner
+    const artImg = document.getElementById('artImg');
+    if (p.img) {
+      artImg.style.display = '';
+      artImg.innerHTML = `<img src="${esc(p.img)}" alt="${esc(p.title)}" />`;
+    } else {
+      artImg.style.display = 'none';
+    }
+
+    document.getElementById('artCat').textContent = p.cat;
+    document.getElementById('artDate').textContent = p.date;
+    document.getElementById('artTitle').textContent = p.title;
+
+    // Body text + links
+    let html = p.content.map(para => `<p>${esc(para)}</p>`).join('');
+    if (p.links && p.links.length) {
+      html += `<div class="art-links">` + p.links.map(l =>
+        `<a class="art-ext-link" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          ${esc(l.label)}
+        </a>`
+      ).join('') + `</div>`;
+    }
+    document.getElementById('artBody').innerHTML = html;
+    document.getElementById('artBody').scrollTop = 0;
+
+    document.getElementById('artOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('artOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeArtOnOverlay(e) {
+    if (e.target === document.getElementById('artOverlay')) closeModal();
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // ── INIT ───────────────────────────────────────────────────────────────────
+  renderAll();
+  </script>
+
+  <script>
+    /* ---- Page reveal animations ---- */
+    (function () {
+      if (!('IntersectionObserver' in window)) return;
+      var els = document.querySelectorAll('.card, .sidebar-card, .founder-card, .news-card, .video-card, .congress-card, .funders, .inline-figure, .inline-figure-left');
+      if (!els.length) return;
+      els.forEach(function (el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+      });
+      var obs = new IntersectionObserver(function (entries) {
+        var visible = entries.filter(function (e) { return e.isIntersecting; });
+        visible.forEach(function (e, i) {
+          e.target.style.transition = 'opacity 0.5s ease-out ' + (i * 0.07) + 's, transform 0.5s ease-out ' + (i * 0.07) + 's';
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          obs.unobserve(e.target);
+        });
+      }, { threshold: 0.1 });
+      els.forEach(function (el) { obs.observe(el); });
+    })();
+  </script>
+  <script>
+    // Mobile menu toggle
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('mainNav');
+    toggle.addEventListener('click', () => { nav.classList.toggle('open'); document.body.classList.toggle('menu-open', nav.classList.contains('open')); });
+
+    // Accordion dropdowns on mobile
+    document.querySelectorAll('.has-dropdown > span').forEach(function(el) {
+      el.addEventListener('click', function() {
+        if (window.innerWidth <= 1100) {
+          el.parentElement.classList.toggle('open');
+        }
+      });
+    });
+  </script>
+  <script>var SITE_ROOT='../';</script>
+  <script src="../search-data.js"></script>
+<script src="../site-search.js"></script>
+  <script>
+    // Modo noche
+    (function() {
+      var toggle = document.getElementById('themeToggle');
+      var saved = localStorage.getItem('theme');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      }
+      toggle.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+          document.documentElement.removeAttribute('data-theme');
+          localStorage.setItem('theme', 'light');
+          toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+          } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+          toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
