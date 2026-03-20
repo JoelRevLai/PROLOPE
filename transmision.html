@@ -355,7 +355,7 @@
       <p>Desde el principio, en un proyecto que se planteaba realizar la edición crítica de esa abundante obra, más de trescientas obras de autoría segura, de las cuales más del 80% se transmitieron en las <em>Partes de comedias de Lope de Vega</em>, la estrategia fue clara: el texto base para la mayoría de las comedias iba a ser el que aparecía en la <em>Parte</em>. Para establecer bien el <em>stemma</em> y transmisión textual de la mayoría de las comedias, había que proceder por <em>Partes</em>, y a su vez, para establecer el <em>stemma</em> de la <em>Parte</em>, lógicamente, había que proceder en conjunto, tomándola como un todo. Cada comedia, en ese testimonio común que compartían las doce, la <em>Parte</em>, señalaría a un <em>stemma</em> o proceso de transmisión que sería confirmado por el resto. Así nos asegurábamos de establecer rigurosamente el texto de la gran mayoría de las comedias. Y si por <em>Partes</em> había que proceder por una razón científica en la que el criterio de decisión, lógicamente, era el de la historia de la transmisión textual, entonces lo lógico, parecía, también, era seguir el orden de publicación original de las mismas: <em>Primera</em>, <em>Segunda</em>, <em>Tercera</em>…</p>
 
       <figure class="figure-wide">
-<div class="article-figure-img-wrap" onclick="openLightbox('media/foto-cotejo2.jpg')">
+<div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector('img').src)">
         <img src="media/foto-cotejo2.jpg" alt="Cotejo colectivo realizado en mayo de 2010 para la edición de El castigo sin venganza" />
           <span class="zoom-hint" aria-hidden="true">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
@@ -506,7 +506,7 @@
     /* ---- Page reveal animations ---- */
     (function () {
       if (!('IntersectionObserver' in window)) return;
-      var els = document.querySelectorAll('.card, .sidebar-card, .founder-card, .news-card, .video-card, .congress-card, .funders, .inline-figure, .inline-figure-left');
+      var els = document.querySelectorAll('.card, .sidebar-card, .founder-card, .news-card, .video-card, .congress-card, .funders, .inline-figure, .inline-figure-left, .figure-wide');
       if (!els.length) return;
       els.forEach(function (el) {
         el.style.opacity = '0';

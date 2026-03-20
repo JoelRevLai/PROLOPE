@@ -111,12 +111,6 @@ var SEARCH_INDEX = [
     content: "Vídeos documental RTVE Informe Semanal sobre Lope. 17 Jornadas Olmedo Clásico. Presentación BNE Mujeres y criados. Entrevista Qwerty BTV 2012 Gonzalo Pontón. Fotografía espectral Inteligencia Artificial. Material audiovisual del grupo PROLOPE."
   },
   {
-    title: "Noticias",
-    url: "noticias.html",
-    description: "Noticias y novedades del grupo de investigación PROLOPE.",
-    content: "Noticias PROLOPE. Publicaciones congresos seminarios premios descubrimientos convocatorias. Sònia Boadas Thal-IA Álvaro Cuéllar HDH2024 Antonio Sánchez Jiménez Ecuador Fausta Antonucci Marco Presotto Parte XXII David Merino Pedro Martín Baños Sergi Claveria."
-  },
-  {
     title: "Anuario Lope de Vega — Volumen XXX",
     url: "noticia-anuario-xxx-2024.html",
     description: "El Anuario Lope de Vega publica su volumen XXX.",
