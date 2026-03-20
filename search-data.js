@@ -248,4 +248,46 @@ var SEARCH_INDEX = [
     description: "Álvaro Cuéllar y Germán Vega ofrecerán una conferencia sobre «La francesa Laura»",
     content: "conferencia lvaro llar germ vega feb 2023 ofrecer francesa laura ximo febrero titulada comedia desconocida lope delatada inteligencia artificial mas informaci alvaro cuellar german ofreceran proximo informacion"
   },
+    {
+    title: "Taller Transkribus con Álvaro Cuéllar",
+    url: "noticia-taller-transkribus.html",
+    description: "Álvaro Cuéllar impartirá un taller sobre el programa Transkribus",
+    content: "taller transkribus lvaro llar noticias feb 2023 impartir programa ximo febrero sal grados facultad filosof letras uab horas pdf alvaro cuellar impartira proximo salon filosofia"
+  },
+      {
+    title: "El proyecto CREATEXT, en la prensa",
+    url: "noticia-proyecto-creatext.html",
+    description: "El diario ABC se hace eco del proyecto CREATEXT, dirigido por Sònia Boadas",
+    content: "proyecto creatext prensa noticias dic 2022 diario abc hace eco dirigido nia boadas est llevando cabo gracias beca leonardo fundaci bbva dentro neas investigaci prolope trata iniciativa combina filolog herramientas digitales objetivo determinar diferentes agentes interven aut grafos teatrales tomando lope vega ejemplo intentar describir lado proceso redacci propio autor lisis estadios concretar punto censores directores compa impresores actuaban redactado inicial conformando texto estratificado continuamente vivo noticia completa sonia fundacion lineas investigacion filologia intervenian autografos asi intentara redaccion analisis companias"
+  },
+    {
+    title: "Novedad editorial: Parte XXI de las Comedias de Lope de Vega",
+    url: "noticia-publicacion-parte-xxi.html",
+    description: "Se ha publicado la «Parte XXI» de las «Comedias» de Lope de Vega, a cargo de la Editorial Gredos y coordinada por Gonzalo Pontón y Ramón Valdés",
+    content: "novedad editorial parte xxi comedias lope vega publicaci nov 2022 publicado cargo gredos coordinada gonzalo pont ram vald nada salir inicios 1625 deb estar pensando publicar consejo castilla marzo ese razones morales decidi conceder licencias imprimir novelas suspensi durar decenio desboc impresi ilegal crifa sigui escribiendo anciano cuando volvieron hab compuesto algunas sus obras maestras quiso incluir veinte reivindicada verdadera frente impresores escr pulo incluy recientes otras antiguas tal vez barajado estampar hac tiempo tragedias bella aurora mitol gica ambiente palaciego castigo venganza comedia palatina boba otros discreta tragicomedia tema hist rico din stico piadoso aragon dramas historiales casos honra mejor alcalde rey tellos meneses victoria prefiri fueron urbanas verdades amor noche san juan bandos sena premio hablar puente juana ediciones ticas estas doce acompa logo texto tico variantes ling sticas notas pie aparato nota onom stica obra dos vol menes est venta principales librer puede adquirirse tambi trav siguiente web excepcionalmente pieza ada varios ndices separata digital pdf animaci power point diferentes finales solo disponibles nea tomo edici rosa bono velilla fernando rodr guez gallego paula casariego alejandra ulla lorenzo isabel muguruza roca alejandro garc reidy clara monz ribes daniel fern ndez fausta antonucci pineda vitoria jos enrique pez mart nez daniele crivellari ane zapatero molinuevo enrico pastena publicacion ponton ramon valdes mas debia ano decidio suspension duraria desboco impresion apocrifa siguio habia escrupulo incluyo hacia mitologica historico dinastico aragones prefirio criticas acompanan prologo critico linguisticas onomastica volumenes librerias tambien traves acompanada apendices animacion linea edicion rodriguez garcia monzo fernandez jose lopez martinez"
+  },
+    {
+    title: "Congreso «Editar la danza de los siglos XVI y XVII»",
+    url: "noticia-congreso-editar-danza.html",
+    description: "Congreso internacional «Editar la danza de los siglos XVI y XVII»",
+    content: "congreso editar danza siglos xvi xvii nov 2022 internacional ximos noviembre celebraremos colaboraci universit sorbonne podr seguirse distancia trav teams programa pdf proximos colaboracion universite podra traves"
+  },
+    {
+    title: "Congreso «Desvelando a Lope»",
+    url: "noticia-congreso-desvelando-lope.html",
+    description: "Los próximos días 29 y 30 de noviembre y 1 de diciembre de 2022, se celebrará el congreso internacional «Desvelando a Lope», en la Universidad Complutense.",
+    content: "congreso desvelando lope nov dic 2022 ximos noviembre diciembre celebrar internacional universidad complutense informaci programa pdf proximos dias celebrara mas informacion"
+  },
+    {
+    title: "Sònia Boadas obtiene una Beca Leonardo de la Fundación BBVA",
+    url: "noticia-beca-leonardo-sonia.html",
+    description: "Sònia Boadas obtiene una Beca Leonardo de la Fundación BBVA",
+    content: "nia boadas obtiene beca leonardo fundaci bbva oct 2022 felicitamos nuestra compa era obtenci prestigiosa otorga realizar proyecto creatext creaci texto dram tico siglo oro quiere analizar seis manuscritos aut grafos lope vega contrastar hip tesis nunca explorada ahora trabajo colaborativo revisi sus comedias posible trabajara junto otros agentes sistema teatral consensuar final experiencia fotograf espectral lisis mico espectrometr cnicas permiten recuperar fragmentos ilegibles tachaduras determinar fases reescritura distintos pasajes diferenciar tintas mismo manuscrito clave entrevista noticia confidencial sonia fundacion companera obtencion creacion dramatico autografos hipotesis revision fotografia analisis quimico espectrometria tecnicas sera"
+  },
+    {
+    title: "Seminario Internacional «Las Partes póstumas de Lope de Vega. La Parte XXII»",
+    url: "noticia-seminario-partes-postumas.html",
+    description: "Seminario Internacional «Las Partes póstumas de Lope de Vega. La Parte XXII», coordinado por Fausta Antonucci y Marco Presotto.",
+    content: "seminario internacional partes stumas lope vega parte xxii jun 2022 coordinado fausta antonucci marco presotto ximo junio celebrar formato virtual programa pdf unirse evento postumas proximo celebrara"
+  },
 ];

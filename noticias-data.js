@@ -351,4 +351,117 @@ const news = [
       { label: 'Mas información', url: 'https://prolope.uab.cat/wp-content/uploads/2023/11/FRANCESA_LAURA.pdf' }
     ]
   },
+    {
+    id: 26,
+    cat: 'Noticias',
+    date: '2 feb. 2023',
+    title: 'Taller Transkribus con Álvaro Cuéllar',
+    excerpt: 'Álvaro Cuéllar impartirá un taller sobre el programa Transkribus',
+    img: 'media/taller-transkribus.jpg',
+    url: 'noticia-taller-transkribus.html',
+    content: [
+      'El próximo 2 de febrero de 2023, en el Salón de Grados de la Facultad de Filosofía y Letras de la UAB, Álvaro Cuéllar impartirá un taller sobre el programa Transkribus (10:00-13:00 horas).'
+    ],
+    links: [
+      { label: 'Programa del taller (PDF)', url: 'https://prolope.uab.cat/wp-content/uploads/2023/11/TALLER_TRANSKRIBUS.pdf' }
+    ]
+  },
+    {
+    id: 27,
+    cat: 'Noticias',
+    date: '11 dic. 2022',
+    title: 'El proyecto CREATEXT, en la prensa',
+    excerpt: 'El diario ABC se hace eco del proyecto CREATEXT, dirigido por Sònia Boadas',
+    img: 'media/Proyecto-Creatext.jpg',
+    url: 'noticia-proyecto-creatext.html',
+    content: [
+      'Se trata de una iniciativa que combina la Filología y las herramientas digitales con el objetivo de determinar los diferentes agentes que intervenían en los autógrafos teatrales, tomando a Lope de Vega como ejemplo. Así, intentará describir, por un lado, el proceso de redacción del propio autor (con el análisis de los diferentes estadios de redacción) y concretar hasta qué punto los censores, los directores de compañías, los impresores… actuaban sobre el redactado inicial, conformando un texto estratificado, continuamente vivo.'
+    ],
+    links: [
+      { label: 'Noticia completa', url: 'https://www.abc.es/cultura/lope-compania-caza-colaboradores-fenix-ingenios-20221211173118-nt.html' }
+    ]
+  },
+    {
+    id: 28,
+    cat: 'Publicación',
+    date: 'Nov. 2022',
+    title: 'Novedad editorial: Parte XXI de las Comedias de Lope de Vega',
+    excerpt: 'Se ha publicado la «Parte XXI» de las «Comedias» de Lope de Vega, a cargo de la Editorial Gredos y coordinada por Gonzalo Pontón y Ramón Valdés',
+    img: 'media/Comedias_Parte_XXI.jpg',
+    url: 'noticia-publicacion-parte-xxi.html',
+    content: [
+      'Nada más salir su Parte XX de comedias a inicios de 1625, Lope debía de estar pensando ya en publicar la XXI. Pero el Consejo de Castilla, en marzo de ese año, por razones morales decidió no conceder más licencias para imprimir comedias ni novelas. La suspensión, que duraría un decenio, desbocó la impresión ilegal y apócrifa de comedias. Lope siguió escribiendo y, ya anciano, cuando se volvieron a conceder licencias, había compuesto algunas de sus obras maestras que quiso incluir en esta Veinte y una parte, reivindicada como verdadera frente a las de los impresores sin escrúpulo. Incluyó obras recientes y otras más antiguas que tal vez había barajado estampar hacía tiempo; tragedias como La bella Aurora, mitológica, y la de ambiente palaciego El castigo sin venganza; la comedia palatina de La boba para los otros y discreta para sí; la tragicomedia de tema histórico-dinástico El piadoso aragonés; dramas historiales con casos de honra como El mejor alcalde, el rey, Los Tellos de Meneses y La victoria de la honra; pero lo que prefirió fueron comedias urbanas: ¡Ay, verdades, que en amor…!, La noche de San Juan, Los bandos de Sena, El premio del bien hablar y Por la puente, Juana.',
+      'La ediciones críticas de estas doce comedias se acompañan de prólogo, texto crítico, variantes lingüísticas, notas al pie, aparato crítico y nota onomástica. La obra, en dos volúmenes, está a la venta en las principales librerías, y puede adquirirse también a través de la siguiente web.',
+      'Excepcionalmente, la pieza El castigo sin venganza va acompañada de varios apéndices, 4 en una separata digital en pdf y una animación en power point sobre los diferentes finales, solo disponibles en línea.',
+      'La bella Aurora, edición de Rosa Bono Velilla ¡Ay, verdades, que en amor…!, edición de Fernando Rodríguez-Gallego La boba para los otros y discreta para sí, edición de Paula Casariego y Alejandra Ulla Lorenzo La noche de san Juan, edición de Isabel Muguruza Roca El castigo sin venganza, edición de Alejandro García-Reidy y Ramón Valdés Los bandos de Sena, edición de Clara Monzó Ribes y Daniel Fernández Rodríguez',
+      'El mejor alcalde, el rey, edición de Fausta Antonucci El premio del bien hablar, edición de Victoria Pineda La vitoria de la honra, edición de José Enrique López Martínez El piadoso aragonés, edición de Daniele Crivellari y Gonzalo Pontón Los Tellos de Meneses, edición de Ane Zapatero Molinuevo Por la puente, Juana, edición de Enrico Di Pastena'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 29,
+    cat: 'Congreso',
+    date: '17 y 18 nov. 2022',
+    title: 'Congreso «Editar la danza de los siglos XVI y XVII»',
+    excerpt: 'Congreso internacional «Editar la danza de los siglos XVI y XVII»',
+    img: 'media/Editar_la_danza.jpg',
+    url: 'noticia-congreso-editar-danza.html',
+    content: [
+      'Los próximos 17 y 18 de noviembre de 2022, celebraremos, en colaboración con la Université Sorbonne, el congreso internacional «Editar la danza de los siglos XVI y XVII», que podrá seguirse a distancia a través de Teams.'
+    ],
+    links: [
+      { label: 'Programa (PDF)', url: 'media/Editar_la_danza.pdf' },
+      { label: 'Programa en PDF', url: 'media/Editar_la_danza.pdf' }
+    ]
+  },
+    {
+    id: 30,
+    cat: 'Congreso',
+    date: '29 y 30 nov. y 1 dic. 2022',
+    title: 'Congreso «Desvelando a Lope»',
+    excerpt: 'Los próximos días 29 y 30 de noviembre y 1 de diciembre de 2022, se celebrará el congreso internacional «Desvelando a Lope», en la Universidad Complutense.',
+    img: 'media/Desvelando_a_Lope.jpg',
+    url: 'noticia-congreso-desvelando-lope.html',
+    content: [
+      'Los próximos días 29 y 30 de noviembre y 1 de diciembre de 2022, se celebrará el congreso internacional «Desvelando a Lope», en la Universidad Complutense.'
+    ],
+    links: [
+      { label: 'Más información', url: 'https://eventos.ucm.es/90033/detail/congreso-internacional-desvelando-a-lope.html' },
+      { label: 'Programa (PDF)', url: 'media/Triptico_Desvelando_a_Lope.pdf' }
+    ]
+  },
+    {
+    id: 31,
+    cat: 'Beca',
+    date: 'Oct. 2022',
+    title: 'Sònia Boadas obtiene una Beca Leonardo de la Fundación BBVA',
+    excerpt: 'Sònia Boadas obtiene una Beca Leonardo de la Fundación BBVA',
+    img: 'media/beca-bbva-2022.jpg',
+    url: 'noticia-beca-leonardo-sonia.html',
+    content: [
+      'Felicitamos a nuestra compañera Sònia Boadas por la obtención de esta prestigiosa Beca Leonardo, que otorga la Fundación BBVA, para realizar el proyecto CREATEXT.',
+      'Con este proyecto quiere analizar seis manuscritos autógrafos de Lope de Vega para contrastar la hipótesis, nunca explorada hasta ahora, de un trabajo colaborativo en la creación y revisión de sus comedias. ¿Es posible que Lope trabajara junto con otros agentes del sistema teatral para consensuar el texto final? La experiencia de Boadas en fotografía espectral y en análisis químico con espectrometría, técnicas que permiten recuperar fragmentos ilegibles por tachaduras, determinar las fases de reescritura de distintos pasajes o diferenciar las tintas de un mismo manuscrito, será clave para el proyecto.'
+    ],
+    links: [
+      { label: 'Entrevista en La SER', url: 'https://cadenaser.com/audio/cadenaser_laventana_20221018_160000_170000/' },
+      { label: 'Noticia en El Confidencial', url: 'https://www.elconfidencial.com/tecnologia/ciencia/2022-10-10/quimica-fotografia-espectral-secreto-siglo-oro_3503373/' }
+    ]
+  },
+    {
+    id: 32,
+    cat: 'Seminario',
+    date: '10 jun. 2022',
+    title: 'Seminario Internacional «Las Partes póstumas de Lope de Vega. La Parte XXII»',
+    excerpt: 'Seminario Internacional «Las Partes póstumas de Lope de Vega. La Parte XXII», coordinado por Fausta Antonucci y Marco Presotto.',
+    img: 'media/Seminario_Parte_XXII.jpg',
+    url: 'noticia-seminario-partes-postumas.html',
+    content: [
+      'El próximo 10 de junio de 2022 se celebrará, en formato virtual, el Seminario Internacional «Las Partes póstumas de Lope de Vega. La Parte XXII», coordinado por Fausta Antonucci y Marco Presotto.'
+    ],
+    links: [
+      { label: 'Programa (PDF)', url: 'media/Seminario_Parte_XXII.pdf' },
+      { label: 'Unirse al evento', url: 'https://teams.microsoft.com/dl/launcher/launcher.html?url=%2F_%23%2Fl%2Fmeetup-join%2F19%3Ameeting_ZWNhYTA2M2QtYTUxMS00Yzg5LWIzOTItOWIxNDYzMjM5ZjJm%40thread.v2%2F0%3Fcontext%3D%257b%2522Tid%2522%253a%25226b514c29-2391-4831-b774-84f35c45bf01%2522%252c%2522Oid%2522%253a%252234e209f3-e4fb-408e-9d66-7b2cb255538f%2522%257d%26anon%3Dtrue&type=meetup-join&deeplinkId=4da96ae1-85f8-423b-bd2d-b2d8d591dd5c&directDl=true&msLaunch=true&enableMobilePage=true&suppressPrompt=true' }
+    ]
+  },
 ];

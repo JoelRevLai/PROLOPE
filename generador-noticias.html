@@ -630,6 +630,7 @@ function makeToolbar() {
     '<button type="button" onclick="insertLink(this)" title="Hipervínculo">Enlace</button>' +
     '<button type="button" onclick="insertList(this,\'ul\')" title="Lista con viñetas">&#8226; Lista</button>' +
     '<button type="button" onclick="insertList(this,\'ol\')" title="Lista numerada">1. Lista</button>' +
+    '<button type="button" onclick="insertBreak(this)" title="Salto de línea">↵ Salto</button>' +
     '</div>';
 }
 
@@ -721,6 +722,17 @@ function insertLink(btn) {
   var replacement = '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + selected + '</a>';
   field.value = text.substring(0, start) + replacement + text.substring(end);
   field.focus();
+}
+
+function insertBreak(btn) {
+  var field = getField(btn);
+  var pos = field.selectionStart;
+  var text = field.value;
+  field.value = text.substring(0, pos) + '<br />' + text.substring(pos);
+  field.focus();
+  var newPos = pos + 6;
+  field.selectionStart = newPos;
+  field.selectionEnd = newPos;
 }
 
 function insertList(btn, tag) {
