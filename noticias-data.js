@@ -302,4 +302,24 @@ const news = [
     ],
     links: []
   },
+    {
+    id: 21,
+    cat: 'Noticias',
+    date: '31 ene. 2023',
+    title: '«La francesa Laura», una comedia desconocida de Lope de Vega hallada gracias a la Inteligencia Artificial',
+    excerpt: 'Álvaro Cuéllar y Germán Vega García-Luengos publican «La francesa Laura. El hallazgo de una nueva comedia del Lope de Vega último», que se halla en los fondos de la BNE.',
+    img: 'media/La-Francesa-Laura.jpg',
+    url: 'noticia-francesa-laura.html',
+    content: [
+      'Se trata de una entrega que recoge diversos artículos sobre Humanidades digitales, con descubrimientos tan importantes como la atribución a Lope de Vega de la comedia La francesa Laura, sumando, así, un título al nutrido corpus del dramaturgo.',
+      'Los autores, Álvaro Cuéllar y Germán Vega García-Luengos, publican «La francesa Laura. El hallazgo de una nueva comedia del Lope de Vega último», que se halla en los fondos de la BNE. La noticia ya ha sido recogida en diversos medios y ha logrado ser tendencia en Twiter.',
+      'La inteligencia artificial atribuye a Lope de Vega una obra anónima del fondo de manuscritos de la Biblioteca Nacional (El País)',
+      'Descubren una obra desconocida de Lope de Vega gracias a la Inteligencia Artificial (ABC)',
+      'La Inteligencia Artificial ayuda a descubrir una obra desconocida de Lope de Vega (El Diario)'
+    ],
+    links: [
+      { label: 'Artículo completo', url: 'https://revistes.uab.cat/anuariolopedevega' }
+    ]
+  },
+  
 ];

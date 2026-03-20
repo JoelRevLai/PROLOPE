@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generador de noticias — PROLOPE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --azul: #1a3a5c;
+      --dorado: #c8a45a;
+      --crema: #faf8f4;
+      --texto: #333;
+      --borde: #d5cfc5;
+      --fondo-campo: #fff;
+      --sombra: rgba(0,0,0,0.06);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      background: var(--crema);
+      color: var(--texto);
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ─────────────────────────────────────────── */
+    .gen-header {
+      background: var(--azul);
+      color: #fff;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .gen-header h1 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 1.6rem;
+      margin-bottom: 0.3rem;
+    }
+    .gen-header p {
+      font-size: 0.95rem;
+      opacity: 0.8;
+    }
+
+    /* ── LAYOUT ─────────────────────────────────────────── */
+    .gen-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* ── SECTIONS ───────────────────────────────────────── */
+    .gen-section {
+      background: var(--fondo-campo);
+      border: 1px solid var(--borde);
+      border-radius: 8px;
+      padding: 1.8rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 6px var(--sombra);
+    }
+    .gen-section h2 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--azul);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--dorado);
+    }
+
+    /* ── FORM FIELDS ────────────────────────────────────── */
+    label {
+      display: block;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 500;
+      font-size: 0.88rem;
+      color: var(--azul);
+      margin-bottom: 0.3rem;
+      margin-top: 1rem;
+    }
+    label:first-of-type { margin-top: 0; }
+
+    .help {
+      font-size: 0.8rem;
+      color: #888;
+      margin-bottom: 0.3rem;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1rem;
+      border: 1px solid var(--borde);
+      border-radius: 5px;
+      background: var(--crema);
+      color: var(--texto);
+      transition: border-color 0.2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--dorado);
+      box-shadow: 0 0 0 2px rgba(200,164,90,0.18);
+    }
+    textarea { resize: vertical; min-height: 100px; }
+
+    .row { display: flex; gap: 1rem; }
+    .row > div { flex: 1; }
+
+    /* ── DYNAMIC LISTS ──────────────────────────────────── */
+    .dyn-item {
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+    }
+    .dyn-item input, .dyn-item textarea { flex: 1; }
+    .dyn-item .btn-remove {
+      background: #c44;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .btn-add {
+      background: var(--azul);
+      color: #fff;
+      border: none;
+      padding: 0.4rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.82rem;
+      margin-top: 0.3rem;
+    }
+    .btn-add:hover { opacity: 0.85; }
+
+    /* ── TOGGLE EVENTO ──────────────────────────────────── */
+    .evento-fields { display: none; }
+    .evento-fields.visible { display: block; }
+
+    /* ── GENERATE BUTTON ────────────────────────────────── */
+    .gen-btn {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      background: var(--dorado);
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      margin-top: 0.5rem;
+      transition: background 0.2s;
+    }
+    .gen-btn:hover { background: #b89344; }
+
+    /* ── OUTPUT ──────────────────────────────────────────── */
+    .output-section {
+      display: none;
+      margin-top: 2rem;
+    }
+    .output-section.visible { display: block; }
+
+    .output-block {
+      background: var(--fondo-campo);
+      border: 1px solid var(--borde);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 6px var(--sombra);
+    }
+    .output-block h3 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--azul);
+      margin-bottom: 0.3rem;
+    }
+    .output-block .instructions {
+      font-size: 0.88rem;
+      color: #666;
+      margin-bottom: 0.8rem;
+      line-height: 1.5;
+    }
+    .output-block .instructions strong { color: var(--azul); }
+    .output-block .instructions code {
+      background: #eee8dc;
+      padding: 0.1em 0.4em;
+      border-radius: 3px;
+      font-size: 0.85em;
+    }
+
+    .code-area {
+      width: 100%;
+      min-height: 180px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.82rem;
+      padding: 0.8rem;
+      border: 1px solid var(--borde);
+      border-radius: 5px;
+      background: #f7f4ee;
+      color: #333;
+      white-space: pre;
+      overflow-x: auto;
+      resize: vertical;
+    }
+
+    .btn-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+      padding: 0.45rem 1rem;
+      background: var(--azul);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.82rem;
+      transition: background 0.2s;
+    }
+    .btn-copy:hover { background: #143050; }
+    .btn-copy.copied { background: #2a7d4f; }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+      margin-left: 0.5rem;
+      padding: 0.45rem 1rem;
+      background: var(--dorado);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.82rem;
+    }
+    .btn-download:hover { background: #b89344; }
+
+    /* ── PREVIEW TOGGLE ────────────────────────────────── */
+    .preview-frame {
+      border: 1px solid var(--borde);
+      border-radius: 5px;
+      width: 100%;
+      height: 600px;
+      margin-top: 0.8rem;
+      background: #fff;
+    }
+
+    /* ── STEP NUMBERS ───────────────────────────────────── */
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: var(--dorado);
+      color: #fff;
+      border-radius: 50%;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      margin-right: 0.5rem;
+      flex-shrink: 0;
+    }
+    .output-block h3 { display: flex; align-items: center; }
+
+    /* ── RICH TEXT TOOLBAR ──────────────────────────────── */
+    .rich-toolbar {
+      display: flex;
+      gap: 0.3rem;
+      margin-bottom: 0.3rem;
+      flex-wrap: wrap;
+    }
+    .rich-toolbar button {
+      background: var(--crema);
+      border: 1px solid var(--borde);
+      border-radius: 4px;
+      padding: 0.25rem 0.6rem;
+      cursor: pointer;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      color: var(--azul);
+      transition: background 0.15s;
+    }
+    .rich-toolbar button:hover { background: #e8e2d6; }
+
+    /* ── BLOCK LABELS ──────────────────────────────────── */
+    .block-label {
+      display: inline-block;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      color: #fff;
+      margin-bottom: 0.3rem;
+    }
+    .block-label-par { background: var(--azul); }
+    .block-label-title { background: var(--dorado); }
+    .block-label-sub { background: #7a6f60; }
+
+    @media (max-width: 600px) {
+      .row { flex-direction: column; gap: 0; }
+      .gen-wrap { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="gen-header">
+  <h1>Generador de noticias PROLOPE</h1>
+  <p>Rellena los campos y pulsa «Generar». Luego sigue las instrucciones de cada paso.</p>
+</div>
+
+<div class="gen-wrap">
+
+  <!-- ════════════════════════════════════════════════════════════════════════ -->
+  <!-- FORMULARIO -->
+  <!-- ════════════════════════════════════════════════════════════════════════ -->
+
+  <!-- DATOS BÁSICOS -->
+  <div class="gen-section">
+    <h2>Datos de la noticia</h2>
+
+    <label for="fTipo">Tipo de noticia</label>
+    <p class="help">«Noticia / suceso» para noticias generales; «Evento» para congresos, seminarios, jornadas, conferencias, etc.</p>
+    <select id="fTipo" onchange="toggleEvento()">
+      <option value="suceso">Noticia / suceso</option>
+      <option value="evento">Evento (congreso, seminario, jornadas, conferencia…)</option>
+    </select>
+
+    <label for="fCat">Categoría</label>
+    <p class="help">Selecciona una categoría existente o escribe una nueva. Las categorías se leen automáticamente de <code>noticias-data.js</code>.</p>
+    <div style="display:flex; gap:0.5rem; align-items:center;">
+      <select id="fCatSelect" onchange="onCatChange()" style="flex:1">
+        <option value="__nueva__">— Nueva categoría —</option>
+      </select>
+      <input type="text" id="fCatCustom" placeholder="Nombre de la nueva categoría" style="flex:1; display:none;" />
+    </div>
+
+    <label for="fTitulo">Título de la noticia</label>
+    <p class="help">Puedes usar los botones para añadir negrita o cursiva dentro del título.</p>
+    <div class="dyn-item" style="margin-bottom:0;">
+      <div style="flex:1">
+        <div class="rich-toolbar">
+          <button type="button" onclick="insertTag(this,'strong')" title="Negrita"><b>N</b></button>
+          <button type="button" onclick="insertTag(this,'em')" title="Cursiva"><i>C</i></button>
+        </div>
+        <input type="text" id="fTitulo" class="content-block" placeholder="Ej.: XI Congreso Internacional Lope de Vega" />
+      </div>
+    </div>
+
+    <label for="fSlug">Nombre del archivo (slug)</label>
+    <p class="help">Sin espacios, sin acentos, en minúsculas, separado por guiones. Se usará para el nombre del archivo HTML. Ej.: congreso-xi-2024</p>
+    <input type="text" id="fSlug" placeholder="Ej.: congreso-xi-2024" oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9\-]/g, '')" />
+
+    <label for="fFechaLarga">Fecha</label>
+    <p class="help">Escribe la fecha completa tal como aparecerá en la cabecera. Ej.: 27 de noviembre de 2024. La fecha corta para la tarjeta se genera sola.</p>
+    <input type="text" id="fFechaLarga" placeholder="27 de noviembre de 2024" oninput="autoFechaCorta()" />
+    <p class="help" style="margin-top:0.4rem">Fecha corta (automática): <strong id="fechaCortaPreview">—</strong></p>
+
+    <label for="fBreadcrumb">Texto del breadcrumb</label>
+    <p class="help">Texto corto que aparecerá en la ruta de navegación (Inicio › Noticias › <em>este texto</em>).</p>
+    <input type="text" id="fBreadcrumb" placeholder="Ej.: Congreso XI 2024" />
+
+    <label for="fTituloSeo">Título SEO (pestaña del navegador)</label>
+    <p class="help">Texto que aparece en la pestaña. Se le añadirá « | PROLOPE» automáticamente.</p>
+    <input type="text" id="fTituloSeo" placeholder="Ej.: XI Congreso Internacional Lope de Vega" />
+  </div>
+
+  <!-- IMAGEN -->
+  <div class="gen-section">
+    <h2>Imagen (opcional)</h2>
+    <label for="fImagen">Nombre del archivo de imagen</label>
+    <p class="help">Sube la imagen a la carpeta <code>media/</code> del sitio y escribe aquí solo el nombre del archivo, por ejemplo: <code>mi-imagen.jpg</code>. Si se deja vacío, la noticia aparecerá sin imagen. En la tarjeta se usará una imagen genérica.</p>
+    <input type="text" id="fImagen" placeholder="Ej.: congreso-xi-cartel.jpg" />
+
+    <label for="fImagenAlt">Texto alternativo de la imagen</label>
+    <p class="help">Breve descripción de la imagen para accesibilidad.</p>
+    <input type="text" id="fImagenAlt" placeholder="Ej.: Cartel del XI Congreso" />
+  </div>
+
+  <!-- CAMPOS EVENTO (ocultos por defecto) -->
+  <div class="gen-section evento-fields" id="eventoFields">
+    <h2>Datos del evento</h2>
+
+    <label for="fEventoTitulo">Título del evento (en el recuadro)</label>
+    <p class="help">Puede ser diferente al título principal. Ej.: 18 Jornadas sobre teatro clásico.</p>
+    <input type="text" id="fEventoTitulo" placeholder="Ej.: 18 Jornadas sobre teatro clásico" />
+
+    <label for="fEventoSubtitulo">Subtítulo del evento (opcional)</label>
+    <p class="help">Texto complementario en cursiva. Ej.: Y sin embargo, amigos: estudiar y representar a nuestros clásicos.</p>
+    <input type="text" id="fEventoSubtitulo" placeholder="Opcional" />
+
+    <label for="fEventoFechas">Fechas del evento</label>
+    <p class="help">Tal como aparecerá junto al icono de calendario. Ej.: 22–24 de julio de 2024</p>
+    <input type="text" id="fEventoFechas" placeholder="Ej.: 22–24 de julio de 2024" />
+
+    <label for="fEventoLugar">Lugar del evento</label>
+    <input type="text" id="fEventoLugar" placeholder="Ej.: Sala de Actos, Facultad de Filosofía y Letras, UAB" />
+
+    <label>Enlaces del evento (programa, web, etc.)</label>
+    <p class="help">Cada enlace tiene un texto visible y una URL. Para archivos PDF, pon la ruta relativa (ej.: media/programa.pdf).</p>
+    <div id="eventoLinksContainer"></div>
+    <button class="btn-add" type="button" onclick="addEventoLink()">+ Añadir enlace del evento</button>
+  </div>
+
+  <!-- CONTENIDO -->
+  <div class="gen-section">
+    <h2>Contenido de la noticia</h2>
+
+    <label for="fExcerpt">Extracto / resumen corto</label>
+    <p class="help">1-2 frases que aparecerán en la tarjeta de la lista de noticias.</p>
+    <textarea id="fExcerpt" rows="2" placeholder="Breve resumen para la tarjeta…"></textarea>
+
+    <label>Bloques de contenido</label>
+    <p class="help">Añade párrafos, títulos y subtítulos en el orden en que aparecerán. Puedes usar los botones de formato (negrita, cursiva, enlace, listas) seleccionando texto y pulsando el botón correspondiente.</p>
+    <div id="parrafosContainer"></div>
+    <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.3rem;">
+      <button class="btn-add" type="button" onclick="addParrafo()">+ Párrafo</button>
+      <button class="btn-add" type="button" onclick="addTitulo()" style="background:var(--dorado)">+ Título</button>
+      <button class="btn-add" type="button" onclick="addSubtitulo()" style="background:#7a6f60">+ Subtítulo</button>
+    </div>
+  </div>
+
+  <!-- ENLACES EXTERNOS -->
+  <div class="gen-section">
+    <h2>Enlaces externos (al final de la noticia)</h2>
+    <p class="help">Botones de enlace que aparecen al final del artículo. Ej.: «Más información en la web de RTVE».</p>
+    <div id="linksContainer"></div>
+    <button class="btn-add" type="button" onclick="addLink()">+ Añadir enlace</button>
+  </div>
+
+  <!-- BÚSQUEDA -->
+  <div class="gen-section">
+    <h2>Datos para el buscador</h2>
+
+    <label for="fSearchDesc">Descripción para el buscador</label>
+    <p class="help">Una frase corta que aparecerá en los resultados de búsqueda del sitio. Si la dejas vacía, se usará el extracto.</p>
+    <input type="text" id="fSearchDesc" placeholder="Opcional: se usa el extracto si se deja vacío" />
+  </div>
+
+  <!-- BOTÓN GENERAR -->
+  <button class="gen-btn" onclick="generar()">Generar todo el código</button>
+
+  <!-- ════════════════════════════════════════════════════════════════════════ -->
+  <!-- RESULTADO -->
+  <!-- ════════════════════════════════════════════════════════════════════════ -->
+  <div class="output-section" id="outputSection">
+
+    <div class="output-block">
+      <h3><span class="step-num">1</span> Archivo HTML de la noticia</h3>
+      <div class="instructions">
+        <strong>Guarda este contenido</strong> como un archivo llamado <strong id="outFilename">noticia-SLUG.html</strong> en la misma carpeta donde están las demás páginas del sitio (junto a <code>noticias.html</code>, <code>index.html</code>, etc.).<br>
+        Puedes pulsar «Descargar archivo» para obtenerlo directamente.
+      </div>
+      <textarea class="code-area" id="outHtml" readonly></textarea>
+      <button class="btn-copy" onclick="copiar('outHtml', this)">Copiar al portapapeles</button>
+      <button class="btn-download" onclick="descargarHtml()">Descargar archivo .html</button>
+    </div>
+
+    <div class="output-block">
+      <h3><span class="step-num">2</span> Entrada para noticias-data.js</h3>
+      <div class="instructions">
+        Abre el archivo <code>noticias-data.js</code> con un editor de texto (clic derecho → «Abrir con» → Bloc de notas o similar).<br>
+        <strong>Copia este bloque y pégalo justo después de la línea</strong> <code>const news = [</code> (es decir, como primer elemento de la lista).<br>
+        Asegúrate de que hay una coma después del <code>}</code> de cierre.
+      </div>
+      <textarea class="code-area" id="outData" readonly></textarea>
+      <button class="btn-copy" onclick="copiar('outData', this)">Copiar al portapapeles</button>
+    </div>
+
+    <div class="output-block">
+      <h3><span class="step-num">3</span> Entrada para search-data.js</h3>
+      <div class="instructions">
+        Abre el archivo <code>search-data.js</code> con un editor de texto.<br>
+        <strong>Copia este bloque y pégalo justo después de la línea</strong> <code>var SEARCH_INDEX = [</code> (como primer elemento).<br>
+        Asegúrate de que hay una coma después del <code>}</code> de cierre.
+      </div>
+      <textarea class="code-area" id="outSearch" readonly></textarea>
+      <button class="btn-copy" onclick="copiar('outSearch', this)">Copiar al portapapeles</button>
+    </div>
+
+    <div class="output-block" id="outImgBlock" style="display:none">
+      <h3><span class="step-num">4</span> Imagen</h3>
+      <div class="instructions">
+        No olvides copiar el archivo de imagen <strong id="outImgName">imagen.jpg</strong> a la carpeta <code>media/</code> del sitio web.
+      </div>
+    </div>
+
+    <div class="output-block">
+      <h3>Vista previa</h3>
+      <div class="instructions">Así se verá la página de la noticia (aproximada, sin estilos del sitio real):</div>
+      <iframe class="preview-frame" id="previewFrame" sandbox="allow-same-origin"></iframe>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="noticias-data.js"></script>
+<script>
+// ── ESTADO INICIAL ──────────────────────────────────────────────────────────
+
+// Añadir un párrafo y un enlace vacíos al cargar
+addParrafo();
+addLink();
+addEventoLink();
+
+// ── FECHA CORTA AUTOMÁTICA ─────────────────────────────────────────────────
+
+var MESES_LARGO = {
+  'enero':'ene.','febrero':'feb.','marzo':'mar.','abril':'abr.','mayo':'may.','junio':'jun.',
+  'julio':'jul.','agosto':'ago.','septiembre':'sep.','octubre':'oct.','noviembre':'nov.','diciembre':'dic.'
+};
+
+function autoFechaCorta() {
+  var raw = document.getElementById('fFechaLarga').value.trim().toLowerCase();
+  var preview = document.getElementById('fechaCortaPreview');
+  if (!raw) { preview.textContent = '—'; return; }
+
+  // Intentar parsear "27 de noviembre de 2024" o "noviembre de 2024" o "27-29 de julio de 2024"
+  var corta = raw;
+  // Reemplazar meses largos por cortos
+  for (var largo in MESES_LARGO) {
+    corta = corta.replace(new RegExp(largo, 'gi'), MESES_LARGO[largo]);
+  }
+  // Eliminar " de " innecesarios: "27 de nov. de 2024" → "27 nov. 2024"
+  corta = corta.replace(/ de /g, ' ');
+  // Capitalizar primera letra si empieza por mes
+  corta = corta.charAt(0).toUpperCase() + corta.slice(1);
+  preview.textContent = corta;
+}
+
+function getFechaCorta() {
+  return document.getElementById('fechaCortaPreview').textContent.trim();
+}
+
+// ── CATEGORÍA PERSONALIZADA ─────────────────────────────────────────────────
+
+function loadCatsFromData() {
+  var sel = document.getElementById('fCatSelect');
+  var nueva = sel.querySelector('option[value="__nueva__"]');
+  // Extraer categorías únicas de noticias-data.js (orden de aparición)
+  var seen = {};
+  var cats = [];
+  if (typeof news !== 'undefined') {
+    news.forEach(function(n) {
+      if (n.cat && !seen[n.cat]) { seen[n.cat] = true; cats.push(n.cat); }
+    });
+  }
+  // Ordenar alfabéticamente
+  cats.sort();
+  cats.forEach(function(c) {
+    var opt = document.createElement('option');
+    opt.value = c;
+    opt.textContent = c;
+    sel.insertBefore(opt, nueva);
+  });
+  // Seleccionar la primera por defecto
+  if (cats.length) sel.value = cats[0];
+}
+
+function onCatChange() {
+  var sel = document.getElementById('fCatSelect');
+  var custom = document.getElementById('fCatCustom');
+  if (sel.value === '__nueva__') {
+    custom.style.display = '';
+    custom.focus();
+  } else {
+    custom.style.display = 'none';
+    custom.value = '';
+  }
+}
+
+function getCat() {
+  var sel = document.getElementById('fCatSelect');
+  if (sel.value === '__nueva__') {
+    return document.getElementById('fCatCustom').value.trim();
+  }
+  return sel.value;
+}
+
+loadCatsFromData();
+
+// ── TOGGLE EVENTO ───────────────────────────────────────────────────────────
+
+function toggleEvento() {
+  var isEvento = document.getElementById('fTipo').value === 'evento';
+  document.getElementById('eventoFields').classList.toggle('visible', isEvento);
+}
+
+// ── LISTAS DINÁMICAS ────────────────────────────────────────────────────────
+
+function addParrafo() {
+  var c = document.getElementById('parrafosContainer');
+  var div = document.createElement('div');
+  div.className = 'dyn-item';
+  div.innerHTML = '<div style="flex:1">' +
+    '<span class="block-label block-label-par">PÁRRAFO</span>' +
+    makeToolbar() +
+    '<textarea rows="3" class="content-block" data-type="parrafo" placeholder="Escribe un párrafo…"></textarea></div>' +
+    '<button class="btn-remove" type="button" onclick="this.parentElement.remove()" title="Eliminar">×</button>';
+  c.appendChild(div);
+}
+
+function makeToolbar() {
+  return '<div class="rich-toolbar">' +
+    '<button type="button" onclick="insertTag(this,\'strong\')" title="Negrita"><b>N</b></button>' +
+    '<button type="button" onclick="insertTag(this,\'em\')" title="Cursiva"><i>C</i></button>' +
+    '<button type="button" onclick="insertLink(this)" title="Hipervínculo">Enlace</button>' +
+    '<button type="button" onclick="insertList(this,\'ul\')" title="Lista con viñetas">&#8226; Lista</button>' +
+    '<button type="button" onclick="insertList(this,\'ol\')" title="Lista numerada">1. Lista</button>' +
+    '</div>';
+}
+
+function addTitulo() {
+  var c = document.getElementById('parrafosContainer');
+  var div = document.createElement('div');
+  div.className = 'dyn-item';
+  div.innerHTML = '<div style="flex:1">' +
+    '<span class="block-label block-label-title">TÍTULO</span>' +
+    '<div class="rich-toolbar">' +
+    '<button type="button" onclick="insertTag(this,\'strong\')" title="Negrita"><b>N</b></button>' +
+    '<button type="button" onclick="insertTag(this,\'em\')" title="Cursiva"><i>C</i></button>' +
+    '<button type="button" onclick="insertLink(this)" title="Hipervínculo">Enlace</button>' +
+    '</div>' +
+    '<input type="text" class="content-block" data-type="titulo" placeholder="Escribe un título…" /></div>' +
+    '<button class="btn-remove" type="button" onclick="this.parentElement.remove()" title="Eliminar">×</button>';
+  c.appendChild(div);
+}
+
+function addSubtitulo() {
+  var c = document.getElementById('parrafosContainer');
+  var div = document.createElement('div');
+  div.className = 'dyn-item';
+  div.innerHTML = '<div style="flex:1">' +
+    '<span class="block-label block-label-sub">SUBTÍTULO</span>' +
+    '<div class="rich-toolbar">' +
+    '<button type="button" onclick="insertTag(this,\'strong\')" title="Negrita"><b>N</b></button>' +
+    '<button type="button" onclick="insertTag(this,\'em\')" title="Cursiva"><i>C</i></button>' +
+    '<button type="button" onclick="insertLink(this)" title="Hipervínculo">Enlace</button>' +
+    '</div>' +
+    '<input type="text" class="content-block" data-type="subtitulo" placeholder="Escribe un subtítulo…" /></div>' +
+    '<button class="btn-remove" type="button" onclick="this.parentElement.remove()" title="Eliminar">×</button>';
+  c.appendChild(div);
+}
+
+function addLink() {
+  var c = document.getElementById('linksContainer');
+  var div = document.createElement('div');
+  div.className = 'dyn-item';
+  div.style.flexWrap = 'wrap';
+  div.innerHTML =
+    '<input type="text" class="link-label" placeholder="Texto del enlace (ej.: Más información)" style="flex:2" />' +
+    '<input type="text" class="link-url" placeholder="URL (ej.: https://ejemplo.com)" style="flex:3" />' +
+    '<button class="btn-remove" type="button" onclick="this.parentElement.remove()" title="Eliminar">×</button>';
+  c.appendChild(div);
+}
+
+function addEventoLink() {
+  var c = document.getElementById('eventoLinksContainer');
+  var div = document.createElement('div');
+  div.className = 'dyn-item';
+  div.style.flexWrap = 'wrap';
+  div.innerHTML =
+    '<input type="text" class="evlink-label" placeholder="Texto (ej.: Programa en PDF)" style="flex:2" />' +
+    '<input type="text" class="evlink-url" placeholder="URL o ruta (ej.: media/programa.pdf)" style="flex:3" />' +
+    '<button class="btn-remove" type="button" onclick="this.parentElement.remove()" title="Eliminar">×</button>';
+  c.appendChild(div);
+}
+
+// ── FORMATO DE TEXTO ────────────────────────────────────────────────────────
+
+function getField(btn) {
+  return btn.closest('.dyn-item').querySelector('.content-block');
+}
+
+function insertTag(btn, tag) {
+  var field = getField(btn);
+  var start = field.selectionStart;
+  var end = field.selectionEnd;
+  var text = field.value;
+  var selected = text.substring(start, end);
+  if (!selected) { alert('Selecciona primero el texto que quieres formatear.'); return; }
+  var replacement = '<' + tag + '>' + selected + '</' + tag + '>';
+  field.value = text.substring(0, start) + replacement + text.substring(end);
+  field.focus();
+  field.selectionStart = start;
+  field.selectionEnd = start + replacement.length;
+}
+
+function insertLink(btn) {
+  var field = getField(btn);
+  var start = field.selectionStart;
+  var end = field.selectionEnd;
+  var text = field.value;
+  var selected = text.substring(start, end);
+  if (!selected) { alert('Selecciona primero el texto que será el enlace.'); return; }
+  var url = prompt('Escribe la dirección web (URL) del enlace:', 'https://');
+  if (!url) return;
+  var replacement = '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + selected + '</a>';
+  field.value = text.substring(0, start) + replacement + text.substring(end);
+  field.focus();
+}
+
+function insertList(btn, tag) {
+  var field = getField(btn);
+  var start = field.selectionStart;
+  var end = field.selectionEnd;
+  var text = field.value;
+  var selected = text.substring(start, end);
+  var items;
+  if (selected) {
+    // Convertir líneas seleccionadas en elementos de lista
+    items = selected.split('\n').filter(function(l) { return l.trim(); });
+  } else {
+    // Pedir los elementos
+    var input = prompt('Escribe los elementos de la lista separados por punto y coma (;).\nEj.: Primer elemento; Segundo elemento; Tercer elemento');
+    if (!input) return;
+    items = input.split(';').map(function(s) { return s.trim(); }).filter(Boolean);
+  }
+  if (!items.length) return;
+  var replacement = '<' + tag + '>\n' + items.map(function(item) { return '  <li>' + item + '</li>'; }).join('\n') + '\n</' + tag + '>';
+  field.value = text.substring(0, start) + replacement + text.substring(end);
+  field.focus();
+}
+
+// ── UTILIDADES ──────────────────────────────────────────────────────────────
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function escJs(s) {
+  return String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, ' ');
+}
+
+function getValues(selector) {
+  return Array.from(document.querySelectorAll(selector)).map(function(el) { return el.value.trim(); }).filter(Boolean);
+}
+
+function getLinkPairs(labelSel, urlSel) {
+  var labels = document.querySelectorAll(labelSel);
+  var urls = document.querySelectorAll(urlSel);
+  var result = [];
+  for (var i = 0; i < labels.length; i++) {
+    var l = labels[i].value.trim();
+    var u = urls[i].value.trim();
+    if (l && u) result.push({ label: l, url: u });
+  }
+  return result;
+}
+
+// ── AUTO-ID ────────────────────────────────────────────────────────────────
+
+function getNextId() {
+  // Leer el mayor ID del array news (cargado desde noticias-data.js)
+  if (typeof news !== 'undefined' && news.length) {
+    var maxId = 0;
+    news.forEach(function(n) { if (n.id > maxId) maxId = n.id; });
+    return maxId + 1;
+  }
+  return 21; // fallback
+}
+
+// ── AUTO SEARCH CONTENT ────────────────────────────────────────────────────
+
+function buildSearchContent(titulo, cat, fechaCorta, excerpt, contentBlocks, links, evLinks) {
+  var parts = [titulo, cat, fechaCorta, excerpt];
+  contentBlocks.forEach(function(b) {
+    // Strip HTML, keep text
+    parts.push(b.text.replace(/<[^>]+>/g, ''));
+  });
+  links.forEach(function(l) { parts.push(l.label); });
+  (evLinks || []).forEach(function(l) { parts.push(l.label); });
+  // Join, normalize, deduplicate significant words
+  var text = parts.join(' ');
+  // Remove accents for better search
+  var normalized = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  // Combine original + normalized, remove very short/common words
+  var STOP = ['de','del','la','las','los','el','en','y','a','un','una','que','por','con','se','es','al','lo','su','no','para','como','más','pero','ya','este','esta','sin','sobre','entre','hasta','desde','hay','han','ha','fue','son','ser','está','están','fue','son','muy','todo','toda','todos','cada','otro','otra','bien'];
+  var words = (text + ' ' + normalized).toLowerCase().split(/\W+/).filter(function(w) {
+    return w.length > 2 && STOP.indexOf(w) === -1;
+  });
+  // Deduplicate
+  var seen = {};
+  var unique = [];
+  words.forEach(function(w) { if (!seen[w]) { seen[w] = true; unique.push(w); } });
+  return unique.join(' ');
+}
+
+// ── GENERAR ─────────────────────────────────────────────────────────────────
+
+function generar() {
+  var tipo = document.getElementById('fTipo').value;
+  var cat = getCat();
+  var titulo = document.getElementById('fTitulo').value.trim();
+  var tituloPlain = titulo.replace(/<[^>]+>/g, '');
+  var slug = document.getElementById('fSlug').value.trim();
+  var fechaLarga = document.getElementById('fFechaLarga').value.trim();
+  var fechaCorta = getFechaCorta();
+  var breadcrumb = document.getElementById('fBreadcrumb').value.trim();
+  var tituloSeo = document.getElementById('fTituloSeo').value.trim();
+  var imagen = document.getElementById('fImagen').value.trim();
+  var imagenAlt = document.getElementById('fImagenAlt').value.trim();
+  var excerpt = document.getElementById('fExcerpt').value.trim();
+  var id = getNextId();
+  var searchDesc = document.getElementById('fSearchDesc').value.trim();
+
+  // Bloques de contenido (párrafos, títulos, subtítulos en orden)
+  var contentBlocks = [];
+  document.querySelectorAll('#parrafosContainer .content-block').forEach(function(el) {
+    var val = el.value.trim();
+    if (val) contentBlocks.push({ type: el.getAttribute('data-type'), text: val });
+  });
+
+  // Validación mínima
+  var errores = [];
+  if (!titulo) errores.push('título');
+  if (!slug) errores.push('nombre del archivo (slug)');
+  if (!fechaLarga || !fechaCorta || fechaCorta === '—') errores.push('fecha');
+  if (!cat) errores.push('categoría');
+  if (!breadcrumb) errores.push('texto del breadcrumb');
+  if (!tituloSeo) errores.push('título SEO (pestaña del navegador)');
+  if (!excerpt) errores.push('extracto / resumen corto');
+  if (!contentBlocks.length) errores.push('al menos un bloque de contenido');
+  if (errores.length) {
+    alert('Faltan campos obligatorios:\n— ' + errores.join('\n— '));
+    return;
+  }
+
+  var filename = 'noticia-' + slug + '.html';
+  var imgPath = imagen ? 'media/' + imagen : '';
+
+  // Enlaces externos
+  var links = getLinkPairs('.link-label', '.link-url');
+
+  // Evento
+  var evTitulo = document.getElementById('fEventoTitulo').value.trim();
+  var evSubtitulo = document.getElementById('fEventoSubtitulo').value.trim();
+  var evFechas = document.getElementById('fEventoFechas').value.trim();
+  var evLugar = document.getElementById('fEventoLugar').value.trim();
+  var evLinks = getLinkPairs('.evlink-label', '.evlink-url');
+
+  // ── 1. HTML ───────────────────────────────────────────────────────────────
+
+  var contentHtml = '';
+
+  if (tipo === 'evento') {
+    contentHtml += '\n      <div class="event-box">\n';
+    if (imgPath) {
+      contentHtml += '        <div class="event-box-img-wrap" onclick="openLightbox(\'' + imgPath + '\')">\n';
+      contentHtml += '          <img src="' + imgPath + '" alt="' + esc(imagenAlt) + '" />\n';
+      contentHtml += '          <span class="zoom-hint" aria-hidden="true">\n';
+      contentHtml += '            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>\n';
+      contentHtml += '          </span>\n';
+      contentHtml += '        </div>\n';
+    }
+    contentHtml += '        <div class="event-box-info">\n';
+    contentHtml += '          <div class="event-box-title">' + esc(evTitulo || tituloPlain);
+    if (evSubtitulo) contentHtml += '<br><em style="font-weight:400;font-size:0.88rem">' + esc(evSubtitulo) + '</em>';
+    contentHtml += '</div>\n';
+    contentHtml += '          <ul class="event-box-meta">\n';
+    contentHtml += '            <li>\n';
+    contentHtml += '              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>\n';
+    contentHtml += '              ' + esc(evFechas) + '\n';
+    contentHtml += '            </li>\n';
+    contentHtml += '            <li>\n';
+    contentHtml += '              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>\n';
+    contentHtml += '              ' + esc(evLugar) + '\n';
+    contentHtml += '            </li>\n';
+    contentHtml += '          </ul>\n';
+    if (evLinks.length) {
+      contentHtml += '          <div class="event-box-links">\n';
+      evLinks.forEach(function(l) {
+        contentHtml += '            <a class="event-box-link" href="' + esc(l.url) + '" target="_blank" rel="noopener noreferrer">\n';
+        contentHtml += '              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>\n';
+        contentHtml += '              ' + esc(l.label) + '\n';
+        contentHtml += '            </a>\n';
+      });
+      contentHtml += '          </div>\n';
+    }
+    contentHtml += '        </div>\n';
+    contentHtml += '      </div>\n';
+  } else if (imgPath) {
+    // Suceso con imagen
+    contentHtml += '\n      <div class="article-figure">\n';
+    contentHtml += '        <div class="article-figure-img-wrap" onclick="openLightbox(\'' + imgPath + '\')">\n';
+    contentHtml += '          <img src="' + imgPath + '" alt="' + esc(imagenAlt) + '" />\n';
+    contentHtml += '          <span class="zoom-hint" aria-hidden="true">\n';
+    contentHtml += '            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>\n';
+    contentHtml += '          </span>\n';
+    contentHtml += '        </div>\n';
+    contentHtml += '      </div>\n';
+  }
+
+  // Bloques de contenido
+  contentBlocks.forEach(function(b) {
+    if (b.type === 'titulo') {
+      contentHtml += '\n      <h2 class="article-lead-title">' + b.text + '</h2>\n';
+    } else if (b.type === 'subtitulo') {
+      contentHtml += '\n      <p class="article-lead-subtitle">' + b.text + '</p>\n';
+    } else {
+      contentHtml += '\n      <p>' + b.text + '</p>\n';
+    }
+  });
+
+  // Enlaces externos (solo suceso; en evento ya van en event-box)
+  if (links.length) {
+    contentHtml += '\n      <div class="article-links">\n';
+    links.forEach(function(l) {
+      contentHtml += '        <a class="article-ext-link" href="' + esc(l.url) + '" target="_blank" rel="noopener noreferrer">\n';
+      contentHtml += '          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>\n';
+      contentHtml += '          ' + esc(l.label) + '\n';
+      contentHtml += '        </a>\n';
+    });
+    contentHtml += '      </div>\n';
+  }
+
+  // ── PÁGINA COMPLETA ─────────────────────────────────────────────────────
+  var html = '<!DOCTYPE html>\n<html lang="es">\n<head>\n';
+  html += '  <link rel="icon" href="media/favicon_5.gif" type="image/gif" />\n';
+  html += '  <meta charset="UTF-8" />\n';
+  html += '  <meta http-equiv="Content-Security-Policy" content="default-src \'self\'; script-src \'self\' \'unsafe-inline\'; style-src \'self\' \'unsafe-inline\' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src \'self\' data:; frame-src https://www.google.com; base-uri \'self\'; connect-src \'self\'" />\n';
+  html += '  <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n';
+  html += '  <title>' + esc(tituloSeo || tituloPlain) + ' | PROLOPE</title>\n';
+  html += '  <link rel="preconnect" href="https://fonts.googleapis.com" />\n';
+  html += '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n';
+  html += '  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />\n';
+  html += '  <link rel="stylesheet" href="prolope.css" />\n';
+  html += '  <!-- early theme -->\n';
+  html += '  <script>\n';
+  html += '    (function(){var t=localStorage.getItem(\'theme\');if(t===\'dark\'||(!t&&window.matchMedia(\'(prefers-color-scheme:dark)\').matches))document.documentElement.setAttribute(\'data-theme\',\'dark\');})();\n';
+  html += '  </scr' + 'ipt>\n\n</head>\n<body>\n\n\n';
+
+  // HEADER
+  html += '  <!-- HEADER -->\n';
+  html += '  <header>\n';
+  html += '    <div class="header-inner">\n';
+  html += '      <a href="index.html" class="logo-link">\n';
+  html += '        <img src="media/logo-menu.png" alt="PROLOPE" />\n';
+  html += '      </a>\n\n';
+  html += '      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">\n';
+  html += '        <span></span><span></span><span></span>\n';
+  html += '      </button>\n\n';
+  html += '      <nav class="main-nav" id="mainNav">\n';
+  html += '        <ul>\n';
+  html += '          <li class="has-dropdown">\n';
+  html += '            <span>El grupo <small>▾</small></span>\n';
+  html += '            <div class="dropdown">\n';
+  html += '              <ul>\n';
+  html += '                <li><a href="el-grupo.html">El grupo de investigación</a></li>\n';
+  html += '                <li><a href="historial-proyectos.html">Historial de proyectos</a></li>\n';
+  html += '                <li><a href="estatutos.html">Estatutos del grupo</a></li>\n';
+  html += '                <li><a href="miembros.html">Miembros</a></li>\n';
+  html += '                <li><a href="contacto.html">Contacto y ubicación</a></li>\n';
+  html += '              </ul>\n';
+  html += '            </div>\n';
+  html += '          </li>\n';
+  html += '          <li class="has-dropdown">\n';
+  html += '            <span>Objetivos <small>▾</small></span>\n';
+  html += '            <div class="dropdown">\n';
+  html += '              <ul>\n';
+  html += '                <li><a href="vida-obra.html">Vida y obra de Lope de Vega</a></li>\n';
+  html += '                <li><a href="transmision.html">Transmisión y edición del teatro de Lope de Vega</a></li>\n';
+  html += '                <li><a href="criterios.html">Criterios y materiales para la edición</a></li>\n';
+  html += '              </ul>\n';
+  html += '            </div>\n';
+  html += '          </li>\n';
+  html += '          <li class="has-dropdown">\n';
+  html += '            <span>Publicaciones <small>▾</small></span>\n';
+  html += '            <div class="dropdown">\n';
+  html += '              <ul>\n';
+  html += '                <li><a href="partes-comedias.html">Partes de comedias</a></li>\n';
+  html += '                <li><a href="https://revistes.uab.cat/anuariolopedevega/index" target="_blank" rel="noopener noreferrer">Anuario Lope de Vega <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>\n';
+  html += '                <li><a href="otras-publicaciones.html">Otras publicaciones</a></li>\n';
+  html += '              </ul>\n';
+  html += '            </div>\n';
+  html += '          </li>\n';
+  html += '          <li class="has-dropdown">\n';
+  html += '            <span>Proyectos digitales <small>▾</small></span>\n';
+  html += '            <div class="dropdown">\n';
+  html += '              <ul>\n';
+  html += '                <li><a href="biblioteca-virtual.html">Biblioteca virtual</a></li>\n';
+  html += '                <li><a href="https://prolope.uab.cat/biblioteca/" target="_blank" rel="noopener noreferrer">Biblioteca Digital Prolope <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>\n';
+  html += '                <li><a href="mujeres-criados.html">Mujeres y criados</a></li>\n';
+  html += '                <li><a href="mapping-lope.html">Mapping Lope</a></li>\n';
+  html += '                <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>\n';
+  html += '                <li><a href="dama-boba.html">La dama boba <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>\n';
+  html += '                <li><a href="gondomar.html">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>\n';
+  html += '              </ul>\n';
+  html += '            </div>\n';
+  html += '          </li>\n';
+  html += '          <li class="has-dropdown">\n';
+  html += '            <span>Formación <small>▾</small></span>\n';
+  html += '            <div class="dropdown">\n';
+  html += '              <ul>\n';
+  html += '                <li><a href="tesis.html">Tesis</a></li>\n';
+  html += '              </ul>\n';
+  html += '            </div>\n';
+  html += '          </li>\n';
+  html += '          <li class="has-dropdown">\n';
+  html += '            <span>Eventos <small>▾</small></span>\n';
+  html += '            <div class="dropdown">\n';
+  html += '              <ul>\n';
+  html += '                <li><a href="congresos.html">Congresos</a></li>\n';
+  html += '                <li><a href="seminarios.html">Seminarios</a></li>\n';
+  html += '              </ul>\n';
+  html += '            </div>\n';
+  html += '          </li>\n';
+  html += '          <li><a href="multimedia.html">Multimedia</a></li>\n';
+  html += '          <li><a href="noticias.html">Noticias</a></li>\n';
+  html += '        </ul>\n';
+  html += '      </nav>\n';
+  html += '      <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo noche" title="Modo noche"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>\n';
+  html += '      <button class="site-search-btn" id="siteSearchBtn" aria-label="Buscar en el sitio">\n';
+  html += '        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>\n';
+  html += '      </button>\n';
+  html += '      <div class="site-search-inline">\n';
+  html += '        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>\n';
+  html += '        <input type="text" id="siteSearchInput" placeholder="Buscar en el sitio…" autocomplete="off" />\n';
+  html += '        <button class="site-search-close" id="siteSearchClose" aria-label="Cerrar búsqueda">✕</button>\n';
+  html += '        <div class="site-search-dropdown" id="siteSearchDropdown">\n';
+  html += '          <div id="siteSearchCount" class="site-search-count"></div>\n';
+  html += '          <div id="siteSearchResults" class="site-search-results"></div>\n';
+  html += '        </div>\n';
+  html += '      </div>\n';
+  html += '    </div>\n';
+  html += '  </header>\n\n';
+
+  // HERO
+  html += '  <!-- HERO -->\n';
+  html += '  <section class="article-hero">\n';
+  html += '    <div class="article-hero-bg" style="background-image: url(\'media/fondo-noticias.jpg\'); background-size: fill; background-repeat: no-repeat; background-position: right; opacity: 0.15;"></div>\n';
+  html += '    <div class="article-hero-inner">\n';
+  html += '      <p class="article-breadcrumb">\n';
+  html += '        <a href="index.html">Inicio</a><span>›</span>\n';
+  html += '        <a href="noticias.html">Noticias</a><span>›</span>\n';
+  html += '        ' + esc(breadcrumb || tituloPlain) + '\n';
+  html += '      </p>\n';
+  html += '      <span class="article-cat-badge">' + esc(cat) + '</span>\n';
+  html += '      <h1>' + titulo + '</h1>\n';
+  html += '      <div class="article-hero-meta">\n';
+  html += '        <span class="article-date">' + esc(fechaLarga) + '</span>\n';
+  html += '      </div>\n';
+  html += '      <div class="article-hero-rule"></div>\n';
+  html += '    </div>\n';
+  html += '  </section>\n\n';
+
+  // LAYOUT
+  html += '  <!-- LAYOUT -->\n';
+  html += '  <div class="article-layout">\n\n';
+  html += '    <!-- MAIN CONTENT -->\n';
+  html += '    <article class="article-body">\n';
+  html += contentHtml;
+  html += '\n      <div style="clear:both"></div>\n\n';
+  html += '      <a class="back-link" href="noticias.html">← Volver a todas las noticias</a>\n\n';
+  html += '    </article>\n\n';
+
+  // SIDEBAR
+  html += '    <!-- SIDEBAR -->\n';
+  html += '    <aside class="article-sidebar">\n';
+  html += '      <div class="sidebar-card">\n';
+  html += '        <div class="sidebar-card-header">\n';
+  html += '          <h3>Noticias recientes</h3>\n';
+  html += '        </div>\n';
+  html += '        <ul class="sidebar-news-list">\n';
+  html += '        </ul>\n';
+  html += '        <a class="sidebar-all-link" href="noticias.html">Ver todas las noticias →</a>\n';
+  html += '      </div>\n';
+  html += '    </aside>\n\n';
+  html += '  </div>\n\n';
+
+  // LIGHTBOX
+  html += '  <!-- LIGHTBOX -->\n';
+  html += '  <div class="lightbox" id="lightbox" onclick="closeLightbox()">\n';
+  html += '    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">✕</button>\n';
+  html += '    <img id="lightbox-img" src="" alt="" />\n';
+  html += '  </div>\n\n';
+  html += '  <script>\n';
+  html += '    function openLightbox(src) {\n';
+  html += '      document.getElementById(\'lightbox-img\').src = src;\n';
+  html += '      document.getElementById(\'lightbox\').classList.add(\'open\');\n';
+  html += '      document.body.style.overflow = \'hidden\';\n';
+  html += '    }\n';
+  html += '    function closeLightbox() {\n';
+  html += '      document.getElementById(\'lightbox\').classList.remove(\'open\');\n';
+  html += '      document.body.style.overflow = \'\';\n';
+  html += '    }\n';
+  html += '    document.addEventListener(\'keydown\', function(e) { if (e.key === \'Escape\') closeLightbox(); });\n';
+  html += '  </scr' + 'ipt>\n\n\n';
+
+  // FUNDERS
+  html += '  <!-- FUNDERS -->\n';
+  html += '  <section class="funders">\n';
+  html += '    <div class="funders-inner">\n';
+  html += '      <p class="funders-title">Entidades financiadoras</p>\n';
+  html += '      <div class="funders-logos">\n';
+  html += '        <a class="funder-logo-link" href="https://www.march.es/" target="_blank" rel="noopener noreferrer">\n';
+  html += '          <img src="media/fundacion-march.png" alt="Fundación March" />\n';
+  html += '        </a>\n';
+  html += '        <a class="funder-logo-link" href="https://www.culturaydeporte.gob.es/" target="_blank" rel="noopener noreferrer">\n';
+  html += '          <img src="media/ace.png" alt="ACE" />\n';
+  html += '        </a>\n';
+  html += '        <a class="funder-logo-link" href="https://agaur.gencat.cat/" target="_blank" rel="noopener noreferrer">\n';
+  html += '          <img src="media/agaur_gencat.png" alt="AGAUR Gencat" />\n';
+  html += '        </a>\n';
+  html += '        <a class="funder-logo-link" href="https://www.ciencia.gob.es/" target="_blank" rel="noopener noreferrer">\n';
+  html += '          <img src="media/ministerio-feder.png" alt="Ministerio / FEDER" />\n';
+  html += '        </a>\n';
+  html += '        <a class="funder-logo-link" href="https://www.uab.cat/" target="_blank" rel="noopener noreferrer">\n';
+  html += '          <img src="media/uab.png" alt="UAB" />\n';
+  html += '        </a>\n';
+  html += '      </div>\n';
+  html += '    </div>\n';
+  html += '  </section>\n\n';
+
+  // FOOTER
+  html += '  <!-- FOOTER -->\n';
+  html += '  <footer>\n';
+  html += '    <div class="footer-inner">\n';
+  html += '      <div>\n';
+  html += '        <div class="footer-logo">\n';
+  html += '          <img src="media/logo-prolope_inici.png" alt="PROLOPE" />\n';
+  html += '        </div>\n';
+  html += '        <address class="footer-address" style="font-style:normal;">\n';
+  html += '          Grupo de investigación PROLOPE.<br />\n';
+  html += '          Departament de Filologia Espanyola.<br /><br />\n';
+  html += '          Facultat de Filosofia i Lletres UAB<br />\n';
+  html += '          CAMPUS DE LA UAB<br />\n';
+  html += '          Carrer de la fortuna s/n<br />\n';
+  html += '          08193 Bellaterra (Barcelona)<br /><br />\n';
+  html += '          Teléfono (Secretaría): <a href="tel:+34935811034">93 581 10 34</a><br />\n';
+  html += '          Correo: <a href="mailto:prolope@uab.es">prolope@uab.es</a>\n';
+  html += '        </address>\n';
+  html += '        <div class="footer-social">\n';
+  html += '          <a href="https://twitter.com/ProlopeUab" target="_blank" rel="noopener noreferrer" title="Seguir en X">𝕏</a>\n';
+  html += '          <a href="https://www.facebook.com/prolope.uab" target="_blank" rel="noopener noreferrer" title="Seguir en Facebook">f</a>\n';
+  html += '        </div>\n';
+  html += '      </div>\n';
+  html += '    </div>\n';
+  html += '    <div class="footer-bottom">\n';
+  html += '      © 2025 Grupo de Investigación PROLOPE – Universitat Autònoma de Barcelona\n';
+  html += '    </div>\n';
+  html += '  </footer>\n\n';
+
+  // SCRIPTS
+  html += '  <script>\n';
+  html += '    /* ---- Page reveal animations ---- */\n';
+  html += '    (function () {\n';
+  html += '      if (!(\'IntersectionObserver\' in window)) return;\n';
+  html += '      var els = document.querySelectorAll(\'.card, .sidebar-card, .founder-card, .news-card, .video-card, .congress-card, .funders, .inline-figure, .inline-figure-left, .event-box, .article-figure\');\n';
+  html += '      if (!els.length) return;\n';
+  html += '      els.forEach(function (el) {\n';
+  html += '        el.style.opacity = \'0\';\n';
+  html += '        el.style.transform = \'translateY(30px)\';\n';
+  html += '      });\n';
+  html += '      var obs = new IntersectionObserver(function (entries) {\n';
+  html += '        var visible = entries.filter(function (e) { return e.isIntersecting; });\n';
+  html += '        visible.forEach(function (e, i) {\n';
+  html += '          e.target.style.transition = \'opacity 0.5s ease-out \' + (i * 0.07) + \'s, transform 0.5s ease-out \' + (i * 0.07) + \'s\';\n';
+  html += '          e.target.style.opacity = \'1\';\n';
+  html += '          e.target.style.transform = \'translateY(0)\';\n';
+  html += '          obs.unobserve(e.target);\n';
+  html += '        });\n';
+  html += '      }, { threshold: 0.1 });\n';
+  html += '      els.forEach(function (el) { obs.observe(el); });\n';
+  html += '    })();\n';
+  html += '  </scr' + 'ipt>\n';
+  html += '  <script>\n';
+  html += '    // Mobile menu toggle\n';
+  html += '    const toggle = document.getElementById(\'menuToggle\');\n';
+  html += '    const nav = document.getElementById(\'mainNav\');\n';
+  html += '    toggle.addEventListener(\'click\', () => { nav.classList.toggle(\'open\'); document.body.classList.toggle(\'menu-open\', nav.classList.contains(\'open\')); });\n\n';
+  html += '    // Accordion dropdowns on mobile\n';
+  html += '    document.querySelectorAll(\'.has-dropdown > span\').forEach(function(el) {\n';
+  html += '      el.addEventListener(\'click\', function() {\n';
+  html += '        if (window.innerWidth <= 1100) {\n';
+  html += '          el.parentElement.classList.toggle(\'open\');\n';
+  html += '        }\n';
+  html += '      });\n';
+  html += '    });\n';
+  html += '  </scr' + 'ipt>\n\n';
+  html += '  <script src="noticias-data.js"></scr' + 'ipt>\n';
+  html += '  <script src="sidebar-noticias.js"></scr' + 'ipt>\n';
+  html += '  <script src="search-data.js"></scr' + 'ipt>\n';
+  html += '<script src="site-search.js"></scr' + 'ipt>\n';
+  html += '  <script>\n';
+  html += '    // Modo noche\n';
+  html += '    (function() {\n';
+  html += '      var toggle = document.getElementById(\'themeToggle\');\n';
+  html += '      var saved = localStorage.getItem(\'theme\');\n';
+  html += '      if (saved === \'dark\' || (!saved && window.matchMedia(\'(prefers-color-scheme: dark)\').matches)) {\n';
+  html += '        document.documentElement.setAttribute(\'data-theme\', \'dark\');\n';
+  html += '        toggle.innerHTML = \'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>\';\n';
+  html += '      }\n';
+  html += '      toggle.addEventListener(\'click\', function() {\n';
+  html += '        var isDark = document.documentElement.getAttribute(\'data-theme\') === \'dark\';\n';
+  html += '        if (isDark) {\n';
+  html += '          document.documentElement.removeAttribute(\'data-theme\');\n';
+  html += '          localStorage.setItem(\'theme\', \'light\');\n';
+  html += '          toggle.innerHTML = \'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>\';\n';
+  html += '          } else {\n';
+  html += '          document.documentElement.setAttribute(\'data-theme\', \'dark\');\n';
+  html += '          localStorage.setItem(\'theme\', \'dark\');\n';
+  html += '          toggle.innerHTML = \'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>\';\n';
+  html += '        }\n';
+  html += '      });\n';
+  html += '    })();\n';
+  html += '  </scr' + 'ipt>\n';
+  html += '</body>\n</html>\n';
+
+  // ── 2. NOTICIAS-DATA.JS ─────────────────────────────────────────────────
+
+  var allLinks = links.concat(tipo === 'evento' ? evLinks : []);
+  var dataEntry = '  {\n';
+  dataEntry += "    id: " + id + ",\n";
+  dataEntry += "    cat: '" + escJs(cat) + "',\n";
+  dataEntry += "    date: '" + escJs(fechaCorta) + "',\n";
+  dataEntry += "    title: '" + escJs(tituloPlain) + "',\n";
+  dataEntry += "    excerpt: '" + escJs(excerpt) + "',\n";
+  dataEntry += "    img: '" + escJs(imgPath || 'media/fondo-noticias.jpg') + "',\n";
+  dataEntry += "    url: '" + escJs(filename) + "',\n";
+  dataEntry += "    content: [\n";
+  var paraBlocks = contentBlocks.filter(function(b) { return b.type === 'parrafo'; });
+  paraBlocks.forEach(function(b, i) {
+    // Strip HTML tags for data content
+    var plain = b.text.replace(/<[^>]+>/g, '');
+    dataEntry += "      '" + escJs(plain) + "'" + (i < paraBlocks.length - 1 ? ',' : '') + "\n";
+  });
+  dataEntry += "    ],\n";
+  dataEntry += "    links: [\n";
+  allLinks.forEach(function(l, i) {
+    dataEntry += "      { label: '" + escJs(l.label) + "', url: '" + escJs(l.url) + "' }" + (i < allLinks.length - 1 ? ',' : '') + "\n";
+  });
+  dataEntry += "    ]\n";
+  dataEntry += "  },";
+
+  // ── 3. SEARCH-DATA.JS ──────────────────────────────────────────────────
+
+  var searchEntry = '  {\n';
+  searchEntry += '    title: "' + tituloPlain.replace(/"/g, '\\"') + '",\n';
+  searchEntry += '    url: "' + filename + '",\n';
+  searchEntry += '    description: "' + (searchDesc || excerpt).replace(/"/g, '\\"') + '",\n';
+  var autoContent = buildSearchContent(tituloPlain, cat, fechaCorta, excerpt, contentBlocks, links, tipo === 'evento' ? evLinks : []);
+  searchEntry += '    content: "' + autoContent.replace(/"/g, '\\"') + '"\n';
+  searchEntry += '  },';
+
+  // ── MOSTRAR RESULTADOS ────────────────────────────────────────────────
+
+  document.getElementById('outFilename').textContent = filename;
+  document.getElementById('outHtml').value = html;
+  document.getElementById('outData').value = dataEntry;
+  document.getElementById('outSearch').value = searchEntry;
+
+  // Imagen: mostrar paso 4 solo si hay imagen
+  if (imagen) {
+    document.getElementById('outImgName').textContent = imagen;
+    document.getElementById('outImgBlock').style.display = '';
+  } else {
+    document.getElementById('outImgBlock').style.display = 'none';
+  }
+
+  // Si se usó una categoría nueva, añadirla al selector para esta sesión
+  var sel = document.getElementById('fCatSelect');
+  if (sel.value === '__nueva__' && cat) {
+    var opt = document.createElement('option');
+    opt.value = cat;
+    opt.textContent = cat;
+    sel.insertBefore(opt, sel.querySelector('option[value="__nueva__"]'));
+    sel.value = cat;
+    document.getElementById('fCatCustom').style.display = 'none';
+    document.getElementById('fCatCustom').value = '';
+  }
+
+  var outputSection = document.getElementById('outputSection');
+  outputSection.classList.add('visible');
+  outputSection.scrollIntoView({ behavior: 'smooth' });
+
+  // Vista previa en iframe
+  var frame = document.getElementById('previewFrame');
+  var previewDoc = frame.contentDocument || frame.contentWindow.document;
+  previewDoc.open();
+  previewDoc.write(html);
+  previewDoc.close();
+
+  // Guardar html para descarga
+  window._generatedHtml = html;
+  window._generatedFilename = filename;
+}
+
+// ── COPIAR ──────────────────────────────────────────────────────────────────
+
+function copiar(id, btn) {
+  var area = document.getElementById(id);
+  navigator.clipboard.writeText(area.value).then(function() {
+    btn.textContent = 'Copiado';
+    btn.classList.add('copied');
+    setTimeout(function() { btn.textContent = 'Copiar al portapapeles'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// ── DESCARGAR ───────────────────────────────────────────────────────────────
+
+function descargarHtml() {
+  if (!window._generatedHtml) return;
+  var blob = new Blob([window._generatedHtml], { type: 'text/html;charset=utf-8' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = window._generatedFilename;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+</script>
+
+</body>
+</html>

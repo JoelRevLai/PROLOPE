@@ -229,5 +229,12 @@ var SEARCH_INDEX = [
     url: "noticia-alba-carmona-marie-curie-2023.html",
     description: "Alba Carmona recibe una ayuda Marie Skłodowska-Curie para el proyecto EXODUS.",
     content: "Alba Carmona ayuda Marie Skłodowska-Curie proyecto EXODUS University of Leeds. Teatro del Siglo de Oro exilio español republicano 1939-1975."
-  }
+  },
+    {
+    title: "«La francesa Laura», una comedia desconocida de Lope de Vega hallada gracias a la Inteligencia Artificial",
+    url: "noticia-francesa-laura.html",
+    description: "Álvaro Cuéllar y Germán Vega García-Luengos publican «La francesa Laura. El hallazgo de una nueva comedia del Lope de Vega último», que se halla en los fondos de la BNE.",
+    content: "francesa laura comedia desconocida lope vega hallada gracias inteligencia artificial noticias ene 2023 lvaro llar germ garc luengos publican hallazgo nueva ltimo halla fondos bne acaba publicarse nuevo volumen anuario lectores encontrar acostumbrada secci miscel nea nutrido conjunto rese trata entrega recoge diversos art culos humanidades digitales descubrimientos tan importantes atribuci sumando tulo corpus dramaturgo autores noticia sido recogida medios logrado tendencia twiter informaci atribuye obra nima fondo manuscritos biblioteca nacional descubren abc ayuda descubrir diario culo completo alvaro cuellar german garcia ultimo encontraran seccion miscelanea resenas articulos atribucion asi titulo mas informacion anonima pais articulo"
+  },
+  
 ];
