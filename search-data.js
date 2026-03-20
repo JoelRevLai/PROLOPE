@@ -236,5 +236,16 @@ var SEARCH_INDEX = [
     description: "Álvaro Cuéllar y Germán Vega García-Luengos publican «La francesa Laura. El hallazgo de una nueva comedia del Lope de Vega último», que se halla en los fondos de la BNE.",
     content: "francesa laura comedia desconocida lope vega hallada gracias inteligencia artificial noticias ene 2023 lvaro llar germ garc luengos publican hallazgo nueva ltimo halla fondos bne acaba publicarse nuevo volumen anuario lectores encontrar acostumbrada secci miscel nea nutrido conjunto rese trata entrega recoge diversos art culos humanidades digitales descubrimientos tan importantes atribuci sumando tulo corpus dramaturgo autores noticia sido recogida medios logrado tendencia twiter informaci atribuye obra nima fondo manuscritos biblioteca nacional descubren abc ayuda descubrir diario culo completo alvaro cuellar german garcia ultimo encontraran seccion miscelanea resenas articulos atribucion asi titulo mas informacion anonima pais articulo"
   },
-  
+    {
+    title: "Publicado el volumen XXIX (2023) del Anuario Lope de Vega",
+    url: "noticia-xxix-anuario-lope.html",
+    description: "XXIX volumen del «Anuario Lope de Vega»",
+    content: "publicado volumen xxix 2023 anuario lope vega publicaci ene acaba publicarse nuevo lectores encontrar acostumbrada secci miscel nea nutrido conjunto rese trata entrega recoge diversos art culos humanidades digitales descubrimientos tan importantes atribuci comedia francesa laura sumando tulo corpus dramaturgo lvaro llar germ garc luengos hallazgo nueva ltimo mero completo publicacion encontraran seccion miscelanea resenas articulos atribucion asi titulo alvaro cuellar german garcia ultimo numero"
+  },
+    {
+    title: "Conferencia de Álvaro Cuéllar y Germán Vega",
+    url: "noticia-conferencia-cuellar-vega.html",
+    description: "Álvaro Cuéllar y Germán Vega ofrecerán una conferencia sobre «La francesa Laura»",
+    content: "conferencia lvaro llar germ vega feb 2023 ofrecer francesa laura ximo febrero titulada comedia desconocida lope delatada inteligencia artificial mas informaci alvaro cuellar german ofreceran proximo informacion"
+  },
 ];

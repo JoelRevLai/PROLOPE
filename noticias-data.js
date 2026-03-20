@@ -321,5 +321,34 @@ const news = [
       { label: 'Artículo completo', url: 'https://revistes.uab.cat/anuariolopedevega' }
     ]
   },
-  
+    {
+    id: 24,
+    cat: 'Publicación',
+    date: 'Ene. 2023',
+    title: 'Publicado el volumen XXIX (2023) del Anuario Lope de Vega',
+    excerpt: 'Acaba de publicarse un nuevo volumen del Anuario Lope de Vega, en el que los lectores encontrarán la acostumbrada sección de miscelánea y un nutrido conjunto de reseñas.',
+    img: 'media/Anuario-29.jpg',
+    url: 'noticia-xxix-anuario-lope.html',
+    content: [
+      'Se trata de una entrega que recoge diversos artículos sobre Humanidades digitales, con descubrimientos tan importantes como la atribución a Lope de Vega de la comedia La francesa Laura, sumando, así, un título al nutrido corpus del dramaturgo (Álvaro Cuéllar y Germán Vega García-Luengos, «La francesa Laura. El hallazgo de una nueva comedia del Lope de Vega último»).'
+    ],
+    links: [
+      { label: 'Número completo', url: 'https://revistes.uab.cat/anuariolopedevega/issue/view/13' }
+    ]
+  },
+    {
+    id: 25,
+    cat: 'Conferencia',
+    date: '3 feb. 2023',
+    title: 'Conferencia de Álvaro Cuéllar y Germán Vega',
+    excerpt: 'Álvaro Cuéllar y Germán Vega ofrecerán una conferencia sobre «La francesa Laura»',
+    img: 'media/conferencia_francesa-laura.jpg',
+    url: 'noticia-conferencia-cuellar-vega.html',
+    content: [
+      'El próximo 3 de febrero de 2023, a las 11:30 h., Álvaro Cuéllar y Germán Vega ofrecerán una conferencia titulada «La francesa Laura. Una comedia desconocida de Lope de Vega delatada por la Inteligencia Artificial».'
+    ],
+    links: [
+      { label: 'Mas información', url: 'https://prolope.uab.cat/wp-content/uploads/2023/11/FRANCESA_LAURA.pdf' }
+    ]
+  },
 ];
