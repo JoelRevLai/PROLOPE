@@ -464,4 +464,470 @@ const news = [
       { label: 'Unirse al evento', url: 'https://teams.microsoft.com/dl/launcher/launcher.html?url=%2F_%23%2Fl%2Fmeetup-join%2F19%3Ameeting_ZWNhYTA2M2QtYTUxMS00Yzg5LWIzOTItOWIxNDYzMjM5ZjJm%40thread.v2%2F0%3Fcontext%3D%257b%2522Tid%2522%253a%25226b514c29-2391-4831-b774-84f35c45bf01%2522%252c%2522Oid%2522%253a%252234e209f3-e4fb-408e-9d66-7b2cb255538f%2522%257d%26anon%3Dtrue&type=meetup-join&deeplinkId=4da96ae1-85f8-423b-bd2d-b2d8d591dd5c&directDl=true&msLaunch=true&enableMobilePage=true&suppressPrompt=true' }
     ]
   },
+    {
+    id: 34,
+    cat: 'Noticias',
+    date: '3 jun. 2022',
+    title: 'Taller en homenaje a Amalia Iriarte',
+    excerpt: 'Se celebrará el Taller en homenaje a Amalia Iriarte, ‘Monstruos de apariencia llenos’: El teatro de Lope de Vega',
+    img: '../media/AficheTallerLope.jpg',
+    url: 'noticia-taller-homenaje-amalia-iriarte.html',
+    content: [
+      'Del 30 de mayo al 3 de junio de 2022 se celebrará el Taller en homenaje a Amalia Iriarte, ‘Monstruos de apariencia llenos’: El teatro de Lope de Vega, organizado entre los grupos de investigación Es de Lope, de la Universidad de los Andes, y Prolope.',
+      'El encuentro podrá seguirse de forma telématica, previa inscripción'
+    ],
+    links: [
+      { label: 'Programa (PDF)', url: 'medios/AficheTallerLope.pdf' }
+    ]
+  },
+    {
+    id: 35,
+    cat: 'Noticias',
+    date: '4 mar. 2022',
+    title: 'Defensa de tesis doctoral: Celio Hernández',
+    excerpt: 'Defensa de la tesis doctoral de Celio Hernández, «Investigaciones sobre la transmisión, recepción y tradición cultural de La dama boba: del manuscrito autógrafo a la era digital»',
+    img: '../media/hernandez-celio_tesi.jpg',
+    url: 'noticia-defensa-tesis-celio-hernandez.html',
+    content: [
+      'Defensa de tesis doctoral Doctorado: Filología Espanyola Director: Ramón Valdés Gázquez (UAB), Mª Luz Mandigorra Llavata (UV) y Enrique Vidal Ruiz (UPV)',
+      'Fecha: Viernes, 4 de marzo de 2022, 16:00h Lugar: Sala d’Actes (B7/1056) DEFENSA SEMIPRESENCIAL',
+      'Para asistir como público a la videoconferencia, hay que solicitarlo a la dirección de correo postgrau.files@uab.cat antes del día 4 de marzo a las 12h'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 36,
+    cat: 'Publicación',
+    date: '27 ene. 2022',
+    title: 'La «Parte XX» presentada en la Casa Museo Lope de Vega',
+    excerpt: 'El pasado 27 de enero de 2022 se presentó, en la Casa Museo Lope de Vega, la «Parte XX»',
+    img: '../media/presentacion_parte-xx.jpg',
+    url: 'noticia-presentacion-parte-xx.html',
+    content: [
+      'El pasado 27 de enero de 2022 se presentó, en la Casa Museo Lope de Vega, la última entrega de la colección de las Partes de Comedias de Lope de Vega (Prolope-Gredos), la Parte XX. Contó con la presencia de sus coordinadores, Daniel Fernández Rodríguez y Guillermo Gómez Sánchez-Ferrer, y del profesor de la Universidad Autónoma de Madrid, José Enrique López Martínez.',
+      'La Parte XX, aparecida en 1625, supone un hito en la trayectoria editorial de Lope, que a esas alturas llevaba casi un decenio ocupándose de la publicación de sus textos, nada más y nada menos que de 11 volúmenes de comedias. También representa un punto de inflexión en esa trayectoria, pues fue la última Parte publicada antes de la prohibición, vigente entre 1625 y 1635, de otorgar licencias para la impresión de comedias y novelas.',
+      'Para Prolope, después de más de 30 años de trabajo conjunto, implica la asunción de un número redondo y la cercanía de cumplir el objetivo soñado por su fundador, el profesor Alberto Blecua, de publicar la integral dramática de Lope, en esta ocasión de la mano de dos de sus discípulos más jóvenes y brillantes.',
+      'La velada contó, como broche de oro, con la representación de algunos fragmentos escogidos de las piezas de la Parte, de la mano de los actores Rafa Núñez y Marina Sánchez Vílchez, dirigidos por César Barló, de AlmaViva Teatro.',
+      'Desde aquí dejamos constancia de nuestro agradecimiento a todos los que hicieron posible ese acto, a todos los asistentes, y a todos los colaboradores que han mantenido vivo un proyecto que, con esta entrega, suma 223 comedias editadas críticamente.',
+      '«La Parte XX: Historia editorial», Daniel Fernández Rodríguez y Guillermo Gómez Sánchez-Ferrer Preliminares La discreta venganza, ed. Manuel Piqueras y Blanca Santos Lo cierto por lo dudoso, ed. Salomé Vuelta Pobreza no es vileza, ed. Federica Cappelli Arauco domado, ed. José Enrique Laplana La ventura sin buscalla, ed. Daniele Crivellari El valiente Céspedes, ed. Isabel Hernando Morata',
+      'El hombre, por su palabra, ed. Santiago Restrepo Roma, abrasada, ed. Victoriano Roncero López Virtud, pobreza y mujer, ed. Daniel Fernández Rodríguez El rey sin reino, ed. Francesca leonetti y Oana Andreia Sambrian El mejor mozo de España, ed. Guillermo Gómez-Sánchez-Ferrer El marido más firme, ed. Clara Monzó Ribes'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 37,
+    cat: 'Publicación',
+    date: 'Ene. 2022',
+    title: 'Publicado el número XXVIII (2022) del «Anuario Lope de Vega»',
+    excerpt: 'Acaba de publicarse el número XXVIII (2022) del «Anuario Lope de Vega»',
+    img: '../media/anuari.jpg',
+    url: 'noticia-publicacion-xxviii-anuario.html',
+    content: [
+      'Acaba de publicarse un nuevo número del Anuario Lope de Vega, que acoge dos monográficos: «La hibridación genérica en el teatro de Lope de Vega», coordinado por Marcella Trambaioli, y «Hacia la edición de la Parte XXI y póstumas de Lope», coordinado por Ramón Valdés.',
+      'En esta entrega nuestros lectores encontrarán, además, la acostumbrada sección de miscelánea y un nutrido conjunto de reseñas.'
+    ],
+    links: [
+      { label: 'Número completo', url: 'https://revistes.uab.cat/anuariolopedevega/issue/view/v28' }
+    ]
+  },
+    {
+    id: 38,
+    cat: 'Publicación',
+    date: '27 ene. 2022',
+    title: 'Presentación de la Parte XX de las Comedias de Lope de Vega',
+    excerpt: 'Presentación de la Parte XX de las Comedias de Lope, recién publicadas por la editorial Gredos en colaboración con el grupo de investigación Prolope.',
+    img: '../media/presentacion-comedias-parte-xx.jpg',
+    url: 'noticia-presentacion-parte-xx-casa-museo.html',
+    content: [
+      'El jueves 27 de enero se realizará, en la Casa-Museo Lope de Vega, la presentación de la Parte XX de las Comedias de Lope, recién publicadas por la editorial Gredos en colaboración con el grupo de investigación Prolope.',
+      'El acto contará con la presencia de los coordinadores, Daniel Fernández y Guillermo Gómez Sánchez-Ferrer, y del profesor José Enrique López Martínez.'
+    ],
+    links: [
+      { label: 'Más información', url: 'https://casamuseolopedevega.org/es/actividades/colaboraciones-y-proyectos/610-presentacion-de-la-parte-veinte-de-las-comedias-de-lope' }
+    ]
+  },
+    {
+    id: 39,
+    cat: 'Noticias',
+    date: '8 oct. 2021',
+    title: 'Alba Carmona habla del teatro clásico en «El País»',
+    excerpt: 'Recomendamos el artículo que Alba Carmona publica hoy en «El País»',
+    img: '../media/Alba-Carmona-ElPais.jpg',
+    url: 'noticia-alba-carmona-el-pais.html',
+    content: [
+      'Recomendamos el artículo que Alba Carmona publica hoy, 8 de octubre de 2021, en El País sobre la visión actual del teatro clásico: «El brío del viejo teatro».'
+    ],
+    links: [
+      { label: 'Enlace al artículo', url: 'https://elpais.com/opinion/2021-10-08/el-brio-del-viejo-teatro.html' },
+      { label: 'Artículo (PDF)', url: 'media/El_brio_del_viejo_teatro_Opinion_EL_PAIS.pdf' }
+    ]
+  },
+    {
+    id: 40,
+    cat: 'Noticias',
+    date: '15 sep. 2021',
+    title: 'Mesa redonda: «De un espectáculo de masas a otro: el teatro moderno y el cine»',
+    excerpt: 'El próximo miércoles, 15 de septiembre de 2021, a las 18:30 h., celebraremos virtualmente una mesa redonda en la Casa Museo Lope de Vega',
+    img: '../media/Mesa-redonda-espectuaculo-masas.jpg',
+    url: 'noticia-mesa-redonda-espectaculo-masas.html',
+    content: [
+      'El próximo miércoles, 15 de septiembre de 2021, a las 18:30 h., celebraremos virtualmente una mesa redonda en la Casa Museo Lope de Vega, enmarcada en el conjunto de actividades que se derivan de la exposición «Unos clásicos… ¡de cine!», y lleva por título: «De un espectáculo de masas a otro: el teatro moderno y el cine».',
+      'Alba Carmona y Guillermo Gómez (comisarios de la exposición) Duncan Wheeler (University of Leeds) José Antonio Pérez Bowie (Universidad de Salamanca) José Luis Sánchez Noriega (Universidad Complutense de Madrid).'
+    ],
+    links: [
+      { label: 'Más información', url: 'https://casamuseolopedevega.org/es/actividades/colaboraciones-y-proyectos/603-mesa-redonda-de-un-espectaculo-de-masas-a-otro' }
+    ]
+  },
+    {
+    id: 41,
+    cat: 'Publicación',
+    date: 'Jul. 2021',
+    title: 'Anuario Lope de Vega: Q1 en Scimago y REDIB',
+    excerpt: 'En la edición de 2020, el Anuario Lope de Vega ha sido evaluado e incluido en el cuartil 1 (Q1) en las listas de Scimago Journal & Country Rank (SJR) y Red Iberoamericana de Innovación y Conocimiento Científico (REDIB).',
+    img: '../media/anuari.jpg',
+    url: 'noticia-anuario-q1.html',
+    content: [
+      'En la edición de 2020, el Anuario Lope de Vega ha sido evaluado e incluido en el cuartil 1 (Q1) en las listas de Scimago Journal & Country Rank (SJR) y Red Iberoamericana de Innovación y Conocimiento Científico (REDIB).',
+      'Agradecemos a todos los que han trabajado y trabajan cada día para que el nivel de excelencia de nuestra revista la haga merecedora de tales reconocimientos.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 42,
+    cat: 'Noticias',
+    date: '7 jul. 2021',
+    title: 'Sònia Boadas premiada por la HDH',
+    excerpt: 'Se ha hecho pública la resolución de la II Edición de los Premios HDH (Humanidades Digitales Hispánicas)',
+    img: '../media/premios-hdh-2021.jpg',
+    url: 'noticia-sonia-boadas-premaida.html',
+    content: [
+      'Hoy, 7 de julio de 2021, se ha hecho pública la resolución de la II Edición de los Premios HDH (Humanidades Digitales Hispánicas). El artículo de Sònia Boadas, «Técnicas e instrumentos para el estudio de los manuscritos autógrafos de Lope de Vega», que se publicó en la revista Hipogrifo (VIII.2, de 2020), ha sido galardonado como el mejor artículo científico publicado en 2020.',
+      'Agradecemos el reconocimiento a la HDH y felicitamos a la autora, al tiempo que la animamos a seguir trabajando en esta línea que revierte en un mejor conocimiento de la obra de Lope de Vega.'
+    ],
+    links: [
+      { label: 'Resolución', url: 'https://humanidadesdigitaleshispanicas.es/resolucion-de-la-ii-edicion-de-los-premios-hdh-2/' }
+    ]
+  },
+    {
+    id: 43,
+    cat: 'Noticias',
+    date: 'Jun. 2021',
+    title: 'La prensa se hace eco de los avances en el estudio de los autógrafos de Lope',
+    excerpt: 'Dos noticias recientes, aparecidas en ABC y ElDiario.es, se hacen eco de los interesantes descubrimientos de nuestra investigadora Sònia Boadas',
+    img: '../media/Estudio-de-los-autografos-de-Lope.jpg',
+    url: 'noticia-prensa-eco-avances-lope.html',
+    content: [
+      'Dos noticias recientes, aparecidas en ABC y ElDiario.es, se hacen eco de los interesantes descubrimientos de nuestra investigadora Sònia Boadas, quien está aplicando las nuevas tecnologías al estudio de los manuscritos autógrafos de Lope de Vega.',
+      'Pueden leerse en los siguientes enlaces:'
+    ],
+    links: [
+      { label: 'Noticia ABC', url: 'https://www.abc.es/cultura/teatros/abci-superordenador-para-descifrar-lope-vega-y-rayos-para-delatar-censor-202106210036_noticia.html' },
+      { label: 'Noticia ElDiario.es', url: 'https://www.eldiario.es/cultura/libros/lope-vega-secretos-autores-siglo-oro-tecnologia-reconstruye-historia-literatura_1_8051490.html' }
+    ]
+  },
+    {
+    id: 44,
+    cat: 'Exposición',
+    date: 'Sep. 2021',
+    title: 'Noticias sobre la exposición «Unos clásicos… ¡de cine!»',
+    excerpt: 'Nos complace compartir dos enlaces de noticias que se hacen eco de la exposición «Unos clásicos… ¡de cine! El teatro del Siglo de Oro en el lienzo de plata (1914-1975)»',
+    img: '../media/unos-clasicos-de-cine.jpg',
+    url: 'noticia-noticias-exposicion-clasicos-cine.html',
+    content: [
+      'Nos complace compartir dos enlaces de noticias que se hacen eco de la exposición «Unos clásicos… ¡de cine! El teatro del Siglo de Oro en el lienzo de plata (1914-1975)», comisariada por Alba Carmona y Guillermo Gómez, investigadores del Grupo PROLOPE.',
+      'Puede visitarse en la Casa Museo de Lope de Vega en Madrid hasta el 26 de septiembre.'
+    ],
+    links: [
+      { label: 'Noticia 1', url: 'https://www.youtube.com/watch?v=kR2q_7HOklk' },
+      { label: 'Noticia 2', url: 'https://www.europapress.tv/cultura/580359/1/casa-museo-lope-vega-acoge-exposicion-clasicos-cine' }
+    ]
+  },
+    {
+    id: 45,
+    cat: 'Seminario',
+    date: '21 jun. 2021',
+    title: 'Seminario Internacional «Hacia la edición de la Parte XXI y póstumas de Lope»',
+    excerpt: 'El próximo 21 de junio se celebrará en formato digital el Seminario Internacional «Hacia la edición de la Parte XXI y póstumas de Lope»',
+    img: '../media/Seminario-Internaciona-2021.jpg',
+    url: 'noticia-seminario-edicion-parte-xxi.html',
+    content: [
+      'El próximo 21 de junio se celebrará en formato digital el Seminario Internacional «Hacia la edición de la Parte XXI y póstumas de Lope», que se organizará según el siguiente programa.',
+      'La asistencia es abierta y gratuita y puede realizarse a través del siguiente enlace.'
+    ],
+    links: [
+      { label: 'Programa (PDF)', url: 'medios/Seminario_21_junio_programa_maquetado_para_publicitar.PDF' }
+    ]
+  },
+    {
+    id: 46,
+    cat: 'Exposición',
+    date: 'Del 28 may. hasta el 26 sep. 2021',
+    title: 'Exposición «Unos clásicos… ¡de cine! El teatro del Siglo de Oro en el lienzo de plata (1914-1975)»',
+    excerpt: 'Desde el pasado 28 de mayo y hasta el 26 de septiembre, puede visitarse en la casa Museo Lope de Vega de Madrid la exposición «Unos clásicos… ¡de cine! El teatro del Siglo de Oro en el lienzo de plata (1914-1975)»',
+    img: '../media/exposicion-unos-clasicos-de-cine.JPG',
+    url: 'noticia-exposicion-clasicos-cine.html',
+    content: [
+      'Se centra en las adaptaciones del teatro barroco al cine durante buena parte del siglo XX. En ella se puede realizar un viaje por el séptimo arte y su evolución, a través de las propuestas de traslación a la gran pantalla de las obras dramáticas de Lope de Vega, Calderón de la Barca y Tirso de Molina. En este recorrido de más de medio siglo descubrimos cómo se han aproximado los cineastas a los clásicos barrocos y cómo, en muchos casos, su lectura de dichas obras es bien distinta de la intención original de sus autores.',
+      'El camino va desde los comienzos del cine mudo, con El alcalde de Zalamea de Adrià Gual, la primera adaptación de una comedia nueva, hasta los años del tardo-franquismo, con El mejor alcalde, el rey de Rafael Gil.',
+      'Sin embargo, su área de exploración no se limita a las producciones nacionales y aborda igualmente la recepción fílmica de la comedia del Siglo de Oro en otros contextos como la República de Weimar, el Tercer Reich, la Rusia soviética, Italia o el exilio republicano español.',
+      'La muestra presenta una selección de proyecciones, carteles, dibujos, fotos fijas, guiones, proyectos de adaptación, expedientes de censura y folletos promocionales, algunos nunca antes expuestos, y cuenta con fondos procedentes de archivos, museos e instituciones culturales nacionales y también internacionales como Deutsche Kinemathek de Berlín, la Friedrich Wilhelm Murnau Foundation de Wiesbaden o el Museo Nacional Centro de Arte Reina Sofía, entre otras muchas.'
+    ],
+    links: [
+      { label: 'Más información', url: 'https://casamuseolopedevega.org/es/actividades/colaboraciones-y-proyectos/583-exposicion-cine-2021' }
+    ]
+  },
+    {
+    id: 47,
+    cat: 'Conferencia',
+    date: '7 may. 2021',
+    title: 'Conferencia de Alba Carmona, ¿Cifras y letras? El Análisis de Redes Sociales en las Humanidades Digitales',
+    excerpt: 'El próximo 7 de mayo, a las 16:00 horas, Alba Carmona impartirá la conferencia «¿Cifras y letras? El Análisis de Redes Sociales en las Humanidades Digitales»',
+    img: '../media/cifras-letras.jpg',
+    url: 'noticia-confereincia-cifras-letras.html',
+    content: [
+      'En ella se abordarán temas como el Análisis de Redes Sociales en las Humanidades Digitales, de gran utilidad para analizar cuestiones como la evolución de las relaciones sociales en el espacio y en el tiempo, o la circulación de ideas/objetos culturales, aplicable por ejemplo en el estudio de correspondencias privadas, en la sociología de la literatura o en los estudios biográficos.',
+      'Especial atención merecerá el proyecto Gabriel García Márquez in Barcelona: An Analysis of His Intellectual Network, que pretende reconstruir a partir de la correspondencia del autor colombiano la red intelectual que tejió en sus años barceloneses, así como detectar las ideas y saberes que circularon a través de esta red epistolar.',
+      'También se hablará de la aplicación del Análisis de Redes Sociales en el estudio de las interacciones entre los personajes de El mayordomo de la duquesa de Amalfi y de El perro del hortelano, que ha permitido iluminar la acusada similitud de las redes subyacentes en ambas piezas.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 48,
+    cat: 'Noticias',
+    date: '15 abr. 2021',
+    title: 'Evento destacado: En busca del autógrafo perdido',
+    excerpt: 'El próximo jueves, 15 de abril, a las 18:00 horas, se llevará a cabo la presentación de la edición de Daniele Crivellari de la obra de Lope de Vega Barlaán y Josafat.',
+    img: '../media/Barlaan-y-Josafat.jpg',
+    url: 'noticia-noticia-en-busca-autografo.html',
+    content: [
+      'El próximo jueves, 15 de abril, a las 18:00 horas, se llevará a cabo la presentación de la edición de Daniele Crivellari de la obra de Lope de Vega Barlaán y Josafat. El acto, coorganizado por Cátedra, la Casa Museo Lope de Vega y Prolope, contará con las intervenciones de Javier Huerta Calvo, Marco Presotto y el propio editor.',
+      'Esta edición crítica tiene en cuenta el manuscrito autógrafo de la obra, recuperado por el editor, lo cual, aparte su incalculable valor textual, permite comprender mejor el proceso de composición de Lope y posibilita un examen pormenorizado del reparto de actores que representó la obra.'
+    ],
+    links: [
+      { label: 'Programa (PDF)', url: 'media/CA00417301_josafat_11.pdf' }
+    ]
+  },
+    {
+    id: 49,
+    cat: 'Noticias',
+    date: '26 mar. 2021',
+    title: 'Alba Carmona participa en «Historia de nuestro cine»',
+    excerpt: 'La investigadora de Prolope Alba Carmona participó el pasado viernes en el programa «Historia de nuestro cine»',
+    img: '../media/Alba-Carmona-en-la-2.jpg',
+    url: 'noticia-historia-de-nuestro-cine.html',
+    content: [
+      'La investigadora de Prolope Alba Carmona participó el pasado viernes en el programa «Historia de nuestro cine», de La 2, dedicado al Día mundial del teatro, en el que pudieron verse «El perro del hortelano» y «La venganza de don Mendo».'
+    ],
+    links: [
+      { label: 'Enlace al coloquio', url: 'https://www.rtve.es/play/videos/historia-de-nuestro-cine/coloquio-dia-del-teatro/5828731/' }
+    ]
+  },
+    {
+    id: 50,
+    cat: 'Noticias',
+    date: 'Mar. 2021',
+    title: 'Reconocimiento al proyecto TheaTheor de Sònia Boadas',
+    excerpt: 'El proyecto TheaTheor. Theorising the Production of Comedia Nueva: the Process of the Play Configuration in the Spanish Golden Age Theatre (MSCA-IF 794064), dirigido por Sònia Boadas y coordinado por el profesor Marco Presotto en la Alma Mater Studiorum-Università di Bologna, ve reconocidos sus resultados en la web CORDIS de la Comisión Europea.',
+    img: '../media/Estudio-de-los-autografos-de-Lope.jpg',
+    url: 'noticia-reconocimiento-theatheor.html',
+    content: [
+      'El proyecto TheaTheor. Theorising the Production of Comedia Nueva: the Process of the Play Configuration in the Spanish Golden Age Theatre (MSCA-IF 794064), dirigido por Sònia Boadas y coordinado por el profesor Marco Presotto en la Alma Mater Studiorum-Università di Bologna, ve reconocidos sus resultados en la web CORDIS de la Comisión Europea.',
+      'Enhorabuena por tan buen trabajo y por hacer visible la investigación en Humanidades.'
+    ],
+    links: [
+      { label: 'Enlace a la noticia', url: 'https://cordis.europa.eu/article/id/429393-how-16th-and-17th-century-spanish-plays-contributed-to-europe-s-early-arts-scene?WT.mc_id=exp' }
+    ]
+  },
+    {
+    id: 51,
+    cat: 'Conferencia',
+    date: '19 mar. 2021',
+    title: 'Conferencia de Sònia Boadas: Humanidades digitales',
+    excerpt: 'El próximo viernes, 19 de marzo, a las 16:00 horas, Sònia Boadas impartirá una conferencia',
+    img: '../media/sonia-boadas-humanidades-digitales.jpg',
+    url: 'noticia-conferencia-sonia-boadas-humanidades-digitales.html',
+    content: [
+      'El próximo viernes, 19 de marzo, a las 16:00 horas, Sònia Boadas impartirá una conferencia sobre «Análisis de manuscritos teatrales áureos con fotografía espectral y espectroscopía de Rayos X», en el marco del Máster de Humanidades y Patrimonio Digitales de la UAB.',
+      'En muchas ocasiones, el análisis paleográfico y codicológico de manuscritos teatrales áureos no permite ofrecer respuestas concluyentes a cuestiones sobre la composición y transmisión de la obra o sobre la intervención de terceras personas en la configuración del texto. En esta conferencia se presentarán algunos instrumentos relacionados con la fotografía y la espectroscopía que pueden ayudar al investigador y al filólogo a resolver esas y otras cuestiones. La aplicación de estas técnicas a determinados manuscritos autógrafos ha permitido, por ejemplo, leer debajo de fragmentos tachados o identificar la composición química de las tintas empleadas.'
+    ],
+    links: [
+      { label: 'Cartel (PDF)', url: 'media/Cartel-conferencia-Sonia-Boadas.pdf' }
+    ]
+  },
+     {
+    id: 52,
+    cat: 'Seminario',
+    date: '5 mar. 2021',
+    title: 'Seminario Internacional «Mudanzas: Interpretar el movimiento en España (XVI-XVII)»',
+    excerpt: 'Nuestra investigadora Florence D’Artois presenta, el próximo 5 de marzo, a las 13 h., en el marco del Seminario Internacional «Mudanzas: Interpretar el movimiento en España (XVI-XVII)», que ella organiza, la conferencia de Álvaro Torrente «À la recherche du bal perdu».',
+    img: '../media/mudanzas-marzo-2021.jpg',
+    url: 'noticia-seminario-mudanzas.html',
+    content: [
+      'Nuestra investigadora Florence D’Artois presenta, el próximo 5 de marzo, a las 13 h., en el marco del Seminario Internacional «Mudanzas: Interpretar el movimiento en España (XVI-XVII)», que ella organiza, la conferencia de Álvaro Torrente «À la recherche du bal perdu».'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 53,
+    cat: 'Publicación',
+    date: 'Feb. 2021',
+    title: 'Novedad editorial: “Que todo lo feo es malo / y bueno todo lo hermoso”. Aproximaciones a la estética de lo feo en Lope de Vega',
+    excerpt: 'Damos cuenta de la publicación del libro «Que todo lo feo es malo / y bueno todo lo hermoso». Aproximaciones a la estética de lo feo en Lope de Vega, editado por Guillermo Gómez Sánchez-Ferrer y Claudia Jacobi (LIT Verlag, Münster, 2020)',
+    img: '../media/Aproximaciones-a-la-estetica-de-lo-feo.jpg',
+    url: 'noticia-novedad-editorial-todo-feo-malo.html',
+    content: [
+      'Damos cuenta de la publicación del libro «Que todo lo feo es malo / y bueno todo lo hermoso». Aproximaciones a la estética de lo feo en Lope de Vega, editado por Guillermo Gómez Sánchez-Ferrer y Claudia Jacobi (LIT Verlag, Münster, 2020), que recoge los trabajos de Marcella Trambaioli, Felipe B. Pedraza Jiménez, Ursula Hennigfeld, Folke Gernert, Claudi Jacobi, Timo Kehren y Karin Peters.',
+      'La estética feísta no suele relacionarse con la literatura dramática no burlesca. La comedia de Lope de Vega sigue considerándose en muchos estudios como un oasis en el que la fealdad y la realidad más mundana desaparecen en pos de una idealización impregnada por el éxito del amor, los escenarios palaciegos o el carácter festivo. Sin embargo, la poética teatral de Lope de Vega contempla también la presencia de otros universos sociales, como el de los bandoleros, los rústicos, los corsarios, los gitanos, las alcahuetas, las busconas, sin rehuir las representaciones de violencia y de sexualidad grotesca. El presente volumen se enfrenta a la necesidad de repensar la obra lopesca en función de los elementos propios de la estética de lo feo.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 54,
+    cat: 'Noticias',
+    date: '28 ene. 2021',
+    title: 'Seguimos recordando a Alberto Blecua',
+    excerpt: 'Después de haberse cumplido el pasado 28 de enero un año del fallecimiento de Alberto Blecua, queremos recordarlo recuperando la charla que mantuvo con Iñaki Gabilondo, en la sede de RBA en Barcelona, en octubre de 2012.',
+    img: '../media/Blecua-Gabilondo.jpg',
+    url: 'noticia-recordamos-alberto-blecua.html',
+    content: [
+      'Después de haberse cumplido el pasado 28 de enero un año del fallecimiento de Alberto Blecua, queremos recordarlo recuperando la charla que mantuvo con Iñaki Gabilondo, en la sede de RBA en Barcelona, en octubre de 2012.'
+    ],
+    links: [
+      { label: 'Transcripción de la entrevista', url: 'Entrevista_Alberto_Blecua_febrero_2021.pdf' }
+    ]
+  },
+    {
+    id: 55,
+    cat: 'Congreso',
+    date: 'Feb. 2021',
+    title: 'X Congreso Internacional Lope de Vega. Primera circular',
+    excerpt: 'Nos complace anunciar la convocatoria del X Congreso Internacional Lope de Vega. «Editar a Lope, 30 años después», que se celebrará en Barcelona los días 24, 25 y 26 de noviembre de 2021.',
+    img: '../media/X-Congreso.jpg',
+    url: 'noticia-primera-circular-x-congreso.html',
+    content: [
+      'Nos complace anunciar la convocatoria del X Congreso Internacional Lope de Vega. «Editar a Lope, 30 años después», que se celebrará en Barcelona los días 24, 25 y 26 de noviembre de 2021.'
+    ],
+    links: [
+      { label: 'Primera circular', url: 'media/Circular_X_Congreso_PROLOPE.pdf' }
+    ]
+  },
+    {
+    id: 56,
+    cat: 'Publicación',
+    date: '2021',
+    title: 'Novedad editorial: La edición del diálogo teatral (siglos XVI-XVII)',
+    excerpt: 'Anunciamos la aparición del volumen La edición del diálogo teatral (siglos XVI-XVII), coordinado por Luigi Giuliani y Victoria Pineda y publicado por la Università degli Studi di Firenze.',
+    img: '../media/edicion-dialogo-teatral.jpg',
+    url: 'noticia-novedad-editorial-edicion-dialogo.html',
+    content: [
+      'La conciencia de la complejidad del texto dramático ha guiado la programación de las ediciones XIV, XV y XVI de los Talleres Internacionales de Estudios Textuales celebradas en la Università degli Studi di Perugia. Los Talleres, fundados y dirigidos desde 2004 por Luigi Giuliani y Victoria Pineda, siempre han querido ser un lugar de encuentro interdisciplinar que superara las tradicionales divisiones entre las distintas filologías para ocuparse de teorías, metodologías y prácticas ecdóticas aplicadas a textos de distintas épocas, géneros y autores, escritos en distintos idiomas, compuestos y transmitidos a través de diferentes canales, desde la copia manuscrita a la imprenta manual, a la litografía, hasta las actuales tecnologías digitales. La última edición se ha centrado en el diálogo teatral en los textos del Siglo de Oro, tanto en su fase de creación por parte del dramaturgo, como en las modificaciones que sufrió por su paso por las tablas, en el Siglo de Oro como en las puestas en escenas actuales, y a las implicaciones que todo ello conlleva para el crítico textual.'
+    ],
+    links: [
+      { label: 'Volumen completo', url: 'https://books.fupress.com/catalogue/la-edicion-del-dialogo-teatral-(siglos-xvi-xvii)/4412' }
+    ]
+  },
+    {
+    id: 57,
+    cat: 'Publicación',
+    date: 'Ene. 2021',
+    title: 'Publicado el número XXVII (2021) del «Anuario Lope de Vega»',
+    excerpt: 'Cuando se cumple un año del fallecimiento de nuestro maestro Alberto Blecua, damos la noticia de la publicación de un nuevo número del Anuario Lope de Vega, revista que él mismo ideó y fundó.',
+    img: '../media/anuario-inici.jpg',
+    url: 'noticia-volumen-xxvii-anuario.html',
+    content: [
+      'Cuando se cumple un año del fallecimiento de nuestro maestro Alberto Blecua, damos la noticia de la publicación de un nuevo número del Anuario Lope de Vega, revista que él mismo ideó y fundó.',
+      'En esta entrega nuestros lectores encontrarán, además de la acostumbrada sección miscelánea y un nutrido conjunto de reseñas, el monográfico titulado «Los primeros años del teatro comercial en España y el primer Lope (1560-1598)», coordinado por el que fue su último doctorando, Daniel Fernández Rodríguez, ejemplo claro de que su sabiduría ha calado y pervive en las nuevas generaciones.'
+    ],
+    links: [
+      { label: 'Volumen completo', url: 'https://revistes.uab.cat/anuariolopedevega/issue/view/v27' }
+    ]
+  },
+    {
+    id: 58,
+    cat: 'Seminario',
+    date: '15 ene. 2021',
+    title: 'Seminario Internacional «Mudanzas: Interpretar el movimiento en España (XVI-XVII)»',
+    excerpt: 'Nuestra investigadora Florence D’Artois presenta, el próximo 15 de enero, a las 14 h., en el marco del Seminario Internacional «Mudanzas: Interpretar el movimiento en España (XVI-XVII)», que ella organiza, la conferencia de Ana Yepes y Anna Romaní «La danza del Siglo de oro español vs otros estilos europeos».',
+    img: '../media/mudanzas-enero-2021.jpg',
+    url: 'noticia-seminario-mudanzas-danza.html',
+    content: [
+      'Nuestra investigadora Florence D’Artois presenta, el próximo 15 de enero, a las 14 h., en el marco del Seminario Internacional «Mudanzas: Interpretar el movimiento en España (XVI-XVII)», que ella organiza, la conferencia de Ana Yepes y Anna Romaní «La danza del Siglo de oro español vs otros estilos europeos».'
+    ],
+    links: [
+      { label: 'Cartel', url: 'media/AfficheMudanza_0121.pdf' }
+    ]
+  },
+    {
+    id: 59,
+    cat: 'Publicación',
+    date: 'Ene. 2021',
+    title: 'Novedad editorial: «El punto y la voz». La puntuación del texto teatral (siglos XVI-XVIII)',
+    excerpt: 'Anunciamos la aparición del volumen »El punto y la voz». La puntuación del texto teatral (siglos XVI-XVIII), coordinado por Luigi Giuliani y Victoria Pineda y publicado por la Università di Pisa.',
+    img: '../media/El-punto-y-la-voz.jpg',
+    url: 'noticia-novedad-editorial-punto-voz.html',
+    content: [
+      'Anunciamos la aparición del volumen «El punto y la voz». La puntuación del texto teatral (siglos XVI-XVIII), coordinado por Luigi Giuliani y Victoria Pineda y publicado por la Università di Pisa.',
+      'En los versos de una comedia o de una tragedia, la puntuación constituye no solo el armazón de la sintaxis del texto dialogado, sino también las señas interpretativas de los parlamentos, las pausas, la entonación que indican al actor los matices que debe aplicar a su recitado y las pautas de ejecución de la métrica. Y, sin embargo, el trabajo de edición e investigación del teatro del Siglo de Oro raras veces se ha detenido a considerar las implicaciones ecdóticas y performativas de los signos paragrafemáticos. Este volumen recoge los trabajos del XVI Taller Internacional de Estudios Textuales celebrado en la Università di Perugia en 2019, en que se abordó el tema desde múltiples perspectivas. Las indagaciones sobre los manuscritos y los impresos de la comedia española se acompañan con estudios sobre la puntuación de los textos de otras tradiciones teatrales – inglesa, francesa, italiana – de los siglos XVI al XVIII, para esbozar una línea de investigación que en España está aún en ciernes.'
+    ],
+    links: [
+      { label: 'Acceso abierto a la publicación', url: 'https://www.pisauniversitypress.it/scheda-libro/autori-vari/el-punto-y-la-voz-9788833394343-575786.html' }
+    ]
+  },
+    {
+    id: 60,
+    cat: 'Seminario',
+    date: '25 nov. 2020',
+    title: 'Seminario Internacional “La Parte XX de comedias de Lope de Vega»',
+    excerpt: 'El próximo 25 de noviembre se celebrará el Seminario Internacional «La parte XX de comedias de Lope de Vega», organizado por la profesora Salomé Vuelta, en la Università degli Studi di Firenze.',
+    img: '../media/Seminario-Parte-XX.jpg',
+    url: 'noticia-seminario-internacional-parte-xx.html',
+    content: [
+      'El próximo 25 de noviembre se celebrará el Seminario Internacional «La parte XX de comedias de Lope de Vega», organizado por la profesora Salomé Vuelta, en la Università degli Studi di Firenze. El evento se retransmitió en directo.'
+    ],
+    links: [
+      { label: 'Programa (PDF)', url: 'media/depliant_ParteXX.pdf' }
+    ]
+  },
+    {
+    id: 61,
+    cat: 'Beca',
+    date: 'Nov. 2020',
+    title: 'Becas predoctorales en Prolope',
+    excerpt: 'El grupo PROLOPE está en disposición de apoyar candidaturas para las becas predoctorales recién convocadas, FPU e Inphinit Retaining-La Caixa, para los alumnos que deseen realizar una tesis sobre Lope de Vega o el teatro del Siglo de Oro',
+    img: '../media/Becas-Prolope.jpg',
+    url: 'noticia-becas-predoctorales-prolope.html',
+    content: [
+      'El grupo PROLOPE está en disposición de apoyar candidaturas para las becas predoctorales recién convocadas, FPU e Inphinit Retaining-La Caixa, para los alumnos que deseen realizar una tesis sobre Lope de Vega o el teatro del Siglo de Oro, ya sea desde una perspectiva más tradicional, de crítica textual e historia de la Literatura, como desde enfoques más transversales, de crítica literaria, recepción, Humanidades digitales, etc.',
+      'Al tratarse de concursos muy competititvos, el requisito mínimo de los candidatos debe ser una nota media de expediente de 9 o superior.',
+      'El resto de requisitos se hallan en los siguientes enlaces. Se ruega a los candidatos la lectura atenta de la normativa completa y la verificación de que cumplen con todos los puntos requeridos.',
+      'Plazos de solicitud: del 16 de noviembre de 2020 al 11 de diciembre  Requisitos principales:     1. Estar matriculado en un programa de doctorado de la UAB en el presente curso o tener la titulación requerida para poder matricularse en un programa de doctorado de la UAB en el curso 2021-2022.   2. Haber conseguido esa titulación en los años establecidos en la convoatoria.   3. Disponer de DNI o NIE en vigor.   Léase con atención la convocatoria completa, por favor.',
+      'Plazos de solicitud: del 10 de noviembre de 2020 al 25 de febrero de 2021  Requisitos principales:    1. Experiencia: En la fecha de cierre de la convocatoria los candidatos deben estar en los primeros cuatro años (experiencia de investigación equivalente a tiempo completo) de su carrera investigadora y no haber obtenido un título de doctorado con anterioridad o estar en condiciones de solicitarlo.   2. Expediente académico: En el momento de la contratación, los candidatos deben cumplir con una de las siguientes opciones: – Haber finalizado los estudios que conducen a la obtención de un título universitario oficial español (o de otro país del Espacio Europeo de Educación Superior) de 300 créditos, de los cuales al menos 60 créditos deben corresponder a un nivel de máster. – Haber completado un grado en una universidad no adaptada al Espacio Europeo de Educación Superior que dé acceso a los estudios de doctorado. La verificación del nivel de estudios equivalente a los anteriormente mencionados será realizada por la universidad cuando se inicie el procedimiento de admisión.   3. Movilidad: Para candidatos que desean hacer el doctorado en centros o universidades españolas: los candidatos deben haber residido o haber llevado a cabo su actividad principal (trabajo, estudios, etc.) en España durante más de doce meses en los tres años inmediatamente anteriores a la fecha de cierre de la convocatoria. Los candidatos que obtengan una beca deberán cursar el doctorado en una universidad o centro de investigación donde no hayan cursado anteriormente estudios de grado o licenciatura.   4. Nivel de inglés: Los candidatos deben tener un nivel demostrable de inglés (B2 o superior).  Léase con atención la convocatoria completa, por favor.  CONTACTO: prolope@uab.cat'
+    ],
+    links: [
+      { label: 'Contratos FPU', url: 'http://www.educacionyfp.gob.es/servicios-al-ciudadano/catalogo/general/99/998758/ficha/998758-2020.html' },
+      { label: 'Becas Inphinit Retaining-La Caixa', url: 'https://fundacionlacaixa.org/ca/beques-la-caixa-doctorat-inphinit-retaining' }
+    ]
+  },
+    {
+    id: 62,
+    cat: 'Noticias',
+    date: '18 nov. 2020',
+    title: 'Presentación de la Parte XIX de las Comedias de Lope de Vega',
+    excerpt: 'El próximo 18 de noviembre (17:10 h) se llevará a cabo la presentación virtual de la Parte XIX de las Comedias de Lope de Vega, dentro del marco del Seminario Internacional «Editar a Lope de Vega en el siglo XXI: la Parte XIX de Comedias», coordinado por Alejandro García Reidy.',
+    img: '../media/Seminario-Parte-XIX.jpg',
+    url: 'noticia-presentacion-parte-xix.html',
+    content: [
+      'El próximo 18 de noviembre (17:10 h) se llevará a cabo la presentación virtual de la Parte XIX de las Comedias de Lope de Vega, dentro del marco del Seminario Internacional «Editar a Lope de Vega en el siglo XXI: la Parte XIX de Comedias», coordinado por Alejandro García Reidy.',
+      'La presentación estará a cargo de Laura Fernández (Universitat Autònoma de Barcelona), Alejandro García Reidy (Universidad de Salamanca), Fernando Plata (Colgate University) y Gonzalo Pontón (Universitat Autònoma de Barcelona). El evento podrá seguirse en streaming.',
+      'Se puso a disposición de los asistentes los enlaces a la lección y a la mesa redonda.'
+    ],
+    links: [
+    ]
+  },
 ];

@@ -391,7 +391,7 @@
   <div class="gen-section">
     <h2>Imagen (opcional)</h2>
     <label for="fImagen">Nombre del archivo de imagen</label>
-    <p class="help">Sube la imagen a la carpeta <code>media/</code> del sitio y escribe aquí solo el nombre del archivo, por ejemplo: <code>mi-imagen.jpg</code>. Si se deja vacío, la noticia aparecerá sin imagen. En la tarjeta se usará una imagen genérica.</p>
+    <p class="help">Sube la imagen a la carpeta <code>media/</code> (en la raíz del sitio) y escribe aquí solo el nombre del archivo, por ejemplo: <code>mi-imagen.jpg</code>. Si se deja vacío, la noticia aparecerá sin imagen. En la tarjeta se usará una imagen genérica.</p>
     <input type="text" id="fImagen" placeholder="Ej.: congreso-xi-cartel.jpg" />
 
     <label for="fImagenAlt">Texto alternativo de la imagen</label>
@@ -470,7 +470,7 @@
     <div class="output-block">
       <h3><span class="step-num">1</span> Archivo HTML de la noticia</h3>
       <div class="instructions">
-        <strong>Guarda este contenido</strong> como un archivo llamado <strong id="outFilename">noticia-SLUG.html</strong> en la misma carpeta donde están las demás páginas del sitio (junto a <code>noticias.html</code>, <code>index.html</code>, etc.).<br>
+        <strong>Guarda este contenido</strong> como un archivo llamado <strong id="outFilename">noticia-SLUG.html</strong> en la carpeta <code>noticias/</code> del sitio (junto a <code>noticias.html</code> y las demás noticias).<br>
         Puedes pulsar «Descargar archivo» para obtenerlo directamente.
       </div>
       <textarea class="code-area" id="outHtml" readonly></textarea>
@@ -862,7 +862,7 @@ function generar() {
   }
 
   var filename = 'noticia-' + slug + '.html';
-  var imgPath = imagen ? 'media/' + imagen : '';
+  var imgPath = imagen ? '../media/' + imagen : '';
 
   // Enlaces externos
   var links = getLinkPairs('.link-label', '.link-url');
@@ -951,7 +951,7 @@ function generar() {
 
   // ── PÁGINA COMPLETA ─────────────────────────────────────────────────────
   var html = '<!DOCTYPE html>\n<html lang="es">\n<head>\n';
-  html += '  <link rel="icon" href="media/favicon_5.gif" type="image/gif" />\n';
+  html += '  <link rel="icon" href="../media/favicon_5.gif" type="image/gif" />\n';
   html += '  <meta charset="UTF-8" />\n';
   html += '  <meta http-equiv="Content-Security-Policy" content="default-src \'self\'; script-src \'self\' \'unsafe-inline\'; style-src \'self\' \'unsafe-inline\' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src \'self\' data:; frame-src https://www.google.com; base-uri \'self\'; connect-src \'self\'" />\n';
   html += '  <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n';
@@ -959,7 +959,7 @@ function generar() {
   html += '  <link rel="preconnect" href="https://fonts.googleapis.com" />\n';
   html += '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n';
   html += '  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />\n';
-  html += '  <link rel="stylesheet" href="prolope.css" />\n';
+  html += '  <link rel="stylesheet" href="../prolope.css" />\n';
   html += '  <!-- early theme -->\n';
   html += '  <script>\n';
   html += '    (function(){var t=localStorage.getItem(\'theme\');if(t===\'dark\'||(!t&&window.matchMedia(\'(prefers-color-scheme:dark)\').matches))document.documentElement.setAttribute(\'data-theme\',\'dark\');})();\n';
@@ -969,8 +969,8 @@ function generar() {
   html += '  <!-- HEADER -->\n';
   html += '  <header>\n';
   html += '    <div class="header-inner">\n';
-  html += '      <a href="index.html" class="logo-link">\n';
-  html += '        <img src="media/logo-menu.png" alt="PROLOPE" />\n';
+  html += '      <a href="../index.html" class="logo-link">\n';
+  html += '        <img src="../media/logo-menu.png" alt="PROLOPE" />\n';
   html += '      </a>\n\n';
   html += '      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">\n';
   html += '        <span></span><span></span><span></span>\n';
@@ -981,11 +981,11 @@ function generar() {
   html += '            <span>El grupo <small>▾</small></span>\n';
   html += '            <div class="dropdown">\n';
   html += '              <ul>\n';
-  html += '                <li><a href="el-grupo/el-grupo.html">El grupo de investigación</a></li>\n';
-  html += '                <li><a href="el-grupo/historial-proyectos.html">Historial de proyectos</a></li>\n';
-  html += '                <li><a href="el-grupo/estatutos.html">Estatutos del grupo</a></li>\n';
-  html += '                <li><a href="el-grupo/miembros.html">Miembros</a></li>\n';
-  html += '                <li><a href="el-grupo/contacto.html">Contacto y ubicación</a></li>\n';
+  html += '                <li><a href="../el-grupo/el-grupo.html">El grupo de investigación</a></li>\n';
+  html += '                <li><a href="../el-grupo/historial-proyectos.html">Historial de proyectos</a></li>\n';
+  html += '                <li><a href="../el-grupo/estatutos.html">Estatutos del grupo</a></li>\n';
+  html += '                <li><a href="../el-grupo/miembros.html">Miembros</a></li>\n';
+  html += '                <li><a href="../el-grupo/contacto.html">Contacto y ubicación</a></li>\n';
   html += '              </ul>\n';
   html += '            </div>\n';
   html += '          </li>\n';
@@ -993,9 +993,9 @@ function generar() {
   html += '            <span>Objetivos <small>▾</small></span>\n';
   html += '            <div class="dropdown">\n';
   html += '              <ul>\n';
-  html += '                <li><a href="objetivos/vida-obra.html">Vida y obra de Lope de Vega</a></li>\n';
-  html += '                <li><a href="objetivos/transmision.html">Transmisión y edición del teatro de Lope de Vega</a></li>\n';
-  html += '                <li><a href="objetivos/criterios.html">Criterios y materiales para la edición</a></li>\n';
+  html += '                <li><a href="../objetivos/vida-obra.html">Vida y obra de Lope de Vega</a></li>\n';
+  html += '                <li><a href="../objetivos/transmision.html">Transmisión y edición del teatro de Lope de Vega</a></li>\n';
+  html += '                <li><a href="../objetivos/criterios.html">Criterios y materiales para la edición</a></li>\n';
   html += '              </ul>\n';
   html += '            </div>\n';
   html += '          </li>\n';
@@ -1003,9 +1003,9 @@ function generar() {
   html += '            <span>Publicaciones <small>▾</small></span>\n';
   html += '            <div class="dropdown">\n';
   html += '              <ul>\n';
-  html += '                <li><a href="publicaciones/partes-comedias.html">Partes de comedias</a></li>\n';
+  html += '                <li><a href="../publicaciones/partes-comedias.html">Partes de comedias</a></li>\n';
   html += '                <li><a href="https://revistes.uab.cat/anuariolopedevega/index" target="_blank" rel="noopener noreferrer">Anuario Lope de Vega <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>\n';
-  html += '                <li><a href="publicaciones/otras-publicaciones.html">Otras publicaciones</a></li>\n';
+  html += '                <li><a href="../publicaciones/otras-publicaciones.html">Otras publicaciones</a></li>\n';
   html += '              </ul>\n';
   html += '            </div>\n';
   html += '          </li>\n';
@@ -1013,13 +1013,13 @@ function generar() {
   html += '            <span>Proyectos digitales <small>▾</small></span>\n';
   html += '            <div class="dropdown">\n';
   html += '              <ul>\n';
-  html += '                <li><a href="proyectos-digitales/biblioteca-virtual.html">Biblioteca virtual</a></li>\n';
+  html += '                <li><a href="../proyectos-digitales/biblioteca-virtual.html">Biblioteca virtual</a></li>\n';
   html += '                <li><a href="https://prolope.uab.cat/biblioteca/" target="_blank" rel="noopener noreferrer">Biblioteca Digital Prolope <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>\n';
-  html += '                <li><a href="proyectos-digitales/mujeres-criados.html">Mujeres y criados</a></li>\n';
-  html += '                <li><a href="proyectos-digitales/mapping-lope.html">Mapping Lope</a></li>\n';
+  html += '                <li><a href="../proyectos-digitales/mujeres-criados.html">Mujeres y criados</a></li>\n';
+  html += '                <li><a href="../proyectos-digitales/mapping-lope.html">Mapping Lope</a></li>\n';
   html += '                <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>\n';
-  html += '                <li><a href="proyectos-digitales/la-dama-boba.html">La dama boba <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>\n';
-  html += '                <li><a href="proyectos-digitales/gondomar.html">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>\n';
+  html += '                <li><a href="../proyectos-digitales/la-dama-boba.html">La dama boba <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>\n';
+  html += '                <li><a href="../proyectos-digitales/gondomar.html">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>\n';
   html += '              </ul>\n';
   html += '            </div>\n';
   html += '          </li>\n';
@@ -1027,7 +1027,7 @@ function generar() {
   html += '            <span>Formación <small>▾</small></span>\n';
   html += '            <div class="dropdown">\n';
   html += '              <ul>\n';
-  html += '                <li><a href="formacion/tesis.html">Tesis</a></li>\n';
+  html += '                <li><a href="../formacion/tesis.html">Tesis</a></li>\n';
   html += '              </ul>\n';
   html += '            </div>\n';
   html += '          </li>\n';
@@ -1035,13 +1035,13 @@ function generar() {
   html += '            <span>Eventos <small>▾</small></span>\n';
   html += '            <div class="dropdown">\n';
   html += '              <ul>\n';
-  html += '                <li><a href="eventos/congresos.html">Congresos</a></li>\n';
-  html += '                <li><a href="eventos/seminarios.html">Seminarios</a></li>\n';
+  html += '                <li><a href="../eventos/congresos.html">Congresos</a></li>\n';
+  html += '                <li><a href="../eventos/seminarios.html">Seminarios</a></li>\n';
   html += '              </ul>\n';
   html += '            </div>\n';
   html += '          </li>\n';
-  html += '          <li><a href="multimedia/multimedia.html">Multimedia</a></li>\n';
-  html += '          <li><a href="noticias/noticias.html">Noticias</a></li>\n';
+  html += '          <li><a href="../multimedia/multimedia.html">Multimedia</a></li>\n';
+  html += '          <li><a href="noticias.html">Noticias</a></li>\n';
   html += '        </ul>\n';
   html += '      </nav>\n';
   html += '      <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo noche" title="Modo noche"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>\n';
@@ -1063,11 +1063,11 @@ function generar() {
   // HERO
   html += '  <!-- HERO -->\n';
   html += '  <section class="article-hero">\n';
-  html += '    <div class="article-hero-bg" style="background-image: url(\'media/fondo-noticias.jpg\'); background-size: fill; background-repeat: no-repeat; background-position: right; opacity: 0.15;"></div>\n';
+  html += '    <div class="article-hero-bg" style="background-image: url(\'../media/fondo-noticias.jpg\'); background-size: fill; background-repeat: no-repeat; background-position: right; opacity: 0.15;"></div>\n';
   html += '    <div class="article-hero-inner">\n';
   html += '      <p class="article-breadcrumb">\n';
-  html += '        <a href="index.html">Inicio</a><span>›</span>\n';
-  html += '        <a href="noticias/noticias.html">Noticias</a><span>›</span>\n';
+  html += '        <a href="../index.html">Inicio</a><span>›</span>\n';
+  html += '        <a href="noticias.html">Noticias</a><span>›</span>\n';
   html += '        ' + esc(breadcrumb || tituloPlain) + '\n';
   html += '      </p>\n';
   html += '      <span class="article-cat-badge">' + esc(cat) + '</span>\n';
@@ -1086,7 +1086,7 @@ function generar() {
   html += '    <article class="article-body">\n';
   html += contentHtml;
   html += '\n      <div style="clear:both"></div>\n\n';
-  html += '      <a class="back-link" href="noticias/noticias.html">← Volver a todas las noticias</a>\n\n';
+  html += '      <a class="back-link" href="noticias.html">← Volver a todas las noticias</a>\n\n';
   html += '    </article>\n\n';
 
   // SIDEBAR
@@ -1098,7 +1098,7 @@ function generar() {
   html += '        </div>\n';
   html += '        <ul class="sidebar-news-list">\n';
   html += '        </ul>\n';
-  html += '        <a class="sidebar-all-link" href="noticias/noticias.html">Ver todas las noticias →</a>\n';
+  html += '        <a class="sidebar-all-link" href="noticias.html">Ver todas las noticias →</a>\n';
   html += '      </div>\n';
   html += '    </aside>\n\n';
   html += '  </div>\n\n';
@@ -1129,19 +1129,19 @@ function generar() {
   html += '      <p class="funders-title">Entidades financiadoras</p>\n';
   html += '      <div class="funders-logos">\n';
   html += '        <a class="funder-logo-link" href="https://www.march.es/" target="_blank" rel="noopener noreferrer">\n';
-  html += '          <img src="media/fundacion-march.png" alt="Fundación March" />\n';
+  html += '          <img src="../media/fundacion-march.png" alt="Fundación March" />\n';
   html += '        </a>\n';
   html += '        <a class="funder-logo-link" href="https://www.culturaydeporte.gob.es/" target="_blank" rel="noopener noreferrer">\n';
-  html += '          <img src="media/ace.png" alt="ACE" />\n';
+  html += '          <img src="../media/ace.png" alt="ACE" />\n';
   html += '        </a>\n';
   html += '        <a class="funder-logo-link" href="https://agaur.gencat.cat/" target="_blank" rel="noopener noreferrer">\n';
-  html += '          <img src="media/agaur_gencat.png" alt="AGAUR Gencat" />\n';
+  html += '          <img src="../media/agaur_gencat.png" alt="AGAUR Gencat" />\n';
   html += '        </a>\n';
   html += '        <a class="funder-logo-link" href="https://www.ciencia.gob.es/" target="_blank" rel="noopener noreferrer">\n';
-  html += '          <img src="media/ministerio-feder.png" alt="Ministerio / FEDER" />\n';
+  html += '          <img src="../media/ministerio-feder.png" alt="Ministerio / FEDER" />\n';
   html += '        </a>\n';
   html += '        <a class="funder-logo-link" href="https://www.uab.cat/" target="_blank" rel="noopener noreferrer">\n';
-  html += '          <img src="media/uab.png" alt="UAB" />\n';
+  html += '          <img src="../media/uab.png" alt="UAB" />\n';
   html += '        </a>\n';
   html += '      </div>\n';
   html += '    </div>\n';
@@ -1153,7 +1153,7 @@ function generar() {
   html += '    <div class="footer-inner">\n';
   html += '      <div>\n';
   html += '        <div class="footer-logo">\n';
-  html += '          <img src="media/logo-prolope_inici.png" alt="PROLOPE" />\n';
+  html += '          <img src="../media/logo-prolope_inici.png" alt="PROLOPE" />\n';
   html += '        </div>\n';
   html += '        <address class="footer-address" style="font-style:normal;">\n';
   html += '          Grupo de investigación PROLOPE.<br />\n';
@@ -1213,10 +1213,11 @@ function generar() {
   html += '      });\n';
   html += '    });\n';
   html += '  </scr' + 'ipt>\n\n';
-  html += '  <script src="noticias-data.js"></scr' + 'ipt>\n';
-  html += '  <script src="sidebar-noticias.js"></scr' + 'ipt>\n';
-  html += '  <script src="search-data.js"></scr' + 'ipt>\n';
-  html += '<script src="site-search.js"></scr' + 'ipt>\n';
+  html += '  <script src="../noticias-data.js"></scr' + 'ipt>\n';
+  html += '  <script src="../sidebar-noticias.js"></scr' + 'ipt>\n';
+  html += '  <script>var SITE_ROOT=\'../\';</scr' + 'ipt>\n';
+  html += '  <script src="../search-data.js"></scr' + 'ipt>\n';
+  html += '<script src="../site-search.js"></scr' + 'ipt>\n';
   html += '  <script>\n';
   html += '    // Modo noche\n';
   html += '    (function() {\n';
@@ -1251,7 +1252,7 @@ function generar() {
   dataEntry += "    date: '" + escJs(fechaCorta) + "',\n";
   dataEntry += "    title: '" + escJs(tituloPlain) + "',\n";
   dataEntry += "    excerpt: '" + escJs(excerpt) + "',\n";
-  dataEntry += "    img: '" + escJs(imgPath || 'media/fondo-noticias.jpg') + "',\n";
+  dataEntry += "    img: '" + escJs(imgPath || '../media/fondo-noticias.jpg') + "',\n";
   dataEntry += "    url: '" + escJs(filename) + "',\n";
   dataEntry += "    content: [\n";
   var paraBlocks = contentBlocks.filter(function(b) { return b.type === 'parrafo'; });
@@ -1272,7 +1273,7 @@ function generar() {
 
   var searchEntry = '  {\n';
   searchEntry += '    title: "' + tituloPlain.replace(/"/g, '\\"') + '",\n';
-  searchEntry += '    url: "' + filename + '",\n';
+  searchEntry += '    url: "noticias/' + filename + '",\n';
   searchEntry += '    description: "' + (searchDesc || excerpt).replace(/"/g, '\\"') + '",\n';
   var autoContent = buildSearchContent(tituloPlain, cat, fechaCorta, excerpt, contentBlocks, links, tipo === 'evento' ? evLinks : []);
   searchEntry += '    content: "' + autoContent.replace(/"/g, '\\"') + '"\n';
