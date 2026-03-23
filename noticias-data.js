@@ -930,4 +930,876 @@ const news = [
     links: [
     ]
   },
+    {
+    id: 63,
+    cat: 'Noticias',
+    date: '2 nov. 2020',
+    title: 'Abraham Madroñal descubre una comedia de Lope de Vega',
+    excerpt: 'La intervención de Abraham Madroñal en el congreso de la AISO este 2 de noviembre ha dado a conocer una nueva comedia de Lope que se titula «Yo he hecho lo que he podido, Fortuna lo que ha querido». La comedia se publicó en un impreso suelto sin datos editoriales (atribuido a un tal Miguel Bermúdez) que Madroñal ha demostrado que pertenece a la imprenta de Francisco de Lyra, en Sevilla, entre 1632 y 1634.',
+    img: '../media/Abraham-Madronal.jpg',
+    url: 'noticia-abraham-madroal-nueva-comedia.html',
+    content: [
+      'La intervención de Abraham Madroñal en el congreso de la AISO este 2 de noviembre ha dado a conocer una nueva comedia de Lope que se titula «Yo he hecho lo que he podido, Fortuna lo que ha querido». La comedia se publicó en un impreso suelto sin datos editoriales (atribuido a un tal Miguel Bermúdez) que Madroñal ha demostrado que pertenece a la imprenta de Francisco de Lyra, en Sevilla, entre 1632 y 1634.',
+      'Miguel Bermúdez sería el cómico que disponía de la comedia de Lope, representada ante el Rey y sus hermanos en Zaragoza, en enero de 1630, para beneficiar al gobernador de Milán, don Gonzalo Fernández de Córdoba, hermano del duque de Sessa, señor de Lope, que acababa de caer en desgracia por un fracaso militar y estaba siendo juzgado por el Conde-Duque. Se trata de una comedia palatina que además supuso el inicio de las hostilidades con el joven escritor José de Pellicer, como este denuncia en su libro «El Fénix» (1630), que hasta ahora se consideraba perdida. Entre muchas otras pruebas de peso, la conservación de un fragmento de texto en borrador confirma la atribución a Lope.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 64,
+    cat: 'Noticias',
+    date: 'Oct. 2020',
+    title: 'El Anuario Lope de Vega, en el primer cuartil',
+    excerpt: 'Un año más, la FECYT sitúa al «Anuario Lope de Vega» en el primer cuartil de las revistas del área de Literatura con sello de calidad.',
+    img: '../media/fecyt.jpg',
+    url: 'noticia-anuario-lope-primer-cuartil.html',
+    content: [
+      'Un año más, la FECYT sitúa al «Anuario Lope de Vega» en el primer cuartil de las revistas del área de Literatura con sello de calidad.',
+      'Gracias a todos los que sumáis esfuerzos para que esto sea posible.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 65,
+    cat: 'Publicación',
+    date: 'Oct. 2020',
+    title: 'Novedad editorial. «Comedias de Lope de Vega. Parte XIX»',
+    excerpt: 'Se ha publicado la Parte XIX de las Comedias de Lope de Vega, a cargo de la Editorial Gredos y coordinada por Alejandro García-Reidy y Fernando Plata.',
+    img: '../media/Comedias-Parte-XIX.jpg',
+    url: 'noticia-publicacion-parte-xix.html',
+    content: [
+      'La Parte decinueve y la mejor parte -así se anuncia en la portada- apareció en la primavera de 1624, casi dos años después de que Lope de Vega comenzara los trámites para su publicación junto con los de la Parte XVIII. El retraso, debido a una estrategia editorial para maximizar ventas, no afectó a la configuración de un volumen ambicioso, que refleja las aspiraciones cortesanas del Fénix y su orgullo como dramaturgo. De ahí que el prólgo dialogístico sea una apología de su dramaturgia, y las dedicatorias, dirigidas a hombres y mujeres cercanos al poder, alternen reflexiones sobre la historia con otras de índole literaria. Esta arquitectura paratextual acompaña a una muestra variada del teatro de madurez de Lope, que refleja su dominio sobre una pluralidad de géneros: comedias urbanas y palatinas (De cosario a cosario, Amor secreto hasta celos), dramas histórico-legendarios (La inocente sangre, El conde Fernán González, Carlos Quinto en Francia), dramas que beben de la tradición literaria (la bilogía Don Juan de Castro, La mocedad de Roldán), comedias religiosas (El serafín humano, La limpieza no manchada), una comedia mitológica (El vellocino de oro) y un drama palatino (El hijo de los leones).',
+      'La ediciones críticas de estas doce comedias se acompañan de prólogo, texto crítico, variantes lingüísticas, notas al pie, aparato crítico y nota onomástica.',
+      'La obra, en dos volúmenes, está a la venta en las principales librerías, y puede adquirirse también a través de la siguiente web.',
+      'La «Parte decinueve»: historia editorial, por Alejandro García-Reidy y Fernando Plata De cosario a cosario, edición de Enrico Di Pastena Amor secreto hasta celos, edición de Patricia Marín Cepeda La inocente sangre, edición de Sònia Boadas y Laura Fernández El serafín humano, edición de Fernando Rodríguez Mansilla El hijo de los leones, edición de Marcella Trambaioli El conde Fernán González, edición de Omar Sanz Burgos y Adrián J. Sáez',
+      'Primera parte de don Juan de Castro, edición de Alejandro García-Reidy Segunda parte de don Juan de Castro, edición de Fernando Rodríguez-Gallego La limpieza no manchada, edición de Fernando Plata El vellocino de oro, edición de José Javier Rodríguez La mocedad de Roldán, edición de Carmen Peraita Carlos Quinto en Francia, edición de Luc Capique'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 66,
+    cat: 'Noticias',
+    date: 'Jul. 2020',
+    title: 'El «Anuario Lope de Vega» mejora su posición en la base de datos SCImago Journal & Country Rank',
+    excerpt: 'La actualización de la base de datos SCImago Journal & Country Rank, en su sección de revistas españolas dedicadas a la Literatura y la Teoría literaria, ha mejorado la clasificación del Anuario Lope de Vega, que se encuentra ahora en el número 13 (16 en 2018 y 26 en 2017)',
+    img: '../media/Ranking-SJR.jpg',
+    url: 'noticia-anuario-mejora-posicion.html',
+    content: [
+      'La actualización de la base de datos SCImago Journal & Country Rank, en su sección de revistas españolas dedicadas a la Literatura y la Teoría literaria, ha mejorado la clasificación del Anuario Lope de Vega, que se encuentra ahora en el número 13 (16 en 2018 y 26 en 2017), lo cual supone un avance de 13 posiciones en tan solo dos años.',
+      'Gracias, de nuevo, a todos los que lo habéis hecho posible.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 67,
+    cat: 'Noticias',
+    date: 'Jun. 2020',
+    title: 'El Anuario Lope de Vega renueva el sello de calidad de la FECYT',
+    excerpt: 'Nos complace anunciar que el Anuario Lope de Vega ha recibido de nuevo el reconocimiento del sello de calidad de la FECYT. La revista obtuvo el sello de la Fundación por primera vez en 2016 y lo ha mantenido ininterrumpidamente hasta la actualidad, colocándose en la sexta posición de las revistas dedicadas a Literatura y obteniendo la máxima calificación, C1.',
+    img: '../media/Renovacion-sello-FECYT.jpg',
+    url: 'noticia-anuario-renueva-sello-fecyt.html',
+    content: [
+      'Nos complace anunciar que el Anuario Lope de Vega ha recibido de nuevo el reconocimiento del sello de calidad de la FECYT. La revista obtuvo el sello de la Fundación por primera vez en 2016 y lo ha mantenido ininterrumpidamente hasta la actualidad, colocándose en la sexta posición de las revistas dedicadas a Literatura y obteniendo la máxima calificación, C1.',
+      'Gracias, de nuevo, a todos los que lo habéis hecho posible.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 68,
+    cat: 'Noticias',
+    date: 'May. 2020',
+    title: 'Aurora Egido, «Alberto Blecua, modelo de filólogos»',
+    excerpt: 'Gracias a la amibilidad de la profesora Aurora Agido y de Ínsula, publicamos aquí el artículo en recuerdo de Alberto Blecua que se ha incluido en el último número de esa revista (núm. 881, mayo de 2020, p. 2).',
+    img: '../media/blecua_aurora-egido.jpg',
+    url: 'noticia-alberto-blecua-aurora-egido.html',
+    content: [
+      'Gracias a la amibilidad de la profesora Aurora Agido y de Ínsula, publicamos aquí el artículo en recuerdo de Alberto Blecua que se ha incluido en el último número de esa revista (núm. 881, mayo de 2020, p. 2).'
+    ],
+    links: [
+      { label: 'Artículo completo', url: 'media/01_AuroraEgido.pdf' }
+    ]
+  },
+    {
+    id: 69,
+    cat: 'Noticias',
+    date: 'Mar. 2020',
+    title: 'El Anuario Lope de Vega en los índices europeos',
+    excerpt: 'El «Anuario Lope de Vega» ha recibido la calificación más alta en las clasificaciones de revistas científicas en Italia y Polonia.',
+    img: '../media/anvur-italia.jpg',
+    url: 'noticia-anuario-lope-indices-europeos.html',
+    content: [
+      'El Anuario Lope de Vega ha recibido la calificación más alta en las clasificaciones de revistas científicas en Italia y Polonia.'
+    ],
+    links: [
+      { label: 'Revista Polonia', url: 'media/lista_czasopism.pdf' },
+      { label: 'Revista Italia', url: 'media/Area10_scientifiche_11112024_18112024.pdf' }
+    ]
+  },
+    {
+    id: 70,
+    cat: 'Noticias',
+    date: 'Feb. 2020',
+    title: 'La base de datos ASODAT ya está en marcha',
+    excerpt: 'Capitaneado por Teresa Ferrer, ASODAT es un proyecto coordinado que reúne a varios grupos de investigación, y que tiene como finalidad la articulación de la información contenida en bases de datos relacionadas con el teatro clásico español y su documentación.',
+    img: '../media/asodat.jpg',
+    url: 'noticia-base-datos-asodat.html',
+    content: [
+      'Capitaneado por Teresa Ferrer, ASODAT es un proyecto coordinado que reúne a varios grupos de investigación, y que tiene como finalidad la articulación de la información contenida en bases de datos relacionadas con el teatro clásico español y su documentación.',
+      '¡Enhorabuena a los colegas que participan en este proyecto fundamental para el estudio del Siglo de Oro!'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 71,
+    cat: 'Noticias',
+    date: 'Feb. 2020',
+    title: 'El Anuario Lope de Vega en la posición 6 y el cuartil 1 de la clasificación FECYT',
+    excerpt: 'La FECYT ha publicado la actualización anual de su Ránking de visibilidad e impacto, referente a las revistas científicas españolas de Humandiades y Ciencias Sociales con su sello de calidad. En él, el «Anuario Lope de Vega» ocupa el sexto lugar de las dedicadas a Literatura, y está clasificada en el cuartil 1.',
+    img: '../media/FECYT_posicion.jpg',
+    url: 'noticia-anuario-lope-posicion-fecyt.html',
+    content: [
+      'La FECYT ha publicado la actualización anual de su Ránking de visibilidad e impacto, referente a las revistas científicas españolas de Humandiades y Ciencias Sociales con su sello de calidad. En él, el Anuario Lope de Vega ocupa el sexto lugar de las dedicadas a Literatura, y está clasificada en el cuartil 1.',
+      'El grupo Prolope agradece a los directores de la revista, a sus colaboradores, sus autores, sus evaluadores, sus lectores… todo el trabajo y apoyo que han hecho del «Anuario» la publicación de referencia que es hoy.',
+      'Si tiene una publicación científica sobre teatro del Siglo de Oro, publique con nosotros.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 72,
+    cat: 'Noticias',
+    date: 'Feb. 2020',
+    title: 'Recordamos a Alberto Blecua',
+    excerpt: 'Dos semanas después del fallecimiento de Alberto Blecua, siguen llegando a Prolope muestras de pésame y recuerdos de muy diversa índole, que dan cuenta del respeto y cariño con que tanta gente lo tiene presente.',
+    img: '../media/blecua_recuerdo.jpg',
+    url: 'noticia-recordamos-blecua.html',
+    content: [
+      'Dos semanas después del fallecimiento de Alberto Blecua, siguen llegando a Prolope muestras de pésame y recuerdos de muy diversa índole, que dan cuenta del respeto y cariño con que tanta gente lo tiene presente.',
+      'A continuación se recogen algunos de ellos:',
+      'Obituario para la Société des Hispanistes Français, por Jean-Pierre Étienvre  Obituario, por Jorge León Gustá  Entrevista de Iñaki Gabilondo a Alberto Blecua (2012)'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 73,
+    cat: 'Noticias',
+    date: 'Ene. 2020',
+    title: 'Publicado el número XXVI (2020) del Anuario Lope de Vega',
+    excerpt: 'Se acaba de publicar el número XXVI (2020) del Anuario Lope de Vega: «Los manuscritos teatrales de la biblioteca de Gondomar»',
+    img: '../media/anuario-lope-de-vega_noticia.jpg',
+    url: 'noticia-xxvi-anuario-lope--vega.html',
+    content: [
+      'En él nuestros lectores encontrarán, además de la acostumbrada sección miscelánea y un nutrido conjunto de reseñas, el monográfico titulado «Los manuscritos teatrales de la biblioteca de Gondomar», coordinado por Luigi Giuliani, en el que se analiza ese fondo de manuscritos de la Biblioteca de Palacio, tan importante para comprender el nacimiento de la comedia nueva, y, como exponía Stefano Arata, hasta ahora solo estudiado de manera dispersa.',
+      'Los trabajos en él recogidos brindan homenaje a la memoria de quien fundó esta revista, el maestro Alberto Blecua.',
+      'La biblioteca de Gondomar y la ilusoria búsqueda del eslabón perdido LUIGI GIULIANI',
+      'La visualización de datos en el teatro clásico. La colección Gondomar como campo de ensayo JOSEFA BADIA HERRERA',
+      'Cada uno por su parte: monólogos trenzados y cantos amebeos en los albores de la comedia nueva HÉCTOR RUIZ SOTO',
+      '«Representar lo que soy»: identidad y metateatro en «Las burlas de amor» GONZALO PONTÓN',
+      '«Sapientia et fortitudo»: de la «Comedia del valor de las letras y las armas» a Lope de Vega ESPERANZA RIVERA SALMERÓN',
+      '«Belardo, el furioso»: modelo paradigmático de las reescrituras ariostescas de Lope de Vega MARCELLA TRAMBAIOLI',
+      'Un breve capítulo del ariostismo teatral: «Las bodas de Rugero y Bradamante» ARNAU SALA SALLENT',
+      'Un breve capítulo del ariostismo teatral: «Las bodas de Rugero y Bradamante» ARNAU SALA SALLENT',
+      '«La platera»: un caso de contaminación en el sistema de géneros del primer teatro comercial ILARIA RESTA',
+      'Las prácticas escénicas antes de la comedia nueva: el ejemplo de «Los vicios de Cómodo» DEBORA VACCARI',
+      '«Los propósitos». Notas de lengua y dramaturgia ELENA ELISABETTA MARCELLO',
+      'El «Auto de la conversión de Diogeniano»: unas calas sobre un texto de la colección Gondomar ROBERTA ALVITI',
+      'Defensa de una hermosa lavandera o los riesgos de la lectura prejuiciada (en las «Rimas de Tomé de Burguillos» de Lope de Vega) IGNACIO ARELLANO',
+      'Obras de Lope de Vega representadas en el Corral de la Montería (Sevilla) y/o el Patio de las Arcas (Lisboa), con ilustraciones 3D de ambos lugares teatrales PIEDAD BOLAÑOS, MERCEDES DE LOS REYES, VICENTE PALACIOS, JUAN RUESGA',
+      '«Blando sueño amoroso, dulce sueño». Lecturas y contextos para un soneto de Lope ROSA BONO VELILLA',
+      'Lope se despide de los corrales: «Las bizarrías de Belisa» JUAN CARLOS GARROT ZAMBRANA',
+      'Lope y Pérez de Pineda: la materia histórica en «Las grandezas de Alejandro» ANNE MARIE LIEVENS',
+      'Lope de Vega reescrito por María de Zayas: «La viuda valenciana», una comedia entre dos novelas ISABEL MUGURUZA ROCA',
+      'Las comedias de ambientación italiana de Lope de Vega: reflexiones a partir de ARTELOPE MANUEL PIQUERAS FLORES',
+      'La dedicatoria autógrafa de Lope para la publicación de «El cardenal de Belén» MARCO PRESOTTO',
+      'Una nota sobre «El vellocino de oro», de Lope de Vega: el tema de las navegaciones JOSÉ JAVIER RODRÍGUEZ RODRÍGUEZ',
+      'El texto de la segunda parte de «Don Juan de Castro», de Lope: entre las «Partes XIX» y «XXV» FERNANDO RODRÍGUEZ-GALLEGO',
+      'La representación del rey en Lope: un casamiento problemático en «La discreta venganza» BLANCA SANTOS DE LA MORENA',
+      'Una refundición de Lope de Vega en las tablas del siglo XIX: «Lo cierto por lo dudoso o La muger firme» de Vicente Rodríguez de Arellano SALOMÉ VUELTA GARCÍA',
+      'Encuentros literarios entre el mundo ibérico e Italia en la primera modernidad ILARIA RESTA',
+      'Florence d’Artois, «Du nom au genre. Lope de Vega, La «tragedia» et son public» / Henry W. Sullivan, «Tragic Drama in the Golden Age Spain» FAUSTA ANTONUCCI',
+      'Judith Farré Vidal, coord., «Antonio de Solís. Teatro breve» DIANA BERRUEZO-SÁNCHEZ',
+      'Claudia Demattè, dir., «Obras de Juan Pérez de Montalbán. Primer tomo de comedias» ROSA BONO VELILLA',
+      'Esther Fernández Rodríguez, Alejandro García Reidy y José Miguel Martínez Torrejón, eds., «El teatro clásico en su(s) cultura(s): de los Siglos de Oro al siglo XXI» ESTHER BORREGO GUTIÉRREZ',
+      'María Luisa Lobato y Elena Martínez Carro, coords., «Escribir entre amigos: Agustín Moreto y el Teatro Barroco» JAVIER CASTRILLO ALAGUERO',
+      'Antonio Sánchez Jiménez, «Lope de Vega: el verso y la vida» ENRICO DI PASTENA',
+      'Alexander S. Wilkinson, dir., «Iberian Books» / «Ornamento» GUILLERMO GÓMEZ SÁNCHEZ-FERRER',
+      'Concetta Cavallini y Philippe Desan, dirs., «Le texte en scène. Littérature, théâtre et théâtralité» PHILIPPE MEUNIER',
+      'Antonio Sánchez Jiménez, ed., Lope de Vega, «Romances de senectud» MANUEL PIQUERAS FLORES',
+      'Anne Cayuela y Marc Vuillermoz, dirs., «Les mots et les choses du théâtre (France, Italie, Espagne, XVIe-XVIIe siècles)» GONZALO PONTÓN',
+      'Rafael González Cañal y Almudena García González, eds., «El teatro de Cervantes y el nacimiento de la comedia española» MARCO PRESOTTO',
+      'William R. Manson y C. George Peale, eds., Luis Vélez de Guevara, «La creación del mundo» BELÉN QUINTEIRO',
+      'Ignacio Arellano, ed., Lope de Vega, «Rimas humanas y divinas del licenciado Tomé de Burguillos» GUILLERMO SERÉS GUILLÉN'
+    ],
+    links: [
+      { label: 'Número completo', url: 'https://revistes.uab.cat/anuariolopedevega/index' }
+    ]
+  },
+     {
+    id: 74,
+    cat: 'Noticias',
+    date: '30 ene. 2020',
+    title: 'Discurso leído por Eugenia Fosalba en el funeral de Alberto Blecua',
+    excerpt: 'El discurso leído por Eugenia Fosalba en el funeral de Alberto Blecua está disponible en el enlace inferior.',
+    img: '../media/blecua_eugenia-fosalba.jpg',
+    url: 'noticia-discurso-funeral-blecua.html',
+    content: [
+      'El discurso leído por Eugenia Fosalba en el funeral de Alberto Blecua está disponible aquí.'
+    ],
+    links: [
+      { label: 'Dicurso (PDF)', url: 'media/Texto_Eugenia.pdf' }
+    ]
+  },
+    {
+    id: 75,
+    cat: 'Noticias',
+    date: '28 ene. 2020',
+    title: 'Alberto Blecua In memoriam',
+    excerpt: 'Alberto Blecua (1941-2020), nacido en Zaragoza y barcelonés de adopción, fue catedrático de Literatura Española en la Universidad Autónoma de Barcelona, donde ejerció un amplio magisterio desde 1971.',
+    img: '../media/blecua_in-memoriam.jpg',
+    url: 'noticia-alberto-blecua-in-memoriam.html',
+    content: [
+      'Referencia indiscutible en el campo de la crítica textual, a ella consagró En el texto de Garcilaso (1971), La transmisión textual del conde Lucanor (1982), el Manual de crítica textual (1983), pionero en su campo, que ha sido y sigue siendo aguja de navegar para varias generaciones, y los Estudios de crítica textual (2012), que recogen sus mejores trabajos sobre la materia. Realizó una monumental tesis doctoral sobre la poesía de Gregorio Silvestre (1974). Son auténticos hitos sus ediciones del Lazarillo, el Libro de buen amor y el Quijote, pero también las de Juan Rufo, Lope de Vega o Antonio García Gutiérrez. Sus estudios sobre la literatura española abarcan desde Gonzalo de Berceo a Jorge Guillén, con particular atención a los grandes poetas (Boscán, Garcilaso, Herrera, fray Luis, San Juan) y prosistas (Cervantes, Gracián) del Siglo de Oro. Sus estudios fundamentales de historia literaria se reunieron en el volumen Signos viejos y nuevos (2006). Fundó hace treinta años, y lo dirigió hasta su jubilación, el grupo de investigación Prolope, cuyo objetivo es la edición crítica de todo el teatro de Lope de Vega. Fue conferenciante en las universidades más prestigiosas, tanto españolas como extranjeras (Roma-La Sapienza, Bolonia, Istituto Universitario Orientale, Colonia, Tours, Berkeley, Harvard, Princeton, Kioto). Dirigió más de veinte tesis doctorales, fue miembro de un sinfín de tribunales, y profesor de másters y doctorados (en Santiago, Sevilla, Oviedo, Valladolid). Fue miembro de la Real Academia de Buenas Letras de Barcelona y correspondiente de la Real Academia Española, y presidió la Asociación de Cervantistas (1995-1999).',
+      'Y, sin duda, su mejor tarea fue la enseñanza, que realizó en la Autónoma semana a semana durante cuarenta y cinco años, como la había realizado antes, muy joven, en la educación secundaria. Sus clases -lo recordará cualquiera que haya asistido a ellas- iban más allá de los contenidos, pues utilizaba el sistema humanista de la lectura y el comentario de textos, óptima estrategia para implicar a los alumnos y desarrollar su espíritu investigador y crítico.',
+      'Embargados hoy por la más profunda melancolía, queremos honrar, en la medida de nuestras fuerzas, la inspiración constante que nos ha proporcionado su forma insustituible de relacionarse con los textos literarios, de sobras conocida por quienes tuvieron -tuvimos- el privilegio de escucharlo en clases y conferencias o de leerlo en artículos y ediciones, o de compartir con él el tiempo y la atención que siempre brindó a los demás.',
+      'Está de más cualquier intento de semblanza, porque esa manera de ser y de hacer, con su genealogía y sus razones, quedó inmejorablemente retratada en las páginas que él mismo escribió como prólogo a sus Signos viejos y nuevos. No cabe mejor recuerdo en esta hora que ofrecerlas aquí y volver a leerlas una vez más. Ahí se cifran, con humana modestia pero firme convencimiento, los logros y virtudes de nuestro llorado y tan querido Alberto.'
+    ],
+    links: [
+      { label: 'Prólogo (PDF)', url: 'media/Prologo_Signos.pdf' }
+    ]
+  },
+    {
+    id: 76,
+    cat: 'Publicación',
+    date: 'Dic. 2019',
+    title: 'Novedad editorial: Daniel Fernández Rodríguez, Entre corsarios y cautivos. Las comedias bizantinas de Lope de Vega, su tradición y su legado',
+    excerpt: 'El objeto del presente libro es un conjunto de comedias escritas por Lope de Vega cuyos temas y motivos permiten estudiarlas en tanto que teselas de un riquísimo mosaico literario: el género bizantino en sus distintas manifestaciones históricas (novela, teatro y novela corta).',
+    img: '../media/entre-corsarios-cautivos.jpg',
+    url: 'noticia-publicacion-entre-corsarios-y-cautivos.html',
+    content: [
+      'El objeto del presente libro es un conjunto de comedias escritas por Lope de Vega cuyos temas y motivos permiten estudiarlas en tanto que teselas de un riquísimo mosaico literario: el género bizantino en sus distintas manifestaciones históricas (novela, teatro y novela corta). En primer lugar, se analizan las fuentes de las que partió Lope, entre las que destacan los novellieri, las historias caballerescas breves y el teatro español del siglo XVI. Se examinan a continuación aquellos motivos comunes que singularizan estas piezas frente a otros géneros de la Comedia Nueva, tales como el peligro de los corsarios, el cautiverio, las tormentas y naufragios o los viajes de ida y vuelta, y se deslindan varios rasgos teatrales no menos característicos, y ligados asimismo a la temática bizantina, como las tramas paralelas, los amplios elencos, la abundancia de cuadros débiles o el escaso número de escenas. Finalmente, se estudia el papel fundamental de estas comedias para la renovación del género bizantino en la literatura y el teatro del Siglo de Oro, y se ponen de manifiesto algunas relaciones intertextuales con otras obras y autores.'
+    ],
+    links: [
+      { label: 'Ficha del libro', url: 'https://www.iberoamericana-vervuert.es/FichaLibro.aspx?P1=167954' }
+    ]
+  },
+    {
+    id: 77,
+    cat: 'Publicación',
+    date: '10 dic. 2019',
+    title: 'VIDA=SUEÑO, representación a cargo de Miseria y hambre producciones',
+    excerpt: 'El próximo 10 de diciembre, a las 15:30, se representará la adaptación de «La vida es sueño» de Calderón a cargo de la compañía Miseria y hambre producciones, en la Sala Teatro de la Universidad Autónoma de Barcelona. Tras el espectáculo se inciará una charla con los miembros de la compañía, quienes explicarán su adaptación del texto y el uso de la tecnología digital como herramienta de puesta en escena.',
+    img: '../media/vida-sueno.jpg',
+    url: 'noticia-vida-sueno.html',
+    content: [
+      'El próximo 10 de diciembre, a las 15:30, se representará la adaptación de «La vida es sueño» de Calderón a cargo de la compañía Miseria y hambre producciones, en la Sala Teatro de la Universidad Autónoma de Barcelona. Tras el espectáculo se inciará una charla con los miembros de la compañía, quienes explicarán su adaptación del texto y el uso de la tecnología digital como herramienta de puesta en escena.',
+      'La entrada será gratuita, pero requerirá inscripción previa y confirmación de reserva. El trámite puede realizarse aquí.',
+      '¡Os esperamos a todos!'
+    ],
+    links: [
+      { label: 'Cartel (JPG)', url: 'media/vida-sueno_cartel.jpg' }
+    ]
+  },
+    {
+    id: 78,
+    cat: 'Seminario',
+    date: '12 y 13 dic. 2019',
+    title: 'Seminario Internacional «Lope de Vega a través de sus autógrafos»',
+    excerpt: 'El encuentro pretende explorar y reflexionar en torno a los manuscritos autógrafos de Lope de Vega, prestando especial atención a aspectos textuales, lingüísticos, paleográficos y ecdóticos. Todo ello permitirá, por una parte, profundizar en el proceso de concepción, redacción y configuración de la obra dramática, y por otra, abordar el estudio de difusión e impresión del texto teatral.',
+    img: '../media/seminario_lope-autografos.jpg',
+    url: 'noticia-seminario-lope-autografos.html',
+    content: [
+      'El encuentro pretende explorar y reflexionar en torno a los manuscritos autógrafos de Lope de Vega, prestando especial atención a aspectos textuales, lingüísticos, paleográficos y ecdóticos. Todo ello permitirá, por una parte, profundizar en el proceso de concepción, redacción y configuración de la obra dramática, y por otra, abordar el estudio de difusión e impresión del texto teatral.'
+    ],
+    links: [
+      { label: 'Programa (PDF)', url: 'media/Diptico.pdf' }
+    ]
+  },
+    {
+    id: 79,
+    cat: 'Publicación',
+    date: 'Nov. 2019',
+    title: 'Novedad editorial. Comedias de Lope de Vega. Parte XVIII',
+    excerpt: 'Se ha publicado la «Parte XVIII» de las «Comedias de Lope de Vega», a cargo de la Editorial Gredos y coordinada por Antonio Sánchez Jiménez y Andrián J. Sáez.',
+    img: '../media/comedias_parte_XVIII.jpg',
+    url: 'noticia-publicacion-comedias-parte-xviii.html',
+    content: [
+      'Tras la andanada de partes de comedias de 1621, la Decimaoctava apareció en 1623, aunque Lope llevaba ideándola desde la primavera del año anterior, cuando se firmó la aprobación conjunta de esta y la XIX. Con ellas iniciaba una estrategia de valoración de sus obras históricas, como muestra la primacía de dramas historiales en la parte que nos ocupa: desde un speculum principis de historia contemporánea (El príncipe perfecto) hasta recreaciones de la Reconquista (Las famosas asturianas, La campana de Aragón), obras genealógicas (La piedad ejecutada) o de historia romana (El honrado hermano), sin olvidar los dramas hagiográficos (El Divino Africano, El capellán de la Virgen y El rústico del cielo), que muestran el proyecto de dignificación de su teatro que traía entre manos el Lope de entonces. Además, la Parte XVIII responde a la amena variedad propia de este género editorial e incluye comedias urbanas (La pobreza estimada y Quien ama no haga fieros), pastoriles (La pastoral de Jacinto) y una palatina (El valor de las mujeres). Se percibe en muchas una voluntad característica del autor en la primera mitad del decenio de 1620: su intento de acercarse a la Corte agasajando al público femenino.',
+      'La ediciones críticas de estas doce comedias se acompañan de prólogo, texto crítico, variantes lingüísticas, notas al pie, aparato crítico y nota onomástica.',
+      'La obra, en dos volúmenes, está a la venta en las principales librerías, y puede adquirirse también a través de la siguiente web.',
+      'El príncipe perfecto, segunda parte, edición de Emilio Blanco La pobreza estimada, edición de María del Valle Ojeda Calvo y Adrián J. Sáez El Divino Africano, edición de José Aragüés Aldaz La pastoral de Jacinto, edición de Paula Casariego Castiñeira El honrado hermano, edición de Antonio Sánchez Jiménez El capellán de la Virgen, edición de Abraham Madroñal',
+      'La piedad ejecutada, edición de Ignacio García Aguilar Las famosas asturianas, edición de David Arbesú La campana de Aragón, edición de Diego Símini Quien ama no haga fieros, edición de Pedro Ruiz Pérez El rústico del cielo, edición de Jacobo Llamas El valor de las mujeres, edición de Julio Vélez Sainz'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 80,
+    cat: 'Noticias',
+    date: '2 y 3 dic. 2019',
+    title: 'XVI Taller Internacional de Estudios Textuales',
+    excerpt: 'Los próximos días 2 y 3 de diciembre de 2019 se celebrará en Perugia la XVIa edición del Taller Internacional de Estudios textuales, dirigido por Victoria Pineda y Luigi Giuliani y coorganizado por Prolope, el Grupo de Investigación Arenga, de la Universidad de Extremadura, y el Dipartimento di Lettere-Lingue, Letterature e Civiltà Antiche e Moderne (Cattedra di Letteratura Spagnola) de la Università degli Studi di Perugia.',
+    img: '../media/XVI-taller-estudios-textuales.jpg',
+    url: 'noticia-xvi-taller-estudios-textuales.html',
+    content: [
+      'Los próximos días 2 y 3 de diciembre de 2019 se celebrará en Perugia la XVIa edición del Taller Internacional de Estudios textuales, dirigido por Victoria Pineda y Luigi Giuliani y coorganizado por Prolope, el Grupo de Investigación Arenga, de la Universidad de Extremadura, y el Dipartimento di Lettere-Lingue, Letterature e Civiltà Antiche e Moderne (Cattedra di Letteratura Spagnola) de la Università degli Studi di Perugia.',
+      'En esta ocasión el taller se dedica a «La puntuación de los textos teatrales».'
+    ],
+    links: [
+      { label: 'Programa (PDF)', url: 'media/Cartel_XVI_Taller_Internacional1.pdf' }
+    ]
+  },
+    {
+    id: 81,
+    cat: 'Noticias',
+    date: 'Sep. 2019',
+    title: 'En memoria de José Javier Rodríguez (1963-2019), colaborador y amigo',
+    excerpt: 'En torno a 2006 el grupo de investigación PROLOPE encargó a Carlos Mota y a José Javier Rodríguez Rodríguez la edición de dos comedias de la Parte X. El rigor y la diligencia en su colaboración nos llevó a invitarlos a incorporarse al equipo.',
+    img: '../media/rodriguez_jose-javier.jpg',
+    url: 'noticia-en-memoria-de-jose-javier-rodriguez.html',
+    content: [
+      'Desde entonces nos prestaron su precioso apoyo con diversas ediciones, rigor filológico y reflexiones compartidas, y además luego trajeron de su mano a otras colegas, como Isabel Muguruza y, no solo colegas, sino también alumnas, como Ane Zapatero. Así, hemos tenido el privilegio de contar con varios compañeros de la Universidad del País Vasco y con algunos de los mejores y muchos frutos de la labor filológica y académica de José Javier.',
+      'Ane, Carlos e Isabel han tenido a bien escribir unas palabras en recuerdo de su –y nuestro– querido compañero.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 82,
+    cat: 'Noticias',
+    date: '22 mar. 2019',
+    title: 'Jornada «Teatro áureo, espectáculo y sentidos: del texto a las tablas»',
+    excerpt: 'Mañana viernes, 22 de marzo, en el Institut d’Études Hispaniques de París, tendrá lugar la jornada «Teatro áureo, espectáculo y sentidos: del texto a las tablas», organizada por Florence D’Artois, Yannick Barne y Héctor Ruiz. Contará con las intervenciones de Margaret Greer, Daniele Crivellari y Ana Zamora.',
+    img: '../media/teatro-aureo.jpg',
+    url: 'noticia-jornada-teatro-aureo.html',
+    content: [
+      'Mañana viernes, 22 de marzo, en el Institut d’Études Hispaniques de París, tendrá lugar la jornada «Teatro áureo, espectáculo y sentidos: del texto a las tablas», organizada por Florence D’Artois, Yannick Barne y Héctor Ruiz. Contará con las intervenciones de Margaret Greer, Daniele Crivellari y Ana Zamora.'
+    ],
+    links: [
+      { label: 'Programa (PDF)', url: 'media/ProgrammeJETheatre_140319.pdf' }
+    ]
+  },
+    {
+    id: 83,
+    cat: 'Noticias',
+    date: 'Feb. 2019',
+    title: 'Call for Papers: Anuario Lope de Vega',
+    excerpt: 'Anuario Lope de Vega, XXVI (2020) Monográfico Lope y el crisol de la comedia nueva en los manuscritos de la Biblioteca de Palacio. Coordinación de Luigi Giuliani',
+    img: '../media/anuario-lope-de-vega_noticia.jpg',
+    url: 'noticia-call-for-papers-anuario.html',
+    content: [
+    ],
+    links: [
+      { label: 'Call for papers (PDF)', url: 'media/Call_for_papers__anuario_2020.pdf' }
+    ]
+  },
+    {
+    id: 84,
+    cat: 'Publicación',
+    date: 'Ene. 2019',
+    title: 'Publicado el número XXV (2019) del Anuario Lope de Vega',
+    excerpt: 'Se acaba de publicar el número XXV (2019) del Anuario Lope de Vega: «Lope e(n) Italia»',
+    img: '../media/anuario-lope-de-vega_noticia.jpg',
+    url: 'noticia-xxv-anuario.html',
+    content: [
+      'En él nuestros lectores encontrarán, además de la acostumbrada sección miscelánea y un nutrido conjunto de reseñas, el monográfico titulado «Lope e(n) Italia», coordinado por Salomé Vuelta, en el que se analiza la influencia italiana en la obra de Lope: su inspiración (e incluso reescritura) en obras italianas; el influjo de la cultura de ese país y cómo se refleja en sus comedias; la difusión de las obras del Fénix en Italia desde la época hasta nuestros días.',
+      'Lope e(n) Italia SALOMÉ VUELTA GARCÍA',
+      'Un patrón del «Orlando furioso» en la comedia de ambientación urbana de Lope de Vega: «El pastoral albergue» MARCELLA TRAMBAIOLI',
+      'Los bandos de Sena: un mosaico por reconstruir LUCIANA GENTILLI',
+      '«No hay libro, por malo que sea, que no tenga alguna cosa buena»: la difusión de las novelle de Sebastiano Erizzo y Niccolò Granucci en la España del Siglo de Oro DANIEL FERNÁNDEZ RODRÍGUEZ',
+      'Lope de Vega y la tradición hagiográfica hispano-sarda: sobre una fuente de la comedia «El negro del mejor amo» BENEDETTA BELLONI',
+      '«Parténope santa»: Nápoles en el teatro de Lope de Vega, un acercamiento por géneros MANUEL PIQUERAS FLORES, BLANCA SANTOS DE LA MORENA',
+      'De la lectura al tablado. Antonio Matina, Carlo Celano y otros estimadores de Lope en la Nápoles virreinal ELENA ELISABETTA MARCELLO',
+      'Versiones romanas de tres textos de Lope PATRIZIA BOTTA, AVIVA GARRIBBA, MASSIMO MARINI, DEBORA VACCARI',
+      'El tricentenario de Lope de Vega en Italia MARÍA JOSÉ ZAMORA MUÑOZ',
+      'Un epitafio de Pellicer a la muerte de Lope anterior a la «Fama póstuma» JAVIER BURGUILLO LÓPEZ',
+      'Lope de Vega en sus firmas PALOMA CUENCA MUÑOZ',
+      '«Virgen bella, nuestras paces os encargo»: «Las paces de los Reyes y judía de Toledo» o la apuesta política de una imagen milagrosa ROSER LÓPEZ CRUZ',
+      'Entre la historia y la leyenda. A propósito de «Las dos bandoleras», comedia atribuida a Lope de Vega ABRAHAM MADROÑAL',
+      'Lope reservado: facetas del erotismo en las «Rimas» (1604) ANTONIO SÁNCHEZ JIMÉNEZ',
+      'Los autos sacramentales de Lope de Vega: proyecto de edición crítica AMPARO IZQUIERDO',
+      'La leyenda negra en la literatura española del Siglo de Oro VERONIKA RYJIK',
+      'Jacinto Cordeiro, «Elogio de poetas lusitanos», introducción y notas de M.L. Gonçalves Pires PEDRO ÁLVAREZ-CIFUENTES',
+      'Simon Kroll, «Las comedias autógrafas de Calderón de la Barca y su proceso de escritura» ERIK COENEN',
+      'Jesús Majada y Antonio Merino, eds., Lope de Vega, «Las Batuecas del duque de Alba» ALBERTO ESCALANTE VARONA',
+      'Juan Matas Caballero, ed., «La comedia escrita en colaboración en el teatro del Siglo de Oro» REBECA LÁZARO NISO',
+      'M. Trambaioli, M.L. Lobato, M. Ortega, M. Zugasti y A. García Reidy, eds., «Agustín Moreto, Segunda parte de comedias. Volumen V» ABRAHAM MADROÑAL',
+      'Luciana Gentilli y Renata Londero, eds., «Sátira y encomiástica en las artes y letras del siglo XVII español» EUGENIO MAGGI',
+      'María Luisa Lobato, Marcella Trambaioli y Antonio Portela Lopa, coords., Revista «Anagnórisis», monográfico «Teatro español y europeo: circulación de repertorios dramáticos» MÍRIAM MARTÍNEZ GUTIÉRREZ',
+      'Felipe B. Pedraza Jiménez, Rafael González Cañal y Elena Marcello, eds., «El teatro en tiempos de Isabel y Juana» LAURA PUERTO MORO',
+      'Felipe Pedraza Jiménez, Rafael González Cañal, Elena Marcello, eds., «El entremés y sus intérpretes. XXXVIII Jornadas de teatro clásico. Almagro, 9, 10 y 11 de julio de 2015» ILARIA RESTA',
+      'Joan Torruella Casañas, «Lingüística de corpus: génesis y bases metodológicas de los corpus (históricos) para la investigación científica» ASSUMPCIÓ ROST BAGUDANCH',
+      'Marina Martín Ojeda y C. George Peale, «Luis Vélez de Guevara en Écija: su entorno familiar, liberal y cultural» / Luis Vélez de Guevara, «La rosa de Alejandría», eds. W.R. Manson y C.G. Peale, estudio introductorio de E. Domínguez de Paz HÉCTOR URZÁIZ',
+      'Ignacio Arellano y Frederick A. De Armas, eds., «Estrategias y conflictos de autoridad y poder en el teatro del Siglo de Oro» ANDREA ZINATO'
+    ],
+    links: [
+      { label: 'Número completo', url: 'https://revistes.uab.cat/anuariolopedevega/index' }
+    ]
+  },
+    {
+    id: 85,
+    cat: 'Publicación',
+    date: 'Ene. 2019',
+    title: 'Novedad editorial: «Entra el editor y dice»: ecdótica y acotaciones teatrales (siglos XVI y XVII)',
+    excerpt: 'Anunciamos la aparición del volumen «Entra el editor y dice»: ecdótica y acotaciones teatrales (siglos XVI y XVII), coordinado por Luigi Giuliani y Victoria Pineda y publicado en la colección Biblioteca di Rassegna Iberistica de Edizioni Ca’ Foscari.',
+    img: '../media/entra-editor-dice.jpg',
+    url: 'noticia-entra-el-editor-y-dice.html',
+    content: [
+      'La edición de las didascalias escénicas es uno de los pasos más delicados de la labor del crítico textual, sobre todo en el caso de las acotaciones del teatro de los siglos XVI y XVII, cuyos textos nos han llegado de manera azarosa en versiones manipuladas por compañías de actores.',
+      'Este volumen aborda la ecdótica de las didascalias desde distintas perspectivas: la semiótica, la estemmática, la transmisión manuscrita e impresa, la evolución de la escritura dramatúrgica, la historia del teatro, la praxis editorial pasada y presente, la traducción y la mirada comparatista hacia textos del Siglo de Oro español y los teatros nacionales inglés, francés, portugués y holandés.'
+    ],
+    links: [
+      { label: 'Libro en acceso abierto', url: 'https://edizionicafoscari.unive.it/it/edizioni/libri/978-88-6969-305-2/' }
+    ]
+  },
+    {
+    id: 86,
+    cat: 'Noticias',
+    date: '7 dic. 2018',
+    title: 'Presentación de las Comedias de Lope de Vega. Parte XVII en la Universidad de Perugia',
+    excerpt: 'El pasado 7 de diciembre, en el marco del XV Taller Internacional de Estudios Textuales – La edición del diálogo teatral celebrado en la Universidad de Perugia, tuvo lugar la presentación de la Parte XVII de comedias de Lope de Vega, coordinada por Daniele Crivellari (Universidad de Salerno) y Eugenio Maggi (Universidad de Bolonia).',
+    img: '../media/comedias-parte-xvii_presentacion2.jpg',
+    url: 'noticia-presentacion-parte-xvii.html',
+    content: [
+      'Los dos investigadores ofrecieron a los asistentes una conferencia en la que subrayaron los rasgos generales de esta Parte que acaba de publicarse con la editorial Gredos; por un lado, Maggi ilustró la estructura y los paratextos de la parte a la luz de la estrategia autopromocional del Fénix, mientras que, por otro, Crivellari presentó algunos problemas ecdóticos con los que los editores tuvieron que enfrentarse a la hora de establecer el texto crítico de las doce piezas que integran el volumen.',
+      'La Decimaséptima parte de comedias apareció en 1621, annus mirabilis para la impresión de las piezas del Fénix, pues en pocos meses vieron la luz dos partes más, la XV y la XVI, amén de otras obras y reediciones. Se trata de un caso peculiar en la publicación de sus comedias: algo en el proceso editorial no debió de funcionar según lo previsto y el tomo decimoséptimo salió inesperadamente antes que el decimosexto. El volumen es buena muestra de los avatares a los que estaba sometida la impresión de las comedias, ya que presenta las huellas de un trabajo no siempre sistemático de revisión y corrección. El corpus que Lope reunió aquí ejemplifica el amplio abanico de temas que su pluma era capaz de abarcar, desde piezas palatinas (El soldado amante, Muertos vivos, Lucinda perseguida y Quien más no puede) a comedias urbanas (El dómine Lucas y la boccacciana El ruiseñor de Sevilla), pasando por dramas históricos (El sol parado y El primer rey de Castilla) y moriscos (El hidalgo Bencerraje). Enriquecen esta variedad una comedia villana (Con su pan se lo coma), la historia dramatizada de Santa Ana (La madre de la mejor) y el híbrido novelesco de Jorge Toledano.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 87,
+    cat: 'Publicación',
+    date: 'Nov. 2018',
+    title: 'Novedad editorial. «Comedias de Lope de Vega. Parte XVII»',
+    excerpt: 'Se ha publicado la Parte XVII de las Comedias de Lope de Vega, a cargo de la Editorial Gredos y coordinada por Daniele Crivellari y Eugenio Maggi.',
+    img: '../media/comedias-parte-xvii.jpg',
+    url: 'noticia-publicacion-parte-xvii.html',
+    content: [
+      'La Decimaséptima parte de comedias apareció en 1621, annus mirabilis para la impresión de las piezas de Lope, pues en pocos meses vieron la luz dos partes más, la XV y la XVI, amén de otras obras y reediciones. Se trata de un caso peculiar en la publicación de sus comedias: algo en el proceso editorial no debió de funcionar según lo previsto y el tomo decimoséptimo salió inesperadamente antes que el decimosexto. El volumen es buena muestra de los avatares a los que estaba sometida la impresión de las comedias, ya que presenta las huellas de un trabajo no siempre sistemático de revisión y corrección. El corpus que Lope reunió aquí ejemplifica el amplio abanico de temas que su pluma era capaz de abarcar, desde piezas palatinas (El soldado amante, Muertos vivos, Lucinda perseguida y Quien más no puede) a comedias urbanas (El dómine Lucas y la boccacciana El ruiseñor de Sevilla), pasando por dramas históricos (El sol parado y El primer rey de Castilla) y moriscos (El hidalgo Bencerraje). Enriquecen esta variedad una comedia villana (Con su pan se lo coma), la historia dramatizada de Santa Ana (La madre de la mejor) y el híbrido novelesco de Jorge Toledano.',
+      'La ediciones críticas de estas doce comedias se acompañan de prólogo, texto crítico, variantes lingüísticas, notas al pie, aparato crítico y nota onomástica.',
+      'La obra, en dos volúmenes, está a la venta en las principales librerías, y puede adquirirse también a través de la siguiente web.',
+      'Con su pan se lo coma, edición de Daniele Crivellari Quien más no puede, edición de Marco Presotto El soldado amante, edición de Gonzalo Pontón Muertos vivos, edición de Luciana Gentilli y Tiziana Pucciarelli El primer rey de Castilla, edición de Adrián J. Sáez El dómine Lucas, edición de Miguel M. García-Bermejo',
+      'Lucinda perseguida, edición de Esther Borrego Gutiérrez El ruiseñor de Sevilla, edición de Eugenio Maggi El sol parado, edición de Fernando Plata La madre de la mejor, edición de Elvezio Canonica Jorge Toledano, edición de Juan Manuel Escudero Baztán El hidalgo Bencerraje, edición de Ilaria Resta'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 88,
+    cat: 'Noticias',
+    date: '6 y 7 dic. 2018',
+    title: 'XV Taller Internacional de Estudios Textuales',
+    excerpt: 'Los próximos días 6 y 7 de diciembre de 2018 se celebrará en Perugia la XVa edición del Taller Internacional de Estudios textuales, dirigido por Victoria Pineda y Luigi Giuliani y coorganizado por Prolope, el Grupo de Investigación Arenga, de la Universidad de Extremadura, y el Dipartimento di Lettere-Lingue, Letterature e Civiltà Antiche e Moderne (Área de Literatura española) de la Università di Perugia.',
+    img: '../media/taller-estudios-textuales.jpg',
+    url: 'noticia-xv-taller-estudios-textuales.html',
+    content: [
+      'Los próximos días 6 y 7 de diciembre de 2018 se celebrará en Perugia la XVa edición del Taller Internacional de Estudios textuales, dirigido por Victoria Pineda y Luigi Giuliani y coorganizado por Prolope, el Grupo de Investigación Arenga, de la Universidad de Extremadura, y el Dipartimento di Lettere-Lingue, Letterature e Civiltà Antiche e Moderne (Área de Literatura española) de la Università di Perugia.',
+      'En esta ocasión el taller se dedica a «La edición del diálogo teatral».'
+    ],
+    links: [
+      { label: 'Programa (PDF)', url: 'media/XV_Taller_Internacional_programa__informaciones_practicas.pdf' }
+    ]
+  },
+    {
+    id: 89,
+    cat: 'Noticias',
+    date: '29 nov. 2018',
+    title: 'Presentación del libro Lope. El verso y la vida de Antonio Sánchez Jiménez',
+    excerpt: 'El próximo 29 de noviembre, en la sede de la Casa Museo Lope de Vega de Madrid, se llevará a cabo la presentación de la última biografía de Lope de Vega que ha realizado el miembro de Prolope Antonio Sánchez Jiménez (Lope. El verso y la vida, Cátedra, Madrid, 2018).',
+    img: '../media/lope-verso-vida.jpg',
+    url: 'noticia-preentacion-verso-vida.html',
+    content: [
+      'El acto será moderado por Adrián J. Sáez y contará con la participación especial del poeta Luis Alberto de Cuenca, del profesor Julio Vélez Sainz y del actor Daniel Migueláñez. Todos los participantes en el IX Congreso Internacional Lope de Vega. Lope y el teatro del Siglo de Oro: Patrimonio, difusión e investigación en la era digital, están invitados a asistir al evento.',
+      'El aforo, sin embargo, es limitado, por lo que se ruega confirmación mediante indicación de nombre y apellidos en este formulario. La inscripción se realizará por estricto orden de respuesta hasta completar el aforo.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 90,
+    cat: 'Congreso',
+    date: 'Nov. 2018',
+    title: 'Programa provisional del IX Congreso Internacional Lope de Vega',
+    excerpt: 'Avanzamos el programa provisional del IX Congreso Internacional Lope de Vega, que se celebrará en la sede de la Biblioteca Nacional de España los próximos 28, 29 y 30 de noviembre de 2018.',
+    img: '../media/ix-congreso-internacional.jpg',
+    url: 'noticia-programa-provisional-ix-congreso-internacional.html',
+    content: [
+      'Avanzamos el programa provisional del IX Congreso Internacional Lope de Vega, que se celebrará en la sede de la Biblioteca Nacional de España los próximos 28, 29 y 30 de noviembre de 2018.'
+    ],
+    links: [
+      { label: 'Programa provisional', url: 'media/Programa_provisional_Lope_era_digital.pdf' }
+    ]
+  },
+    {
+    id: 91,
+    cat: 'Congreso',
+    date: '1 jun. 2018',
+    title: 'Recordatorio: propuestas de comunciaciones IX Congreso Internacional Lope de Vega',
+    excerpt: 'El próximo 1 de junio expira el plazo para el envío de propuestas de comunicaciones para el IX Congreso Internacional Lope de Vega: «Lope y el teatro del Siglo de Oro. Patrimonio, difusión e investigación en la era digital».',
+    img: '../media/lope-teatro-siglo-oro.jpg',
+    url: 'noticia-recordatorio-ix-congreso-internacional-lope.html',
+    content: [
+      'El próximo 1 de junio expira el plazo para el envío de propuestas de comunicaciones para el IX Congreso Internacional Lope de Vega: «Lope y el teatro del Siglo de Oro. Patrimonio, difusión e investigación en la era digital».'
+    ],
+    links: [
+      { label: 'Primera circular', url: 'media/Primera_circular_Lope_era_digital_26_04.pdf' }
+    ]
+  },
+    {
+    id: 92,
+    cat: 'Noticias',
+    date: 'May. 2018',
+    title: 'Nuevo reconocimiento al Anuario Lope de Vega',
+    excerpt: 'El «Anuario Lope de Vega» se ha colocado en la posición 20 de 748 en el nuevo ránquing REDIB: Red Iberoamericana de Innovación y Conocimiento Científico, plataforma del Consejo Superior de Investigaciones Científicas y Universia.',
+    img: '../media/redib.jpg',
+    url: 'noticia-reconocimiento-anuario.html',
+    content: [
+      'El «Anuario Lope de Vega» se ha colocado en la posición 20 de 748 en el nuevo ránquing REDIB: Red Iberoamericana de Innovación y Conocimiento Científico, plataforma del Consejo Superior de Investigaciones Científicas y Universia.',
+      'El ránquing puede consultarse aquí y la información sobre la Red en el siguiente enlace.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 93,
+    cat: 'Noticias',
+    date: 'Abr. 2018',
+    title: 'IX Congreso Internacional Lope de Vega. Primera circular',
+    excerpt: 'Nos complace anunciar la convocatoria del IX Congreso Internacional Lope de Vega, dedicado esta vez a «Lope y el teatro del Siglo de Oro. Patrimonio, difusión e investigación en la era digital. Se organiza en colaboración con la Biblioteca Nacional de España y celebrará en su sede de Madrid los días 28, 29 y 30 de noviembre de 2018.',
+    img: '../media/lope-teatro-siglo-oro.jpg',
+    url: 'noticia-ix-congreso-primera-circular.html',
+    content: [
+      'Nos complace anunciar la convocatoria del IX Congreso Internacional Lope de Vega, dedicado esta vez a «Lope y el teatro del Siglo de Oro. Patrimonio, difusión e investigación en la era digital. Se organiza en colaboración con la Biblioteca Nacional de España y celebrará en su sede de Madrid los días 28, 29 y 30 de noviembre de 2018.',
+      'Lea aquí la Primera circular, con las instrucciones de inscripción y envío de propuestas de comunicación.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 94,
+    cat: 'Noticias',
+    date: 'Abr. 2018',
+    title: 'Call for Papers: Anuario Lope de Vega',
+    excerpt: 'El Call for Papers para el próximo número del Anuario Lope de Vega puede consultarse aquí.',
+    img: '../media/anuario-lope-de-vega_noticia.jpg',
+    url: 'noticia-call-for-papers-anuario-2.html',
+    content: [
+      'El Call for Papers para el próximo número del Anuario Lope de Vega puede consultarse aquí.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 95,
+    cat: 'Noticias',
+    date: '4 abr. 2018',
+    title: 'Presentación del número XXIV del Anuario Lope de Vega en la Casa de Lope de Vega de Madrid',
+    excerpt: 'Hoy, 4 de abril de 2018, se presenta el último número del Anuario Lope de Vega (XXIV, 2018), en la Casa Lope de Vega de Madrid, a las 19:00 horas.',
+    img: '../media/presentacion-anuario-prolope_2018.jpg',
+    url: 'noticia-presentacion-xxiv-anuario.html',
+    content: [
+      'Dicho número se ha dedicado a La escena y la pantalla: Lope hoy, y ha sido coordinado por Alba Carmona, Gaston Gilabert y Purificació Mascarell.',
+      'La convocatoria del evento puede consultarse aquí.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 96,
+    cat: 'Noticias',
+    date: 'Abr. 2018',
+    title: 'Call for Papers. Anuario Lope de Vega',
+    excerpt: 'Con el objetivo de profundizar en las relaciones entre Lope e Italia en modo bidireccional, de Italia a España y viceversa, el número XXV del Anuario Lope de Vega, que se publicará en enero de 2019, comprenderá una amplia sección monográfica titulada «Lope e(n) Italia», coordinada por Salomé Vuelta García.',
+    img: '../media/anuario-lope-de-vega_noticia.jpg',
+    url: 'noticia-call-for-papers-anuario-xxv.html',
+    content: [
+      'Con el objetivo de profundizar en las relaciones entre Lope e Italia en modo bidireccional, de Italia a España y viceversa, el número XXV del Anuario Lope de Vega, que se publicará en enero de 2019, comprenderá una amplia sección monográfica titulada «Lope e(n) Italia», coordinada por Salomé Vuelta García.',
+      'Invitamos a los investigadores interesados en enviar sus contribuciones a hacerlo antes del 30 de junio de 2017.',
+      'Se dispone de toda la información en el siguiente documento.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 97,
+    cat: 'Noticias',
+    date: '2 feb. 2018',
+    title: 'El País Retina se hace eco de la digitalización de obras de Lope de Vega',
+    excerpt: 'El País Retina se hace eco hoy de la importancia de la digitalización de la obra de Lope de Vega, proyecto en el que están colaborando Prolope y el grupo READ de la UPV.',
+    img: '../media/digitalizacion-bne_pais.jpg',
+    url: 'noticia-el-pais-se-hace-eco.html',
+    content: [
+      'Se enlaza a continuación en artículo de Esther Paniagua, «Así se digitaliza la Biblioteca Nacional de España».'
+    ],
+    links: [
+      { label: 'Artículo (PDF)', url: 'media/digitalizacion-bne_pais.pdf' }
+    ]
+  },
+    {
+    id: 98,
+    cat: 'Publicación',
+    date: 'Ene. 2018',
+    title: 'Publicado el número XXIV (2018) del Anuario Lope de Vega',
+    excerpt: 'Se acaba de publicar el número XXIV (2018) del Anuario Lope de Vega: «La escena y la pantalla. Lope hoy»',
+    img: '../media/anuario-lope-de-vega_noticia.jpg',
+    url: 'noticia-publicacion-xxiv-anuario.html',
+    content: [
+      'En él nuestros lectores encontrarán, además de la acostumbrada sección miscelánea y un nutrido conjunto de reseñas, el monográfico titulado «La escena y la pantalla. Lope hoy», en el que una decena de especialistas se interroga sobre cómo, a través de adaptaciones, versiones y ficciones, se ha mantenido el diálogo entre Lope y el público de nuestra época.',
+      'Presentación: La escena y la pantalla. Lope hoy ALBA CARMONA LÁZARO, PURIFICACIÓ GARCIA MASCARELL, GASTON GILABERT',
+      'Lope de Vega en televisión ESTHER FERNÁNDEZ',
+      '«¡Maldito Lope de Vega!»: la polémica Cervantes-Lope en las pantallas de hogaño HÉCTOR URZÁIZ',
+      'La presencia de Lope de Vega en «El Ministerio del Tiempo» SIMON BREDEN',
+      'Lope de Vega aligerado: el uso de la música en la teleadaptación soviética de «El perro del hortelano» VERONIKA RYJIK',
+      '«Fuenteovejuna» (trans)nacional: de los discursos hegemónicos a las apropiaciones estéticas en Antonio Román y Juan Guerrero Zamora PATRICIA TRAPERO LLOBERA',
+      'Dramaturgias brechtianas recientes a partir de «Fuenteovejuna» SERGIO ADILLO RUFO',
+      'Lope en Manhattan: hiperrealidad, espacio y violencia en el «Fuenteovejuna» de Julián Mesri (2013) CHRISTOPHER D. GASCÓN',
+      '«El castigo sin venganza», a la conquista del repertorio YOLANDA MANCEBO SALVADOR',
+      'La pintura en escena. La escenografía de José Manuel Castanheira en «¿De cuándo acá nos vino?» de Lope de Vega: un montaje de la CNTC OLIVIA NIETO YUSTA',
+      'Las adaptaciones cinematográficas como (posible) herramienta pedagógica DUNCAN WHEELER',
+      'Un oscuro soneto de Lope de Vega al escudete de Paravicino: «En vano oprimes con la mano impura» ANTONIO SÁNCHEZ JIMÉNEZ',
+      '«Loa sacramental de los títulos de comedias» de Lope de Vega: estudio y edición crítica DAVINIA RODRÍGUEZ ORTEGA',
+      'Ignacio Arellano y Jesús Menéndez Peláez, eds., «La imagen de la autoridad y el poder en el teatro del Siglo de Oro» ROBERTA ALVITI',
+      'Lope de Vega, «Arte nuevo de hacer comedias. Edición crítica. Fuentes y ecos latinos» FAUSTA ANTONUCCI',
+      'Lope de Vega, «San Nicolás de Tolentino» JOSÉ ARAGÜÉS ALDAZ',
+      'Lope de Vega, «Los cautivos de Argel» BENEDETTA BELLONI',
+      'Rafael González Cañal, ed., «El universo dramático de Rojas Zorrilla» VALENTINA BRANCATELLI',
+      'Fernando Rodríguez-Gallego y Alejandra Ulla Lorenzo, «Un fondo desconocido de comedias españolas en la Biblioteca Pública de Évora (con estudio detallado de las de Calderón de la Barca)» PAULA CASARIEGO',
+      'María Martínez-Atienza, ed., «Análisis lingüístico y literario de «Peribáñez y el comendador de Ocaña». (Ideas lingüísticas en la España de Lope de Vega)» ALBERTO ESCALANTE VARONA',
+      'Hugo Hernán Ramírez, ed., «Una fiesta teatral en la Nueva Granada del siglo XVII» JUDITH FARRÉ',
+      'Ilaria Resta, «Fuentes, reescrituras e intertextos: la «novella» italiana en el entremés del Siglo de Oro» DANIEL FERNÁNDEZ RODRÍGUEZ',
+      'Lola González, coord., «Plumas y pinceles son iguales. Teatro y pintura en el Siglo de Oro» NATALIA FERNÁNDEZ',
+      'Laura L. Vidler, «Performance Reconstruction and Spanish Golden Age Drama. Reviving and Revising the Comedia» SUSAN L. FISCHER',
+      'Juan Pablo Gil-Osle, «Los cigarrales de la privanza y mecenazgo en Tirso de Molina» FRANCISCO FLORIT',
+      'Lope de Vega, «Corona trágica» IGNACIO GARCÍA AGUILAR',
+      'María Heredia Mantis y Luis Gómez Canseco, coords., «Vida y escritura en el teatro de Cervantes» / Ignacio García Aguilar, Luis Gómez Canseco y Adrián J. Sáez, «El teatro de Miguel de Cervantes» JORGE GARCÍA LÓPEZ',
+      'Frederick A. de Armas, «El retorno de Astrea: astrología, mito e imperio en Calderón» ALEJANDRO GARCÍA REIDY',
+      'Emilio Pascual Barciela, «La anagnórisis en la tragedia española del Renacimiento» / Ismael López Martín, «La anagnórisis en la obra dramática de Lope de Vega» LUIGI GIULIANI',
+      'María Goyri, «La juventud de Lope de Vega. Amor y literatura (Originales inéditos, c. 1935-1953)» GUILLERMO GÓMEZ SÁNCHEZ-FERRER',
+      'Anne J. Cruz y María Cristina Quintero, «Beyond Spain’s Borders» / Elizabeth Marie Cruz Petersen, «Women’s Somatic Training in Early Modern Spanish Theater» MARGARET R. GREER',
+      'Mary Shelley, «Cervantes y Lope. Vidas paralelas» RENATA LONDERO',
+      'Peter Happé and Wim Hünsken, «Staging Scripture, biblical drama (1350-1600)» ROSER LÓPEZ CRUZ',
+      'Germán Vega, Héctor Urzáiz y Pedro Conde, eds., «El patrimonio del teatro clásico español: actualidad y perspectivas» / José María Díez Borque, dir.; Álvaro Bustos Táuler y Elena Di Pinto, eds., «Miscelánea teatral áurea» EUGENIO MAGGI',
+      'Christophe Couderc y Marcella Trambaioli, eds., «Paradigmas teatrales en la Europa moderna: circulación e influencias (Italia, España, Francia, siglos XVI-XVII)» ELENA ELISABETTA MARCELLO',
+      'Sandrine Blondet et Marc Vuillermoz, eds., «Le paratexte théâtral face à l’ » auctoritas » : entre soumission et subversion. Regards croisés en Italie, France et Espagne aux XVIe et XVIIe siècles» MARIANGELA MIOTTI',
+      'Ignacio Arellano, «Dando luces a las sombras: estudios sobre los autos sacramentales de Calderón» VALENTINA NIDER',
+      'Elena Pierazzo, «Digital Scholarly Editing. Theories, Models and Methods» GONZALO PONTÓN',
+      'Juan Ramón Muñoz, «El incesto, un tema de origen clásico, en Shakespeare, Lope de Vega y Racine» ILARIA RESTA',
+      'James Turner, «Philology. The Forgotten Origins of Modern Humanities» / Sheldon Pollock, Benjamin A. Elman y Ku-ming Kevin Chang, eds., «World Philology» FERNANDO RODRÍGUEZ-MANSILLA',
+      'Conxita Domènech, «La «Guerra dels Segadors» en comedias y panfletos ibéricos. Una historia contada a dos voces (1640-1652)» VICTORIANO RONCERO LÓPEZ',
+      'Pedro Calderón de la Barca, «El príncipe constante» ANTONELLA RUSSO',
+      'Lope de Vega Carpio, «El peregrino en su patria» ANTONIO SÁNCHEZ JIMÉNEZ',
+      'Fausta Antonucci y Anna Tedesco, eds., «La Comedia nueva e le scene italiane nel Seicento: trame, drammaturgie, testi a confronto» FRANCESCA SUPPA',
+      'María Teresa Cacho Palomar, ed., «»No hay con amor competencias». Fiesta teatral a las bodas de Carlos II y Mariana de Neoburgo» MARCELLA TRAMBAIOLI',
+      'Claudia Demattè, David Arbesú y Philip Allen, eds., «Obras de Juan Pérez de Montalbán. Comedias varias» DEBORA VACCARI',
+      'John Jay Allen, «La piedra de Rosetta del teatro comercial europeo» SALOMÉ VUELTA GARCÍA'
+    ],
+    links: [
+      { label: 'Número completo', url: 'https://revistes.uab.cat/anuariolopedevega/issue/view/v24' }
+    ]
+  },
+    {
+    id: 99,
+    cat: 'Noticias',
+    date: '23 ene. 2018',
+    title: 'La BNE adquiere un epistolario de Lope de Vega',
+    excerpt: 'Hoy se ha presentado en la BNE la adquisición de un epistolario manuscrito entre Lope de Vega y el duque de Sessa. En el acto ha participado Carlos Peña, investigador de Prolope y especialista en la obra epistolar de Lope.',
+    img: '../media/epistolario-lope-de-vega.jpg',
+    url: 'noticia-bne-adquiere-epistolario-lope.html',
+    content: [
+      'Pueden consultarse las primeras noticias en: La BNE adquiere un epistolario manuscrito entre Lope de Vega y el Duque de Sessa que muestra «al Lope más desconocido» (Europa Press) El día que Lope de Vega escapó de su asesinato (El País) Lope de Vega, al descubierto en la Biblioteca Nacional de España (La Vanguardia) Cartas de Lope de Vega al IV Duque de Sessa (BNE)'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 100,
+    cat: 'Noticias',
+    date: '12 ene. 2018',
+    title: 'Se ha presentado la Parte XVI en la Sorbona',
+    excerpt: 'El pasado viernes 12 de enero, a las 4 de la tarde, se presentó la Parte XVI de las Comedias de Lope de Vega en la salle Serrano de l’Institut hispanique, que recién cumple cien años de actividad.',
+    img: '../media/comedias-parte-xvi.jpg',
+    url: 'noticia-presentacion-parte-xvi.html',
+    content: [
+      'Acudieron profesores e investigadores de la misma universidad y de fuera, especialistas en Literatura hispánica y Literatura comparada e Historia, así como, Hélène Marche, conservadora de la biblioteca Marcel Bataillon, hospedada por el Institut hispanique de la Sorbona.',
+      'Florence d’Artois abrió el acto con una historia de las partes de comedias que recalcó la extraordinaria singularidad de la Parte XVI. El coloquio prosiguió con una presentación interactiva de cuatro de las comedias de la Parte a cargo de sus editores: El premio de la hermosura (Héctor Ruiz y Florence d’Artois), Adonis y Venus (Mercedes Blanco), La fábula de Perseo (Roland Béhar), la Felisarda (Florence d’Artois), todas comedias relacionadas con el ámbito cortesano.',
+      'Tras un largo debate, el encuentro terminó con un brindis y un festejo en torno a la tradicional «galette de Rois».'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 101,
+    cat: 'Noticias',
+    date: '12 ene. 2018',
+    title: 'Presentación de la Parte XVI en la Sorbona',
+    excerpt: 'Nos complace comunicar que el próximo viernes, 12 de enero, se llevará a cabo la presentación de la Parte XVI de las Comedias de Lope de Vega en la Universidad de la Sorbona, en París, de mano de una de las coordinadoras del volumen e investigadora de Prolope, Florence D’Artois.',
+    img: '../media/presentacion-parte-vi-sorbona.jpg',
+    url: 'noticia-presentacion-parte-xvi-sorbona.html',
+    content: [
+      'Nos complace comunicar que el próximo viernes, 12 de enero, se llevará a cabo la presentación de la Parte XVI de las Comedias de Lope de Vega en la Universidad de la Sorbona, en París, de mano de una de las coordinadoras del volumen e investigadora de Prolope, Florence D’Artois.'
+    ],
+    links: [
+      { label: 'Programa (PDF)', url: 'media/Presentacion_Parte_XVI.pdf' }
+    ]
+  },
+    {
+    id: 102,
+    cat: 'Noticias',
+    date: '12 dic. 2017',
+    title: 'Presentación de la Parte XVI en la Universidad de Perugia',
+    excerpt: 'El pasado 12 de diciembre se realizó la presentación del último volumen publicado por Prolope y Editorial Gredos, Comedias de Lope de Vega. Parte XVI, en la Universidad de Perugia.',
+    img: '../media/comedias-parte-xvi_presentacion.jpg',
+    url: 'noticia-presentacion-parte-xvi-perugia.html',
+    content: [
+      'Luigi Giuliani, coordinador de la Parte XVI en colaboración con Florence D’Artois, fue, junto a Gonzalo Pontón, el encargado de presentar el libro a los alumnos de esa universidad así como a los asistentes al XIV Taller Internacional de estudios textuales, dedicado a «Las acotaciones teatrales», que se celebró en la misma sede los días 11 y 12 de diciembre.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 103,
+    cat: 'Seminario',
+    date: '11 y 12 ene. 2018',
+    title: 'Segundo Seminario Internacional Icrea – Academia – Prolope',
+    excerpt: 'Nos complace anunciar la celebración del Segundo Seminario Internacional Icrea-Academia-Prolope, que tendrá lugar los próximos 11 y 12 de enero en la Universitat Autònoma de Barcelona, dedicado esta vez a «Texto crítico y edición digital: modelos, codificación, alojamiento, publicación», y coordinado por Gonzalo Pontón y Ramón Valdés.',
+    img: '../media/2-seminario-icrea-prolope.jpg',
+    url: 'noticia-seminario-icrea.html',
+    content: [
+      'Nos complace anunciar la celebración del Segundo Seminario Internacional Icrea-Academia-Prolope, que tendrá lugar los próximos 11 y 12 de enero en la Universitat Autònoma de Barcelona, dedicado esta vez a «Texto crítico y edición digital: modelos, codificación, alojamiento, publicación», y coordinado por Gonzalo Pontón y Ramón Valdés.'
+    ],
+    links: [
+      { label: 'Programa (PDF)', url: 'media/Diptico_segundo_seminario_con_retoques.pdf' }
+    ]
+  },
+    {
+    id: 104,
+    cat: 'Noticias',
+    date: '11 y 12 dic. 2017',
+    title: 'XIV Taller Internacional de Estudios Textuales',
+    excerpt: 'Los próximos 11 y 12 de diciembre se celebrará el XIV Taller Internacional de estudios textuales, dedicado a «Las acotaciones teatrales».',
+    img: '../media/xiv-taller-estudios-teatrales.jpg',
+    url: 'noticia-xiv-taller-estudios-textuales.html',
+    content: [
+      'Dirigidos por Luigi Giuliani (Università di Perugia) y Victoria Pineda (Universidad de Extremadura), siguiendo los planteamientos de la americana Society for Textual Scholarship (STS) y su gemela European Society for Textual Scholarship (ESTS), los Talleres Internacionales se configuran como un lugar de encuentro interdisciplinar que supera las tradicionales divisiones entre las distintas filologías para ocuparse de teorías, metodologías y prácticas ecdóticas aplicadas a textos de distintas épocas, géneros y autores, escritos en distintos idiomas, compuestos y transmitidos a través de diferentes canales, desde la copia manuscrita a la imprenta manual, a la linotipia, hasta las actuales tecnologías digitales.'
+    ],
+    links: [
+      { label: 'Presentación (PDF)', url: 'media/XIV_Taller_Internacional_de_Estudios_Textuales_2017_PRESENTACION.pdf' },
+      { label: 'Programa (PDF)', url: 'media/XIV_Taller_Internacional_de_Estudios_Textuales_2017_PROGRAMA.pdf' }
+    ]
+  },
+    {
+    id: 105,
+    cat: 'Publicación',
+    date: 'Oct. 2017',
+    title: 'Novedad editorial. Comedias de Lope de Vega. Parte XVI',
+    excerpt: 'Se ha publicado la Parte XVI de las Comedias de Lope de Vega, a cargo de la Editorial Gredos y coordinada por Florence D’Artois y Luigi Giuliani.',
+    img: '../media/comedias-parte-xvi.jpg',
+    url: 'noticia-publicacion-parte-xvi.html',
+    content: [
+      'La Decimosexta parte es uno de los impresos teatrales más misteriosos y fascinantes de Lope de Vega. Misterioso por la historia de su composición y publicación: con los trámites legales cumplimentados desde 1620, algo alteró los planes de Lope y el volumen salió con mucho retraso, a finales de diciembre de 1621, cuando ya la siguiente Parte, la XVII, estaba a la venta. Tal vez un atasco en las atareadas prensas madrileñas, ciertas dificultades de orden personal del dramaturgo y, sobre todo, la muerte de Felipe III en marzo de 1621 afectaron al proceso de edición. Así las cosas, Lope decidió reorientar las dedicatorias del volumen para halagar a Olivares y su entorno, según una estrategia de promoción personal que venía de lejos. Y es fascinante por su contenido: presentándolas a menudo con la etiqueta de «tragedia» y «tragicomedia», Lope ofrece al lector obras mitológicas que se habían representado en la corte con escenografía a la italiana (Adonis y Venus, La fábula de Perseo, El laberinto de Creta, Las mujeres sin hombres), obras históricas (Las grandezas de Alejandro), genealógicas (Los Prados de León), palatinas (El premio de la hermosura, Mirad a quién alabáis, La Felisarda, La inocente Laura), alguna pieza de su juventud (La serrana de Tormes, rezumante de erotismo) y la espléndida Lo fingido verdadero, dedicada a Tirso de Molina, híbrido de drama histórico y comedia de santos y el mejor ejemplo de «teatro en el teatro» de todo el Siglo de Oro. En suma, la corte y el corral, los dioses y los hombres, y un teatro que se hace vida en el momento mismo en que la vida se vuelve teatro.',
+      'La ediciones críticas de estas doce comedias se acompañan de prólogo, texto crítico, variantes lingüísticas, notas al pie, aparato crítico y nota onomástica.',
+      'La obra , en dos volúmenes, está a la venta en las principales librerías, y puede adquirirse también a través de la siguiente web.',
+      'El premio de la hermosura, edición de Florence D’Artois y Héctor Ruiz Adonis y Venus, edición de Mercedes Blanco y Felipe Joannon Los Prados de León, edición de Victoria Pineda Mirad a quién alabáis, edición de Enrico Di Pastena Las mujeres sin hombres, edición de Guillermo Gómez Sánchez-Ferrer y Óscar García Fernández La fábula de Perseo, edición de Roland Béhar',
+      'El laberinto de Creta, edición de Sònia Boadas La serrana de Tormes, edición de Eugenio Maggi Las grandezas de Alejandro, edición de Anne-Marie Lievens La Felisarda, edición de Florence D’Artois La inocente Laura, edición de Alejandro García Reidy Lo fingido verdadero, edición de Luigi Giuliani'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 106,
+    cat: 'Noticias',
+    date: 'Jun. 2017',
+    title: 'Publicado el tríptico de las XII Jornadas sobre Teatro Clásico de Olmedo',
+    excerpt: 'Ya está disponible el programa de las XII Jornadas sobre Teatro Clásico de Olmedo, que se celebrará del 17 al 19 de julio de 2017',
+    img: '../media/12-festival-olmedo-clasico.jpg',
+    url: 'noticia-xiii-jornadas-teatro-clasico-olmedo.html',
+    content: [
+    ],
+    links: [
+      { label: 'Programa (PDF)', url: 'media/Triptico_12_Jornadas_Olmedo_2017.pdf' }
+    ]
+  },
+    {
+    id: 107,
+    cat: 'Seminario',
+    date: 'May. 2017',
+    title: 'Primer Seminario Internacional Icrea Academia-Prolope',
+    excerpt: 'Nos complace anunciar la celebración del Primer Seminario Internacional Icrea-Academia, que tendrá lugar los próximos 29 y 30 de mayo en la Universitat Autònoma de Barcelona.',
+    img: '../media/1-seminario-icrea-prolope.jpg',
+    url: 'noticia-primer-seminario-icrea.html',
+    content: [
+      'Coordinado por Sònia Boadas y Gonzalo Pontón, será dedicado a la «Producción, configuración y circulación del texto dramático en el Siglo de Oro».',
+      'En el díptico puede consultar todos los participantes del Primer Seminario Internacional Icrea Academia-Prolope.'
+    ],
+    links: [
+      { label: 'Programa (PDF)', url: 'media/Diptico_Primer_Seminario_Icrea_Prolope.pdf' }
+    ]
+  },
+    {
+    id: 108,
+    cat: 'Conferencia',
+    date: '30 mar. 2017',
+    title: 'Conferencia del profesor Duncan Wheeler (Universidad de Leeds)',
+    excerpt: 'El pasado 29 de marzo tuvimos el honor de escuchar al prof. Duncan Wheeler en la Universitat Autònoma de Barcelona, quien impartió una conferencia titulada «La puesta en escena del teatro áureo ayer, hoy y mañana: Pepe Estruch como caso de estudio», dentro del marco de actividades de Prolope y el Departamento de Filología Española.',
+    img: '../media/conferencia_duncan-wheeler.jpg',
+    url: 'noticia-conferencia-duncan-wheeler.html',
+    content: [
+      'Con una lucidez y humor encomiables, el prof. Wheeler presentó una mirada crítica y certera de la recepción del teatro clásico en el siglo XX, así como una reflexión sobre cómo se mantiene vivo hoy, y cómo se podría sacar más partido de ese patrimonio que, más allá de lo cultural, puede transmitir unos valores formativos tanto intelectuales como éticos.',
+      'Ese potencial se ejemplificó con la figura de Pepe Estruch, director y profesor que halló un camino para desarrollar «formas más inclusivas y democráticas de representar el teatro clásico» (cit. por Wheeler, H. Buffery, «Theatre, colonialism, exile and the Americas», en History of Theatre in Spain, ed. M.M. Delgado y D.T. Gies, Cambridge University Press, Cambridge, 2012, pp. 323-340).'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 109,
+    cat: 'Noticias',
+    date: '29 mar. 2017',
+    title: 'Conferencia del profesor Duncan Wheeler',
+    excerpt: 'El profesor Duncan Wheeler, de la University of Leeds, impartirá la conferencia titulada «La puesta en escena del Teatro áureo ayer, hoy y mañana: Pepe Estruch como caso de estudio», el próximo día 29 de marzo, a las 13:00h, en el aula 501 de la facultad de Filosofía y Letras de la Universitat Autònoma de Barcelona.',
+    img: '../media/duncan-wheeler.jpg',
+    url: 'noticia-conferencia-duncan-wheeler-2.html',
+    content: [
+      'Su intervención se enmarca en la línea de trabajo de Prolope dirigida a contemplar la perspectiva de los performance studies y de las últimas tendencias de la puesta en escena del teatro del Seiscientos.'
+    ],
+    links: [
+      { label: 'Cartel (PDF)', url: 'media/conferencia_del_profesor_duncan_wheeler_13_03_2017.pdf' }
+    ]
+  },
+    {
+    id: 110,
+    cat: 'Noticias',
+    date: 'Feb. 2017',
+    title: 'Call for papers. Anuario Lope de Vega',
+    excerpt: 'Con el objetivo de dialogar con Lope y con la contemporaneidad a partir de relecturas, adaptaciones o interpretaciones sobre su figura o su obra, el número 24 del Anuario Lope de Vega, que se publicará en enero de 2018, comprenderá una amplia sección monográfica titulada «La escena y la pantalla: Lope hoy», y estará coordinada por Alba Carmona, Purificació Mascarell y Gastón Gilabert.',
+    img: '../media/anuario-lope-de-vega_noticia.jpg',
+    url: 'noticia-call-for-papers-anuario-2018.html',
+    content: [
+      'Con el objetivo de dialogar con Lope y con la contemporaneidad a partir de relecturas, adaptaciones o interpretaciones sobre su figura o su obra, el número 24 del Anuario Lope de Vega, que se publicará en enero de 2018, comprenderá una amplia sección monográfica titulada «La escena y la pantalla: Lope hoy», y estará coordinada por Alba Carmona, Purificació Mascarell y Gastón Gilabert.  n ella se explorarán diversas categorías teóricas a propósito de uno de los autores de la tradición literaria universal cuya obra cuenta con más versiones y recreaciones.',
+      'Invitamos a los investigadores interesados en enviar sus contribuciones a hacerlo antes del 30 de junio de 2017.'
+    ],
+    links: [
+      { label: 'Call for papers (PDF)', url: 'media/Call_for_papers_ANUARIO_2018_1.pdf' }
+    ]
+  },
+    {
+    id: 111,
+    cat: 'Noticias',
+    date: 'Feb. 2017',
+    title: 'Call for papers. Cuadernos AISPI',
+    excerpt: 'Ya está abierta la convocatoria para el envío de propuestas a la revista Cuadernos de AISPI (número 11), que agrupará diferentes contribuciones bajo el título «Arte novísimo de estudiar comedias: las Humanidades Digitales y el teatro áureo».',
+    img: '../media/cuadernos-aispi.jpg',
+    url: 'noticia-call-for-papers-cuadernos-aispi.html',
+    content: [
+      'Este número monográfico, coordinado por los miembros de Prolope Alessandro Cassol (Università di Milano) y Sònia Boadas (Universitat Autònoma de Barcelona), pretende reflexionar sobre los cambios que están suponiendo las Humanidades Digitales en el estudio del teatro áureo.'
+    ],
+    links: [
+      { label: 'Call for papers (PDF)', url: 'mediaCfP_Cuadernos_AISPI_11.pdf' }
+    ]
+  },
 ];
