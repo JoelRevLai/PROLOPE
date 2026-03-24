@@ -1802,4 +1802,431 @@ const news = [
       { label: 'Call for papers (PDF)', url: '../mediaCfP_Cuadernos_AISPI_11.pdf' }
     ]
   },
+    {
+    id: 112,
+    cat: 'Publicación',
+    date: 'Ene. 2017',
+    title: 'Anuario Lope de Vega. Vol. 23 (2017)',
+    excerpt: 'Nos complace anunciar la aparición del número XXIII (2017) del Anuario Lope de Vega. Texto, literatura, cultura.  El volumen contiene un monográfico dedicado a Lope y el teatro europeo de su tiempo, coordinado por Gonzalo Pontón, además de una sección miscelánea y el acostumbrado apartado de reseñas.',
+    img: '../media/anuario-lope-de-vega_noticia.jpg',
+    url: 'noticia-publicacion-anuario-2017.html',
+    content: [
+      'Nos complace anunciar la aparición del número XXIII (2017) del Anuario Lope de Vega. Texto, literatura, cultura. El volumen contiene un monográfico dedicado a Lope y el teatro europeo de su tiempo, coordinado por Gonzalo Pontón, además de una sección miscelánea y el acostumbrado apartado de reseñas.',
+      'Presentación: Lope y el teatro europeo de su tiempo GONZALO PONTÓN',
+      'Entre la corte y el mercado: las prácticas escénicas en la Europa de los siglos XVI y XVII JOAN OLEZA',
+      'Lope de Vega y los «scenari» de la «Commedia dell’arte» FAUSTA ANTONUCCI',
+      'De Lope a Celano: «La sofferenza coronata», adaptación italiana de «Los tres diamantes» (y un paréntesis acerca del «scenario» de Ciro Monarca «Il cavaliere dai tre gigli d’oro») ELENA ELISABETTA MARCELLO',
+      'Lope de Vega y el teatro francés del siglo XVII CHRISTOPHE COUDERC',
+      'Lope de Vega et ses adaptations françaises: le traitement dramatique et la réappropriation culturelle dans trois tragi-comédies de Rotrou CATHERINE DUMAS',
+      'La última traducción prerromántica del teatro de Lope en Francia: El «Théâtre Espagnol» de Linguet FRANCESCA SUPPA',
+      'Lope de Vega y la conquista del teatro español en los Países Bajos FRANS R.E. BLOM, OLGA VAN MARION',
+      'A implantação do modelo aristotélico no teatro europeu: revisitando os discursos (dis) sonantes de Lope de Vega e de Pierre Corneille MARIA JOÃO BRILHANTE',
+      'Discorso sull’«arte» PIERMARIO VESCOVO',
+      'Las comedias bizantinas de Lope en su contexto teatral español e italiano DANIEL FERNÁNDEZ RODRÍGUEZ',
+      'Pactar con el diablo en la escena europea: Christopher Marlowe y Lope de Vega NATALIA FERNÁNDEZ RODRÍGUEZ',
+      '«I will play the swan and die in music». Shakespeare y Lope de Vega ante la música teatral trágica GASTON GILABERT',
+      'Ausencias y presencias: la recepción de Lope y Shakespeare a través del cine ALBA CARMONA LÁZARO',
+      '«Move over» Shakespeare: El lugar de Lope en el teatro europeo de su tiempo MARGARET R. GREER',
+      'La atribución a Lope de Vega de «La mayor hazaña de Alejandro Magno» ERIK COENEN',
+      'Los «Epitheta» de Ravisius Textor y la «Picta poesis Ovidiana» de Niklaus Reusner en la «Jerusalén conquistada» y en otras obras de Lope de Vega PEDRO CONDE PARRADO',
+      'Algunos ejemplos de paradigmas hexaemerales en la poesía de Lope JUAN MANUEL ESCUDERO BAZTÁN',
+      'El «artificio griego» en Lope de Vega: narrativa y teatro JESUS GÓMEZ',
+      'Lope de Vega y Johannes Nauclerus: de la cronografía a la profecía épica LUIS GÓMEZ CANSECO',
+      'Una adelfa en tierras extrañas: emblemática y misoginia en la «Comedia famosa de los guanches de Tenerife y conquista de Canaria» JAVIER LORENZO DOMINGUEZ',
+      'El original de la loa «Pariendo juró Pelaya», recogida en la «Octava Parte» SERGIO MORENO JIMÉNEZ',
+      '«¡España viva!»: Las personificaciones de España en las comedias de santos de Lope de Vega ROY NORTON',
+      'Lope de Vega y la ambigüedad de los signos: la incertidumbre del significado en unas variaciones sobre el tema de la «Arcadia» ANTONIO SÁNCHEZ JIMÉNEZ',
+      'Pájaros dorilos y otras aves parleras: una referencia intertextual en «La Arcadia» ANTONIO SÁNCHEZ JIMÉNEZ, JOSÉ RAMÓN CARRIAZO RUIZ',
+      'Judith Farré Vidal, «Espacio y tiempo de fiesta en Nueva España (1665-1760)» SOLANGE ALBERRO',
+      'Lope de Vega, «La vega del Parnaso» FAUSTA ANTONUCCI',
+      'M.ª Jesús Framiñán de Miguel, «El espectáculo dramático-festivo del Corpus en la Salamanca del Renacimiento» SÒNIA BOADAS',
+      'Ana Zúñiga Lacruz, «Mujer y poder en el teatro español del Siglo de Oro: la figura de la reina» JOAN CAMMARATA',
+      'Harley Erdman y Susan Paun de García, eds., «Remaking the Comedia. Spanish Classical Theater in Adaptation» ALBA CARMONA LÁZARO',
+      'Juan de la Cueva, «Tragedias» FLORENCE D’ARTOIS',
+      'Felipe B. Pedraza Jiménez, Rafael González Cañal y Elena E. Marcello, eds., «El último Lope (1618-1635) y la escena. XXXVI Jornadas de teatro clásico. Almagro, 11, 12 y 13 de julio de 2013» ENRICO DI PASTENA',
+      'María de Zayas, «La traición en la amistad» DANIEL FERNÁNDEZ RODRÍGUEZ',
+      'María Asunción Flórez Asensio, «Músicos de compañía y empresa teatral en Madrid en el siglo XVII» TERESA FERRER VALLS',
+      'Gwyn E. Campbell y Amy R. Williamsen, eds., «Prismatic Reflections on Spanish Golden Age Theater. Essays in Honor of Matthew D. Stroud» ALEJANDRO GARCÍA-REIDY',
+      'Marcella Trambaioli, «La épica de amor en las comedias urbanas de Lope de Vega, y su contexto representacional cortesano» DELIA GAVELA',
+      'Tonina Paba, «Loas palaciegas nella Sardegna spagnola. Studio e edizione di testi» LUIGI GIULIANI',
+      'Pedro Calderón de la Barca, Luis Vélez de Guevara, Juan Ruiz de Alarcón, Antonio Mira de Amescua, Francisco de Rojas Zorrilla, Agustín Moreto, «Il teatro spagnolo dei Secoli d’Oro» RENATA LONDERO',
+      'Mariela Insúa y Felix K.E. Schmelzer, eds., «Teatro y poder en el Siglo de Oro» JOSÉ ENRIQUE LÓPEZ MARTÍNEZ',
+      '«Obras de Juan Pérez de Montalbán. Primer tomo de comedias» GONZALO PONTÓN',
+      'María Ángeles Fernández-Cifuentes, «Tradición e innovación en las «Novelas a Marcia Leonarda» de Lope de Vega» MARCO PRESOTTO',
+      'Joan R. Veny-Mesquida, «Criticar el text. Per a una metodologia de l’aparat crític d’autor» GIULIA RABONI',
+      '«Teatro español de los Siglos de Oro: Dramaturgos, textos, escenarios, fiestas»; «Lope sin fronteras»; «Diferentes y escogidas. Homenaje al profesor Luis Iglesias Feijoo» JAVIER RUBIERA',
+      'Gaspar Aguilar, «La comedia segunda de los agravios perdonados» GUILLERMO SERÉS',
+      'María del Valle Ojeda, Marco Presotto, eds., «Teatro clásico italiano y español. Sabbioneta y los lugares del teatro» SALOME VUELTA GARCÍA'
+    ],
+    links: [
+      { label: 'Número completo', url: 'https://revistes.uab.cat/anuariolopedevega/issue/view/v23' }
+    ]
+  },
+    {
+    id: 113,
+    cat: 'Noticias',
+    date: 'Nov. 2016',
+    title: 'XIII Taller Internacional de Estudios Textuales',
+    excerpt: 'Se ha abierto la matrícula para la XIII edición de los Talleres Internacionales de Estudios Textuales, que este año tienen por tema la edición de textos teatrales del Siglo de Oro',
+    img: '../media/XIII-taller-estudios-textuales.jpg',
+    url: 'noticia-xiii-taller-internacional-estudios-textuales.html',
+    content: [
+      'Dirigidos por Luigi Giuliani (Università di Perugia) y Victoria Pineda (Universidad de Extremadura), siguiendo los planteamientos de la americana Society for Textual Scholarship (STS) y su sociedad gemela European Society for Textual Scholarship (ESTS), los Talleres Internacionales se configuran como un lugar de encuentro interdisciplinar que supera las tradicionales divisiones entre las distintas filologías para ocuparse de teorías, metodologías y prácticas ecdóticas aplicadas a textos de distintas épocas, géneros y autores, escritos en distintos idiomas, compuestos y transmitidos a través de diferentes canales, desde la copia manuscrita a la imprenta manual, a la litografía, hasta las actuales tecnologías digitales.'
+    ],
+    links: [
+      { label: 'Programa (PDF)', url: 'media/Taller_2016_Presentazione.pdf' }
+    ]
+  },
+    {
+    id: 114,
+    cat: 'Publicación',
+    date: 'Nov. 2016',
+    title: 'Novedad editorial. Comedias de Lope de Vega. Parte XV',
+    excerpt: 'Se ha publicado la Parte XV de las Comedias de Lope de Vega, a cargo de la Editorial Gredos y coordinada por Luis Sánchez Laílla',
+    img: '../media/comedias_parte_XV.jpg',
+    url: 'noticia-publicacion-parte-xv.html',
+    content: [
+      'La primera edición de la Decimaquinta parte apareció al comienzo de 1621, inaugurando un año de inusitada actividad editorial, pues en él Lope dio a la estampa otras dos partes de comedias, la XVI y la XVII, diseñadas simultáneamente a aquella, además de La Filomena y numerosas reediciones. Recuperadas en su mayor parte de manos de representantes, Lope logró reunir un conjunto de copias de notable calidad textual y pudo componer una variada colección en la que son abundantes las comedias añejas y que combina con estudiado equilibrio las obras más donosas con otras serias, como dos piezas de materia bíblica (La hermosa Ester e Historia de Tobías), auténtica novedad en las partes. El lector pudo encontrar en esta un drama histórico (La Santa Liga), amenas comedias palatinas (Querer la propia desdicha, La vengadora de las mujeres y El favor agradecido), y urbanas (La malcasada, El leal criado y El ingrato arrepentido), alguna de carácter picaresco (El caballero del milagro) ambientadas en su mayor parte en Italia; y un número poco habitual de obras de materia religiosa, circunstancial en un caso (El Caballero del Sacramento) y esencial en otros, como los dos títulos bíblicos y La buena guarda, sin duda la joya del teatro religioso de Lope y de esta colección.',
+      'La ediciones críticas de estas doce comedias se acompañan de prólogo, texto crítico, variantes lingüísticas, notas al pie, aparato crítico y nota onomástica.',
+      'La obra , en dos volúmenes, está a la venta en las principales librerías, y puede adquirirse también a través de la siguiente web.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 115,
+    cat: 'Congreso',
+    date: '19, 20 y 21 oct. 2016',
+    title: 'Congreso Internacional ENTRESIGLOS Literatura e Historia, Cultura y Sociedad',
+    excerpt: 'Durante los días 19, 20 y 21 de octubre de 2016, la Facultad de Filología, Traducción y Comunicación de la Universidad de Valencia celebrará un congreso cuyo propósito es homenajear la trayectoria universitaria del profesor Joan Oleza.',
+    img: '../media/congreso-entresiglos.jpg',
+    url: 'noticia-congreso-entresiglos.html',
+    content: [
+      'Organizado por Josefa Badía Herrera, Xelo Candel Vila, Javier Lluch-Prats y Luz C. Souto y bajo la dirección de Teresa Ferrer Valls, se impartirán diversas ponencias en las que se abordarán temas como el concepto de patrimonio literario y su difusión en la era digital, desde la Edad Media hasta nuestros días; la inserción de la literatura en la Historia Cultural, las humanidades digitales y, finalmente, la memoria y el compromiso en relación con la entidad social del artista. De este modo, se pretende abrir una línea de debate en torno a un tema de máximo interés y actualidad: «el nuevo humanismo digital». Varios miembros de Prolope participarán en el evento'
+    ],
+    links: [
+      { label: 'Web del congreso', url: 'https://entresiglos2016.uv.es/' }
+    ]
+  },
+    {
+    id: 116,
+    cat: 'Noticias',
+    date: '11 mar. 2016',
+    title: 'No todo es Shakespeare y Cervantes',
+    excerpt: 'Artículo de Gonzalo Pontón en El País: Cervantes, Shakespeare ¿y Lope?',
+    img: '../media/Cervantes-Shakespeare-Lope_ponton.jpg',
+    url: 'noticia-no-todo-es-shakespeare-cervantes.html',
+    content: [
+      'Artículo de Gonzalo Pontón en El País: Cervantes, Shakespeare ¿y Lope? (con suscripción)'
+    ],
+    links: [
+      { label: 'Artículo (PDF)', url: 'media/Cervantes-Shakespeare-Lope_ponton.pdf' }
+    ]
+  },
+    {
+    id: 117,
+    cat: 'Noticias',
+    date: '26 feb. 2016',
+    title: 'Presentación de la Parte XIV en la Casa de Lope',
+    excerpt: 'El próximo viernes, 26 de febrero, a las 19:00 horas, se llevará a cabo la presentación de nuestra reciente publicación: Comedias de Lope de Vega. Parte XIV',
+    img: '../media/presentacion-parteXIV_casa-lope.jpg',
+    url: 'noticia-presentacion-parte-xiv.html',
+    content: [
+      'Estará a cargo del coordinador del libro, José Enrique López (École Normale Supérieur de Lyon), acompañado de Rodrigo Arribas (Fundación Siglo de Oro) y Javier Huerta Calvo (Universidad Complutense de Madrid)'
+    ],
+    links: [
+      { label: 'Más información', url: 'https://casamuseolopedevega.org/en/activities/historico-de-actividades-en/320-presentation-lope-de-vegas-comedies-xiv-part' }
+    ]
+  },
+    {
+    id: 118,
+    cat: 'Noticias',
+    date: 'Feb. 2016',
+    title: 'El Anuario Lope de Vega en las bases de datos',
+    excerpt: 'Nos complace informar a nuestros lectores de que en el último año el Anuario Lope de Vega. Texto, literatura, cultura ha ingresado o renovado su inclusión en las siguientes bases de datos',
+    img: '../media/bases-de-datos.jpg',
+    url: 'noticia-anuario-bases-datos.html',
+    content: [
+      '   Scopus   Web of Science   Directory of Open Access Journals   MLA International Bibliography   Agenzia Nazionale di Valutazione del Sistema Universitario e della Ricerca (ANVUR)   Dialnet '
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 119,
+    cat: 'Publicación',
+    date: 'Ene. 2016',
+    title: 'Nuevo número publicado del Anuario Lope de Vega',
+    excerpt: 'Nos complace anunciar la aparición del último número, el XXII (2016), del Anuario Lope de Vega. Texto, Literatura, Cultura Se trata de un volumen dedicado a Lope y la Edad de Plata, que ha contado con la coordinación de Domingo Ródenas.',
+    img: '../media/anuario-lope-de-vega_noticia.jpg',
+    url: 'noticia-publicacion-anuario-2016.html',
+    content: [
+      'Se trata de un volumen dedicado a Lope y la Edad de Plata, que ha contado con la coordinación de Domingo Ródenas.',
+      'Lope y la Edad de Plata DOMINGO RÓDENAS DE MOYA',
+      'Carpintería teatral en «La dama boba» lorquiana: Lope a ritmo de Molière ALBA AGRAZ-ORTIZ',
+      '«ABC» en el tricentenario de Lope de Vega: una utilización del Fénix y su obra con fines ideológicos MARÍA ÁLVAREZ ÁLVAREZ',
+      'Los mil y un Lopes de Diego JOSÉ LUIS BERNAL SALGADO',
+      'Miguel Hernández y la poesía de Lope (1935-1936) FRANCISCO JAVIER DÍEZ DE REVENGA',
+      '«Beneméritos cruzados de la cultura española»: el tricentenario de Lope en el ámbito conservador español VÍCTOR GARCÍA RUIZ',
+      'El Lope hegemónico y el Lope subalterno del tricentenario JUAN HERRERO SENÉS',
+      'Música para una celebración literaria: el tercer centenario de Lope de Vega y el Premio Nacional de Música de 1935 CARLOS LÓPEZ GALARZA',
+      'La Barraca, 1933: el giro lopiano de García Lorca DAVID RODRÍGUEZ-SOLÁS',
+      'Ezra Pound, «lopista» GAYLE ROGERS',
+      'En el tricentenario de Lope de Vega: «La Dorotea» de Eduardo Marquina ANTONELLA RUSSO',
+      'Lope de Vega de ultratumba: tres calas fantasmales en la recepción póstuma del Fénix ANTONIO SÁNCHEZ JIMÉNEZ',
+      'De Lorca a Lope ANDRÉS SORIA OLMEDO',
+      'Actividad editorial en torno al tricentenario de Lope de Vega MARÍA JOSÉ ZAMORA MUÑOZ',
+      'Lope de puntillas: el estreno del ballet «Laurencia» en Leningrado (1939) MARIA CHIGINSKAYA',
+      'Un fondo semidesconocido de obras (¿y una cuarteta autógrafa?) de Lope: la Bibliotheca Bodmeriana DANIELE CRIVELLARI',
+      'Sobre la fuente, las circunstancias de creación y la fecha del «Diálogo militar a honor de Espínola», de Lope de Vega FERNANDO RODRÍGUEZ-GALLEGO',
+      'Proxemia y espacio dramático en el teatro pastoril del primer Lope de Vega FRANCISCO SÁEZ RAPOSO',
+      '¿Miguel de Cervantes?, La conquista de Jerusalén por Godofre de Bullón, ed. A. Rodríguez López-Vázquez FAUSTA ANTONUCCI',
+      'Lope de Vega (atribuida), El alcalde de Zalamea, ed. A. Rodríguez López-Vázquez SÒNIA BOADAS',
+      'Miguel Zugasti, Ester Abreu Vieira de Oliveira y Maria Mirtis Caser, eds., El teatro barroco: textos y contextos. Actas selectas del Congreso Extraordinario de la AITENSO ESTHER BORREGO GUTIÉRREZ',
+      'María Bastianes, Esther Fernández y Purificació Mascarell, eds., Diálogos en las tablas: últimas tendencias de la puesta en escena del teatro clásico español ALBA CARMONA',
+      'Maria Grazia Profeti, Lo trágico y lo cómico mezclado, ed. A. Jurado Santos ENRICO DI PASTENA',
+      'Emilio Pasquini, ed., Studi e problemi di critica testuale: 1960-2010. Per i 150 anni della Commissione per i testi di lingua GIUSEPPE DI STEFANO',
+      'Veronika Ryjik, Lope de Vega en la invención de España – Oana Andreia Sâmbrian, Mariela Insúa y Antonie Mihail, eds., La voz de Clío – Guillem Usandizaga, La representación de la historia contemporánea en el teatro de Lope de Vega JUAN MANUEL ESCUDERO BAZTÁN',
+      'Bárbara Mujica, A New Anthology of Early Modern Spanish Theater. Play and Playtext ESTHER FERNÁNDEZ',
+      'Mirzam C. Pérez, The Comedia of Virginity: Mary and the Politics of Seventeenth-Century Spanish Theater NATALIA FERNÁNDEZ',
+      'Bárbara Mujica, ed., Shakespeare and the Spanish «Comedia». Translation, Interpretation, Performance. Essays in Honor of Susan L. Fischer ALEJANDRO GARCÍA-REIDY',
+      'Josefa Badía Herrera, Los primeros pasos en la comedia nueva. Textos y géneros en la colección teatral del conde de Gondomar LUIGI GIULIANI',
+      'Ignacio Arellano y Juan Antonio Martínez Berbel, eds., Violencia en escena y escenas de violencia en el Siglo de Oro RENATA LONDERO',
+      'Felipe B. Pedraza Jiménez, Rafael González Cañal y Elena E. Marcello, eds., Judaísmo y criptojudaísmo en la comedia española (XXXV Jornadas de Teatro clásico, Almagro 5-7 de julio de 2012) VALENTINA NIDER',
+      'Lope de Vega, Romances de juventud, ed. A. Sánchez Jiménez FELIPE B. PEDRAZA JIMÉNEZ',
+      'Lope de Vega Carpio, Tirso de Molina, Miguel de Cervantes, Il teatro dei Secoli d’oro, coord. M.G. Profeti MARCELLA TRAMBAIOLI',
+      'Creneida. Anuario de literaturas hispánicas, monográfico Filología de autor y Crítica genética frente a frente JOAN RAMON VENY-MESQUIDA'
+    ],
+    links: [
+      { label: 'Número completo', url: 'https://revistes.uab.cat/anuariolopedevega/issue/view/v22' }
+    ]
+  },
+    {
+    id: 120,
+    cat: 'Congreso',
+    date: '10, 11 y 12 dic. 2016',
+    title: 'Celebrado el VIII Congreso Internacional Lope de Vega',
+    excerpt: 'Los días 10, 11 y 12 de diciembre se celebró la octava edición del Congreso Internacional Lope de Vega, esta vez dedicado a Lope y el teatro europeo de su tiempo.',
+    img: '../media/lope-teatro-europeo_foto.jpg',
+    url: 'noticia-viii-congres-internacional-lope.html',
+    content: [
+      'Gracias a la hospitalidad de la Universidad Autónoma de Barcelona y de la Real Academia de Buenas Letras de Barcelona, se reunió casi una cuarentena de los mejores especialistas en la materia de ámbito internacional (Austria, Canadá, España, Estados Unidos, Francia, Holanda, Italia, Portugal y Reino Unido). Las intervenciones pusieron de manifiesto las similitudes y discrepancias entre el teatro español y el europeo de su época, con acercamientos al mercado y las prácticas escénicas, las fuentes comunes…; dieron cuenta de las relaciones con otros autores como Shakespeare, Marlowe, Hardy, Rotrou, Massinger, Corneille, etc.; y reflexionaron sobre la manera de investigar, enseñar, traducir y representar ese teatro hoy en día.'
+    ],
+    links: [
+      { label: 'Programa (PDF)', url: 'media/Triptico_Lope_europeo.pdf' }
+    ]
+  },
+    {
+    id: 121,
+    cat: 'Noticias',
+    date: 'Dic. 2015',
+    title: 'La dama boba. Edición crítica y archivo digital',
+    excerpt: 'El Grupo de Investigación PROLOPE presenta LA DAMA BOBA, edición crítica y archivo digital, un proyecto de edición en línea dirigido por Marco Presotto que ofrece un texto crítico de esta obra maestra de Lope de Vega con un estudio sobre su valor literario, su transmisión textual, así como un aparato crítico interactivo y dinámico y notas aclaratorias, además de la oportuna bibliografía.',
+    img: '../media/dama-boba_edicion-critica.jpg',
+    url: 'noticia-dama-boba-edicion.html',
+    content: [
+      'Gracias a la presentación informática, no sólo se podrá leer la obra, sino también entender los procesos creativos que hay detrás de ella (la presentación dinámica de las variantes permite visualizar los procesos genéticos, con sus fases de borrador, intermedias y redacción definitiva que se pueden observar en el manuscrito autógrafo) o realizar búsquedas de texto.',
+      'La edición se ofrece acompañada de las imágenes digitalizadas en alta resolución de los principales testimonios que nos transmitieron esta obra y que se custodian en la Biblioteca Nacional de España: el manuscrito autógrafo de Lope, verdadera joya de nuestro patrimonio bibliográfico, el interesante manuscrito del memorión Luis Remírez de Arellano, así como la primera edición impresa de la obra en la Novena Parte de las Comedias de Lope de Vega (Viuda de Alonso Martín de Balboa, Madrid, 1617), realizada bajo control del poeta. Ha sido posible ofrecer la reproducción de todos estos materiales gracias a la firma de un convenio entre el Grupo de Investigación PROLOPE y la Biblioteca Nacional de España.',
+      'Todo el software creado ex profeso para la elaboración de la edición y el sitio web han sido desarrollados y han corrido a cargo del Centro di Risorse Multimediali de la Università di Bologna.',
+      'La iniciativa supone no sólo la publicación con la máxima difusión de los resultados científicos, es decir, la edición de la obra de Lope de Vega para la lectura de cualquier interesado, sino incluso, la publicación en red de los datos y el proceso mismo de investigación. Para que se entienda: supone publicar y poner al alcance de los colegas científicos, los datos y fases intermedias de investigación para poder reelaborarlos y llegar a resultados o productos de investigación nuevos y diferentes sin necesidad de partir, cada vez, de cero. Se podría decir que es un paso científico adelante compartido que permite corregir resultados o emprender diferentes caminos. En la práctica esto se logra a través de la publicación de los archivos XML/TEI que el científico podrá descargar para su reutilización.',
+      'Para realizar la edición, además de los archivos de la edición y web de publicación, los ingenieros y programadores del Centro di Risorse Multimediali de la Università di Bologna han elaborado, bajo las directrices de los filólogos y humanistas digitales, un editor XML/TEI específico para el etiquetado de teatro del Siglo de Oro. Dicho editor se pone ahora al alcance y se comparte en códigos abiertos con toda la comunidad científica. Se trata de un rich markup editor en el entorno Wiki que permite el trabajo simultáneo y remoto de diferentes colaboradores y que automatiza el etiquetado TEI (según la Text Encoding Initiative). El editor permite asimismo la cómoda visualización en pantalla del testimonio que se está transcribiendo.',
+      'El grupo PROLOPE celebra haber dado este primer paso en la publicación en red de ediciones críticas. No conocemos, hasta donde se nos alcanza, un proyecto similar de edición crítica de nuestro teatro del Siglo de Oro que cumpla estos requisitos de propuesta científica abierta y colaborativa. Es un proyecto que se planteó nuestro grupo hace pocos años y en este proyecto dirigido por Marco Presotto consigue una primera y brillante realización. En nuestro ánimo está seguir investigando y realizando propuestas en el terreno de la edición crítica digital.'
+    ],
+    links: [
+      { label: 'Acceda a la edición', url: 'https://damaboba.unibo.it/' }
+    ]
+  },
+    {
+    id: 122,
+    cat: 'Publicación',
+    date: 'Nov. 2015',
+    title: 'Novedad editorial: Comedias de Lope de Vega, Parte XIV',
+    excerpt: 'Se ha publicado la Parte XIV de las Comedias de Lope de Vega, a cargo de la Editorial Gredos',
+    img: '../media/comedias_parte_XIV.jpg',
+    url: 'noticia-publicacion-parte-xiv.html',
+    content: [
+      'Publicada en junio de 1620, la Parte Catorce constituye, junto con la Trecena, un segundo ciclo de edición autorizada de comedias cuya preparación ocupó al Fénix casi todo el año de 1619. Como sucede en general con las partes posteriores a la Docena, en la Catorce Lope acude a las compañías de teatro para recuperar sus textos, lo cual se traduce en una presencia mayoritaria de comedias de cierta antigüedad: hay aquí nueve obras ya mencionadas en la primera lista de El peregrino en su patria (1603), incluida la que el propio Lope presenta como su primera obra escrita, El verdadero amante, que dedica a su hijo Lope Félix. Las piezas reunidas comprenden temas histórico-legendarios (Las almenas de Toro, Pedro Carbonero, La corona merecida), asuntos palatinos (El cuerdo loco), pastoriles (El verdadero amante) y por supuesto de enredo urbano (Los amantes sin amor, La villana de Getafe, La gallarda toledana, La viuda valenciana, El bobo del colegio), con algunas muy cercanas al ámbito propio de la novela picaresca (El caballero de Illescas, La ingratitud vengada).',
+      'La ediciones críticas de estas doce comedias se acompañan de prólogo, texto crítico, variantes lingüísticas, notas al pie, aparato crítico y nota onomástica.',
+      'La obra, en dos volúmenes, está a la venta en las principales librerías, y puede adquirirse también a través de la siguiente web.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 123,
+    cat: 'Congreso',
+    date: 'Nov. 2015',
+    title: 'VIII Congreso Internacional Lope de Vega',
+    excerpt: 'Los años en que se despliega la actividad teatral de Lope de Vega constituyen un período crucial en la historia del teatro europeo y solicitan una consideración de conjunto, de pers- pectivas comparatistas. En este VIII Congreso queremos plantear un diálogo entre tradiciones dramáticas nacionales (señaladamente la italiana, inglesa, francesa y portuguesa), cada una con sus propios ritmos, modalidades y realizaciones, y al mismo tiempo situar de forma adecuada la obra teatral de Lope en el contexto europeo de su tiempo.',
+    img: '../media/congreso_lope-teatro-europeo.jpg',
+    url: 'noticia-viii-congreso-lope.html',
+    content: [
+      'Los años en que se despliega la actividad teatral de Lope de Vega constituyen un período crucial en la historia del teatro europeo y solicitan una consideración de conjunto, de perspectivas comparatistas. En este VIII Congreso queremos plantear un diálogo entre tradiciones dramáticas nacionales (señaladamente la italiana, inglesa, francesa y portuguesa), cada una con sus propios ritmos, modalidades y realizaciones, y al mismo tiempo situar de forma adecuada la obra teatral de Lope en el contexto europeo de su tiempo.',
+      'Caben en el temario una amplia variedad de asuntos: cuestiones clásicas de influencias, comunes o recíprocas (traducciones incluidas); análisis formales, temáticos o ideológicos que muestren continuidades y fracturas entre distintas obras y tradiciones, con las comedias de Lope como uno de los ejes; consideraciones sobre subgéneros teatrales comparados y su teorización; aportaciones sobre las características de los espacios teatrales y las compañías de actores; planteamientos sociológicos e ideológicos sobre la recepción y comprensión de las obras por parte de públicos de los distintos países; particularidades nacionales en la configuración material y circulación de manuscritos e impresos teatrales.',
+      'Todos los participantes en el Congreso están invitados a presentar sus ponencias o comunicaciones en forma de artículo para su evaluación en el Anuario Lope de Vega. Texto, Literatura, Cultura, de acuerdo con los criterios que ahí se exponen.',
+      'La cuota de comunicante será de 50 euros y la de oyente de 30; se abonarán durante la celebración del evento.',
+      'Este Congreso se lleva a cabo gracias a la colaboración de la Facultad de Filosofía y Letras de la Universitat Autònoma y de la Reial Acadèmia de Bones Lletres de Barcelona.'
+    ],
+    links: [
+      { label: 'Programa (PDF)', url: 'media/Triptico_Lope_europeo.pdf' }
+    ]
+  },
+    {
+    id: 124,
+    cat: 'Conferencia',
+    date: '5 may. 2015',
+    title: 'Conferencia de C. George Peale (California State University, Fullerton)',
+    excerpt: 'El pasado 5 de mayo, tuvimos el honor de escuchar al profesor Peale en la Universitat Autònoma de Barcelona, quien impartió una conferencia titulada «Vida y obra de Luis Vélez de Guevara. Novedades críticas y alguna rectificación», dentro del marco de actividades de Prolope y el Departamento de Filología Española.',
+    img: '../media/peale_george.jpg',
+    url: 'noticia-conferencia-peale.html',
+    content: [
+      'Con una claridad y humor encomiables, el profesor C. George Peale nos hizo un recorrido por la biografía de Vélez de Guevara, señalando las equivocaciones más comunes respecto a ella, empezando por su propia fecha de nacimiento, que no debe situarse en 1578 sino en 1579; o la creencia en su origen converso y humilde, entre muchos otros detalles.',
+      'El prof. Peale destacó la personalidad de Vélez, un autor que consiguió librarse de enemistades, cosa meritoria en aquellos tiempos llenos de polémicas literarias. Constató asimismo que se trata de una figura esencial en el curso de la historia del teatro del Siglo de Oro principalmente por dos razones: la primera tiene que ver con su especial capacidad para la previsión de la escenificación, que se muestra en las indicaciones escenográficas de sus acotaciones, mucho más extensas y detalladas que en la mayoría de dramaturgos, o en el uso del patio como escenario, más allá de las tablas propiamente dichas; la segunda se refiere al hecho de haber llevado al teatro el lenguaje gongorino antes que ningún otro autor (en obras tan tempranas como El lucero de Castilla y la luna de Aragón, Don Pedro Miago y El alba y el sol, de en torno a 1613), convirtiéndose en precursor, incluso fuente de inspiración, de autores como Calderón.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 125,
+    cat: 'Noticias',
+    date: 'Mar. 2015',
+    title: 'Convocatoria del VIII Congreso Internacional Lope de Vega',
+    excerpt: 'Prolope organiza del 10 al 12 de diciembre de 2015 el VIII Congreso Lope de Vega, bajo el título de «Lope y el teatro europeo de su tiempo»',
+    img: '../media/congreso_lope-teatro-europeo_circular.jpg',
+    url: 'noticia-convocatoria-viii-congreso-lope.html',
+    content: [
+      'Los años en que se despliega la actividad teatral de Lope de Vega constituyen un período crucial en la historia del teatro europeo y solicitan una consideración de conjunto, de perspectivas comparatistas. En este VIII Congreso queremos plantear un diálogo entre tradiciones dramáticas nacionales (señaladamente la italiana, inglesa, francesa y portuguesa), cada una con sus propios ritmos, modalidades y realizaciones, y al mismo tiempo situar de forma adecuada la obra teatral de Lope en el contexto europeo de su tiempo. Caben en el temario una amplia variedad de asuntos: cuestiones clásicas de influencias, comunes o recíprocas (traducciones incluidas); análisis formales, temáticos o ideológicos que muestren continuidades y fracturas entre distintas obras y tradiciones, con las comedias de Lope como uno de los ejes; consideraciones sobre subgéneros teatrales comparados y su teorización; aportaciones sobre las características de los espacios teatrales y las compañías de actores; planteamientos sociológicos e ideológicos sobre la recepción y comprensión de las obras por parte de públicos de los distintos países; particularidades nacionales en la configuración material y circulación de manuscritos e impresos teatrales. Como es habitual, PROLOPE invitará a varios especialistas de reconocido prestigio internacional para que ofrezcan sendas ponencias sobre el tema central del Congreso. Los interesados en presentar una comunicación deberán enviar a PROLOPE un resumen de la misma, de un máximo de 300 palabras, en el que además se haga constar el nombre y apellidos del autor, antes del 5 de mayo de 2015. Las comunicaciones y sus resúmenes pueden presentarse en castellano, inglés, francés, italiano y portugués. La aceptación de las comunicaciones estará a cargo del Comité organizador del Congreso y se notificará antes del 1 de julio de 2015. Todos los participantes en el Congreso están invitados a presentar sus ponencias o comunicaciones en forma de artículo para su evaluación en el Anuario Lope de Vega. Texto, Literatura, Cultura, de acuerdo con los criterios que ahí se exponen. La cuota de comunicante será de 50 euros y la de oyente de 30, que se abonarán durante la celebración del evento. En ambos casos se deberá hacer llegar al correo electrónico de la organización los datos personales de los interesados (nombre y apellidos, dirección postal y electrónica, teléfono, etc.). En una próxima circular se dará cuenta de los créditos reconocidos, así como del programa provisional del Congreso.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 126,
+    cat: 'Noticias',
+    date: 'Abr. 2015',
+    title: 'Un nuevo sitio web para PROLOPE',
+    excerpt: 'La arquitectura del nuevo sitio web pretende ofrecer una información exhaustiva, fácilmente accesible y comprensible sobre nuestro grupo, miembros, proyectos de investigación y financiación; nuestro método de trabajo, organización y funcionamiento; nuestras publicaciones, producción y actividad científica; hemos incluido asimismo unas presentaciones básicas sobre la vida y figura de Lope de Vega o la historia editorial y de transmisión de su teatro.',
+    img: '../media/nuevo-sitio-web_prolope.jpg',
+    url: 'noticia-nuevo-sitio-prolope.html',
+    content: [
+      'La arquitectura del nuevo sitio web pretende ofrecer una información exhaustiva, fácilmente accesible y comprensible sobre nuestro grupo, miembros, proyectos de investigación y financiación; nuestro método de trabajo, organización y funcionamiento; nuestras publicaciones, producción y actividad científica; hemos incluido asimismo unas presentaciones básicas sobre la vida y figura de Lope de Vega o la historia editorial y de transmisión de su teatro.',
+      'En la página de Inicio se ofrecerán las Noticias relacionadas con el grupo de investigación, así como traducción a varias lenguas de un texto de presentación de los contenidos del sitio web que coincide con el paseo por la web que proponemos a continuación. Desde esta misma página, y desde cualquier página del sitio se ofrecerán datos básicos sobre el contacto y ubicación del grupo así como acceso a nuestra revista, el Anuario Lope de Vega.',
+      'PROLOPE fue fundado en 1989 en la Universitat Autònoma de Barcelona por Alberto Blecua (su Investigador Principal) y es dirigido en la actualidad por Gonzalo Pontón y Ramón Valdés, tiene por principal objetivo llevar a cabo la edición crítica del teatro completo de Lope de Vega. PROLOPE es un gran equipo de personas en el que actualmente se integra una treintena de prestigiosos investigadores de todo el mundo (acceda a Miembros). Desde su creación, PROLOPE ha contado con el apoyo financiero de instituciones públicas y privadas y ha colaborado con distintas entidades (acceda a Historial). Para el desarrollo de sus proyectos y su buen funcionamiento, declaración y logro de sus objetivos de investigación, PROLOPE aprobó unos Estatutos que asimismo son recogidos íntegramente en nuestra página web.',
+      'La obra dramática conservada de Lope, uno de los más grandes y prolíficos dramaturgos del Siglo de Oro y de la historia de la literatura universal (véase un resumen detallado de la Vida y obra de Lope de Vega en la sección que le dedicamos), se cifra en más de trescientas comedias de autoría segura, aparte de las de atribución dudosa. Por razones filológicas de peso, la base de nuestra labor de edición la constituyen las obras que se publicaron en las Partes de comedias, recopilaciones de doce piezas que se imprimieron mayoritariamente en vida de Lope, aunque también consideramos y utilizamos otros testimonios antiguos, otros impresos, manuscritos y por supuesto los numerosos manuscritos autógrafos conservados (véase la sección dedicada a la Transmisión y edición del teatro de Lope de Vega). La edición crítica de la Primera parte de comedias realizada por PROLOPE vio la luz en 1997, y en 2014 se ha publicado la Parte XIII, lo que supone 137 comedias editadas, prologadas y anotadas según criterios filológicos. Y seguimos adelante. En la sección Partes de Comedias se ofrece una lista de todas las que ya hemos editado; para obtener una lista completa de ediciones de comedias, sea en Partes o comedias sueltas, así como estudios promovidos y generados por nuestro grupo, véase la sección Bibliografía de Prolope. Otro de los objetivos que recientemente se ha marcado el grupo es la elaboración de ediciones digitales (véase el número 20 de nuestro Anuario Lope de Vega). En la sección Biblioteca Virtual de PROLOPE se pueden leer y consultar algunas comedias editadas por PROLOPE en versión electrónica.',
+      'Para realizar nuestras ediciones PROLOPE estableció unos Criterios de edición que reflejan nuestro método de trabajo y también recogemos en la página web correspondiente, acompañándolos de materiales que pueden ser de ayuda para todos nuestros colaboradores así como en general para el editor del teatro de Lope de Vega y del Siglo de Oro.',
+      'Pero además de la edición de comedias, y en la búsqueda de un eco e intercambio de ideas más amplio con investigadores de todo el mundo, PROLOPE ha creado también otros foros de encuentro y debate. En esa línea hay que señalar, en primer lugar, la creación en 1995 del Anuario Lope de Vega. Texto, Literatura, Cultura, revista científica que ha alcanzado el volumen XXI (2015) y que desde 2011 se publica únicamente en red (en la página El Anuario Lope de Vega se ofrece una breve historia de la publicación así como acceso a la misma). En la misma dirección cabe mencionar la organización de numerosos congresos, seminarios y coloquios internacionales.',
+      'En la sección Eventos se ofrecen sendas listas completas de todos los congresos y seminarios internacionales organizados por el grupo de investigación PROLOPE, de modo individual, o bien en colaboración con otros grupos de investigación, dado que uno de nuestros objetivos es la comunicación, intercambio de ideas y colaboración con otras instituciones y equipos españoles o extranjeros',
+      'Otra de las tareas fundamentales asumidas por PROLOPE es la formación de investigadores y doctores. Por ello PROLOPE participa en la formación doctoral, en el ámbito del Programa de Doctorado en Filología Española de la Universitat Autònoma de Barcelona, y se ofrece como lugar de destino para intercambios y estancias de carácter científico predoctorales o postdoctorales, así como de profesores e investigadores senior. Numerosos doctorandos, hoy doctores, han realizado su formación en nuestro grupo de investigación.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 127,
+    cat: 'Noticias',
+    date: 'Abr. 2015',
+    title: 'El hallazgo de Mujeres y criados: de la biblioteca a la escena',
+    excerpt: 'Cuando Alejandro García Reidy descubrió el manuscrito de Mujeres y criados, comedia de Lope de Vega, PROLOPE (Universitat Autònoma de Barcelona) entendió la relevancia del hallazgo: era un acontecimiento científico y cultural del que había que hacer partícipe a la sociedad. De este modo, diseñamos una campaña con varias fases que incluía 1) la difusión de la noticia, 2) la edición de la obra y su presentación y 3), si fuera posible, la puesta en escena.',
+    img: '../media/mujeres_criados_teatro-espanol.jpg',
+    url: 'noticia-hallazgo-mujeres-criados.html',
+    content: [
+      'Cuando Alejandro García Reidy descubrió el manuscrito de Mujeres y criados, comedia de Lope de Vega, PROLOPE (Universitat Autònoma de Barcelona) entendió la relevancia del hallazgo: era un acontecimiento científico y cultural del que había que hacer partícipe a la sociedad. De este modo, diseñamos una campaña con varias fases que incluía 1) la difusión de la noticia, 2) la edición de la obra y su presentación y 3), si fuera posible, la puesta en escena.',
+      'En verano de 2013, en cuanto Alejandro García Reidy tuvo lista una primera transcripción, desde PROLOPE se la hicimos llegar a la sensible y amiga Fundación Siglo de Oro para que estudiara su posible puesta en escena. La Fundación Siglo de Oro leyó la pieza y percibió inmediatamente en ella, como sostenía García Reidy, un ritmo trepidante así como un retrato y fuerza en las figuras de las mujeres que sin duda podrían hacer que la obra resultara muy atractiva y divertida para el público actual, de modo que asumió el reto con entusiasmo. Hasta aquí trabajamos con sigilo.',
+      'En enero de 2014 difundimos ya la noticia con la ayuda del servicio de prensa de la Universitat Autònoma de Barcelona y de otras instituciones con un gran eco en los medios de comunicación. A los pocos meses estaban listas sendas ediciones promovidas por el grupo a cargo de Alejandro García Reidy: por un lado, gracias a un acuerdo con la Biblioteca Nacional de España, en acceso libre en línea, y por otro, en libro, en Editorial Gredos. En mayo se presentó oficialmente y con todos los honores donde era lógico: donde está el manuscrito, en la Biblioteca Nacional de España. En junio se convirtió en uno de los éxitos de ventas de la Feria del Libro de Madrid. Al año de la presentación oficial del manuscrito y de la edición, se consigue el objetivo que implica la plena recuperación para nuestro patrimonio de un texto dramático, su puesta en escena, gracias a la Fundación Siglo de Oro y el Teatro Español.',
+      'Alejandro García Reidy, Rodrigo Arribas y Jesús Fuente han trabajado conjuntamente en la versión que ahora presentan; una versión en la que la adaptación es la mínima imprescindible, sumamente fiel al texto original del manuscrito que conserva la obra y en el que solo ha sido necesario retocar alguna palabra que el público actual no habría entendido.',
+      'Gracias a los esfuerzos, la colaboración y la sinergia de Alejandro García Reidy, la Biblioteca Nacional de España, la Fundación Siglo de Oro, el Teatro Español y PROLOPE esta obra de Lope de Vega en 2014 acaparó titulares y se convirtió en éxito de ventas, y en 2015 vuelve a las tablas para que el público la disfrute. Biblioteca, investigadores universitarios y actores han trabajado codo a codo para lograr la mayor y mejor conservación y recuperación de nuestro patrimonio cultural.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 128,
+    cat: 'Publicación',
+    date: 'Feb. 2015',
+    title: 'Anuario Lope de Vega. Vol. 21 (2015)',
+    excerpt: 'Nos complace anunciar la aparición del último número, el XXI (2015), del Anuario Lope de Vega. Texto, Literatura, Cultura.',
+    img: '../media/anuario-lope-de-vega_noticia.jpg',
+    url: 'noticia-publicacion-anuario-2015.html',
+    content: [
+      'Nos complace anunciar la aparición del último número, el XXI (2015), del Anuario Lope de Vega. Texto, Literatura, Cultura.',
+      '¿Las relaciones piden los romances? Métrica y narración en dos comedias de Lope de Vega (1610) DANIELE CRIVELLARI',
+      'Acción Española y el tricentenario de Lope de Vega MARTA GARCÍA PEÑA',
+      'Intertextualidad o reescritura en Lope de Vega: «El perseguido», «El mayordomo de la duquesa de Amalfi» y «El perro del hortelano» JUAN RAMÓN MUÑOZ SÁNCHEZ',
+      'Hacia un modelo de edición crítica digital del teatro de Lope MARCO PRESOTTO',
+      'Intrigas en la corte de Buda: disimulación política y género palatino en «El cuerdo loco» de Lope de Vega ADRIÁN J. SÁEZ',
+      'Lope de Vega y los lindos: sátira y masculinidad en «De cosario a cosario» ANTONIO SÁNCHEZ JIMÉNEZ',
+      'Los paratextos de la «Parte XIII de comedias de Lope de Vega». Texto y contexto HÉLÈNE TROPÉ',
+      'D’ecdòtica i crítica: reflexions a propòsit d’un manual recent d’edició de textos JOAN R. VENY-MESQUIDA',
+      'Jesús Gómez, El modelo teatral del último Lope de Vega (1621-1635) IGNACIO ARELLANO',
+      'Alejandro García Reidy, Las musas rameras. Oficio dramático y conciencia profesional en Lope de Vega ANTONIO CARREÑO',
+      'Amélie Adde, La versification du théâtre espagnol du siècle d’Or suivi de Analyse métrique du «Castigo sin venganza» ANNE CAYUELA',
+      'Carmen Sanz Ayán, Hacer escena. Capítulos de historia de la empresa teatral en el Siglo de Oro TERESA FERRER VALLS',
+      'Alexandre Roquain, Más allá del exlibris Lope de Vega y Mateo Vázquez de Leca. Historia de un libro inédito DELIA GAVELA GARCÍA',
+      'Christophe Couderc, Le théâtre tragique au Siècle d’or. Cristóbal de Virués, Lope de Vega, Calderón de la Barca – Christophe Couderc y Hélène Tropé, eds., La tragédie espagnole et son contexte européen. xvie-xviie siècles LUIGI GIULIANI',
+      'José María Díez Borque, dir., Álvaro Bustos Táuler y Elena Di Pinto Revuelta, eds., Hacia el gracioso: Comicidad en el teatro español del siglo XVI JESÚS GÓMEZ',
+      'José Manuel Lucía Megías, ed., Lope de Vega en la piel de Brugalla. La Colección Lope de Vega de la Biblioteca Histórica Municipal LUIS GÓMEZ CANSECO',
+      'Claudia Demattè y Alberto del Río, Parodia de la materia caballeresca y teatro áureo. Edición de Las aventuras de Grecia y su modelo serio, el «Don Florisel de Niquea» de Montalbán JAVIER GUIJARRO CEBALLOS',
+      'Lope de Vega y Cándido María Trigueros, La moza de cántaro (Dos comedias), ed. G. Torres Nebrera MIGUEL ÁNGEL LAMA',
+      'Daniele Crivellari, Marcas autoriales de segmentación en las comedias autógrafas de Lope de Vega: estudio y análisis EUGENIO MAGGI',
+      'Alain Bègue, Carlos Mata Induráin y Pietro Taravacci, eds., Comedia burlesca y teatro breve del Siglo de Oro – Felipe B. Pedraza Jiménez, Rafael González Cañal y Elena E. Marcello, eds., La desvergüenza en la comedia española FERNANDO PLATA',
+      'Alonso Fernández de Avellaneda, Segundo Tomo de El ingenioso hidalgo Don Quijote de la Mancha, eds. M. Rodríguez Cáceres y F.B. Pedraza Jiménez ALFREDO RODRÍGUEZ LÓPEZ-VÁZQUEZ',
+      'Antonio Carreño-Rodríguez, Alegorías del poder: crisis imperial y comedia nueva (1598 -1659) ALEXANDER SAMSON',
+      'Hilaire Kallendorf, ed., A Companion to Early Modern Hispanic Theater ANTONIO SANCHEZ JIMÉNEZ',
+      'Pedro Calderón de la Barca, El mayor encanto, amor, ed. A. Ulla Lorenzo OMAR SANZ',
+      'Nicola Michelassi y Salomé Vuelta García, Il teatro spagnolo a Firenze nel Seicento. Vol. I: Giacinto Andrea Cicognini, Giovan Battista Ricciardi, Pietro Susini, Mattias Maria Bartolommei DIEGO SÍMINI',
+      'Paul Maas, Crítica del Texto, trads. A. Baldissera y R. Bonilla Cerezo SELENA SIMONATTI',
+      'Gabriel Sánchez Espinosa, ed., Pruebas de imprenta. Estudios sobre la cultura editorial del libro en la España moderna y contemporánea ALEJANDRA ULLA LORENZO',
+      'María Cristina Quintero, Gendering the Crown in the Spanish Baroque «Comedia» ELIZABETH WRIGHT'
+    ],
+    links: [
+      { label: 'Número completo', url: 'https://revistes.uab.cat/anuariolopedevega/issue/view/v21-anuariolopedevega' }
+    ]
+  },
+    {
+    id: 129,
+    cat: 'Congreso',
+    date: '1 y 2 dic. 2014',
+    title: 'XI Taller Internacional de Estudios Textuales',
+    excerpt: 'Los próximos días 1 y 2 de diciembre de 2014 PROLOPE participará en el XI Taller Internacional de Estudios Textuales, que se celebrará en la Università di Perugia.',
+    img: '../media/xi-taller-internacional-estudios-textuales_2014.jpg',
+    url: 'noticia-ix-taller-estudios-textuales.html',
+    content: [
+      'El congreso está organizado por la Cattedra di Spagnolo de la Università di Perugia y el Área de Teoria de la Literatura y Literatura Comparada de la Universidad de Extremadura; así como en colaboración con el Dipartimento di Lettere – Lingue, letterature e civilità antiche de la Università di Perugia; el Grupo de Investigación Arenga de la Universidad de Extremadura y el Institut d»Espagnol de la Université de Neuchätel.'
+    ],
+    links: [
+      { label: 'Programa (PDF)', url: 'media/xi-taller-internacional-estudios-textuales_2014.pdf' }
+    ]
+  },
+    {
+    id: 130,
+    cat: 'Publicación',
+    date: 'Nov. 2014',
+    title: 'Parte XIII de las comedias de Lope de Vega',
+    excerpt: 'Se ha publicado la Parte XIII de las comedias de Lope de Vega, a cargo de la Editorial Gredos',
+    img: '../media/comedias_parte_XIII.jpg',
+    url: 'noticia-publicacion-parte-xiii.html',
+    content: [
+      'La Trecena parte de comedias de Lope de Vega salió a la luz en enero de 1620. En ella se mantiene la misma preocupación que el autor había mostrado desde la Parte novena por asegurar la autenticidad de sus textos, pero añade dos novedades fundamentales: redacta dedicatorias individuales para cada comedia, en las que combina el tono personal, y hasta familiar a veces, con un afán reivindicativo de sí mismo y de su arte; encabeza cada pieza con la mención expresa del director de la compañía a la que la había vendido, para evitar posibles imposturas. La Trecena parte se perfila, así, como un ejemplo vivo de los entresijos editoriales y comerciales del teatro seiscentista y de la estudiada implicación de Lope en un teatro que era, en última instancia, la que se aseguraba su éxito. En la recopilación se combinan piezas compuestas en fecha temprana, incluso en los años finales del siglo XVI, con otras más próximas al momento en que se conformó el volumen. Son comedias muy variadas en lo temático, desde el asunto pastoril (La Arcadia) hasta el histórico (Los españoles en Flandes), pasando por la hagiografía (El cardenal de Belén) y por el enredo amoroso, con algunos ejemplos espléndidos (Los locos de Valencia, La francesilla, Santiago el Verde), y que confirman en su conjunto la enorme versatilidad del Fénix.',
+      'Las ediciones críticas de estas doce comedias, con prólogo, texto crítico, variantes lingüísticas, notas al pie, aparato crítico y nota onomástica, han sido realizadas por investigadores de la talla de Natalia Fernández Rodríguez, Omar Sanz, José Enrique López Martínez y Marta Latorre Pena, entre otros.',
+      'La obra, en dos volúmenes, está a la venta en las principales librerías, y asimismo puede adquirirse a través de la siguiente web.'
+    ],
+    links: [
+    ]
+  },
+    {
+    id: 131,
+    cat: 'Publicación',
+    date: 'Nov. 2014',
+    title: 'Prolope publica la edición en línea de Mujeres y criados de García-Reidy',
+    excerpt: 'Esta edición en línea ha sido posible gracias a un convenio con la BNE e incluye diferentes materiales: un prólogo audiovisual, el libro virtual (con el texto editado por A. García-Reidy, imágenes del manuscrito y varios preliminares), opción de descarga del texto en pdf, así como, bajo petición, un documento word para facilitar la puesta en escena por grupos de teatro educativos y de aficionados sin ánimo de lucro.',
+    img: '../media/publicacion-mujeres-y-criados.jpg',
+    url: 'noticia-publicacion-mujeres-criados.html',
+    content: [
+      'Esta edición en línea ha sido posible gracias a un convenio con la BNE e incluye diferentes materiales: un prólogo audiovisual, el libro virtual (con el texto editado por A. García-Reidy, imágenes del manuscrito y varios preliminares), opción de descarga del texto en pdf, así como, bajo petición, un documento word para facilitar la puesta en escena por grupos de teatro educativos y de aficionados sin ánimo de lucro.',
+      'La edición en línea ha sido un proyecto coordinado por Sònia Boadas y Ramón Valdés.'
+    ],
+    links: [
+      { label: 'Descargue la edición facsímil (PDF)', url: 'media/prolope_publica_la_edicion_en_linea_de_mujeres_y_criados_de_garcia_reidy.pdf' }
+    ]
+  },
 ];
