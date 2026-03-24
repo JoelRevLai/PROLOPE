@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editor de contenidos — PROLOPE</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--azul:#1a3a5c;--dorado:#c8a45a;--crema:#faf8f4;--texto:#333;--borde:#d5cfc5;--bg:#fff;--sombra:rgba(0,0,0,.06);--rojo:#c44;--verde:#2a7d4f}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'EB Garamond',Georgia,serif;background:#eae6df;color:var(--texto);line-height:1.6;display:flex;height:100vh;overflow:hidden}
+
+    /* ── SIDEBAR NAV ──────────────────── */
+    .ed-nav{width:260px;min-width:260px;background:var(--azul);color:#fff;display:flex;flex-direction:column;overflow:hidden}
+    .ed-nav-header{padding:1rem 1rem .5rem;text-align:center;border-bottom:1px solid rgba(255,255,255,.1)}
+    .ed-nav-header h1{font-family:'Raleway',sans-serif;font-size:1rem;font-weight:600}
+    .ed-nav-header p{font-size:.75rem;opacity:.6;margin-top:.2rem}
+    .ed-nav-list{flex:1;overflow-y:auto;padding:.5rem 0}
+    .nav-group{padding:.3rem 0}
+    .nav-group-title{font-family:'Raleway',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.4rem 1rem .2rem;opacity:.45}
+    .nav-item{display:block;padding:.35rem 1rem;font-size:.82rem;color:rgba(255,255,255,.75);cursor:pointer;transition:background .15s;text-decoration:none;border:none;background:none;width:100%;text-align:left;font-family:'EB Garamond',serif}
+    .nav-item:hover{background:rgba(255,255,255,.08);color:#fff}
+    .nav-item.active{background:var(--dorado);color:#fff;font-weight:600}
+
+    /* ── MAIN AREA ────────────────────── */
+    .ed-main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+    .ed-topbar{background:var(--bg);border-bottom:1px solid var(--borde);padding:.6rem 1.5rem;display:flex;align-items:center;gap:.8rem;flex-shrink:0}
+    .ed-topbar-title{font-family:'Raleway',sans-serif;font-weight:600;color:var(--azul);font-size:.95rem;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .ed-topbar-badge{font-size:.68rem;font-family:'Raleway',sans-serif;background:var(--crema);border:1px solid var(--borde);padding:.15rem .5rem;border-radius:3px;color:#888}
+    .ed-body{flex:1;overflow-y:auto;padding:1.5rem 2rem 3rem}
+
+    /* welcome */
+    .welcome{text-align:center;padding:4rem 1rem}
+    .welcome h2{font-family:'Raleway',sans-serif;color:var(--azul);margin-bottom:.5rem}
+    .welcome p{color:#888;max-width:400px;margin:0 auto}
+
+    /* ── SECTIONS ─────────────────────── */
+    .ed-section{background:var(--bg);border:1px solid var(--borde);border-radius:8px;padding:1.4rem 1.6rem;margin-bottom:1rem;box-shadow:0 2px 6px var(--sombra)}
+    .ed-section h2{font-family:'Raleway',sans-serif;font-size:1rem;font-weight:600;color:var(--azul);margin-bottom:.8rem;padding-bottom:.4rem;border-bottom:2px solid var(--dorado);display:flex;align-items:center;gap:.5rem}
+    .ed-section h2 .badge{font-size:.65rem;font-weight:700;letter-spacing:.04em;background:var(--dorado);color:#fff;padding:.1rem .45rem;border-radius:3px}
+
+    /* ── FORM FIELDS ──────────────────── */
+    label{display:block;font-family:'Raleway',sans-serif;font-weight:500;font-size:.82rem;color:var(--azul);margin:0 0 .2rem}
+    .field{margin-bottom:.8rem}
+    .field:last-child{margin-bottom:0}
+    .help{font-size:.75rem;color:#999;margin-bottom:.2rem}
+    input[type=text],select,textarea{width:100%;padding:.45rem .6rem;font-family:'EB Garamond',serif;font-size:.92rem;border:1px solid var(--borde);border-radius:5px;background:var(--crema);color:var(--texto);transition:border-color .2s}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:var(--dorado);box-shadow:0 0 0 2px rgba(200,164,90,.18)}
+    textarea{resize:vertical;min-height:70px}
+
+    /* ── RICH EDITOR (contenteditable) ── */
+    .rich-wrap{border:1px solid var(--borde);border-radius:5px;overflow:hidden}
+    .rich-toolbar{display:flex;gap:1px;background:var(--borde);padding:0;border-bottom:1px solid var(--borde)}
+    .rich-toolbar button{background:var(--crema);border:none;padding:.3rem .6rem;cursor:pointer;font-family:'Raleway',sans-serif;font-size:.75rem;color:var(--azul);transition:background .12s;flex-shrink:0}
+    .rich-toolbar button:hover{background:#e8e2d6}
+    .rich-toolbar button.active{background:var(--dorado);color:#fff}
+    .rich-edit{min-height:60px;padding:.5rem .65rem;background:var(--crema);font-family:'EB Garamond',serif;font-size:.95rem;line-height:1.6;color:var(--texto);outline:none}
+    .rich-edit:focus{background:#fff}
+    .rich-edit p{margin-bottom:.6em}
+    .rich-edit a{color:var(--azul);text-decoration:underline}
+
+    /* ── BUTTONS ──────────────────────── */
+    .btn{display:inline-flex;align-items:center;gap:.3rem;padding:.45rem .9rem;border:none;border-radius:5px;cursor:pointer;font-family:'Raleway',sans-serif;font-size:.8rem;font-weight:500;transition:opacity .15s}
+    .btn:hover{opacity:.85}
+    .btn-primary{background:var(--dorado);color:#fff}
+    .btn-blue{background:var(--azul);color:#fff}
+    .btn-green{background:var(--verde);color:#fff}
+    .btn-danger{background:var(--rojo);color:#fff}
+    .btn-outline{background:none;border:1px solid var(--borde);color:var(--azul)}
+    .btn-sm{padding:.3rem .6rem;font-size:.75rem}
+
+    /* ── ITEM CARDS (tesis, congresos…) ─ */
+    .item-card{border:1px solid var(--borde);border-radius:6px;padding:1rem 1.2rem;margin-bottom:.7rem;background:var(--crema);position:relative}
+    .item-card-header{display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem}
+    .item-card-header strong{font-family:'Raleway',sans-serif;font-size:.88rem;flex:1}
+    .item-card .row{display:flex;gap:.6rem}
+    .item-card .row>div{flex:1}
+    .item-card .btn-del-item{position:absolute;top:.5rem;right:.5rem;background:var(--rojo);color:#fff;border:none;border-radius:4px;width:24px;height:24px;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center}
+
+    /* ── IMAGE PICKER ─────────────────── */
+    .img-picker{display:flex;gap:.6rem;align-items:flex-end}
+    .img-picker input{flex:1}
+    .img-picker button{flex-shrink:0}
+    .img-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:900;align-items:center;justify-content:center}
+    .img-modal-overlay.open{display:flex}
+    .img-modal{background:var(--bg);border-radius:10px;width:90%;max-width:700px;max-height:80vh;display:flex;flex-direction:column;overflow:hidden}
+    .img-modal-header{padding:1rem;border-bottom:1px solid var(--borde);display:flex;align-items:center;gap:.5rem}
+    .img-modal-header input{flex:1}
+    .img-modal-header button{flex-shrink:0}
+    .img-modal-grid{flex:1;overflow-y:auto;padding:.8rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:.5rem}
+    .img-modal-grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:4px;cursor:pointer;border:2px solid transparent;transition:border-color .15s}
+    .img-modal-grid img:hover{border-color:var(--dorado)}
+
+    /* ── BLOCK CARDS ──────────────────── */
+    .block-card{background:var(--bg);border:1px solid var(--borde);border-radius:8px;padding:.8rem 1rem;margin-bottom:.6rem;box-shadow:0 1px 3px var(--sombra)}
+    .block-header{display:flex;align-items:center;gap:.4rem;margin-bottom:.5rem}
+    .block-handle{color:#ccc;cursor:grab;font-size:1rem}
+    .block-type{font-family:'Raleway',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.04em;padding:.1rem .4rem;border-radius:3px;color:#fff;text-transform:uppercase}
+    .type-p{background:var(--azul)}.type-h{background:var(--dorado)}.type-fig{background:#5a7d5a}.type-quote{background:#7a6f60}.type-links{background:#6a5a8a}
+    .block-actions{margin-left:auto;display:flex;gap:.2rem}
+    .block-actions button{background:none;border:1px solid var(--borde);border-radius:3px;width:24px;height:24px;cursor:pointer;font-size:.78rem;display:flex;align-items:center;justify-content:center;color:var(--azul)}
+    .block-actions button:hover{background:var(--crema)}
+    .block-actions .del{color:var(--rojo)}
+
+    /* ── TOAST ────────────────────────── */
+    .toast{position:fixed;bottom:1.5rem;right:1.5rem;padding:.7rem 1.2rem;border-radius:8px;font-family:'Raleway',sans-serif;font-size:.85rem;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.2);transform:translateY(80px);opacity:0;transition:transform .3s,opacity .3s;z-index:1000}
+    .toast.show{transform:translateY(0);opacity:1}
+    .toast.ok{background:var(--verde)}.toast.err{background:var(--rojo)}.toast.info{background:var(--azul)}
+
+    /* ── LINK PAIRS ──────────────────── */
+    .link-row{display:flex;gap:.4rem;margin-bottom:.4rem;align-items:center}
+    .link-row input{flex:1}
+    .link-row .del-link{background:var(--rojo);color:#fff;border:none;border-radius:4px;width:24px;height:24px;cursor:pointer;font-size:.9rem;flex-shrink:0}
+
+    /* ── RESPONSIVE ──────────────────── */
+    @media(max-width:800px){.ed-nav{width:200px;min-width:200px} .ed-body{padding:1rem} .item-card .row{flex-direction:column;gap:0}}
+    @media(max-width:600px){.ed-nav{display:none} .ed-body{padding:.8rem}}
+  </style>
+</head>
+<body>
+
+<!-- ═══════ LEFT NAV ═══════ -->
+<aside class="ed-nav">
+  <div class="ed-nav-header">
+    <h1>PROLOPE</h1>
+    <p>Editor de contenidos</p>
+  </div>
+  <div class="ed-nav-list" id="navList">
+    <p style="padding:1rem;font-size:.82rem;opacity:.5">Cargando páginas…</p>
+  </div>
+</aside>
+
+<!-- ═══════ MAIN ═══════ -->
+<div class="ed-main">
+  <div class="ed-topbar" id="topbar" style="display:none">
+    <span class="ed-topbar-title" id="topTitle"></span>
+    <span class="ed-topbar-badge" id="topBadge"></span>
+    <button class="btn btn-outline btn-sm" onclick="previewPage()">Vista previa</button>
+    <button class="btn btn-green" id="btnSave" onclick="savePage()">Guardar cambios</button>
+  </div>
+  <div class="ed-body" id="edBody">
+    <div class="welcome" id="welcomeScreen">
+      <h2>Editor de contenidos PROLOPE</h2>
+      <p>Selecciona una página del panel de la izquierda para empezar a editarla.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ IMAGE PICKER MODAL ═══════ -->
+<div class="img-modal-overlay" id="imgModal">
+  <div class="img-modal">
+    <div class="img-modal-header">
+      <input type="text" id="imgSearch" placeholder="Buscar imagen…" oninput="filterImages()">
+      <button class="btn btn-outline btn-sm" onclick="closeImgModal()">Cerrar</button>
+    </div>
+    <div class="img-modal-grid" id="imgGrid"></div>
+  </div>
+</div>
+
+<!-- toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════════════════
+   EDITOR DE CONTENIDOS PROLOPE — JAVASCRIPT PRINCIPAL
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+// ── STATE ────────────────────────────────────────────────────────────────────
+var S = {
+  pages: [],
+  media: [],
+  currentPath: '',
+  originalHtml: '',
+  headerPart: '',
+  footerPart: '',
+  pageType: '',
+  heroData: null,
+  heroOriginalHtml: '',
+  blocks: [],
+  sidebarHtml: '',
+  hasSidebar: false,
+  sidebarTag: 'aside',
+  sidebarAttrs: '',
+  wrapperOpen: '',
+  wrapperClose: '',
+  mainTag: '',
+  mainAttrs: '',
+  pageTitle: '',
+  // Specialized data
+  items: [],       // for tesis, congresos, seminarios, multimedia, members, projects
+  introHtml: '',   // intro text before items
+  afterGridHtml: '',
+};
+var blockId = 0;
+var imgPickerCallback = null;
+
+// ── INIT ─────────────────────────────────────────────────────────────────────
+(async function init() {
+  try {
+    var r = await fetch('/api/pages');
+    S.pages = await r.json();
+    r = await fetch('/api/media');
+    S.media = await r.json();
+  } catch(e) {
+    S.pages = [];
+    S.media = [];
+  }
+  renderNav();
+})();
+
+// ── NAV ──────────────────────────────────────────────────────────────────────
+function renderNav() {
+  var groups = {};
+  var labels = {'(raíz)':'Inicio','el-grupo':'El grupo','objetivos':'Objetivos','publicaciones':'Publicaciones','proyectos-digitales':'Proyectos digitales','formacion':'Formación','eventos':'Eventos','multimedia':'Multimedia','noticias':'Noticias'};
+  S.pages.forEach(function(p){
+    var g = p.dir;
+    if (!groups[g]) groups[g] = [];
+    groups[g].push(p);
+  });
+  var html = '';
+  var order = ['(raíz)','el-grupo','objetivos','publicaciones','proyectos-digitales','formacion','eventos','multimedia','noticias'];
+  order.forEach(function(g){
+    if (!groups[g]) return;
+    html += '<div class="nav-group"><div class="nav-group-title">'+(labels[g]||g)+'</div>';
+    groups[g].forEach(function(p){
+      var name = p.name.replace('.html','').replace(/-/g,' ');
+      name = name.charAt(0).toUpperCase()+name.slice(1);
+      html += '<button class="nav-item" data-path="'+p.path+'" onclick="loadPage(\''+p.path+'\')">'+esc(name)+'</button>';
+    });
+    html += '</div>';
+  });
+  document.getElementById('navList').innerHTML = html;
+}
+
+// ── LOAD PAGE ────────────────────────────────────────────────────────────────
+async function loadPage(pagePath) {
+  // Highlight nav
+  document.querySelectorAll('.nav-item').forEach(function(el){ el.classList.toggle('active', el.dataset.path === pagePath); });
+  document.getElementById('topbar').style.display = '';
+  document.getElementById('welcomeScreen').style.display = 'none';
+
+  try {
+    var r = await fetch('/api/page?path='+encodeURIComponent(pagePath));
+    S.originalHtml = await r.text();
+  } catch(e) {
+    toast('Error al cargar la página','err');
+    return;
+  }
+
+  S.currentPath = pagePath;
+  parseFile(S.originalHtml, pagePath);
+  renderEditor();
+  document.getElementById('edBody').scrollTop = 0;
+}
+
+// ── PAGE TYPE DETECTION ──────────────────────────────────────────────────────
+function detectType(path) {
+  if (path === 'index.html') return 'index';
+  if (path === 'formacion/tesis.html') return 'theses';
+  if (path === 'eventos/congresos.html') return 'congresses';
+  if (path === 'eventos/seminarios.html') return 'seminars';
+  if (path === 'multimedia/multimedia.html') return 'multimedia';
+  if (path === 'el-grupo/miembros.html') return 'members';
+  if (path === 'el-grupo/historial-proyectos.html') return 'projects';
+  if (path === 'el-grupo/contacto.html') return 'contact';
+  if (path.startsWith('noticias/noticia-')) return 'news';
+  return 'article';
+}
+
+var TYPE_LABELS = {index:'Página de inicio',theses:'Tesis',congresses:'Congresos',seminars:'Seminarios',multimedia:'Multimedia',members:'Miembros',projects:'Historial de proyectos',contact:'Contacto',news:'Noticia',article:'Página de contenido'};
+
+// ── PARSE FILE ───────────────────────────────────────────────────────────────
+function parseFile(html, path) {
+  blockId = 0;
+  S.blocks = []; S.items = []; S.introHtml = ''; S.afterGridHtml = '';
+  S.hasSidebar = false; S.sidebarHtml = '';
+  S.wrapperOpen = ''; S.wrapperClose = '';
+  S.mainTag = ''; S.mainAttrs = '';
+  S.heroData = null; S.heroOriginalHtml = '';
+
+  S.pageType = detectType(path);
+
+  // Split header / content / footer
+  splitHtml(html);
+
+  // Page title
+  var m = S.headerPart.match(/<title>([\s\S]*?)<\/title>/i);
+  S.pageTitle = m ? m[1].trim() : '';
+
+  // Parse content zone into DOM
+  var doc = new DOMParser().parseFromString('<div id="__cz__">'+S.footerPart_raw+'</div>','text/html');
+  // Actually parse the content zone
+  doc = new DOMParser().parseFromString('<div id="__cz__">'+S.contentZone+'</div>','text/html');
+  var cz = doc.getElementById('__cz__');
+
+  // Hero
+  var heroEl = cz.querySelector('.page-hero, .article-hero, .idx-hero');
+  if (heroEl) {
+    S.heroOriginalHtml = heroEl.outerHTML;
+    S.heroData = extractHero(heroEl);
+  }
+
+  // Find main content + sidebar + wrapper
+  var mainEl = cz.querySelector('.article-main') || cz.querySelector('.article-body') || cz.querySelector('.page-content') || cz.querySelector('.page-content-full');
+  var sidebarEl = cz.querySelector('.article-sidebar') || cz.querySelector('aside');
+  if (sidebarEl) { S.hasSidebar = true; S.sidebarHtml = sidebarEl.innerHTML; S.sidebarTag = sidebarEl.tagName.toLowerCase(); S.sidebarAttrs = getAttrs(sidebarEl); }
+
+  if (mainEl) {
+    var wr = mainEl.parentElement;
+    if (wr && wr.id !== '__cz__') { S.wrapperOpen = openTag(wr); S.wrapperClose = '</'+wr.tagName.toLowerCase()+'>'; }
+    S.mainTag = mainEl.tagName.toLowerCase(); S.mainAttrs = getAttrs(mainEl);
+    parseMain(mainEl);
+  } else {
+    var gm = cz.querySelector('main');
+    if (gm) {
+      S.mainTag = 'main'; S.mainAttrs = getAttrs(gm);
+      var wr = gm.parentElement;
+      if (wr && wr.id !== '__cz__') { S.wrapperOpen = openTag(wr); S.wrapperClose = '</'+wr.tagName.toLowerCase()+'>'; }
+      parseMain(gm);
+    }
+  }
+}
+
+function splitHtml(html) {
+  var hi = html.indexOf('</header>');
+  if (hi === -1) { S.headerPart = ''; S.contentZone = html; S.footerPart = ''; return; }
+  hi += 9;
+  var fi = -1;
+  ['<!-- FUNDERS -->','<section class="funders">','<!-- FOOTER -->','<footer>'].forEach(function(mk){
+    var idx = html.indexOf(mk, hi);
+    if (idx !== -1 && (fi === -1 || idx < fi)) fi = idx;
+  });
+  S.headerPart = html.substring(0, hi);
+  S.contentZone = fi !== -1 ? html.substring(hi, fi) : html.substring(hi);
+  S.footerPart = fi !== -1 ? html.substring(fi) : '';
+}
+
+function extractHero(el) {
+  var h1 = el.querySelector('h1');
+  var bc = el.querySelector('.breadcrumb, .article-breadcrumb, .page-hero-breadcrumb');
+  var d = {
+    title: h1 ? h1.innerHTML.trim() : '',
+    breadcrumbLast: '',
+    catBadge: (el.querySelector('.article-cat-badge')||{}).textContent||'',
+    date: (el.querySelector('.article-date')||{}).textContent||'',
+    subtitle: (el.querySelector('.idx-hero-sub')||{}).textContent||'',
+    type: el.classList.contains('article-hero') ? 'article' : el.classList.contains('idx-hero') ? 'index' : 'page',
+  };
+  if (bc) {
+    var nodes = bc.childNodes;
+    for (var i=nodes.length-1;i>=0;i--) {
+      if (nodes[i].nodeType===3 && nodes[i].textContent.trim()) { d.breadcrumbLast=nodes[i].textContent.trim(); break; }
+    }
+  }
+  return d;
+}
+
+function parseMain(mainEl) {
+  var type = S.pageType;
+
+  // Specialized parsing
+  if (type === 'theses') return parseTheses(mainEl);
+  if (type === 'congresses') return parseCongresses(mainEl);
+  if (type === 'seminars') return parseSeminars(mainEl);
+  if (type === 'multimedia') return parseMultimedia(mainEl);
+  if (type === 'members') return parseMembers(mainEl);
+  if (type === 'projects') return parseProjects(mainEl);
+
+  // Generic: parse into blocks
+  Array.from(mainEl.children).forEach(function(el) { S.blocks.push(makeBlock(el)); });
+}
+
+function makeBlock(el) {
+  var id = blockId++, tag = el.tagName?el.tagName.toLowerCase():'', cls = el.className||'';
+  if (tag==='h2'||tag==='h3') return {id:id,type:'heading',tag:tag,html:el.innerHTML,cls:cls};
+  if (tag==='p') return {id:id,type:'paragraph',html:el.innerHTML,cls:cls};
+  if (tag==='figure'||cls.indexOf('inline-figure')!==-1) {
+    var img=el.querySelector('img'), cap=el.querySelector('figcaption');
+    return {id:id,type:'figure',src:img?img.getAttribute('src'):'',alt:img?img.getAttribute('alt'):'',caption:cap?cap.innerHTML:'',cls:cls,isLeft:cls.indexOf('-left')!==-1};
+  }
+  if (cls.indexOf('pull-quote')!==-1) return {id:id,type:'pullquote',html:el.innerHTML};
+  if (cls.indexOf('article-links')!==-1) {
+    var links=[]; el.querySelectorAll('a').forEach(function(a){ links.push({label:a.textContent.trim(),url:a.getAttribute('href')||''}); });
+    return {id:id,type:'links',links:links};
+  }
+  if (tag==='script') return {id:id,type:'_skip',html:el.outerHTML};
+  return {id:id,type:'_preserve',html:el.outerHTML};
+}
+
+// ── SPECIALIZED PARSERS ──────────────────────────────────────────────────────
+function parseTheses(main) {
+  var lead = main.querySelector('.article-lead');
+  S.introHtml = lead ? lead.innerHTML : '';
+  main.querySelectorAll('.thesis-item').forEach(function(el) {
+    S.items.push({
+      id: blockId++,
+      year: txt(el,'.thesis-year'),
+      title: (el.querySelector('.thesis-title')||{}).innerHTML||'',
+      meta: (el.querySelector('.thesis-meta')||{}).innerHTML||'',
+      link: el.querySelector('.thesis-link') ? el.querySelector('.thesis-link').getAttribute('href') : '',
+      linkText: txt(el,'.thesis-link'),
+      pending: !!el.querySelector('.thesis-pending'),
+    });
+  });
+}
+
+function parseCongresses(main) {
+  var intro = main.querySelector('.intro-text');
+  S.introHtml = intro ? intro.innerHTML : '';
+  Array.from(main.children).forEach(function(child) {
+    if (!child.classList) return;
+    if (child.classList.contains('intro-text')) return;
+    if (child.classList.contains('series-header')) {
+      S.items.push({
+        _group: true,
+        id: blockId++,
+        title: txt(child, '.series-title'),
+        count: txt(child, '.series-count'),
+      });
+    } else if (child.classList.contains('congress-grid')) {
+      child.querySelectorAll('.congress-card').forEach(function(el) {
+        var img = el.querySelector('img');
+        var metaEl = el.querySelector('.congress-meta-small');
+        var metaHtml = metaEl ? metaEl.innerHTML : '';
+        var dates = '', location = '';
+        if (metaHtml) {
+          var parts = metaHtml.split(/<br\s*\/?>/i);
+          dates = parts[0] ? parts[0].replace(/<[^>]+>/g,'').trim() : '';
+          location = parts[1] ? parts[1].replace(/<[^>]+>/g,'').trim() : '';
+        }
+        S.items.push({
+          id: blockId++,
+          image: img ? img.getAttribute('src') : '',
+          imageAlt: img ? img.getAttribute('alt') : '',
+          year: txt(el,'.congress-year-badge'),
+          edition: txt(el,'.congress-edition'),
+          name: (el.querySelector('.congress-name')||{}).innerHTML||'',
+          dates: dates,
+          location: location,
+          onclick: el.getAttribute('onclick')||'',
+        });
+      });
+    }
+  });
+}
+
+function parseSeminars(main) {
+  var intro = main.querySelector('.intro-text');
+  S.introHtml = intro ? intro.innerHTML : '';
+  S.items = [];
+  Array.from(main.children).forEach(function(child) {
+    if (!child.classList) return;
+    if (child.classList.contains('intro-text')) return;
+    if (child.classList.contains('series-header')) {
+      S.items.push({
+        _group: true,
+        id: blockId++,
+        title: txt(child, '.series-title'),
+        count: txt(child, '.series-count'),
+      });
+    } else if (child.classList.contains('seminar-list')) {
+      child.querySelectorAll('.seminar-item').forEach(function(el) {
+        var panel = el.querySelector('.seminar-panel');
+        var fields = [];
+        if (panel) {
+          panel.querySelectorAll('.seminar-field').forEach(function(f) {
+            var label = txt(f,'.seminar-field-label');
+            var value = txt(f,'.seminar-field-value');
+            fields.push({label: label, value: value});
+          });
+        }
+        var pdfBtn = el.querySelector('.seminar-pdf-btn');
+        S.items.push({
+          id: blockId++,
+          year: txt(el,'.seminar-year'),
+          name: txt(el,'.seminar-name'),
+          theme: txt(el,'.seminar-theme'),
+          dates: txt(el,'.seminar-dates-inline'),
+          fields: fields,
+          pdfUrl: pdfBtn ? pdfBtn.getAttribute('href') : '',
+          pdfText: pdfBtn ? pdfBtn.textContent.trim() : '',
+        });
+      });
+    }
+  });
+}
+
+function parseMultimedia(main) {
+  var intro = main.querySelector('.intro-text');
+  S.introHtml = intro ? intro.innerHTML : '';
+  main.querySelectorAll('.video-card').forEach(function(el) {
+    var img = el.querySelector('img');
+    var url = '';
+    var a = el.closest('a') || el.querySelector('a');
+    if (a && a.getAttribute('href')) {
+      url = a.getAttribute('href');
+    } else {
+      var oc = el.getAttribute('onclick')||'';
+      var m = oc.match(/window\.open\(['"]([^'"]+)['"]/);
+      if (m) url = m[1];
+    }
+    S.items.push({
+      id: blockId++,
+      image: img ? img.getAttribute('src') : '',
+      imageAlt: img ? img.getAttribute('alt') : '',
+      source: txt(el,'.video-source-badge'),
+      date: txt(el,'.video-date'),
+      title: (el.querySelector('.video-title')||{}).innerHTML||'',
+      desc: txt(el,'.video-desc'),
+      url: url,
+      origOnclick: el.getAttribute('onclick')||'',
+    });
+  });
+}
+
+function parseMembers(main) {
+  var intro = main.querySelector('.intro');
+  S.introHtml = intro ? intro.innerHTML : '';
+  main.querySelectorAll('.card[data-name]').forEach(function(c) {
+    S.items.push({
+      id: blockId++,
+      name: c.getAttribute('data-name')||'',
+      role: c.getAttribute('data-role')||'',
+      uni: c.getAttribute('data-uni')||'',
+      email: c.getAttribute('data-email')||'',
+      photo: c.getAttribute('data-photo')||'',
+      bio: c.getAttribute('data-bio')||'',
+      displayName: txt(c,'.cname'),
+      displayRole: txt(c,'.crole'),
+      displayUni: txt(c,'.cuni'),
+    });
+  });
+}
+
+function parseProjects(main) {
+  var intro = main.querySelector('.intro-block');
+  S.introHtml = intro ? intro.innerHTML : '';
+  main.querySelectorAll('.project-item').forEach(function(el) {
+    var card = el.querySelector('.project-card');
+    var metas = {};
+    el.querySelectorAll('.project-meta-item').forEach(function(m) {
+      metas[txt(m,'.label')] = txt(m,'.value');
+    });
+    S.items.push({
+      id: blockId++,
+      year: txt(el,'.project-year'),
+      badge: txt(el,'.project-badge'),
+      title: txt(el,'.project-title'),
+      desc: (el.querySelector('.project-desc')||{}).innerHTML||'',
+      isCurrent: card ? card.classList.contains('current') : false,
+      metas: metas,
+    });
+  });
+}
+
+// ── HELPERS ──────────────────────────────────────────────────────────────────
+function txt(el,sel) { var c=el.querySelector(sel); return c?c.textContent.trim():''; }
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function escA(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;'); }
+function openTag(el) { var h=el.outerHTML; return h.substring(0,h.indexOf('>')+1); }
+function getAttrs(el) { var a=[]; for(var i=0;i<el.attributes.length;i++){var at=el.attributes[i]; a.push(at.name+'="'+escA(at.value)+'"');} return a.length?' '+a.join(' '):''; }
+
+// ── RENDER EDITOR ────────────────────────────────────────────────────────────
+function renderEditor() {
+  var name = S.currentPath.split('/').pop().replace('.html','').replace(/-/g,' ');
+  document.getElementById('topTitle').textContent = name.charAt(0).toUpperCase()+name.slice(1);
+  document.getElementById('topBadge').textContent = TYPE_LABELS[S.pageType]||'Página';
+
+  var h = '';
+
+  // Metadata
+  h += '<div class="ed-section"><h2>Metadatos</h2>';
+  h += field('Título de la página (pestaña del navegador)','edTitle',S.pageTitle);
+  h += '</div>';
+
+  // Hero
+  if (S.heroData) {
+    h += '<div class="ed-section"><h2>Cabecera <span class="badge">HERO</span></h2>';
+    h += field('Título principal','edHeroTitle',S.heroData.title);
+    h += field('Breadcrumb (último segmento)','edBreadcrumb',S.heroData.breadcrumbLast,'Ej.: El grupo');
+    if (S.heroData.type==='article') {
+      h += field('Categoría','edHeroCat',S.heroData.catBadge);
+      h += field('Fecha','edHeroDate',S.heroData.date);
+    }
+    if (S.heroData.type==='index') {
+      h += field('Subtítulo','edHeroSub',S.heroData.subtitle);
+    }
+    h += '</div>';
+  }
+
+  // Specialized editors
+  if (S.pageType==='theses') h += renderThesesEditor();
+  else if (S.pageType==='congresses') h += renderCongressesEditor();
+  else if (S.pageType==='seminars') h += renderSeminarsEditor();
+  else if (S.pageType==='multimedia') h += renderMultimediaEditor();
+  else if (S.pageType==='members') h += renderMembersEditor();
+  else if (S.pageType==='projects') h += renderProjectsEditor();
+  else h += renderBlocksEditor();
+
+  // Sidebar
+  if (S.hasSidebar) {
+    h += '<div class="ed-section"><h2>Barra lateral</h2>';
+    h += '<p class="help" style="margin-bottom:.5rem">Este contenido aparece a la derecha de la página. Contiene tarjetas de navegación y enlaces.</p>';
+    h += '<div class="rich-wrap"><div class="rich-edit" contenteditable="true" id="edSidebar">'+S.sidebarHtml+'</div></div>';
+    h += '</div>';
+  }
+
+  document.getElementById('edBody').innerHTML = h;
+
+  // Init all rich editors
+  initRichEditors();
+}
+
+function field(label,id,value,placeholder) {
+  return '<div class="field"><label for="'+id+'">'+label+'</label>'
+    +'<input type="text" id="'+id+'" value="'+escA(value||'')+'"'+(placeholder?' placeholder="'+escA(placeholder)+'"':'')+'>'
+    +'</div>';
+}
+
+function richField(label,html,dataId) {
+  return '<div class="field"><label>'+label+'</label>'
+    +'<div class="rich-wrap">'
+    +'<div class="rich-toolbar">'
+    +'<button onmousedown="execRich(event,\'bold\')"><b>N</b></button>'
+    +'<button onmousedown="execRich(event,\'italic\')"><i>C</i></button>'
+    +'<button onmousedown="execRich(event,\'link\')">Enlace</button>'
+    +'<button onmousedown="execRich(event,\'removeLink\')">Quitar enlace</button>'
+    +'</div>'
+    +'<div class="rich-edit" contenteditable="true" data-rich-id="'+dataId+'">'+html+'</div>'
+    +'</div></div>';
+}
+
+function imgField(label,value,inputId) {
+  return '<div class="field"><label>'+label+'</label>'
+    +'<div class="img-picker">'
+    +'<input type="text" id="'+inputId+'" value="'+escA(value||'')+'" placeholder="Ej.: ../media/imagen.jpg">'
+    +'<button class="btn btn-outline btn-sm" onclick="openImgPicker(\''+inputId+'\')">Elegir</button>'
+    +'</div></div>';
+}
+
+// ── RICH TEXT COMMANDS ────────────────────────────────────────────────────────
+function execRich(e,cmd) {
+  e.preventDefault();
+  if (cmd==='link') {
+    var url = prompt('Escribe la URL del enlace:','https://');
+    if (url) document.execCommand('createLink',false,url);
+  } else if (cmd==='removeLink') {
+    document.execCommand('unlink');
+  } else {
+    document.execCommand(cmd);
+  }
+}
+
+function initRichEditors() {
+  // Prevent formatting paste (strip HTML on paste)
+  document.querySelectorAll('.rich-edit').forEach(function(el) {
+    el.addEventListener('paste', function(e) {
+      if (el.dataset.allowHtmlPaste) return;
+      // Allow paste but keep basic formatting
+    });
+  });
+}
+
+// ── IMAGE PICKER ─────────────────────────────────────────────────────────────
+function openImgPicker(inputId) {
+  imgPickerCallback = inputId;
+  var grid = document.getElementById('imgGrid');
+  grid.innerHTML = S.media.map(function(f) {
+    return '<img src="media/'+f+'" alt="'+esc(f)+'" title="'+esc(f)+'" onclick="pickImage(\''+esc(f)+'\')">';
+  }).join('');
+  document.getElementById('imgModal').classList.add('open');
+  document.getElementById('imgSearch').value = '';
+}
+
+function pickImage(filename) {
+  if (imgPickerCallback) {
+    var input = document.getElementById(imgPickerCallback);
+    // Determine relative path based on current page depth
+    var depth = S.currentPath.split('/').length - 1;
+    var prefix = depth > 0 ? '../' : '';
+    input.value = prefix + 'media/' + filename;
+  }
+  closeImgModal();
+}
+
+function filterImages() {
+  var q = document.getElementById('imgSearch').value.toLowerCase();
+  document.querySelectorAll('#imgGrid img').forEach(function(img) {
+    img.style.display = img.alt.toLowerCase().indexOf(q) !== -1 ? '' : 'none';
+  });
+}
+
+function closeImgModal() {
+  document.getElementById('imgModal').classList.remove('open');
+  imgPickerCallback = null;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// BLOCK EDITOR (for article-type pages)
+// ══════════════════════════════════════════════════════════════════════════════
+function renderBlocksEditor() {
+  var h = '<div class="ed-section"><h2>Contenido principal</h2>';
+  h += '<p class="help" style="margin-bottom:.6rem">Edita el contenido de la página. Puedes añadir, eliminar y reordenar los bloques.</p>';
+  h += '<div id="blocksContainer">';
+  S.blocks.forEach(function(b,i) {
+    if (b.type==='_skip'||b.type==='_preserve') return;
+    h += renderBlockCard(b,i);
+  });
+  h += '</div>';
+  h += '<div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.6rem">';
+  h += '<button class="btn btn-blue btn-sm" onclick="addBlock(\'paragraph\')">+ Párrafo</button>';
+  h += '<button class="btn btn-sm" style="background:var(--dorado);color:#fff" onclick="addBlock(\'heading\')">+ Título</button>';
+  h += '<button class="btn btn-sm" style="background:#5a7d5a;color:#fff" onclick="addBlock(\'figure\')">+ Figura</button>';
+  h += '<button class="btn btn-sm" style="background:#7a6f60;color:#fff" onclick="addBlock(\'pullquote\')">+ Cita destacada</button>';
+  h += '<button class="btn btn-sm" style="background:#6a5a8a;color:#fff" onclick="addBlock(\'links\')">+ Enlaces</button>';
+  h += '</div>';
+  h += '</div>';
+  return h;
+}
+
+function renderBlockCard(b) {
+  var types = {heading:'Título',paragraph:'Párrafo',figure:'Figura',pullquote:'Cita',links:'Enlaces'};
+  var tcls = {heading:'type-h',paragraph:'type-p',figure:'type-fig',pullquote:'type-quote',links:'type-links'};
+  var h = '<div class="block-card" data-bid="'+b.id+'">';
+  h += '<div class="block-header">';
+  h += '<span class="block-handle">☰</span>';
+  h += '<span class="block-type '+(tcls[b.type]||'type-p')+'">'+(types[b.type]||b.type)+'</span>';
+  h += '<div class="block-actions">';
+  h += '<button title="Subir" onclick="moveBlock('+b.id+',-1)">↑</button>';
+  h += '<button title="Bajar" onclick="moveBlock('+b.id+',1)">↓</button>';
+  h += '<button class="del" title="Eliminar" onclick="removeBlock('+b.id+')">✕</button>';
+  h += '</div></div>';
+
+  if (b.type==='heading') {
+    h += '<div style="display:flex;gap:.5rem;align-items:flex-end">';
+    h += '<div style="width:70px"><label>Nivel</label><select onchange="updBlock('+b.id+',\'tag\',this.value)">';
+    h += '<option value="h2"'+(b.tag==='h2'?' selected':'')+'>H2</option>';
+    h += '<option value="h3"'+(b.tag==='h3'?' selected':'')+'>H3</option></select></div>';
+    h += '<div style="flex:1"><label>Texto</label><input type="text" value="'+escA(b.html.replace(/<[^>]+>/g,''))+'" onchange="updBlock('+b.id+',\'html\',this.value)"></div>';
+    h += '</div>';
+  } else if (b.type==='paragraph') {
+    h += richField('Contenido',b.html,'block-'+b.id);
+  } else if (b.type==='figure') {
+    h += imgField('Imagen',b.src,'img-'+b.id);
+    h += field('Texto alternativo','alt-'+b.id,b.alt,'Descripción breve de la imagen');
+    h += field('Pie de foto','cap-'+b.id, (b.caption||'').replace(/<[^>]+>/g,''));
+    h += '<div class="field"><label>Posición</label><select id="pos-'+b.id+'"><option value="right"'+(b.isLeft?'':' selected')+'>Derecha</option><option value="left"'+(b.isLeft?' selected':'')+'>Izquierda</option></select></div>';
+  } else if (b.type==='pullquote') {
+    h += richField('Texto de la cita',b.html,'block-'+b.id);
+  } else if (b.type==='links') {
+    h += '<div id="links-'+b.id+'">';
+    (b.links||[]).forEach(function(l,li) {
+      h += '<div class="link-row">';
+      h += '<input type="text" value="'+escA(l.label)+'" placeholder="Texto del enlace">';
+      h += '<input type="text" value="'+escA(l.url)+'" placeholder="URL">';
+      h += '<button class="del-link" onclick="delLink('+b.id+','+li+')">×</button>';
+      h += '</div>';
+    });
+    h += '</div>';
+    h += '<button class="btn btn-outline btn-sm" style="margin-top:.3rem" onclick="addLink('+b.id+')">+ Añadir enlace</button>';
+  }
+  h += '</div>';
+  return h;
+}
+
+function addBlock(type) {
+  var b = {id:blockId++,type:type};
+  if (type==='heading') { b.tag='h2'; b.html=''; b.cls=''; }
+  else if (type==='paragraph') { b.html='<p>Nuevo párrafo</p>'; b.cls=''; }
+  else if (type==='figure') { b.src=''; b.alt=''; b.caption=''; b.isLeft=false; b.cls=''; }
+  else if (type==='pullquote') { b.html='Cita destacada'; }
+  else if (type==='links') { b.links=[{label:'',url:''}]; }
+  S.blocks.push(b);
+  rerenderBlocks();
+}
+
+function removeBlock(bid) {
+  if (!confirm('¿Eliminar este bloque?')) return;
+  S.blocks = S.blocks.filter(function(b){return b.id!==bid;});
+  rerenderBlocks();
+}
+
+function moveBlock(bid,dir) {
+  readAllBlocks();
+  var i = S.blocks.findIndex(function(b){return b.id===bid;});
+  if (i===-1) return;
+  var ni = i+dir;
+  if (ni<0||ni>=S.blocks.length) return;
+  var tmp=S.blocks[i]; S.blocks[i]=S.blocks[ni]; S.blocks[ni]=tmp;
+  rerenderBlocks();
+}
+
+function updBlock(bid,key,val) {
+  var b = S.blocks.find(function(b){return b.id===bid;});
+  if (b) b[key]=val;
+}
+
+function addLink(bid) {
+  readAllBlocks();
+  var b = S.blocks.find(function(b){return b.id===bid;});
+  if (b) { if(!b.links) b.links=[]; b.links.push({label:'',url:''}); }
+  rerenderBlocks();
+}
+
+function delLink(bid,li) {
+  readAllBlocks();
+  var b = S.blocks.find(function(b){return b.id===bid;});
+  if (b&&b.links) { b.links.splice(li,1); }
+  rerenderBlocks();
+}
+
+function rerenderBlocks() {
+  var c = document.getElementById('blocksContainer');
+  if (!c) return;
+  var h = '';
+  S.blocks.forEach(function(b) {
+    if (b.type==='_skip'||b.type==='_preserve') return;
+    h += renderBlockCard(b);
+  });
+  c.innerHTML = h;
+  initRichEditors();
+}
+
+function readAllBlocks() {
+  S.blocks.forEach(function(b) {
+    if (b.type==='paragraph'||b.type==='pullquote') {
+      var el = document.querySelector('[data-rich-id="block-'+b.id+'"]');
+      if (el) b.html = el.innerHTML;
+    }
+    if (b.type==='figure') {
+      var si=document.getElementById('img-'+b.id); if(si) b.src=si.value;
+      var ai=document.getElementById('alt-'+b.id); if(ai) b.alt=ai.value;
+      var ci=document.getElementById('cap-'+b.id); if(ci) b.caption=ci.value;
+      var pi=document.getElementById('pos-'+b.id); if(pi) b.isLeft=pi.value==='left';
+    }
+    if (b.type==='heading') {
+      // Already updated via onchange
+    }
+    if (b.type==='links') {
+      var container = document.getElementById('links-'+b.id);
+      if (container) {
+        b.links = [];
+        container.querySelectorAll('.link-row').forEach(function(row) {
+          var inputs = row.querySelectorAll('input');
+          if (inputs.length >= 2) b.links.push({label:inputs[0].value,url:inputs[1].value});
+        });
+      }
+    }
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// SPECIALIZED EDITORS
+// ══════════════════════════════════════════════════════════════════════════════
+
+// ── TESIS ────────────────────────────────────────────────────────────────────
+function renderThesesEditor() {
+  var h = '<div class="ed-section"><h2>Texto introductorio</h2>';
+  h += richField('Introducción',S.introHtml,'intro');
+  h += '</div>';
+  h += '<div class="ed-section"><h2>Tesis</h2>';
+  h += '<div id="itemsContainer">';
+  S.items.forEach(function(it) { h += renderThesisCard(it); });
+  h += '</div>';
+  h += '<button class="btn btn-blue btn-sm" style="margin-top:.5rem" onclick="addThesis()">+ Añadir tesis</button>';
+  h += '</div>';
+  return h;
+}
+
+function renderThesisCard(it) {
+  var h = '<div class="item-card" data-iid="'+it.id+'">';
+  h += '<button class="btn-del-item" onclick="removeItem('+it.id+')">✕</button>';
+  h += '<div class="item-card-header"><strong>'+esc(it.title?it.title.replace(/<[^>]+>/g,'').substring(0,60):'Nueva tesis')+'</strong></div>';
+  h += '<div class="row">';
+  h += '<div>'+field('Año','thy-'+it.id,it.year,'2024')+'</div>';
+  h += '<div><div class="field"><label>Estado</label><select id="thp-'+it.id+'"><option value="link"'+(it.pending?'':' selected')+'>Con enlace</option><option value="pending"'+(it.pending?' selected':'')+'>Pendiente</option></select></div></div>';
+  h += '</div>';
+  h += field('Título (puede incluir cursiva con <em>)','tht-'+it.id,it.title);
+  h += richField('Datos (autor, director, universidad, fecha…)',it.meta,'thm-'+it.id);
+  h += field('URL de la tesis (si tiene enlace)','thl-'+it.id,it.link,'https://...');
+  h += '</div>';
+  return h;
+}
+
+function addThesis() {
+  readAllItems();
+  S.items.push({id:blockId++,year:'',title:'',meta:'<strong>Autor</strong><br>Dir.: Director<br>Universidad<br>Fecha de defensa',link:'',pending:true,linkText:''});
+  rerenderItems();
+}
+
+// ── CONGRESOS ────────────────────────────────────────────────────────────────
+function renderCongressesEditor() {
+  var h = '<div class="ed-section"><h2>Texto introductorio</h2>';
+  h += richField('Introducción',S.introHtml,'intro');
+  h += '</div>';
+  h += '<div class="ed-section"><h2>Congresos</h2>';
+  h += '<div id="itemsContainer">';
+  S.items.forEach(function(it) { h += renderCongressCard(it); });
+  h += '</div>';
+  h += '<button class="btn btn-blue btn-sm" style="margin-top:.5rem" onclick="addCongress()">+ Añadir congreso</button>';
+  h += '</div>';
+  return h;
+}
+
+function renderCongressCard(it) {
+  if (it._group) return renderGroupHeader(it);
+  var h = '<div class="item-card" data-iid="'+it.id+'">';
+  h += '<button class="btn-del-item" onclick="removeItem('+it.id+')">✕</button>';
+  h += '<div class="item-card-header"><strong>'+esc(it.edition||'Nuevo congreso')+'</strong></div>';
+  h += '<div class="row">';
+  h += '<div>'+field('Año','cgy-'+it.id,it.year)+'</div>';
+  h += '<div>'+field('Edición','cge-'+it.id,it.edition,'XI Congreso Internacional')+'</div>';
+  h += '</div>';
+  h += field('Título / tema','cgn-'+it.id,it.name);
+  h += '<div class="row">';
+  h += '<div>'+field('Fechas','cgd-'+it.id,it.dates,'27-29 nov. 2024')+'</div>';
+  h += '<div>'+field('Lugar','cgl-'+it.id,it.location,'UAB, Barcelona')+'</div>';
+  h += '</div>';
+  h += imgField('Imagen del cartel',it.image,'cgi-'+it.id);
+  h += field('Texto alt de imagen','cga-'+it.id,it.imageAlt);
+  h += '</div>';
+  return h;
+}
+
+function renderGroupHeader(it) {
+  return '<div style="border-left:3px solid var(--dorado);padding:.5rem .8rem;margin:.8rem 0 .4rem;background:rgba(200,164,90,.08);border-radius:0 6px 6px 0">'
+    +'<strong style="font-family:Raleway,sans-serif;font-size:.88rem;color:var(--azul)">'+esc(it.title)+'</strong>'
+    +'<span style="margin-left:.5rem;font-size:.75rem;color:#888">'+esc(it.count)+'</span>'
+    +'</div>';
+}
+
+function addCongress() {
+  readAllItems();
+  S.items.push({id:blockId++,image:'',imageAlt:'',year:'',edition:'',name:'',dates:'',location:'',onclick:''});
+  rerenderItems();
+}
+
+// ── SEMINARIOS ───────────────────────────────────────────────────────────────
+function renderSeminarsEditor() {
+  var h = '<div class="ed-section"><h2>Texto introductorio</h2>';
+  h += richField('Introducción',S.introHtml,'intro');
+  h += '</div>';
+  h += '<div class="ed-section"><h2>Seminarios</h2>';
+  h += '<div id="itemsContainer">';
+  S.items.forEach(function(it) { h += renderSeminarCard(it); });
+  h += '</div>';
+  h += '<button class="btn btn-blue btn-sm" style="margin-top:.5rem" onclick="addSeminar()">+ Añadir seminario</button>';
+  h += '</div>';
+  return h;
+}
+
+function renderSeminarCard(it) {
+  if (it._group) return renderGroupHeader(it);
+  var h = '<div class="item-card" data-iid="'+it.id+'">';
+  h += '<button class="btn-del-item" onclick="removeItem('+it.id+')">✕</button>';
+  h += '<div class="item-card-header"><strong>'+esc(it.name||'Nuevo seminario')+'</strong></div>';
+  h += '<div class="row">';
+  h += '<div>'+field('Año','smy-'+it.id,it.year)+'</div>';
+  h += '<div>'+field('Fechas (cabecera)','smd-'+it.id,it.dates,'12-14 jun. 2024')+'</div>';
+  h += '</div>';
+  h += field('Nombre','smn-'+it.id,it.name);
+  h += field('Tema (opcional)','smt-'+it.id,it.theme);
+  h += '<label style="margin-top:.4rem">Campos del panel desplegable</label>';
+  h += '<p class="help">Estos campos aparecen cuando se despliega el seminario.</p>';
+  h += '<div id="smf-'+it.id+'">';
+  (it.fields||[]).forEach(function(f, fi) {
+    h += '<div class="link-row">';
+    h += '<input type="text" value="'+escA(f.label)+'" placeholder="Etiqueta" style="max-width:150px">';
+    h += '<input type="text" value="'+escA(f.value)+'" placeholder="Valor">';
+    h += '<button class="del-link" onclick="delSemField('+it.id+','+fi+')">×</button>';
+    h += '</div>';
+  });
+  h += '</div>';
+  h += '<button class="btn btn-outline btn-sm" style="margin-top:.3rem" onclick="addSemField('+it.id+')">+ Campo</button>';
+  h += field('URL del programa PDF','smp-'+it.id,it.pdfUrl);
+  h += '</div>';
+  return h;
+}
+
+function addSemField(iid) {
+  readAllItems();
+  var it = S.items.find(function(i){return i.id===iid;});
+  if (it) { if(!it.fields) it.fields=[]; it.fields.push({label:'',value:''}); }
+  rerenderItems();
+}
+
+function delSemField(iid, fi) {
+  readAllItems();
+  var it = S.items.find(function(i){return i.id===iid;});
+  if (it && it.fields) { it.fields.splice(fi,1); }
+  rerenderItems();
+}
+
+function addSeminar() {
+  readAllItems();
+  S.items.push({id:blockId++,year:'',name:'',theme:'',dates:'',fields:[{label:'Fechas',value:''},{label:'Organizado por',value:''}],pdfUrl:'',pdfText:''});
+  rerenderItems();
+}
+
+// ── MULTIMEDIA ───────────────────────────────────────────────────────────────
+function renderMultimediaEditor() {
+  var h = '<div class="ed-section"><h2>Vídeos</h2>';
+  h += '<div id="itemsContainer">';
+  S.items.forEach(function(it) { h += renderVideoCard(it); });
+  h += '</div>';
+  h += '<button class="btn btn-blue btn-sm" style="margin-top:.5rem" onclick="addVideo()">+ Añadir vídeo</button>';
+  h += '</div>';
+  return h;
+}
+
+function renderVideoCard(it) {
+  var h = '<div class="item-card" data-iid="'+it.id+'">';
+  h += '<button class="btn-del-item" onclick="removeItem('+it.id+')">✕</button>';
+  h += '<div class="item-card-header"><strong>'+esc((it.title||'').replace(/<[^>]+>/g,'').substring(0,50)||'Nuevo vídeo')+'</strong></div>';
+  h += '<div class="row">';
+  h += '<div>'+field('Fecha','vid-'+it.id,it.date,'12 jul. 2024')+'</div>';
+  h += '<div><div class="field"><label>Fuente</label><select id="vis-'+it.id+'"><option'+(it.source==='RTVE'?' selected':'')+'>RTVE</option><option'+(it.source==='YouTube'?' selected':'')+'>YouTube</option><option'+(it.source==='BTV'?' selected':'')+'>BTV</option><option'+(it.source==='Otro'?' selected':'')+'>Otro</option></select></div></div>';
+  h += '</div>';
+  h += field('Título','vit-'+it.id,it.title);
+  h += field('Descripción','vin-'+it.id,it.desc);
+  h += field('URL del vídeo','viu-'+it.id,it.url,'https://...');
+  h += imgField('Miniatura',it.image,'vii-'+it.id);
+  h += '</div>';
+  return h;
+}
+
+function addVideo() {
+  readAllItems();
+  S.items.push({id:blockId++,image:'',imageAlt:'',source:'YouTube',date:'',title:'',desc:'',url:''});
+  rerenderItems();
+}
+
+// ── MIEMBROS ─────────────────────────────────────────────────────────────────
+function renderMembersEditor() {
+  var h = '<div class="ed-section"><h2>Texto introductorio</h2>';
+  h += richField('Introducción',S.introHtml,'intro');
+  h += '</div>';
+  h += '<div class="ed-section"><h2>Miembros del grupo</h2>';
+  h += '<div id="itemsContainer">';
+  S.items.forEach(function(it) { h += renderMemberCard(it); });
+  h += '</div>';
+  h += '<button class="btn btn-blue btn-sm" style="margin-top:.5rem" onclick="addMember()">+ Añadir miembro</button>';
+  h += '</div>';
+  return h;
+}
+
+function renderMemberCard(it) {
+  var h = '<div class="item-card" data-iid="'+it.id+'">';
+  h += '<button class="btn-del-item" onclick="removeItem('+it.id+')">✕</button>';
+  h += '<div class="item-card-header"><strong>'+esc(it.name||'Nuevo miembro')+'</strong></div>';
+  h += '<div class="row">';
+  h += '<div>'+field('Nombre completo','mn-'+it.id,it.name)+'</div>';
+  h += '<div>'+field('Nombre corto (tarjeta)','md-'+it.id,it.displayName)+'</div>';
+  h += '</div>';
+  h += '<div class="row">';
+  h += '<div><div class="field"><label>Rol</label><select id="mr-'+it.id+'"><option'+(it.role==='Investigador principal'?' selected':'')+'>Investigador principal</option><option'+(it.role==='Comité científico'?' selected':'')+'>Comité científico</option><option'+(it.role==='Investigador'?' selected':'')+'>Investigador</option><option'+(it.role==='Investigadora'?' selected':'')+'>Investigadora</option><option'+(it.role==='Técnico'?' selected':'')+'>Técnico</option></select></div></div>';
+  h += '<div>'+field('Rol corto (tarjeta)','mdr-'+it.id,it.displayRole)+'</div>';
+  h += '</div>';
+  h += '<div class="row">';
+  h += '<div>'+field('Universidad / Institución','mu-'+it.id,it.uni)+'</div>';
+  h += '<div>'+field('Univ. corta (tarjeta)','mdu-'+it.id,it.displayUni)+'</div>';
+  h += '</div>';
+  h += field('Email','me-'+it.id,it.email);
+  h += imgField('Foto',it.photo?'../'+it.photo:'','mp-'+it.id);
+  h += richField('Biografía',it.bio,'mb-'+it.id);
+  h += '</div>';
+  return h;
+}
+
+function addMember() {
+  readAllItems();
+  S.items.push({id:blockId++,name:'',role:'Investigador',uni:'',email:'',photo:'',bio:'<p>Biografía del miembro.</p>',displayName:'',displayRole:'Investigador',displayUni:''});
+  rerenderItems();
+}
+
+// ── PROYECTOS ────────────────────────────────────────────────────────────────
+function renderProjectsEditor() {
+  var h = '<div class="ed-section"><h2>Texto introductorio</h2>';
+  h += richField('Introducción',S.introHtml,'intro');
+  h += '</div>';
+  h += '<div class="ed-section"><h2>Proyectos de investigación</h2>';
+  h += '<div id="itemsContainer">';
+  S.items.forEach(function(it) { h += renderProjectCard(it); });
+  h += '</div>';
+  h += '<button class="btn btn-blue btn-sm" style="margin-top:.5rem" onclick="addProject()">+ Añadir proyecto</button>';
+  h += '</div>';
+  return h;
+}
+
+function renderProjectCard(it) {
+  var h = '<div class="item-card" data-iid="'+it.id+'">';
+  h += '<button class="btn-del-item" onclick="removeItem('+it.id+')">✕</button>';
+  h += '<div class="item-card-header"><strong>'+esc(it.title||'Nuevo proyecto')+'</strong></div>';
+  h += '<div class="row">';
+  h += '<div>'+field('Años','py-'+it.id,it.year,'2021-2024')+'</div>';
+  h += '<div><div class="field"><label>Estado</label><select id="ps-'+it.id+'"><option value="1"'+(it.isCurrent?' selected':'')+'>Vigente</option><option value="0"'+(!it.isCurrent?' selected':'')+'>Completado</option></select></div></div>';
+  h += '</div>';
+  h += field('Título del proyecto','pt-'+it.id,it.title);
+  h += field('IP','pi-'+it.id,it.metas['IP']||it.metas['IP:']||'');
+  h += field('Referencia','pr-'+it.id,it.metas['Ref.']||it.metas['Ref.:']||'');
+  h += field('Financiación','pf-'+it.id,it.metas['Financiación']||it.metas['Financiación:']||'');
+  h += field('Presupuesto','pb-'+it.id,it.metas['Presupuesto']||it.metas['Presupuesto:']||'');
+  h += richField('Descripción (opcional)',it.desc||'','pd-'+it.id);
+  h += '</div>';
+  return h;
+}
+
+function addProject() {
+  readAllItems();
+  S.items.push({id:blockId++,year:'',badge:'',title:'',desc:'',isCurrent:true,metas:{}});
+  rerenderItems();
+}
+
+// ── ITEM MANAGEMENT (generic) ────────────────────────────────────────────────
+function removeItem(iid) {
+  var item = S.items.find(function(it){return it.id===iid;});
+  if (item && item._group) return;
+  if (!confirm('¿Eliminar este elemento?')) return;
+  readAllItems();
+  S.items = S.items.filter(function(it){return it.id!==iid;});
+  rerenderItems();
+}
+
+function rerenderItems() {
+  var c = document.getElementById('itemsContainer');
+  if (!c) return;
+  var h = '';
+  S.items.forEach(function(it) {
+    if (S.pageType==='theses') h += renderThesisCard(it);
+    else if (S.pageType==='congresses') h += renderCongressCard(it);
+    else if (S.pageType==='seminars') h += renderSeminarCard(it);
+    else if (S.pageType==='multimedia') h += renderVideoCard(it);
+    else if (S.pageType==='members') h += renderMemberCard(it);
+    else if (S.pageType==='projects') h += renderProjectCard(it);
+  });
+  c.innerHTML = h;
+  initRichEditors();
+}
+
+function readAllItems() {
+  S.items.forEach(function(it) {
+    if (it._group) return;
+    var type = S.pageType;
+    if (type==='theses') {
+      var y=document.getElementById('thy-'+it.id); if(y) it.year=y.value;
+      var t=document.getElementById('tht-'+it.id); if(t) it.title=t.value;
+      var m=document.querySelector('[data-rich-id="thm-'+it.id+'"]'); if(m) it.meta=m.innerHTML;
+      var l=document.getElementById('thl-'+it.id); if(l) it.link=l.value;
+      var p=document.getElementById('thp-'+it.id); if(p) it.pending=p.value==='pending';
+    }
+    if (type==='congresses') {
+      var y=document.getElementById('cgy-'+it.id); if(y) it.year=y.value;
+      var e=document.getElementById('cge-'+it.id); if(e) it.edition=e.value;
+      var n=document.getElementById('cgn-'+it.id); if(n) it.name=n.value;
+      var d=document.getElementById('cgd-'+it.id); if(d) it.dates=d.value;
+      var l=document.getElementById('cgl-'+it.id); if(l) it.location=l.value;
+      var i=document.getElementById('cgi-'+it.id); if(i) it.image=i.value;
+      var a=document.getElementById('cga-'+it.id); if(a) it.imageAlt=a.value;
+    }
+    if (type==='seminars') {
+      var y=document.getElementById('smy-'+it.id); if(y) it.year=y.value;
+      var n=document.getElementById('smn-'+it.id); if(n) it.name=n.value;
+      var t=document.getElementById('smt-'+it.id); if(t) it.theme=t.value;
+      var d=document.getElementById('smd-'+it.id); if(d) it.dates=d.value;
+      var p=document.getElementById('smp-'+it.id); if(p) it.pdfUrl=p.value;
+      var fc=document.getElementById('smf-'+it.id);
+      if (fc) {
+        it.fields = [];
+        fc.querySelectorAll('.link-row').forEach(function(row) {
+          var inputs = row.querySelectorAll('input');
+          if (inputs.length >= 2) it.fields.push({label:inputs[0].value, value:inputs[1].value});
+        });
+      }
+    }
+    if (type==='multimedia') {
+      var d=document.getElementById('vid-'+it.id); if(d) it.date=d.value;
+      var s=document.getElementById('vis-'+it.id); if(s) it.source=s.value;
+      var t=document.getElementById('vit-'+it.id); if(t) it.title=t.value;
+      var n=document.getElementById('vin-'+it.id); if(n) it.desc=n.value;
+      var u=document.getElementById('viu-'+it.id); if(u) it.url=u.value;
+      var i=document.getElementById('vii-'+it.id); if(i) it.image=i.value;
+    }
+    if (type==='members') {
+      var n=document.getElementById('mn-'+it.id); if(n) it.name=n.value;
+      var d=document.getElementById('md-'+it.id); if(d) it.displayName=d.value;
+      var r=document.getElementById('mr-'+it.id); if(r) it.role=r.value;
+      var dr=document.getElementById('mdr-'+it.id); if(dr) it.displayRole=dr.value;
+      var u=document.getElementById('mu-'+it.id); if(u) it.uni=u.value;
+      var du=document.getElementById('mdu-'+it.id); if(du) it.displayUni=du.value;
+      var e=document.getElementById('me-'+it.id); if(e) it.email=e.value;
+      var p=document.getElementById('mp-'+it.id); if(p) it.photo=p.value.replace(/^\.\.\//,'');
+      var b=document.querySelector('[data-rich-id="mb-'+it.id+'"]'); if(b) it.bio=b.innerHTML;
+    }
+    if (type==='projects') {
+      var y=document.getElementById('py-'+it.id); if(y) it.year=y.value;
+      var s=document.getElementById('ps-'+it.id); if(s) it.isCurrent=s.value==='1';
+      var t=document.getElementById('pt-'+it.id); if(t) it.title=t.value;
+      var i=document.getElementById('pi-'+it.id); if(i) it.metas['IP']=i.value;
+      var r=document.getElementById('pr-'+it.id); if(r) it.metas['Ref.']=r.value;
+      var f=document.getElementById('pf-'+it.id); if(f) it.metas['Financiación']=f.value;
+      var b=document.getElementById('pb-'+it.id); if(b) it.metas['Presupuesto']=b.value;
+      var d=document.querySelector('[data-rich-id="pd-'+it.id+'"]'); if(d) it.desc=d.innerHTML;
+    }
+  });
+  // Read intro
+  var intro = document.querySelector('[data-rich-id="intro"]');
+  if (intro) S.introHtml = intro.innerHTML;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// HTML GENERATION
+// ══════════════════════════════════════════════════════════════════════════════
+function generateHtml() {
+  readFormValues();
+
+  var content = '\n';
+
+  // Hero
+  content += genHero();
+
+  // Wrapper open
+  if (S.wrapperOpen) content += '\n  '+S.wrapperOpen+'\n';
+
+  // Main open
+  if (S.mainTag) content += '\n    <'+S.mainTag+S.mainAttrs+'>\n';
+
+  // Specialized content
+  if (S.pageType==='theses') content += genTheses();
+  else if (S.pageType==='congresses') content += genCongresses();
+  else if (S.pageType==='seminars') content += genSeminars();
+  else if (S.pageType==='multimedia') content += genMultimedia();
+  else if (S.pageType==='members') content += genMembers();
+  else if (S.pageType==='projects') content += genProjects();
+  else content += genBlocks();
+
+  // Main close
+  if (S.mainTag) content += '\n    </'+S.mainTag+'>\n';
+
+  // Sidebar
+  if (S.hasSidebar) {
+    var st = S.sidebarTag||'aside';
+    var sa = S.sidebarAttrs||' class="article-sidebar"';
+    content += '\n    <'+st+sa+'>\n'+S.sidebarHtml+'\n    </'+st+'>\n';
+  }
+
+  // Wrapper close
+  if (S.wrapperClose) content += '\n  '+S.wrapperClose+'\n';
+  content += '\n';
+
+  // Update title in header
+  var header = S.headerPart.replace(/<title>[\s\S]*?<\/title>/i, '<title>'+S.pageTitle+'</title>');
+
+  return header + content + S.footerPart;
+}
+
+function readFormValues() {
+  var t=document.getElementById('edTitle'); if(t) S.pageTitle=t.value;
+  if (S.heroData) {
+    var h=document.getElementById('edHeroTitle'); if(h) S.heroData.title=h.value;
+    var b=document.getElementById('edBreadcrumb'); if(b) S.heroData.breadcrumbLast=b.value;
+    var c=document.getElementById('edHeroCat'); if(c) S.heroData.catBadge=c.value;
+    var d=document.getElementById('edHeroDate'); if(d) S.heroData.date=d.value;
+    var s=document.getElementById('edHeroSub'); if(s) S.heroData.subtitle=s.value;
+  }
+  var sb=document.getElementById('edSidebar'); if(sb) S.sidebarHtml=sb.innerHTML;
+  readAllBlocks();
+  readAllItems();
+}
+
+function genHero() {
+  if (!S.heroData || !S.heroOriginalHtml) return '';
+  var doc = new DOMParser().parseFromString('<div>'+S.heroOriginalHtml+'</div>','text/html');
+  var hero = doc.querySelector('.page-hero, .article-hero, .idx-hero');
+  if (!hero) return '\n  '+S.heroOriginalHtml+'\n';
+  var h1=hero.querySelector('h1'); if(h1) h1.innerHTML=S.heroData.title;
+  var bc=hero.querySelector('.breadcrumb, .article-breadcrumb, .page-hero-breadcrumb');
+  if (bc && S.heroData.breadcrumbLast) {
+    var nodes=bc.childNodes;
+    for(var i=nodes.length-1;i>=0;i--) {
+      if(nodes[i].nodeType===3 && nodes[i].textContent.trim()) { nodes[i].textContent='\n        '+S.heroData.breadcrumbLast+'\n      '; break; }
+    }
+  }
+  if (S.heroData.type==='article') {
+    var cb=hero.querySelector('.article-cat-badge'); if(cb) cb.textContent=S.heroData.catBadge;
+    var ds=hero.querySelector('.article-date'); if(ds) ds.textContent=S.heroData.date;
+  }
+  if (S.heroData.type==='index') {
+    var sub=hero.querySelector('.idx-hero-sub'); if(sub) sub.textContent=S.heroData.subtitle;
+  }
+  var html = hero.outerHTML.replace(/<(img|br|hr|meta|link|input|source)(\s[^>]*?)(?<!\/)>/gi,'<$1$2 />');
+  return '\n  '+html+'\n';
+}
+
+// ── BLOCK HTML GENERATION ────────────────────────────────────────────────────
+function genBlocks() {
+  var h = '';
+  S.blocks.forEach(function(b) {
+    if (b.type==='_skip'||b.type==='_preserve') { h += '\n'+b.html+'\n'; return; }
+    if (b.type==='heading') {
+      var cls=b.cls?' class="'+escA(b.cls)+'"':'';
+      h += '\n      <'+b.tag+cls+'>'+b.html+'</'+b.tag+'>\n';
+    } else if (b.type==='paragraph') {
+      var cls=b.cls?' class="'+escA(b.cls)+'"':'';
+      h += '\n      <p'+cls+'>\n        '+b.html+'\n      </p>\n';
+    } else if (b.type==='figure') {
+      var fc=b.isLeft?'inline-figure-left':'inline-figure';
+      if(b.cls&&b.cls!=='inline-figure'&&b.cls!=='inline-figure-left') fc=b.cls;
+      h += '\n      <figure class="'+fc+'">\n';
+      h += '        <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector(\'img\').src)">\n';
+      h += '          <img src="'+escA(b.src)+'" alt="'+escA(b.alt)+'" />\n';
+      h += '          <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>\n';
+      h += '        </div>\n';
+      if(b.caption) h += '        <figcaption>'+b.caption+'</figcaption>\n';
+      h += '      </figure>\n';
+    } else if (b.type==='pullquote') {
+      h += '\n      <div class="pull-quote">\n        '+b.html+'\n      </div>\n';
+    } else if (b.type==='links') {
+      if(!b.links||!b.links.length) return;
+      h += '\n      <div class="article-links">\n';
+      b.links.forEach(function(l) {
+        if(!l.label||!l.url) return;
+        h += '        <a class="article-ext-link" href="'+escA(l.url)+'" target="_blank" rel="noopener noreferrer">\n';
+        h += '          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>\n';
+        h += '          '+esc(l.label)+'\n        </a>\n';
+      });
+      h += '      </div>\n';
+    }
+  });
+  return h;
+}
+
+// ── SPECIALIZED HTML GENERATION ──────────────────────────────────────────────
+function genTheses() {
+  var h = '\n      <p class="article-lead">'+S.introHtml+'</p>\n';
+  h += '\n      <div class="thesis-list">\n';
+  S.items.forEach(function(it) {
+    h += '        <div class="thesis-item">\n';
+    h += '          <span class="thesis-year">'+esc(it.year)+'</span>\n';
+    h += '          <p class="thesis-title">'+it.title+'</p>\n';
+    h += '          <div class="thesis-meta">'+it.meta+'</div>\n';
+    if (it.pending) {
+      h += '          <span class="thesis-pending">Consulta de la tesis pendiente</span>\n';
+    } else if (it.link) {
+      h += '          <a class="thesis-link" href="'+escA(it.link)+'" target="_blank" rel="noopener noreferrer">→ Consultar tesis</a>\n';
+    }
+    h += '        </div>\n';
+  });
+  h += '      </div>\n';
+  return h;
+}
+
+function genCongresses() {
+  var h = '\n    <p class="intro-text">'+S.introHtml+'</p>\n';
+  var inGrid = false;
+  S.items.forEach(function(it) {
+    if (it._group) {
+      if (inGrid) { h += '    </div>\n\n'; inGrid = false; }
+      h += '\n    <div class="series-header">\n';
+      h += '      <span class="series-title">'+esc(it.title)+'</span>\n';
+      h += '      <span class="series-rule"></span>\n';
+      h += '      <span class="series-count">'+esc(it.count)+'</span>\n';
+      h += '    </div>\n\n';
+      h += '    <div class="congress-grid">\n';
+      inGrid = true;
+      return;
+    }
+    if (!inGrid) { h += '\n    <div class="congress-grid">\n'; inGrid = true; }
+    h += '\n      <div class="congress-card"'+(it.onclick?' onclick="'+escA(it.onclick)+'"':'')+'>\n';
+    h += '        <div class="congress-poster">\n';
+    if(it.image) h += '          <img src="'+escA(it.image)+'" alt="'+escA(it.imageAlt)+'" />\n';
+    h += '          <div class="congress-poster-overlay"></div>\n';
+    h += '          <span class="congress-year-badge">'+esc(it.year)+'</span>\n';
+    h += '        </div>\n';
+    h += '        <div class="congress-info">\n';
+    h += '          <div class="congress-edition">'+esc(it.edition)+'</div>\n';
+    h += '          <div class="congress-name">'+it.name+'</div>\n';
+    var meta = esc(it.dates);
+    if (it.location) meta += '<br /><strong>'+esc(it.location)+'</strong>';
+    h += '          <div class="congress-meta-small">'+meta+'</div>\n';
+    h += '        </div>\n';
+    h += '        <span class="congress-hint">Ver más →</span>\n';
+    h += '      </div>\n';
+  });
+  if (inGrid) h += '    </div>\n';
+  return h;
+}
+
+function genSeminars() {
+  var h = '\n    <p class="intro-text">'+S.introHtml+'</p>\n';
+  var inList = false;
+  var semIdx = 0;
+  S.items.forEach(function(it) {
+    if (it._group) {
+      if (inList) { h += '    </ul>\n\n'; inList = false; }
+      h += '\n    <div class="series-header">\n';
+      h += '      <span class="series-title">'+esc(it.title)+'</span>\n';
+      h += '      <span class="series-rule"></span>\n';
+      h += '      <span class="series-count">'+esc(it.count)+'</span>\n';
+      h += '    </div>\n\n';
+      h += '    <ul class="seminar-list">\n';
+      inList = true;
+      return;
+    }
+    if (!inList) { h += '\n    <ul class="seminar-list">\n'; inList = true; }
+    h += '\n      <li class="seminar-item">\n';
+    h += '        <button class="seminar-trigger" onclick="toggleSeminar(this)">\n';
+    h += '          <span class="seminar-year">'+esc(it.year)+'</span>\n';
+    h += '          <span class="seminar-title-wrap">\n';
+    h += '            <span class="seminar-name">'+esc(it.name)+'</span>\n';
+    if(it.theme) h += '            <span class="seminar-theme">'+esc(it.theme)+'</span>\n';
+    h += '          </span>\n';
+    h += '          <span class="seminar-dates-inline">'+esc(it.dates)+'</span>\n';
+    h += '          <span class="seminar-chevron">▼</span>\n';
+    h += '        </button>\n';
+    h += '        <div class="seminar-panel" id="sem-panel-'+semIdx+'">\n';
+    h += '          <div class="seminar-panel-grid">\n';
+    (it.fields||[]).forEach(function(f) {
+      if (!f.label && !f.value) return;
+      h += '            <div class="seminar-field"><div class="seminar-field-label">'+esc(f.label)+'</div><div class="seminar-field-value">'+esc(f.value)+'</div></div>\n';
+    });
+    h += '          </div>\n';
+    if(it.pdfUrl) h += '          <a class="seminar-pdf-btn" href="'+escA(it.pdfUrl)+'" target="_blank" rel="noopener noreferrer">↓ '+(it.pdfText||'Programa')+'</a>\n';
+    h += '        </div>\n';
+    h += '      </li>\n';
+    semIdx++;
+  });
+  if (inList) h += '    </ul>\n';
+  return h;
+}
+
+function genMultimedia() {
+  var h = '\n    <div class="video-grid">\n';
+  S.items.forEach(function(it) {
+    var onclick = it.url ? "window.open('"+it.url.replace(/'/g,"\\'")+"','_blank')" : '';
+    h += '\n      <article class="video-card"'+(onclick?' onclick="'+escA(onclick)+'"':'')+'>\n';
+    h += '        <div class="video-thumb-wrap">\n';
+    if(it.image) h += '          <img src="'+escA(it.image)+'" alt="'+escA(it.imageAlt||it.title)+'" loading="lazy" />\n';
+    h += '          <div class="play-btn">\n';
+    h += '            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">\n';
+    h += '              <circle cx="40" cy="40" r="38" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.8)" stroke-width="2"/>\n';
+    h += '              <polygon points="32,24 60,40 32,56" fill="white"/>\n';
+    h += '            </svg>\n';
+    h += '          </div>\n';
+    h += '          <span class="video-source-badge">'+esc(it.source)+'</span>\n';
+    h += '        </div>\n';
+    h += '        <div class="video-info">\n';
+    h += '          <div class="video-date">'+esc(it.date)+'</div>\n';
+    h += '          <h2 class="video-title">'+it.title+'</h2>\n';
+    h += '          <p class="video-desc">'+esc(it.desc)+'</p>\n';
+    h += '        </div>\n';
+    h += '        <span class="video-hint">Ver vídeo →</span>\n';
+    h += '      </article>\n';
+  });
+  h += '    </div>\n';
+  return h;
+}
+
+function genMembers() {
+  var h = '\n<p class="intro">'+S.introHtml+'</p>\n';
+  h += '\n<div class="grid">\n';
+  S.items.forEach(function(m) {
+    var photo=m.photo||'';
+    var imgSrc=photo?'../'+photo:'';
+    h += '\n<div class="card" tabindex="0" role="button"\n';
+    h += '  data-name="'+escA(m.name)+'" data-role="'+escA(m.role)+'" data-uni="'+escA(m.uni)+'" data-email="'+escA(m.email)+'"\n';
+    h += '  data-photo="'+escA(photo)+'"\n';
+    h += '  data-bio="'+escA(m.bio)+'">\n';
+    h += '<img class="cphoto" src="'+escA(imgSrc)+'" alt="'+escA(m.name)+'" onerror="this.src=\'img/logo_positiu.png\';this.style.objectFit=\'contain\';this.style.padding=\'28px\'"/>\n';
+    h += '<div class="cbody"><p class="cname">'+esc(m.displayName||m.name)+'</p><p class="crole">'+esc(m.displayRole||m.role)+'</p><p class="cuni">'+esc(m.displayUni||m.uni)+'</p></div>\n';
+    h += '<span class="chint">Ver ficha →</span>\n</div>\n';
+  });
+  h += '\n</div>\n';
+  return h;
+}
+
+function genProjects() {
+  var h = '\n      <div class="intro-block">'+S.introHtml+'</div>\n';
+  S.items.forEach(function(it) {
+    h += '\n      <div class="project-item">\n';
+    h += '        <div class="project-year">'+esc(it.year)+'</div>\n';
+    h += '        <div class="project-card'+(it.isCurrent?' current':'')+'">\n';
+    if(it.isCurrent) h += '          <span class="project-badge">Vigente</span>\n';
+    h += '          <p class="project-title">'+esc(it.title)+'</p>\n';
+    h += '          <div class="project-meta">\n';
+    var metaLabels = ['IP','Ref.','Financiación','Presupuesto'];
+    metaLabels.forEach(function(label) {
+      var val = it.metas[label]||'';
+      if(val) h += '            <div class="project-meta-item"><span class="label">'+label+'</span><span class="value">'+esc(val)+'</span></div>\n';
+    });
+    h += '          </div>\n';
+    if(it.desc) h += '          <div class="project-desc">'+it.desc+'</div>\n';
+    h += '        </div>\n';
+    h += '      </div>\n';
+  });
+  return h;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// SAVE / PREVIEW
+// ══════════════════════════════════════════════════════════════════════════════
+async function savePage() {
+  var html = generateHtml();
+  var btn = document.getElementById('btnSave');
+  btn.textContent = 'Guardando…';
+  btn.disabled = true;
+
+  try {
+    var r = await fetch('/api/page?path='+encodeURIComponent(S.currentPath), {
+      method: 'POST',
+      headers: {'Content-Type': 'text/html; charset=utf-8'},
+      body: html,
+    });
+    var data = await r.json();
+    if (data.ok) {
+      toast('Cambios guardados correctamente','ok');
+      S.originalHtml = html;
+    } else {
+      toast('Error al guardar: '+(data.error||'desconocido'),'err');
+    }
+  } catch(e) {
+    toast('Error de conexión al guardar','err');
+  }
+  btn.textContent = 'Guardar cambios';
+  btn.disabled = false;
+}
+
+function previewPage() {
+  var html = generateHtml();
+  var blob = new Blob([html],{type:'text/html'});
+  window.open(URL.createObjectURL(blob),'_blank');
+}
+
+// ── TOAST ────────────────────────────────────────────────────────────────────
+function toast(msg,type) {
+  var el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'toast '+(type||'info')+' show';
+  clearTimeout(el._t);
+  el._t = setTimeout(function(){ el.classList.remove('show'); },3000);
+}
+</script>
+</body>
+</html>

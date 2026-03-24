@@ -411,8 +411,8 @@ const news = [
       'Los próximos 17 y 18 de noviembre de 2022, celebraremos, en colaboración con la Université Sorbonne, el congreso internacional «Editar la danza de los siglos XVI y XVII», que podrá seguirse a distancia a través de Teams.'
     ],
     links: [
-      { label: 'Programa (PDF)', url: 'media/Editar_la_danza.pdf' },
-      { label: 'Programa en PDF', url: 'media/Editar_la_danza.pdf' }
+      { label: 'Programa (PDF)', url: '../media/Editar_la_danza.pdf' },
+      { label: 'Programa en PDF', url: '../media/Editar_la_danza.pdf' }
     ]
   },
     {
@@ -428,7 +428,7 @@ const news = [
     ],
     links: [
       { label: 'Más información', url: 'https://eventos.ucm.es/90033/detail/congreso-internacional-desvelando-a-lope.html' },
-      { label: 'Programa (PDF)', url: 'media/Triptico_Desvelando_a_Lope.pdf' }
+      { label: 'Programa (PDF)', url: '../media/Triptico_Desvelando_a_Lope.pdf' }
     ]
   },
     {
@@ -460,7 +460,7 @@ const news = [
       'El próximo 10 de junio de 2022 se celebrará, en formato virtual, el Seminario Internacional «Las Partes póstumas de Lope de Vega. La Parte XXII», coordinado por Fausta Antonucci y Marco Presotto.'
     ],
     links: [
-      { label: 'Programa (PDF)', url: 'media/Seminario_Parte_XXII.pdf' },
+      { label: 'Programa (PDF)', url: '../media/Seminario_Parte_XXII.pdf' },
       { label: 'Unirse al evento', url: 'https://teams.microsoft.com/dl/launcher/launcher.html?url=%2F_%23%2Fl%2Fmeetup-join%2F19%3Ameeting_ZWNhYTA2M2QtYTUxMS00Yzg5LWIzOTItOWIxNDYzMjM5ZjJm%40thread.v2%2F0%3Fcontext%3D%257b%2522Tid%2522%253a%25226b514c29-2391-4831-b774-84f35c45bf01%2522%252c%2522Oid%2522%253a%252234e209f3-e4fb-408e-9d66-7b2cb255538f%2522%257d%26anon%3Dtrue&type=meetup-join&deeplinkId=4da96ae1-85f8-423b-bd2d-b2d8d591dd5c&directDl=true&msLaunch=true&enableMobilePage=true&suppressPrompt=true' }
     ]
   },
@@ -561,7 +561,7 @@ const news = [
     ],
     links: [
       { label: 'Enlace al artículo', url: 'https://elpais.com/opinion/2021-10-08/el-brio-del-viejo-teatro.html' },
-      { label: 'Artículo (PDF)', url: 'media/El_brio_del_viejo_teatro_Opinion_EL_PAIS.pdf' }
+      { label: 'Artículo (PDF)', url: '../media/El_brio_del_viejo_teatro_Opinion_EL_PAIS.pdf' }
     ]
   },
     {
@@ -708,7 +708,7 @@ const news = [
       'Esta edición crítica tiene en cuenta el manuscrito autógrafo de la obra, recuperado por el editor, lo cual, aparte su incalculable valor textual, permite comprender mejor el proceso de composición de Lope y posibilita un examen pormenorizado del reparto de actores que representó la obra.'
     ],
     links: [
-      { label: 'Programa (PDF)', url: 'media/CA00417301_josafat_11.pdf' }
+      { label: 'Programa (PDF)', url: '../media/CA00417301_josafat_11.pdf' }
     ]
   },
     {
@@ -755,7 +755,7 @@ const news = [
       'En muchas ocasiones, el análisis paleográfico y codicológico de manuscritos teatrales áureos no permite ofrecer respuestas concluyentes a cuestiones sobre la composición y transmisión de la obra o sobre la intervención de terceras personas en la configuración del texto. En esta conferencia se presentarán algunos instrumentos relacionados con la fotografía y la espectroscopía que pueden ayudar al investigador y al filólogo a resolver esas y otras cuestiones. La aplicación de estas técnicas a determinados manuscritos autógrafos ha permitido, por ejemplo, leer debajo de fragmentos tachados o identificar la composición química de las tintas empleadas.'
     ],
     links: [
-      { label: 'Cartel (PDF)', url: 'media/Cartel-conferencia-Sonia-Boadas.pdf' }
+      { label: 'Cartel (PDF)', url: '../media/Cartel-conferencia-Sonia-Boadas.pdf' }
     ]
   },
      {
@@ -814,7 +814,7 @@ const news = [
       'Nos complace anunciar la convocatoria del X Congreso Internacional Lope de Vega. «Editar a Lope, 30 años después», que se celebrará en Barcelona los días 24, 25 y 26 de noviembre de 2021.'
     ],
     links: [
-      { label: 'Primera circular', url: 'media/Circular_X_Congreso_PROLOPE.pdf' }
+      { label: 'Primera circular', url: '../media/Circular_X_Congreso_PROLOPE.pdf' }
     ]
   },
     {
@@ -860,7 +860,7 @@ const news = [
       'Nuestra investigadora Florence D’Artois presenta, el próximo 15 de enero, a las 14 h., en el marco del Seminario Internacional «Mudanzas: Interpretar el movimiento en España (XVI-XVII)», que ella organiza, la conferencia de Ana Yepes y Anna Romaní «La danza del Siglo de oro español vs otros estilos europeos».'
     ],
     links: [
-      { label: 'Cartel', url: 'media/AfficheMudanza_0121.pdf' }
+      { label: 'Cartel', url: '../media/AfficheMudanza_0121.pdf' }
     ]
   },
     {
@@ -891,7 +891,7 @@ const news = [
       'El próximo 25 de noviembre se celebrará el Seminario Internacional «La parte XX de comedias de Lope de Vega», organizado por la profesora Salomé Vuelta, en la Università degli Studi di Firenze. El evento se retransmitió en directo.'
     ],
     links: [
-      { label: 'Programa (PDF)', url: 'media/depliant_ParteXX.pdf' }
+      { label: 'Programa (PDF)', url: '../media/depliant_ParteXX.pdf' }
     ]
   },
     {
@@ -1020,7 +1020,7 @@ const news = [
       'Gracias a la amibilidad de la profesora Aurora Agido y de Ínsula, publicamos aquí el artículo en recuerdo de Alberto Blecua que se ha incluido en el último número de esa revista (núm. 881, mayo de 2020, p. 2).'
     ],
     links: [
-      { label: 'Artículo completo', url: 'media/01_AuroraEgido.pdf' }
+      { label: 'Artículo completo', url: '../media/01_AuroraEgido.pdf' }
     ]
   },
     {
@@ -1035,8 +1035,8 @@ const news = [
       'El Anuario Lope de Vega ha recibido la calificación más alta en las clasificaciones de revistas científicas en Italia y Polonia.'
     ],
     links: [
-      { label: 'Revista Polonia', url: 'media/lista_czasopism.pdf' },
-      { label: 'Revista Italia', url: 'media/Area10_scientifiche_11112024_18112024.pdf' }
+      { label: 'Revista Polonia', url: '../media/lista_czasopism.pdf' },
+      { label: 'Revista Italia', url: '../media/Area10_scientifiche_11112024_18112024.pdf' }
     ]
   },
     {
@@ -1152,7 +1152,7 @@ const news = [
       'El discurso leído por Eugenia Fosalba en el funeral de Alberto Blecua está disponible aquí.'
     ],
     links: [
-      { label: 'Dicurso (PDF)', url: 'media/Texto_Eugenia.pdf' }
+      { label: 'Dicurso (PDF)', url: '../media/Texto_Eugenia.pdf' }
     ]
   },
     {
@@ -1170,7 +1170,7 @@ const news = [
       'Está de más cualquier intento de semblanza, porque esa manera de ser y de hacer, con su genealogía y sus razones, quedó inmejorablemente retratada en las páginas que él mismo escribió como prólogo a sus Signos viejos y nuevos. No cabe mejor recuerdo en esta hora que ofrecerlas aquí y volver a leerlas una vez más. Ahí se cifran, con humana modestia pero firme convencimiento, los logros y virtudes de nuestro llorado y tan querido Alberto.'
     ],
     links: [
-      { label: 'Prólogo (PDF)', url: 'media/Prologo_Signos.pdf' }
+      { label: 'Prólogo (PDF)', url: '../media/Prologo_Signos.pdf' }
     ]
   },
     {
@@ -1202,7 +1202,7 @@ const news = [
       '¡Os esperamos a todos!'
     ],
     links: [
-      { label: 'Cartel (JPG)', url: 'media/vida-sueno_cartel.jpg' }
+      { label: 'Cartel (JPG)', url: '../media/vida-sueno_cartel.jpg' }
     ]
   },
     {
@@ -1217,7 +1217,7 @@ const news = [
       'El encuentro pretende explorar y reflexionar en torno a los manuscritos autógrafos de Lope de Vega, prestando especial atención a aspectos textuales, lingüísticos, paleográficos y ecdóticos. Todo ello permitirá, por una parte, profundizar en el proceso de concepción, redacción y configuración de la obra dramática, y por otra, abordar el estudio de difusión e impresión del texto teatral.'
     ],
     links: [
-      { label: 'Programa (PDF)', url: 'media/Diptico.pdf' }
+      { label: 'Programa (PDF)', url: '../media/Diptico.pdf' }
     ]
   },
     {
@@ -1251,7 +1251,7 @@ const news = [
       'En esta ocasión el taller se dedica a «La puntuación de los textos teatrales».'
     ],
     links: [
-      { label: 'Programa (PDF)', url: 'media/Cartel_XVI_Taller_Internacional1.pdf' }
+      { label: 'Programa (PDF)', url: '../media/Cartel_XVI_Taller_Internacional1.pdf' }
     ]
   },
     {
@@ -1281,7 +1281,7 @@ const news = [
       'Mañana viernes, 22 de marzo, en el Institut d’Études Hispaniques de París, tendrá lugar la jornada «Teatro áureo, espectáculo y sentidos: del texto a las tablas», organizada por Florence D’Artois, Yannick Barne y Héctor Ruiz. Contará con las intervenciones de Margaret Greer, Daniele Crivellari y Ana Zamora.'
     ],
     links: [
-      { label: 'Programa (PDF)', url: 'media/ProgrammeJETheatre_140319.pdf' }
+      { label: 'Programa (PDF)', url: '../media/ProgrammeJETheatre_140319.pdf' }
     ]
   },
     {
@@ -1295,7 +1295,7 @@ const news = [
     content: [
     ],
     links: [
-      { label: 'Call for papers (PDF)', url: 'media/Call_for_papers__anuario_2020.pdf' }
+      { label: 'Call for papers (PDF)', url: '../media/Call_for_papers__anuario_2020.pdf' }
     ]
   },
     {
@@ -1403,7 +1403,7 @@ const news = [
       'En esta ocasión el taller se dedica a «La edición del diálogo teatral».'
     ],
     links: [
-      { label: 'Programa (PDF)', url: 'media/XV_Taller_Internacional_programa__informaciones_practicas.pdf' }
+      { label: 'Programa (PDF)', url: '../media/XV_Taller_Internacional_programa__informaciones_practicas.pdf' }
     ]
   },
     {
@@ -1433,7 +1433,7 @@ const news = [
       'Avanzamos el programa provisional del IX Congreso Internacional Lope de Vega, que se celebrará en la sede de la Biblioteca Nacional de España los próximos 28, 29 y 30 de noviembre de 2018.'
     ],
     links: [
-      { label: 'Programa provisional', url: 'media/Programa_provisional_Lope_era_digital.pdf' }
+      { label: 'Programa provisional', url: '../media/Programa_provisional_Lope_era_digital.pdf' }
     ]
   },
     {
@@ -1448,7 +1448,7 @@ const news = [
       'El próximo 1 de junio expira el plazo para el envío de propuestas de comunicaciones para el IX Congreso Internacional Lope de Vega: «Lope y el teatro del Siglo de Oro. Patrimonio, difusión e investigación en la era digital».'
     ],
     links: [
-      { label: 'Primera circular', url: 'media/Primera_circular_Lope_era_digital_26_04.pdf' }
+      { label: 'Primera circular', url: '../media/Primera_circular_Lope_era_digital_26_04.pdf' }
     ]
   },
     {
@@ -1538,7 +1538,7 @@ const news = [
       'Se enlaza a continuación en artículo de Esther Paniagua, «Así se digitaliza la Biblioteca Nacional de España».'
     ],
     links: [
-      { label: 'Artículo (PDF)', url: 'media/digitalizacion-bne_pais.pdf' }
+      { label: 'Artículo (PDF)', url: '../media/digitalizacion-bne_pais.pdf' }
     ]
   },
     {
@@ -1645,7 +1645,7 @@ const news = [
       'Nos complace comunicar que el próximo viernes, 12 de enero, se llevará a cabo la presentación de la Parte XVI de las Comedias de Lope de Vega en la Universidad de la Sorbona, en París, de mano de una de las coordinadoras del volumen e investigadora de Prolope, Florence D’Artois.'
     ],
     links: [
-      { label: 'Programa (PDF)', url: 'media/Presentacion_Parte_XVI.pdf' }
+      { label: 'Programa (PDF)', url: '../media/Presentacion_Parte_XVI.pdf' }
     ]
   },
     {
@@ -1674,7 +1674,7 @@ const news = [
       'Nos complace anunciar la celebración del Segundo Seminario Internacional Icrea-Academia-Prolope, que tendrá lugar los próximos 11 y 12 de enero en la Universitat Autònoma de Barcelona, dedicado esta vez a «Texto crítico y edición digital: modelos, codificación, alojamiento, publicación», y coordinado por Gonzalo Pontón y Ramón Valdés.'
     ],
     links: [
-      { label: 'Programa (PDF)', url: 'media/Diptico_segundo_seminario_con_retoques.pdf' }
+      { label: 'Programa (PDF)', url: '../media/Diptico_segundo_seminario_con_retoques.pdf' }
     ]
   },
     {
@@ -1689,8 +1689,8 @@ const news = [
       'Dirigidos por Luigi Giuliani (Università di Perugia) y Victoria Pineda (Universidad de Extremadura), siguiendo los planteamientos de la americana Society for Textual Scholarship (STS) y su gemela European Society for Textual Scholarship (ESTS), los Talleres Internacionales se configuran como un lugar de encuentro interdisciplinar que supera las tradicionales divisiones entre las distintas filologías para ocuparse de teorías, metodologías y prácticas ecdóticas aplicadas a textos de distintas épocas, géneros y autores, escritos en distintos idiomas, compuestos y transmitidos a través de diferentes canales, desde la copia manuscrita a la imprenta manual, a la linotipia, hasta las actuales tecnologías digitales.'
     ],
     links: [
-      { label: 'Presentación (PDF)', url: 'media/XIV_Taller_Internacional_de_Estudios_Textuales_2017_PRESENTACION.pdf' },
-      { label: 'Programa (PDF)', url: 'media/XIV_Taller_Internacional_de_Estudios_Textuales_2017_PROGRAMA.pdf' }
+      { label: 'Presentación (PDF)', url: '../media/XIV_Taller_Internacional_de_Estudios_Textuales_2017_PRESENTACION.pdf' },
+      { label: 'Programa (PDF)', url: '../media/XIV_Taller_Internacional_de_Estudios_Textuales_2017_PROGRAMA.pdf' }
     ]
   },
     {
@@ -1722,7 +1722,7 @@ const news = [
     content: [
     ],
     links: [
-      { label: 'Programa (PDF)', url: 'media/Triptico_12_Jornadas_Olmedo_2017.pdf' }
+      { label: 'Programa (PDF)', url: '../media/Triptico_12_Jornadas_Olmedo_2017.pdf' }
     ]
   },
     {
@@ -1738,7 +1738,7 @@ const news = [
       'En el díptico puede consultar todos los participantes del Primer Seminario Internacional Icrea Academia-Prolope.'
     ],
     links: [
-      { label: 'Programa (PDF)', url: 'media/Diptico_Primer_Seminario_Icrea_Prolope.pdf' }
+      { label: 'Programa (PDF)', url: '../media/Diptico_Primer_Seminario_Icrea_Prolope.pdf' }
     ]
   },
     {
@@ -1768,7 +1768,7 @@ const news = [
       'Su intervención se enmarca en la línea de trabajo de Prolope dirigida a contemplar la perspectiva de los performance studies y de las últimas tendencias de la puesta en escena del teatro del Seiscientos.'
     ],
     links: [
-      { label: 'Cartel (PDF)', url: 'media/conferencia_del_profesor_duncan_wheeler_13_03_2017.pdf' }
+      { label: 'Cartel (PDF)', url: '../media/conferencia_del_profesor_duncan_wheeler_13_03_2017.pdf' }
     ]
   },
     {
@@ -1784,7 +1784,7 @@ const news = [
       'Invitamos a los investigadores interesados en enviar sus contribuciones a hacerlo antes del 30 de junio de 2017.'
     ],
     links: [
-      { label: 'Call for papers (PDF)', url: 'media/Call_for_papers_ANUARIO_2018_1.pdf' }
+      { label: 'Call for papers (PDF)', url: '../media/Call_for_papers_ANUARIO_2018_1.pdf' }
     ]
   },
     {
@@ -1799,7 +1799,7 @@ const news = [
       'Este número monográfico, coordinado por los miembros de Prolope Alessandro Cassol (Università di Milano) y Sònia Boadas (Universitat Autònoma de Barcelona), pretende reflexionar sobre los cambios que están suponiendo las Humanidades Digitales en el estudio del teatro áureo.'
     ],
     links: [
-      { label: 'Call for papers (PDF)', url: 'mediaCfP_Cuadernos_AISPI_11.pdf' }
+      { label: 'Call for papers (PDF)', url: '../mediaCfP_Cuadernos_AISPI_11.pdf' }
     ]
   },
 ];
