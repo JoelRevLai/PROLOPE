@@ -595,14 +595,17 @@ function parseMultimedia(main) {
 function parseMembers(main) {
   var intro = main.querySelector('.intro');
   S.introHtml = intro ? intro.innerHTML : '';
+  var pastGrid = main.querySelector('.past-grid');
   main.querySelectorAll('.card[data-name]').forEach(function(c) {
+    var isPast = pastGrid ? pastGrid.contains(c) : false;
     S.items.push({
       id: blockId++,
+      past: isPast,
       name: c.getAttribute('data-name')||'',
       role: c.getAttribute('data-role')||'',
       uni: c.getAttribute('data-uni')||'',
       email: c.getAttribute('data-email')||'',
-      photo: c.getAttribute('data-photo')||'',
+      photo: (c.getAttribute('data-photo')||'').replace(/^\.\.\//,''),
       bio: c.getAttribute('data-bio')||'',
       displayName: txt(c,'.cname'),
       displayRole: txt(c,'.crole'),
@@ -689,6 +692,7 @@ function renderEditor() {
 
   // Init all rich editors
   initRichEditors();
+  if (S.pageType === 'members') initMembersDrag();
 }
 
 function field(label,id,value,placeholder) {
@@ -1344,17 +1348,27 @@ function renderMembersEditor() {
   h += '</div>';
   h += '<div class="ed-section"><h2>Miembros del grupo</h2>';
   h += '<div id="itemsContainer">';
-  S.items.forEach(function(it) { h += renderMemberCard(it); });
+  S.items.filter(function(it){return !it.past;}).forEach(function(it) { h += renderMemberCard(it); });
   h += '</div>';
   h += '<button class="btn btn-blue btn-sm" style="margin-top:.5rem" onclick="addMember()">+ Añadir miembro</button>';
+  h += '</div>';
+  h += '<div class="ed-section"><h2>Histórico de investigadores</h2>';
+  h += '<div id="pastItemsContainer">';
+  S.items.filter(function(it){return it.past;}).forEach(function(it) { h += renderMemberCard(it); });
+  h += '</div>';
+  h += '<button class="btn btn-blue btn-sm" style="margin-top:.5rem" onclick="addPastMember()">+ Añadir investigador histórico</button>';
   h += '</div>';
   return h;
 }
 
 function renderMemberCard(it) {
-  var h = '<div class="item-card" data-iid="'+it.id+'">';
+  var h = '<div class="item-card" data-iid="'+it.id+'" draggable="true">';
+  h += '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>';
   h += '<button class="btn-del-item" onclick="removeItem('+it.id+')">✕</button>';
-  h += '<div class="item-card-header"><strong>'+esc(it.name||'Nuevo miembro')+'</strong></div>';
+  var moveLabel = it.past ? '↑ Mover a activos' : '↓ Mover a histórico';
+  h += '<div class="item-card-header"><strong>'+esc(it.name||'Nuevo miembro')+'</strong>'
+    +'<button class="btn btn-outline btn-sm" style="margin-left:auto" onclick="toggleMemberSection('+it.id+')">'+moveLabel+'</button>'
+    +'</div>';
   h += '<div class="row">';
   h += '<div>'+field('Nombre completo','mn-'+it.id,it.name)+'</div>';
   h += '<div>'+field('Nombre corto (tarjeta)','md-'+it.id,it.displayName)+'</div>';
@@ -1376,7 +1390,21 @@ function renderMemberCard(it) {
 
 function addMember() {
   readAllItems();
-  S.items.push({id:blockId++,name:'',role:'Investigador',uni:'',email:'',photo:'',bio:'<p>Biografía del miembro.</p>',displayName:'',displayRole:'Investigador',displayUni:''});
+  S.items.push({id:blockId++,past:false,name:'',role:'Investigador',uni:'',email:'',photo:'',bio:'<p>Biografía del miembro.</p>',displayName:'',displayRole:'Investigador',displayUni:''});
+  rerenderItems();
+}
+
+function addPastMember() {
+  readAllItems();
+  S.items.push({id:blockId++,past:true,name:'',role:'Investigador',uni:'',email:'',photo:'',bio:'<p>Biografía del miembro.</p>',displayName:'',displayRole:'Investigador',displayUni:''});
+  rerenderItems();
+}
+
+function toggleMemberSection(iid) {
+  readAllItems();
+  var it = S.items.find(function(m){return m.id===iid;});
+  if (!it) return;
+  it.past = !it.past;
   rerenderItems();
 }
 
@@ -1429,6 +1457,15 @@ function removeItem(iid) {
 }
 
 function rerenderItems() {
+  if (S.pageType === 'members') {
+    var c = document.getElementById('itemsContainer');
+    var p = document.getElementById('pastItemsContainer');
+    if (c) { var h=''; S.items.filter(function(it){return !it.past;}).forEach(function(it){h+=renderMemberCard(it);}); c.innerHTML=h; }
+    if (p) { var h=''; S.items.filter(function(it){return it.past;}).forEach(function(it){h+=renderMemberCard(it);}); p.innerHTML=h; }
+    initRichEditors();
+    initMembersDrag();
+    return;
+  }
   var c = document.getElementById('itemsContainer');
   if (!c) return;
   var h = '';
@@ -1437,12 +1474,42 @@ function rerenderItems() {
     else if (S.pageType==='congresses') h += renderCongressCard(it);
     else if (S.pageType==='seminars') h += renderSeminarCard(it);
     else if (S.pageType==='multimedia') h += renderVideoCard(it);
-    else if (S.pageType==='members') h += renderMemberCard(it);
     else if (S.pageType==='projects') h += renderProjectCard(it);
   });
   c.innerHTML = h;
   initRichEditors();
   if (S.pageType==='theses' || S.pageType==='congresses' || S.pageType==='seminars') initThesisDrag();
+}
+
+function initMembersDrag() {
+  ['itemsContainer','pastItemsContainer'].forEach(function(cid) {
+    var c = document.getElementById(cid);
+    if (!c) return;
+    c.querySelectorAll('.item-card[draggable]').forEach(function(card) {
+      card.addEventListener('dragstart', function(e) {
+        _dragSrcId = parseInt(card.getAttribute('data-iid'));
+        e.dataTransfer.effectAllowed = 'move';
+      });
+      card.addEventListener('dragover', function(e) {
+        e.preventDefault(); e.dataTransfer.dropEffect = 'move';
+        card.classList.add('drag-over');
+      });
+      card.addEventListener('dragleave', function() { card.classList.remove('drag-over'); });
+      card.addEventListener('drop', function(e) {
+        e.preventDefault(); card.classList.remove('drag-over');
+        var targetId = parseInt(card.getAttribute('data-iid'));
+        if (_dragSrcId === null || _dragSrcId === targetId) return;
+        readAllItems();
+        var srcIdx = S.items.findIndex(function(it){return it.id===_dragSrcId;});
+        var tgtIdx = S.items.findIndex(function(it){return it.id===targetId;});
+        if (srcIdx<0||tgtIdx<0) return;
+        var removed = S.items.splice(srcIdx,1)[0];
+        S.items.splice(tgtIdx,0,removed);
+        rerenderItems();
+      });
+      card.addEventListener('dragend', function() { card.classList.remove('drag-over'); });
+    });
+  });
 }
 
 var _dragSrcId = null;
@@ -1918,19 +1985,27 @@ function updateFooterVideosScript(footerPart, localVideos) {
 }
 
 function genMembers() {
-  var h = '\n<p class="intro">'+S.introHtml+'</p>\n';
-  h += '\n<div class="grid">\n';
-  S.items.forEach(function(m) {
+  function memberCardHtml(m) {
     var photo=m.photo||'';
     var imgSrc=photo?'../'+photo:'';
-    h += '\n<div class="card" tabindex="0" role="button"\n';
-    h += '  data-name="'+escA(m.name)+'" data-role="'+escA(m.role)+'" data-uni="'+escA(m.uni)+'" data-email="'+escA(m.email)+'"\n';
-    h += '  data-photo="'+escA(photo)+'"\n';
-    h += '  data-bio="'+escAttr(m.bio)+'">\n';
-    h += '<img class="cphoto" src="'+escA(imgSrc)+'" alt="'+escA(m.name)+'" onerror="this.src=\'img/logo_positiu.png\';this.style.objectFit=\'contain\';this.style.padding=\'28px\'"/>\n';
-    h += '<div class="cbody"><p class="cname">'+esc(m.displayName||m.name)+'</p><p class="crole">'+esc(m.displayRole||m.role)+'</p><p class="cuni">'+esc(m.displayUni||m.uni)+'</p></div>\n';
-    h += '<span class="chint">Ver ficha →</span>\n</div>\n';
-  });
+    var s = '\n<div class="card" tabindex="0" role="button"\n';
+    s += '  data-name="'+escA(m.name)+'" data-role="'+escA(m.role)+'" data-uni="'+escA(m.uni)+'" data-email="'+escA(m.email)+'"\n';
+    s += '  data-photo="'+escA(imgSrc)+'"\n';
+    s += '  data-bio="'+escAttr(m.bio)+'">\n';
+    s += '<img class="cphoto" src="'+escA(imgSrc)+'" alt="'+escA(m.name)+'" onerror="this.onerror=null;this.src=\'../media/logo_positiu.png\';this.style.objectFit=\'contain\';this.style.padding=\'28px\'"/>\n';
+    s += '<div class="cbody"><p class="cname">'+esc(m.displayName||m.name)+'</p><p class="crole">'+esc(m.displayRole||m.role)+'</p><p class="cuni">'+esc(m.displayUni||m.uni)+'</p></div>\n';
+    s += '<span class="chint">Ver ficha →</span>\n</div>\n';
+    return s;
+  }
+  var current = S.items.filter(function(m){return !m.past;});
+  var past = S.items.filter(function(m){return m.past;});
+  var h = '\n<p class="intro">'+S.introHtml+'</p>\n';
+  h += '\n<div class="grid">\n';
+  current.forEach(function(m){ h += memberCardHtml(m); });
+  h += '\n</div>\n';
+  h += '\n<div class="members-section">\n<h2>Histórico de investigadores</h2>\n</div>\n';
+  h += '\n<div class="grid past-grid">\n';
+  past.forEach(function(m){ h += memberCardHtml(m); });
   h += '\n</div>\n';
   return h;
 }
