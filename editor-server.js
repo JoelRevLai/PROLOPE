@@ -28,6 +28,10 @@ const MIME = {
   '.webp': 'image/webp',
   '.pdf':  'application/pdf',
   '.ico':  'image/x-icon',
+  '.mp4':  'video/mp4',
+  '.webm': 'video/webm',
+  '.ogv':  'video/ogg',
+  '.mov':  'video/quicktime',
 };
 
 /* ── helpers ─────────────────────────────────────────────── */
@@ -63,11 +67,36 @@ function listMedia(root) {
     .sort();
 }
 
+function listMediaAll(root) {
+  const mediaDir = path.join(root, 'media');
+  if (!fs.existsSync(mediaDir)) return [];
+  return fs.readdirSync(mediaDir)
+    .filter(f => /\.(jpg|jpeg|png|gif|svg|webp|mp4|webm|ogv|mov|pdf)$/i.test(f))
+    .map(f => {
+      const stat = fs.statSync(path.join(mediaDir, f));
+      const ext = path.extname(f).toLowerCase().slice(1);
+      let type = 'otro';
+      if (/^(jpg|jpeg|png|gif|svg|webp)$/.test(ext)) type = 'imagen';
+      else if (/^(mp4|webm|ogv|mov)$/.test(ext)) type = 'vídeo';
+      else if (ext === 'pdf') type = 'pdf';
+      return { name: f, type, ext, size: stat.size, date: stat.mtime.toISOString() };
+    });
+}
+
 function readBody(req) {
   return new Promise((resolve, reject) => {
     const chunks = [];
     req.on('data', c => chunks.push(c));
     req.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
+    req.on('error', reject);
+  });
+}
+
+function readBodyBinary(req) {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    req.on('data', c => chunks.push(c));
+    req.on('end', () => resolve(Buffer.concat(chunks)));
     req.on('error', reject);
   });
 }
@@ -102,6 +131,13 @@ const server = http.createServer(async (req, res) => {
   if (url.pathname === '/api/media') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(listMedia(ROOT)));
+    return;
+  }
+
+  // ── API: list all media with metadata ──
+  if (url.pathname === '/api/media-all') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(listMediaAll(ROOT)));
     return;
   }
 
@@ -161,6 +197,70 @@ const server = http.createServer(async (req, res) => {
       res.writeHead(500, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ error: e.message }));
     }
+    return;
+  }
+
+  // ── API: upload image (or PDF) to media/ ──
+  if (url.pathname === '/api/upload-image' && req.method === 'POST') {
+    const rawName = url.searchParams.get('name') || '';
+    if (!/^[\w\-. ]+\.(jpg|jpeg|png|gif|svg|webp|pdf)$/i.test(rawName)) {
+      res.writeHead(400, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Nombre de archivo inválido. Solo se permiten jpg, jpeg, png, gif, svg, webp, pdf.' }));
+      return;
+    }
+    const safeFilename = rawName.replace(/[^a-zA-Z0-9.\-_]/g, '-');
+    const destPath = path.join(ROOT, 'media', safeFilename);
+    const ws = fs.createWriteStream(destPath);
+    req.pipe(ws);
+    ws.on('finish', () => {
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ ok: true, filename: safeFilename }));
+    });
+    ws.on('error', e => {
+      if (!res.headersSent) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: e.message }));
+      }
+    });
+    req.on('error', e => {
+      ws.destroy();
+      if (!res.headersSent) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: e.message }));
+      }
+    });
+    return;
+  }
+
+  // ── API: upload video to media/ ──
+  if (url.pathname === '/api/upload-media' && req.method === 'POST') {
+    const rawName = url.searchParams.get('name') || '';
+    if (!/^[\w\-. ]+\.(mp4|webm|ogv|mov)$/i.test(rawName)) {
+      res.writeHead(400, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Nombre de archivo inválido. Solo se permiten mp4, webm, ogv, mov.' }));
+      return;
+    }
+    const safeFilename = rawName.replace(/[^a-zA-Z0-9.\-_]/g, '-');
+    const destPath = path.join(ROOT, 'media', safeFilename);
+    const ws = fs.createWriteStream(destPath);
+    req.pipe(ws);
+    ws.on('finish', () => {
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ ok: true, filename: safeFilename }));
+    });
+    ws.on('error', e => {
+      if (!res.headersSent) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: e.message }));
+      }
+    });
+    req.on('error', e => {
+      ws.destroy();
+      if (!res.headersSent) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: e.message }));
+      }
+    });
     return;
   }
 

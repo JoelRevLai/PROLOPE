@@ -84,6 +84,7 @@
     .img-picker{display:flex;gap:.6rem;align-items:flex-end}
     .img-picker input{flex:1}
     .img-picker button{flex-shrink:0}
+    .img-upload-btn{flex-shrink:0;cursor:pointer}
     .img-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:900;align-items:center;justify-content:center}
     .img-modal-overlay.open{display:flex}
     .img-modal{background:var(--bg);border-radius:10px;width:90%;max-width:700px;max-height:80vh;display:flex;flex-direction:column;overflow:hidden}
@@ -163,6 +164,7 @@
 <!-- toast -->
 <div class="toast" id="toast"></div>
 
+
 <script>
 /* ══════════════════════════════════════════════════════════════════════════════
    EDITOR DE CONTENIDOS PROLOPE — JAVASCRIPT PRINCIPAL
@@ -232,6 +234,9 @@ function renderNav() {
     });
     html += '</div>';
   });
+  html += '<div class="nav-group"><div class="nav-group-title">Herramientas</div>';
+  html += '<button class="nav-item" data-path="__recursos__" onclick="loadRecursos()">Recursos multimedia</button>';
+  html += '</div>';
   document.getElementById('navList').innerHTML = html;
 }
 
@@ -491,27 +496,42 @@ function parseSeminars(main) {
 function parseMultimedia(main) {
   var intro = main.querySelector('.intro-text');
   S.introHtml = intro ? intro.innerHTML : '';
+
+  // Parse local videos src from the footer script block (const videos = {...})
+  // Match each entry individually: id: { ... src: "..." ... }
+  var localVideosMap = {};
+  var entryRe = /['"]?([\w-]+)['"]?\s*:\s*\{[^{}]*src\s*:\s*['"]([^'"]+)['"][^{}]*\}/g, em;
+  while ((em = entryRe.exec(S.footerPart)) !== null) {
+    localVideosMap[em[1]] = { src: em[2] };
+  }
+
   main.querySelectorAll('.video-card').forEach(function(el) {
     var img = el.querySelector('img');
-    var url = '';
-    var a = el.closest('a') || el.querySelector('a');
-    if (a && a.getAttribute('href')) {
-      url = a.getAttribute('href');
+    var url = '', localSrc = '', videoId = '';
+    var source = txt(el, '.video-source-badge');
+    var oc = el.getAttribute('onclick') || '';
+    var isLocal = false;
+    var openM = oc.match(/openVideo\(['"]([^'"]+)['"]\)/);
+    if (openM) {
+      videoId = openM[1];
+      isLocal = true;
+      localSrc = (localVideosMap[videoId] || {}).src || '';
     } else {
-      var oc = el.getAttribute('onclick')||'';
-      var m = oc.match(/window\.open\(['"]([^'"]+)['"]/);
-      if (m) url = m[1];
+      var winM = oc.match(/window\.open\(['"]([^'"]+)['"]/);
+      if (winM) url = winM[1];
     }
     S.items.push({
       id: blockId++,
       image: img ? img.getAttribute('src') : '',
       imageAlt: img ? img.getAttribute('alt') : '',
-      source: txt(el,'.video-source-badge'),
-      date: txt(el,'.video-date'),
-      title: (el.querySelector('.video-title')||{}).innerHTML||'',
-      desc: txt(el,'.video-desc'),
+      source: source,
+      date: txt(el, '.video-date'),
+      title: (el.querySelector('.video-title') || {}).innerHTML || '',
+      desc: txt(el, '.video-desc'),
       url: url,
-      origOnclick: el.getAttribute('onclick')||'',
+      localSrc: localSrc,
+      videoId: videoId,
+      isLocal: isLocal,
     });
   });
 }
@@ -638,7 +658,39 @@ function imgField(label,value,inputId) {
     +'<div class="img-picker">'
     +'<input type="text" id="'+inputId+'" value="'+escA(value||'')+'" placeholder="Ej.: ../media/imagen.jpg">'
     +'<button class="btn btn-outline btn-sm" onclick="openImgPicker(\''+inputId+'\')">Elegir</button>'
+    +'<label class="btn btn-outline btn-sm img-upload-btn" title="Subir imagen nueva"><input type="file" accept="image/*" style="display:none" onchange="uploadImage(\''+inputId+'\',this)">Subir</label>'
     +'</div></div>';
+}
+
+async function uploadImage(inputId, fileInput) {
+  if (!fileInput.files || !fileInput.files.length) return;
+  var file = fileInput.files[0];
+  toast('Subiendo imagen…', 'info');
+  try {
+    var r = await fetch('/api/upload-image?name='+encodeURIComponent(file.name), {
+      method: 'POST',
+      headers: {'Content-Type': file.type || 'application/octet-stream'},
+      body: file,
+    });
+    var data = await r.json();
+    if (data.ok) {
+      var input = document.getElementById(inputId);
+      if (input) {
+        var depth = S.currentPath.split('/').length - 1;
+        var prefix = depth > 0 ? '../' : '';
+        input.value = prefix + 'media/' + data.filename;
+      }
+      // Refresh media list
+      var mr = await fetch('/api/media');
+      S.media = await mr.json();
+      toast('Imagen subida: ' + data.filename, 'ok');
+    } else {
+      toast('Error al subir: ' + (data.error || 'desconocido'), 'err');
+    }
+  } catch(e) {
+    toast('Error de conexión al subir imagen', 'err');
+  }
+  fileInput.value = '';
 }
 
 // ── RICH TEXT COMMANDS ────────────────────────────────────────────────────────
@@ -976,14 +1028,18 @@ function renderSeminarsEditor() {
   h += '<div id="itemsContainer">';
   S.items.forEach(function(it) { h += renderSeminarCard(it); });
   h += '</div>';
-  h += '<button class="btn btn-blue btn-sm" style="margin-top:.5rem" onclick="addSeminar()">+ Añadir seminario</button>';
+  h += '<div style="margin-top:.5rem;display:flex;gap:.5rem;flex-wrap:wrap">';
+  h += '<button class="btn btn-blue btn-sm" onclick="addSeminar()">+ Añadir seminario</button>';
+  h += '<button class="btn btn-outline btn-sm" onclick="addSeminarGroup()">+ Añadir subcategoría</button>';
+  h += '</div>';
   h += '</div>';
   return h;
 }
 
 function renderSeminarCard(it) {
-  if (it._group) return renderGroupHeader(it);
-  var h = '<div class="item-card" data-iid="'+it.id+'">';
+  if (it._group) return renderSeminarGroupHeader(it);
+  var h = '<div class="item-card" data-iid="'+it.id+'" draggable="true">';
+  h += '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>';
   h += '<button class="btn-del-item" onclick="removeItem('+it.id+')">✕</button>';
   h += '<div class="item-card-header"><strong>'+esc(it.name||'Nuevo seminario')+'</strong></div>';
   h += '<div class="row">';
@@ -1004,9 +1060,27 @@ function renderSeminarCard(it) {
   });
   h += '</div>';
   h += '<button class="btn btn-outline btn-sm" style="margin-top:.3rem" onclick="addSemField('+it.id+')">+ Campo</button>';
-  h += field('URL del programa PDF','smp-'+it.id,it.pdfUrl);
+  h += field('URL del programa PDF (opcional)','smp-'+it.id,it.pdfUrl,'https://... (dejar vacío si no hay programa)');
   h += '</div>';
   return h;
+}
+
+function renderSeminarGroupHeader(it) {
+  var h = '<div class="item-card" data-iid="'+it.id+'" draggable="true" style="border-left:3px solid var(--dorado);background:rgba(200,164,90,.08)">';
+  h += '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>';
+  h += '<button class="btn-del-item" onclick="removeSeminarGroup('+it.id+')">✕</button>';
+  h += '<div class="item-card-header"><strong style="color:var(--azul)">— Subcategoría —</strong></div>';
+  h += field('Título de la subcategoría','grpt-'+it.id, it.title, 'Ej.: Seminario Internacional Lope de Vega');
+  h += field('Texto del contador','grpc-'+it.id, it.count, 'Ej.: 8 ediciones');
+  h += '</div>';
+  return h;
+}
+
+function removeSeminarGroup(iid) {
+  if (!confirm('¿Eliminar esta subcategoría?')) return;
+  readAllItems();
+  S.items = S.items.filter(function(it){return it.id!==iid;});
+  rerenderItems();
 }
 
 function addSemField(iid) {
@@ -1025,7 +1099,13 @@ function delSemField(iid, fi) {
 
 function addSeminar() {
   readAllItems();
-  S.items.push({id:blockId++,year:'',name:'',theme:'',dates:'',fields:[{label:'Fechas',value:''},{label:'Organizado por',value:''}],pdfUrl:'',pdfText:''});
+  S.items.unshift({id:blockId++,year:'',name:'',theme:'',dates:'',fields:[{label:'Fechas',value:''},{label:'Organizado por',value:''}],pdfUrl:'',pdfText:''});
+  rerenderItems();
+}
+
+function addSeminarGroup() {
+  readAllItems();
+  S.items.unshift({id:blockId++,_group:true,title:'',count:''});
   rerenderItems();
 }
 
@@ -1041,16 +1121,38 @@ function renderMultimediaEditor() {
 }
 
 function renderVideoCard(it) {
+  var isLocal = !!it.isLocal;
   var h = '<div class="item-card" data-iid="'+it.id+'">';
   h += '<button class="btn-del-item" onclick="removeItem('+it.id+')">✕</button>';
   h += '<div class="item-card-header"><strong>'+esc((it.title||'').replace(/<[^>]+>/g,'').substring(0,50)||'Nuevo vídeo')+'</strong></div>';
   h += '<div class="row">';
   h += '<div>'+field('Fecha','vid-'+it.id,it.date,'12 jul. 2024')+'</div>';
-  h += '<div><div class="field"><label>Fuente</label><select id="vis-'+it.id+'"><option'+(it.source==='RTVE'?' selected':'')+'>RTVE</option><option'+(it.source==='YouTube'?' selected':'')+'>YouTube</option><option'+(it.source==='BTV'?' selected':'')+'>BTV</option><option'+(it.source==='Otro'?' selected':'')+'>Otro</option></select></div></div>';
+  var knownSources = getKnownVideoSources();
+  var isCustomSrc = it.source && knownSources.indexOf(it.source) === -1;
+  h += '<div><div class="field"><label>Canal / fuente</label>'
+    +'<select id="vis-sel-'+it.id+'" onchange="updateVideoSource('+it.id+')">';
+  knownSources.forEach(function(s){ h += '<option value="'+escA(s)+'"'+(!isCustomSrc&&it.source===s?' selected':'')+'>'+esc(s)+'</option>'; });
+  h += '<option value="_custom"'+(isCustomSrc?' selected':'')+'>Otra fuente…</option>';
+  h += '</select>'
+    +'<input type="text" id="vis-txt-'+it.id+'" value="'+escA(isCustomSrc?it.source:'')+'" placeholder="Nombre del canal"'+(isCustomSrc?'':' style="display:none"')+'>'
+    +'</div></div>';
   h += '</div>';
   h += field('Título','vit-'+it.id,it.title);
   h += field('Descripción','vin-'+it.id,it.desc);
-  h += field('URL del vídeo','viu-'+it.id,it.url,'https://...');
+  h += '<div class="field"><label style="flex-direction:row;align-items:center;gap:.5rem;cursor:pointer">'
+    +'<input type="checkbox" id="vilocal-'+it.id+'"'+(isLocal?' checked':'')+' onchange="updateVideoCardUI('+it.id+')" style="width:auto;margin:0"> '
+    +'Archivo local (el vídeo está guardado en el servidor, no en internet)</label></div>';
+  h += '<div id="viu-row-'+it.id+'"'+(isLocal?' style="display:none"':'')+'>'+field('URL del vídeo','viu-'+it.id,it.url,'https://')+'</div>';
+  h += '<div id="vil-row-'+it.id+'"'+(isLocal?'':' style="display:none"')+'>';
+  h += '<div class="field"><label>Ruta del archivo de vídeo</label>';
+  h += '<div class="row" style="gap:.4rem;align-items:center">';
+  h += '<input type="text" id="vilp-'+it.id+'" value="'+escA(it.localSrc||'')+'" placeholder="../media/nombre.mp4" style="flex:1">';
+  h += '<input type="file" id="vif-'+it.id+'" accept="video/mp4,video/webm,video/ogg,.mp4,.webm,.ogv,.mov" style="display:none" onchange="uploadLocalVideo('+it.id+',this)">';
+  h += '<button class="btn btn-outline btn-sm" onclick="document.getElementById(\'vif-'+it.id+'\').click();return false" style="white-space:nowrap">⬆ Subir</button>';
+  h += '</div>';
+  h += '<p class="help">Ruta relativa a la página HTML (ej.: <code>../media/nombre.mp4</code>).</p>';
+  h += '</div>';
+  h += '</div>';
   h += imgField('Miniatura',it.image,'vii-'+it.id);
   h += '</div>';
   return h;
@@ -1058,8 +1160,56 @@ function renderVideoCard(it) {
 
 function addVideo() {
   readAllItems();
-  S.items.push({id:blockId++,image:'',imageAlt:'',source:'YouTube',date:'',title:'',desc:'',url:''});
+  S.items.push({id:blockId++,image:'',imageAlt:'',source:'YouTube',date:'',title:'',desc:'',url:'',localSrc:'',videoId:'',isLocal:false});
   rerenderItems();
+}
+
+function updateVideoCardUI(iid) {
+  var cb = document.getElementById('vilocal-'+iid);
+  var urlRow = document.getElementById('viu-row-'+iid);
+  var localRow = document.getElementById('vil-row-'+iid);
+  if (!cb || !urlRow || !localRow) return;
+  urlRow.style.display = cb.checked ? 'none' : '';
+  localRow.style.display = cb.checked ? '' : 'none';
+}
+
+function getKnownVideoSources() {
+  var base = ['RTVE','YouTube','BTV'];
+  S.items.forEach(function(it) {
+    if (it.source && base.indexOf(it.source) === -1) base.push(it.source);
+  });
+  return base;
+}
+
+function updateVideoSource(iid) {
+  var sel = document.getElementById('vis-sel-'+iid);
+  var txt = document.getElementById('vis-txt-'+iid);
+  if (!sel || !txt) return;
+  if (sel.value === '_custom') { txt.style.display = ''; txt.focus(); }
+  else txt.style.display = 'none';
+}
+
+async function uploadLocalVideo(iid, input) {
+  if (!input.files || !input.files.length) return;
+  var file = input.files[0];
+  var pathEl = document.getElementById('vilp-'+iid);
+  toast('Subiendo vídeo…', 'info');
+  try {
+    var r = await fetch('/api/upload-media?name='+encodeURIComponent(file.name), {
+      method: 'POST',
+      headers: {'Content-Type': file.type || 'application/octet-stream'},
+      body: file,
+    });
+    var data = await r.json();
+    if (data.ok) {
+      if (pathEl) pathEl.value = '../media/' + data.filename;
+      toast('Vídeo subido: ' + data.filename, 'ok');
+    } else {
+      toast('Error al subir: ' + (data.error || 'desconocido'), 'err');
+    }
+  } catch(e) {
+    toast('Error de conexión al subir vídeo', 'err');
+  }
 }
 
 // ── MIEMBROS ─────────────────────────────────────────────────────────────────
@@ -1167,7 +1317,7 @@ function rerenderItems() {
   });
   c.innerHTML = h;
   initRichEditors();
-  if (S.pageType==='theses' || S.pageType==='congresses') initThesisDrag();
+  if (S.pageType==='theses' || S.pageType==='congresses' || S.pageType==='seminars') initThesisDrag();
 }
 
 var _dragSrcId = null;
@@ -1209,7 +1359,7 @@ function initThesisDrag() {
 function readAllItems() {
   S.items.forEach(function(it) {
     if (it._group) {
-      if (S.pageType==='congresses') {
+      if (S.pageType==='congresses' || S.pageType==='seminars') {
         var t=document.getElementById('grpt-'+it.id); if(t) it.title=t.value;
         var c=document.getElementById('grpc-'+it.id); if(c) it.count=c.value;
       }
@@ -1249,10 +1399,18 @@ function readAllItems() {
     }
     if (type==='multimedia') {
       var d=document.getElementById('vid-'+it.id); if(d) it.date=d.value;
-      var s=document.getElementById('vis-'+it.id); if(s) it.source=s.value;
+      var vssel=document.getElementById('vis-sel-'+it.id),vstxt=document.getElementById('vis-txt-'+it.id);
+      if(vssel) it.source=(vssel.value==='_custom'?(vstxt?vstxt.value.trim():''):vssel.value);
       var t=document.getElementById('vit-'+it.id); if(t) it.title=t.value;
       var n=document.getElementById('vin-'+it.id); if(n) it.desc=n.value;
-      var u=document.getElementById('viu-'+it.id); if(u) it.url=u.value;
+      var lc=document.getElementById('vilocal-'+it.id); it.isLocal=lc?lc.checked:false;
+      if (it.isLocal) {
+        var lp=document.getElementById('vilp-'+it.id); if(lp) it.localSrc=lp.value;
+        it.url='';
+      } else {
+        var u=document.getElementById('viu-'+it.id); if(u) it.url=u.value;
+        it.localSrc='';
+      }
       var i=document.getElementById('vii-'+it.id); if(i) it.image=i.value;
     }
     if (type==='members') {
@@ -1324,8 +1482,10 @@ function generateHtml() {
 
   // Update title in header
   var header = S.headerPart.replace(/<title>[\s\S]*?<\/title>/i, '<title>'+S.pageTitle+'</title>');
+  var footer = S.footerPart;
+  if (_pendingLocalVideos) footer = updateFooterVideosScript(footer, _pendingLocalVideos);
 
-  return header + content + S.footerPart;
+  return header + content + footer;
 }
 
 function readFormValues() {
@@ -1477,6 +1637,7 @@ function genSeminars() {
       inList = true;
       return;
     }
+    if (!it.year && !it.name && !it.dates) return;
     if (!inList) { h += '\n    <ul class="seminar-list">\n'; inList = true; }
     h += '\n      <li class="seminar-item">\n';
     h += '        <button class="seminar-trigger" onclick="toggleSeminar(this)">\n';
@@ -1504,13 +1665,34 @@ function genSeminars() {
   return h;
 }
 
+var _pendingLocalVideos = null;
+
 function genMultimedia() {
   var h = '\n    <div class="video-grid">\n';
+  var localVideos = {};
   S.items.forEach(function(it) {
-    var onclick = it.url ? "window.open('"+it.url.replace(/'/g,"\\'")+"','_blank')" : '';
+    var isLocal = it.isLocal && it.localSrc;
+    var onclick;
+    if (isLocal) {
+      var vid = it.videoId;
+      if (!vid) {
+        vid = it.localSrc.split('/').pop().replace(/\.[^.]+$/,'').replace(/[^a-zA-Z0-9_]/g,'_').replace(/_+/g,'_').replace(/^_+|_+$/g,'').toLowerCase() || ('video'+Object.keys(localVideos).length);
+        if (/^\d/.test(vid)) vid = 'v'+vid; // identifiers can't start with a digit
+      }
+      it.videoId = vid; // persist derived id so subsequent saves reuse it
+      onclick = "openVideo('"+vid+"')";
+      localVideos[vid] = {
+        date: it.date || '',
+        title: (it.title||'').replace(/<[^>]+>/g,''),
+        desc: it.desc || '',
+        src: it.localSrc,
+      };
+    } else {
+      onclick = it.url ? "window.open('"+it.url.replace(/'/g,"\\'")+"','_blank')" : '';
+    }
     h += '\n      <article class="video-card"'+(onclick?' onclick="'+escA(onclick)+'"':'')+'>\n';
     h += '        <div class="video-thumb-wrap">\n';
-    if(it.image) h += '          <img src="'+escA(it.image)+'" alt="'+escA(it.imageAlt||it.title)+'" loading="lazy" />\n';
+    if(it.image) h += '          <img src="'+escA(it.image)+'" alt="'+escA(it.imageAlt||'')+'" loading="lazy" />\n';
     h += '          <div class="play-btn">\n';
     h += '            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">\n';
     h += '              <circle cx="40" cy="40" r="38" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.8)" stroke-width="2"/>\n';
@@ -1528,7 +1710,36 @@ function genMultimedia() {
     h += '      </article>\n';
   });
   h += '    </div>\n';
+  _pendingLocalVideos = Object.keys(localVideos).length ? localVideos : null;
   return h;
+}
+
+function updateFooterVideosScript(footerPart, localVideos) {
+  var ids = Object.keys(localVideos);
+  var lines = ['    const videos = {'];
+  ids.forEach(function(id, i) {
+    var v = localVideos[id];
+    lines.push('      '+JSON.stringify(id)+': {');
+    lines.push('        date: '+JSON.stringify(v.date)+',');
+    lines.push('        title: '+JSON.stringify(v.title)+',');
+    lines.push('        desc: '+JSON.stringify(v.desc)+',');
+    lines.push('        type: \'inline\',');
+    lines.push('        src: '+JSON.stringify(v.src));
+    lines.push('      }'+(i < ids.length-1 ? ',' : ''));
+  });
+  lines.push('    };');
+  var newDecl = lines.join('\n');
+  // Replace existing const videos = {...}; block
+  // Use [ \t]* (no newlines) so the backreference matches the indented closing };
+  var replaced = footerPart.replace(/[ \t]*const\s+videos\s*=\s*\{[\s\S]*?\n[ \t]*\};/, newDecl);
+  if (replaced !== footerPart) return replaced;
+  // Fallback: insert before the openVideo function
+  replaced = footerPart.replace(/([ \t]*)function\s+openVideo\s*\(/, function(m, indent) {
+    return newDecl+'\n\n'+indent+'function openVideo(';
+  });
+  if (replaced !== footerPart) return replaced;
+  // Last resort: prepend a new script block
+  return '\n  <script>\n'+newDecl+'\n  <\/script>\n'+footerPart;
 }
 
 function genMembers() {
@@ -1584,32 +1795,83 @@ async function updateCongressesSearchData() {
     if (it.dates) parts.push(it.dates);
     if (it.location) parts.push(it.location);
   });
-  var content = parts.join(' ');
-  try {
-    await fetch('/api/search-data', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({url:'eventos/congresos.html', content: content}),
-    });
-  } catch(e) { /* silent */ }
+  await postSearchData('eventos/congresos.html', parts.join(' '));
+}
+
+async function updateSeminarsSearchData() {
+  var parts = [];
+  S.items.forEach(function(it) {
+    if (it._group) { if (it.title) parts.push(it.title); return; }
+    if (it.name) parts.push(it.name);
+    if (it.theme) parts.push(it.theme);
+    if (it.year) parts.push(it.year);
+    if (it.dates) parts.push(it.dates);
+    (it.fields||[]).forEach(function(f){ if(f.value) parts.push(f.value); });
+  });
+  await postSearchData('eventos/seminarios.html', parts.join(' '));
 }
 
 async function updateThesesSearchData() {
-  // Build content string from current thesis items
   var parts = [];
   S.items.forEach(function(it) {
     if (it.year) parts.push(it.year);
     if (it.title) parts.push(it.title.replace(/<[^>]+>/g,''));
     if (it.meta) parts.push(it.meta.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim());
   });
-  var content = parts.join(' ');
+  await postSearchData('formacion/tesis.html', parts.join(' '));
+}
+
+async function postSearchData(url, content) {
   try {
     await fetch('/api/search-data', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({url:'formacion/tesis.html', content: content}),
+      body: JSON.stringify({url: url, content: content}),
     });
   } catch(e) { /* silent */ }
+}
+
+async function updateMultimediaSearchData() {
+  var parts = [];
+  S.items.forEach(function(it) {
+    if (it.title) parts.push(it.title.replace(/<[^>]+>/g,''));
+    if (it.desc) parts.push(it.desc);
+    if (it.date) parts.push(it.date);
+    if (it.source) parts.push(it.source);
+  });
+  await postSearchData('multimedia/multimedia.html', parts.join(' '));
+}
+
+async function updateMembersSearchData() {
+  var parts = [];
+  S.items.forEach(function(it) {
+    if (it.name) parts.push(it.name);
+    if (it.role) parts.push(it.role);
+    if (it.uni) parts.push(it.uni);
+    if (it.bio) parts.push(it.bio.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim());
+  });
+  await postSearchData('el-grupo/miembros.html', parts.join(' '));
+}
+
+async function updateProjectsSearchData() {
+  var parts = [];
+  S.items.forEach(function(it) {
+    if (it.year) parts.push(it.year);
+    if (it.title) parts.push(it.title);
+    var m = it.metas || {};
+    Object.keys(m).forEach(function(k){ if(m[k]) parts.push(m[k]); });
+    if (it.desc) parts.push(it.desc.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim());
+  });
+  await postSearchData('el-grupo/historial-proyectos.html', parts.join(' '));
+}
+
+async function updateGenericSearchData() {
+  // For news and article pages: extract text from the generated HTML
+  var html = generateHtml();
+  var doc = new DOMParser().parseFromString(html, 'text/html');
+  var main = doc.querySelector('.article-main, .article-body, .page-content, .page-content-full, main');
+  var content = main ? main.textContent.replace(/\s+/g,' ').trim() : '';
+  await postSearchData(S.currentPath, content);
 }
 
 async function savePage() {
@@ -1630,6 +1892,11 @@ async function savePage() {
       S.originalHtml = html;
       if (S.pageType==='theses') await updateThesesSearchData();
       if (S.pageType==='congresses') await updateCongressesSearchData();
+      if (S.pageType==='seminars') await updateSeminarsSearchData();
+      if (S.pageType==='multimedia') await updateMultimediaSearchData();
+      if (S.pageType==='members') await updateMembersSearchData();
+      if (S.pageType==='projects') await updateProjectsSearchData();
+      if (S.pageType==='news' || S.pageType==='article') await updateGenericSearchData();
     } else {
       toast('Error al guardar: '+(data.error||'desconocido'),'err');
     }
@@ -1644,6 +1911,126 @@ function previewPage() {
   var html = generateHtml();
   var blob = new Blob([html],{type:'text/html'});
   window.open(URL.createObjectURL(blob),'_blank');
+}
+
+// ── RECURSOS MULTIMEDIA ──────────────────────────────────────────────────────
+var _recursosSort = {col: 'name', dir: 1};
+var _recursosFiles = [];
+
+async function loadRecursos() {
+  document.querySelectorAll('.nav-item').forEach(function(el){ el.classList.toggle('active', el.dataset.path === '__recursos__'); });
+  document.getElementById('topbar').style.display = 'none';
+  document.getElementById('welcomeScreen').style.display = 'none';
+  document.getElementById('edBody').innerHTML = '<p style="padding:2rem;opacity:.5">Cargando recursos…</p>';
+  try {
+    var r = await fetch('/api/media-all');
+    _recursosFiles = await r.json();
+    renderRecursos();
+  } catch(e) {
+    document.getElementById('edBody').innerHTML = '<p style="padding:2rem;color:red">Error al cargar recursos: '+esc(e.message)+'</p>';
+  }
+}
+
+function renderRecursos() {
+  var files = _recursosFiles;
+  var sort = _recursosSort;
+  var sorted = files.slice().sort(function(a,b){
+    var av = a[sort.col]||'', bv = b[sort.col]||'';
+    return av < bv ? -sort.dir : av > bv ? sort.dir : 0;
+  });
+
+  var th = function(col, label) {
+    var active = sort.col === col;
+    var arrow = active ? (sort.dir === 1 ? ' ▲' : ' ▼') : '';
+    return '<th style="cursor:pointer;user-select:none;white-space:nowrap" onclick="recursosSetSort(\''+col+'\')">'+label+arrow+'</th>';
+  };
+
+  var typeIcon = {imagen:'🖼', 'vídeo':'🎬', pdf:'📄', otro:'📁'};
+
+  var rows = sorted.map(function(f) {
+    var icon = typeIcon[f.type] || '📁';
+    var isImg = f.type === 'imagen';
+    var preview = isImg
+      ? '<img src="media/'+escA(f.name)+'" style="width:48px;height:36px;object-fit:cover;border-radius:3px;vertical-align:middle">'
+      : '<span style="font-size:1.4rem;vertical-align:middle">'+icon+'</span>';
+    var size = f.size < 1024 ? f.size+'B' : f.size < 1048576 ? Math.round(f.size/1024)+'KB' : (f.size/1048576).toFixed(1)+'MB';
+    var date = f.date ? new Date(f.date).toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'numeric'}) : '—';
+    return '<tr>'
+      +'<td style="width:60px;text-align:center">'+preview+'</td>'
+      +'<td><span title="'+escA(f.name)+'">'+esc(f.name)+'</span></td>'
+      +'<td style="white-space:nowrap">'+icon+' '+esc(f.type)+'</td>'
+      +'<td style="white-space:nowrap">'+esc(size)+'</td>'
+      +'<td style="white-space:nowrap">'+esc(date)+'</td>'
+      +'</tr>';
+  }).join('');
+
+  var h = '<div class="ed-section" style="padding:1.5rem">';
+  h += '<h2 style="margin-bottom:1rem">Recursos multimedia</h2>';
+  h += '<p class="help" style="margin-bottom:1rem">Todos los archivos en la carpeta <code>media/</code>. Puedes subir imágenes, vídeos y PDFs.</p>';
+  h += '<div style="display:flex;gap:.8rem;margin-bottom:1.2rem;flex-wrap:wrap;align-items:center">';
+  h += '<label class="btn btn-green" style="cursor:pointer" title="Subir archivos a media/">'
+    +'<input type="file" accept="image/*,video/*,.pdf" multiple style="display:none" onchange="uploadRecursos(this)">'
+    +'Subir archivos</label>';
+  h += '<span style="opacity:.5;font-size:.85rem">'+files.length+' archivo'+(files.length!==1?'s':'')+'</span>';
+  h += '</div>';
+  h += '<div style="overflow-x:auto">';
+  h += '<table style="width:100%;border-collapse:collapse;font-size:.86rem">';
+  h += '<thead><tr style="border-bottom:2px solid var(--borde)">';
+  h += '<th style="width:60px"></th>';
+  h += th('name','Nombre');
+  h += th('type','Tipo');
+  h += '<th>Tamaño</th>';
+  h += th('date','Fecha');
+  h += '</tr></thead>';
+  h += '<tbody id="recursosBody">'+rows+'</tbody>';
+  h += '</table></div></div>';
+
+  document.getElementById('edBody').innerHTML = h;
+  // Style table rows
+  document.querySelectorAll('#recursosBody tr').forEach(function(tr,i){
+    tr.style.background = i%2===0 ? '' : 'rgba(0,0,0,.03)';
+    tr.querySelectorAll('td').forEach(function(td){ td.style.padding = '.4rem .6rem'; });
+  });
+}
+
+function recursosSetSort(col) {
+  if (_recursosSort.col === col) {
+    _recursosSort.dir *= -1;
+  } else {
+    _recursosSort.col = col;
+    _recursosSort.dir = 1;
+  }
+  renderRecursos();
+}
+
+async function uploadRecursos(fileInput) {
+  var files = Array.from(fileInput.files);
+  if (!files.length) return;
+  var ok = 0, err = 0;
+  toast('Subiendo '+files.length+' archivo'+(files.length!==1?'s':'')+'…', 'info');
+  for (var i = 0; i < files.length; i++) {
+    var file = files[i];
+    var ext = file.name.split('.').pop().toLowerCase();
+    var isImg = /^(jpg|jpeg|png|gif|svg|webp)$/.test(ext);
+    var isVid = /^(mp4|webm|ogv|mov)$/.test(ext);
+    var isPdf = ext === 'pdf';
+    if (!isImg && !isVid && !isPdf) { err++; continue; }
+    var endpoint = isVid ? '/api/upload-media' : '/api/upload-image';
+    try {
+      var r = await fetch(endpoint+'?name='+encodeURIComponent(file.name), {
+        method: 'POST',
+        headers: {'Content-Type': file.type || 'application/octet-stream'},
+        body: file,
+      });
+      var data = await r.json();
+      if (data.ok) ok++; else err++;
+    } catch(e) { err++; }
+  }
+  fileInput.value = '';
+  // Refresh media list in S.media
+  try { var mr = await fetch('/api/media'); S.media = await mr.json(); } catch(e){}
+  toast(ok+' subido'+(ok!==1?'s':'')+(err?' · '+err+' error'+(err!==1?'es':''):''), ok&&!err ? 'ok' : 'err');
+  loadRecursos();
 }
 
 // ── TOAST ────────────────────────────────────────────────────────────────────
