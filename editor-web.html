@@ -70,7 +70,10 @@
     .btn-sm{padding:.3rem .6rem;font-size:.75rem}
 
     /* ── ITEM CARDS (tesis, congresos…) ─ */
-    .item-card{border:1px solid var(--borde);border-radius:6px;padding:1rem 1.2rem;margin-bottom:.7rem;background:var(--crema);position:relative}
+    .item-card{border:1px solid var(--borde);border-radius:6px;padding:1rem 1.2rem 1rem 2.4rem;margin-bottom:.7rem;background:var(--crema);position:relative}
+    .item-card.drag-over{border-color:var(--azul);background:#eef3fb}
+    .drag-handle{position:absolute;left:.4rem;top:50%;transform:translateY(-50%);cursor:grab;color:#bbb;font-size:1.1rem;line-height:1;user-select:none;padding:.2rem}
+    .drag-handle:active{cursor:grabbing}
     .item-card-header{display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem}
     .item-card-header strong{font-family:'Raleway',sans-serif;font-size:.88rem;flex:1}
     .item-card .row{display:flex;gap:.6rem}
@@ -868,7 +871,8 @@ function renderThesesEditor() {
 }
 
 function renderThesisCard(it) {
-  var h = '<div class="item-card" data-iid="'+it.id+'">';
+  var h = '<div class="item-card" data-iid="'+it.id+'" draggable="true">';
+  h += '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>';
   h += '<button class="btn-del-item" onclick="removeItem('+it.id+')">✕</button>';
   h += '<div class="item-card-header"><strong>'+esc(it.title?it.title.replace(/<[^>]+>/g,'').substring(0,60):'Nueva tesis')+'</strong></div>';
   h += '<div class="row">';
@@ -884,7 +888,7 @@ function renderThesisCard(it) {
 
 function addThesis() {
   readAllItems();
-  S.items.push({id:blockId++,year:'',title:'',meta:'<strong>Autor</strong><br>Dir.: Director<br>Universidad<br>Fecha de defensa',link:'',pending:true,linkText:''});
+  S.items.unshift({id:blockId++,year:'',title:'',meta:'<strong>Autor</strong><br>Dir.: Director<br>Universidad<br>Fecha de defensa',link:'',pending:true,linkText:''});
   rerenderItems();
 }
 
@@ -897,14 +901,18 @@ function renderCongressesEditor() {
   h += '<div id="itemsContainer">';
   S.items.forEach(function(it) { h += renderCongressCard(it); });
   h += '</div>';
-  h += '<button class="btn btn-blue btn-sm" style="margin-top:.5rem" onclick="addCongress()">+ Añadir congreso</button>';
+  h += '<div style="margin-top:.5rem;display:flex;gap:.5rem;flex-wrap:wrap">';
+  h += '<button class="btn btn-blue btn-sm" onclick="addCongress()">+ Añadir congreso</button>';
+  h += '<button class="btn btn-outline btn-sm" onclick="addCongressGroup()">+ Añadir subcategoría</button>';
+  h += '</div>';
   h += '</div>';
   return h;
 }
 
 function renderCongressCard(it) {
-  if (it._group) return renderGroupHeader(it);
-  var h = '<div class="item-card" data-iid="'+it.id+'">';
+  if (it._group) return renderCongressGroupHeader(it);
+  var h = '<div class="item-card" data-iid="'+it.id+'" draggable="true">';
+  h += '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>';
   h += '<button class="btn-del-item" onclick="removeItem('+it.id+')">✕</button>';
   h += '<div class="item-card-header"><strong>'+esc(it.edition||'Nuevo congreso')+'</strong></div>';
   h += '<div class="row">';
@@ -929,9 +937,33 @@ function renderGroupHeader(it) {
     +'</div>';
 }
 
+function renderCongressGroupHeader(it) {
+  var h = '<div class="item-card" data-iid="'+it.id+'" draggable="true" style="border-left:3px solid var(--dorado);background:rgba(200,164,90,.08)">';
+  h += '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>';
+  h += '<button class="btn-del-item" onclick="removeCongressGroup('+it.id+')">✕</button>';
+  h += '<div class="item-card-header"><strong style="color:var(--azul)">— Subcategoría —</strong></div>';
+  h += field('Título de la subcategoría','grpt-'+it.id, it.title, 'Ej.: Congreso Internacional Lope de Vega');
+  h += field('Texto del contador','grpc-'+it.id, it.count, 'Ej.: 11 ediciones');
+  h += '</div>';
+  return h;
+}
+
+function removeCongressGroup(iid) {
+  if (!confirm('¿Eliminar esta subcategoría?')) return;
+  readAllItems();
+  S.items = S.items.filter(function(it){return it.id!==iid;});
+  rerenderItems();
+}
+
 function addCongress() {
   readAllItems();
-  S.items.push({id:blockId++,image:'',imageAlt:'',year:'',edition:'',name:'',dates:'',location:'',onclick:''});
+  S.items.unshift({id:blockId++,image:'',imageAlt:'',year:'',edition:'',name:'',dates:'',location:'',onclick:''});
+  rerenderItems();
+}
+
+function addCongressGroup() {
+  readAllItems();
+  S.items.unshift({id:blockId++,_group:true,title:'',count:''});
   rerenderItems();
 }
 
@@ -1135,11 +1167,54 @@ function rerenderItems() {
   });
   c.innerHTML = h;
   initRichEditors();
+  if (S.pageType==='theses' || S.pageType==='congresses') initThesisDrag();
+}
+
+var _dragSrcId = null;
+function initThesisDrag() {
+  var c = document.getElementById('itemsContainer');
+  if (!c) return;
+  c.querySelectorAll('.item-card[draggable]').forEach(function(card) {
+    card.addEventListener('dragstart', function(e) {
+      _dragSrcId = parseInt(card.getAttribute('data-iid'));
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    card.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      card.classList.add('drag-over');
+    });
+    card.addEventListener('dragleave', function() {
+      card.classList.remove('drag-over');
+    });
+    card.addEventListener('drop', function(e) {
+      e.preventDefault();
+      card.classList.remove('drag-over');
+      var targetId = parseInt(card.getAttribute('data-iid'));
+      if (_dragSrcId === null || _dragSrcId === targetId) return;
+      readAllItems();
+      var srcIdx = S.items.findIndex(function(it){return it.id===_dragSrcId;});
+      var tgtIdx = S.items.findIndex(function(it){return it.id===targetId;});
+      if (srcIdx<0||tgtIdx<0) return;
+      var removed = S.items.splice(srcIdx,1)[0];
+      S.items.splice(tgtIdx,0,removed);
+      rerenderItems();
+    });
+    card.addEventListener('dragend', function() {
+      card.classList.remove('drag-over');
+    });
+  });
 }
 
 function readAllItems() {
   S.items.forEach(function(it) {
-    if (it._group) return;
+    if (it._group) {
+      if (S.pageType==='congresses') {
+        var t=document.getElementById('grpt-'+it.id); if(t) it.title=t.value;
+        var c=document.getElementById('grpc-'+it.id); if(c) it.count=c.value;
+      }
+      return;
+    }
     var type = S.pageType;
     if (type==='theses') {
       var y=document.getElementById('thy-'+it.id); if(y) it.year=y.value;
@@ -1364,6 +1439,7 @@ function genCongresses() {
       inGrid = true;
       return;
     }
+    if (!it.year && !it.edition && !it.name && !it.dates && !it.location && !it.image) return;
     if (!inGrid) { h += '\n    <div class="congress-grid">\n'; inGrid = true; }
     h += '\n      <div class="congress-card"'+(it.onclick?' onclick="'+escA(it.onclick)+'"':'')+'>\n';
     h += '        <div class="congress-poster">\n';
@@ -1498,6 +1574,44 @@ function genProjects() {
 // ══════════════════════════════════════════════════════════════════════════════
 // SAVE / PREVIEW
 // ══════════════════════════════════════════════════════════════════════════════
+async function updateCongressesSearchData() {
+  var parts = [];
+  S.items.forEach(function(it) {
+    if (it._group) { if (it.title) parts.push(it.title); return; }
+    if (it.edition) parts.push(it.edition);
+    if (it.name) parts.push(it.name.replace(/<[^>]+>/g,''));
+    if (it.year) parts.push(it.year);
+    if (it.dates) parts.push(it.dates);
+    if (it.location) parts.push(it.location);
+  });
+  var content = parts.join(' ');
+  try {
+    await fetch('/api/search-data', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({url:'eventos/congresos.html', content: content}),
+    });
+  } catch(e) { /* silent */ }
+}
+
+async function updateThesesSearchData() {
+  // Build content string from current thesis items
+  var parts = [];
+  S.items.forEach(function(it) {
+    if (it.year) parts.push(it.year);
+    if (it.title) parts.push(it.title.replace(/<[^>]+>/g,''));
+    if (it.meta) parts.push(it.meta.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim());
+  });
+  var content = parts.join(' ');
+  try {
+    await fetch('/api/search-data', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({url:'formacion/tesis.html', content: content}),
+    });
+  } catch(e) { /* silent */ }
+}
+
 async function savePage() {
   var html = generateHtml();
   var btn = document.getElementById('btnSave');
@@ -1514,6 +1628,8 @@ async function savePage() {
     if (data.ok) {
       toast('Cambios guardados correctamente','ok');
       S.originalHtml = html;
+      if (S.pageType==='theses') await updateThesesSearchData();
+      if (S.pageType==='congresses') await updateCongressesSearchData();
     } else {
       toast('Error al guardar: '+(data.error||'desconocido'),'err');
     }

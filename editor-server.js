@@ -137,6 +137,33 @@ const server = http.createServer(async (req, res) => {
     }
   }
 
+  // ── API: update a search-data.js entry ──
+  if (url.pathname === '/api/search-data' && req.method === 'POST') {
+    try {
+      const body = await readBody(req);
+      const { url: entryUrl, content } = JSON.parse(body);
+      const sdPath = path.join(ROOT, 'search-data.js');
+      let src = fs.readFileSync(sdPath, 'utf8');
+      // Replace content field for the matching url entry
+      const escaped = content.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+      const regex = new RegExp(
+        '(\\{[^{}]*?url:\\s*"' + entryUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '"[^{}]*?content:\\s*")[^"]*(")',
+        's'
+      );
+      if (regex.test(src)) {
+        src = src.replace(regex, '$1' + escaped + '$2');
+      }
+      fs.copyFileSync(sdPath, sdPath + '.bak');
+      fs.writeFileSync(sdPath, src, 'utf8');
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ ok: true }));
+    } catch (e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: e.message }));
+    }
+    return;
+  }
+
   // ── Static files (for preview, CSS, images…) ──
   const full = safePath(url.pathname.slice(1));
   if (full && fs.existsSync(full) && fs.statSync(full).isFile()) {
