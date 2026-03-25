@@ -313,9 +313,11 @@ function parseFile(html, path) {
   var sidebarEl = cz.querySelector('.article-sidebar') || cz.querySelector('aside');
   if (sidebarEl) { S.hasSidebar = true; S.sidebarHtml = sidebarEl.innerHTML; S.sidebarTag = sidebarEl.tagName.toLowerCase(); S.sidebarAttrs = getAttrs(sidebarEl); }
 
+  var _mainContainer = null;
   if (mainEl) {
     var wr = mainEl.parentElement;
-    if (wr && wr.id !== '__cz__') { S.wrapperOpen = openTag(wr); S.wrapperClose = '</'+wr.tagName.toLowerCase()+'>'; }
+    if (wr && wr.id !== '__cz__') { S.wrapperOpen = openTag(wr); S.wrapperClose = '</'+wr.tagName.toLowerCase()+'>'; _mainContainer = wr; }
+    else { _mainContainer = mainEl; }
     S.mainTag = mainEl.tagName.toLowerCase(); S.mainAttrs = getAttrs(mainEl);
     parseMain(mainEl);
   } else {
@@ -323,10 +325,24 @@ function parseFile(html, path) {
     if (gm) {
       S.mainTag = 'main'; S.mainAttrs = getAttrs(gm);
       var wr = gm.parentElement;
-      if (wr && wr.id !== '__cz__') { S.wrapperOpen = openTag(wr); S.wrapperClose = '</'+wr.tagName.toLowerCase()+'>'; }
+      if (wr && wr.id !== '__cz__') { S.wrapperOpen = openTag(wr); S.wrapperClose = '</'+wr.tagName.toLowerCase()+'>'; _mainContainer = wr; }
+      else { _mainContainer = gm; }
       parseMain(gm);
     }
   }
+  // Capture any content after the main container (e.g. modal overlays)
+  if (_mainContainer) {
+    var _afterHtml = '';
+    var _sib = _mainContainer.nextSibling;
+    while (_sib) {
+      if (_sib.outerHTML !== undefined) _afterHtml += _sib.outerHTML;
+      else if (_sib.nodeType === 3 && _sib.textContent.trim()) _afterHtml += _sib.textContent;
+      _sib = _sib.nextSibling;
+    }
+    S.afterGridHtml = _afterHtml.trim();
+  }
+  // After afterGridHtml is set, enrich congress items with modal data
+  if (S.pageType === 'congresses') enrichCongressItems();
 }
 
 function splitHtml(html) {
@@ -449,6 +465,46 @@ function parseCongresses(main) {
         });
       });
     }
+  });
+}
+
+function findCongressesObjectBounds(src) {
+  // Matches "const congresses = {" or "var congresses = {"
+  var m = src.match(/(?:const|var|let)\s+congresses\s*=/);
+  if (!m) return null;
+  var start = m.index;
+  var braceStart = src.indexOf('{', start + m[0].length);
+  if (braceStart === -1) return null;
+  var depth = 0, i = braceStart, len = src.length;
+  for (; i < len; i++) {
+    if (src[i] === '{') depth++;
+    else if (src[i] === '}') { depth--; if (depth === 0) break; }
+  }
+  return { start: start, end: i + 1, objStr: src.substring(braceStart, i + 1) };
+}
+
+function extractCongressesData() {
+  var src = S.footerPart || '';
+  var bounds = findCongressesObjectBounds(src);
+  if (!bounds) return {};
+  try { return new Function('return ' + bounds.objStr)(); } catch(e) { return {}; }
+}
+
+function enrichCongressItems() {
+  // Extract modal ID from onclick attribute
+  S.items.forEach(function(it) {
+    if (it._group) return;
+    var m = (it.onclick || '').match(/openModal\(['"]([^'"]+)['"]\)/);
+    it.modalId = m ? m[1] : '';
+  });
+  // Load modal detail data from the congresses JS object in S.footerPart
+  var cData = extractCongressesData();
+  S.items.forEach(function(it) {
+    if (it._group) return;
+    var d = it.modalId ? (cData[it.modalId] || {}) : {};
+    it.modalTitle = d.title !== undefined ? d.title : '';
+    it.modalDescription = d.description !== undefined ? d.description : '';
+    it.modalLinks = (d.links || []).map(function(l) { return {label: l.label || '', url: l.url || ''}; });
   });
 }
 
@@ -580,6 +636,7 @@ function parseProjects(main) {
 function txt(el,sel) { var c=el.querySelector(sel); return c?c.textContent.trim():''; }
 function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function escA(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;'); }
+function escAttr(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function openTag(el) { var h=el.outerHTML; return h.substring(0,h.indexOf('>')+1); }
 function getAttrs(el) { var a=[]; for(var i=0;i<el.attributes.length;i++){var at=el.attributes[i]; a.push(at.name+'="'+escA(at.value)+'"');} return a.length?' '+a.join(' '):''; }
 
@@ -978,6 +1035,28 @@ function renderCongressCard(it) {
   h += '</div>';
   h += imgField('Imagen del cartel',it.image,'cgi-'+it.id);
   h += field('Texto alt de imagen','cga-'+it.id,it.imageAlt);
+  // Modal detail section — modalId is auto-generated, not shown to user
+  h += '<input type="hidden" id="cgoid-'+it.id+'" value="'+escA(it.modalId||'')+'">';
+  h += '<details style="margin-top:.6rem"><summary style="cursor:pointer;font-weight:600;font-size:.82rem;color:var(--azul)">▶ Detalle del modal (ventana emergente)</summary>';
+  h += '<div style="margin-top:.5rem;padding:.5rem;background:rgba(200,164,90,.06);border-radius:6px;border-left:3px solid var(--dorado)">';
+  h += field('Título del congreso (en el modal)','cgmt-'+it.id, it.modalTitle || '');
+  h += '<label style="display:block;margin-top:.4rem;font-size:.78rem;font-weight:600;color:var(--azul-oscuro)">Descripción del modal</label>';
+  h += '<textarea id="cgmd-'+it.id+'" rows="4" style="width:100%;box-sizing:border-box;padding:.4rem .5rem;border:1px solid #c5b99a;border-radius:4px;font-size:.83rem;resize:vertical">'+esc(it.modalDescription||'')+'</textarea>';
+  h += '<label style="display:block;margin-top:.6rem;font-size:.78rem;font-weight:600;color:var(--azul-oscuro)">Botones de enlace en el modal</label>';
+  h += '<p class="help">Etiqueta y URL de cada botón (ej.: "↓ Programa (PDF)" y la ruta al PDF).</p>';
+  h += '<div id="cgml-'+it.id+'">';
+  (it.modalLinks||[]).forEach(function(l) {
+    h += '<div class="link-row">';
+    h += '<input type="text" value="'+escA(l.label)+'" placeholder="Etiqueta">';
+    h += '<input type="text" value="'+escA(l.url)+'" placeholder="URL o ruta">';
+    h += '<button class="del-link" onclick="delCongressModalLink(this)">×</button>';
+    h += '<label class="btn btn-outline btn-sm img-upload-btn" title="Subir archivo (PDF, imagen)">';
+    h += '<input type="file" accept=".pdf,image/*" style="display:none" onchange="uploadCongressLinkFile(this)">Subir</label>';
+    h += '</div>';
+  });
+  h += '</div>';
+  h += '<button class="btn btn-outline btn-sm" style="margin-top:.3rem" onclick="addCongressModalLink('+it.id+')">+ Enlace</button>';
+  h += '</div></details>';
   h += '</div>';
   return h;
 }
@@ -1009,7 +1088,7 @@ function removeCongressGroup(iid) {
 
 function addCongress() {
   readAllItems();
-  S.items.unshift({id:blockId++,image:'',imageAlt:'',year:'',edition:'',name:'',dates:'',location:'',onclick:''});
+  S.items.unshift({id:blockId++,image:'',imageAlt:'',year:'',edition:'',name:'',dates:'',location:'',onclick:'',modalId:'',modalTitle:'',modalDescription:'',modalLinks:[]});
   rerenderItems();
 }
 
@@ -1017,6 +1096,52 @@ function addCongressGroup() {
   readAllItems();
   S.items.unshift({id:blockId++,_group:true,title:'',count:''});
   rerenderItems();
+}
+
+function addCongressModalLink(iid) {
+  var container = document.getElementById('cgml-'+iid);
+  if (!container) return;
+  var row = document.createElement('div');
+  row.className = 'link-row';
+  row.innerHTML = '<input type="text" value="" placeholder="Etiqueta">'
+    + '<input type="text" value="" placeholder="URL o ruta">'
+    + '<button class="del-link" onclick="delCongressModalLink(this)">×</button>'
+    + '<label class="btn btn-outline btn-sm img-upload-btn" title="Subir archivo (PDF, imagen)">'
+    + '<input type="file" accept=".pdf,image/*" style="display:none" onchange="uploadCongressLinkFile(this)">Subir</label>';
+  container.appendChild(row);
+}
+
+function delCongressModalLink(btn) {
+  var row = btn.closest('.link-row');
+  if (row) row.remove();
+}
+
+async function uploadCongressLinkFile(fileInput) {
+  if (!fileInput.files || !fileInput.files.length) return;
+  var file = fileInput.files[0];
+  var ext = file.name.split('.').pop().toLowerCase();
+  var endpoint = ext === 'pdf' ? '/api/upload-image' : '/api/upload-image';
+  toast('Subiendo archivo…', 'info');
+  try {
+    var r = await fetch(endpoint + '?name=' + encodeURIComponent(file.name), {
+      method: 'POST',
+      headers: {'Content-Type': file.type || 'application/octet-stream'},
+      body: file,
+    });
+    var data = await r.json();
+    if (data.ok) {
+      var depth = S.currentPath.split('/').length - 1;
+      var prefix = depth > 0 ? '../' : '';
+      var urlInput = fileInput.closest('.link-row').querySelectorAll('input[type="text"]')[1];
+      if (urlInput) urlInput.value = prefix + 'media/' + data.filename;
+      toast('Archivo subido: ' + data.filename, 'ok');
+    } else {
+      toast('Error al subir: ' + (data.error || 'desconocido'), 'err');
+    }
+  } catch(e) {
+    toast('Error de conexión al subir archivo', 'err');
+  }
+  fileInput.value = '';
 }
 
 // ── SEMINARIOS ───────────────────────────────────────────────────────────────
@@ -1381,6 +1506,20 @@ function readAllItems() {
       var l=document.getElementById('cgl-'+it.id); if(l) it.location=l.value;
       var i=document.getElementById('cgi-'+it.id); if(i) it.image=i.value;
       var a=document.getElementById('cga-'+it.id); if(a) it.imageAlt=a.value;
+      var oid=document.getElementById('cgoid-'+it.id); if(oid) it.modalId=oid.value.trim();
+      if (!it.modalId) it.modalId = 'cg' + it.id; // auto-generate stable ID
+      var mt=document.getElementById('cgmt-'+it.id); if(mt) it.modalTitle=mt.value;
+      var md=document.getElementById('cgmd-'+it.id); if(md) it.modalDescription=md.value;
+      var mlc=document.getElementById('cgml-'+it.id);
+      if (mlc) {
+        it.modalLinks = [];
+        mlc.querySelectorAll('.link-row').forEach(function(row) {
+          var ins = row.querySelectorAll('input[type="text"]');
+          if (ins.length >= 2) it.modalLinks.push({label:ins[0].value, url:ins[1].value});
+        });
+      }
+      // Sync onclick with modalId
+      if (it.modalId) it.onclick = 'openModal(\''+it.modalId+'\')';
     }
     if (type==='seminars') {
       var y=document.getElementById('smy-'+it.id); if(y) it.year=y.value;
@@ -1459,7 +1598,7 @@ function generateHtml() {
 
   // Specialized content
   if (S.pageType==='theses') content += genTheses();
-  else if (S.pageType==='congresses') content += genCongresses();
+  else if (S.pageType==='congresses') { content += genCongresses(); rebuildCongressesModalScript(); }
   else if (S.pageType==='seminars') content += genSeminars();
   else if (S.pageType==='multimedia') content += genMultimedia();
   else if (S.pageType==='members') content += genMembers();
@@ -1478,6 +1617,10 @@ function generateHtml() {
 
   // Wrapper close
   if (S.wrapperClose) content += '\n  '+S.wrapperClose+'\n';
+
+  // Content after main container (modal overlays, etc.) — preserved verbatim
+  if (S.afterGridHtml) content += '\n'+S.afterGridHtml+'\n';
+
   content += '\n';
 
   // Update title in header
@@ -1621,6 +1764,38 @@ function genCongresses() {
   return h;
 }
 
+function rebuildCongressesModalScript() {
+  var src = S.footerPart || '';
+  var bounds = findCongressesObjectBounds(src);
+  // Build new object literal
+  var lines = '{\n';
+  S.items.forEach(function(it) {
+    if (it._group || !it.modalId) return;
+    lines += '      ' + it.modalId + ': {\n';
+    lines += '        edition: ' + JSON.stringify(it.edition || '') + ',\n';
+    lines += '        title: ' + JSON.stringify(it.modalTitle || '') + ',\n';
+    lines += '        dates: ' + JSON.stringify(it.dates || '') + ',\n';
+    lines += '        location: ' + JSON.stringify(it.location || '') + ',\n';
+    lines += '        img: ' + JSON.stringify(it.image || '') + ',\n';
+    lines += '        description: ' + JSON.stringify(it.modalDescription || '') + ',\n';
+    lines += '        links: [\n';
+    (it.modalLinks || []).forEach(function(l) {
+      lines += '          { label: ' + JSON.stringify(l.label) + ', url: ' + JSON.stringify(l.url) + ' },\n';
+    });
+    lines += '        ]\n';
+    lines += '      },\n';
+  });
+  lines += '    }';
+  if (bounds) {
+    // Replace existing congresses object
+    S.footerPart = src.substring(0, bounds.start) +
+      'const congresses = ' + lines + src.substring(bounds.end);
+  } else {
+    // No existing object: inject before the first <script> closing tag in footer
+    S.footerPart = src.replace('<' + '/script>', 'const congresses = ' + lines + ';\n  <' + '/script>');
+  }
+}
+
 function genSeminars() {
   var h = '\n    <p class="intro-text">'+S.introHtml+'</p>\n';
   var inList = false;
@@ -1751,7 +1926,7 @@ function genMembers() {
     h += '\n<div class="card" tabindex="0" role="button"\n';
     h += '  data-name="'+escA(m.name)+'" data-role="'+escA(m.role)+'" data-uni="'+escA(m.uni)+'" data-email="'+escA(m.email)+'"\n';
     h += '  data-photo="'+escA(photo)+'"\n';
-    h += '  data-bio="'+escA(m.bio)+'">\n';
+    h += '  data-bio="'+escAttr(m.bio)+'">\n';
     h += '<img class="cphoto" src="'+escA(imgSrc)+'" alt="'+escA(m.name)+'" onerror="this.src=\'img/logo_positiu.png\';this.style.objectFit=\'contain\';this.style.padding=\'28px\'"/>\n';
     h += '<div class="cbody"><p class="cname">'+esc(m.displayName||m.name)+'</p><p class="crole">'+esc(m.displayRole||m.role)+'</p><p class="cuni">'+esc(m.displayUni||m.uni)+'</p></div>\n';
     h += '<span class="chint">Ver ficha →</span>\n</div>\n';
@@ -1794,6 +1969,8 @@ async function updateCongressesSearchData() {
     if (it.year) parts.push(it.year);
     if (it.dates) parts.push(it.dates);
     if (it.location) parts.push(it.location);
+    if (it.modalTitle) parts.push(it.modalTitle);
+    if (it.modalDescription) parts.push(it.modalDescription.replace(/<[^>]+>/g,''));
   });
   await postSearchData('eventos/congresos.html', parts.join(' '));
 }
