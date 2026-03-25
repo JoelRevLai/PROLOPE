@@ -617,22 +617,47 @@ function parseMembers(main) {
 function parseProjects(main) {
   var intro = main.querySelector('.intro-block');
   S.introHtml = intro ? intro.innerHTML : '';
-  main.querySelectorAll('.project-item').forEach(function(el) {
-    var card = el.querySelector('.project-card');
-    var metas = {};
-    el.querySelectorAll('.project-meta-item').forEach(function(m) {
-      metas[txt(m,'.label')] = txt(m,'.value');
-    });
-    S.items.push({
-      id: blockId++,
-      year: txt(el,'.project-year'),
-      badge: txt(el,'.project-badge'),
-      title: txt(el,'.project-title'),
-      desc: (el.querySelector('.project-desc')||{}).innerHTML||'',
-      isCurrent: card ? card.classList.contains('current') : false,
-      metas: metas,
-    });
+  Array.from(main.children).forEach(function(child) {
+    if (child.classList.contains('intro-block')) return;
+    if (child.classList.contains('timeline-era')) {
+      var eraLabel = txt(child, '.era-label');
+      var eraId = child.getAttribute('id') || '';
+      var projectItems = child.querySelectorAll('.project-item');
+      // Omitir eras vacías (sin label, sin id y sin proyectos)
+      if (eraLabel || eraId || projectItems.length > 0) {
+        S.items.push({ _group: true, id: blockId++, eraId: eraId, eraLabel: eraLabel });
+      }
+      projectItems.forEach(function(el) {
+        S.items.push(parseProjectItem(el));
+      });
+    } else if (child.classList.contains('project-item')) {
+      // project-item fuera de timeline-era (compatibilidad)
+      S.items.push(parseProjectItem(child));
+    }
+    // Ignorar cualquier otro elemento
   });
+}
+
+function parseProjectItem(el) {
+  var card = el.querySelector('.project-card');
+  var metas = {};
+  el.querySelectorAll('.project-meta-item').forEach(function(m) {
+    metas[txt(m,'.label')] = txt(m,'.value');
+  });
+  // Extraer el campo IP (puede ser IP, IPs, IP RED, etc.)
+  var ipKey = Object.keys(metas).find(function(k){ return /^IP/i.test(k); }) || 'IP';
+  var ipValue = metas[ipKey] || '';
+  delete metas[ipKey];
+  return {
+    id: blockId++,
+    year: txt(el, '.year-text') || txt(el, '.project-year'),
+    title: txt(el, '.project-title'),
+    desc: (el.querySelector('.project-desc')||{}).innerHTML||'',
+    isCurrent: card ? card.classList.contains('current') : false,
+    ipLabel: ipKey,
+    ipValue: ipValue,
+    metas: metas,
+  };
 }
 
 // ── HELPERS ──────────────────────────────────────────────────────────────────
@@ -693,6 +718,7 @@ function renderEditor() {
   // Init all rich editors
   initRichEditors();
   if (S.pageType === 'members') initMembersDrag();
+  if (S.pageType==='theses' || S.pageType==='congresses' || S.pageType==='seminars' || S.pageType==='projects') initThesisDrag();
 }
 
 function field(label,id,value,placeholder) {
@@ -1415,15 +1441,41 @@ function renderProjectsEditor() {
   h += '</div>';
   h += '<div class="ed-section"><h2>Proyectos de investigación</h2>';
   h += '<div id="itemsContainer">';
-  S.items.forEach(function(it) { h += renderProjectCard(it); });
+  S.items.forEach(function(it) { h += it._group ? renderProjectEraHeader(it) : renderProjectCard(it); });
   h += '</div>';
   h += '<button class="btn btn-blue btn-sm" style="margin-top:.5rem" onclick="addProject()">+ Añadir proyecto</button>';
+  h += ' <button class="btn btn-sm" style="margin-top:.5rem" onclick="addProjectEra()">+ Añadir década</button>';
   h += '</div>';
   return h;
 }
 
+function renderProjectEraHeader(it) {
+  var h = '<div class="item-card" data-iid="'+it.id+'" draggable="true" style="border-left:3px solid var(--dorado);background:rgba(200,164,90,.08)">';
+  h += '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>';
+  h += '<button class="btn-del-item" onclick="removeProjectEra('+it.id+')">✕</button>';
+  h += '<div class="item-card-header"><strong style="color:var(--azul)">— Década / Era —</strong></div>';
+  h += field('Etiqueta (ej.: Década de 2020)','pera-label-'+it.id, it.eraLabel, 'Ej.: Década de 2020');
+  h += field('ID HTML (ej.: era-2020)','pera-id-'+it.id, it.eraId, 'Ej.: era-2020');
+  h += '</div>';
+  return h;
+}
+
+function removeProjectEra(iid) {
+  if (!confirm('¿Eliminar esta década/era?')) return;
+  readAllItems();
+  S.items = S.items.filter(function(it){return it.id!==iid;});
+  rerenderItems();
+}
+
+function addProjectEra() {
+  readAllItems();
+  S.items.unshift({id:blockId++,_group:true,eraLabel:'',eraId:''});
+  rerenderItems();
+}
+
 function renderProjectCard(it) {
-  var h = '<div class="item-card" data-iid="'+it.id+'">';
+  var h = '<div class="item-card" data-iid="'+it.id+'" draggable="true">';
+  h += '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>';
   h += '<button class="btn-del-item" onclick="removeItem('+it.id+')">✕</button>';
   h += '<div class="item-card-header"><strong>'+esc(it.title||'Nuevo proyecto')+'</strong></div>';
   h += '<div class="row">';
@@ -1431,7 +1483,10 @@ function renderProjectCard(it) {
   h += '<div><div class="field"><label>Estado</label><select id="ps-'+it.id+'"><option value="1"'+(it.isCurrent?' selected':'')+'>Vigente</option><option value="0"'+(!it.isCurrent?' selected':'')+'>Completado</option></select></div></div>';
   h += '</div>';
   h += field('Título del proyecto','pt-'+it.id,it.title);
-  h += field('IP','pi-'+it.id,it.metas['IP']||it.metas['IP:']||'');
+  h += '<div class="field"><label>Investigador/a principal</label><div class="row" style="gap:.4rem">'
+    + '<input type="text" id="pilab-'+it.id+'" list="ip-label-list" value="'+escA(it.ipLabel||'IP')+'" style="width:6rem;flex:none" placeholder="IP">'
+    + '<datalist id="ip-label-list"><option value="IP"><option value="IPs"><option value="IP RED"></datalist>'
+    + '<input type="text" id="pi-'+it.id+'" value="'+escA(it.ipValue||'')+'"></div></div>';
   h += field('Referencia','pr-'+it.id,it.metas['Ref.']||it.metas['Ref.:']||'');
   h += field('Financiación','pf-'+it.id,it.metas['Financiación']||it.metas['Financiación:']||'');
   h += field('Presupuesto','pb-'+it.id,it.metas['Presupuesto']||it.metas['Presupuesto:']||'');
@@ -1442,7 +1497,7 @@ function renderProjectCard(it) {
 
 function addProject() {
   readAllItems();
-  S.items.push({id:blockId++,year:'',badge:'',title:'',desc:'',isCurrent:true,metas:{}});
+  S.items.push({id:blockId++,year:'',title:'',desc:'',isCurrent:true,ipLabel:'IP',ipValue:'',metas:{}});
   rerenderItems();
 }
 
@@ -1474,11 +1529,11 @@ function rerenderItems() {
     else if (S.pageType==='congresses') h += renderCongressCard(it);
     else if (S.pageType==='seminars') h += renderSeminarCard(it);
     else if (S.pageType==='multimedia') h += renderVideoCard(it);
-    else if (S.pageType==='projects') h += renderProjectCard(it);
+    else if (S.pageType==='projects') h += it._group ? renderProjectEraHeader(it) : renderProjectCard(it);
   });
   c.innerHTML = h;
   initRichEditors();
-  if (S.pageType==='theses' || S.pageType==='congresses' || S.pageType==='seminars') initThesisDrag();
+  if (S.pageType==='theses' || S.pageType==='congresses' || S.pageType==='seminars' || S.pageType==='projects') initThesisDrag();
 }
 
 function initMembersDrag() {
@@ -1554,6 +1609,10 @@ function readAllItems() {
       if (S.pageType==='congresses' || S.pageType==='seminars') {
         var t=document.getElementById('grpt-'+it.id); if(t) it.title=t.value;
         var c=document.getElementById('grpc-'+it.id); if(c) it.count=c.value;
+      }
+      if (S.pageType==='projects') {
+        var el=document.getElementById('pera-label-'+it.id); if(el) it.eraLabel=el.value;
+        var ei=document.getElementById('pera-id-'+it.id); if(ei) it.eraId=ei.value;
       }
       return;
     }
@@ -1634,7 +1693,8 @@ function readAllItems() {
       var y=document.getElementById('py-'+it.id); if(y) it.year=y.value;
       var s=document.getElementById('ps-'+it.id); if(s) it.isCurrent=s.value==='1';
       var t=document.getElementById('pt-'+it.id); if(t) it.title=t.value;
-      var i=document.getElementById('pi-'+it.id); if(i) it.metas['IP']=i.value;
+      var pilab=document.getElementById('pilab-'+it.id); if(pilab) it.ipLabel=pilab.value||'IP';
+      var pi=document.getElementById('pi-'+it.id); if(pi) it.ipValue=pi.value;
       var r=document.getElementById('pr-'+it.id); if(r) it.metas['Ref.']=r.value;
       var f=document.getElementById('pf-'+it.id); if(f) it.metas['Financiación']=f.value;
       var b=document.getElementById('pb-'+it.id); if(b) it.metas['Presupuesto']=b.value;
@@ -2012,23 +2072,38 @@ function genMembers() {
 
 function genProjects() {
   var h = '\n      <div class="intro-block">'+S.introHtml+'</div>\n';
+  var inEra = false;
   S.items.forEach(function(it) {
-    h += '\n      <div class="project-item">\n';
-    h += '        <div class="project-year">'+esc(it.year)+'</div>\n';
-    h += '        <div class="project-card'+(it.isCurrent?' current':'')+'">\n';
-    if(it.isCurrent) h += '          <span class="project-badge">Vigente</span>\n';
-    h += '          <p class="project-title">'+esc(it.title)+'</p>\n';
-    h += '          <div class="project-meta">\n';
-    var metaLabels = ['IP','Ref.','Financiación','Presupuesto'];
+    if (it._group) {
+      if (inEra) { h += '      </div>\n\n'; inEra = false; }
+      var idAttr = it.eraId ? ' id="'+escA(it.eraId)+'"' : '';
+      h += '\n      <div class="timeline-era"'+idAttr+'>\n';
+      h += '        <p class="era-label">'+esc(it.eraLabel)+'</p>\n\n';
+      inEra = true;
+      return;
+    }
+    var indent = inEra ? '        ' : '      ';
+    var indent2 = inEra ? '          ' : '        ';
+    var indent3 = inEra ? '            ' : '          ';
+    h += indent+'<div class="project-item">\n';
+    h += indent2+'<div class="project-year"><span class="year-text">'+esc(it.year)+'</span></div>\n';
+    h += indent2+'<div class="project-card'+(it.isCurrent?' current':'')+'">\n';
+    if(it.isCurrent) h += indent3+'<span class="project-badge">Vigente</span>\n';
+    h += indent3+'<span class="year-text-mobile">'+esc(it.year)+'</span>\n';
+    h += indent3+'<p class="project-title">'+esc(it.title)+'</p>\n';
+    h += indent3+'<div class="project-meta">\n';
+    if(it.ipValue) h += indent3+'  <span class="project-meta-item"><span class="label">'+esc(it.ipLabel||'IP')+'</span><span class="value">'+esc(it.ipValue)+'</span></span>\n';
+    var metaLabels = ['Ref.','Financiación','Presupuesto'];
     metaLabels.forEach(function(label) {
       var val = it.metas[label]||'';
-      if(val) h += '            <div class="project-meta-item"><span class="label">'+label+'</span><span class="value">'+esc(val)+'</span></div>\n';
+      if(val) h += indent3+'  <span class="project-meta-item"><span class="label">'+label+'</span><span class="value">'+esc(val)+'</span></span>\n';
     });
-    h += '          </div>\n';
-    if(it.desc) h += '          <div class="project-desc">'+it.desc+'</div>\n';
-    h += '        </div>\n';
-    h += '      </div>\n';
+    h += indent3+'</div>\n';
+    if(it.desc) h += indent3+'<div class="project-desc">'+it.desc+'</div>\n';
+    h += indent2+'</div>\n';
+    h += indent+'</div>\n';
   });
+  if (inEra) h += '      </div>\n';
   return h;
 }
 
