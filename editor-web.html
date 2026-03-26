@@ -1017,11 +1017,50 @@ function execRich(e,cmd) {
 }
 
 function initRichEditors() {
-  // Prevent formatting paste (strip HTML on paste)
   document.querySelectorAll('.rich-edit').forEach(function(el) {
+    if (el._pasteHandled) return;
+    el._pasteHandled = true;
     el.addEventListener('paste', function(e) {
-      if (el.dataset.allowHtmlPaste) return;
-      // Allow paste but keep basic formatting
+      e.preventDefault();
+      var html = (e.clipboardData || window.clipboardData).getData('text/html');
+      var text = (e.clipboardData || window.clipboardData).getData('text/plain');
+      if (html) {
+        var tmp = document.createElement('div');
+        tmp.innerHTML = html;
+        // Convert inline-styled spans to semantic tags before stripping
+        tmp.querySelectorAll('span,font').forEach(function(node) {
+          var st = node.style || {};
+          var isItalic = st.fontStyle === 'italic';
+          var isBold = st.fontWeight === 'bold' || parseInt(st.fontWeight) >= 700;
+          var parent = node.parentNode;
+          var replacement = null;
+          if (isItalic && isBold) {
+            var em = document.createElement('em');
+            var strong = document.createElement('strong');
+            while (node.firstChild) em.appendChild(node.firstChild);
+            strong.appendChild(em);
+            replacement = strong;
+          } else if (isItalic) {
+            replacement = document.createElement('em');
+            while (node.firstChild) replacement.appendChild(node.firstChild);
+          } else if (isBold) {
+            replacement = document.createElement('strong');
+            while (node.firstChild) replacement.appendChild(node.firstChild);
+          } else {
+            // plain span: just unwrap
+            while (node.firstChild) parent.insertBefore(node.firstChild, node);
+          }
+          if (replacement) parent.replaceChild(replacement, node);
+          else parent.removeChild(node);
+        });
+        // Strip all remaining attributes from every element
+        tmp.querySelectorAll('*').forEach(function(node) {
+          ['style','class','color','face','size','lang','id'].forEach(function(a){ node.removeAttribute(a); });
+        });
+        document.execCommand('insertHTML', false, tmp.innerHTML);
+      } else {
+        document.execCommand('insertText', false, text);
+      }
     });
   });
 }
@@ -1805,20 +1844,26 @@ function renderMembersEditor() {
 }
 
 function renderMemberCard(it) {
-  var h = '<div class="item-card" data-iid="'+it.id+'" draggable="true">';
-  h += '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>';
-  h += '<button class="btn-del-item" onclick="removeItem('+it.id+')">✕</button>';
+  var openAttr = it._open ? ' open' : '';
+  var label = esc(it.name||'Nuevo miembro') + (it.displayRole ? ' — '+esc(it.displayRole) : '');
   var moveLabel = it.past ? '↑ Mover a activos' : '↓ Mover a histórico';
-  h += '<div class="item-card-header"><strong>'+esc(it.name||'Nuevo miembro')+'</strong>'
-    +'<button class="btn btn-outline btn-sm" style="margin-left:auto" onclick="toggleMemberSection('+it.id+')">'+moveLabel+'</button>'
-    +'</div>';
+  var h = '<details class="item-card" data-iid="'+it.id+'" draggable="true"'+openAttr+'>';
+  h += '<summary style="cursor:pointer;display:flex;align-items:center;gap:.5rem;list-style:none;padding-right:2rem">';
+  h += '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>';
+  h += '<strong id="mblabel-'+it.id+'">'+label+'</strong>';
+  h += '<button class="btn btn-outline btn-sm" style="margin-left:auto;flex-shrink:0" onclick="event.preventDefault();toggleMemberSection('+it.id+')">'+moveLabel+'</button>';
+  h += '<button class="btn-del-item" onclick="event.preventDefault();removeItem('+it.id+')" style="position:static">✕</button>';
+  h += '</summary>';
+  h += '<div style="padding-top:.75rem">';
   h += '<div class="row">';
-  h += '<div>'+field('Nombre completo','mn-'+it.id,it.name)+'</div>';
+  h += '<div><label style="display:block;font-size:.78rem;font-weight:600;color:var(--azul-oscuro)">Nombre completo</label>'
+    +'<input type="text" id="mn-'+it.id+'" value="'+escA(it.name||'')+'" oninput="updateMemberLabel('+it.id+')"></div>';
   h += '<div>'+field('Nombre corto (tarjeta)','md-'+it.id,it.displayName)+'</div>';
   h += '</div>';
   h += '<div class="row">';
   h += '<div><div class="field"><label>Rol</label><select id="mr-'+it.id+'"><option'+(it.role==='Investigador principal'?' selected':'')+'>Investigador principal</option><option'+(it.role==='Comité científico'?' selected':'')+'>Comité científico</option><option'+(it.role==='Investigador'?' selected':'')+'>Investigador</option><option'+(it.role==='Investigadora'?' selected':'')+'>Investigadora</option><option'+(it.role==='Técnico'?' selected':'')+'>Técnico</option></select></div></div>';
-  h += '<div>'+field('Rol corto (tarjeta)','mdr-'+it.id,it.displayRole)+'</div>';
+  h += '<div><label style="display:block;font-size:.78rem;font-weight:600;color:var(--azul-oscuro)">Rol corto (tarjeta)</label>'
+    +'<input type="text" id="mdr-'+it.id+'" value="'+escA(it.displayRole||'')+'" oninput="updateMemberLabel('+it.id+')"></div>';
   h += '</div>';
   h += '<div class="row">';
   h += '<div>'+field('Universidad / Institución','mu-'+it.id,it.uni)+'</div>';
@@ -1828,7 +1873,18 @@ function renderMemberCard(it) {
   h += imgField('Foto',it.photo?'../'+it.photo:'','mp-'+it.id);
   h += richField('Biografía',it.bio,'mb-'+it.id);
   h += '</div>';
+  h += '</details>';
   return h;
+}
+
+function updateMemberLabel(iid) {
+  var n = document.getElementById('mn-'+iid);
+  var r = document.getElementById('mdr-'+iid);
+  var lbl = document.getElementById('mblabel-'+iid);
+  if (!lbl) return;
+  var name = n ? n.value.trim() : '';
+  var role = r ? r.value.trim() : '';
+  lbl.textContent = (name || 'Nuevo miembro') + (role ? ' — '+role : '');
 }
 
 function addMember() {
@@ -2297,6 +2353,7 @@ function readAllItems() {
       var i=document.getElementById('vii-'+it.id); if(i) it.image=i.value;
     }
     if (type==='members') {
+      var det=document.querySelector('details.item-card[data-iid="'+it.id+'"]'); if(det) it._open=det.open;
       var n=document.getElementById('mn-'+it.id); if(n) it.name=n.value;
       var d=document.getElementById('md-'+it.id); if(d) it.displayName=d.value;
       var r=document.getElementById('mr-'+it.id); if(r) it.role=r.value;
