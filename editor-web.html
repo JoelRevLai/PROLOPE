@@ -485,11 +485,52 @@ function parseNews(mainEl) {
       f.contentBlocks.push({type:'titulo', text: el.innerHTML});
     } else if (tag === 'p' && !cls.includes('back-link')) {
       f.contentBlocks.push({type:'parrafo', text: el.innerHTML});
+    } else if (tag === 'figure' && (cls.includes('inline-figure') || cls.includes('inline-figure-left'))) {
+      var img = el.querySelector('img');
+      var figcap = el.querySelector('figcaption');
+      f.contentBlocks.push({type:'figura',
+        src: img ? (img.getAttribute('src')||'') : '',
+        alt: img ? (img.getAttribute('alt')||'') : '',
+        caption: figcap ? figcap.innerHTML : '',
+        isLeft: cls.includes('inline-figure-left')});
+    } else if (tag === 'div' && cls.includes('pull-quote')) {
+      f.contentBlocks.push({type:'cita', text: el.innerHTML});
+    } else if (tag === 'div' && cls.includes('article-links') && el.dataset.block === 'enlaces') {
+      var links = [];
+      el.querySelectorAll('a').forEach(function(a){ links.push({label:a.textContent.trim(), url:a.getAttribute('href')||''}); });
+      if (links.length) f.contentBlocks.push({type:'enlaces', links:links});
+    } else if (tag === 'div' && cls.includes('book-highlight')) {
+      var p = el.querySelector('p');
+      var a = el.querySelector('a.btn-consultar');
+      f.contentBlocks.push({type:'recuadro',
+        text: p ? p.innerHTML : '',
+        btnLabel: a ? a.textContent.trim() : '',
+        btnUrl: a ? (a.getAttribute('href')||'') : ''});
+    } else if (tag === 'ul' && cls.includes('biblio-list')) {
+      var items = [];
+      el.querySelectorAll('li').forEach(function(li){
+        var note = li.querySelector('.biblio-note');
+        var noteHtml = note ? note.innerHTML : '';
+        if (note) note.remove();
+        items.push({main: li.innerHTML.trim(), note: noteHtml});
+        if (note) li.appendChild(note);
+      });
+      if (items.length) f.contentBlocks.push({type:'lista', items:items});
+    } else if (tag === 'div' && cls.includes('article-imagegrid')) {
+      var cols = 2;
+      var gridStyle = el.style.gridTemplateColumns||'';
+      var colMatch = gridStyle.match(/1fr/g);
+      if (colMatch) cols = colMatch.length;
+      var imgs = [];
+      el.querySelectorAll('img').forEach(function(img){
+        imgs.push({src:img.getAttribute('src')||'', alt:img.getAttribute('alt')||''});
+      });
+      f.contentBlocks.push({type:'imagegrid', cols:cols, imgs:imgs});
     }
   });
-  // External links
+  // External links (only divs without data-block="enlaces" which are inline content blocks)
   f.links = [];
-  mainEl.querySelectorAll('.article-links a').forEach(function(a){
+  mainEl.querySelectorAll('.article-links:not([data-block=enlaces]) a').forEach(function(a){
     f.links.push({label:a.textContent.trim(),url:a.getAttribute('href')||''});
   });
   // Excerpt from newsEntry (loaded later)
@@ -1031,6 +1072,7 @@ function renderBlocksEditor() {
   h += '<button class="btn btn-sm" style="background:#8a6a4a;color:#fff" onclick="addBlock(\'highlight\')">+ Recuadro destacado con enlace</button>';
   h += '<button class="btn btn-sm" style="background:#4a7a8a;color:#fff" onclick="addBlock(\'list\')">+ Lista bibliográfica</button>';
   h += '<button class="btn btn-sm" style="background:#5a7a5a;color:#fff" onclick="addBlock(\'imagegrid\')">+ Cuadrícula de imágenes</button>';
+  h += '<button class="btn btn-sm" style="background:#5a6a7a;color:#fff" onclick="addBlock(\'lead\')">+ Texto destacado</button>';
   h += '</div>';
   h += '</div>';
   return h;
@@ -2969,12 +3011,18 @@ function renderNewsEditor() {
   h += '<div class="field"><label>Extracto (resumen para la tarjeta de noticias)</label>';
   h += '<textarea id="nc-excerpt" rows="2" placeholder="Breve resumen…">'+esc(f.excerpt||'')+'</textarea></div>';
   h += '<div class="field"><label>Bloques de contenido</label>';
-  h += '<p class="help">Añade párrafos, títulos y subtítulos en el orden en que aparecerán.</p>';
+  h += '<p class="help">Añade bloques en el orden en que aparecerán.</p>';
   h += '<div id="nc-blocks"></div>';
   h += '<div style="display:flex;gap:.4rem;margin-top:.4rem;flex-wrap:wrap">';
   h += '<button class="btn btn-blue btn-sm" onclick="ncAddBlock(\'parrafo\')">+ Párrafo</button>';
   h += '<button class="btn btn-sm" style="background:var(--dorado);color:#fff" onclick="ncAddBlock(\'titulo\')">+ Título</button>';
   h += '<button class="btn btn-sm" style="background:#7a6f60;color:#fff" onclick="ncAddBlock(\'subtitulo\')">+ Subtítulo</button>';
+  h += '<button class="btn btn-sm" style="background:#5a7d5a;color:#fff" onclick="ncAddBlock(\'figura\')">+ Figura</button>';
+  h += '<button class="btn btn-sm" style="background:#6d7a60;color:#fff" onclick="ncAddBlock(\'cita\')">+ Cita destacada</button>';
+  h += '<button class="btn btn-sm" style="background:#6a5a8a;color:#fff" onclick="ncAddBlock(\'enlaces\')">+ Enlaces</button>';
+  h += '<button class="btn btn-sm" style="background:#8a6a4a;color:#fff" onclick="ncAddBlock(\'recuadro\')">+ Recuadro destacado con enlace</button>';
+  h += '<button class="btn btn-sm" style="background:#4a7a8a;color:#fff" onclick="ncAddBlock(\'lista\')">+ Lista bibliográfica</button>';
+  h += '<button class="btn btn-sm" style="background:#5a7a5a;color:#fff" onclick="ncAddBlock(\'imagegrid\')">+ Cuadrícula de imágenes</button>';
   h += '</div></div></div>';
 
   // Enlaces externos
@@ -2997,7 +3045,7 @@ function renderNewsEditor() {
   document.getElementById('nc-fecha').addEventListener('input', ncAutoFechaCorta);
 
   // Pre-populate content blocks
-  (f.contentBlocks||[]).forEach(function(b){ ncAddBlockWithContent(b.type, b.text); });
+  (f.contentBlocks||[]).forEach(function(b){ ncAddBlockWithContent(b); });
   if (!(f.contentBlocks||[]).length) ncAddBlock('parrafo');
 
   // Pre-populate links
@@ -3008,12 +3056,62 @@ function renderNewsEditor() {
   (f.evLinks||[]).forEach(function(l){ ncAddLinkWithValues('nc-ev-links', l.label, l.url); });
 }
 
-function ncAddBlockWithContent(type, html) {
+function ncAddBlockWithContent(b) {
+  var type = b.type;
   ncAddBlock(type);
   var c = document.getElementById('nc-blocks');
   var cards = c.querySelectorAll('[data-ncbid]');
   var last = cards[cards.length-1];
-  if (last) { var ed = last.querySelector('.rich-edit'); if (ed) ed.innerHTML = html; }
+  if (!last) return;
+  if (type==='figura') {
+    var srcI = last.querySelector('.nc-fig-src'); if (srcI) srcI.value = b.src||'';
+    var altI = last.querySelector('.nc-fig-alt'); if (altI) altI.value = b.alt||'';
+    var capI = last.querySelector('.nc-fig-cap'); if (capI) capI.value = b.caption||'';
+    var posI = last.querySelector('.nc-fig-pos'); if (posI) posI.value = b.isLeft?'left':'right';
+  } else if (type==='enlaces') {
+    var rowsC = last.querySelector('.nc-links-rows');
+    if (rowsC) {
+      rowsC.innerHTML = '';
+      (b.links||[]).forEach(function(l){ rowsC.appendChild(ncMakeLinkRow(l.label,l.url)); });
+      if (!rowsC.children.length) rowsC.appendChild(ncMakeLinkRow('',''));
+    }
+  } else if (type==='recuadro') {
+    var ed = last.querySelector('.rich-edit'); if (ed) ed.innerHTML = b.text||'';
+    var lblI = last.querySelector('.nc-hl-label'); if (lblI) lblI.value = b.btnLabel||'↓ Consultar aquí (PDF)';
+    var urlI = last.querySelector('.nc-hl-url'); if (urlI) urlI.value = b.btnUrl||'';
+  } else if (type==='lista') {
+    var entriesC = last.querySelector('.nc-lista-entries');
+    if (entriesC) {
+      entriesC.innerHTML = '';
+      (b.items||[]).forEach(function(item){
+        ncBlockAddListEntry(last.querySelector('button[onclick*=ncBlockAddListEntry]'), true);
+        var entries = entriesC.querySelectorAll('.nc-list-entry');
+        var entry = entries[entries.length-1];
+        if (entry) {
+          var eds = entry.querySelectorAll('.rich-edit');
+          if (eds[0]) eds[0].innerHTML = item.main||'';
+          if (eds[1]) eds[1].innerHTML = item.note||'';
+        }
+      });
+    }
+  } else if (type==='imagegrid') {
+    var colsI = last.querySelector('.nc-igrid-cols'); if (colsI) colsI.value = b.cols||2;
+    var rowsC2 = last.querySelector('.nc-igrid-rows');
+    if (rowsC2) {
+      rowsC2.innerHTML = '';
+      (b.imgs||[]).forEach(function(img){
+        ncBlockAddGridImg(last.querySelector('button[onclick*=ncBlockAddGridImg]'), true);
+        var rows = rowsC2.querySelectorAll('.nc-igrid-row');
+        var row = rows[rows.length-1];
+        if (row) {
+          var sI = row.querySelector('.nc-igrid-src'); if (sI) sI.value = img.src||'';
+          var aI = row.querySelector('.nc-igrid-alt'); if (aI) aI.value = img.alt||'';
+        }
+      });
+    }
+  } else {
+    var ed2 = last.querySelector('.rich-edit'); if (ed2) ed2.innerHTML = b.text||'';
+  }
 }
 
 function ncAddLinkWithValues(containerId, label, url) {
@@ -3376,12 +3474,18 @@ function renderNewNewsForm() {
   h += '<div class="field"><label>Extracto (resumen para la tarjeta de noticias)</label>';
   h += '<textarea id="nc-excerpt" rows="2" placeholder="Breve resumen…"></textarea></div>';
   h += '<div class="field"><label>Bloques de contenido</label>';
-  h += '<p class="help">Añade párrafos, títulos y subtítulos en el orden en que aparecerán.</p>';
+  h += '<p class="help">Añade bloques en el orden en que aparecerán.</p>';
   h += '<div id="nc-blocks"></div>';
   h += '<div style="display:flex;gap:.4rem;margin-top:.4rem;flex-wrap:wrap">';
   h += '<button class="btn btn-blue btn-sm" onclick="ncAddBlock(\'parrafo\')">+ Párrafo</button>';
   h += '<button class="btn btn-sm" style="background:var(--dorado);color:#fff" onclick="ncAddBlock(\'titulo\')">+ Título</button>';
   h += '<button class="btn btn-sm" style="background:#7a6f60;color:#fff" onclick="ncAddBlock(\'subtitulo\')">+ Subtítulo</button>';
+  h += '<button class="btn btn-sm" style="background:#5a7d5a;color:#fff" onclick="ncAddBlock(\'figura\')">+ Figura</button>';
+  h += '<button class="btn btn-sm" style="background:#6d7a60;color:#fff" onclick="ncAddBlock(\'cita\')">+ Cita destacada</button>';
+  h += '<button class="btn btn-sm" style="background:#6a5a8a;color:#fff" onclick="ncAddBlock(\'enlaces\')">+ Enlaces</button>';
+  h += '<button class="btn btn-sm" style="background:#8a6a4a;color:#fff" onclick="ncAddBlock(\'recuadro\')">+ Recuadro destacado con enlace</button>';
+  h += '<button class="btn btn-sm" style="background:#4a7a8a;color:#fff" onclick="ncAddBlock(\'lista\')">+ Lista bibliográfica</button>';
+  h += '<button class="btn btn-sm" style="background:#5a7a5a;color:#fff" onclick="ncAddBlock(\'imagegrid\')">+ Cuadrícula de imágenes</button>';
   h += '</div></div></div>';
 
   // Enlaces externos
@@ -3451,27 +3555,77 @@ function ncAddBlock(type) {
   div.setAttribute('draggable', 'true');
   div.dataset.ncbid = id;
   div.dataset.ncbtype = type;
-  var colors = {parrafo:'var(--azul)',titulo:'var(--dorado)',subtitulo:'#7a6f60'};
-  var labels = {parrafo:'PÁRRAFO',titulo:'TÍTULO',subtitulo:'SUBTÍTULO'};
-  var toolbar = '<div class="rich-toolbar" style="margin:.3rem 0">'
+  var colors = {parrafo:'var(--azul)',titulo:'var(--dorado)',subtitulo:'#7a6f60',figura:'#5a7d5a',cita:'#6d7a60',enlaces:'#6a5a8a',recuadro:'#8a6a4a',lista:'#4a7a8a',imagegrid:'#5a7a5a'};
+  var labels = {parrafo:'PÁRRAFO',titulo:'TÍTULO',subtitulo:'SUBTÍTULO',figura:'FIGURA',cita:'CITA DESTACADA',enlaces:'ENLACES',recuadro:'RECUADRO DESTACADO',lista:'LISTA BIBLIOGRÁFICA',imagegrid:'CUADRÍCULA DE IMÁGENES'};
+  var richToolbar = '<div class="rich-toolbar" style="margin:.3rem 0">'
     +'<button onmousedown="execRich(event,\'bold\')"><b>N</b></button>'
     +'<button onmousedown="execRich(event,\'italic\')"><i>C</i></button>'
     +'<button onmousedown="execRich(event,\'link\')">Enlace</button>'
     +'<button onmousedown="execRich(event,\'removeLink\')">Quitar enlace</button>'
-    +(type==='parrafo'
-      ? '<button onmousedown="execRich(event,\'insertUnorderedList\')">• Lista</button>'
-        +'<button onmousedown="execRich(event,\'insertOrderedList\')">1. Lista</button>'
-      : '')
     +'</div>';
-  var minH = type==='parrafo' ? '70px' : '36px';
-  var ph = {parrafo:'Escribe un párrafo…',titulo:'Escribe un título…',subtitulo:'Escribe un subtítulo…'}[type];
-  div.innerHTML = '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>'
+  var richToolbarFull = '<div class="rich-toolbar" style="margin:.3rem 0">'
+    +'<button onmousedown="execRich(event,\'bold\')"><b>N</b></button>'
+    +'<button onmousedown="execRich(event,\'italic\')"><i>C</i></button>'
+    +'<button onmousedown="execRich(event,\'link\')">Enlace</button>'
+    +'<button onmousedown="execRich(event,\'removeLink\')">Quitar enlace</button>'
+    +'<button onmousedown="execRich(event,\'insertUnorderedList\')">• Lista</button>'
+    +'<button onmousedown="execRich(event,\'insertOrderedList\')">1. Lista</button>'
+    +'</div>';
+  var header = '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>'
     +'<button class="btn-del-item" onclick="this.closest(\'[data-ncbid]\').remove()">✕</button>'
     +'<div class="item-card-header" style="margin-bottom:0">'
-    +'<strong style="font-size:.73rem;background:'+colors[type]+';color:#fff;padding:.1rem .4rem;border-radius:3px">'+labels[type]+'</strong>'
-    +'</div>'
-    +toolbar
-    +'<div class="rich-edit" contenteditable="true" draggable="false" style="min-height:'+minH+';border:1px solid var(--borde);border-radius:4px;padding:.4rem .5rem;background:var(--crema)" title="'+ph+'"></div>';
+    +'<strong style="font-size:.73rem;background:'+(colors[type]||'var(--azul)')+';color:#fff;padding:.1rem .4rem;border-radius:3px">'+(labels[type]||type)+'</strong>'
+    +'</div>';
+
+  if (type==='parrafo') {
+    div.innerHTML = header+richToolbarFull
+      +'<div class="rich-edit" contenteditable="true" draggable="false" style="min-height:70px;border:1px solid var(--borde);border-radius:4px;padding:.4rem .5rem;background:var(--crema)" title="Escribe un párrafo…"></div>';
+  } else if (type==='titulo') {
+    div.innerHTML = header
+      +'<div class="rich-edit" contenteditable="true" draggable="false" style="min-height:36px;border:1px solid var(--borde);border-radius:4px;padding:.4rem .5rem;background:var(--crema)" title="Escribe un título…"></div>';
+  } else if (type==='subtitulo') {
+    div.innerHTML = header
+      +'<div class="rich-edit" contenteditable="true" draggable="false" style="min-height:36px;border:1px solid var(--borde);border-radius:4px;padding:.4rem .5rem;background:var(--crema)" title="Escribe un subtítulo…"></div>';
+  } else if (type==='cita') {
+    div.innerHTML = header+richToolbar
+      +'<div class="rich-edit" contenteditable="true" draggable="false" style="min-height:50px;border:1px solid var(--borde);border-radius:4px;padding:.4rem .5rem;background:var(--crema)" title="Texto de la cita destacada…"></div>';
+  } else if (type==='figura') {
+    div.innerHTML = header
+      +'<div class="field"><label>Imagen</label><div class="img-picker">'
+      +'<input type="text" class="nc-fig-src" placeholder="Ej.: ../media/imagen.jpg" style="flex:1">'
+      +'<label class="btn btn-outline btn-sm img-upload-btn" title="Subir imagen"><input type="file" accept="image/*" style="display:none" onchange="ncUploadBlockImg(this,\'nc-fig-src\','+id+')">Subir</label>'
+      +'</div></div>'
+      +'<div class="field"><label>Texto alternativo</label><input type="text" class="nc-fig-alt" placeholder="Descripción breve de la imagen"></div>'
+      +'<div class="field"><label>Pie de foto (opcional)</label><input type="text" class="nc-fig-cap" placeholder="Pie de foto"></div>'
+      +'<div class="field"><label>Posición</label><select class="nc-fig-pos"><option value="right">Derecha</option><option value="left">Izquierda</option></select></div>';
+  } else if (type==='enlaces') {
+    div.innerHTML = header
+      +'<div class="nc-links-rows"></div>'
+      +'<button class="btn btn-outline btn-sm" style="margin-top:.3rem" onclick="ncBlockAddLink(this)">+ Añadir enlace</button>';
+    // add one empty row
+    div.querySelector('.nc-links-rows').appendChild(ncMakeLinkRow('',''));
+  } else if (type==='recuadro') {
+    div.innerHTML = header+richToolbar
+      +'<div class="rich-edit" contenteditable="true" draggable="false" style="min-height:50px;border:1px solid var(--borde);border-radius:4px;padding:.4rem .5rem;background:var(--crema)" title="Texto del recuadro…"></div>'
+      +'<div class="field" style="margin-top:.4rem"><label>Texto del botón</label><input type="text" class="nc-hl-label" placeholder="Ej.: ↓ Consultar aquí (PDF)" value="↓ Consultar aquí (PDF)"></div>'
+      +'<div class="field"><label>URL del botón</label><div style="display:flex;gap:.4rem;align-items:center">'
+      +'<input type="text" class="nc-hl-url" placeholder="Ej.: ../media/archivo.pdf" style="flex:1">'
+      +'<label class="btn btn-outline btn-sm img-upload-btn" title="Subir archivo (PDF)"><input type="file" accept=".pdf,image/*" style="display:none" onchange="ncUploadBlockFile(this,\'nc-hl-url\','+id+')">Subir</label>'
+      +'</div></div>';
+  } else if (type==='lista') {
+    div.innerHTML = header
+      +'<div class="nc-lista-entries"></div>'
+      +'<button class="btn btn-outline btn-sm" style="margin-top:.4rem" onclick="ncBlockAddListEntry(this)">+ Añadir entrada</button>';
+    ncBlockAddListEntry(div.querySelector('button[onclick*=ncBlockAddListEntry]'), true);
+  } else if (type==='imagegrid') {
+    div.innerHTML = header
+      +'<div class="field"><label>Columnas</label><select class="nc-igrid-cols"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option></select></div>'
+      +'<div class="nc-igrid-rows"></div>'
+      +'<button class="btn btn-outline btn-sm" style="margin-top:.3rem" onclick="ncBlockAddGridImg(this)">+ Añadir imagen</button>';
+    ncBlockAddGridImg(div.querySelector('button[onclick*=ncBlockAddGridImg]'), true);
+    ncBlockAddGridImg(div.querySelector('button[onclick*=ncBlockAddGridImg]'), true);
+  }
+
   c.appendChild(div);
   initNcBlocksDrag();
 }
@@ -3516,6 +3670,119 @@ function initNcBlocksDrag() {
       _ncDragSrc = null;
     });
   });
+}
+
+function ncMakeLinkRow(label, url) {
+  var d = document.createElement('div'); d.className='link-row nc-link-row';
+  d.innerHTML='<input type="text" placeholder="Texto del enlace" value="'+escA(label||'')+'">'
+    +'<input type="text" placeholder="URL" value="'+escA(url||'')+'">'
+    +'<button class="del-link" onclick="this.parentElement.remove()">×</button>';
+  return d;
+}
+
+function ncBlockAddLink(btn) {
+  var card = btn.closest('[data-ncbid]');
+  if (!card) return;
+  card.querySelector('.nc-links-rows').appendChild(ncMakeLinkRow('',''));
+}
+
+function ncBlockAddListEntry(btn, skipConfirm) {
+  var card = btn.closest('[data-ncbid]');
+  if (!card) return;
+  var container = card.querySelector('.nc-lista-entries');
+  var idx = container.children.length;
+  var entry = document.createElement('div');
+  entry.className = 'nc-list-entry';
+  entry.style.cssText = 'border:1px solid var(--borde);border-radius:4px;padding:.5rem;margin-bottom:.5rem';
+  var richTb = '<div class="rich-toolbar" style="margin:.2rem 0">'
+    +'<button onmousedown="execRich(event,\'bold\')"><b>N</b></button>'
+    +'<button onmousedown="execRich(event,\'italic\')"><i>C</i></button>'
+    +'<button onmousedown="execRich(event,\'link\')">Enlace</button>'
+    +'<button onmousedown="execRich(event,\'removeLink\')">Quitar enlace</button>'
+    +'</div>';
+  entry.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem">'
+    +'<span style="font-size:.72rem;font-weight:600;color:var(--azul)">Entrada '+(idx+1)+'</span>'
+    +'<button class="del" title="Eliminar entrada" onclick="this.closest(\'.nc-list-entry\').remove()">✕</button>'
+    +'</div>'
+    +'<label style="font-size:.78rem;font-weight:600;margin-bottom:.2rem;display:block">Citación</label>'
+    +richTb
+    +'<div class="rich-edit" contenteditable="true" draggable="false" style="min-height:40px;border:1px solid var(--borde);border-radius:4px;padding:.3rem .4rem;background:var(--crema);margin-bottom:.4rem" title="Citación…"></div>'
+    +'<label style="font-size:.78rem;font-weight:600;margin-bottom:.2rem;display:block">Nota descriptiva (opcional)</label>'
+    +richTb
+    +'<div class="rich-edit nc-list-note" contenteditable="true" draggable="false" style="min-height:30px;border:1px solid var(--borde);border-radius:4px;padding:.3rem .4rem;background:var(--crema)" title="Nota…"></div>';
+  container.appendChild(entry);
+}
+
+function ncBlockAddGridImg(btn, skipConfirm) {
+  var card = btn.closest('[data-ncbid]');
+  if (!card) return;
+  var container = card.querySelector('.nc-igrid-rows');
+  var row = document.createElement('div');
+  row.className = 'nc-igrid-row';
+  row.style.cssText = 'display:flex;gap:.4rem;align-items:flex-end;margin-bottom:.4rem';
+  row.innerHTML = '<div style="flex:1"><label style="font-size:.78rem;font-weight:600">Imagen</label>'
+    +'<div class="img-picker">'
+    +'<input type="text" class="nc-igrid-src" placeholder="../media/imagen.jpg" style="flex:1">'
+    +'<label class="btn btn-outline btn-sm img-upload-btn" title="Subir imagen"><input type="file" accept="image/*" style="display:none" onchange="ncUploadBlockImgInRow(this)">Subir</label>'
+    +'</div></div>'
+    +'<div style="flex:1"><label style="font-size:.78rem;font-weight:600">Texto alternativo</label>'
+    +'<input type="text" class="nc-igrid-alt" placeholder="Alt de la imagen"></div>'
+    +'<button class="del-link" onclick="this.closest(\'.nc-igrid-row\').remove()" title="Eliminar imagen">×</button>';
+  container.appendChild(row);
+}
+
+async function ncUploadBlockImg(fileInput, cls, bid) {
+  if (!fileInput.files || !fileInput.files.length) return;
+  var file = fileInput.files[0];
+  toast('Subiendo imagen…', 'info');
+  try {
+    var r = await fetch('/api/upload-image?name='+encodeURIComponent(file.name), {
+      method: 'POST',
+      headers: {'Content-Type': file.type || 'application/octet-stream'},
+      body: file,
+    });
+    var data = await r.json();
+    if (!data.path) throw new Error(data.error||'Sin ruta');
+    var card = fileInput.closest('[data-ncbid]');
+    if (card) { var inp = card.querySelector('.'+cls); if (inp) inp.value = data.path; }
+    toast('Imagen subida', 'ok');
+  } catch(e) { toast('Error al subir: '+e.message, 'err'); }
+}
+
+async function ncUploadBlockImgInRow(fileInput) {
+  if (!fileInput.files || !fileInput.files.length) return;
+  var file = fileInput.files[0];
+  toast('Subiendo imagen…', 'info');
+  try {
+    var r = await fetch('/api/upload-image?name='+encodeURIComponent(file.name), {
+      method: 'POST',
+      headers: {'Content-Type': file.type || 'application/octet-stream'},
+      body: file,
+    });
+    var data = await r.json();
+    if (!data.path) throw new Error(data.error||'Sin ruta');
+    var row = fileInput.closest('.nc-igrid-row');
+    if (row) { var inp = row.querySelector('.nc-igrid-src'); if (inp) inp.value = data.path; }
+    toast('Imagen subida', 'ok');
+  } catch(e) { toast('Error al subir: '+e.message, 'err'); }
+}
+
+async function ncUploadBlockFile(fileInput, cls, bid) {
+  if (!fileInput.files || !fileInput.files.length) return;
+  var file = fileInput.files[0];
+  toast('Subiendo archivo…', 'info');
+  try {
+    var r = await fetch('/api/upload-image?name='+encodeURIComponent(file.name), {
+      method: 'POST',
+      headers: {'Content-Type': file.type || 'application/octet-stream'},
+      body: file,
+    });
+    var data = await r.json();
+    if (!data.path) throw new Error(data.error||'Sin ruta');
+    var card = fileInput.closest('[data-ncbid]');
+    if (card) { var inp = card.querySelector('.'+cls); if (inp) inp.value = data.path; }
+    toast('Archivo subido', 'ok');
+  } catch(e) { toast('Error al subir: '+e.message, 'err'); }
 }
 
 function ncAddLink() {
@@ -3573,9 +3840,50 @@ function ncGetBlocks() {
   var blocks = [];
   document.querySelectorAll('#nc-blocks [data-ncbid]').forEach(function(el){
     var type = el.dataset.ncbtype;
-    var ed = el.querySelector('.rich-edit');
-    var html = ed ? ed.innerHTML.trim() : '';
-    if (html && html !== '<br>') blocks.push({type:type, text:html});
+    if (type==='figura') {
+      var src = (el.querySelector('.nc-fig-src')||{}).value||'';
+      var alt = (el.querySelector('.nc-fig-alt')||{}).value||'';
+      var cap = (el.querySelector('.nc-fig-cap')||{}).value||'';
+      var posEl = el.querySelector('.nc-fig-pos');
+      var isLeft = posEl ? posEl.value==='left' : false;
+      if (src.trim()) blocks.push({type:'figura', src:src.trim(), alt:alt.trim(), caption:cap.trim(), isLeft:isLeft});
+    } else if (type==='enlaces') {
+      var links = [];
+      el.querySelectorAll('.nc-link-row').forEach(function(row){
+        var ins = row.querySelectorAll('input[type=text]');
+        if (ins.length>=2) links.push({label:ins[0].value.trim(), url:ins[1].value.trim()});
+      });
+      if (links.length) blocks.push({type:'enlaces', links:links});
+    } else if (type==='recuadro') {
+      var ed = el.querySelector('.rich-edit');
+      var html = ed ? ed.innerHTML.trim() : '';
+      var btnLabel = (el.querySelector('.nc-hl-label')||{}).value||'';
+      var btnUrl = (el.querySelector('.nc-hl-url')||{}).value||'';
+      if (html && html!=='<br>') blocks.push({type:'recuadro', text:html, btnLabel:btnLabel.trim(), btnUrl:btnUrl.trim()});
+    } else if (type==='lista') {
+      var items = [];
+      el.querySelectorAll('.nc-list-entry').forEach(function(entry){
+        var eds = entry.querySelectorAll('.rich-edit');
+        var main = eds[0] ? eds[0].innerHTML.trim() : '';
+        var note = eds[1] ? eds[1].innerHTML.trim() : '';
+        if (main && main!=='<br>') items.push({main:main, note:note});
+      });
+      if (items.length) blocks.push({type:'lista', items:items});
+    } else if (type==='imagegrid') {
+      var colsEl = el.querySelector('.nc-igrid-cols');
+      var cols = colsEl ? parseInt(colsEl.value)||2 : 2;
+      var imgs = [];
+      el.querySelectorAll('.nc-igrid-row').forEach(function(row){
+        var src = (row.querySelector('.nc-igrid-src')||{}).value||'';
+        var alt = (row.querySelector('.nc-igrid-alt')||{}).value||'';
+        imgs.push({src:src.trim(), alt:alt.trim()});
+      });
+      blocks.push({type:'imagegrid', cols:cols, imgs:imgs});
+    } else {
+      var ed = el.querySelector('.rich-edit');
+      var html = ed ? ed.innerHTML.trim() : '';
+      if (html && html !== '<br>') blocks.push({type:type, text:html});
+    }
   });
   return blocks;
 }
@@ -3742,9 +4050,64 @@ function ncGenerateHtml(d) {
     cH += '        </div>\n      </div>\n';
   }
   contentBlocks.forEach(function(b){
-    if (b.type==='titulo') cH += '\n      <h2 class="article-lead-title">'+b.text+'</h2>\n';
-    else if (b.type==='subtitulo') cH += '\n      <p class="article-lead-subtitle">'+b.text+'</p>\n';
-    else cH += '\n      <p>'+b.text+'</p>\n';
+    if (b.type==='titulo') {
+      cH += '\n      <h2 class="article-lead-title">'+b.text+'</h2>\n';
+    } else if (b.type==='subtitulo') {
+      cH += '\n      <p class="article-lead-subtitle">'+b.text+'</p>\n';
+    } else if (b.type==='figura') {
+      var fc = b.isLeft ? 'inline-figure-left' : 'inline-figure';
+      cH += '\n      <figure class="'+fc+'">\n';
+      cH += '        <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector(\'img\').src)">\n';
+      cH += '          <img src="'+escA(b.src)+'" alt="'+escA(b.alt)+'" />\n';
+      cH += '          <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>\n';
+      cH += '        </div>\n';
+      if (b.caption) cH += '        <figcaption>'+esc(b.caption)+'</figcaption>\n';
+      cH += '      </figure>\n';
+    } else if (b.type==='cita') {
+      cH += '\n      <div class="pull-quote">\n        '+b.text+'\n      </div>\n';
+    } else if (b.type==='enlaces') {
+      if (b.links && b.links.length) {
+        cH += '\n      <div class="article-links" data-block="enlaces">\n';
+        b.links.forEach(function(l){
+          if (!l.label||!l.url) return;
+          cH += '        <a class="article-ext-link" href="'+escA(l.url)+'" target="_blank" rel="noopener noreferrer">'
+            +'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>'
+            +esc(l.label)+'</a>\n';
+        });
+        cH += '      </div>\n';
+      }
+    } else if (b.type==='recuadro') {
+      cH += '\n      <div class="book-highlight">\n';
+      cH += '        <p>\n          '+b.text+'\n        </p>\n';
+      if (b.btnUrl) {
+        cH += '        <a class="btn-consultar" href="'+escA(b.btnUrl)+'" target="_blank" rel="noopener noreferrer">\n';
+        cH += '          '+esc(b.btnLabel||'↓ Consultar aquí')+'\n        </a>\n';
+      }
+      cH += '      </div>\n';
+    } else if (b.type==='lista') {
+      cH += '\n      <ul class="biblio-list">\n';
+      (b.items||[]).forEach(function(item){
+        var noteClean = (item.note||'').replace(/<br\s*\/?>/gi,'').trim();
+        cH += '\n        <li>\n          '+item.main;
+        if (noteClean && noteClean!=='<br>') cH += '\n          <span class="biblio-note">'+item.note+'</span>';
+        cH += '\n        </li>\n';
+      });
+      cH += '      </ul>\n';
+    } else if (b.type==='imagegrid') {
+      var gcols = b.cols||2;
+      var gtc = Array(gcols).fill('1fr').join(' ');
+      cH += '\n      <div class="article-imagegrid" style="display: grid; grid-template-columns: '+gtc+'; gap: 1rem;">\n';
+      (b.imgs||[]).forEach(function(img){
+        cH += '        <figure class="inline-figure" style="float: none; width: 100%; margin: 0;">\n';
+        cH += '          <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector(\'img\').src)">\n';
+        cH += '            <img src="'+escA(img.src)+'" alt="'+escA(img.alt)+'" />\n';
+        cH += '            <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>\n';
+        cH += '          </div>\n        </figure>\n';
+      });
+      cH += '      </div>\n';
+    } else {
+      cH += '\n      <p>'+b.text+'</p>\n';
+    }
   });
   if (links.length) {
     cH += '\n      <div class="article-links">\n';
