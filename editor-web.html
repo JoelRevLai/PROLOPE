@@ -518,7 +518,9 @@ function makeBlock(el) {
       var img=fig.querySelector('img');
       imgs.push({src:img?img.getAttribute('src'):'',alt:img?(img.getAttribute('alt')||''):''});
     });
-    return {id:id,type:'imagegrid',imgs:imgs};
+    var gtcStyle = el.style.gridTemplateColumns||'';
+    var colsCount = gtcStyle ? gtcStyle.trim().split(/\s+/).length : 2;
+    return {id:id,type:'imagegrid',cols:colsCount,imgs:imgs};
   }
   if (cls.indexOf('book-highlight')!==-1) {
     var bpEl=el.querySelector('p'), baEl=el.querySelector('a.btn-consultar,a[href]');
@@ -1028,6 +1030,7 @@ function renderBlocksEditor() {
   h += '<button class="btn btn-sm" style="background:#6a5a8a;color:#fff" onclick="addBlock(\'links\')">+ Enlaces</button>';
   h += '<button class="btn btn-sm" style="background:#8a6a4a;color:#fff" onclick="addBlock(\'highlight\')">+ Recuadro destacado con enlace</button>';
   h += '<button class="btn btn-sm" style="background:#4a7a8a;color:#fff" onclick="addBlock(\'list\')">+ Lista bibliográfica</button>';
+  h += '<button class="btn btn-sm" style="background:#5a7a5a;color:#fff" onclick="addBlock(\'imagegrid\')">+ Cuadrícula de imágenes</button>';
   h += '</div>';
   h += '</div>';
   return h;
@@ -1058,14 +1061,20 @@ function renderBlockCard(b) {
   } else if (b.type==='lead') {
     h += richField('Texto destacado (lead)',b.html,'block-'+b.id);
   } else if (b.type==='imagegrid') {
+    var cols = b.cols||2;
+    h += '<div class="field"><label>Columnas</label><select id="gg-cols-'+b.id+'" onchange="updBlock('+b.id+',\'cols\',parseInt(this.value))">';
+    [1,2,3,4].forEach(function(n){ h += '<option value="'+n+'"'+(cols===n?' selected':'')+'>'+n+'</option>'; });
+    h += '</select></div>';
     h += '<div id="imggrid-'+b.id+'">';
     (b.imgs||[]).forEach(function(img,i){
       h += '<div style="display:flex;gap:.4rem;align-items:flex-end;margin-bottom:.4rem">';
       h += '<div style="flex:1">'+imgField('Imagen '+(i+1),img.src,'gg-src-'+b.id+'-'+i)+'</div>';
       h += '<div style="flex:1">'+field('Texto alternativo','gg-alt-'+b.id+'-'+i,img.alt,'Alt de la imagen')+'</div>';
+      h += '<button class="del-link" onclick="delGridImg('+b.id+','+i+')" title="Eliminar imagen">×</button>';
       h += '</div>';
     });
     h += '</div>';
+    h += '<button class="btn btn-outline btn-sm" style="margin-top:.3rem" onclick="addGridImg('+b.id+')">+ Añadir imagen</button>';
   } else if (b.type==='figure') {
     h += imgField('Imagen',b.src,'img-'+b.id);
     h += field('Texto alternativo','alt-'+b.id,b.alt,'Descripción breve de la imagen');
@@ -1118,6 +1127,7 @@ function addBlock(type) {
   else if (type==='pullquote') { b.html='Cita destacada'; }
   else if (type==='links') { b.links=[{label:'',url:''}]; }
   else if (type==='highlight') { b.html=''; b.btnLabel='↓ Consultar aquí (PDF)'; b.btnUrl=''; }
+  else if (type==='imagegrid') { b.cols=2; b.imgs=[{src:'',alt:''},{src:'',alt:''}]; }
   else if (type==='list') { b.cls='biblio-list'; b.items=[{main:'Nueva entrada bibliográfica.',note:''}]; }
   S.blocks.push(b);
   rerenderBlocks();
@@ -1155,6 +1165,20 @@ function delLink(bid,li) {
   readAllBlocks();
   var b = S.blocks.find(function(b){return b.id===bid;});
   if (b&&b.links) { b.links.splice(li,1); }
+  rerenderBlocks();
+}
+
+function addGridImg(bid) {
+  readAllBlocks();
+  var b = S.blocks.find(function(b){return b.id===bid;});
+  if (b) { if(!b.imgs) b.imgs=[]; b.imgs.push({src:'',alt:''}); }
+  rerenderBlocks();
+}
+
+function delGridImg(bid,idx) {
+  readAllBlocks();
+  var b = S.blocks.find(function(b){return b.id===bid;});
+  if (b&&b.imgs&&b.imgs.length>1) { b.imgs.splice(idx,1); }
   rerenderBlocks();
 }
 
@@ -1217,6 +1241,7 @@ function readAllBlocks() {
       if (el) b.html = el.innerHTML;
     }
     if (b.type==='imagegrid') {
+      var colsSel=document.getElementById('gg-cols-'+b.id); if(colsSel) b.cols=parseInt(colsSel.value)||2;
       (b.imgs||[]).forEach(function(img,i){
         var si=document.getElementById('gg-src-'+b.id+'-'+i); if(si) img.src=si.value;
         var ai=document.getElementById('gg-alt-'+b.id+'-'+i); if(ai) img.alt=ai.value;
@@ -2286,7 +2311,9 @@ function genBlocks() {
       var cls=b.cls?' class="'+escA(b.cls)+'"':'';
       h += '\n      <p'+cls+'>\n        '+b.html+'\n      </p>\n';
     } else if (b.type==='imagegrid') {
-      h += '\n      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">\n';
+      var gcols = b.cols||2;
+      var gtc = Array(gcols).fill('1fr').join(' ');
+      h += '\n      <div style="display: grid; grid-template-columns: '+gtc+'; gap: 1rem;">\n';
       (b.imgs||[]).forEach(function(img){
         h += '        <figure class="inline-figure" style="float: none; width: 100%; margin: 0;">\n';
         h += '          <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector(\'img\').src)">\n';
