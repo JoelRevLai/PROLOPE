@@ -281,11 +281,12 @@ function detectType(path) {
   if (path === 'el-grupo/miembros.html') return 'members';
   if (path === 'el-grupo/historial-proyectos.html') return 'projects';
   if (path === 'el-grupo/contacto.html') return 'contact';
+  if (path === 'publicaciones/partes-comedias.html') return 'partes';
   if (path.startsWith('noticias/noticia-')) return 'news';
   return 'article';
 }
 
-var TYPE_LABELS = {index:'Página de inicio',theses:'Tesis',congresses:'Congresos',seminars:'Seminarios',multimedia:'Multimedia',members:'Miembros',projects:'Historial de proyectos',contact:'Contacto',news:'Noticia',article:'Página de contenido'};
+var TYPE_LABELS = {index:'Página de inicio',theses:'Tesis',congresses:'Congresos',seminars:'Seminarios',multimedia:'Multimedia',members:'Miembros',projects:'Historial de proyectos',contact:'Contacto',news:'Noticia',partes:'Partes de comedias',article:'Página de contenido'};
 
 // ── PARSE FILE ───────────────────────────────────────────────────────────────
 function parseFile(html, path) {
@@ -400,9 +401,38 @@ function parseMain(mainEl) {
   if (type === 'members') return parseMembers(mainEl);
   if (type === 'projects') return parseProjects(mainEl);
   if (type === 'news') return parseNews(mainEl);
+  if (type === 'partes') return parsePartes(mainEl);
 
   // Generic: parse into blocks
   Array.from(mainEl.children).forEach(function(el) { S.blocks.push(makeBlock(el)); });
+}
+
+function parsePartes(mainEl) {
+  var introEl = mainEl.querySelector('.intro-text');
+  S.introHtml = introEl ? introEl.innerHTML : '';
+  var searchWrap = mainEl.querySelector('.search-bar-wrap');
+  S.partesSearchHtml = searchWrap ? searchWrap.outerHTML : '';
+  var noResultsEl = mainEl.querySelector('.no-results');
+  S.partesNoResultsHtml = noResultsEl ? noResultsEl.outerHTML : '';
+  S.partesData = [];
+  // Find the full PARTES array using bracket counting
+  var startTag = S.footerPart.indexOf('const PARTES =');
+  if (startTag === -1) startTag = S.footerPart.search(/const\s+PARTES\s*=/);
+  if (startTag !== -1) {
+    var arrStart = S.footerPart.indexOf('[', startTag);
+    if (arrStart !== -1) {
+      var depth = 0, i = arrStart, partesStr = '';
+      while (i < S.footerPart.length) {
+        var ch = S.footerPart[i];
+        if (ch === '[') depth++;
+        else if (ch === ']') { depth--; if (depth === 0) { partesStr = S.footerPart.slice(arrStart, i+1); break; } }
+        i++;
+      }
+      if (partesStr) {
+        try { S.partesData = (new Function('return ' + partesStr))(); } catch(e) { console.error('Error parsing PARTES', e); }
+      }
+    }
+  }
 }
 
 function parseNews(mainEl) {
@@ -794,6 +824,7 @@ function renderEditor() {
   else if (S.pageType==='multimedia') h += renderMultimediaEditor();
   else if (S.pageType==='members') h += renderMembersEditor();
   else if (S.pageType==='projects') h += renderProjectsEditor();
+  else if (S.pageType==='partes') h += renderPartesEditor();
   else h += renderBlocksEditor();
 
   // News card data section
@@ -1813,6 +1844,205 @@ function initThesisDrag() {
   });
 }
 
+// ── PARTES DE COMEDIAS ───────────────────────────────────────────────────────
+function renderPartesEditor() {
+  var h = '<div class="ed-section"><h2>Texto introductorio</h2>';
+  h += richField('Introducción', S.introHtml, 'intro');
+  h += '</div>';
+  h += '<div class="ed-section"><h2>Partes de comedias</h2>';
+  h += '<p class="help" style="margin-bottom:.5rem">Cada Parte contiene uno o varios tomos, y cada tomo contiene sus obras.</p>';
+  h += '<div id="partesContainer">';
+  h += renderAllPartes();
+  h += '</div>';
+  h += '<button class="btn btn-blue btn-sm" style="margin-top:.75rem" onclick="addParte()">+ Añadir Parte</button>';
+  h += '</div>';
+  return h;
+}
+
+function renderAllPartes() {
+  var h = '';
+  (S.partesData || []).forEach(function(p, idx) { h += renderParteCard(p, idx); });
+  return h;
+}
+
+function renderParteCard(p, idx) {
+  var openAttr = p._open ? ' open' : '';
+  var label = 'Parte '+(p.roman||String(p.num||idx+1))+(p.year?' ('+p.year+')':'')+(p.coord?' — '+p.coord:'');
+  var h = '<details class="item-card" data-parte-det="'+idx+'" style="margin-bottom:.5rem"'+openAttr+'>';
+  h += '<summary style="cursor:pointer;display:flex;align-items:center;gap:.5rem;list-style:none;padding-right:2rem">'
+    +'<strong>'+esc(label)+'</strong>'
+    +'<button class="btn-del-item" onclick="event.preventDefault();removeParte('+idx+')" style="position:static;margin-left:auto">✕</button>'
+    +'</summary>';
+  h += '<div style="padding-top:.75rem">';
+  h += '<div class="row">';
+  h += '<div>'+field('Número','pnum-'+idx,String(p.num||idx+1))+'</div>';
+  h += '<div>'+field('Romano (ej.: XV)','proman-'+idx,p.roman||'')+'</div>';
+  h += '<div>'+field('Año','pyear-'+idx,String(p.year||''))+'</div>';
+  h += '</div>';
+  h += field('Coordinador/es (vacío si no hay)','pcoord-'+idx,p.coord||'','Ej.: Luigi Giuliani y Ramón Valdés');
+  h += field('Editorial','pedit-'+idx,p.editorial||'');
+  h += field('Ciudad','pcity-'+idx,p.city||'');
+  h += imgField('Portada',p.image||'','pimg-'+idx);
+  h += '<div style="margin-top:.75rem;border-top:1px solid var(--border);padding-top:.5rem">';
+  h += '<strong style="font-size:.85rem">Tomos / Volúmenes</strong>';
+  h += '<div id="pvols-'+idx+'">';
+  (p.volumes||[]).forEach(function(v, vi) { h += renderVolCard(idx, vi, v); });
+  h += '</div>';
+  h += '<button class="btn btn-outline btn-sm" style="margin-top:.4rem" onclick="addVol('+idx+')">+ Añadir tomo</button>';
+  h += '</div>';
+  h += '</div>';
+  h += '</details>';
+  return h;
+}
+
+function renderVolCard(idx, vi, v) {
+  var h = '<div class="item-card" data-vol-idx="'+vi+'" style="margin:.5rem 0;padding:.6rem .8rem;border-left:3px solid var(--dorado)">';
+  h += '<button class="btn-del-item" onclick="removeVol('+idx+','+vi+')">✕</button>';
+  h += '<div class="item-card-header"><strong style="font-size:.85rem">'+esc(v.label||'Tomo '+(vi+1))+'</strong></div>';
+  h += '<div class="row">';
+  h += '<div>'+field('Etiqueta (ej.: Tomo I)','pvlabel-'+idx+'-'+vi,v.label||'')+'</div>';
+  h += '<div>'+field('ISBN','pvisbn-'+idx+'-'+vi,v.isbn||'')+'</div>';
+  h += '</div>';
+  h += '<div style="margin-top:.4rem"><strong style="font-size:.78rem;color:#888">Obras</strong>';
+  h += '<div id="pplays-'+idx+'-'+vi+'">';
+  (v.plays||[]).forEach(function(play, pi) { h += renderPlayRow(idx, vi, pi, play); });
+  h += '</div>';
+  h += '<button class="btn btn-outline btn-sm" style="margin-top:.3rem;font-size:.75rem" onclick="addPlay('+idx+','+vi+')">+ Añadir obra</button>';
+  h += '</div>';
+  h += '</div>';
+  return h;
+}
+
+function renderPlayRow(idx, vi, pi, play) {
+  var h = '<div class="item-card" data-play-idx="'+pi+'" style="margin:.3rem 0;padding:.4rem .6rem;border:1px solid var(--border)">';
+  h += '<button class="btn-del-item" onclick="removePlay('+idx+','+vi+','+pi+')" style="top:.3rem;right:.3rem">✕</button>';
+  h += '<div class="row">';
+  h += '<div style="flex:2">'+field('Título','pptitle-'+idx+'-'+vi+'-'+pi,play.title||'')+'</div>';
+  h += '<div style="flex:1">'+field('Páginas','pppages-'+idx+'-'+vi+'-'+pi,play.pages||'')+'</div>';
+  h += '</div>';
+  h += field('Editores','ppeditors-'+idx+'-'+vi+'-'+pi,play.editors||'','Ej.: ed. Luigi Giuliani');
+  h += '<div class="field"><label><input type="checkbox" id="pphistory-'+idx+'-'+vi+'-'+pi+'"'+(play.history?' checked':'')+' style="margin-right:.3rem"> Historia editorial (no es una obra de teatro)</label></div>';
+  h += '</div>';
+  return h;
+}
+
+function addParte() {
+  readPartesFormValues();
+  var num = (S.partesData||[]).length + 1;
+  if (!S.partesData) S.partesData = [];
+  S.partesData.push({num:num, roman:'', year:'', coord:null, editorial:'', city:'', image:'', volumes:[], _open:true});
+  rerenderPartes();
+}
+
+function removeParte(idx) {
+  if (!confirm('¿Eliminar la Parte '+(idx+1)+'?')) return;
+  readPartesFormValues();
+  S.partesData.splice(idx, 1);
+  rerenderPartes();
+}
+
+function addVol(idx) {
+  readPartesFormValues();
+  if (!S.partesData || !S.partesData[idx]) return;
+  if (!S.partesData[idx].volumes) S.partesData[idx].volumes = [];
+  var vi = S.partesData[idx].volumes.length + 1;
+  S.partesData[idx].volumes.push({label:'Tomo '+toRoman(vi), isbn:'', plays:[]});
+  rerenderPartes();
+}
+
+function removeVol(idx, vi) {
+  if (!confirm('¿Eliminar este tomo?')) return;
+  readPartesFormValues();
+  if (!S.partesData || !S.partesData[idx]) return;
+  S.partesData[idx].volumes.splice(vi, 1);
+  rerenderPartes();
+}
+
+function addPlay(idx, vi) {
+  readPartesFormValues();
+  if (!S.partesData || !S.partesData[idx] || !S.partesData[idx].volumes[vi]) return;
+  S.partesData[idx].volumes[vi].plays.push({title:'', editors:'', pages:''});
+  rerenderPartes();
+}
+
+function removePlay(idx, vi, pi) {
+  readPartesFormValues();
+  if (!S.partesData || !S.partesData[idx] || !S.partesData[idx].volumes[vi]) return;
+  S.partesData[idx].volumes[vi].plays.splice(pi, 1);
+  rerenderPartes();
+}
+
+function toRoman(n) {
+  var v=[['M',1000],['CM',900],['D',500],['CD',400],['C',100],['XC',90],['L',50],['XL',40],['X',10],['IX',9],['V',5],['IV',4],['I',1]];
+  var r=''; v.forEach(function(p){while(n>=p[1]){r+=p[0];n-=p[1];}});return r;
+}
+
+function rerenderPartes() {
+  var c = document.getElementById('partesContainer');
+  if (c) c.innerHTML = renderAllPartes();
+}
+
+function readPartesFormValues() {
+  if (S.pageType !== 'partes' || !S.partesData) return;
+  S.partesData.forEach(function(p, idx) {
+    var el;
+    var det = document.querySelector('[data-parte-det="'+idx+'"]');
+    if (det) p._open = det.open;
+    el = document.getElementById('pnum-'+idx); if(el) p.num = parseInt(el.value)||idx+1;
+    el = document.getElementById('proman-'+idx); if(el) p.roman = el.value;
+    el = document.getElementById('pyear-'+idx); if(el) p.year = parseInt(el.value)||el.value||'';
+    el = document.getElementById('pcoord-'+idx); if(el) p.coord = el.value.trim()||null;
+    el = document.getElementById('pedit-'+idx); if(el) p.editorial = el.value;
+    el = document.getElementById('pcity-'+idx); if(el) p.city = el.value;
+    el = document.getElementById('pimg-'+idx); if(el) p.image = el.value;
+    (p.volumes||[]).forEach(function(v, vi) {
+      el = document.getElementById('pvlabel-'+idx+'-'+vi); if(el) v.label = el.value;
+      el = document.getElementById('pvisbn-'+idx+'-'+vi); if(el) v.isbn = el.value;
+      (v.plays||[]).forEach(function(play, pi) {
+        el = document.getElementById('pptitle-'+idx+'-'+vi+'-'+pi); if(el) play.title = el.value;
+        el = document.getElementById('ppeditors-'+idx+'-'+vi+'-'+pi); if(el) play.editors = el.value;
+        el = document.getElementById('pppages-'+idx+'-'+vi+'-'+pi); if(el) play.pages = el.value;
+        var hEl = document.getElementById('pphistory-'+idx+'-'+vi+'-'+pi);
+        if (hEl && hEl.checked) { play.history = true; } else { delete play.history; }
+      });
+    });
+  });
+}
+
+function genPartes() {
+  var h = '\n';
+  h += '    <p class="intro-text">\n      '+S.introHtml+'\n    </p>\n';
+  if (S.partesSearchHtml) h += '\n    <!-- SEARCH -->\n    '+S.partesSearchHtml+'\n';
+  h += '\n    <!-- GRID (JS-generated) -->\n    <div class="partes-grid" id="partesGrid"></div>\n';
+  if (S.partesNoResultsHtml) h += '    '+S.partesNoResultsHtml+'\n';
+  return h;
+}
+
+function updatePartesScript() {
+  if (!S.partesData) return;
+  var clean = S.partesData.map(function(p) { var c=Object.assign({},p); delete c._open; return c; });
+  var partesJson = JSON.stringify(clean, null, 2);
+  // Find and replace the full PARTES array using bracket counting
+  var startTag = S.footerPart.indexOf('const PARTES =');
+  if (startTag === -1) startTag = S.footerPart.search(/const\s+PARTES\s*=/);
+  if (startTag === -1) return;
+  var arrStart = S.footerPart.indexOf('[', startTag);
+  if (arrStart === -1) return;
+  var depth = 0, i = arrStart, arrEnd = -1;
+  while (i < S.footerPart.length) {
+    var ch = S.footerPart[i];
+    if (ch === '[') depth++;
+    else if (ch === ']') { depth--; if (depth === 0) { arrEnd = i; break; } }
+    i++;
+  }
+  if (arrEnd === -1) return;
+  // Include the trailing semicolon if present
+  var after = arrEnd + 1;
+  while (after < S.footerPart.length && S.footerPart[after] === ' ') after++;
+  var hasSemi = S.footerPart[after] === ';';
+  S.footerPart = S.footerPart.slice(0, arrStart) + partesJson + (hasSemi ? ';' : '') + S.footerPart.slice(hasSemi ? after + 1 : after);
+}
+
 function readAllItems() {
   S.items.forEach(function(it) {
     if (it._group) {
@@ -1914,6 +2144,8 @@ function readAllItems() {
   // Read intro
   var intro = document.querySelector('[data-rich-id="intro"]');
   if (intro) S.introHtml = intro.innerHTML;
+  // Read partes data
+  if (S.pageType === 'partes') readPartesFormValues();
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -1940,6 +2172,7 @@ function generateHtml() {
   else if (S.pageType==='multimedia') content += genMultimedia();
   else if (S.pageType==='members') content += genMembers();
   else if (S.pageType==='projects') content += genProjects();
+  else if (S.pageType==='partes') content += genPartes();
   else content += genBlocks();
 
   // Main close
@@ -1962,6 +2195,8 @@ function generateHtml() {
 
   // Update title in header
   var header = S.headerPart.replace(/<title>[\s\S]*?<\/title>/i, '<title>'+S.pageTitle+'</title>');
+  // Update PARTES script in footer for partes page type
+  if (S.pageType === 'partes') updatePartesScript();
   var footer = S.footerPart;
   if (_pendingLocalVideos) footer = updateFooterVideosScript(footer, _pendingLocalVideos);
 
