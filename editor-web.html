@@ -501,6 +501,7 @@ function parseNews(mainEl) {
 function makeBlock(el) {
   var id = blockId++, tag = el.tagName?el.tagName.toLowerCase():'', cls = el.className||'';
   if (tag==='h2'||tag==='h3') return {id:id,type:'heading',tag:tag,html:el.innerHTML,cls:cls};
+  if (tag==='p' && cls.indexOf('article-lead')!==-1 && cls.indexOf('article-lead-subtitle')===-1) return {id:id,type:'lead',html:el.innerHTML};
   if (tag==='p') return {id:id,type:'paragraph',html:el.innerHTML,cls:cls};
   if (tag==='figure'||cls.indexOf('inline-figure')!==-1) {
     var img=el.querySelector('img'), cap=el.querySelector('figcaption');
@@ -510,6 +511,14 @@ function makeBlock(el) {
   if (cls.indexOf('article-links')!==-1) {
     var links=[]; el.querySelectorAll('a').forEach(function(a){ links.push({label:a.textContent.trim(),url:a.getAttribute('href')||''}); });
     return {id:id,type:'links',links:links};
+  }
+  if (tag==='div' && el.querySelector('.inline-figure')) {
+    var imgs=[];
+    el.querySelectorAll('.inline-figure').forEach(function(fig){
+      var img=fig.querySelector('img');
+      imgs.push({src:img?img.getAttribute('src'):'',alt:img?(img.getAttribute('alt')||''):''});
+    });
+    return {id:id,type:'imagegrid',imgs:imgs};
   }
   if (cls.indexOf('book-highlight')!==-1) {
     var bpEl=el.querySelector('p'), baEl=el.querySelector('a.btn-consultar,a[href]');
@@ -1025,8 +1034,8 @@ function renderBlocksEditor() {
 }
 
 function renderBlockCard(b) {
-  var types = {heading:'Título',paragraph:'Párrafo',figure:'Figura',pullquote:'Cita',links:'Enlaces',highlight:'Destacado',list:'Lista'};
-  var tcls = {heading:'type-h',paragraph:'type-p',figure:'type-fig',pullquote:'type-quote',links:'type-links',highlight:'type-quote',list:'type-p'};
+  var types = {heading:'Título',paragraph:'Párrafo',lead:'Texto destacado',figure:'Figura',imagegrid:'Cuadrícula de imágenes',pullquote:'Cita',links:'Enlaces',highlight:'Destacado',list:'Lista'};
+  var tcls = {heading:'type-h',paragraph:'type-p',lead:'type-quote',figure:'type-fig',imagegrid:'type-fig',pullquote:'type-quote',links:'type-links',highlight:'type-quote',list:'type-p'};
   var h = '<div class="block-card" data-bid="'+b.id+'">';
   h += '<div class="block-header">';
   h += '<span class="block-handle">☰</span>';
@@ -1046,6 +1055,17 @@ function renderBlockCard(b) {
     h += '</div>';
   } else if (b.type==='paragraph') {
     h += richField('Contenido',b.html,'block-'+b.id);
+  } else if (b.type==='lead') {
+    h += richField('Texto destacado (lead)',b.html,'block-'+b.id);
+  } else if (b.type==='imagegrid') {
+    h += '<div id="imggrid-'+b.id+'">';
+    (b.imgs||[]).forEach(function(img,i){
+      h += '<div style="display:flex;gap:.4rem;align-items:flex-end;margin-bottom:.4rem">';
+      h += '<div style="flex:1">'+imgField('Imagen '+(i+1),img.src,'gg-src-'+b.id+'-'+i)+'</div>';
+      h += '<div style="flex:1">'+field('Texto alternativo','gg-alt-'+b.id+'-'+i,img.alt,'Alt de la imagen')+'</div>';
+      h += '</div>';
+    });
+    h += '</div>';
   } else if (b.type==='figure') {
     h += imgField('Imagen',b.src,'img-'+b.id);
     h += field('Texto alternativo','alt-'+b.id,b.alt,'Descripción breve de la imagen');
@@ -1192,9 +1212,15 @@ function rerenderBlocks() {
 
 function readAllBlocks() {
   S.blocks.forEach(function(b) {
-    if (b.type==='paragraph'||b.type==='pullquote') {
+    if (b.type==='paragraph'||b.type==='pullquote'||b.type==='lead') {
       var el = document.querySelector('[data-rich-id="block-'+b.id+'"]');
       if (el) b.html = el.innerHTML;
+    }
+    if (b.type==='imagegrid') {
+      (b.imgs||[]).forEach(function(img,i){
+        var si=document.getElementById('gg-src-'+b.id+'-'+i); if(si) img.src=si.value;
+        var ai=document.getElementById('gg-alt-'+b.id+'-'+i); if(ai) img.alt=ai.value;
+      });
     }
     if (b.type==='figure') {
       var si=document.getElementById('img-'+b.id); if(si) b.src=si.value;
@@ -2254,9 +2280,21 @@ function genBlocks() {
     if (b.type==='heading') {
       var cls=b.cls?' class="'+escA(b.cls)+'"':'';
       h += '\n      <'+b.tag+cls+'>'+b.html+'</'+b.tag+'>\n';
+    } else if (b.type==='lead') {
+      h += '\n      <p class="article-lead">\n        '+b.html+'\n      </p>\n';
     } else if (b.type==='paragraph') {
       var cls=b.cls?' class="'+escA(b.cls)+'"':'';
       h += '\n      <p'+cls+'>\n        '+b.html+'\n      </p>\n';
+    } else if (b.type==='imagegrid') {
+      h += '\n      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">\n';
+      (b.imgs||[]).forEach(function(img){
+        h += '        <figure class="inline-figure" style="float: none; width: 100%; margin: 0;">\n';
+        h += '          <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector(\'img\').src)">\n';
+        h += '            <img src="'+escA(img.src)+'" alt="'+escA(img.alt)+'" />\n';
+        h += '            <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>\n';
+        h += '          </div>\n        </figure>\n';
+      });
+      h += '      </div>\n';
     } else if (b.type==='figure') {
       var fc=b.isLeft?'inline-figure-left':'inline-figure';
       if(b.cls&&b.cls!=='inline-figure'&&b.cls!=='inline-figure-left') fc=b.cls;
