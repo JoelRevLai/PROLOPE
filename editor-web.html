@@ -1026,7 +1026,7 @@ function renderBlocksEditor() {
   h += '<button class="btn btn-sm" style="background:#5a7d5a;color:#fff" onclick="addBlock(\'figure\')">+ Figura</button>';
   h += '<button class="btn btn-sm" style="background:#7a6f60;color:#fff" onclick="addBlock(\'pullquote\')">+ Cita destacada</button>';
   h += '<button class="btn btn-sm" style="background:#6a5a8a;color:#fff" onclick="addBlock(\'links\')">+ Enlaces</button>';
-  h += '<button class="btn btn-sm" style="background:#8a6a4a;color:#fff" onclick="addBlock(\'highlight\')">+ Bloque destacado</button>';
+  h += '<button class="btn btn-sm" style="background:#8a6a4a;color:#fff" onclick="addBlock(\'highlight\')">+ Recuadro destacado con enlace</button>';
   h += '<button class="btn btn-sm" style="background:#4a7a8a;color:#fff" onclick="addBlock(\'list\')">+ Lista bibliográfica</button>';
   h += '</div>';
   h += '</div>';
@@ -1034,7 +1034,7 @@ function renderBlocksEditor() {
 }
 
 function renderBlockCard(b) {
-  var types = {heading:'Título',paragraph:'Párrafo',lead:'Texto destacado',figure:'Figura',imagegrid:'Cuadrícula de imágenes',pullquote:'Cita',links:'Enlaces',highlight:'Destacado',list:'Lista'};
+  var types = {heading:'Título',paragraph:'Párrafo',lead:'Texto destacado',figure:'Figura',imagegrid:'Cuadrícula de imágenes',pullquote:'Cita',links:'Enlaces',highlight:'Recuadro destacado con enlace',list:'Lista'};
   var tcls = {heading:'type-h',paragraph:'type-p',lead:'type-quote',figure:'type-fig',imagegrid:'type-fig',pullquote:'type-quote',links:'type-links',highlight:'type-quote',list:'type-p'};
   var h = '<div class="block-card" data-bid="'+b.id+'">';
   h += '<div class="block-header">';
@@ -1049,8 +1049,8 @@ function renderBlockCard(b) {
   if (b.type==='heading') {
     h += '<div style="display:flex;gap:.5rem;align-items:flex-end">';
     h += '<div style="width:70px"><label>Nivel</label><select onchange="updBlock('+b.id+',\'tag\',this.value)">';
-    h += '<option value="h2"'+(b.tag==='h2'?' selected':'')+'>H2</option>';
-    h += '<option value="h3"'+(b.tag==='h3'?' selected':'')+'>H3</option></select></div>';
+    h += '<option value="h2"'+(b.tag==='h2'?' selected':'')+'>Título de sección</option>';
+    h += '<option value="h3"'+(b.tag==='h3'?' selected':'')+'>Subtítulo</option></select></div>';
     h += '<div style="flex:1"><label>Texto</label><input type="text" value="'+escA(b.html.replace(/<[^>]+>/g,''))+'" onchange="updBlock('+b.id+',\'html\',this.value)"></div>';
     h += '</div>';
   } else if (b.type==='paragraph') {
