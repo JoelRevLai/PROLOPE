@@ -195,9 +195,12 @@ var S = {
   items: [],       // for tesis, congresos, seminarios, multimedia, members, projects
   introHtml: '',   // intro text before items
   afterGridHtml: '',
+  newsEntry: null, // matching noticias-data.js entry for current news page
+  newsFormData: null, // parsed form data for existing news editor
 };
 var blockId = 0;
 var imgPickerCallback = null;
+var NC = { blockId: 0, cats: [] }; // news creation state
 
 // ── INIT ─────────────────────────────────────────────────────────────────────
 (async function init() {
@@ -228,10 +231,15 @@ function renderNav() {
     if (!groups[g]) return;
     html += '<div class="nav-group"><div class="nav-group-title">'+(labels[g]||g)+'</div>';
     groups[g].forEach(function(p){
+      if (g === 'noticias' && /^noticia-/.test(p.name)) return; // individual news handled by manager
       var name = p.name.replace('.html','').replace(/-/g,' ');
       name = name.charAt(0).toUpperCase()+name.slice(1);
       html += '<button class="nav-item" data-path="'+p.path+'" onclick="loadPage(\''+p.path+'\')">'+esc(name)+'</button>';
     });
+    if (g === 'noticias') {
+      html += '<button class="nav-item" data-path="__news_manager__" onclick="loadNewsManager()">Ver todas las noticias</button>';
+      html += '<button class="nav-item" style="color:rgba(200,164,90,.85)" data-path="__new_news__" onclick="loadNewNews()">+ Nueva noticia</button>';
+    }
     html += '</div>';
   });
   html += '<div class="nav-group"><div class="nav-group-title">Herramientas</div>';
@@ -245,7 +253,7 @@ async function loadPage(pagePath) {
   // Highlight nav
   document.querySelectorAll('.nav-item').forEach(function(el){ el.classList.toggle('active', el.dataset.path === pagePath); });
   document.getElementById('topbar').style.display = '';
-  document.getElementById('welcomeScreen').style.display = 'none';
+  var _ws = document.getElementById('welcomeScreen'); if (_ws) _ws.style.display = 'none';
 
   try {
     var r = await fetch('/api/page?path='+encodeURIComponent(pagePath));
@@ -256,7 +264,9 @@ async function loadPage(pagePath) {
   }
 
   S.currentPath = pagePath;
+  S.newsEntry = null;
   parseFile(S.originalHtml, pagePath);
+  if (S.pageType === 'news') await loadNewsEntry(pagePath);
   renderEditor();
   document.getElementById('edBody').scrollTop = 0;
 }
@@ -389,9 +399,73 @@ function parseMain(mainEl) {
   if (type === 'multimedia') return parseMultimedia(mainEl);
   if (type === 'members') return parseMembers(mainEl);
   if (type === 'projects') return parseProjects(mainEl);
+  if (type === 'news') return parseNews(mainEl);
 
   // Generic: parse into blocks
   Array.from(mainEl.children).forEach(function(el) { S.blocks.push(makeBlock(el)); });
+}
+
+function parseNews(mainEl) {
+  var f = {};
+  // Slug from filename
+  f.slug = S.currentPath.split('/').pop().replace(/^noticia-/,'').replace(/\.html$/,'');
+  // Hero data already parsed into S.heroData
+  f.titulo = S.heroData ? S.heroData.title : '';
+  f.tituloPlain = f.titulo.replace(/<[^>]+>/g,'');
+  f.cat = S.heroData ? S.heroData.catBadge : '';
+  f.fechaLarga = S.heroData ? S.heroData.date : '';
+  f.breadcrumb = S.heroData ? S.heroData.breadcrumbLast : '';
+  f.tituloSeo = S.pageTitle.replace(/\s*\|\s*PROLOPE\s*$/,'').trim();
+  // Tipo: check for event-box
+  f.tipo = mainEl.querySelector('.event-box') ? 'evento' : 'suceso';
+  // Image
+  var figImg = mainEl.querySelector('.article-figure img, .article-figure-img-wrap img');
+  var evImg  = mainEl.querySelector('.event-box-img-wrap img');
+  var imgEl  = figImg || evImg;
+  f.imgPath   = imgEl ? imgEl.getAttribute('src') : '';
+  f.imagenAlt = imgEl ? (imgEl.getAttribute('alt')||'') : '';
+  // Evento fields
+  f.evTitulo    = '';
+  f.evSubtitulo = '';
+  f.evFechas    = '';
+  f.evLugar     = '';
+  f.evLinks     = [];
+  if (f.tipo === 'evento') {
+    var evTitleEl = mainEl.querySelector('.event-box-title');
+    if (evTitleEl) {
+      var em = evTitleEl.querySelector('em');
+      if (em) { f.evSubtitulo = em.textContent.trim(); em.remove(); }
+      f.evTitulo = evTitleEl.textContent.trim();
+    }
+    var metaLis = mainEl.querySelectorAll('.event-box-meta li');
+    if (metaLis[0]) f.evFechas = metaLis[0].textContent.trim();
+    if (metaLis[1]) f.evLugar  = metaLis[1].textContent.trim();
+    mainEl.querySelectorAll('.event-box-links a').forEach(function(a){
+      f.evLinks.push({label:a.textContent.trim(),url:a.getAttribute('href')||''});
+    });
+  }
+  // Content blocks
+  f.contentBlocks = [];
+  Array.from(mainEl.children).forEach(function(el) {
+    var tag = el.tagName ? el.tagName.toLowerCase() : '';
+    var cls = el.className || '';
+    if (tag === 'p' && cls.indexOf('article-lead-subtitle') !== -1) {
+      f.contentBlocks.push({type:'subtitulo', text: el.innerHTML});
+    } else if (tag === 'h2' && cls.indexOf('article-lead-title') !== -1) {
+      f.contentBlocks.push({type:'titulo', text: el.innerHTML});
+    } else if (tag === 'p' && !cls.includes('back-link')) {
+      f.contentBlocks.push({type:'parrafo', text: el.innerHTML});
+    }
+  });
+  // External links
+  f.links = [];
+  mainEl.querySelectorAll('.article-links a').forEach(function(a){
+    f.links.push({label:a.textContent.trim(),url:a.getAttribute('href')||''});
+  });
+  // Excerpt from newsEntry (loaded later)
+  f.excerpt = '';
+  f.searchDesc = '';
+  S.newsFormData = f;
 }
 
 function makeBlock(el) {
@@ -674,6 +748,8 @@ function renderEditor() {
   document.getElementById('topTitle').textContent = name.charAt(0).toUpperCase()+name.slice(1);
   document.getElementById('topBadge').textContent = TYPE_LABELS[S.pageType]||'Página';
 
+  if (S.pageType === 'news') { renderNewsEditor(); return; }
+
   var h = '';
 
   // Metadata
@@ -705,6 +781,9 @@ function renderEditor() {
   else if (S.pageType==='projects') h += renderProjectsEditor();
   else h += renderBlocksEditor();
 
+  // News card data section
+  if (S.pageType === 'news') h += renderNewsCardEditor();
+
   // Sidebar
   if (S.hasSidebar) {
     h += '<div class="ed-section"><h2>Barra lateral</h2>';
@@ -735,6 +814,8 @@ function richField(label,html,dataId) {
     +'<button onmousedown="execRich(event,\'italic\')"><i>C</i></button>'
     +'<button onmousedown="execRich(event,\'link\')">Enlace</button>'
     +'<button onmousedown="execRich(event,\'removeLink\')">Quitar enlace</button>'
+    +'<button onmousedown="execRich(event,\'insertUnorderedList\')">• Lista</button>'
+    +'<button onmousedown="execRich(event,\'insertOrderedList\')">1. Lista</button>'
     +'</div>'
     +'<div class="rich-edit" contenteditable="true" data-rich-id="'+dataId+'">'+html+'</div>'
     +'</div></div>';
@@ -788,6 +869,8 @@ function execRich(e,cmd) {
     if (url) document.execCommand('createLink',false,url);
   } else if (cmd==='removeLink') {
     document.execCommand('unlink');
+  } else if (cmd==='insertBr') {
+    document.execCommand('insertHTML', false, '<br>');
   } else {
     document.execCommand(cmd);
   }
@@ -1768,6 +1851,11 @@ function readFormValues() {
     var s=document.getElementById('edHeroSub'); if(s) S.heroData.subtitle=s.value;
   }
   var sb=document.getElementById('edSidebar'); if(sb) S.sidebarHtml=sb.innerHTML;
+  if (S.pageType === 'news') {
+    if (!S.newsEntry) S.newsEntry = {};
+    var ne=document.getElementById('edNewsExcerpt'); if(ne) S.newsEntry.excerpt=ne.value;
+    var ni=document.getElementById('edNewsImg'); if(ni) S.newsEntry.img=ni.value;
+  }
   readAllBlocks();
   readAllItems();
 }
@@ -2202,6 +2290,7 @@ async function updateGenericSearchData() {
 }
 
 async function savePage() {
+  if (S.pageType === 'news') { await saveNewsPage(); return; }
   var html = generateHtml();
   var btn = document.getElementById('btnSave');
   btn.textContent = 'Guardando…';
@@ -2247,7 +2336,7 @@ var _recursosFiles = [];
 async function loadRecursos() {
   document.querySelectorAll('.nav-item').forEach(function(el){ el.classList.toggle('active', el.dataset.path === '__recursos__'); });
   document.getElementById('topbar').style.display = 'none';
-  document.getElementById('welcomeScreen').style.display = 'none';
+  var _wsX = document.getElementById('welcomeScreen'); if (_wsX) _wsX.style.display = 'none';
   document.getElementById('edBody').innerHTML = '<p style="padding:2rem;opacity:.5">Cargando recursos…</p>';
   try {
     var r = await fetch('/api/media-all');
@@ -2358,6 +2447,949 @@ async function uploadRecursos(fileInput) {
   try { var mr = await fetch('/api/media'); S.media = await mr.json(); } catch(e){}
   toast(ok+' subido'+(ok!==1?'s':'')+(err?' · '+err+' error'+(err!==1?'es':''):''), ok&&!err ? 'ok' : 'err');
   loadRecursos();
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// NEWS — HELPERS
+// ══════════════════════════════════════════════════════════════════════════════
+
+function escJs(s) { return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\n/g,' '); }
+
+async function loadNewsEntry(pagePath) {
+  var filename = pagePath.split('/').pop();
+  NC.cats = [];
+  try {
+    var r = await fetch('/api/page?path=noticias-data.js');
+    var src = await r.text();
+    var newsArr = [];
+    try { newsArr = new Function(src.replace(/\bconst\b/g,'var').replace(/\blet\b/g,'var')+';return typeof news!=="undefined"?news:[];')(); } catch(e) {}
+    S.newsEntry = newsArr.find(function(n){ return n.url===filename; }) || null;
+    if (S.newsEntry && S.newsFormData) S.newsFormData.excerpt = S.newsEntry.excerpt || '';
+    // Populate cats for the editor dropdowns
+    var seen = {};
+    newsArr.forEach(function(n){ if(n.cat&&!seen[n.cat]){seen[n.cat]=true;NC.cats.push(n.cat);} });
+    NC.cats.sort();
+  } catch(e) { S.newsEntry = null; }
+}
+
+function renderNewsEditor() {
+  NC.blockId = 0;
+  var f = S.newsFormData || {};
+  var catOpts = '<option value="__nueva__">— Nueva categoría —</option>';
+  NC.cats.forEach(function(c){ catOpts+='<option value="'+escA(c)+'"'+(c===f.cat?' selected':'')+'>'+esc(c)+'</option>'; });
+  // If cat not in list, add it
+  if (f.cat && NC.cats.indexOf(f.cat)===-1) catOpts='<option value="'+escA(f.cat)+'" selected>'+esc(f.cat)+'</option>'+catOpts;
+
+  var h = '';
+
+  // Datos básicos
+  h += '<div class="ed-section"><h2>Datos de la noticia</h2>';
+  h += '<div class="field"><label>Tipo de noticia</label>';
+  h += '<select id="nc-tipo" onchange="ncToggleEvento()"><option value="suceso"'+(f.tipo!=='evento'?' selected':'')+'>Noticia / suceso</option><option value="evento"'+(f.tipo==='evento'?' selected':'')+'>Evento (congreso, seminario, jornadas…)</option></select></div>';
+  h += '<div class="field"><label>Categoría</label><div style="display:flex;gap:.5rem">';
+  h += '<select id="nc-cat-sel" onchange="ncOnCatChange()" style="flex:1">'+catOpts+'</select>';
+  h += '<input type="text" id="nc-cat-custom" placeholder="Nueva categoría" style="flex:1;display:none"></div></div>';
+  h += '<div class="field"><label>Título</label>';
+  h += '<div class="rich-wrap"><div class="rich-toolbar"><button onmousedown="execRich(event,\'bold\')"><b>N</b></button><button onmousedown="execRich(event,\'italic\')"><i>C</i></button></div>';
+  h += '<div class="rich-edit" contenteditable="true" id="nc-titulo" style="min-height:40px">'+f.titulo+'</div></div></div>';
+  h += '<div class="field"><label>Nombre del archivo (slug)</label>';
+  h += '<p class="help">Solo informativo para noticias existentes.</p>';
+  h += '<input type="text" id="nc-slug" value="'+escA(f.slug||'')+'" readonly style="background:#eee;color:#888"></div>';
+  h += '<div class="field"><label>Fecha (completa)</label>';
+  h += '<p class="help">Ej.: 27 de noviembre de 2024. Fecha corta: <strong id="nc-fecha-corta">'+esc(ncShortenDate(f.fechaLarga)||'—')+'</strong></p>';
+  h += '<input type="text" id="nc-fecha" value="'+escA(f.fechaLarga||'')+'" placeholder="Ej.: 27 de noviembre de 2024"></div>';
+  h += field('Texto del breadcrumb','nc-breadcrumb',f.breadcrumb,'Ej.: Congreso XI 2024');
+  h += field('Título SEO (pestaña del navegador)','nc-seo',f.tituloSeo,'Ej.: XI Congreso Internacional Lope de Vega');
+  h += '</div>';
+
+  // Imagen
+  h += '<div class="ed-section"><h2>Imagen (opcional)</h2>';
+  h += imgField('Archivo de imagen', f.imgPath ? f.imgPath.replace(/^\.\.\//, '') : '', 'nc-img');
+  h += '<p class="help" style="margin-top:.2rem">Si se deja vacío, se usará la imagen genérica de noticias.</p>';
+  h += field('Texto alternativo de la imagen','nc-img-alt',f.imagenAlt||'','Ej.: Cartel del XI Congreso');
+  h += '</div>';
+
+  // Evento fields
+  h += '<div class="ed-section" id="nc-evento-section" style="display:'+(f.tipo==='evento'?'':'none')+'"><h2>Datos del evento</h2>';
+  h += field('Título del evento (en el recuadro)','nc-ev-titulo',f.evTitulo||'','Ej.: 18 Jornadas sobre teatro clásico');
+  h += field('Subtítulo del evento (opcional)','nc-ev-subtitulo',f.evSubtitulo||'');
+  h += field('Fechas del evento','nc-ev-fechas',f.evFechas||'','Ej.: 22–24 de julio de 2024');
+  h += field('Lugar del evento','nc-ev-lugar',f.evLugar||'');
+  h += '<div class="field"><label>Enlaces del evento</label><div id="nc-ev-links"></div>';
+  h += '<button class="btn btn-outline btn-sm" style="margin-top:.3rem" onclick="ncAddEvLink()">+ Añadir enlace</button></div>';
+  h += '</div>';
+
+  // Contenido
+  h += '<div class="ed-section"><h2>Contenido</h2>';
+  h += '<div class="field"><label>Extracto (resumen para la tarjeta de noticias)</label>';
+  h += '<textarea id="nc-excerpt" rows="2" placeholder="Breve resumen…">'+esc(f.excerpt||'')+'</textarea></div>';
+  h += '<div class="field"><label>Bloques de contenido</label>';
+  h += '<p class="help">Añade párrafos, títulos y subtítulos en el orden en que aparecerán.</p>';
+  h += '<div id="nc-blocks"></div>';
+  h += '<div style="display:flex;gap:.4rem;margin-top:.4rem;flex-wrap:wrap">';
+  h += '<button class="btn btn-blue btn-sm" onclick="ncAddBlock(\'parrafo\')">+ Párrafo</button>';
+  h += '<button class="btn btn-sm" style="background:var(--dorado);color:#fff" onclick="ncAddBlock(\'titulo\')">+ Título</button>';
+  h += '<button class="btn btn-sm" style="background:#7a6f60;color:#fff" onclick="ncAddBlock(\'subtitulo\')">+ Subtítulo</button>';
+  h += '</div></div></div>';
+
+  // Enlaces externos
+  h += '<div class="ed-section"><h2>Enlaces externos (al final de la noticia)</h2>';
+  h += '<div id="nc-links"></div>';
+  h += '<button class="btn btn-outline btn-sm" style="margin-top:.3rem" onclick="ncAddLink()">+ Añadir enlace</button>';
+  h += '</div>';
+
+  // Búsqueda
+  h += '<div class="ed-section"><h2>Datos para el buscador</h2>';
+  h += field('Descripción para el buscador (opcional)','nc-search-desc',f.searchDesc||'','Se usa el extracto si se deja vacío');
+  h += '</div>';
+
+  h += '<button class="btn btn-primary" style="width:100%;padding:.8rem;font-size:1rem;border-radius:8px;margin-bottom:2rem" onclick="saveNewsPage()">Guardar cambios</button>';
+
+  document.getElementById('edBody').innerHTML = h;
+  document.getElementById('edBody').scrollTop = 0;
+
+  // Wire events
+  document.getElementById('nc-fecha').addEventListener('input', ncAutoFechaCorta);
+
+  // Pre-populate content blocks
+  (f.contentBlocks||[]).forEach(function(b){ ncAddBlockWithContent(b.type, b.text); });
+  if (!(f.contentBlocks||[]).length) ncAddBlock('parrafo');
+
+  // Pre-populate links
+  (f.links||[]).forEach(function(l){ ncAddLinkWithValues('nc-links', l.label, l.url); });
+  if (!(f.links||[]).length) ncAddLink();
+
+  // Pre-populate evento links
+  (f.evLinks||[]).forEach(function(l){ ncAddLinkWithValues('nc-ev-links', l.label, l.url); });
+}
+
+function ncAddBlockWithContent(type, html) {
+  ncAddBlock(type);
+  var c = document.getElementById('nc-blocks');
+  var cards = c.querySelectorAll('[data-ncbid]');
+  var last = cards[cards.length-1];
+  if (last) { var ed = last.querySelector('.rich-edit'); if (ed) ed.innerHTML = html; }
+}
+
+function ncAddLinkWithValues(containerId, label, url) {
+  var c = document.getElementById(containerId);
+  var d = document.createElement('div'); d.className='link-row';
+  d.innerHTML='<input type="text" placeholder="Texto del enlace" value="'+escA(label||'')+'">'
+    +'<input type="text" placeholder="URL" value="'+escA(url||'')+'"><button class="del-link" onclick="this.parentElement.remove()">×</button>';
+  c.appendChild(d);
+}
+
+async function saveNewsPage() {
+  var tipo = document.getElementById('nc-tipo').value;
+  var cat = ncGetCat();
+  var tituloEl = document.getElementById('nc-titulo');
+  var titulo = tituloEl ? tituloEl.innerHTML.trim() : '';
+  var tituloPlain = titulo.replace(/<[^>]+>/g,'');
+  var slug = (S.newsFormData||{}).slug || document.getElementById('nc-slug').value.trim();
+  var fechaLarga = document.getElementById('nc-fecha').value.trim();
+  var fechaCorta = ncGetFechaCorta();
+  var breadcrumb = document.getElementById('nc-breadcrumb').value.trim();
+  var tituloSeo = document.getElementById('nc-seo').value.trim();
+  var imgInput = document.getElementById('nc-img');
+  var imgRaw = imgInput ? imgInput.value.trim() : '';
+  var imagenAlt = document.getElementById('nc-img-alt').value.trim();
+  var excerpt = document.getElementById('nc-excerpt').value.trim();
+  var searchDesc = document.getElementById('nc-search-desc').value.trim();
+  var contentBlocks = ncGetBlocks();
+  var links = ncGetLinks('nc-links');
+  var evTitulo = document.getElementById('nc-ev-titulo').value.trim();
+  var evSubtitulo = document.getElementById('nc-ev-subtitulo').value.trim();
+  var evFechas = document.getElementById('nc-ev-fechas').value.trim();
+  var evLugar = document.getElementById('nc-ev-lugar').value.trim();
+  var evLinks = ncGetLinks('nc-ev-links');
+
+  var errors = [];
+  if (!tituloPlain) errors.push('título');
+  if (!fechaLarga || fechaCorta==='—') errors.push('fecha');
+  if (!cat) errors.push('categoría');
+  if (!excerpt) errors.push('extracto');
+  if (!contentBlocks.length) errors.push('al menos un bloque de contenido');
+  if (errors.length) { toast('Faltan campos: '+errors.join(', '),'err'); return; }
+
+  var imgPath = '';
+  if (imgRaw) {
+    var imgFilename = imgRaw.replace(/^(\.\.\/)?media\//,'');
+    imgPath = '../media/'+imgFilename;
+  }
+
+  var html = ncGenerateHtml({tipo,cat,titulo,tituloPlain,slug,fechaLarga,fechaCorta,breadcrumb,tituloSeo,imgPath,imagenAlt,excerpt,contentBlocks,links,evTitulo,evSubtitulo,evFechas,evLugar,evLinks,filename:S.currentPath.split('/').pop()});
+
+  toast('Guardando…','info');
+  try {
+    var r = await fetch('/api/page?path='+encodeURIComponent(S.currentPath),{method:'POST',headers:{'Content-Type':'text/html; charset=utf-8'},body:html});
+    var data = await r.json();
+    if (!data.ok) { toast('Error al guardar: '+(data.error||''),'err'); return; }
+  } catch(e) { toast('Error de conexión','err'); return; }
+
+  // Update noticias-data.js entry
+  try {
+    var nr = await fetch('/api/page?path=noticias-data.js');
+    var src = await nr.text();
+    var newsArr = [];
+    try { newsArr = new Function(src.replace(/\bconst\b/g,'var').replace(/\blet\b/g,'var')+';return typeof news!=="undefined"?news:[];')(); } catch(ex) {}
+    var filename = S.currentPath.split('/').pop();
+    var entry = newsArr.find(function(n){ return n.url===filename; });
+    if (entry) {
+      entry.cat = cat;
+      entry.date = ncShortenDate(fechaLarga) || entry.date;
+      entry.title = tituloPlain;
+      entry.excerpt = excerpt;
+      if (imgPath) entry.img = imgPath;
+      var paras = contentBlocks.filter(function(b){ return b.type==='parrafo'; });
+      entry.content = paras.map(function(b){ return b.text.replace(/<[^>]+>/g,''); });
+      var allLinks = links.concat(tipo==='evento'?evLinks:[]);
+      entry.links = allLinks;
+      var newSrc = ncSerializeNoticiasData(newsArr);
+      await fetch('/api/page?path=noticias-data.js',{method:'POST',headers:{'Content-Type':'application/javascript; charset=utf-8'},body:newSrc});
+    }
+  } catch(ex) { /* silent */ }
+
+  // Update search-data.js
+  try {
+    var desc = (searchDesc||excerpt).replace(/"/g,'\\"');
+    await fetch('/api/search-data',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:'noticias/'+S.currentPath.split('/').pop(),content:desc})});
+  } catch(ex) { /* silent */ }
+
+  toast('Noticia guardada correctamente','ok');
+  // Reload to reflect saved state
+  setTimeout(function(){ loadPage(S.currentPath); }, 1000);
+}
+
+function ncShortenDate(fechaLarga) {
+  var NC_MESES = {enero:'ene.',febrero:'feb.',marzo:'mar.',abril:'abr.',mayo:'may.',junio:'jun.',julio:'jul.',agosto:'ago.',septiembre:'sep.',octubre:'oct.',noviembre:'nov.',diciembre:'dic.'};
+  var raw = (fechaLarga||'').trim().toLowerCase();
+  if (!raw) return '';
+  var corta = raw;
+  for (var m in NC_MESES) corta = corta.replace(new RegExp(m,'gi'),NC_MESES[m]);
+  corta = corta.replace(/ de /g,' ');
+  return corta.charAt(0).toUpperCase()+corta.slice(1);
+}
+
+function ncSerializeNoticiasData(arr) {
+  var lines = '// ── NEWS DATA (shared across noticias.html and individual news pages) ──\nconst news = [\n';
+  arr.forEach(function(n,i){
+    lines += '  {\n';
+    lines += '    id: '+n.id+',\n';
+    lines += "    cat: '"+escJs(n.cat||'')+"',\n";
+    lines += "    date: '"+escJs(n.date||'')+"',\n";
+    lines += "    title: '"+escJs(n.title||'')+"',\n";
+    lines += "    excerpt: '"+escJs(n.excerpt||'')+"',\n";
+    lines += "    img: '"+escJs(n.img||'')+"',\n";
+    lines += "    url: '"+escJs(n.url||'')+"',\n";
+    lines += '    content: [\n';
+    (n.content||[]).forEach(function(c,ci){
+      lines += "      '"+escJs(c)+"'"+(ci<(n.content.length-1)?',':'')+'\n';
+    });
+    lines += '    ],\n';
+    lines += '    links: [\n';
+    (n.links||[]).forEach(function(l,li){
+      lines += "      { label: '"+escJs(l.label||'')+"', url: '"+escJs(l.url||'')+"' }"+(li<(n.links.length-1)?',':'')+'\n';
+    });
+    lines += '    ]\n';
+    lines += '  }'+(i<arr.length-1?',':'')+'\n';
+  });
+  lines += '];\n';
+  return lines;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// NEWS MANAGER
+// ══════════════════════════════════════════════════════════════════════════════
+
+var NM = { rows: [], sort: 'recent', page: 1, perPage: 10, q: '' };
+
+async function loadNewsManager() {
+  document.querySelectorAll('.nav-item').forEach(function(el){ el.classList.toggle('active', el.dataset.path==='__news_manager__'); });
+  document.getElementById('topbar').style.display = 'none';
+  var _ws2 = document.getElementById('welcomeScreen'); if (_ws2) _ws2.style.display = 'none';
+
+  // Load data from noticias-data.js
+  var dataMap = {}; // filename -> {title, date, order}
+  try {
+    var r = await fetch('/api/page?path=noticias-data.js');
+    var src = await r.text();
+    var newsArr = [];
+    try { newsArr = new Function(src.replace(/\bconst\b/g,'var').replace(/\blet\b/g,'var')+';return typeof news!=="undefined"?news:[];')(); } catch(e) {}
+    // newsArr is ordered newest-first (unshift on create), so index 0 = most recent
+    newsArr.forEach(function(n,i){ if(n.url) dataMap[n.url]={title:n.title||'',date:n.date||'',order:i}; });
+  } catch(e) {}
+
+  var noticias = S.pages.filter(function(p){ return p.path.startsWith('noticias/noticia-'); });
+  NM.rows = noticias.map(function(p){
+    var d = dataMap[p.name] || {};
+    var title = d.title || p.name.replace('.html','').replace(/^noticia-/,'').replace(/-/g,' ');
+    if (title) title = title.charAt(0).toUpperCase()+title.slice(1);
+    return { path: p.path, name: p.name, title: title, date: d.date||'', order: d.order!=null ? d.order : 9999 };
+  });
+  NM.sort = 'recent'; NM.page = 1; NM.q = '';
+
+  var h = '<div class="ed-section">';
+  h += '<h2>Noticias <button class="btn btn-green btn-sm" style="float:right" onclick="loadNewNews()">+ Nueva noticia</button></h2>';
+  if (!NM.rows.length) {
+    h += '<p style="color:#888;padding:.5rem 0">No hay noticias todavía. Pulsa «+ Nueva noticia» para crear una.</p>';
+  } else {
+    h += '<div style="display:flex;gap:.6rem;align-items:center;margin:.6rem 0;flex-wrap:wrap">';
+    h += '<input type="text" id="nm-search" placeholder="Buscar noticia…" oninput="nmOnSearch()" style="flex:1;min-width:180px;max-width:360px">';
+    h += '<span style="font-size:.8rem;color:#888;font-family:Raleway,sans-serif">Ordenar por:</span>';
+    h += '<button id="nm-sort-recent" class="btn btn-sm btn-blue" onclick="nmSetSort(\'recent\')" title="Más recientes primero">Recientes ▾</button>';
+    h += '<button id="nm-sort-old" class="btn btn-sm btn-outline" onclick="nmSetSort(\'old\')" title="Más antiguas primero">Antiguas ▴</button>';
+    h += '<button id="nm-sort-name" class="btn btn-sm btn-outline" onclick="nmSetSort(\'name\')" title="Orden alfabético">Nombre A–Z</button>';
+    h += '</div>';
+    h += '<table style="width:100%;border-collapse:collapse;font-size:.88rem">';
+    h += '<thead><tr style="border-bottom:2px solid var(--borde)"><th style="padding:.4rem .6rem;text-align:left">Título</th><th style="padding:.4rem .6rem;text-align:left;white-space:nowrap">Fecha</th><th style="width:140px"></th></tr></thead>';
+    h += '<tbody id="nm-body"></tbody></table>';
+    h += '<div id="nm-pagination" style="margin-top:.8rem;display:flex;gap:.3rem;align-items:center;flex-wrap:wrap"></div>';
+  }
+  h += '</div>';
+  document.getElementById('edBody').innerHTML = h;
+  if (NM.rows.length) nmRender();
+}
+
+function nmGetSorted() {
+  var rows = NM.rows.filter(function(r){ return !NM.q || nmNorm(r.title).indexOf(NM.q)!==-1; });
+  rows = rows.slice(); // copy
+  if (NM.sort === 'recent') rows.sort(function(a,b){ return a.order - b.order; });
+  else if (NM.sort === 'old') rows.sort(function(a,b){ return b.order - a.order; });
+  else rows.sort(function(a,b){ return a.title.localeCompare(b.title,'es'); });
+  return rows;
+}
+
+function nmRender() {
+  var rows = nmGetSorted();
+  var total = rows.length;
+  var totalPages = Math.max(1, Math.ceil(total / NM.perPage));
+  if (NM.page > totalPages) NM.page = totalPages;
+  var start = (NM.page - 1) * NM.perPage;
+  var pageRows = rows.slice(start, start + NM.perPage);
+
+  // Table body
+  var tbody = document.getElementById('nm-body');
+  var html = '';
+  pageRows.forEach(function(r){
+    html += '<tr style="border-bottom:1px solid var(--borde)">';
+    html += '<td style="padding:.5rem .6rem"><strong>'+esc(r.title)+'</strong><br><span style="font-size:.72rem;color:#aaa">'+esc(r.name)+'</span></td>';
+    html += '<td style="padding:.5rem .6rem;white-space:nowrap;color:#777;font-size:.85rem">'+esc(r.date)+'</td>';
+    html += '<td style="padding:.5rem .6rem;white-space:nowrap">'
+      +'<button class="btn btn-blue btn-sm" onclick="loadPage(decodeURIComponent(this.dataset.path))" data-path="'+encodeURIComponent(r.path)+'" style="margin-right:.3rem">Editar</button>'
+      +'<button class="btn btn-sm" style="background:var(--rojo);color:#fff" onclick="deleteNews(decodeURIComponent(this.dataset.path),decodeURIComponent(this.dataset.title))" data-path="'+encodeURIComponent(r.path)+'" data-title="'+encodeURIComponent(r.title)+'">Eliminar</button>'
+      +'</td>';
+    html += '</tr>';
+  });
+  if (tbody) tbody.innerHTML = html;
+
+  // Pagination
+  var pg = document.getElementById('nm-pagination');
+  if (pg) {
+    var ph = '<span style="font-size:.8rem;color:#888;font-family:Raleway,sans-serif;margin-right:.3rem">'+
+      (total ? (start+1)+'–'+Math.min(start+NM.perPage,total)+' de '+total : '0')+'</span>';
+    ph += '<button class="btn btn-sm btn-outline" onclick="nmGoPage(1)" '+(NM.page<=1?'disabled':'')+' title="Primera">«</button>';
+    ph += '<button class="btn btn-sm btn-outline" onclick="nmGoPage('+(NM.page-1)+')" '+(NM.page<=1?'disabled':'')+' title="Anterior">‹</button>';
+    for (var p=Math.max(1,NM.page-2); p<=Math.min(totalPages,NM.page+2); p++) {
+      ph += '<button class="btn btn-sm '+(p===NM.page?'btn-blue':'btn-outline')+'" onclick="nmGoPage('+p+')">'+p+'</button>';
+    }
+    ph += '<button class="btn btn-sm btn-outline" onclick="nmGoPage('+(NM.page+1)+')" '+(NM.page>=totalPages?'disabled':'')+' title="Siguiente">›</button>';
+    ph += '<button class="btn btn-sm btn-outline" onclick="nmGoPage('+totalPages+')" '+(NM.page>=totalPages?'disabled':'')+' title="Última">»</button>';
+    pg.innerHTML = ph;
+  }
+
+  // Sort button styles
+  ['recent','old','name'].forEach(function(s){
+    var btn = document.getElementById('nm-sort-'+s);
+    if (btn) btn.className = 'btn btn-sm '+(NM.sort===s?'btn-blue':'btn-outline');
+  });
+}
+
+function nmNorm(s) { return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(); }
+
+function nmOnSearch() {
+  NM.q = nmNorm(document.getElementById('nm-search').value||'');
+  NM.page = 1;
+  nmRender();
+}
+
+function nmSetSort(s) { NM.sort = s; NM.page = 1; nmRender(); }
+function nmGoPage(p) { NM.page = p; nmRender(); document.getElementById('edBody').scrollTop = 0; }
+
+async function deleteNews(pagePath, title) {
+  var filename = pagePath.split('/').pop();
+  if (!confirm('¿Eliminar la noticia «'+title+'»?\n\nEsta acción no se puede deshacer (aunque se guardará una copia de seguridad .bak).')) return;
+
+  toast('Eliminando…', 'info');
+
+  // 1. Delete the HTML file
+  try {
+    var r = await fetch('/api/delete-page?path='+encodeURIComponent(pagePath), {method:'POST'});
+    var data = await r.json();
+    if (!data.ok) { toast('Error al eliminar el archivo: '+(data.error||''), 'err'); return; }
+  } catch(e) { toast('Error de conexión', 'err'); return; }
+
+  // 2. Remove from noticias-data.js
+  try {
+    var nr = await fetch('/api/page?path=noticias-data.js');
+    var src = await nr.text();
+    var newsArr = [];
+    try { newsArr = new Function(src.replace(/\bconst\b/g,'var').replace(/\blet\b/g,'var')+';return typeof news!=="undefined"?news:[];')(); } catch(ex) {}
+    newsArr = newsArr.filter(function(n){ return n.url !== filename; });
+    var newSrc = ncSerializeNoticiasData(newsArr);
+    await fetch('/api/page?path=noticias-data.js', {method:'POST', headers:{'Content-Type':'application/javascript; charset=utf-8'}, body:newSrc});
+  } catch(e) { /* silent */ }
+
+  // 3. Remove from search-data.js (remove the entry with this url)
+  try {
+    var sr = await fetch('/api/page?path=search-data.js');
+    var ssrc = await sr.text();
+    // Remove the object literal for this url from the array
+    var urlPattern = 'noticias/'+filename;
+    var escaped = urlPattern.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    // Match a full object entry {...} containing this url, with optional trailing comma
+    var re = new RegExp('\\{[^{}]*?"url":\\s*"'+escaped+'"[^{}]*?\\},?\\s*\n?','s');
+    var cleaned = ssrc.replace(re, '');
+    if (cleaned !== ssrc) {
+      await fetch('/api/page?path=search-data.js', {method:'POST', headers:{'Content-Type':'application/javascript; charset=utf-8'}, body:cleaned});
+    }
+  } catch(e) { /* silent */ }
+
+  // 4. Refresh nav and reload manager
+  try { var pr=await fetch('/api/pages'); S.pages=await pr.json(); renderNav(); } catch(e){}
+  toast('Noticia «'+title+'» eliminada', 'ok');
+  loadNewsManager();
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// NEW NEWS CREATION
+// ══════════════════════════════════════════════════════════════════════════════
+
+async function loadNewNews() {
+  document.querySelectorAll('.nav-item').forEach(function(el){ el.classList.toggle('active', el.dataset.path==='__new_news__'); });
+  document.getElementById('topbar').style.display = 'none';
+  var _wsX = document.getElementById('welcomeScreen'); if (_wsX) _wsX.style.display = 'none';
+  NC.blockId = 0; NC.cats = [];
+  try {
+    var r = await fetch('/api/page?path=noticias-data.js');
+    var src = await r.text();
+    var catMatches = src.match(/\bcat:\s*'([^']+)'/g)||[];
+    var seen = {};
+    catMatches.forEach(function(m){
+      var c = m.replace(/\bcat:\s*'/,'').replace(/'$/,'').trim();
+      if (c&&!seen[c]){seen[c]=true;NC.cats.push(c);}
+    });
+    NC.cats.sort();
+  } catch(e) { NC.cats = []; }
+  renderNewNewsForm();
+}
+
+function renderNewNewsForm() {
+  var catOpts = '<option value="__nueva__">— Nueva categoría —</option>';
+  NC.cats.forEach(function(c){ catOpts+='<option value="'+escA(c)+'">'+esc(c)+'</option>'; });
+
+  var h = '';
+
+  // Datos básicos
+  h += '<div class="ed-section"><h2>Datos de la noticia</h2>';
+  h += '<div class="field"><label>Tipo de noticia</label>';
+  h += '<select id="nc-tipo" onchange="ncToggleEvento()"><option value="suceso">Noticia / suceso</option><option value="evento">Evento (congreso, seminario, jornadas…)</option></select></div>';
+  h += '<div class="field"><label>Categoría</label><div style="display:flex;gap:.5rem">';
+  h += '<select id="nc-cat-sel" onchange="ncOnCatChange()" style="flex:1">'+catOpts+'</select>';
+  h += '<input type="text" id="nc-cat-custom" placeholder="Nueva categoría" style="flex:1;display:none"></div></div>';
+  h += '<div class="field"><label>Título</label>';
+  h += '<div class="rich-wrap"><div class="rich-toolbar"><button onmousedown="execRich(event,\'bold\')"><b>N</b></button><button onmousedown="execRich(event,\'italic\')"><i>C</i></button></div>';
+  h += '<div class="rich-edit" contenteditable="true" id="nc-titulo" style="min-height:40px"></div></div></div>';
+  h += '<div class="field"><label>Nombre del archivo (slug)</label>';
+  h += '<p class="help">Sin espacios ni acentos, en minúsculas, con guiones. Ej.: congreso-xi-2024</p>';
+  h += '<input type="text" id="nc-slug" placeholder="Ej.: congreso-xi-2024"></div>';
+  h += '<div class="field"><label>Fecha (completa)</label>';
+  h += '<p class="help">Ej.: 27 de noviembre de 2024. Fecha corta: <strong id="nc-fecha-corta">—</strong></p>';
+  h += '<input type="text" id="nc-fecha" placeholder="Ej.: 27 de noviembre de 2024"></div>';
+  h += field('Texto del breadcrumb','nc-breadcrumb','','Ej.: Congreso XI 2024');
+  h += field('Título SEO (pestaña del navegador)','nc-seo','','Ej.: XI Congreso Internacional Lope de Vega');
+  h += '</div>';
+
+  // Imagen
+  h += '<div class="ed-section"><h2>Imagen (opcional)</h2>';
+  h += imgField('Archivo de imagen','','nc-img');
+  h += '<p class="help" style="margin-top:.2rem">Si se deja vacío, se usará la imagen genérica de noticias.</p>';
+  h += field('Texto alternativo de la imagen','nc-img-alt','','Ej.: Cartel del XI Congreso');
+  h += '</div>';
+
+  // Evento fields (hidden)
+  h += '<div class="ed-section" id="nc-evento-section" style="display:none"><h2>Datos del evento</h2>';
+  h += field('Título del evento (en el recuadro)','nc-ev-titulo','','Ej.: 18 Jornadas sobre teatro clásico');
+  h += field('Subtítulo del evento (opcional)','nc-ev-subtitulo','');
+  h += field('Fechas del evento','nc-ev-fechas','','Ej.: 22–24 de julio de 2024');
+  h += field('Lugar del evento','nc-ev-lugar','');
+  h += '<div class="field"><label>Enlaces del evento</label><div id="nc-ev-links"></div>';
+  h += '<button class="btn btn-outline btn-sm" style="margin-top:.3rem" onclick="ncAddEvLink()">+ Añadir enlace</button></div>';
+  h += '</div>';
+
+  // Contenido
+  h += '<div class="ed-section"><h2>Contenido</h2>';
+  h += '<div class="field"><label>Extracto (resumen para la tarjeta de noticias)</label>';
+  h += '<textarea id="nc-excerpt" rows="2" placeholder="Breve resumen…"></textarea></div>';
+  h += '<div class="field"><label>Bloques de contenido</label>';
+  h += '<p class="help">Añade párrafos, títulos y subtítulos en el orden en que aparecerán.</p>';
+  h += '<div id="nc-blocks"></div>';
+  h += '<div style="display:flex;gap:.4rem;margin-top:.4rem;flex-wrap:wrap">';
+  h += '<button class="btn btn-blue btn-sm" onclick="ncAddBlock(\'parrafo\')">+ Párrafo</button>';
+  h += '<button class="btn btn-sm" style="background:var(--dorado);color:#fff" onclick="ncAddBlock(\'titulo\')">+ Título</button>';
+  h += '<button class="btn btn-sm" style="background:#7a6f60;color:#fff" onclick="ncAddBlock(\'subtitulo\')">+ Subtítulo</button>';
+  h += '</div></div></div>';
+
+  // Enlaces externos
+  h += '<div class="ed-section"><h2>Enlaces externos (al final de la noticia)</h2>';
+  h += '<div id="nc-links"></div>';
+  h += '<button class="btn btn-outline btn-sm" style="margin-top:.3rem" onclick="ncAddLink()">+ Añadir enlace</button>';
+  h += '</div>';
+
+  // Búsqueda
+  h += '<div class="ed-section"><h2>Datos para el buscador</h2>';
+  h += field('Descripción para el buscador (opcional)','nc-search-desc','','Se usa el extracto si se deja vacío');
+  h += '</div>';
+
+  h += '<button class="btn btn-primary" style="width:100%;padding:.8rem;font-size:1rem;border-radius:8px;margin-bottom:2rem" onclick="createNews()">Crear noticia</button>';
+
+  document.getElementById('edBody').innerHTML = h;
+  document.getElementById('edBody').scrollTop = 0;
+
+  // Wire up events
+  document.getElementById('nc-fecha').addEventListener('input', ncAutoFechaCorta);
+  document.getElementById('nc-slug').addEventListener('input', function(){ this.value=this.value.toLowerCase().replace(/[^a-z0-9\-]/g,''); });
+
+  if (NC.cats.length) document.getElementById('nc-cat-sel').value = NC.cats[0];
+
+  ncAddBlock('parrafo');
+  ncAddLink();
+}
+
+function ncToggleEvento() {
+  var isEv = document.getElementById('nc-tipo').value === 'evento';
+  document.getElementById('nc-evento-section').style.display = isEv ? '' : 'none';
+}
+
+function ncOnCatChange() {
+  var sel = document.getElementById('nc-cat-sel');
+  var custom = document.getElementById('nc-cat-custom');
+  custom.style.display = sel.value==='__nueva__' ? '' : 'none';
+}
+
+function ncGetCat() {
+  var sel = document.getElementById('nc-cat-sel');
+  if (sel.value==='__nueva__') return document.getElementById('nc-cat-custom').value.trim();
+  return sel.value;
+}
+
+var NC_MESES = {enero:'ene.',febrero:'feb.',marzo:'mar.',abril:'abr.',mayo:'may.',junio:'jun.',julio:'jul.',agosto:'ago.',septiembre:'sep.',octubre:'oct.',noviembre:'nov.',diciembre:'dic.'};
+
+function ncAutoFechaCorta() {
+  var raw = document.getElementById('nc-fecha').value.trim().toLowerCase();
+  var el = document.getElementById('nc-fecha-corta');
+  if (!raw) { el.textContent='—'; return; }
+  var corta = raw;
+  for (var m in NC_MESES) corta = corta.replace(new RegExp(m,'gi'), NC_MESES[m]);
+  corta = corta.replace(/ de /g,' ');
+  el.textContent = corta.charAt(0).toUpperCase()+corta.slice(1);
+}
+
+function ncGetFechaCorta() {
+  return document.getElementById('nc-fecha-corta').textContent.trim();
+}
+
+function ncAddBlock(type) {
+  var c = document.getElementById('nc-blocks');
+  var id = NC.blockId++;
+  var div = document.createElement('div');
+  div.className = 'item-card';
+  div.setAttribute('draggable', 'true');
+  div.dataset.ncbid = id;
+  div.dataset.ncbtype = type;
+  var colors = {parrafo:'var(--azul)',titulo:'var(--dorado)',subtitulo:'#7a6f60'};
+  var labels = {parrafo:'PÁRRAFO',titulo:'TÍTULO',subtitulo:'SUBTÍTULO'};
+  var toolbar = '<div class="rich-toolbar" style="margin:.3rem 0">'
+    +'<button onmousedown="execRich(event,\'bold\')"><b>N</b></button>'
+    +'<button onmousedown="execRich(event,\'italic\')"><i>C</i></button>'
+    +'<button onmousedown="execRich(event,\'link\')">Enlace</button>'
+    +'<button onmousedown="execRich(event,\'removeLink\')">Quitar enlace</button>'
+    +(type==='parrafo'
+      ? '<button onmousedown="execRich(event,\'insertUnorderedList\')">• Lista</button>'
+        +'<button onmousedown="execRich(event,\'insertOrderedList\')">1. Lista</button>'
+      : '')
+    +'</div>';
+  var minH = type==='parrafo' ? '70px' : '36px';
+  var ph = {parrafo:'Escribe un párrafo…',titulo:'Escribe un título…',subtitulo:'Escribe un subtítulo…'}[type];
+  div.innerHTML = '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>'
+    +'<button class="btn-del-item" onclick="this.closest(\'[data-ncbid]\').remove()">✕</button>'
+    +'<div class="item-card-header" style="margin-bottom:0">'
+    +'<strong style="font-size:.73rem;background:'+colors[type]+';color:#fff;padding:.1rem .4rem;border-radius:3px">'+labels[type]+'</strong>'
+    +'</div>'
+    +toolbar
+    +'<div class="rich-edit" contenteditable="true" draggable="false" style="min-height:'+minH+';border:1px solid var(--borde);border-radius:4px;padding:.4rem .5rem;background:var(--crema)" title="'+ph+'"></div>';
+  c.appendChild(div);
+  initNcBlocksDrag();
+}
+
+var _ncDragSrc = null;
+function initNcBlocksDrag() {
+  var c = document.getElementById('nc-blocks');
+  if (!c) return;
+  c.querySelectorAll('[data-ncbid]').forEach(function(card) {
+    // Avoid double-binding
+    if (card._ncDragBound) return;
+    card._ncDragBound = true;
+    card.addEventListener('dragstart', function(e) {
+      // Don't initiate drag when clicking inside the text editor
+      var t = e.target;
+      while (t && t !== card) {
+        if (t.contentEditable === 'true') { e.preventDefault(); return; }
+        t = t.parentElement;
+      }
+      _ncDragSrc = card;
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    card.addEventListener('dragover', function(e) {
+      if (!_ncDragSrc) return;
+      e.preventDefault(); e.dataTransfer.dropEffect = 'move';
+      card.classList.add('drag-over');
+    });
+    card.addEventListener('dragleave', function() { card.classList.remove('drag-over'); });
+    card.addEventListener('drop', function(e) {
+      e.preventDefault(); card.classList.remove('drag-over');
+      if (!_ncDragSrc || _ncDragSrc === card) return;
+      var c2 = card.parentNode;
+      var cards = Array.from(c2.children);
+      var srcIdx = cards.indexOf(_ncDragSrc);
+      var tgtIdx = cards.indexOf(card);
+      if (srcIdx < tgtIdx) c2.insertBefore(_ncDragSrc, card.nextSibling);
+      else c2.insertBefore(_ncDragSrc, card);
+      _ncDragSrc = null;
+    });
+    card.addEventListener('dragend', function() {
+      card.classList.remove('drag-over');
+      _ncDragSrc = null;
+    });
+  });
+}
+
+function ncAddLink() {
+  var c = document.getElementById('nc-links');
+  var d = document.createElement('div'); d.className='link-row';
+  d.innerHTML='<input type="text" placeholder="Texto del enlace"><input type="text" placeholder="URL"><button class="del-link" onclick="this.parentElement.remove()">×</button>';
+  c.appendChild(d);
+}
+
+function ncAddEvLink() {
+  var c = document.getElementById('nc-ev-links');
+  var d = document.createElement('div'); d.className='link-row';
+  d.innerHTML='<input type="text" placeholder="Texto (ej.: Programa en PDF)"><input type="text" placeholder="URL o ruta">'
+    +'<label class="btn btn-outline btn-sm img-upload-btn" title="Subir PDF u otro archivo" style="padding:.3rem .5rem;cursor:pointer">'
+    +'<input type="file" accept=".pdf,.jpg,.jpeg,.png,.gif,.svg,.webp" style="display:none" onchange="uploadEvLinkFile(this)">Subir</label>'
+    +'<button class="del-link" onclick="this.parentElement.remove()">×</button>';
+  c.appendChild(d);
+}
+
+async function uploadEvLinkFile(fileInput) {
+  if (!fileInput.files || !fileInput.files.length) return;
+  var file = fileInput.files[0];
+  toast('Subiendo archivo…', 'info');
+  try {
+    var r = await fetch('/api/upload-image?name='+encodeURIComponent(file.name), {
+      method: 'POST',
+      headers: {'Content-Type': file.type || 'application/octet-stream'},
+      body: file,
+    });
+    var data = await r.json();
+    if (data.ok) {
+      var row = fileInput.closest('.link-row');
+      var urlInput = row.querySelectorAll('input[type=text]')[1];
+      if (urlInput) urlInput.value = '../media/'+data.filename;
+      toast('Archivo subido: '+data.filename, 'ok');
+    } else {
+      toast('Error: '+(data.error||'fallo al subir'), 'err');
+    }
+  } catch(e) {
+    toast('Error de conexión', 'err');
+  }
+}
+
+function ncGetLinks(containerId) {
+  var result = [];
+  document.querySelectorAll('#'+containerId+' .link-row').forEach(function(row){
+    var inputs = row.querySelectorAll('input[type=text]');
+    if (inputs.length>=2 && inputs[0].value.trim() && inputs[1].value.trim())
+      result.push({label:inputs[0].value.trim(),url:inputs[1].value.trim()});
+  });
+  return result;
+}
+
+function ncGetBlocks() {
+  var blocks = [];
+  document.querySelectorAll('#nc-blocks [data-ncbid]').forEach(function(el){
+    var type = el.dataset.ncbtype;
+    var ed = el.querySelector('.rich-edit');
+    var html = ed ? ed.innerHTML.trim() : '';
+    if (html && html !== '<br>') blocks.push({type:type, text:html});
+  });
+  return blocks;
+}
+
+async function createNews() {
+  var tipo = document.getElementById('nc-tipo').value;
+  var cat = ncGetCat();
+  var tituloEl = document.getElementById('nc-titulo');
+  var titulo = tituloEl ? tituloEl.innerHTML.trim() : '';
+  var tituloPlain = titulo.replace(/<[^>]+>/g,'');
+  var slug = document.getElementById('nc-slug').value.trim();
+  var fechaLarga = document.getElementById('nc-fecha').value.trim();
+  var fechaCorta = ncGetFechaCorta();
+  var breadcrumb = document.getElementById('nc-breadcrumb').value.trim();
+  var tituloSeo = document.getElementById('nc-seo').value.trim();
+  var imgInput = document.getElementById('nc-img');
+  var imgRaw = imgInput ? imgInput.value.trim() : '';
+  var imagenAlt = document.getElementById('nc-img-alt').value.trim();
+  var excerpt = document.getElementById('nc-excerpt').value.trim();
+  var searchDesc = document.getElementById('nc-search-desc').value.trim();
+  var contentBlocks = ncGetBlocks();
+  var links = ncGetLinks('nc-links');
+  var evTitulo = document.getElementById('nc-ev-titulo').value.trim();
+  var evSubtitulo = document.getElementById('nc-ev-subtitulo').value.trim();
+  var evFechas = document.getElementById('nc-ev-fechas').value.trim();
+  var evLugar = document.getElementById('nc-ev-lugar').value.trim();
+  var evLinks = ncGetLinks('nc-ev-links');
+
+  // Validation
+  var errors = [];
+  if (!tituloPlain) errors.push('título');
+  if (!slug) errors.push('nombre del archivo (slug)');
+  if (!fechaLarga || fechaCorta==='—') errors.push('fecha');
+  if (!cat) errors.push('categoría');
+  if (!breadcrumb) errors.push('breadcrumb');
+  if (!tituloSeo) errors.push('título SEO');
+  if (!excerpt) errors.push('extracto');
+  if (!contentBlocks.length) errors.push('al menos un bloque de contenido');
+  if (errors.length) { toast('Faltan campos: '+errors.join(', '),'err'); return; }
+
+  // Normalize image path: always store as ../media/xxx or empty
+  var imgPath = '';
+  if (imgRaw) {
+    var imgFilename = imgRaw.replace(/^(\.\.\/)?media\//,'');
+    imgPath = '../media/'+imgFilename;
+  }
+  var filename = 'noticia-'+slug+'.html';
+
+  toast('Creando noticia…','info');
+
+  var html = ncGenerateHtml({tipo,cat,titulo,tituloPlain,slug,fechaLarga,fechaCorta,breadcrumb,tituloSeo,imgPath,imagenAlt,excerpt,contentBlocks,links,evTitulo,evSubtitulo,evFechas,evLugar,evLinks,filename});
+
+  try {
+    var r = await fetch('/api/page?path=noticias/'+filename,{method:'POST',headers:{'Content-Type':'text/html; charset=utf-8'},body:html});
+    var data = await r.json();
+    if (!data.ok) { toast('Error al guardar HTML: '+(data.error||''),'err'); return; }
+  } catch(e) { toast('Error de conexión','err'); return; }
+
+  // Update noticias-data.js
+  try { await ncUpdateNoticiasData({tipo,cat,fechaCorta,tituloPlain,excerpt,imgPath,filename,contentBlocks,links,evLinks}); }
+  catch(e) { toast('HTML guardado pero error en noticias-data.js: '+e.message,'err'); }
+
+  // Update search-data.js
+  try { await ncUpdateSearchData({tituloPlain,filename,searchDesc,excerpt,cat,fechaCorta,contentBlocks,links,evLinks,tipo}); }
+  catch(e) { /* silent */ }
+
+  // Refresh page list and nav
+  try { var pr=await fetch('/api/pages'); S.pages=await pr.json(); renderNav(); } catch(e){}
+
+  toast('Noticia «'+tituloPlain+'» creada correctamente','ok');
+  setTimeout(function(){ loadPage('noticias/'+filename); }, 1000);
+}
+
+async function ncUpdateNoticiasData(data) {
+  var src = await (await fetch('/api/page?path=noticias-data.js')).text();
+  var newsArr = [];
+  try { newsArr = new Function(src.replace(/\bconst\b/g,'var').replace(/\blet\b/g,'var')+';return typeof news!=="undefined"?news:[];')(); } catch(e) {}
+  var maxId = 0;
+  newsArr.forEach(function(n){ if((n.id||0)>maxId) maxId=n.id; });
+  var id = maxId+1;
+  var allLinks = data.links.concat(data.tipo==='evento'?data.evLinks:[]);
+  var imgForData = data.imgPath||'../media/fondo-noticias.jpg';
+  var paras = data.contentBlocks.filter(function(b){ return b.type==='parrafo'; });
+  var newEntry = {
+    id:id, cat:data.cat, date:data.fechaCorta, title:data.tituloPlain,
+    excerpt:data.excerpt, img:imgForData, url:data.filename,
+    content: paras.map(function(b){ return b.text.replace(/<[^>]+>/g,''); }),
+    links: allLinks
+  };
+  newsArr.unshift(newEntry);
+  var newSrc = ncSerializeNoticiasData(newsArr);
+  await fetch('/api/page?path=noticias-data.js',{method:'POST',headers:{'Content-Type':'application/javascript; charset=utf-8'},body:newSrc});
+}
+
+async function ncUpdateSearchData(data) {
+  var src = await (await fetch('/api/page?path=search-data.js')).text();
+  var desc = (data.searchDesc||data.excerpt).replace(/"/g,'\\"');
+  var content = ncBuildSearchContent(data).replace(/"/g,'\\"');
+  var entry = '  {\n';
+  entry += '    title: "'+data.tituloPlain.replace(/"/g,'\\"')+'",\n';
+  entry += '    url: "noticias/'+data.filename+'",\n';
+  entry += '    description: "'+desc+'",\n';
+  entry += '    content: "'+content+'"\n';
+  entry += '  },';
+  var idx = src.indexOf('SEARCH_INDEX = [');
+  if (idx===-1) idx=src.indexOf('SEARCH_INDEX=[');
+  if (idx===-1) return;
+  var lineEnd = src.indexOf('\n',idx);
+  var newSrc = src.substring(0,lineEnd+1)+entry+'\n'+src.substring(lineEnd+1);
+  await fetch('/api/page?path=search-data.js',{method:'POST',headers:{'Content-Type':'application/javascript; charset=utf-8'},body:newSrc});
+}
+
+function ncBuildSearchContent(data) {
+  var parts = [data.tituloPlain,data.cat,data.fechaCorta,data.excerpt];
+  (data.contentBlocks||[]).forEach(function(b){ parts.push(b.text.replace(/<[^>]+>/g,'')); });
+  (data.links||[]).forEach(function(l){ parts.push(l.label); });
+  (data.evLinks||[]).forEach(function(l){ parts.push(l.label); });
+  var text = parts.join(' ');
+  var normalized = text.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  var STOP = ['de','del','la','las','los','el','en','y','a','un','una','que','por','con','se','es','al','lo','su','no','para'];
+  var seen={}, unique=[];
+  (text+' '+normalized).toLowerCase().split(/\W+/).forEach(function(w){
+    if(w.length>2&&STOP.indexOf(w)===-1&&!seen[w]){seen[w]=true;unique.push(w);}
+  });
+  return unique.join(' ');
+}
+
+function ncGenerateHtml(d) {
+  var tipo=d.tipo,cat=d.cat,titulo=d.titulo,tituloPlain=d.tituloPlain;
+  var fechaLarga=d.fechaLarga,breadcrumb=d.breadcrumb,tituloSeo=d.tituloSeo;
+  var imgPath=d.imgPath,imagenAlt=d.imagenAlt,contentBlocks=d.contentBlocks;
+  var links=d.links,evTitulo=d.evTitulo,evSubtitulo=d.evSubtitulo;
+  var evFechas=d.evFechas,evLugar=d.evLugar,evLinks=d.evLinks;
+
+  // Content block HTML
+  var cH = '';
+  if (tipo==='evento') {
+    cH += '\n      <div class="event-box">\n';
+    if (imgPath) {
+      cH += '        <div class="event-box-img-wrap" onclick="openLightbox(\''+imgPath+'\')">\n';
+      cH += '          <img src="'+imgPath+'" alt="'+esc(imagenAlt)+'" />\n';
+      cH += '          <span class="zoom-hint" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>\n';
+      cH += '        </div>\n';
+    }
+    cH += '        <div class="event-box-info">\n';
+    cH += '          <div class="event-box-title">'+esc(evTitulo||tituloPlain);
+    if (evSubtitulo) cH += '<br><em style="font-weight:400;font-size:0.88rem">'+esc(evSubtitulo)+'</em>';
+    cH += '</div>\n';
+    cH += '          <ul class="event-box-meta">\n';
+    cH += '            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>'+esc(evFechas)+'</li>\n';
+    cH += '            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>'+esc(evLugar)+'</li>\n';
+    cH += '          </ul>\n';
+    if (evLinks.length) {
+      cH += '          <div class="event-box-links">\n';
+      evLinks.forEach(function(l){ cH += '            <a class="event-box-link" href="'+esc(l.url)+'" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>'+esc(l.label)+'</a>\n'; });
+      cH += '          </div>\n';
+    }
+    cH += '        </div>\n      </div>\n';
+  } else if (imgPath) {
+    cH += '\n      <div class="article-figure">\n';
+    cH += '        <div class="article-figure-img-wrap" onclick="openLightbox(\''+imgPath+'\')">\n';
+    cH += '          <img src="'+imgPath+'" alt="'+esc(imagenAlt)+'" />\n';
+    cH += '          <span class="zoom-hint" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>\n';
+    cH += '        </div>\n      </div>\n';
+  }
+  contentBlocks.forEach(function(b){
+    if (b.type==='titulo') cH += '\n      <h2 class="article-lead-title">'+b.text+'</h2>\n';
+    else if (b.type==='subtitulo') cH += '\n      <p class="article-lead-subtitle">'+b.text+'</p>\n';
+    else cH += '\n      <p>'+b.text+'</p>\n';
+  });
+  if (links.length) {
+    cH += '\n      <div class="article-links">\n';
+    links.forEach(function(l){ cH += '        <a class="article-ext-link" href="'+esc(l.url)+'" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>'+esc(l.label)+'</a>\n'; });
+    cH += '      </div>\n';
+  }
+
+  // Full page HTML
+  var H = '<!DOCTYPE html>\n<html lang="es">\n<head>\n';
+  H += '  <link rel="icon" href="../media/favicon_5.gif" type="image/gif" />\n';
+  H += '  <meta charset="UTF-8" />\n';
+  H += '  <meta http-equiv="Content-Security-Policy" content="default-src \'self\'; script-src \'self\' \'unsafe-inline\'; style-src \'self\' \'unsafe-inline\' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src \'self\' data:; frame-src https://www.google.com; base-uri \'self\'; connect-src \'self\'" />\n';
+  H += '  <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n';
+  H += '  <title>'+esc(tituloSeo||tituloPlain)+' | PROLOPE</title>\n';
+  H += '  <link rel="preconnect" href="https://fonts.googleapis.com" />\n  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n';
+  H += '  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />\n';
+  H += '  <link rel="stylesheet" href="../prolope.css" />\n';
+  H += '  <script>(function(){var t=localStorage.getItem(\'theme\');if(t===\'dark\'||(!t&&window.matchMedia(\'(prefers-color-scheme:dark)\').matches))document.documentElement.setAttribute(\'data-theme\',\'dark\');})();<\/script>\n\n</head>\n<body>\n\n\n';
+
+  H += '  <!-- HEADER -->\n  <header>\n    <div class="header-inner">\n';
+  H += '      <a href="../index.html" class="logo-link"><img src="../media/logo-menu.png" alt="PROLOPE" /></a>\n';
+  H += '      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>\n';
+  H += '      <nav class="main-nav" id="mainNav">\n        <ul>\n';
+  H += '          <li class="has-dropdown"><span>El grupo <small>▾</small></span><div class="dropdown"><ul><li><a href="../el-grupo/el-grupo.html">El grupo de investigación</a></li><li><a href="../el-grupo/historial-proyectos.html">Historial de proyectos</a></li><li><a href="../el-grupo/estatutos.html">Estatutos del grupo</a></li><li><a href="../el-grupo/miembros.html">Miembros</a></li><li><a href="../el-grupo/contacto.html">Contacto y ubicación</a></li></ul></div></li>\n';
+  H += '          <li class="has-dropdown"><span>Objetivos <small>▾</small></span><div class="dropdown"><ul><li><a href="../objetivos/vida-obra.html">Vida y obra de Lope de Vega</a></li><li><a href="../objetivos/transmision.html">Transmisión y edición del teatro de Lope de Vega</a></li><li><a href="../objetivos/criterios.html">Criterios y materiales para la edición</a></li></ul></div></li>\n';
+  H += '          <li class="has-dropdown"><span>Publicaciones <small>▾</small></span><div class="dropdown"><ul><li><a href="../publicaciones/partes-comedias.html">Partes de comedias</a></li><li><a href="https://revistes.uab.cat/anuariolopedevega/index" target="_blank" rel="noopener noreferrer">Anuario Lope de Vega</a></li><li><a href="../publicaciones/otras-publicaciones.html">Otras publicaciones</a></li></ul></div></li>\n';
+  H += '          <li class="has-dropdown"><span>Proyectos digitales <small>▾</small></span><div class="dropdown"><ul><li><a href="../proyectos-digitales/biblioteca-virtual.html">Biblioteca virtual</a></li><li><a href="https://prolope.uab.cat/biblioteca/" target="_blank" rel="noopener noreferrer">Biblioteca Digital Prolope</a></li><li><a href="../proyectos-digitales/mujeres-criados.html">Mujeres y criados</a></li><li><a href="../proyectos-digitales/mapping-lope.html">Mapping Lope</a></li><li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO</a></li><li><a href="../proyectos-digitales/la-dama-boba.html">La dama boba</a></li><li><a href="../proyectos-digitales/gondomar.html">Gondomar Digital</a></li></ul></div></li>\n';
+  H += '          <li class="has-dropdown"><span>Formación <small>▾</small></span><div class="dropdown"><ul><li><a href="../formacion/tesis.html">Tesis</a></li></ul></div></li>\n';
+  H += '          <li class="has-dropdown"><span>Eventos <small>▾</small></span><div class="dropdown"><ul><li><a href="../eventos/congresos.html">Congresos</a></li><li><a href="../eventos/seminarios.html">Seminarios</a></li></ul></div></li>\n';
+  H += '          <li><a href="../multimedia/multimedia.html">Multimedia</a></li>\n';
+  H += '          <li><a href="noticias.html">Noticias</a></li>\n';
+  H += '        </ul>\n      </nav>\n';
+  H += '      <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo noche" title="Modo noche"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>\n';
+  H += '      <button class="site-search-btn" id="siteSearchBtn" aria-label="Buscar en el sitio"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>\n';
+  H += '      <div class="site-search-inline"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" id="siteSearchInput" placeholder="Buscar en el sitio…" autocomplete="off" /><button class="site-search-close" id="siteSearchClose" aria-label="Cerrar búsqueda">✕</button><div class="site-search-dropdown" id="siteSearchDropdown"><div id="siteSearchCount" class="site-search-count"></div><div id="siteSearchResults" class="site-search-results"></div></div></div>\n';
+  H += '    </div>\n  </header>\n\n';
+
+  H += '  <!-- HERO -->\n  <section class="article-hero">\n';
+  H += '    <div class="article-hero-bg" style="background-image: url(\'../media/fondo-noticias.jpg\'); background-size: fill; background-repeat: no-repeat; background-position: right; opacity: 0.15;"></div>\n';
+  H += '    <div class="article-hero-inner">\n';
+  H += '      <p class="article-breadcrumb"><a href="../index.html">Inicio</a><span>›</span><a href="noticias.html">Noticias</a><span>›</span>'+esc(breadcrumb||tituloPlain)+'</p>\n';
+  H += '      <span class="article-cat-badge">'+esc(cat)+'</span>\n';
+  H += '      <h1>'+titulo+'</h1>\n';
+  H += '      <div class="article-hero-meta"><span class="article-date">'+esc(fechaLarga)+'</span></div>\n';
+  H += '      <div class="article-hero-rule"></div>\n';
+  H += '    </div>\n  </section>\n\n';
+
+  H += '  <!-- LAYOUT -->\n  <div class="article-layout">\n\n';
+  H += '    <!-- MAIN CONTENT -->\n    <article class="article-body">\n';
+  H += cH;
+  H += '\n      <div style="clear:both"></div>\n\n';
+  H += '      <a class="back-link" href="noticias.html">← Volver a todas las noticias</a>\n\n';
+  H += '    </article>\n\n';
+
+  H += '    <!-- SIDEBAR -->\n    <aside class="article-sidebar">\n';
+  H += '      <div class="sidebar-card">\n        <div class="sidebar-card-header"><h3>Noticias recientes</h3></div>\n';
+  H += '        <ul class="sidebar-news-list"></ul>\n';
+  H += '        <a class="sidebar-all-link" href="noticias.html">Ver todas las noticias →</a>\n';
+  H += '      </div>\n    </aside>\n\n';
+  H += '  </div>\n\n';
+
+  H += '  <!-- LIGHTBOX -->\n  <div class="lightbox" id="lightbox" onclick="closeLightbox()">\n';
+  H += '    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">✕</button>\n';
+  H += '    <img id="lightbox-img" src="" alt="" />\n  </div>\n';
+  H += '  <script>function openLightbox(src){document.getElementById(\'lightbox-img\').src=src;document.getElementById(\'lightbox\').classList.add(\'open\');document.body.style.overflow=\'hidden\';}function closeLightbox(){document.getElementById(\'lightbox\').classList.remove(\'open\');document.body.style.overflow=\'\';}document.addEventListener(\'keydown\',function(e){if(e.key===\'Escape\')closeLightbox();});<\/script>\n\n';
+
+  H += '  <!-- FUNDERS -->\n  <section class="funders">\n    <div class="funders-inner">\n      <p class="funders-title">Entidades financiadoras</p>\n      <div class="funders-logos">\n';
+  H += '        <a class="funder-logo-link" href="https://www.march.es/" target="_blank" rel="noopener noreferrer"><img src="../media/fundacion-march.png" alt="Fundación March" /></a>\n';
+  H += '        <a class="funder-logo-link" href="https://www.culturaydeporte.gob.es/" target="_blank" rel="noopener noreferrer"><img src="../media/ace.png" alt="ACE" /></a>\n';
+  H += '        <a class="funder-logo-link" href="https://agaur.gencat.cat/" target="_blank" rel="noopener noreferrer"><img src="../media/agaur_gencat.png" alt="AGAUR Gencat" /></a>\n';
+  H += '        <a class="funder-logo-link" href="https://www.ciencia.gob.es/" target="_blank" rel="noopener noreferrer"><img src="../media/ministerio-feder.png" alt="Ministerio / FEDER" /></a>\n';
+  H += '        <a class="funder-logo-link" href="https://www.uab.cat/" target="_blank" rel="noopener noreferrer"><img src="../media/uab.png" alt="UAB" /></a>\n';
+  H += '      </div>\n    </div>\n  </section>\n\n';
+
+  H += '  <!-- FOOTER -->\n  <footer>\n    <div class="footer-inner">\n      <div>\n';
+  H += '        <div class="footer-logo"><img src="../media/logo-prolope_inici.png" alt="PROLOPE" /></div>\n';
+  H += '        <address class="footer-address" style="font-style:normal;">Grupo de investigación PROLOPE.<br />Departament de Filologia Espanyola.<br /><br />Facultat de Filosofia i Lletres UAB<br />CAMPUS DE LA UAB<br />Carrer de la fortuna s/n<br />08193 Bellaterra (Barcelona)<br /><br />Teléfono (Secretaría): <a href="tel:+34935811034">93 581 10 34</a><br />Correo: <a href="mailto:prolope@uab.es">prolope@uab.es</a></address>\n';
+  H += '        <div class="footer-social"><a href="https://twitter.com/ProlopeUab" target="_blank" rel="noopener noreferrer" title="Seguir en X">𝕏</a><a href="https://www.facebook.com/prolope.uab" target="_blank" rel="noopener noreferrer" title="Seguir en Facebook">f</a></div>\n';
+  H += '      </div>\n    </div>\n    <div class="footer-bottom">© 2025 Grupo de Investigación PROLOPE – Universitat Autònoma de Barcelona</div>\n  </footer>\n\n';
+
+  H += '  <script>(function(){if(!(\'IntersectionObserver\'in window))return;var els=document.querySelectorAll(\'.card,.sidebar-card,.founder-card,.news-card,.video-card,.congress-card,.funders,.inline-figure,.inline-figure-left,.event-box,.article-figure\');if(!els.length)return;els.forEach(function(el){el.style.opacity=\'0\';el.style.transform=\'translateY(30px)\';});var obs=new IntersectionObserver(function(entries){var v=entries.filter(function(e){return e.isIntersecting;});v.forEach(function(e,i){e.target.style.transition=\'opacity 0.5s ease-out \'+(i*0.07)+\'s, transform 0.5s ease-out \'+(i*0.07)+\'s\';e.target.style.opacity=\'1\';e.target.style.transform=\'translateY(0)\';obs.unobserve(e.target);});},{threshold:0.1});els.forEach(function(el){obs.observe(el);});})();<\/script>\n';
+  H += '  <script>const toggle=document.getElementById(\'menuToggle\');const nav=document.getElementById(\'mainNav\');toggle.addEventListener(\'click\',()=>{nav.classList.toggle(\'open\');document.body.classList.toggle(\'menu-open\',nav.classList.contains(\'open\'));});document.querySelectorAll(\'.has-dropdown > span\').forEach(function(el){el.addEventListener(\'click\',function(){if(window.innerWidth<=1100){el.parentElement.classList.toggle(\'open\');}});});<\/script>\n\n';
+  H += '  <script src="../noticias-data.js"><\/script>\n';
+  H += '  <script src="../sidebar-noticias.js"><\/script>\n';
+  H += '  <script>var SITE_ROOT=\'../\';<\/script>\n';
+  H += '  <script src="../search-data.js"><\/script>\n';
+  H += '  <script src="../site-search.js"><\/script>\n';
+  H += '  <script>(function(){var toggle=document.getElementById(\'themeToggle\');var saved=localStorage.getItem(\'theme\');if(saved===\'dark\'||(!saved&&window.matchMedia(\'(prefers-color-scheme: dark)\').matches)){document.documentElement.setAttribute(\'data-theme\',\'dark\');toggle.innerHTML=\'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>\';}toggle.addEventListener(\'click\',function(){var isDark=document.documentElement.getAttribute(\'data-theme\')===\'dark\';if(isDark){document.documentElement.removeAttribute(\'data-theme\');localStorage.setItem(\'theme\',\'light\');toggle.innerHTML=\'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>\';}else{document.documentElement.setAttribute(\'data-theme\',\'dark\');localStorage.setItem(\'theme\',\'dark\');toggle.innerHTML=\'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>\';}});})();<\/script>\n';
+  H += '</body>\n</html>\n';
+  return H;
 }
 
 // ── TOAST ────────────────────────────────────────────────────────────────────

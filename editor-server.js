@@ -264,6 +264,28 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  // ── API: delete a page ──
+  if (url.pathname === '/api/delete-page' && req.method === 'POST') {
+    const rel = url.searchParams.get('path');
+    if (!rel) { res.writeHead(400); res.end('Missing path'); return; }
+    const full = safePath(rel);
+    if (!full) { res.writeHead(403); res.end('Forbidden'); return; }
+    // Only allow deleting news pages for safety
+    if (!rel.startsWith('noticias/noticia-')) { res.writeHead(403, { 'Content-Type': 'application/json' }); res.end(JSON.stringify({ error: 'Solo se pueden eliminar páginas de noticias.' })); return; }
+    try {
+      if (fs.existsSync(full)) {
+        fs.copyFileSync(full, full + '.bak'); // keep backup
+        fs.unlinkSync(full);
+      }
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ ok: true }));
+    } catch (e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: e.message }));
+    }
+    return;
+  }
+
   // ── Static files (for preview, CSS, images…) ──
   const full = safePath(url.pathname.slice(1));
   if (full && fs.existsSync(full) && fs.statSync(full).isFile()) {
