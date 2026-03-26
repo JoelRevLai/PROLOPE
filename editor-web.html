@@ -1393,10 +1393,15 @@ function renderCongressesEditor() {
 
 function renderCongressCard(it) {
   if (it._group) return renderCongressGroupHeader(it);
-  var h = '<div class="item-card" data-iid="'+it.id+'" draggable="true">';
+  var openAttr = it._open ? ' open' : '';
+  var label = esc(it.edition||'Nuevo congreso') + (it.year ? ' ('+it.year+')' : '');
+  var h = '<details class="item-card" data-iid="'+it.id+'" draggable="true"'+openAttr+'>';
+  h += '<summary style="cursor:pointer;display:flex;align-items:center;gap:.5rem;list-style:none;padding-right:2rem">';
   h += '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>';
-  h += '<button class="btn-del-item" onclick="removeItem('+it.id+')">✕</button>';
-  h += '<div class="item-card-header"><strong>'+esc(it.edition||'Nuevo congreso')+'</strong></div>';
+  h += '<strong>'+label+'</strong>';
+  h += '<button class="btn-del-item" onclick="event.preventDefault();removeItem('+it.id+')" style="position:static;margin-left:auto">✕</button>';
+  h += '</summary>';
+  h += '<div style="padding-top:.75rem">';
   h += '<div class="row">';
   h += '<div>'+field('Año','cgy-'+it.id,it.year)+'</div>';
   h += '<div>'+field('Edición','cge-'+it.id,it.edition,'XI Congreso Internacional')+'</div>';
@@ -1431,6 +1436,7 @@ function renderCongressCard(it) {
   h += '<button class="btn btn-outline btn-sm" style="margin-top:.3rem" onclick="addCongressModalLink('+it.id+')">+ Enlace</button>';
   h += '</div></details>';
   h += '</div>';
+  h += '</details>';
   return h;
 }
 
@@ -1448,6 +1454,7 @@ function renderCongressGroupHeader(it) {
   h += '<div class="item-card-header"><strong style="color:var(--azul)">— Subcategoría —</strong></div>';
   h += field('Título de la subcategoría','grpt-'+it.id, it.title, 'Ej.: Congreso Internacional Lope de Vega');
   h += field('Texto del contador','grpc-'+it.id, it.count, 'Ej.: 11 ediciones');
+  h += '<button class="btn btn-blue btn-sm" style="margin-top:.5rem" onclick="addCongressAfterGroup('+it.id+')">+ Añadir congreso aquí</button>';
   h += '</div>';
   return h;
 }
@@ -1468,6 +1475,14 @@ function addCongress() {
 function addCongressGroup() {
   readAllItems();
   S.items.unshift({id:blockId++,_group:true,title:'',count:''});
+  rerenderItems();
+}
+
+function addCongressAfterGroup(gid) {
+  readAllItems();
+  var idx = S.items.findIndex(function(it){return it.id===gid;});
+  var newItem = {id:blockId++,image:'',imageAlt:'',year:'',edition:'',name:'',dates:'',location:'',onclick:'',modalId:'',modalTitle:'',modalDescription:'',modalLinks:[],_open:true};
+  S.items.splice(idx+1, 0, newItem);
   rerenderItems();
 }
 
@@ -1517,6 +1532,32 @@ async function uploadCongressLinkFile(fileInput) {
   fileInput.value = '';
 }
 
+async function uploadSeminarPdfFile(fileInput, targetId) {
+  if (!fileInput.files || !fileInput.files.length) return;
+  var file = fileInput.files[0];
+  toast('Subiendo archivo…', 'info');
+  try {
+    var r = await fetch('/api/upload-image?name=' + encodeURIComponent(file.name), {
+      method: 'POST',
+      headers: {'Content-Type': file.type || 'application/octet-stream'},
+      body: file,
+    });
+    var data = await r.json();
+    if (data.ok) {
+      var depth = S.currentPath.split('/').length - 1;
+      var prefix = depth > 0 ? '../' : '';
+      var urlInput = document.getElementById(targetId);
+      if (urlInput) urlInput.value = prefix + 'media/' + data.filename;
+      toast('Archivo subido: ' + data.filename, 'ok');
+    } else {
+      toast('Error al subir: ' + (data.error || 'desconocido'), 'err');
+    }
+  } catch(e) {
+    toast('Error de conexión al subir archivo', 'err');
+  }
+  fileInput.value = '';
+}
+
 // ── SEMINARIOS ───────────────────────────────────────────────────────────────
 function renderSeminarsEditor() {
   var h = '<div class="ed-section"><h2>Texto introductorio</h2>';
@@ -1536,15 +1577,21 @@ function renderSeminarsEditor() {
 
 function renderSeminarCard(it) {
   if (it._group) return renderSeminarGroupHeader(it);
-  var h = '<div class="item-card" data-iid="'+it.id+'" draggable="true">';
+  var openAttr = it._open ? ' open' : '';
+  var label = esc(it.name||'Nuevo seminario') + (it.year ? ' ('+it.year+')' : '');
+  var h = '<details class="item-card" data-iid="'+it.id+'" draggable="true"'+openAttr+'>';
+  h += '<summary style="cursor:pointer;display:flex;align-items:center;gap:.5rem;list-style:none;padding-right:2rem">';
   h += '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>';
-  h += '<button class="btn-del-item" onclick="removeItem('+it.id+')">✕</button>';
-  h += '<div class="item-card-header"><strong>'+esc(it.name||'Nuevo seminario')+'</strong></div>';
+  h += '<strong id="smlabel-'+it.id+'">'+label+'</strong>';
+  h += '<button class="btn-del-item" onclick="event.preventDefault();removeItem('+it.id+')" style="position:static;margin-left:auto">✕</button>';
+  h += '</summary>';
+  h += '<div style="padding-top:.75rem">';
   h += '<div class="row">';
   h += '<div>'+field('Año','smy-'+it.id,it.year)+'</div>';
   h += '<div>'+field('Fechas (cabecera)','smd-'+it.id,it.dates,'12-14 jun. 2024')+'</div>';
   h += '</div>';
-  h += field('Nombre','smn-'+it.id,it.name);
+  h += '<label style="display:block;font-size:.78rem;font-weight:600;color:var(--azul-oscuro)">Nombre</label>';
+  h += '<input type="text" id="smn-'+it.id+'" value="'+escA(it.name||'')+'" oninput="updateSeminarLabel('+it.id+')">';
   h += field('Tema (opcional)','smt-'+it.id,it.theme);
   h += '<label style="margin-top:.4rem">Campos del panel desplegable</label>';
   h += '<p class="help">Estos campos aparecen cuando se despliega el seminario.</p>';
@@ -1558,8 +1605,16 @@ function renderSeminarCard(it) {
   });
   h += '</div>';
   h += '<button class="btn btn-outline btn-sm" style="margin-top:.3rem" onclick="addSemField('+it.id+')">+ Campo</button>';
-  h += field('URL del programa PDF (opcional)','smp-'+it.id,it.pdfUrl,'https://... (dejar vacío si no hay programa)');
+  h += '<div style="margin-top:.4rem">';
+  h += '<label style="display:block;font-size:.78rem;font-weight:600;color:var(--azul-oscuro)">URL del programa PDF (opcional)</label>';
+  h += '<div class="link-row">';
+  h += '<input type="text" id="smp-'+it.id+'" value="'+escA(it.pdfUrl||'')+'" placeholder="https://... (dejar vacío si no hay programa)" style="flex:1">';
+  h += '<label class="btn btn-outline btn-sm img-upload-btn" title="Subir archivo (PDF, imagen)">';
+  h += '<input type="file" accept=".pdf,image/*" style="display:none" onchange="uploadSeminarPdfFile(this,\'smp-'+it.id+'\')">Subir</label>';
   h += '</div>';
+  h += '</div>';
+  h += '</div>';
+  h += '</details>';
   return h;
 }
 
@@ -1570,6 +1625,7 @@ function renderSeminarGroupHeader(it) {
   h += '<div class="item-card-header"><strong style="color:var(--azul)">— Subcategoría —</strong></div>';
   h += field('Título de la subcategoría','grpt-'+it.id, it.title, 'Ej.: Seminario Internacional Lope de Vega');
   h += field('Texto del contador','grpc-'+it.id, it.count, 'Ej.: 8 ediciones');
+  h += '<button class="btn btn-blue btn-sm" style="margin-top:.5rem" onclick="addSeminarAfterGroup('+it.id+')">+ Añadir seminario aquí</button>';
   h += '</div>';
   return h;
 }
@@ -1604,6 +1660,24 @@ function addSeminar() {
 function addSeminarGroup() {
   readAllItems();
   S.items.unshift({id:blockId++,_group:true,title:'',count:''});
+  rerenderItems();
+}
+
+function updateSeminarLabel(iid) {
+  var n = document.getElementById('smn-'+iid);
+  var y = document.getElementById('smy-'+iid);
+  var lbl = document.getElementById('smlabel-'+iid);
+  if (!lbl) return;
+  var name = n ? n.value.trim() : '';
+  var year = y ? y.value.trim() : '';
+  lbl.textContent = (name || 'Nuevo seminario') + (year ? ' ('+year+')' : '');
+}
+
+function addSeminarAfterGroup(gid) {
+  readAllItems();
+  var idx = S.items.findIndex(function(it){return it.id===gid;});
+  var newItem = {id:blockId++,year:'',name:'',theme:'',dates:'',fields:[{label:'Fechas',value:''},{label:'Organizado por',value:''}],pdfUrl:'',pdfText:'',_open:true};
+  S.items.splice(idx+1, 0, newItem);
   rerenderItems();
 }
 
@@ -2167,6 +2241,7 @@ function readAllItems() {
       var p=document.getElementById('thp-'+it.id); if(p) it.pending=p.value==='pending';
     }
     if (type==='congresses') {
+      var det=document.querySelector('details.item-card[data-iid="'+it.id+'"]'); if(det) it._open=det.open;
       var y=document.getElementById('cgy-'+it.id); if(y) it.year=y.value;
       var e=document.getElementById('cge-'+it.id); if(e) it.edition=e.value;
       var n=document.getElementById('cgn-'+it.id); if(n) it.name=n.value;
@@ -2190,6 +2265,7 @@ function readAllItems() {
       if (it.modalId) it.onclick = 'openModal(\''+it.modalId+'\')';
     }
     if (type==='seminars') {
+      var det=document.querySelector('details.item-card[data-iid="'+it.id+'"]'); if(det) it._open=det.open;
       var y=document.getElementById('smy-'+it.id); if(y) it.year=y.value;
       var n=document.getElementById('smn-'+it.id); if(n) it.name=n.value;
       var t=document.getElementById('smt-'+it.id); if(t) it.theme=t.value;
