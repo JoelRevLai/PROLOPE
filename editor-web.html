@@ -404,7 +404,16 @@ function parseMain(mainEl) {
   if (type === 'partes') return parsePartes(mainEl);
 
   // Generic: parse into blocks
-  Array.from(mainEl.children).forEach(function(el) { S.blocks.push(makeBlock(el)); });
+  // Expand clearfix wrapper divs (inline figure + surrounding text) into individual blocks
+  Array.from(mainEl.children).forEach(function(el) {
+    var tag = el.tagName ? el.tagName.toLowerCase() : '';
+    var cls = el.className || '';
+    if (tag === 'div' && /\bclearfix\b/.test(cls) && !cls.includes('article-imagegrid') && el.querySelector('.inline-figure, .inline-figure-left')) {
+      Array.from(el.children).forEach(function(child) { S.blocks.push(makeBlock(child)); });
+    } else {
+      S.blocks.push(makeBlock(el));
+    }
+  });
 }
 
 function parsePartes(mainEl) {
@@ -553,7 +562,7 @@ function makeBlock(el) {
     var links=[]; el.querySelectorAll('a').forEach(function(a){ links.push({label:a.textContent.trim(),url:a.getAttribute('href')||''}); });
     return {id:id,type:'links',links:links};
   }
-  if (tag==='div' && el.querySelector('.inline-figure')) {
+  if (tag==='div' && (cls.includes('article-imagegrid') || (el.style && el.style.gridTemplateColumns)) && el.querySelector('.inline-figure')) {
     var imgs=[];
     el.querySelectorAll('.inline-figure').forEach(function(fig){
       var img=fig.querySelector('img');
