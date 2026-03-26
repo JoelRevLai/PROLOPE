@@ -640,6 +640,10 @@
           <span>✉</span>
           <a id="memail-a" href=""></a>
         </div>
+        <div class="morcid" id="morcid">
+          <span>iD</span>
+          <a id="morcid-a" href="" target="_blank" rel="noopener noreferrer"></a>
+        </div>
       </div>
     </div>
     <!-- columna texto -->
@@ -649,6 +653,16 @@
         <button class="mclose" id="mclose" aria-label="Cerrar">✕</button>
       </div>
       <div class="mscroll">
+        <div class="mcontact" id="mcontact">
+          <div class="mcontact-email" id="mcontact-email">
+            <span>✉</span>
+            <a id="mcontact-email-a" href=""></a>
+          </div>
+          <div class="mcontact-orcid" id="mcontact-orcid">
+            <span>iD</span>
+            <a id="mcontact-orcid-a" href="" target="_blank" rel="noopener noreferrer"></a>
+          </div>
+        </div>
         <p class="mblabel">Semblanza</p>
         <div class="mbio" id="mbio"></div>
       </div>
@@ -723,6 +737,13 @@ const mname=document.getElementById('mname');
 const muni=document.getElementById('muni');
 const memail=document.getElementById('memail');
 const memailA=document.getElementById('memail-a');
+const morcid=document.getElementById('morcid');
+const morcidA=document.getElementById('morcid-a');
+const mcontact=document.getElementById('mcontact');
+const mcontactEmailEl=document.getElementById('mcontact-email');
+const mcontactEmailA=document.getElementById('mcontact-email-a');
+const mcontactOrcidEl=document.getElementById('mcontact-orcid');
+const mcontactOrcidA=document.getElementById('mcontact-orcid-a');
 const mbio=document.getElementById('mbio');
 const mcounter=document.getElementById('mcounter');
 const mprev=document.getElementById('mprev');
@@ -738,8 +759,17 @@ function load(i){
   muni.textContent=(d.uni&&d.uni!=='–')?d.uni:'';
   mbio.innerHTML=d.bio||'';
   mcounter.textContent=(i+1)+' / '+cards.length;
-  if(d.email){memailA.href='mailto:'+d.email;memailA.textContent=d.email;memail.style.display='flex';}
+  const email=d.email?d.email.trim():'';
+  const orcid=d.orcid?d.orcid.trim():'';
+  if(email){memailA.href='mailto:'+email;memailA.textContent=email;memail.style.display='flex';}
   else{memail.style.display='none';}
+  if(orcid){const ou='https://orcid.org/'+orcid;morcidA.href=ou;morcidA.textContent=orcid;morcid.style.display='flex';}
+  else{morcid.style.display='none';}
+  if(email){mcontactEmailA.href='mailto:'+email;mcontactEmailA.textContent=email;mcontactEmailEl.style.display='flex';}
+  else{mcontactEmailEl.style.display='none';}
+  if(orcid){const ou2='https://orcid.org/'+orcid;mcontactOrcidA.href=ou2;mcontactOrcidA.textContent=orcid;mcontactOrcidEl.style.display='flex';}
+  else{mcontactOrcidEl.style.display='none';}
+  mcontact.style.display=(email||orcid)?'block':'none';
   mprev.disabled=(i===0);
   mnext.disabled=(i===cards.length-1);
   mscroll.scrollTop=0;

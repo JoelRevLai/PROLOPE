@@ -4711,6 +4711,16 @@ h2[id] { scroll-margin-top: 88px; }
 .memail { font-family: 'Raleway', sans-serif; font-size: 13px; color: rgba(255,255,255,0.85); display: flex; align-items: center; gap: 6px; }
 .memail a { color: rgba(255,255,255,0.85); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
 .memail a:hover { color: var(--dorado); }
+.morcid { font-family: 'Raleway', sans-serif; font-size: 13px; color: rgba(255,255,255,0.85); display: flex; align-items: center; gap: 6px; margin-top: 6px; }
+.morcid span { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; background: #a6ce39; color: #fff; padding: 1px 5px; border-radius: 2px; flex-shrink: 0; }
+.morcid a { color: rgba(255,255,255,0.85); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
+.morcid a:hover { color: var(--dorado); }
+.mcontact { display: none; margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px solid #e4e0d8; }
+.mcontact-email, .mcontact-orcid { font-family: 'Raleway', sans-serif; font-size: 13px; color: var(--gris-texto); display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.mcontact-email span { font-size: 14px; color: var(--azul); }
+.mcontact-orcid span { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; background: #a6ce39; color: #fff; padding: 1px 5px; border-radius: 2px; flex-shrink: 0; }
+.mcontact-email a, .mcontact-orcid a { color: var(--azul); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; word-break: break-all; }
+.mcontact-email a:hover, .mcontact-orcid a:hover { color: var(--dorado); }
 .mright { display: flex; flex-direction: column; overflow: hidden; min-height: 0; }
 .mtop { display: flex; align-items: center; justify-content: space-between; padding: 0 0 0 28px; background: var(--gris-claro); border-bottom: 1px solid #e4e0d8; flex-shrink: 0; min-height: 44px; }
 .mcounter { font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 600; color: #aaa; white-space: nowrap; }
@@ -4981,6 +4991,7 @@ nav.mn > ul > li:hover .dd { opacity: 1; visibility: visible; transform: transla
 @media (max-width: 900px) {
   .modal { grid-template-columns: 1fr; max-height: 92vh; }
   .fo-in { grid-template-columns: 1fr; gap: 28px; }
+  .mcontact { display: block; }
 }
 @media (max-width: 480px) {
   .ov { padding: 0; }
