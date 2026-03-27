@@ -108,6 +108,294 @@ function safePath(rel) {
   return path.join(ROOT, norm);
 }
 
+/* ── menu helpers ───────────────────────────────────────── */
+
+function escHtml(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function escAttr(s) { return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;'); }
+
+function resolveUrl(menuUrl, pageDir) {
+  if (/^https?:\/\//.test(menuUrl)) return menuUrl;
+  if (pageDir === '') return menuUrl;
+  const urlDir = menuUrl.includes('/') ? menuUrl.split('/')[0] : '';
+  if (urlDir === pageDir) return menuUrl.slice(pageDir.length + 1);
+  return '../' + menuUrl;
+}
+
+const EXT_LINK_SVG = '<svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+
+function buildNavHtml(menu, pageDir) {
+  let h = '<nav class="main-nav" id="mainNav">\n        <ul>\n';
+  menu.forEach(item => {
+    if (item.items && item.items.length) {
+      h += '          <li class="has-dropdown">\n';
+      h += '            <span>' + escHtml(item.label) + ' <small>▾</small></span>\n';
+      h += '            <div class="dropdown">\n              <ul>\n';
+      item.items.forEach(sub => {
+        const isExt = /^https?:\/\//.test(sub.url) || sub.external;
+        const href = resolveUrl(sub.url || '#', pageDir);
+        h += '                <li><a href="' + escAttr(href) + '"' + (isExt ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + escHtml(sub.label) + (isExt ? ' ' + EXT_LINK_SVG : '') + '</a></li>\n';
+      });
+      h += '              </ul>\n            </div>\n          </li>\n';
+    } else {
+      const isExt = /^https?:\/\//.test(item.url);
+      const href = resolveUrl(item.url || '#', pageDir);
+      h += '          <li><a href="' + escAttr(href) + '"' + (isExt ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + escHtml(item.label) + '</a></li>\n';
+    }
+  });
+  h += '        </ul>\n      </nav>';
+  return h;
+}
+
+function getDefaultMenu() {
+  return [
+    { label: 'El grupo', items: [
+      { label: 'El grupo de investigación', url: 'el-grupo/el-grupo.html' },
+      { label: 'Historial de proyectos', url: 'el-grupo/historial-proyectos.html' },
+      { label: 'Estatutos del grupo', url: 'el-grupo/estatutos.html' },
+      { label: 'Miembros', url: 'el-grupo/miembros.html' },
+      { label: 'Contacto y ubicación', url: 'el-grupo/contacto.html' }
+    ]},
+    { label: 'Objetivos', items: [
+      { label: 'Vida y obra de Lope de Vega', url: 'objetivos/vida-obra.html' },
+      { label: 'Transmisión y edición del teatro de Lope de Vega', url: 'objetivos/transmision.html' },
+      { label: 'Criterios y materiales para la edición', url: 'objetivos/criterios.html' }
+    ]},
+    { label: 'Publicaciones', items: [
+      { label: 'Partes de comedias', url: 'publicaciones/partes-comedias.html' },
+      { label: 'Anuario Lope de Vega', url: 'https://revistes.uab.cat/anuariolopedevega/index', external: true },
+      { label: 'Otras publicaciones', url: 'publicaciones/otras-publicaciones.html' }
+    ]},
+    { label: 'Proyectos digitales', items: [
+      { label: 'Biblioteca virtual', url: 'proyectos-digitales/biblioteca-virtual.html' },
+      { label: 'Biblioteca Digital Prolope', url: 'https://prolope.uab.cat/biblioteca/', external: true },
+      { label: 'Mujeres y criados', url: 'proyectos-digitales/mujeres-criados.html' },
+      { label: 'Mapping Lope', url: 'proyectos-digitales/mapping-lope.html' },
+      { label: 'AUTESO', url: 'https://theatheor-fe.netseven.it', external: true },
+      { label: 'La dama boba', url: 'proyectos-digitales/la-dama-boba.html' },
+      { label: 'Gondomar Digital', url: 'proyectos-digitales/gondomar.html', external: true }
+    ]},
+    { label: 'Formación', items: [
+      { label: 'Tesis', url: 'formacion/tesis.html' }
+    ]},
+    { label: 'Eventos', items: [
+      { label: 'Congresos', url: 'eventos/congresos.html' },
+      { label: 'Seminarios', url: 'eventos/seminarios.html' }
+    ]},
+    { label: 'Multimedia', url: 'multimedia/multimedia.html' },
+    { label: 'Noticias', url: 'noticias/noticias.html' }
+  ];
+}
+
+const SECTION_BG = {
+  'el-grupo': 'fondo-grupo.png',
+  'objetivos': 'fondo-vida.jpg',
+  'publicaciones': 'fondo-grupo.png',
+  'proyectos-digitales': 'fondo-grupo.png',
+  'formacion': 'fondo-tesis.jpg',
+  'eventos': 'eventos-fondo.jpg',
+  'multimedia': 'fondo-multimedia.jpg',
+};
+const SECTION_LABEL = {
+  'el-grupo': 'El grupo', 'objetivos': 'Objetivos', 'publicaciones': 'Publicaciones',
+  'proyectos-digitales': 'Proyectos digitales', 'formacion': 'Formación',
+  'eventos': 'Eventos', 'multimedia': 'Multimedia',
+};
+
+function buildNewPageHtml({ dir, title, breadcrumbSection, navHtml }) {
+  const bg = SECTION_BG[dir] || 'fondo-grupo.png';
+  const sectionLabel = SECTION_LABEL[dir] || dir;
+  const themeToggleSvgSun = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+  const themeToggleSvgMoon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+
+  return `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" href="../media/favicon_5.gif" type="image/gif" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; base-uri 'self'; connect-src 'self'" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${escHtml(title)} | PROLOPE – UAB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../prolope.css" />
+  <!-- early theme -->
+  <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'||(! t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.setAttribute('data-theme','dark');})();
+  </script>
+
+</head>
+<body>
+
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="logo-link">
+        <img src="../media/logo-menu.png" alt="PROLOPE" />
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      ${navHtml}
+      <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo noche" title="Modo noche">${themeToggleSvgSun}</button>
+      <button class="site-search-btn" id="siteSearchBtn" aria-label="Buscar en el sitio">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <div class="site-search-inline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="siteSearchInput" placeholder="Buscar en el sitio…" autocomplete="off" />
+        <button class="site-search-close" id="siteSearchClose" aria-label="Cerrar búsqueda">✕</button>
+        <div class="site-search-dropdown" id="siteSearchDropdown">
+          <div id="siteSearchCount" class="site-search-count"></div>
+          <div id="siteSearchResults" class="site-search-results"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('../media/${bg}'); background-size: fill; background-repeat: no-repeat; background-position: right; opacity: 0.15;"></div>
+    <div class="page-hero-inner">
+      <p class="page-hero-breadcrumb">
+        Inicio
+        <span>›</span>
+        ${escHtml(breadcrumbSection || sectionLabel)}
+        <span>›</span>
+        ${escHtml(title)}
+      </p>
+      <h1>${escHtml(title)}</h1>
+      <div class="page-hero-rule"></div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <div class="page-wrap">
+
+    <!-- MAIN -->
+    <main class="article-main">
+
+      <p>Contenido de la página.</p>
+
+    </main>
+
+  </div><!-- /page-wrap -->
+
+
+  <!-- FUNDERS -->
+  <section class="funders">
+    <div class="funders-inner">
+      <p class="funders-title">Entidades financiadoras</p>
+      <div class="funders-logos">
+        <a class="funder-logo-link" href="https://www.march.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/fundacion-march.png" alt="Fundación March" />
+        </a>
+        <a class="funder-logo-link" href="https://www.culturaydeporte.gob.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/ace.png" alt="ACE" />
+        </a>
+        <a class="funder-logo-link" href="https://agaur.gencat.cat/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/agaur_gencat.png" alt="AGAUR Gencat" />
+        </a>
+        <a class="funder-logo-link" href="https://www.ciencia.gob.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/ministerio-feder.png" alt="Ministerio / FEDER" />
+        </a>
+        <a class="funder-logo-link" href="https://www.uab.cat/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/uab.png" alt="UAB" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <img src="../media/logo-prolope_inici.png" alt="PROLOPE" />
+        </div>
+        <address class="footer-address" style="font-style:normal;">
+          Grupo de investigación PROLOPE.<br />
+          Departament de Filologia Espanyola.<br /><br />
+          Facultat de Filosofia i Lletres UAB<br />
+          CAMPUS DE LA UAB<br />
+          Carrer de la fortuna s/n<br />
+          08193 Bellaterra (Barcelona)<br /><br />
+          Teléfono (Secretaría): <a href="tel:+34935811034">93 581 10 34</a><br />
+          Correo: <a href="mailto:prolope@uab.es">prolope@uab.es</a>
+        </address>
+        <div class="footer-social">
+          <a href="https://twitter.com/ProlopeUab" target="_blank" rel="noopener noreferrer" title="Seguir en X">𝕏</a>
+          <a href="https://www.facebook.com/prolope.uab" target="_blank" rel="noopener noreferrer" title="Seguir en Facebook">f</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Grupo de Investigación PROLOPE – Universitat Autònoma de Barcelona
+    </div>
+  </footer>
+
+
+
+  <script>
+    /* ---- Page reveal animations ---- */
+    (function () {
+      if (!('IntersectionObserver' in window)) return;
+      var els = document.querySelectorAll('.card, .sidebar-card, .founder-card, .news-card, .video-card, .congress-card, .funders, .inline-figure, .inline-figure-left');
+      if (!els.length) return;
+      els.forEach(function (el) { el.style.opacity = '0'; el.style.transform = 'translateY(30px)'; });
+      var obs = new IntersectionObserver(function (entries) {
+        var visible = entries.filter(function (e) { return e.isIntersecting; });
+        visible.forEach(function (e, i) {
+          e.target.style.transition = 'opacity 0.5s ease-out ' + (i * 0.07) + 's, transform 0.5s ease-out ' + (i * 0.07) + 's';
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          obs.unobserve(e.target);
+        });
+      }, { threshold: 0.1 });
+      els.forEach(function (el) { obs.observe(el); });
+    })();
+  </script>
+  <script>
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('mainNav');
+    toggle.addEventListener('click', () => { nav.classList.toggle('open'); document.body.classList.toggle('menu-open', nav.classList.contains('open')); });
+    document.querySelectorAll('.has-dropdown > span').forEach(function(el) {
+      el.addEventListener('click', function() { if (window.innerWidth <= 1100) { el.parentElement.classList.toggle('open'); } });
+    });
+  </script>
+  <script>var SITE_ROOT='../';</script>
+  <script src="../search-data.js"></script>
+  <script src="../site-search.js"></script>
+  <script>
+    (function() {
+      var toggle = document.getElementById('themeToggle');
+      var saved = localStorage.getItem('theme');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggle.innerHTML = '${themeToggleSvgMoon}';
+      }
+      toggle.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+          document.documentElement.removeAttribute('data-theme');
+          localStorage.setItem('theme', 'light');
+          toggle.innerHTML = '${themeToggleSvgSun}';
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+          toggle.innerHTML = '${themeToggleSvgMoon}';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
+`;
+}
+
 /* ── server ──────────────────────────────────────────────── */
 
 const server = http.createServer(async (req, res) => {
@@ -261,6 +549,80 @@ const server = http.createServer(async (req, res) => {
         res.end(JSON.stringify({ error: e.message }));
       }
     });
+    return;
+  }
+
+  // ── API: get/save menu structure ──
+  if (url.pathname === '/api/menu') {
+    const menuPath = path.join(ROOT, 'menu-data.json');
+    if (req.method === 'GET') {
+      const menu = fs.existsSync(menuPath)
+        ? JSON.parse(fs.readFileSync(menuPath, 'utf8'))
+        : getDefaultMenu();
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify(menu));
+      return;
+    }
+    if (req.method === 'POST') {
+      try {
+        const body = await readBody(req);
+        const menu = JSON.parse(body);
+        if (fs.existsSync(menuPath)) fs.copyFileSync(menuPath, menuPath + '.bak');
+        fs.writeFileSync(menuPath, JSON.stringify(menu, null, 2), 'utf8');
+        // Update nav in all HTML files
+        const pages = listHtmlFiles(ROOT);
+        const errors = [];
+        pages.forEach(p => {
+          const full = path.join(ROOT, p.path);
+          const pageDir = p.dir === '(raíz)' ? '' : p.dir;
+          try {
+            let html = fs.readFileSync(full, 'utf8');
+            const navStart = html.indexOf('<nav class="main-nav" id="mainNav">');
+            if (navStart === -1) return;
+            const navEnd = html.indexOf('</nav>', navStart);
+            if (navEnd === -1) return;
+            const newNav = buildNavHtml(menu, pageDir);
+            html = html.slice(0, navStart) + newNav + html.slice(navEnd + 6);
+            fs.copyFileSync(full, full + '.bak');
+            fs.writeFileSync(full, html, 'utf8');
+          } catch(e) {
+            errors.push({ path: p.path, error: e.message });
+          }
+        });
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ ok: true, updated: pages.length - errors.length, errors }));
+      } catch(e) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: e.message }));
+      }
+      return;
+    }
+  }
+
+  // ── API: create new page ──
+  if (url.pathname === '/api/new-page' && req.method === 'POST') {
+    try {
+      const body = await readBody(req);
+      const data = JSON.parse(body);
+      const { dir, filename, title, breadcrumbSection } = data;
+      if (!dir || !filename || !title) throw new Error('Faltan campos obligatorios (dir, filename, title).');
+      const validDirs = ['el-grupo','objetivos','publicaciones','proyectos-digitales','formacion','eventos','multimedia'];
+      if (!validDirs.includes(dir)) throw new Error('Sección inválida: ' + dir);
+      if (!/^[a-z0-9][a-z0-9\-]*\.html$/.test(filename)) throw new Error('Nombre de archivo inválido. Usa solo letras minúsculas, números y guiones (ej: mi-pagina.html).');
+      const rel = dir + '/' + filename;
+      const full = path.join(ROOT, rel);
+      if (fs.existsSync(full)) throw new Error('Ya existe una página con ese nombre: ' + rel);
+      const menuPath = path.join(ROOT, 'menu-data.json');
+      const menu = fs.existsSync(menuPath) ? JSON.parse(fs.readFileSync(menuPath, 'utf8')) : getDefaultMenu();
+      const navHtml = buildNavHtml(menu, dir);
+      const html = buildNewPageHtml({ dir, title, breadcrumbSection, navHtml });
+      fs.writeFileSync(full, html, 'utf8');
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ ok: true, path: rel }));
+    } catch(e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: e.message }));
+    }
     return;
   }
 
