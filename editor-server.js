@@ -468,14 +468,26 @@ const server = http.createServer(async (req, res) => {
       const { url: entryUrl, content, title: entryTitle, description: entryDesc, upsert } = JSON.parse(body);
       const sdPath = path.join(ROOT, 'search-data.js');
       let src = fs.readFileSync(sdPath, 'utf8');
-      // Replace content field for the matching url entry
-      const escaped = content.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
-      const regex = new RegExp(
-        '(\\{[^{}]*?url:\\s*"' + entryUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '"[^{}]*?content:\\s*")[^"]*(")',
-        's'
-      );
-      if (regex.test(src)) {
-        src = src.replace(regex, '$1' + escaped + '$2');
+      // Escape content for embedding in a JS double-quoted string
+      const escaped = content.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, ' ').replace(/\r/g, '');
+      // Find the entry by URL using a position-based approach (avoids regex issues with {} in HTML content)
+      const urlToken = `"${entryUrl}"`;
+      const urlIdx = src.indexOf(urlToken);
+      if (urlIdx !== -1) {
+        // Find the content field after the URL marker
+        const contentLabel = 'content: "';
+        const contentFieldIdx = src.indexOf(contentLabel, urlIdx);
+        if (contentFieldIdx !== -1) {
+          const valueStart = contentFieldIdx + contentLabel.length;
+          // Find the closing unescaped " by scanning forward
+          let i = valueStart;
+          while (i < src.length) {
+            if (src[i] === '"' && src[i - 1] !== '\\') break;
+            i++;
+          }
+          // Replace old value with escaped new value
+          src = src.substring(0, valueStart) + escaped + src.substring(i);
+        }
       } else if (upsert) {
         // Add new entry before the closing bracket
         const tEsc = (entryTitle||'').replace(/\\/g,'\\\\').replace(/"/g,'\\"');
@@ -497,7 +509,7 @@ const server = http.createServer(async (req, res) => {
   // ── API: upload image (or PDF) to media/ ──
   if (url.pathname === '/api/upload-image' && req.method === 'POST') {
     const rawName = url.searchParams.get('name') || '';
-    if (!/^[\w\-. ]+\.(jpg|jpeg|png|gif|svg|webp|pdf)$/i.test(rawName)) {
+    if (!/^[^/\\]+\.(jpg|jpeg|png|gif|svg|webp|pdf)$/i.test(rawName)) {
       res.writeHead(400, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ error: 'Nombre de archivo inválido. Solo se permiten jpg, jpeg, png, gif, svg, webp, pdf.' }));
       return;
@@ -529,7 +541,7 @@ const server = http.createServer(async (req, res) => {
   // ── API: upload video to media/ ──
   if (url.pathname === '/api/upload-media' && req.method === 'POST') {
     const rawName = url.searchParams.get('name') || '';
-    if (!/^[\w\-. ]+\.(mp4|webm|ogv|mov)$/i.test(rawName)) {
+    if (!/^[^/\\]+\.(mp4|webm|ogv|mov)$/i.test(rawName)) {
       res.writeHead(400, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ error: 'Nombre de archivo inválido. Solo se permiten mp4, webm, ogv, mov.' }));
       return;
