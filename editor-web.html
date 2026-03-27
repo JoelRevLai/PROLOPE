@@ -497,11 +497,17 @@ function parseNews(mainEl) {
     } else if (tag === 'figure' && (cls.includes('inline-figure') || cls.includes('inline-figure-left'))) {
       var img = el.querySelector('img');
       var figcap = el.querySelector('figcaption');
+      var figElStyle = el.getAttribute('style')||'';
+      var figElSize = 'medium';
+      if(figElStyle.indexOf('float:none')!==-1||figElStyle.indexOf('float: none')!==-1) figElSize='full';
+      else if(figElStyle.indexOf('width:380')!==-1||figElStyle.indexOf('width: 380')!==-1) figElSize='large';
+      else if(figElStyle.indexOf('width:150')!==-1||figElStyle.indexOf('width: 150')!==-1) figElSize='small';
       f.contentBlocks.push({type:'figura',
         src: img ? (img.getAttribute('src')||'') : '',
         alt: img ? (img.getAttribute('alt')||'') : '',
         caption: figcap ? figcap.innerHTML : '',
-        isLeft: cls.includes('inline-figure-left')});
+        position: (figElStyle.indexOf('margin-left:auto')!==-1||figElStyle.indexOf('margin-left: auto')!==-1) ? 'center' : cls.includes('inline-figure-left') ? 'left' : 'right',
+        size: figElSize});
     } else if (tag === 'div' && cls.includes('pull-quote')) {
       f.contentBlocks.push({type:'cita', text: el.innerHTML});
     } else if (tag === 'div' && cls.includes('article-links') && el.dataset.block === 'enlaces') {
@@ -534,7 +540,11 @@ function parseNews(mainEl) {
       el.querySelectorAll('img').forEach(function(img){
         imgs.push({src:img.getAttribute('src')||'', alt:img.getAttribute('alt')||''});
       });
-      f.contentBlocks.push({type:'imagegrid', cols:cols, imgs:imgs});
+      var igStyle = el.getAttribute('style')||'';
+      var igSize = 'medium';
+      if(igStyle.indexOf('max-width:400')!==-1||igStyle.indexOf('max-width: 400')!==-1) igSize='small';
+      else if(igStyle.indexOf('max-width:700')!==-1||igStyle.indexOf('max-width: 700')!==-1) igSize='large';
+      f.contentBlocks.push({type:'imagegrid', cols:cols, size:igSize, imgs:imgs});
     }
   });
   // External links (only divs without data-block="enlaces" which are inline content blocks)
@@ -555,7 +565,13 @@ function makeBlock(el) {
   if (tag==='p') return {id:id,type:'paragraph',html:el.innerHTML,cls:cls};
   if (tag==='figure'||cls.indexOf('inline-figure')!==-1) {
     var img=el.querySelector('img'), cap=el.querySelector('figcaption');
-    return {id:id,type:'figure',src:img?img.getAttribute('src'):'',alt:img?img.getAttribute('alt'):'',caption:cap?cap.innerHTML:'',cls:cls,isLeft:cls.indexOf('-left')!==-1};
+    var figStyle=el.getAttribute('style')||'';
+    var figSize='medium';
+    if(figStyle.indexOf('float:none')!==-1||figStyle.indexOf('float: none')!==-1) figSize='full';
+    else if(figStyle.indexOf('width:380')!==-1||figStyle.indexOf('width: 380')!==-1) figSize='large';
+    else if(figStyle.indexOf('width:150')!==-1||figStyle.indexOf('width: 150')!==-1) figSize='small';
+    var figPos = (figStyle.indexOf('margin-left:auto')!==-1||figStyle.indexOf('margin-left: auto')!==-1) ? 'center' : (cls.indexOf('-left')!==-1 ? 'left' : 'right');
+    return {id:id,type:'figure',src:img?img.getAttribute('src'):'',alt:img?img.getAttribute('alt'):'',caption:cap?cap.innerHTML:'',cls:cls,position:figPos,size:figSize};
   }
   if (cls.indexOf('pull-quote')!==-1) return {id:id,type:'pullquote',html:el.innerHTML};
   if (cls.indexOf('article-links')!==-1) {
@@ -570,7 +586,11 @@ function makeBlock(el) {
     });
     var gtcStyle = el.style.gridTemplateColumns||'';
     var colsCount = gtcStyle ? gtcStyle.trim().split(/\s+/).length : 2;
-    return {id:id,type:'imagegrid',cols:colsCount,imgs:imgs};
+    var igElStyle = el.getAttribute('style')||'';
+    var igElSize = 'medium';
+    if(igElStyle.indexOf('max-width:400')!==-1||igElStyle.indexOf('max-width: 400')!==-1) igElSize='small';
+    else if(igElStyle.indexOf('max-width:700')!==-1||igElStyle.indexOf('max-width: 700')!==-1) igElSize='large';
+    return {id:id,type:'imagegrid',cols:colsCount,size:igElSize,imgs:imgs};
   }
   if (cls.indexOf('book-highlight')!==-1) {
     var bpEl=el.querySelector('p'), baEl=el.querySelector('a.btn-consultar,a[href]');
@@ -928,6 +948,19 @@ function richField(label,html,dataId) {
     +'</div></div>';
 }
 
+function richFieldCaption(label,html,dataId) {
+  return '<div class="field"><label>'+label+'</label>'
+    +'<div class="rich-wrap">'
+    +'<div class="rich-toolbar">'
+    +'<button onmousedown="execRich(event,\'bold\')"><b>N</b></button>'
+    +'<button onmousedown="execRich(event,\'italic\')"><i>C</i></button>'
+    +'<button onmousedown="execRich(event,\'link\')">Enlace</button>'
+    +'<button onmousedown="execRich(event,\'removeLink\')">Quitar enlace</button>'
+    +'</div>'
+    +'<div class="rich-edit" contenteditable="true" data-rich-id="'+dataId+'">'+html+'</div>'
+    +'</div></div>';
+}
+
 function richFieldBiblio(label,html,dataId) {
   return '<div class="field"><label>'+label+'</label>'
     +'<div class="rich-wrap">'
@@ -1152,9 +1185,11 @@ function renderBlockCard(b) {
     h += richField('Texto destacado (lead)',b.html,'block-'+b.id);
   } else if (b.type==='imagegrid') {
     var cols = b.cols||2;
+    var gsz = b.size||'medium';
     h += '<div class="field"><label>Columnas</label><select id="gg-cols-'+b.id+'" onchange="updBlock('+b.id+',\'cols\',parseInt(this.value))">';
     [1,2,3,4].forEach(function(n){ h += '<option value="'+n+'"'+(cols===n?' selected':'')+'>'+n+'</option>'; });
     h += '</select></div>';
+    h += '<div class="field"><label>Tamaño</label><select id="gg-size-'+b.id+'"><option value="small"'+(gsz==='small'?' selected':'')+'>Pequeña</option><option value="medium"'+(gsz==='medium'?' selected':'')+'>Normal</option><option value="large"'+(gsz==='large'?' selected':'')+'>Grande</option><option value="full"'+(gsz==='full'?' selected':'')+'>Completa</option></select></div>';
     h += '<div id="imggrid-'+b.id+'">';
     (b.imgs||[]).forEach(function(img,i){
       h += '<div style="display:flex;gap:.4rem;align-items:flex-end;margin-bottom:.4rem">';
@@ -1168,8 +1203,11 @@ function renderBlockCard(b) {
   } else if (b.type==='figure') {
     h += imgField('Imagen',b.src,'img-'+b.id);
     h += field('Texto alternativo','alt-'+b.id,b.alt,'Descripción breve de la imagen');
-    h += field('Pie de foto','cap-'+b.id, (b.caption||'').replace(/<[^>]+>/g,''));
-    h += '<div class="field"><label>Posición</label><select id="pos-'+b.id+'"><option value="right"'+(b.isLeft?'':' selected')+'>Derecha</option><option value="left"'+(b.isLeft?' selected':'')+'>Izquierda</option></select></div>';
+    h += richFieldCaption('Pie de foto',b.caption||'','cap-'+b.id);
+    var bpos=b.position||'right';
+    h += '<div class="field"><label>Posición</label><select id="pos-'+b.id+'"><option value="right"'+(bpos==='right'?' selected':'')+'>Derecha</option><option value="left"'+(bpos==='left'?' selected':'')+'>Izquierda</option><option value="center"'+(bpos==='center'?' selected':'')+'>Centrada</option></select></div>';
+    var sz=b.size||'medium';
+    h += '<div class="field"><label>Tamaño</label><select id="size-'+b.id+'"><option value="small"'+(sz==='small'?' selected':'')+'>Pequeña</option><option value="medium"'+(sz==='medium'?' selected':'')+'>Normal</option><option value="large"'+(sz==='large'?' selected':'')+'>Grande</option><option value="full"'+(sz==='full'?' selected':'')+'>Completa</option></select></div>';
   } else if (b.type==='pullquote') {
     h += richField('Texto de la cita',b.html,'block-'+b.id);
   } else if (b.type==='links') {
@@ -1213,11 +1251,11 @@ function addBlock(type) {
   var b = {id:blockId++,type:type};
   if (type==='heading') { b.tag='h2'; b.html=''; b.cls=''; }
   else if (type==='paragraph') { b.html='<p>Nuevo párrafo</p>'; b.cls=''; }
-  else if (type==='figure') { b.src=''; b.alt=''; b.caption=''; b.isLeft=false; b.cls=''; }
+  else if (type==='figure') { b.src=''; b.alt=''; b.caption=''; b.position='right'; b.cls=''; b.size='medium'; }
   else if (type==='pullquote') { b.html='Cita destacada'; }
   else if (type==='links') { b.links=[{label:'',url:''}]; }
   else if (type==='highlight') { b.html=''; b.btnLabel='↓ Consultar aquí (PDF)'; b.btnUrl=''; }
-  else if (type==='imagegrid') { b.cols=2; b.imgs=[{src:'',alt:''},{src:'',alt:''}]; }
+  else if (type==='imagegrid') { b.cols=2; b.imgs=[{src:'',alt:''},{src:'',alt:''}]; b.size='medium'; }
   else if (type==='list') { b.cls='biblio-list'; b.items=[{main:'Nueva entrada bibliográfica.',note:''}]; }
   S.blocks.push(b);
   rerenderBlocks();
@@ -1332,6 +1370,7 @@ function readAllBlocks() {
     }
     if (b.type==='imagegrid') {
       var colsSel=document.getElementById('gg-cols-'+b.id); if(colsSel) b.cols=parseInt(colsSel.value)||2;
+      var szSel=document.getElementById('gg-size-'+b.id); if(szSel) b.size=szSel.value;
       (b.imgs||[]).forEach(function(img,i){
         var si=document.getElementById('gg-src-'+b.id+'-'+i); if(si) img.src=si.value;
         var ai=document.getElementById('gg-alt-'+b.id+'-'+i); if(ai) img.alt=ai.value;
@@ -1340,8 +1379,9 @@ function readAllBlocks() {
     if (b.type==='figure') {
       var si=document.getElementById('img-'+b.id); if(si) b.src=si.value;
       var ai=document.getElementById('alt-'+b.id); if(ai) b.alt=ai.value;
-      var ci=document.getElementById('cap-'+b.id); if(ci) b.caption=ci.value;
-      var pi=document.getElementById('pos-'+b.id); if(pi) b.isLeft=pi.value==='left';
+      var ci=document.querySelector('[data-rich-id="cap-'+b.id+'"]'); if(ci) b.caption=ci.innerHTML;
+      var pi=document.getElementById('pos-'+b.id); if(pi) b.position=pi.value;
+      var szi=document.getElementById('size-'+b.id); if(szi) b.size=szi.value;
     }
     if (b.type==='heading') {
       // Already updated via onchange
@@ -2497,7 +2537,10 @@ function genBlocks() {
     } else if (b.type==='imagegrid') {
       var gcols = b.cols||2;
       var gtc = Array(gcols).fill('1fr').join(' ');
-      h += '\n      <div style="display: grid; grid-template-columns: '+gtc+'; gap: 1rem;">\n';
+      var gridSizeStyles = {small:'max-width:400px;margin-left:auto;margin-right:auto',medium:'',large:'max-width:700px;margin-left:auto;margin-right:auto',full:''};
+      var gridSS = gridSizeStyles[b.size||'medium']||'';
+      var gridStyle = 'display: grid; grid-template-columns: '+gtc+'; gap: 1rem;'+(gridSS?' '+gridSS:'');
+      h += '\n      <div class="article-imagegrid" style="'+gridStyle+'">\n';
       (b.imgs||[]).forEach(function(img){
         h += '        <figure class="inline-figure" style="float: none; width: 100%; margin: 0;">\n';
         h += '          <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector(\'img\').src)">\n';
@@ -2507,10 +2550,15 @@ function genBlocks() {
       });
       h += '      </div>\n';
     } else if (b.type==='figure') {
-      var fc=b.isLeft?'inline-figure-left':'inline-figure';
+      var figPos2=b.position||'right', figSz2=b.size||'medium';
+      var fc=(figPos2==='left')?'inline-figure-left':'inline-figure';
       if(b.cls&&b.cls!=='inline-figure'&&b.cls!=='inline-figure-left') fc=b.cls;
-      h += '\n      <figure class="'+fc+'">\n';
-      h += '        <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector(\'img\').src)">\n';
+      var figSizeBase = {small:'width:150px',medium:'',large:'width:380px',full:'float:none;clear:both;width:100%;margin:1.5rem 0'};
+      var figSS = figSizeBase[figSz2]||'';
+      if(figPos2==='center'&&figSz2!=='full') figSS=(figSS?figSS+';':'')+'float:none;clear:both;margin-left:auto;margin-right:auto;display:block';
+      var figWrapStyle = (figSz2==='full') ? ' style="display:block;max-width:100%"' : '';
+      h += '\n      <figure class="'+fc+'"'+(figSS?' style="'+figSS+'"':'')+'>'+'\n';
+      h += '        <div class="article-figure-img-wrap"'+figWrapStyle+' onclick="openLightbox(this.querySelector(\'img\').src)">\n';
       h += '          <img src="'+escA(b.src)+'" alt="'+escA(b.alt)+'" />\n';
       h += '          <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>\n';
       h += '        </div>\n';
@@ -3208,8 +3256,9 @@ function ncAddBlockWithContent(b) {
   if (type==='figura') {
     var srcI = last.querySelector('.nc-fig-src'); if (srcI) srcI.value = b.src||'';
     var altI = last.querySelector('.nc-fig-alt'); if (altI) altI.value = b.alt||'';
-    var capI = last.querySelector('.nc-fig-cap'); if (capI) capI.value = b.caption||'';
-    var posI = last.querySelector('.nc-fig-pos'); if (posI) posI.value = b.isLeft?'left':'right';
+    var capI = last.querySelector('.nc-fig-cap'); if (capI) capI.innerHTML = b.caption||'';
+    var posI = last.querySelector('.nc-fig-pos'); if (posI) posI.value = b.position||'right';
+    var szI = last.querySelector('.nc-fig-size'); if (szI) szI.value = b.size||'medium';
   } else if (type==='enlaces') {
     var rowsC = last.querySelector('.nc-links-rows');
     if (rowsC) {
@@ -3238,6 +3287,7 @@ function ncAddBlockWithContent(b) {
     }
   } else if (type==='imagegrid') {
     var colsI = last.querySelector('.nc-igrid-cols'); if (colsI) colsI.value = b.cols||2;
+    var gszI = last.querySelector('.nc-igrid-size'); if (gszI) gszI.value = b.size||'medium';
     var rowsC2 = last.querySelector('.nc-igrid-rows');
     if (rowsC2) {
       rowsC2.innerHTML = '';
@@ -3738,8 +3788,19 @@ function ncAddBlock(type) {
       +'<label class="btn btn-outline btn-sm img-upload-btn" title="Subir imagen"><input type="file" accept="image/*" style="display:none" onchange="ncUploadBlockImg(this,\'nc-fig-src\','+id+')">Subir</label>'
       +'</div></div>'
       +'<div class="field"><label>Texto alternativo</label><input type="text" class="nc-fig-alt" placeholder="Descripción breve de la imagen"></div>'
-      +'<div class="field"><label>Pie de foto (opcional)</label><input type="text" class="nc-fig-cap" placeholder="Pie de foto"></div>'
-      +'<div class="field"><label>Posición</label><select class="nc-fig-pos"><option value="right">Derecha</option><option value="left">Izquierda</option></select></div>';
+      +'<div class="field"><label>Pie de foto (opcional)</label>'
+        +'<div class="rich-wrap">'
+          +'<div class="rich-toolbar">'
+            +'<button onmousedown="execRich(event,\'bold\')"><b>N</b></button>'
+            +'<button onmousedown="execRich(event,\'italic\')"><i>C</i></button>'
+            +'<button onmousedown="execRich(event,\'link\')">Enlace</button>'
+            +'<button onmousedown="execRich(event,\'removeLink\')">Quitar enlace</button>'
+          +'</div>'
+          +'<div class="rich-edit nc-fig-cap" contenteditable="true" draggable="false"></div>'
+        +'</div>'
+      +'</div>'
+      +'<div class="field"><label>Posición</label><select class="nc-fig-pos"><option value="right">Derecha</option><option value="left">Izquierda</option><option value="center">Centrada</option></select></div>'
+      +'<div class="field"><label>Tamaño</label><select class="nc-fig-size"><option value="small">Pequeña</option><option value="medium" selected>Normal</option><option value="large">Grande</option><option value="full">Completa</option></select></div>';
   } else if (type==='enlaces') {
     div.innerHTML = header
       +'<div class="nc-links-rows"></div>'
@@ -3762,6 +3823,7 @@ function ncAddBlock(type) {
   } else if (type==='imagegrid') {
     div.innerHTML = header
       +'<div class="field"><label>Columnas</label><select class="nc-igrid-cols"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option></select></div>'
+      +'<div class="field"><label>Tamaño</label><select class="nc-igrid-size"><option value="small">Pequeña</option><option value="medium" selected>Normal</option><option value="large">Grande</option><option value="full">Completa</option></select></div>'
       +'<div class="nc-igrid-rows"></div>'
       +'<button class="btn btn-outline btn-sm" style="margin-top:.3rem" onclick="ncBlockAddGridImg(this)">+ Añadir imagen</button>';
     ncBlockAddGridImg(div.querySelector('button[onclick*=ncBlockAddGridImg]'), true);
@@ -3985,10 +4047,13 @@ function ncGetBlocks() {
     if (type==='figura') {
       var src = (el.querySelector('.nc-fig-src')||{}).value||'';
       var alt = (el.querySelector('.nc-fig-alt')||{}).value||'';
-      var cap = (el.querySelector('.nc-fig-cap')||{}).value||'';
+      var capEl = el.querySelector('.nc-fig-cap');
+      var cap = capEl ? capEl.innerHTML.trim() : '';
       var posEl = el.querySelector('.nc-fig-pos');
-      var isLeft = posEl ? posEl.value==='left' : false;
-      if (src.trim()) blocks.push({type:'figura', src:src.trim(), alt:alt.trim(), caption:cap.trim(), isLeft:isLeft});
+      var figPosVal = posEl ? posEl.value : 'right';
+      var szEl = el.querySelector('.nc-fig-size');
+      var sz = szEl ? szEl.value : 'medium';
+      if (src.trim()) blocks.push({type:'figura', src:src.trim(), alt:alt.trim(), caption:cap, position:figPosVal, size:sz});
     } else if (type==='enlaces') {
       var links = [];
       el.querySelectorAll('.nc-link-row').forEach(function(row){
@@ -4014,13 +4079,15 @@ function ncGetBlocks() {
     } else if (type==='imagegrid') {
       var colsEl = el.querySelector('.nc-igrid-cols');
       var cols = colsEl ? parseInt(colsEl.value)||2 : 2;
+      var gszEl = el.querySelector('.nc-igrid-size');
+      var gsz = gszEl ? gszEl.value : 'medium';
       var imgs = [];
       el.querySelectorAll('.nc-igrid-row').forEach(function(row){
         var src = (row.querySelector('.nc-igrid-src')||{}).value||'';
         var alt = (row.querySelector('.nc-igrid-alt')||{}).value||'';
         imgs.push({src:src.trim(), alt:alt.trim()});
       });
-      blocks.push({type:'imagegrid', cols:cols, imgs:imgs});
+      blocks.push({type:'imagegrid', cols:cols, size:gsz, imgs:imgs});
     } else {
       var ed = el.querySelector('.rich-edit');
       var html = ed ? ed.innerHTML.trim() : '';
@@ -4197,13 +4264,18 @@ function ncGenerateHtml(d) {
     } else if (b.type==='subtitulo') {
       cH += '\n      <p class="article-lead-subtitle">'+b.text+'</p>\n';
     } else if (b.type==='figura') {
-      var fc = b.isLeft ? 'inline-figure-left' : 'inline-figure';
-      cH += '\n      <figure class="'+fc+'">\n';
-      cH += '        <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector(\'img\').src)">\n';
+      var ncFigPos=b.position||'right', ncFigSz=b.size||'medium';
+      var fc = (ncFigPos==='left') ? 'inline-figure-left' : 'inline-figure';
+      var ncFigSizeBase = {small:'width:150px',medium:'',large:'width:380px',full:'float:none;clear:both;width:100%;margin:1.5rem 0'};
+      var ncFigSS = ncFigSizeBase[ncFigSz]||'';
+      if(ncFigPos==='center'&&ncFigSz!=='full') ncFigSS=(ncFigSS?ncFigSS+';':'')+'float:none;clear:both;margin-left:auto;margin-right:auto;display:block';
+      var ncFigWrapStyle = (ncFigSz==='full') ? ' style="display:block;max-width:100%"' : '';
+      cH += '\n      <figure class="'+fc+'"'+(ncFigSS?' style="'+ncFigSS+'"':'')+'>'+'\n';
+      cH += '        <div class="article-figure-img-wrap"'+ncFigWrapStyle+' onclick="openLightbox(this.querySelector(\'img\').src)">\n';
       cH += '          <img src="'+escA(b.src)+'" alt="'+escA(b.alt)+'" />\n';
       cH += '          <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>\n';
       cH += '        </div>\n';
-      if (b.caption) cH += '        <figcaption>'+esc(b.caption)+'</figcaption>\n';
+      if (b.caption) cH += '        <figcaption>'+b.caption+'</figcaption>\n';
       cH += '      </figure>\n';
     } else if (b.type==='cita') {
       cH += '\n      <div class="pull-quote">\n        '+b.text+'\n      </div>\n';
@@ -4238,7 +4310,10 @@ function ncGenerateHtml(d) {
     } else if (b.type==='imagegrid') {
       var gcols = b.cols||2;
       var gtc = Array(gcols).fill('1fr').join(' ');
-      cH += '\n      <div class="article-imagegrid" style="display: grid; grid-template-columns: '+gtc+'; gap: 1rem;">\n';
+      var ncGridSizeStyles = {small:'max-width:400px;margin-left:auto;margin-right:auto',medium:'',large:'max-width:700px;margin-left:auto;margin-right:auto',full:''};
+      var ncGridSS = ncGridSizeStyles[b.size||'medium']||'';
+      var ncGridStyle = 'display: grid; grid-template-columns: '+gtc+'; gap: 1rem;'+(ncGridSS?' '+ncGridSS:'');
+      cH += '\n      <div class="article-imagegrid" style="'+ncGridStyle+'">\n';
       (b.imgs||[]).forEach(function(img){
         cH += '        <figure class="inline-figure" style="float: none; width: 100%; margin: 0;">\n';
         cH += '          <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector(\'img\').src)">\n';

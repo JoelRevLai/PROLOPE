@@ -123,12 +123,12 @@
 }
 
 [data-theme="dark"] .funders-logos img[alt="Fundación March"] {
-  content: url('../media/fundacion-juan-march-nit.png');
+  content: url('media/fundacion-juan-march-nit.png');
   filter: none;
 }
 
 [data-theme="dark"] .funders-logos img[alt="ACE"] {
-  content: url('../media/ace-logo-nit.png');
+  content: url('media/ace-logo-nit.png');
   filter: none;
 }
 
@@ -163,7 +163,7 @@
 
 /* Logo noche en header */
 [data-theme="dark"] .logo-link img {
-  content: url('../media/logo-menu-nit.png');
+  content: url('media/logo-menu-nit.png');
   opacity: 1;
 }
 
