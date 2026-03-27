@@ -465,7 +465,7 @@ const server = http.createServer(async (req, res) => {
   if (url.pathname === '/api/search-data' && req.method === 'POST') {
     try {
       const body = await readBody(req);
-      const { url: entryUrl, content } = JSON.parse(body);
+      const { url: entryUrl, content, title: entryTitle, description: entryDesc, upsert } = JSON.parse(body);
       const sdPath = path.join(ROOT, 'search-data.js');
       let src = fs.readFileSync(sdPath, 'utf8');
       // Replace content field for the matching url entry
@@ -476,6 +476,12 @@ const server = http.createServer(async (req, res) => {
       );
       if (regex.test(src)) {
         src = src.replace(regex, '$1' + escaped + '$2');
+      } else if (upsert) {
+        // Add new entry before the closing bracket
+        const tEsc = (entryTitle||'').replace(/\\/g,'\\\\').replace(/"/g,'\\"');
+        const dEsc = (entryDesc||'').replace(/\\/g,'\\\\').replace(/"/g,'\\"');
+        const newEntry = `  {\n    title: "${tEsc}",\n    url: "${entryUrl}",\n    description: "${dEsc}",\n    content: "${escaped}"\n  },\n`;
+        src = src.replace(/\];\s*$/, newEntry + '];\n');
       }
       fs.copyFileSync(sdPath, sdPath + '.bak');
       fs.writeFileSync(sdPath, src, 'utf8');

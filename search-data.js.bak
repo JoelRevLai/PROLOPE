@@ -62,12 +62,7 @@ var SEARCH_INDEX = [
     description: "Las Partes de comedias de Lope de Vega, centro de la labor editorial de PROLOPE.",
     content: "Partes de comedias de Lope de Vega. Edición crítica de las 25 Partes. Coordinadores Luigi Giuliani Patrizia Campana María Morrás Gonzalo Pontón Silvia Iriso Ariz Ramón Valdés Gázquez Marie-Françoise Déodat-Kessedjian Emmanuelle Garnier Victoria Pineda Enrico di Pastena Rafael Ramos Marco Presotto Laura Fernández Alicia Villar Lecumberri David Castillo Enrique Bordes Fausta Antonucci. Editores Delmiro Antas David Roas Agustín Sánchez Aguilar Nil Santiáñez-Tió Montgrony Alberola Enrique Turpin Miguel M. García-Bermejo Giner José Enrique Laplana Gil Enric Querol Coll María Isabel Toro Pascua Bienvenido Morros Mestres Julián Molina Luis Gómez Canseco Guillermo Serés Elvezio Canonica Jordi Pardo José Roso Díaz Julián González-Barrera Rafael González Cañal Abraham Madroñal Eva Muriel Xavier Tubau Gabriel Padilla Maria Alessandra Giovannini Marcella Trambaioli Jorge León Luis Sánchez Laílla Eric Calderwood Eugenia Fosalba Vela Miguel Zugasti María Dolores Gómez Martín José Miguel Martínez Torrejón María Nogués José Javier Rodríguez Rodríguez Giuseppe Mazzocchi Roberta Alviti Jorge Checa Paola Laskaris Elizabeth Wright Carlos Mota Judith Farré Vidal Josefa Badía Herrera Florence D'Artois Teresa Ferrer Valls Manuel Cornejo Ana Isabel Sánchez Sònia Boadas. Milenio Gredos editorial."
   },
-  {
-    title: "Otras publicaciones",
-    url: "publicaciones/otras-publicaciones.html",
-    description: "Publicaciones adicionales del grupo PROLOPE.",
-    content: "Otras publicaciones del grupo PROLOPE. Libros artículos capítulos."
-  },
+ 
   {
     title: "Biblioteca virtual de PROLOPE",
     url: "proyectos-digitales/biblioteca-virtual.html",
