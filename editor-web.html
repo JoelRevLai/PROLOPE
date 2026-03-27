@@ -834,6 +834,7 @@ function parseMembers(main) {
       role: c.getAttribute('data-role')||'',
       uni: c.getAttribute('data-uni')||'',
       email: c.getAttribute('data-email')||'',
+      orcid: c.getAttribute('data-orcid')||'',
       photo: (c.getAttribute('data-photo')||'').replace(/^\.\.\//,''),
       bio: c.getAttribute('data-bio')||'',
       displayName: txt(c,'.cname'),
@@ -1951,21 +1952,18 @@ function renderMemberCard(it) {
   h += '<button class="btn-del-item" onclick="event.preventDefault();removeItem('+it.id+')" style="position:static">✕</button>';
   h += '</summary>';
   h += '<div style="padding-top:.75rem">';
-  h += '<div class="row">';
-  h += '<div><label style="display:block;font-size:.78rem;font-weight:600;color:var(--azul-oscuro)">Nombre completo</label>'
+  h += '<div class="field"><label>Nombre completo</label>'
     +'<input type="text" id="mn-'+it.id+'" value="'+escA(it.name||'')+'" oninput="updateMemberLabel('+it.id+')"></div>';
-  h += '<div>'+field('Nombre corto (tarjeta)','md-'+it.id,it.displayName)+'</div>';
-  h += '</div>';
   h += '<div class="row">';
   h += '<div><div class="field"><label>Rol</label><select id="mr-'+it.id+'"><option'+(it.role==='Investigador principal'?' selected':'')+'>Investigador principal</option><option'+(it.role==='Comité científico'?' selected':'')+'>Comité científico</option><option'+(it.role==='Investigador'?' selected':'')+'>Investigador</option><option'+(it.role==='Investigadora'?' selected':'')+'>Investigadora</option><option'+(it.role==='Técnico'?' selected':'')+'>Técnico</option></select></div></div>';
   h += '<div><label style="display:block;font-size:.78rem;font-weight:600;color:var(--azul-oscuro)">Rol corto (tarjeta)</label>'
     +'<input type="text" id="mdr-'+it.id+'" value="'+escA(it.displayRole||'')+'" oninput="updateMemberLabel('+it.id+')"></div>';
   h += '</div>';
+  h += field('Universidad / Institución','mu-'+it.id,it.uni);
   h += '<div class="row">';
-  h += '<div>'+field('Universidad / Institución','mu-'+it.id,it.uni)+'</div>';
-  h += '<div>'+field('Univ. corta (tarjeta)','mdu-'+it.id,it.displayUni)+'</div>';
+  h += '<div>'+field('Email','me-'+it.id,it.email)+'</div>';
+  h += '<div>'+field('ORCID (solo el ID, p.ej. 0000-0002-1825-0097)','mo-'+it.id,it.orcid||'')+'</div>';
   h += '</div>';
-  h += field('Email','me-'+it.id,it.email);
   h += imgField('Foto',it.photo?'../'+it.photo:'','mp-'+it.id);
   h += richField('Biografía',it.bio,'mb-'+it.id);
   h += '</div>';
@@ -1985,13 +1983,13 @@ function updateMemberLabel(iid) {
 
 function addMember() {
   readAllItems();
-  S.items.push({id:blockId++,past:false,name:'',role:'Investigador',uni:'',email:'',photo:'',bio:'<p>Biografía del miembro.</p>',displayName:'',displayRole:'Investigador',displayUni:''});
+  S.items.push({id:blockId++,past:false,name:'',role:'Investigador',uni:'',email:'',orcid:'',photo:'',bio:'<p>Biografía del miembro.</p>',displayName:'',displayRole:'Investigador',displayUni:''});
   rerenderItems();
 }
 
 function addPastMember() {
   readAllItems();
-  S.items.push({id:blockId++,past:true,name:'',role:'Investigador',uni:'',email:'',photo:'',bio:'<p>Biografía del miembro.</p>',displayName:'',displayRole:'Investigador',displayUni:''});
+  S.items.push({id:blockId++,past:true,name:'',role:'Investigador',uni:'',email:'',orcid:'',photo:'',bio:'<p>Biografía del miembro.</p>',displayName:'',displayRole:'Investigador',displayUni:''});
   rerenderItems();
 }
 
@@ -2053,8 +2051,7 @@ function renderProjectCard(it) {
   h += '</div>';
   h += field('Título del proyecto','pt-'+it.id,it.title);
   h += '<div class="field"><label>Investigador/a principal</label><div class="row" style="gap:.4rem">'
-    + '<input type="text" id="pilab-'+it.id+'" list="ip-label-list" value="'+escA(it.ipLabel||'IP')+'" style="width:6rem;flex:none" placeholder="IP">'
-    + '<datalist id="ip-label-list"><option value="IP"><option value="IPs"><option value="IP RED"></datalist>'
+    + '<select id="pilab-'+it.id+'" style="width:7rem;flex:none"><option value="IP"'+((!it.ipLabel||it.ipLabel==='IP')?' selected':'')+'>IP</option><option value="IPs"'+(it.ipLabel==='IPs'?' selected':'')+'>IPs</option><option value="IP RED"'+(it.ipLabel==='IP RED'?' selected':'')+'>IP RED</option></select>'
     + '<input type="text" id="pi-'+it.id+'" value="'+escA(it.ipValue||'')+'"></div></div>';
   h += field('Referencia','pr-'+it.id,it.metas['Ref.']||it.metas['Ref.:']||'');
   h += field('Financiación','pf-'+it.id,it.metas['Financiación']||it.metas['Financiación:']||'');
@@ -2518,12 +2515,11 @@ function readAllItems() {
     if (type==='members') {
       var det=document.querySelector('details.item-card[data-iid="'+it.id+'"]'); if(det) it._open=det.open;
       var n=document.getElementById('mn-'+it.id); if(n) it.name=n.value;
-      var d=document.getElementById('md-'+it.id); if(d) it.displayName=d.value;
       var r=document.getElementById('mr-'+it.id); if(r) it.role=r.value;
       var dr=document.getElementById('mdr-'+it.id); if(dr) it.displayRole=dr.value;
       var u=document.getElementById('mu-'+it.id); if(u) it.uni=u.value;
-      var du=document.getElementById('mdu-'+it.id); if(du) it.displayUni=du.value;
       var e=document.getElementById('me-'+it.id); if(e) it.email=e.value;
+      var o=document.getElementById('mo-'+it.id); if(o) it.orcid=o.value;
       var p=document.getElementById('mp-'+it.id); if(p) it.photo=p.value.replace(/^\.\.\//,'');
       var b=document.querySelector('[data-rich-id="mb-'+it.id+'"]'); if(b) it.bio=b.innerHTML;
     }
@@ -2969,7 +2965,7 @@ function genSeminars() {
       h += '            <div class="seminar-field"><div class="seminar-field-label">'+esc(f.label)+'</div><div class="seminar-field-value">'+esc(f.value)+'</div></div>\n';
     });
     h += '          </div>\n';
-    if(it.pdfUrl) h += '          <a class="seminar-pdf-btn" href="'+escA(it.pdfUrl)+'" target="_blank" rel="noopener noreferrer">↓ '+(it.pdfText||'Programa')+'</a>\n';
+    if(it.pdfUrl) h += '          <a class="seminar-pdf-btn" href="'+escA(it.pdfUrl)+'" target="_blank" rel="noopener noreferrer">'+(it.pdfText||'Programa (PDF)')+'</a>\n';
     h += '        </div>\n';
     h += '      </li>\n';
     semIdx++;
@@ -3060,11 +3056,11 @@ function genMembers() {
     var photo=m.photo||'';
     var imgSrc=photo?'../'+photo:'';
     var s = '\n<div class="card" tabindex="0" role="button"\n';
-    s += '  data-name="'+escA(m.name)+'" data-role="'+escA(m.role)+'" data-uni="'+escA(m.uni)+'" data-email="'+escA(m.email)+'"\n';
+    s += '  data-name="'+escA(m.name)+'" data-role="'+escA(m.role)+'" data-uni="'+escA(m.uni)+'" data-email="'+escA(m.email)+'" data-orcid="'+escA(m.orcid||'')+'"\n';
     s += '  data-photo="'+escA(imgSrc)+'"\n';
     s += '  data-bio="'+escAttr(m.bio)+'">\n';
     s += '<img class="cphoto" src="'+escA(imgSrc)+'" alt="'+escA(m.name)+'" onerror="this.onerror=null;this.src=\'../media/logo_positiu.png\';this.style.objectFit=\'contain\';this.style.padding=\'28px\'"/>\n';
-    s += '<div class="cbody"><p class="cname">'+esc(m.displayName||m.name)+'</p><p class="crole">'+esc(m.displayRole||m.role)+'</p><p class="cuni">'+esc(m.displayUni||m.uni)+'</p></div>\n';
+    s += '<div class="cbody"><p class="cname">'+esc(m.name)+'</p><p class="crole">'+esc(m.displayRole||m.role)+'</p><p class="cuni">'+esc(m.uni)+'</p></div>\n';
     s += '<span class="chint">Ver ficha →</span>\n</div>\n';
     return s;
   }

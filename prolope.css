@@ -4991,7 +4991,7 @@ nav.mn > ul > li:hover .dd { opacity: 1; visibility: visible; transform: transla
 @media (max-width: 900px) {
   .modal { grid-template-columns: 1fr; max-height: 92vh; }
   .fo-in { grid-template-columns: 1fr; gap: 28px; }
-  .mcontact { display: block; }
+  .mcontact.has-data { display: block; }
 }
 @media (max-width: 480px) {
   .ov { padding: 0; }
