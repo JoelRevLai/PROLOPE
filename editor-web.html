@@ -237,6 +237,7 @@ var S = {
   wrapperClose: '',
   mainTag: '',
   mainAttrs: '',
+  innerWrapperClass: '',
   pageTitle: '',
   // Specialized data
   items: [],       // for tesis, congresos, seminarios, multimedia, members, projects
@@ -348,6 +349,7 @@ function parseFile(html, path) {
   S.blocks = []; S.items = []; S.introHtml = ''; S.afterGridHtml = '';
   S.hasSidebar = false; S.sidebarCards = [];
   S.wrapperOpen = ''; S.wrapperClose = '';
+  S.innerWrapperClass = '';
   S.mainTag = ''; S.mainAttrs = '';
   S.heroData = null; S.heroOriginalHtml = '';
 
@@ -465,6 +467,9 @@ function parseMain(mainEl) {
     if (tag === 'div' && /\bclearfix\b/.test(cls) && !cls.includes('article-imagegrid') && el.querySelector('.inline-figure, .inline-figure-left')) {
       Array.from(el.children).forEach(function(child) { S.blocks.push(makeBlock(child)); });
     } else if (tag === 'div' && cls.includes('libros-dd-grid')) {
+      Array.from(el.children).forEach(function(child) { S.blocks.push(makeBlock(child)); });
+    } else if (tag === 'div' && cls.includes('content-section')) {
+      S.innerWrapperClass = el.className;
       Array.from(el.children).forEach(function(child) { S.blocks.push(makeBlock(child)); });
     } else {
       S.blocks.push(makeBlock(el));
@@ -1619,7 +1624,7 @@ function renderBlocksEditor() {
   h += '<p class="help" style="margin-bottom:.6rem">Edita el contenido de la página. Puedes añadir, eliminar y reordenar los bloques.</p>';
   h += '<div id="blocksContainer">';
   S.blocks.forEach(function(b,i) {
-    if (b.type==='_skip'||b.type==='_preserve') return;
+    if (b.type==='_skip') return;
     h += renderBlockCard(b,i);
   });
   h += '</div>';
@@ -1640,8 +1645,8 @@ function renderBlocksEditor() {
 }
 
 function renderBlockCard(b) {
-  var types = {heading:'Título',paragraph:'Párrafo',lead:'Texto destacado',figure:'Figura',imagegrid:'Cuadrícula de imágenes',pullquote:'Cita',links:'Enlaces',highlight:'Recuadro destacado con enlace',list:'Lista',libro:'Libro'};
-  var tcls = {heading:'type-h',paragraph:'type-p',lead:'type-quote',figure:'type-fig',imagegrid:'type-fig',pullquote:'type-quote',links:'type-links',highlight:'type-quote',list:'type-p',libro:'type-links'};
+  var types = {heading:'Título',paragraph:'Párrafo',lead:'Texto destacado',figure:'Figura',imagegrid:'Cuadrícula de imágenes',pullquote:'Cita',links:'Enlaces',highlight:'Recuadro destacado con enlace',list:'Lista',libro:'Libro','_preserve':'HTML directo'};
+  var tcls = {heading:'type-h',paragraph:'type-p',lead:'type-quote',figure:'type-fig',imagegrid:'type-fig',pullquote:'type-quote',links:'type-links',highlight:'type-quote',list:'type-p',libro:'type-links','_preserve':'type-p'};
   var h = '<div class="block-card" data-bid="'+b.id+'">';
   h += '<div class="block-header">';
   h += '<span class="block-handle">☰</span>';
@@ -1724,6 +1729,10 @@ function renderBlockCard(b) {
     });
     h += '</div>';
     h += '<button class="btn btn-outline btn-sm" style="margin-top:.4rem" onclick="addListEntry('+b.id+')">+ Añadir entrada</button>';
+  } else if (b.type==='_preserve') {
+    h += '<div class="field"><label style="font-size:.72rem;color:var(--gris)">Bloque HTML (edición directa)</label>';
+    h += '<textarea id="rawhtml-'+b.id+'" style="font-family:monospace;font-size:.78rem;min-height:120px;width:100%;resize:vertical">'+esc(b.html)+'</textarea>';
+    h += '</div>';
   }
   h += '</div>';
   return h;
@@ -1838,7 +1847,7 @@ function rerenderBlocks() {
   if (!c) return;
   var h = '';
   S.blocks.forEach(function(b) {
-    if (b.type==='_skip'||b.type==='_preserve') return;
+    if (b.type==='_skip') return;
     h += renderBlockCard(b);
   });
   c.innerHTML = h;
@@ -1892,6 +1901,10 @@ function readAllBlocks() {
         if(mainEl) item.main=mainEl.innerHTML;
         if(noteEl) item.note=noteEl.innerHTML;
       });
+    }
+    if (b.type==='_preserve') {
+      var el = document.getElementById('rawhtml-'+b.id);
+      if (el) b.html = el.value;
     }
     if (b.type==='libro') {
       var mEl=document.querySelector('input[name="lbmode-'+b.id+'"]:checked'); if(mEl) b.displayMode=mEl.value;
@@ -3098,6 +3111,9 @@ function genBlocks() {
   // One-time modal init script for libro blocks (appended at end if needed)
   var needsLibroModal = S.blocks.some(function(b){ return b.type==='libro'; });
   var libroModalScript = needsLibroModal ? genLibroModalScript() : '';
+  var innerOpen = S.innerWrapperClass ? '\n<div class="'+escA(S.innerWrapperClass)+'">' : '';
+  var innerClose = S.innerWrapperClass ? '\n</div>\n' : '';
+  if (innerOpen) h += innerOpen;
   S.blocks.forEach(function(b) {
     if (b.type==='_skip'||b.type==='_preserve') { h += '\n'+b.html+'\n'; return; }
     if (b.type==='heading') {
@@ -3199,6 +3215,7 @@ function genBlocks() {
     }
   });
   if (libroModalScript) h += libroModalScript;
+  if (innerClose) h += innerClose;
   return h;
 }
 

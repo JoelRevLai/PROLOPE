@@ -41,7 +41,6 @@
                 <li><a href="estatutos.html">Estatutos del grupo</a></li>
                 <li><a href="miembros.html">Miembros</a></li>
                 <li><a href="contacto.html">Contacto y ubicación</a></li>
-                <li><a href="bad-gyal.html">Bad Gyal</a></li>
               </ul>
             </div>
           </li>
@@ -149,7 +148,7 @@
 </div>
 
 <div class="card" id="gonzalo-ponton" tabindex="0" role="button"
-  data-name="Gonzalo Pontón" data-role="Investigador principal" data-uni="Universitat Autònoma de Barcelona" data-email="gonzalo.ponton@uab.cat" data-orcid="ORCID 0000-0002-6567-8299 "
+  data-name="Gonzalo Pontón" data-role="Investigador principal" data-uni="Universitat Autònoma de Barcelona" data-email="gonzalo.ponton@uab.cat" data-orcid="0000-0002-6567-8299"
   data-photo="../media/ponton_gonzalo.jpg"
   data-bio="&lt;p&gt;&lt;!--StartFragment--&gt;Gonzalo Pontón Gijón es catedrático de Teoría de la Literatura y Literatura Comparada en la&amp;nbsp;Universitat&amp;nbsp;Autònoma&amp;nbsp;de Barcelona. Como estudioso de la literatura europea de los siglos XV a XVII ha prestado atención a la epistolografía, el discurso historiográfico, las ideas literarias y el teatro, así como a la crítica textual. Ha escrito monografías extensas sobre las cartas literarias (&lt;em&gt;Correspondencias&lt;/em&gt;, 2002) y la historiografía del Cuatrocientos (&lt;em&gt;Escrituras históricas&lt;/em&gt;, 2002) y es coautor de los volúmenes&amp;nbsp;&lt;em&gt;Las ideas literarias&lt;/em&gt;&amp;nbsp;(2011) y&amp;nbsp;&lt;em&gt;La conquista del clasicismo&lt;/em&gt;&amp;nbsp;(2013) de la Historia de la literatura española de Editorial Crítica. Autor de numerosas ediciones críticas de obras literarias de los Siglos de Oro, en particular comedias de Lope de Vega y narrativa breve de diversos autores (1997-2026), ha sido también colaborador principal de las sucesivas ediciones del&amp;nbsp;&lt;em&gt;Quijote&amp;nbsp;&lt;/em&gt;del Instituto Cervantes (1998, 2004, 2015) y ha publicado su propia edición de la novela cervantina (2015). En 2014 fue distinguido con el galardón ICREA Academia. Es director del grupo de investigación PROLOPE y de la Biblioteca Clásica de la Real Academia Española, como lo fue antes de otras colecciones de ensayo académico y clásicos (&quot;Letras de humanidad&quot;, &quot;Clásicos y modernos&quot;, &quot;El espejo y la lámpara&quot;, &quot;Escena clásica&quot;).&amp;nbsp;&amp;nbsp;&lt;!--EndFragment--&gt;&lt;/p&gt;">
 <img class="cphoto" src="../media/ponton_gonzalo.jpg" alt="Gonzalo Pontón" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
@@ -571,6 +570,15 @@
 <span class="chint">Ver ficha →</span>
 </div>
 
+<div class="card" id="joan-antoni" tabindex="0" role="button"
+  data-name="joan antoni" data-role="Investigador" data-uni="" data-email="" data-orcid="0000-0001-5787-7741"
+  data-photo=""
+  data-bio="&lt;p&gt;Biografía del miembro.&lt;/p&gt;">
+<img class="cphoto" src="" alt="joan antoni" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">joan antoni</p><p class="crole">Investigador</p><p class="cuni"></p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
 </div>
 
 <div class="members-section">
@@ -614,12 +622,11 @@
       <div class="sidebar-card">
         <p class="sidebar-card-title">En esta sección</p>
         <ul class="sidebar-nav-list">
-          <li><a href="el-grupo.html">El grupo de investigación</a></li>
-          <li><a href="historial-proyectos.html">Historial de proyectos</a></li>
-          <li><a href="estatutos.html">Estatutos del grupo</a></li>
-          <li><a href="miembros.html" class="active">Miembros</a></li>
           <li><a href="contacto.html">Contacto y ubicación</a></li>
-
+          <li><a href="el-grupo.html">El grupo de investigación</a></li>
+          <li><a href="estatutos.html">Estatutos del grupo</a></li>
+          <li><a href="historial-proyectos.html">Historial de proyectos</a></li>
+          <li><a href="miembros.html" class="active">Miembros</a></li>
         </ul>
       </div>
 
@@ -761,7 +768,8 @@ function load(i){
   mbio.innerHTML=d.bio||'';
   mcounter.textContent=(i+1)+' / '+cards.length;
   const email=d.email?d.email.trim():'';
-  const orcid=d.orcid?d.orcid.trim():'';
+  const orcid=d.orcid?d.orcid.trim().replace(/^orcid\s*/i,''):'';
+
   if(email){memailA.href='mailto:'+email;memailA.textContent=email;memail.style.display='flex';}
   else{memail.style.display='none';}
   if(orcid){const ou='https://orcid.org/'+orcid;morcidA.href=ou;morcidA.textContent=orcid;morcid.style.display='flex';}
