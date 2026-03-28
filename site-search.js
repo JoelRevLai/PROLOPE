@@ -51,10 +51,28 @@
     return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   }
 
+  /* ---------- parsear la consulta en términos simples y frases exactas ---------- */
+
+  function parseQuery(raw) {
+    var phrases = [];
+    var words   = [];
+    // Extraer frases entre comillas (simples o dobles, rectas o tipográficas)
+    var remaining = raw.replace(/["""«»]([^"""«»]+)["""«»]/g, function (_, phrase) {
+      var p = phrase.trim();
+      if (p) phrases.push(p);
+      return ' ';
+    });
+    remaining.split(/\s+/).forEach(function (w) {
+      if (w.length > 0) words.push(w);
+    });
+    return { phrases: phrases, words: words };
+  }
+
   /* ---------- buscar ---------- */
 
   function doSearch() {
-    var q = normalize(input.value.trim());
+    var raw = input.value.trim();
+    var q   = normalize(raw);
     if (q.length < 2) {
       results.innerHTML = '';
       count.textContent = '';
@@ -62,24 +80,39 @@
       return;
     }
 
-    var terms = q.split(/\s+/);
-    var scored = [];
+    var parsed  = parseQuery(q);
+    var phrases = parsed.phrases;
+    var terms   = parsed.words;
+    var scored  = [];
 
     SEARCH_INDEX.forEach(function (page) {
-      var haystack = normalize(page.title + ' ' + page.description + ' ' + page.content);
-      var matched = 0;
-      var score = 0;
+      var haystack   = normalize(page.title + ' ' + page.description + ' ' + page.content);
+      var titleN     = normalize(page.title);
+      var descN      = normalize(page.description);
+      var matched    = 0;
+      var total      = phrases.length + terms.length;
+      var score      = 0;
 
-      terms.forEach(function (t) {
-        if (haystack.indexOf(t) !== -1) {
+      phrases.forEach(function (p) {
+        if (haystack.indexOf(p) !== -1) {
           matched++;
-          if (normalize(page.title).indexOf(t) !== -1) score += 3;
-          else if (normalize(page.description).indexOf(t) !== -1) score += 2;
+          if (titleN.indexOf(p) !== -1) score += 4;
+          else if (descN.indexOf(p) !== -1) score += 2;
           else score += 1;
         }
       });
 
-      if (matched === terms.length) {
+      terms.forEach(function (t) {
+        if (haystack.indexOf(t) !== -1) {
+          matched++;
+          if (titleN.indexOf(t) !== -1) score += 3;
+          else if (descN.indexOf(t) !== -1) score += 2;
+          else score += 1;
+        }
+      });
+
+      if (total === 0) return;
+      if (matched === total) {
         scored.push({ page: page, score: score });
       }
     });
