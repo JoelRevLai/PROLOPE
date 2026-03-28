@@ -41,6 +41,8 @@
                 <li><a href="estatutos.html">Estatutos del grupo</a></li>
                 <li><a href="miembros.html">Miembros</a></li>
                 <li><a href="contacto.html">Contacto y ubicación</a></li>
+                <li><a href="bad-gyal.html">Bad gyal</a></li>
+                <li><a href="bad-gyal.html">Bad Gyal</a></li>
               </ul>
             </div>
           </li>
@@ -73,8 +75,8 @@
                 <li><a href="../proyectos-digitales/mujeres-criados.html">Mujeres y criados</a></li>
                 <li><a href="../proyectos-digitales/mapping-lope.html">Mapping Lope</a></li>
                 <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
-                <li><a href="../proyectos-digitales/la-dama-boba.html">La dama boba <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
-                <li><a href="../proyectos-digitales/gondomar.html">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="../proyectos-digitales/la-dama-boba.html">La dama boba</a></li>
+                <li><a href="../proyectos-digitales/gondomar.html" target="_blank" rel="noopener noreferrer">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
               </ul>
             </div>
           </li>
@@ -150,14 +152,14 @@
       <div class="timeline-era" id="era-2020">
         <p class="era-label">Década de 2020</p>
 
-        <div class="project-item">
+        <div class="project-item" id="2022-2025-la-integral-dramatica-de-lope-de-vega-t">
           <div class="project-year"><span class="year-text">2022–2025</span></div>
           <div class="project-card current">
             <span class="project-badge">Vigente</span>
             <span class="year-text-mobile">2022–2025</span>
             <p class="project-title">La integral dramática de Lope de Vega: textos, métodos, problemas, proyección</p>
             <div class="project-meta">
-              <span class="project-meta-item"><span class="label">IPs</span><span class="value">Gonzalo Pontón (UAB)</span></span>
+              <span class="project-meta-item"><span class="label">IP</span><span class="value">Gonzalo Pontón (UAB)</span></span>
               <span class="project-meta-item"><span class="label">Ref.</span><span class="value">PID2021-124737NB-I00</span></span>
               <span class="project-meta-item"><span class="label">Financiación</span><span class="value">Ministerio de Ciencia e Innovación</span></span>
               <span class="project-meta-item"><span class="label">Presupuesto</span><span class="value">116.644 €</span></span>
@@ -170,7 +172,7 @@
       <div class="timeline-era" id="era-2010">
         <p class="era-label">Década de 2010</p>
 
-        <div class="project-item">
+        <div class="project-item" id="2019-2021-edicion-y-estudio-de-treinta-y-seis-come">
           <div class="project-year"><span class="year-text">2019–2021</span></div>
           <div class="project-card">
             <span class="year-text-mobile">2019–2021</span>
@@ -183,7 +185,7 @@
             </div>
           </div>
         </div>
-        <div class="project-item">
+        <div class="project-item" id="2017-2020-lt-t-literary-traditions-and-texts-of-t">
           <div class="project-year"><span class="year-text">2017–2020</span></div>
           <div class="project-card">
             <span class="year-text-mobile">2017–2020</span>
@@ -196,7 +198,7 @@
             </div>
           </div>
         </div>
-        <div class="project-item">
+        <div class="project-item" id="2016-2019-edicion-y-estudio-de-treinta-y-seis-come">
           <div class="project-year"><span class="year-text">2016–2019</span></div>
           <div class="project-card">
             <span class="year-text-mobile">2016–2019</span>
@@ -209,7 +211,7 @@
             </div>
           </div>
         </div>
-        <div class="project-item">
+        <div class="project-item" id="2013-2015-edicion-y-estudio-de-treinta-y-seis-come">
           <div class="project-year"><span class="year-text">2013–2015</span></div>
           <div class="project-card">
             <span class="year-text-mobile">2013–2015</span>
@@ -221,7 +223,7 @@
             </div>
           </div>
         </div>
-        <div class="project-item">
+        <div class="project-item" id="2010-2014-tetso-transmision-y-estudio-de-textos-d">
           <div class="project-year"><span class="year-text">2010–2014</span></div>
           <div class="project-card">
             <span class="year-text-mobile">2010–2014</span>
@@ -234,7 +236,7 @@
             <div class="project-desc">El principal objetivo del grupo consolidado fue la transmisión y el estudio de textos del Siglo de Oro.</div>
           </div>
         </div>
-        <div class="project-item">
+        <div class="project-item" id="2010-2014-tc-12-patrimonio-teatral-clasico-espan">
           <div class="project-year"><span class="year-text">2010–2014</span></div>
           <div class="project-card">
             <span class="year-text-mobile">2010–2014</span>
@@ -248,7 +250,7 @@
             <div class="project-desc">Red de excelencia de gran envergadura en la que PROLOPE participó como grupo integrante junto con otros equipos del ámbito del teatro clásico español.</div>
           </div>
         </div>
-        <div class="project-item">
+        <div class="project-item" id="2010-2012-edicion-y-estudio-de-treinta-y-seis-come">
           <div class="project-year"><span class="year-text">2010–2012</span></div>
           <div class="project-card">
             <span class="year-text-mobile">2010–2012</span>
@@ -266,7 +268,7 @@
       <div class="timeline-era" id="era-2000">
         <p class="era-label">Década de 2000</p>
 
-        <div class="project-item">
+        <div class="project-item" id="2007-2009-edicion-y-estudio-de-treinta-y-seis-come">
           <div class="project-year"><span class="year-text">2007–2009</span></div>
           <div class="project-card">
             <span class="year-text-mobile">2007–2009</span>
@@ -278,7 +280,7 @@
             </div>
           </div>
         </div>
-        <div class="project-item">
+        <div class="project-item" id="2005-2009-tetso-transmision-y-estudio-de-textos-d">
           <div class="project-year"><span class="year-text">2005–2009</span></div>
           <div class="project-card">
             <span class="year-text-mobile">2005–2009</span>
@@ -290,7 +292,7 @@
             </div>
           </div>
         </div>
-        <div class="project-item">
+        <div class="project-item" id="2004-2007-edicion-y-estudio-de-treinta-y-seis-come">
           <div class="project-year"><span class="year-text">2004–2007</span></div>
           <div class="project-card">
             <span class="year-text-mobile">2004–2007</span>
@@ -302,7 +304,7 @@
             </div>
           </div>
         </div>
-        <div class="project-item">
+        <div class="project-item" id="2003-centre-especial-de-recerca-prolope">
           <div class="project-year"><span class="year-text">2003</span></div>
           <div class="project-card">
             <span class="year-text-mobile">2003</span>
@@ -314,7 +316,7 @@
             <div class="project-desc">En el año 2003, la UAB reconoció a PROLOPE como Centre Especial de Recerca, distinción que refrendó su trayectoria y visibilidad institucional.</div>
           </div>
         </div>
-        <div class="project-item">
+        <div class="project-item" id="2001-2004-edicion-y-estudio-de-treinta-y-seis-come">
           <div class="project-year"><span class="year-text">2001–2004</span></div>
           <div class="project-card">
             <span class="year-text-mobile">2001–2004</span>
@@ -331,7 +333,7 @@
       <div class="timeline-era" id="era-1990">
         <p class="era-label">Década de 1990</p>
 
-        <div class="project-item">
+        <div class="project-item" id="1998-2001-edicion-y-estudio-de-treinta-comedias-de">
           <div class="project-year"><span class="year-text">1998–2001</span></div>
           <div class="project-card">
             <span class="year-text-mobile">1998–2001</span>
@@ -342,7 +344,7 @@
             </div>
           </div>
         </div>
-        <div class="project-item">
+        <div class="project-item" id="1995-1998-edicion-y-estudio-de-veinte-comedias-de">
           <div class="project-year"><span class="year-text">1995–1998</span></div>
           <div class="project-card">
             <span class="year-text-mobile">1995–1998</span>
@@ -353,7 +355,7 @@
             </div>
           </div>
         </div>
-        <div class="project-item">
+        <div class="project-item" id="1989-1995-edicion-y-estudio-de-las-veinte-primeras">
           <div class="project-year"><span class="year-text">1989–1995</span></div>
           <div class="project-card">
             <span class="year-text-mobile">1989–1995</span>
@@ -370,7 +372,7 @@
       <div class="timeline-era" id="era-otras">
         <p class="era-label">Otras subvenciones y colaboraciones institucionales</p>
 
-        <div class="project-item">
+        <div class="project-item" id="otras-subvenciones-y-relaciones-con-instituciones">
           <div class="project-year"><span class="year-text"></span></div>
           <div class="project-card">
             <span class="year-text-mobile"></span>

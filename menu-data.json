@@ -1,0 +1,140 @@
+[
+  {
+    "label": "El grupo",
+    "items": [
+      {
+        "label": "El grupo de investigación",
+        "url": "el-grupo/el-grupo.html"
+      },
+      {
+        "label": "Historial de proyectos",
+        "url": "el-grupo/historial-proyectos.html"
+      },
+      {
+        "label": "Estatutos del grupo",
+        "url": "el-grupo/estatutos.html"
+      },
+      {
+        "label": "Miembros",
+        "url": "el-grupo/miembros.html"
+      },
+      {
+        "label": "Contacto y ubicación",
+        "url": "el-grupo/contacto.html"
+      },
+      {
+        "label": "Bad gyal",
+        "url": "el-grupo/bad-gyal.html"
+      },
+      {
+        "label": "Bad Gyal",
+        "url": "el-grupo/bad-gyal.html"
+      },
+      {
+        "label": "Bad Gyal",
+        "url": "el-grupo/bad-gyal.html"
+      }
+    ]
+  },
+  {
+    "label": "Objetivos",
+    "items": [
+      {
+        "label": "Vida y obra de Lope de Vega",
+        "url": "objetivos/vida-obra.html"
+      },
+      {
+        "label": "Transmisión y edición del teatro de Lope de Vega",
+        "url": "objetivos/transmision.html"
+      },
+      {
+        "label": "Criterios y materiales para la edición",
+        "url": "objetivos/criterios.html"
+      }
+    ]
+  },
+  {
+    "label": "Publicaciones",
+    "items": [
+      {
+        "label": "Partes de comedias",
+        "url": "publicaciones/partes-comedias.html"
+      },
+      {
+        "label": "Anuario Lope de Vega",
+        "url": "https://revistes.uab.cat/anuariolopedevega/index",
+        "external": true
+      },
+      {
+        "label": "Otras publicaciones",
+        "url": "publicaciones/otras-publicaciones.html"
+      }
+    ]
+  },
+  {
+    "label": "Proyectos digitales",
+    "items": [
+      {
+        "label": "Biblioteca virtual",
+        "url": "proyectos-digitales/biblioteca-virtual.html"
+      },
+      {
+        "label": "Biblioteca Digital Prolope",
+        "url": "https://prolope.uab.cat/biblioteca/",
+        "external": true
+      },
+      {
+        "label": "Mujeres y criados",
+        "url": "proyectos-digitales/mujeres-criados.html"
+      },
+      {
+        "label": "Mapping Lope",
+        "url": "proyectos-digitales/mapping-lope.html"
+      },
+      {
+        "label": "AUTESO",
+        "url": "https://theatheor-fe.netseven.it",
+        "external": true
+      },
+      {
+        "label": "La dama boba",
+        "url": "proyectos-digitales/la-dama-boba.html"
+      },
+      {
+        "label": "Gondomar Digital",
+        "url": "proyectos-digitales/gondomar.html",
+        "external": true
+      }
+    ]
+  },
+  {
+    "label": "Formación",
+    "items": [
+      {
+        "label": "Tesis",
+        "url": "formacion/tesis.html"
+      }
+    ]
+  },
+  {
+    "label": "Eventos",
+    "items": [
+      {
+        "label": "Congresos",
+        "url": "eventos/congresos.html"
+      },
+      {
+        "label": "Seminarios",
+        "url": "eventos/seminarios.html"
+      }
+    ]
+  },
+  {
+    "label": "Multimedia",
+    "url": "multimedia/multimedia.html"
+  },
+  {
+    "label": "Noticias",
+    "url": "noticias/noticias.html"
+  }
+]

@@ -157,6 +157,7 @@
     <span class="ed-topbar-title" id="topTitle"></span>
     <span class="ed-topbar-badge" id="topBadge"></span>
     <button class="btn btn-outline btn-sm" onclick="previewPage()">Vista previa</button>
+    <button class="btn btn-danger btn-sm" id="btnDelete" onclick="deletePage()" style="display:none" title="Eliminar esta página">Eliminar página</button>
     <button class="btn btn-green" id="btnSave" onclick="savePage()">Guardar cambios</button>
   </div>
   <div class="ed-body" id="edBody">
@@ -273,6 +274,10 @@ async function loadPage(pagePath) {
   document.querySelectorAll('.nav-item').forEach(function(el){ el.classList.toggle('active', el.dataset.path === pagePath); });
   document.getElementById('topbar').style.display = '';
   var _ws = document.getElementById('welcomeScreen'); if (_ws) _ws.style.display = 'none';
+  // Show delete button only for non-protected pages
+  var _delBtn = document.getElementById('btnDelete');
+  var _protected = ['index.html','noticias/noticias.html'];
+  if (_delBtn) _delBtn.style.display = _protected.includes(pagePath) ? 'none' : '';
 
   try {
     var r = await fetch('/api/page?path='+encodeURIComponent(pagePath));
@@ -301,11 +306,12 @@ function detectType(path) {
   if (path === 'el-grupo/historial-proyectos.html') return 'projects';
   if (path === 'el-grupo/contacto.html') return 'contact';
   if (path === 'publicaciones/partes-comedias.html') return 'partes';
+  if (path === 'publicaciones/otras-publicaciones.html') return 'libros';
   if (path.startsWith('noticias/noticia-')) return 'news';
   return 'article';
 }
 
-var TYPE_LABELS = {index:'Página de inicio',theses:'Tesis',congresses:'Congresos',seminars:'Seminarios',multimedia:'Multimedia',members:'Miembros',projects:'Historial de proyectos',contact:'Contacto',news:'Noticia',partes:'Partes de comedias',article:'Página de contenido'};
+var TYPE_LABELS = {index:'Página de inicio',theses:'Tesis',congresses:'Congresos',seminars:'Seminarios',multimedia:'Multimedia',members:'Miembros',projects:'Historial de proyectos',contact:'Contacto',news:'Noticia',partes:'Partes de comedias',libros:'Otras publicaciones',article:'Página de contenido'};
 
 // ── PARSE FILE ───────────────────────────────────────────────────────────────
 function parseFile(html, path) {
@@ -2724,14 +2730,15 @@ function genBlocks() {
       (b.extraFields||[]).forEach(function(ef){ if(ef.label&&ef.value) lbFields.push([ef.label,ef.value]); });
       lbFields.forEach(function(f){ if(f[0]&&f[1]) lbDl += '\n          <dt>'+esc(f[0])+'</dt><dd>'+esc(f[1])+'</dd>'; });
       var lbBuy = b.buyUrl ? '\n          <a href="'+escA(b.buyUrl)+'" class="libro-block-buy" target="_blank" rel="noopener noreferrer">Más información</a>' : '';
+      var lbId = slugifyStr(b.title);
       if (!b.displayMode || b.displayMode === 'modal') {
-        h += '\n      <div class="libro-block libro-block--modal" data-lb=\''+lbJson+'\' onclick="openLb(this)">';
+        h += '\n      <div class="libro-block libro-block--modal" id="'+lbId+'" data-lb=\''+lbJson+'\' onclick="openLb(this)">';
         h += '\n        '+lbImg;
         h += '\n        <div class="libro-block-title">'+esc(b.title)+'</div>';
         if (b.author) h += '\n        <div class="libro-block-author">'+esc(b.author)+'</div>';
         h += '\n      </div>\n';
       } else {
-        h += '\n      <details class="libro-block libro-block--dropdown" data-lb=\''+lbJson+'\'>';
+        h += '\n      <details class="libro-block libro-block--dropdown" id="'+lbId+'" data-lb=\''+lbJson+'\'>';
         h += '\n        <summary class="libro-block-summary">';
         h += '\n          '+lbImg;
         h += '\n          <div class="libro-block-caption">';
@@ -2846,7 +2853,8 @@ function genTheses() {
   var h = '\n      <p class="article-lead">'+S.introHtml+'</p>\n';
   h += '\n      <div class="thesis-list">\n';
   S.items.forEach(function(it) {
-    h += '        <div class="thesis-item">\n';
+    var thId = slugifyStr(((it.year||'') + '-' + (it.title ? it.title.replace(/<[^>]+>/g,'') : '')).substring(0,50));
+    h += '        <div class="thesis-item" id="'+escA(thId)+'">\n';
     h += '          <span class="thesis-year">'+esc(it.year)+'</span>\n';
     h += '          <p class="thesis-title">'+it.title+'</p>\n';
     h += '          <div class="thesis-meta">'+it.meta+'</div>\n';
@@ -2878,7 +2886,8 @@ function genCongresses() {
     }
     if (!it.year && !it.edition && !it.name && !it.dates && !it.location && !it.image) return;
     if (!inGrid) { h += '\n    <div class="congress-grid">\n'; inGrid = true; }
-    h += '\n      <div class="congress-card"'+(it.onclick?' onclick="'+escA(it.onclick)+'"':'')+'>\n';
+    var conId = slugifyStr(((it.edition||'') + '-' + (it.name ? it.name.replace(/<[^>]+>/g,'') : '')).substring(0,60));
+    h += '\n      <div class="congress-card" id="'+escA(conId)+'"'+(it.onclick?' onclick="'+escA(it.onclick)+'"':'')+'>\n';
     h += '        <div class="congress-poster">\n';
     if(it.image) h += '          <img src="'+escA(it.image)+'" alt="'+escA(it.imageAlt)+'" />\n';
     h += '          <div class="congress-poster-overlay"></div>\n';
@@ -2948,7 +2957,8 @@ function genSeminars() {
     }
     if (!it.year && !it.name && !it.dates) return;
     if (!inList) { h += '\n    <ul class="seminar-list">\n'; inList = true; }
-    h += '\n      <li class="seminar-item">\n';
+    var semId = slugifyStr((it.year||'') + '-' + (it.name||'').substring(0,40));
+    h += '\n      <li class="seminar-item" id="'+escA(semId)+'">\n';
     h += '        <button class="seminar-trigger" onclick="toggleSeminar(this)">\n';
     h += '          <span class="seminar-year">'+esc(it.year)+'</span>\n';
     h += '          <span class="seminar-title-wrap">\n';
@@ -2999,7 +3009,8 @@ function genMultimedia() {
     } else {
       onclick = it.url ? "window.open('"+it.url.replace(/'/g,"\\'")+"','_blank')" : '';
     }
-    h += '\n      <article class="video-card"'+(onclick?' onclick="'+escA(onclick)+'"':'')+'>\n';
+    var vidId = slugifyStr((it.title ? it.title.replace(/<[^>]+>/g,'') : '').substring(0,50));
+    h += '\n      <article class="video-card" id="'+escA(vidId)+'"'+(onclick?' onclick="'+escA(onclick)+'"':'')+'>\n';
     h += '        <div class="video-thumb-wrap">\n';
     if(it.image) h += '          <img src="'+escA(it.image)+'" alt="'+escA(it.imageAlt||'')+'" loading="lazy" />\n';
     h += '          <div class="play-btn">\n';
@@ -3055,7 +3066,7 @@ function genMembers() {
   function memberCardHtml(m) {
     var photo=m.photo||'';
     var imgSrc=photo?'../'+photo:'';
-    var s = '\n<div class="card" tabindex="0" role="button"\n';
+    var s = '\n<div class="card" id="'+slugifyStr(m.name)+'" tabindex="0" role="button"\n';
     s += '  data-name="'+escA(m.name)+'" data-role="'+escA(m.role)+'" data-uni="'+escA(m.uni)+'" data-email="'+escA(m.email)+'" data-orcid="'+escA(m.orcid||'')+'"\n';
     s += '  data-photo="'+escA(imgSrc)+'"\n';
     s += '  data-bio="'+escAttr(m.bio)+'">\n';
@@ -3092,7 +3103,8 @@ function genProjects() {
     var indent = inEra ? '        ' : '      ';
     var indent2 = inEra ? '          ' : '        ';
     var indent3 = inEra ? '            ' : '          ';
-    h += indent+'<div class="project-item">\n';
+    var prjId = slugifyStr(((it.year||'') + '-' + (it.title||'')).substring(0,50));
+    h += indent+'<div class="project-item" id="'+escA(prjId)+'">\n';
     h += indent2+'<div class="project-year"><span class="year-text">'+esc(it.year)+'</span></div>\n';
     h += indent2+'<div class="project-card'+(it.isCurrent?' current':'')+'">\n';
     if(it.isCurrent) h += indent3+'<span class="project-badge">Vigente</span>\n';
@@ -3117,42 +3129,73 @@ function genProjects() {
 // ══════════════════════════════════════════════════════════════════════════════
 // SAVE / PREVIEW
 // ══════════════════════════════════════════════════════════════════════════════
+function slugifyStr(str) {
+  return (str||'').toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+}
+
+async function postSearchSection(prefix, entries) {
+  try {
+    await fetch('/api/search-data-section', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({prefix: prefix, entries: entries}),
+    });
+  } catch(e) { /* silent */ }
+}
+
 async function updateCongressesSearchData() {
-  var parts = [];
+  var entries = [];
   S.items.forEach(function(it) {
-    if (it._group) { if (it.title) parts.push(it.title); return; }
-    if (it.edition) parts.push(it.edition);
-    if (it.name) parts.push(it.name.replace(/<[^>]+>/g,''));
-    if (it.year) parts.push(it.year);
-    if (it.dates) parts.push(it.dates);
-    if (it.location) parts.push(it.location);
-    if (it.modalTitle) parts.push(it.modalTitle);
-    if (it.modalDescription) parts.push(it.modalDescription.replace(/<[^>]+>/g,''));
+    if (it._group || (!it.edition && !it.name)) return;
+    var namePlain = it.name ? it.name.replace(/<[^>]+>/g,'') : '';
+    var conParts = [it.edition, namePlain, it.year, it.dates, it.location, it.modalTitle,
+      it.modalDescription ? it.modalDescription.replace(/<[^>]+>/g,'') : ''];
+    var s = slugifyStr(((it.edition||'') + '-' + (namePlain||'')).substring(0,60));
+    entries.push({
+      url: 'eventos/congresos.html#' + s,
+      title: (it.edition ? it.edition + ': ' : '') + namePlain,
+      description: [it.dates, it.location].filter(Boolean).join(', '),
+      content: conParts.filter(Boolean).join(' ')
+    });
   });
-  await postSearchData('eventos/congresos.html', parts.join(' '));
+  await postSearchSection('eventos/congresos.html', entries);
 }
 
 async function updateSeminarsSearchData() {
-  var parts = [];
+  var entries = [];
   S.items.forEach(function(it) {
-    if (it._group) { if (it.title) parts.push(it.title); return; }
-    if (it.name) parts.push(it.name);
-    if (it.theme) parts.push(it.theme);
-    if (it.year) parts.push(it.year);
-    if (it.dates) parts.push(it.dates);
-    (it.fields||[]).forEach(function(f){ if(f.value) parts.push(f.value); });
+    if (it._group || !it.name) return;
+    var semParts = [it.year, it.name, it.dates, it.theme];
+    (it.fields||[]).forEach(function(f){ if(f.value) semParts.push(f.value); });
+    var s = slugifyStr(((it.year||'') + '-' + (it.name||'').substring(0,40)));
+    entries.push({
+      url: 'eventos/seminarios.html#' + s,
+      title: it.name + (it.year ? ' (' + it.year + ')' : ''),
+      description: it.dates || it.year || '',
+      content: semParts.filter(Boolean).join(' ')
+    });
   });
-  await postSearchData('eventos/seminarios.html', parts.join(' '));
+  await postSearchSection('eventos/seminarios.html', entries);
 }
 
 async function updateThesesSearchData() {
-  var parts = [];
+  var entries = [];
   S.items.forEach(function(it) {
-    if (it.year) parts.push(it.year);
-    if (it.title) parts.push(it.title.replace(/<[^>]+>/g,''));
-    if (it.meta) parts.push(it.meta.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim());
+    if (!it.year && !it.title) return;
+    var titlePlain = it.title ? it.title.replace(/<[^>]+>/g,'') : '';
+    var metaPlain = it.meta ? it.meta.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim() : '';
+    var author = metaPlain.split('Director')[0].trim().replace(/[,\s]+$/,'');
+    var s = slugifyStr(((it.year||'') + '-' + (titlePlain||'')).substring(0,50));
+    entries.push({
+      url: 'formacion/tesis.html#' + s,
+      title: titlePlain ? titlePlain + ' (' + it.year + ')' : 'Tesis ' + it.year,
+      description: (it.year||'') + (author ? '. ' + author : ''),
+      content: [it.year, titlePlain, metaPlain].filter(Boolean).join(' ')
+    });
   });
-  await postSearchData('formacion/tesis.html', parts.join(' '));
+  await postSearchSection('formacion/tesis.html', entries);
 }
 
 async function postSearchData(url, content, opts) {
@@ -3166,66 +3209,113 @@ async function postSearchData(url, content, opts) {
 }
 
 async function updateMultimediaSearchData() {
-  var parts = [];
+  var entries = [];
   S.items.forEach(function(it) {
-    if (it.title) parts.push(it.title.replace(/<[^>]+>/g,''));
-    if (it.desc) parts.push(it.desc);
-    if (it.date) parts.push(it.date);
-    if (it.source) parts.push(it.source);
+    var titlePlain = it.title ? it.title.replace(/<[^>]+>/g,'') : '';
+    if (!titlePlain) return;
+    var s = slugifyStr(titlePlain.substring(0,50));
+    entries.push({
+      url: 'multimedia/multimedia.html#' + s,
+      title: titlePlain,
+      description: (it.source||'') + (it.date ? ', ' + it.date : ''),
+      content: [titlePlain, it.date, it.source, it.desc].filter(Boolean).join(' ')
+    });
   });
-  await postSearchData('multimedia/multimedia.html', parts.join(' '));
+  await postSearchSection('multimedia/multimedia.html', entries);
 }
 
 async function updateMembersSearchData() {
-  var parts = [];
+  var entries = [];
   S.items.forEach(function(it) {
-    if (it.name) parts.push(it.name);
-    if (it.role) parts.push(it.role);
-    if (it.uni) parts.push(it.uni);
-    if (it.bio) parts.push(it.bio.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim());
+    if (!it.name) return;
+    var bio = it.bio ? it.bio.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim() : '';
+    var s = slugifyStr(it.name);
+    entries.push({
+      url: 'el-grupo/miembros.html#' + s,
+      title: it.name,
+      description: (it.role||'') + (it.uni ? ' — ' + it.uni : ''),
+      content: [it.name, it.role, it.uni, bio].filter(Boolean).join(' ')
+    });
   });
-  await postSearchData('el-grupo/miembros.html', parts.join(' '));
+  await postSearchSection('el-grupo/miembros.html', entries);
 }
 
 async function updateProjectsSearchData() {
-  var parts = [];
+  var entries = [];
   S.items.forEach(function(it) {
-    if (it.year) parts.push(it.year);
-    if (it.title) parts.push(it.title);
+    if (it._group || !it.title) return;
+    var prjParts = [it.year, it.title];
     var m = it.metas || {};
-    Object.keys(m).forEach(function(k){ if(m[k]) parts.push(m[k]); });
-    if (it.desc) parts.push(it.desc.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim());
+    Object.keys(m).forEach(function(k){ if(m[k]) prjParts.push(m[k]); });
+    if (it.desc) prjParts.push(it.desc.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim());
+    var s = slugifyStr(((it.year||'') + '-' + (it.title||'')).substring(0,50));
+    var ipVal = m['IP'] || m['IPs'] || '';
+    entries.push({
+      url: 'el-grupo/historial-proyectos.html#' + s,
+      title: it.title + (it.year ? ' (' + it.year + ')' : ''),
+      description: (it.year||'') + (ipVal ? '. IP: ' + ipVal : ''),
+      content: prjParts.filter(Boolean).join(' ')
+    });
   });
-  await postSearchData('el-grupo/historial-proyectos.html', parts.join(' '));
+  await postSearchSection('el-grupo/historial-proyectos.html', entries);
+}
+
+async function updatePartesSearchData() {
+  var entries = [];
+  (S.partesData||[]).forEach(function(p) {
+    if (!p.roman) return;
+    var allPlays = (p.volumes||[]).reduce(function(acc,v){
+      return acc.concat((v.plays||[]).filter(function(pl){ return !pl.history; }).map(function(pl){ return pl.title; }));
+    },[]);
+    var allEditors = (p.volumes||[]).reduce(function(acc,v){
+      return acc.concat((v.plays||[]).map(function(pl){ return pl.editors||''; }).filter(Boolean));
+    },[]).join(', ');
+    var isbns = (p.volumes||[]).map(function(v){ return v.isbn||''; }).filter(Boolean).join(' ');
+    var s = 'parte-' + slugifyStr(p.roman);
+    var pContent = ['Parte ' + p.roman, p.year, p.coord||'', p.editorial, p.city]
+      .concat(allPlays).concat([allEditors, isbns]).filter(Boolean).join(' ');
+    var desc = (p.editorial||'') + ', ' + (p.city||'') + ', ' + (p.year||'') + (p.coord ? '. Coord. ' + p.coord : '');
+    entries.push({
+      url: 'publicaciones/partes-comedias.html#' + s,
+      title: 'Comedias de Lope de Vega. Parte ' + p.roman + ' (' + p.year + ')',
+      description: desc,
+      content: pContent
+    });
+  });
+  await postSearchSection('publicaciones/partes-comedias.html', entries);
 }
 
 async function updateGenericSearchData() {
-  // For news and article pages: extract text from the generated HTML
+  // For article pages: one entry per page
+  if (S.pageType === 'article' || S.pageType === 'news') {
+    var html = generateHtml();
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    var main = doc.querySelector('.article-main, .article-body, .page-content, .page-content-full, main');
+    if (main) { main.querySelectorAll('script, style').forEach(function(el){ el.remove(); }); }
+    var content = main ? main.textContent.replace(/\s+/g,' ').trim() : '';
+    await postSearchData(S.currentPath, content);
+    return;
+  }
+  // For otras-publicaciones and similar: replace all entries for this page using section approach
   var html = generateHtml();
   var doc = new DOMParser().parseFromString(html, 'text/html');
-  var main = doc.querySelector('.article-main, .article-body, .page-content, .page-content-full, main');
-  // Remove script and style elements before extracting text
-  if (main) { main.querySelectorAll('script, style').forEach(function(el){ el.remove(); }); }
-  var content = main ? main.textContent.replace(/\s+/g,' ').trim() : '';
-  await postSearchData(S.currentPath, content);
-  // Each libro block gets its own separate search entry
   var libroEls = doc.querySelectorAll('[data-lb]');
-  for (var i = 0; i < libroEls.length; i++) {
+  var entries = [];
+  libroEls.forEach(function(el) {
     try {
-      var d = JSON.parse(libroEls[i].getAttribute('data-lb'));
-      if (!d.title) continue;
+      var d = JSON.parse(el.getAttribute('data-lb'));
+      if (!d.title) return;
       var parts = [d.author, d.editor, d.year, d.editorial, d.city, d.collection, d.isbn];
       (d.extraFields||[]).forEach(function(f){ if(f.value) parts.push(f.value); });
-      var lbContent = parts.filter(Boolean).join(' ');
-      var slug = d.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-      var lbUrl = S.currentPath + '#' + slug;
-      await postSearchData(lbUrl, lbContent, {
+      entries.push({
+        url: S.currentPath + '#' + slugifyStr(d.title),
         title: d.title,
         description: [d.author, d.year].filter(Boolean).join(', '),
-        upsert: true
+        content: parts.filter(Boolean).join(' ')
       });
     } catch(e) {}
-  }
+  });
+  await postSearchSection(S.currentPath, entries);
 }
 
 async function savePage() {
@@ -3251,7 +3341,8 @@ async function savePage() {
       if (S.pageType==='multimedia') await updateMultimediaSearchData();
       if (S.pageType==='members') await updateMembersSearchData();
       if (S.pageType==='projects') await updateProjectsSearchData();
-      if (S.pageType==='news' || S.pageType==='article') await updateGenericSearchData();
+      if (S.pageType==='partes') await updatePartesSearchData();
+      if (S.pageType==='news' || S.pageType==='article' || S.pageType==='libros') await updateGenericSearchData();
     } else {
       toast('Error al guardar: '+(data.error||'desconocido'),'err');
     }
@@ -3621,12 +3712,70 @@ async function createNewPage() {
     if (!data.ok) throw new Error(data.error || 'Error desconocido');
     toast('Página creada: '+data.path, 'ok');
     msg.textContent = '✓ Página creada: '+data.path; msg.style.color='var(--verde)';
+    // Auto-add page to the site menu
+    try {
+      var dirToLabel = {'el-grupo':'El grupo','objetivos':'Objetivos','publicaciones':'Publicaciones','proyectos-digitales':'Proyectos digitales','formacion':'Formación','eventos':'Eventos'};
+      var sectionLabel = dirToLabel[dir];
+      if (sectionLabel) {
+        var mr = await fetch('/api/menu');
+        var menuData = await mr.json();
+        var section = menuData.find(function(s){ return s.label === sectionLabel && s.items; });
+        if (section) {
+          section.items.push({ label: title, url: data.path });
+          await fetch('/api/menu', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(menuData) });
+          msg.textContent += ' (añadida al menú)';
+        }
+      }
+    } catch(e) { /* silently ignore menu update errors */ }
+    // Add to search index
+    try {
+      var dirLabels = {'el-grupo':'El grupo','objetivos':'Objetivos','publicaciones':'Publicaciones','proyectos-digitales':'Proyectos digitales','formacion':'Formación','eventos':'Eventos','multimedia':'Multimedia'};
+      await fetch('/api/search-index', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          action: 'add',
+          entry: {
+            title: title + ' | PROLOPE – UAB',
+            url: data.path,
+            description: (breadcrumbSection || dirLabels[dir] || dir) + ' — ' + title,
+            content: title + ' ' + (breadcrumbSection || dirLabels[dir] || '') + ' PROLOPE'
+          }
+        })
+      });
+    } catch(e) { /* silently ignore */ }
     // Refresh page list and open the new page
     try { var pr = await fetch('/api/pages'); S.pages = await pr.json(); renderNav(); } catch(e){}
     setTimeout(function(){ loadPage(data.path); }, 500);
   } catch(e) {
     msg.textContent = 'Error: '+e.message; msg.style.color='var(--rojo)';
     toast('Error: '+e.message, 'err');
+  }
+}
+
+// ── DELETE PAGE ───────────────────────────────────────────────────────────────
+async function deletePage() {
+  var pagePath = S.currentPath;
+  if (!pagePath) return;
+  if (!confirm('¿Eliminar la página "' + pagePath + '"?\n\nSe guardará una copia de seguridad (.bak) pero la página dejará de estar disponible en el sitio.')) return;
+  try {
+    var r = await fetch('/api/delete-page', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ path: pagePath })
+    });
+    var data = await r.json();
+    if (!data.ok) throw new Error(data.error || 'Error desconocido');
+    toast('Página eliminada: ' + pagePath, 'ok');
+    // Remove from search index
+    try { await fetch('/api/search-index', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ action:'remove', entry:{ url: pagePath } }) }); } catch(e){}
+    S.currentPath = '';
+    document.getElementById('topbar').style.display = 'none';
+    document.getElementById('edBody').innerHTML = '<div class="welcome" id="welcomeScreen"><h2>Página eliminada</h2><p>La página <em>' + esc(pagePath) + '</em> ha sido eliminada. Recuerda actualizar el menú de navegación si era necesario.</p></div>';
+    // Refresh page list in sidebar
+    try { var pr = await fetch('/api/pages'); S.pages = await pr.json(); renderNav(); } catch(e){}
+  } catch(e) {
+    toast('Error: ' + e.message, 'err');
   }
 }
 
@@ -4062,7 +4211,7 @@ async function deleteNews(pagePath, title) {
 
   // 1. Delete the HTML file
   try {
-    var r = await fetch('/api/delete-page?path='+encodeURIComponent(pagePath), {method:'POST'});
+    var r = await fetch('/api/delete-page', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({path: pagePath})});
     var data = await r.json();
     if (!data.ok) { toast('Error al eliminar el archivo: '+(data.error||''), 'err'); return; }
   } catch(e) { toast('Error de conexión', 'err'); return; }

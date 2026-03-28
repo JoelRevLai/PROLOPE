@@ -493,10 +493,48 @@ const server = http.createServer(async (req, res) => {
         const tEsc = (entryTitle||'').replace(/\\/g,'\\\\').replace(/"/g,'\\"');
         const dEsc = (entryDesc||'').replace(/\\/g,'\\\\').replace(/"/g,'\\"');
         const newEntry = `  {\n    title: "${tEsc}",\n    url: "${entryUrl}",\n    description: "${dEsc}",\n    content: "${escaped}"\n  },\n`;
-        src = src.replace(/\];\s*$/, newEntry + '];\n');
+        src = src.replace(/}\s*\];\s*$/, '},\n' + newEntry + '];\n');
       }
       fs.copyFileSync(sdPath, sdPath + '.bak');
       fs.writeFileSync(sdPath, src, 'utf8');
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ ok: true }));
+    } catch (e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: e.message }));
+    }
+    return;
+  }
+
+  // ── API: replace all search-data.js entries for a section (by URL prefix) ──
+  if (url.pathname === '/api/search-data-section' && req.method === 'POST') {
+    try {
+      const body = await readBody(req);
+      const { prefix, entries } = JSON.parse(body);
+      if (!prefix) throw new Error('prefix required');
+      const sdPath = path.join(ROOT, 'search-data.js');
+      const src = fs.readFileSync(sdPath, 'utf8');
+
+      // Parse existing entries via vm sandbox
+      const vm = require('vm');
+      const ctx = {};
+      vm.runInNewContext(src, ctx);
+      const existing = Array.isArray(ctx.SEARCH_INDEX) ? ctx.SEARCH_INDEX : [];
+
+      // Keep entries whose URL does NOT start with the prefix, add the new ones
+      const kept = existing.filter(e => !e.url.startsWith(prefix));
+      const all = kept.concat(entries || []);
+
+      // Rebuild file
+      const esc = s => (s || '').replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, ' ').replace(/\r/g, '');
+      const header = '/**\n * search-data.js \u2014 \u00cdndice de b\u00fasqueda del sitio PROLOPE\n */\nvar SEARCH_INDEX = [\n';
+      const body2 = all.map(e =>
+        `  {\n    title: "${esc(e.title)}",\n    url: "${esc(e.url)}",\n    description: "${esc(e.description)}",\n    content: "${esc(e.content)}"\n  }`
+      ).join(',\n');
+      const newSrc = header + body2 + '\n];\n';
+
+      fs.copyFileSync(sdPath, sdPath + '.bak');
+      fs.writeFileSync(sdPath, newSrc, 'utf8');
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ ok: true }));
     } catch (e) {
@@ -644,17 +682,60 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  // ── API: search index (add / remove entry) ──
+  if (url.pathname === '/api/search-index' && req.method === 'POST') {
+    try {
+      const body = await readBody(req);
+      const { action, entry } = JSON.parse(body); // action: 'add' | 'remove', entry: { title, url, description, content }
+      const searchPath = path.join(ROOT, 'search-data.js');
+      let src = fs.existsSync(searchPath) ? fs.readFileSync(searchPath, 'utf8') : 'var SEARCH_INDEX = [];\n';
+      // Parse existing array
+      let index = [];
+      try {
+        const fn = new Function(src + '; return SEARCH_INDEX;');
+        index = fn();
+      } catch(e) { /* fallback: keep index empty */ }
+      if (action === 'add') {
+        // Remove any existing entry with the same url first
+        index = index.filter(e => e.url !== entry.url);
+        index.push(entry);
+      } else if (action === 'remove') {
+        index = index.filter(e => e.url !== entry.url);
+      }
+      // Serialize back
+      const lines = index.map(e =>
+        `  {\n    title: ${JSON.stringify(e.title||'')},\n    url: ${JSON.stringify(e.url||'')},\n    description: ${JSON.stringify(e.description||'')},\n    content: ${JSON.stringify(e.content||'')}\n  }`
+      );
+      const newSrc = '/**\n * search-data.js — Índice de búsqueda del sitio PROLOPE\n */\nvar SEARCH_INDEX = [\n' + lines.join(',\n') + '\n];\n';
+      fs.copyFileSync(searchPath, searchPath + '.bak');
+      fs.writeFileSync(searchPath, newSrc, 'utf8');
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ ok: true, count: index.length }));
+    } catch(e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: e.message }));
+    }
+    return;
+  }
+
   // ── API: delete a page ──
   if (url.pathname === '/api/delete-page' && req.method === 'POST') {
-    const rel = url.searchParams.get('path');
-    if (!rel) { res.writeHead(400); res.end('Missing path'); return; }
-    const full = safePath(rel);
-    if (!full) { res.writeHead(403); res.end('Forbidden'); return; }
-    // Only allow deleting news pages for safety
-    if (!rel.startsWith('noticias/noticia-')) { res.writeHead(403, { 'Content-Type': 'application/json' }); res.end(JSON.stringify({ error: 'Solo se pueden eliminar páginas de noticias.' })); return; }
     try {
+      const body = await readBody(req);
+      const { path: rel } = JSON.parse(body);
+      if (!rel) { res.writeHead(400, {'Content-Type':'application/json'}); res.end(JSON.stringify({error:'Missing path'})); return; }
+      const full = safePath(rel);
+      if (!full) { res.writeHead(403, {'Content-Type':'application/json'}); res.end(JSON.stringify({error:'Forbidden'})); return; }
+      // Protect core pages that should never be deleted
+      const PROTECTED = ['index.html','editor-web.html','generador-noticias.html','noticias/noticias.html'];
+      if (PROTECTED.includes(rel)) { res.writeHead(403, {'Content-Type':'application/json'}); res.end(JSON.stringify({error:'Esta página está protegida y no puede eliminarse.'})); return; }
+      // Only allow pages within known dirs
+      const validDirs = ['el-grupo','objetivos','publicaciones','proyectos-digitales','formacion','eventos','multimedia','noticias',''];
+      const pageDir = rel.includes('/') ? rel.split('/')[0] : '';
+      if (!validDirs.includes(pageDir)) { res.writeHead(403, {'Content-Type':'application/json'}); res.end(JSON.stringify({error:'Directorio no permitido.'})); return; }
+      if (!rel.endsWith('.html')) { res.writeHead(400, {'Content-Type':'application/json'}); res.end(JSON.stringify({error:'Solo se pueden eliminar archivos .html'})); return; }
       if (fs.existsSync(full)) {
-        fs.copyFileSync(full, full + '.bak'); // keep backup
+        fs.copyFileSync(full, full + '.bak');
         fs.unlinkSync(full);
       }
       res.writeHead(200, { 'Content-Type': 'application/json' });

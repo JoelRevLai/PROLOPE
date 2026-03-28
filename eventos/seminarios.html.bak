@@ -41,6 +41,8 @@
                 <li><a href="../el-grupo/estatutos.html">Estatutos del grupo</a></li>
                 <li><a href="../el-grupo/miembros.html">Miembros</a></li>
                 <li><a href="../el-grupo/contacto.html">Contacto y ubicación</a></li>
+                <li><a href="../el-grupo/bad-gyal.html">Bad gyal</a></li>
+                <li><a href="../el-grupo/bad-gyal.html">Bad Gyal</a></li>
               </ul>
             </div>
           </li>
@@ -73,8 +75,8 @@
                 <li><a href="../proyectos-digitales/mujeres-criados.html">Mujeres y criados</a></li>
                 <li><a href="../proyectos-digitales/mapping-lope.html">Mapping Lope</a></li>
                 <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
-                <li><a href="../proyectos-digitales/la-dama-boba.html">La dama boba <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
-                <li><a href="../proyectos-digitales/gondomar.html">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="../proyectos-digitales/la-dama-boba.html">La dama boba</a></li>
+                <li><a href="../proyectos-digitales/gondomar.html" target="_blank" rel="noopener noreferrer">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
               </ul>
             </div>
           </li>
@@ -146,25 +148,7 @@
 
     <ul class="seminar-list">
 
-      <li class="seminar-item">
-        <button class="seminar-trigger" onclick="toggleSeminar(this)">
-          <span class="seminar-year">aas</span>
-          <span class="seminar-title-wrap">
-            <span class="seminar-name"></span>
-          </span>
-          <span class="seminar-dates-inline"></span>
-          <span class="seminar-chevron">▼</span>
-        </button>
-        <div class="seminar-panel" id="sem-panel-0">
-          <div class="seminar-panel-grid">
-            <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value"></div></div>
-            <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value"></div></div>
-          </div>
-          <a class="seminar-pdf-btn" href="asas" target="_blank" rel="noopener noreferrer">Programa (PDF)</a>
-        </div>
-      </li>
-
-      <li class="seminar-item">
+      <li class="seminar-item" id="2019-jornada-internacional-icrea-academia-pro">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2019</span>
           <span class="seminar-title-wrap">
@@ -174,7 +158,7 @@
           <span class="seminar-dates-inline">17 junio 2019</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-1">
+        <div class="seminar-panel" id="sem-panel-0">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">17 de junio de 2019</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">PROLOPE – UAB / ICREA-Academia</div></div>
@@ -183,7 +167,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2018-ii-seminario-internacional-icrea-academi">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2018</span>
           <span class="seminar-title-wrap">
@@ -193,7 +177,7 @@
           <span class="seminar-dates-inline">11–12 enero 2018</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-2">
+        <div class="seminar-panel" id="sem-panel-1">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">11–12 de enero de 2018</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">UAB – Facultad de Filosofía y Letras / Departamento de Filología Española / PROLOPE / ICREA-Academia</div></div>
@@ -202,7 +186,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2017-i-seminario-internacional-icrea-academia">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2017</span>
           <span class="seminar-title-wrap">
@@ -212,7 +196,7 @@
           <span class="seminar-dates-inline">29–30 mayo 2017</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-3">
+        <div class="seminar-panel" id="sem-panel-2">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">29–30 de mayo de 2017</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">UAB – Facultad de Filosofía y Letras / PROLOPE / ICREA-Academia</div></div>
@@ -231,7 +215,7 @@
 
     <ul class="seminar-list">
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2025-xviii-taller-internacional-de-estudios-t">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2025</span>
           <span class="seminar-title-wrap">
@@ -240,7 +224,7 @@
           <span class="seminar-dates-inline">3–4 marzo 2025</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-4">
+        <div class="seminar-panel" id="sem-panel-3">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">3–4 de marzo de 2025</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">Universidad de Perugia y PROLOPE</div></div>
@@ -249,7 +233,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2024-xvii-taller-internacional-de-estudios-te">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2024</span>
           <span class="seminar-title-wrap">
@@ -258,7 +242,7 @@
           <span class="seminar-dates-inline">6–7 mayo 2024</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-5">
+        <div class="seminar-panel" id="sem-panel-4">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">6–7 de mayo de 2024</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">Universidad de Perugia y PROLOPE</div></div>
@@ -267,7 +251,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2019-xvi-taller-internacional-de-estudios-tex">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2019</span>
           <span class="seminar-title-wrap">
@@ -276,7 +260,7 @@
           <span class="seminar-dates-inline">2–3 diciembre 2019</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-6">
+        <div class="seminar-panel" id="sem-panel-5">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">2–3 de diciembre de 2019</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">Universidad de Perugia, Grupo de Investigación Arenga de la Universidad de Extremadura y PROLOPE</div></div>
@@ -285,7 +269,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2018-xv-taller-internacional-de-estudios-text">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2018</span>
           <span class="seminar-title-wrap">
@@ -294,7 +278,7 @@
           <span class="seminar-dates-inline">6–7 diciembre 2018</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-7">
+        <div class="seminar-panel" id="sem-panel-6">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">6–7 diciembre de 2018</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">Universidad de Perugia, Proyecto de Investigación Arenga de la Universidad de Extremadura y PROLOPE</div></div>
@@ -303,7 +287,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2017-xiv-taller-internacional-de-estudios-tex">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2017</span>
           <span class="seminar-title-wrap">
@@ -312,7 +296,7 @@
           <span class="seminar-dates-inline">11–12 diciembre 2025</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-8">
+        <div class="seminar-panel" id="sem-panel-7">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">11–12 diciembre de 2025</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">Universidad de Perugia, Proyecto de Investigación Arenga de la Universidad de Extremadura y PROLOPE</div></div>
@@ -321,7 +305,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2016-xiii-taller-internacional-de-estudios-te">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2016</span>
           <span class="seminar-title-wrap">
@@ -330,7 +314,7 @@
           <span class="seminar-dates-inline">6 diciembre 2016</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-9">
+        <div class="seminar-panel" id="sem-panel-8">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">6 diciembre de 2016</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">Universidad de Perugia, PROLOPE y Grupo de Investigación Arenga de la Universidad de Extremadura</div></div>
@@ -339,7 +323,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2015-xii-taller-internacional-de-estudios-tex">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2015</span>
           <span class="seminar-title-wrap">
@@ -348,7 +332,7 @@
           <span class="seminar-dates-inline">30 noviembre–1 diciembre 2015</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-10">
+        <div class="seminar-panel" id="sem-panel-9">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">30 noviembre–1 diciembre de 2015</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">Universidad de Perugia, PROLOPE, Grupo de Investigación Arenga de la Universidad de Extremadura e Instituto de Español de la Universidad de Neuchâtel</div></div>
@@ -357,7 +341,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2014-xi-taller-internacional-de-estudios-text">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2014</span>
           <span class="seminar-title-wrap">
@@ -366,7 +350,7 @@
           <span class="seminar-dates-inline">1–2 diciembre 2014</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-11">
+        <div class="seminar-panel" id="sem-panel-10">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">1–2 diciembre de 2014</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">Universidad de Perugia, PROLOPE, Grupo de Investigación Arenga de la Universidad de Extremadura e Instituto de Español de la Universidad de Neuchâtel</div></div>
@@ -375,7 +359,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2013-x-taller-internacional-de-estudios-textu">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2013</span>
           <span class="seminar-title-wrap">
@@ -384,7 +368,7 @@
           <span class="seminar-dates-inline">29–30 noviembre 2013</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-12">
+        <div class="seminar-panel" id="sem-panel-11">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">29–30 de noviembre de 2013</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">Universidad de Extremadura, PROLOPE, Grupo de Investigación Arenga de la Universidad de Extremadura y Universidad de Córdoba</div></div>
@@ -393,7 +377,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2012-ix-taller-internacional-de-estudios-text">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2012</span>
           <span class="seminar-title-wrap">
@@ -402,7 +386,7 @@
           <span class="seminar-dates-inline">9–10 mayo 2012</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-13">
+        <div class="seminar-panel" id="sem-panel-12">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">9–10 de mayo de 2012</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">Universidad de Extremadura y PROLOPE</div></div>
@@ -411,7 +395,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2011-viii-taller-internacional-de-estudios-te">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2011</span>
           <span class="seminar-title-wrap">
@@ -420,7 +404,7 @@
           <span class="seminar-dates-inline">11–12 abril 2011</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-14">
+        <div class="seminar-panel" id="sem-panel-13">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">11–12 abril de 2011</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">Universidad de Extremadura y PROLOPE</div></div>
@@ -429,7 +413,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2010-vii-taller-internacional-de-estudios-tex">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2010</span>
           <span class="seminar-title-wrap">
@@ -438,7 +422,7 @@
           <span class="seminar-dates-inline">3–4 mayo 2010</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-15">
+        <div class="seminar-panel" id="sem-panel-14">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">3–4 mayo de 2010</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">Universidad de Extremadura y PROLOPE</div></div>
@@ -447,7 +431,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2009-vi-taller-internacional-de-estudios-text">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2009</span>
           <span class="seminar-title-wrap">
@@ -456,7 +440,7 @@
           <span class="seminar-dates-inline">11–12 mayo 2009</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-16">
+        <div class="seminar-panel" id="sem-panel-15">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">11–12 mayo de 2009</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">Universidad de Extremadura y PROLOPE</div></div>
@@ -465,7 +449,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2008-v-taller-internacional-de-estudios-textu">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2008</span>
           <span class="seminar-title-wrap">
@@ -474,7 +458,7 @@
           <span class="seminar-dates-inline">15–16 mayo 2008</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-17">
+        <div class="seminar-panel" id="sem-panel-16">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">15–16 mayo de 2008</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">Universidad de Extremadura y PROLOPE</div></div>
@@ -483,7 +467,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2007-iv-taller-internacional-de-estudios-text">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2007</span>
           <span class="seminar-title-wrap">
@@ -492,7 +476,7 @@
           <span class="seminar-dates-inline">24–25 mayo 2007</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-18">
+        <div class="seminar-panel" id="sem-panel-17">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">24–25 mayo de 2007</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">Universidad de Extremadura y PROLOPE</div></div>
@@ -511,7 +495,7 @@
 
     <ul class="seminar-list">
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2010-iv-seminario-de-estudios-literarios-de-l">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2010</span>
           <span class="seminar-title-wrap">
@@ -521,7 +505,7 @@
           <span class="seminar-dates-inline">22–24 abril 2010</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-19">
+        <div class="seminar-panel" id="sem-panel-18">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">22–24 de abril de 2010</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">PROLOPE</div></div>
@@ -530,7 +514,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2008-09-iii-seminario-de-estudios-literarios-de">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2008–09</span>
           <span class="seminar-title-wrap">
@@ -540,7 +524,7 @@
           <span class="seminar-dates-inline">nov. 2008 – mayo 2009</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-20">
+        <div class="seminar-panel" id="sem-panel-19">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Período</div><div class="seminar-field-value">21 de noviembre de 2008 – 29 de mayo de 2009</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">PROLOPE</div></div>
@@ -549,7 +533,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2006-07-ii-seminario-de-estudios-literarios-de-l">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2006–07</span>
           <span class="seminar-title-wrap">
@@ -558,7 +542,7 @@
           <span class="seminar-dates-inline">oct. 2006 – feb. 2007</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-21">
+        <div class="seminar-panel" id="sem-panel-20">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Período</div><div class="seminar-field-value">10 de octubre de 2006 – 16 de febrero de 2007</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">PROLOPE</div></div>
@@ -566,7 +550,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2005-06-i-seminario-de-estudios-literarios-de-lo">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2005–06</span>
           <span class="seminar-title-wrap">
@@ -575,7 +559,7 @@
           <span class="seminar-dates-inline">oct. 2005 – abr. 2006</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-22">
+        <div class="seminar-panel" id="sem-panel-21">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Período</div><div class="seminar-field-value">14 de octubre de 2005 – 24 de abril de 2006</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">PROLOPE</div></div>
@@ -594,7 +578,7 @@
 
     <ul class="seminar-list">
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2013-jornadas-sobre-humanidades-digitales-y-e">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2013</span>
           <span class="seminar-title-wrap">
@@ -603,7 +587,7 @@
           <span class="seminar-dates-inline">17–18 enero 2013</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-23">
+        <div class="seminar-panel" id="sem-panel-22">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">17–18 de enero de 2013</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">PROLOPE</div></div>
@@ -612,7 +596,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="2001-ii-seminario-internacional">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2001</span>
           <span class="seminar-title-wrap">
@@ -622,7 +606,7 @@
           <span class="seminar-dates-inline">23–24 noviembre 2001</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-24">
+        <div class="seminar-panel" id="sem-panel-23">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">23–24 de noviembre de 2001</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">PROLOPE</div></div>
@@ -630,7 +614,7 @@
         </div>
       </li>
 
-      <li class="seminar-item">
+      <li class="seminar-item" id="1999-de-la-pluma-a-las-tablas-de-las-tablas">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">1999</span>
           <span class="seminar-title-wrap">
@@ -639,7 +623,7 @@
           <span class="seminar-dates-inline">8–9 octubre 1999</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-25">
+        <div class="seminar-panel" id="sem-panel-24">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">8–9 de octubre de 1999</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">PROLOPE</div></div>

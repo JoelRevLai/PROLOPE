@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" href="../media/favicon_5.gif" type="image/gif" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; base-uri 'self'; connect-src 'self'" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anuario Lope de Vega. Vol. 23 (2017) | PROLOPE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../prolope.css" />
+  <!-- early theme -->
+  <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.setAttribute('data-theme','dark');})();
+  </script>
+
+</head>
+<body>
+
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="logo-link">
+        <img src="../media/logo-menu.png" alt="PROLOPE" />
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li class="has-dropdown">
+            <span>El grupo <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../el-grupo/el-grupo.html">El grupo de investigación</a></li>
+                <li><a href="../el-grupo/historial-proyectos.html">Historial de proyectos</a></li>
+                <li><a href="../el-grupo/estatutos.html">Estatutos del grupo</a></li>
+                <li><a href="../el-grupo/miembros.html">Miembros</a></li>
+                <li><a href="../el-grupo/contacto.html">Contacto y ubicación</a></li>
+                <li><a href="../el-grupo/bad-gyal.html">Bad gyal</a></li>
+                <li><a href="../el-grupo/bad-gyal.html">Bad Gyal</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Objetivos <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../objetivos/vida-obra.html">Vida y obra de Lope de Vega</a></li>
+                <li><a href="../objetivos/transmision.html">Transmisión y edición del teatro de Lope de Vega</a></li>
+                <li><a href="../objetivos/criterios.html">Criterios y materiales para la edición</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Publicaciones <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../publicaciones/partes-comedias.html">Partes de comedias</a></li>
+                <li><a href="https://revistes.uab.cat/anuariolopedevega/index" target="_blank" rel="noopener noreferrer">Anuario Lope de Vega <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="../publicaciones/otras-publicaciones.html">Otras publicaciones</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Proyectos digitales <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../proyectos-digitales/biblioteca-virtual.html">Biblioteca virtual</a></li>
+                <li><a href="https://prolope.uab.cat/biblioteca/" target="_blank" rel="noopener noreferrer">Biblioteca Digital Prolope <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="../proyectos-digitales/mujeres-criados.html">Mujeres y criados</a></li>
+                <li><a href="../proyectos-digitales/mapping-lope.html">Mapping Lope</a></li>
+                <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="../proyectos-digitales/la-dama-boba.html">La dama boba</a></li>
+                <li><a href="../proyectos-digitales/gondomar.html" target="_blank" rel="noopener noreferrer">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Formación <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../formacion/tesis.html">Tesis</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Eventos <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../eventos/congresos.html">Congresos</a></li>
+                <li><a href="../eventos/seminarios.html">Seminarios</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="../multimedia/multimedia.html">Multimedia</a></li>
+          <li><a href="noticias.html">Noticias</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo noche" title="Modo noche"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+      <button class="site-search-btn" id="siteSearchBtn" aria-label="Buscar en el sitio">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <div class="site-search-inline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="siteSearchInput" placeholder="Buscar en el sitio…" autocomplete="off" />
+        <button class="site-search-close" id="siteSearchClose" aria-label="Cerrar búsqueda">✕</button>
+        <div class="site-search-dropdown" id="siteSearchDropdown">
+          <div id="siteSearchCount" class="site-search-count"></div>
+          <div id="siteSearchResults" class="site-search-results"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="article-hero">
+    <div class="article-hero-bg" style="background-image: url('../media/fondo-noticias.jpg'); background-size: fill; background-repeat: no-repeat; background-position: right; opacity: 0.15;"></div>
+    <div class="article-hero-inner">
+      <p class="article-breadcrumb">
+        <a href="../index.html">Inicio</a><span>›</span>
+        <a href="noticias.html">Noticias</a><span>›</span>
+        Anuario Lope de Vega. Vol. 23 (2017)
+      </p>
+      <span class="article-cat-badge">Publicación</span>
+      <h1><em>Anuario Lope de Vega</em>. Vol. 23 (2017)</h1>
+      <div class="article-hero-meta">
+        <span class="article-date">Enero de 2017</span>
+      </div>
+      <div class="article-hero-rule"></div>
+    </div>
+  </section>
+
+  <!-- LAYOUT -->
+  <div class="article-layout">
+
+    <!-- MAIN CONTENT -->
+    <article class="article-body">
+
+      <div class="article-figure">
+        <div class="article-figure-img-wrap" onclick="openLightbox('../media/anuario-lope-de-vega_noticia.jpg')">
+          <img src="../media/anuario-lope-de-vega_noticia.jpg" alt="Imagen del Anuario" />
+          <span class="zoom-hint" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </span>
+        </div>
+      </div>
+
+      <p>Nos complace anunciar la aparición del número XXIII (2017) del Anuario Lope de Vega. Texto, literatura, cultura. El volumen contiene un monográfico dedicado a Lope y el teatro europeo de su tiempo, coordinado por Gonzalo Pontón, además de una sección miscelánea y el acostumbrado apartado de reseñas.</p>
+
+      <h2 class="article-lead-title">Tabla de contenidos</h2>
+
+      <p class="article-lead-subtitle">PRESENTACIÓN. SECCIÓN MONOGRÁFICA 1</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-ponton-1" target="_blank" rel="noopener noreferrer">Presentación: Lope y el teatro europeo de su tiempo</a><br />
+GONZALO PONTÓN</p>
+
+      <p class="article-lead-subtitle">PÓRTICO</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-oleza" target="_blank" rel="noopener noreferrer">Entre la corte y el mercado: las prácticas escénicas en la Europa de los siglos XVI y XVII</a><br />
+JOAN OLEZA</p>
+
+      <p class="article-lead-subtitle">ARTÍCULOS. SECCIÓN MONOGRÁFICA 1</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-antonucci-1" target="_blank" rel="noopener noreferrer">Lope de Vega y los «scenari» de la «Commedia dell’arte»</a><br />
+FAUSTA ANTONUCCI</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-marcello" target="_blank" rel="noopener noreferrer">De Lope a Celano: «La sofferenza coronata», adaptación italiana de «Los tres diamantes» (y un paréntesis acerca del «scenario» de Ciro Monarca «Il cavaliere dai tre gigli d’oro»)</a><br />
+ELENA ELISABETTA MARCELLO</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-couderc" target="_blank" rel="noopener noreferrer">Lope de Vega y el teatro francés del siglo XVII</a><br />
+CHRISTOPHE COUDERC</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-dumas" target="_blank" rel="noopener noreferrer">Lope de Vega et ses adaptations françaises: le traitement dramatique et la réappropriation culturelle dans trois tragi-comédies de Rotrou</a><br />
+CATHERINE DUMAS</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-suppa" target="_blank" rel="noopener noreferrer">La última traducción prerromántica del teatro de Lope en Francia: El «Théâtre Espagnol» de Linguet</a><br />
+FRANCESCA SUPPA</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-blom-marion" target="_blank" rel="noopener noreferrer">Lope de Vega y la conquista del teatro español en los Países Bajos</a><br />
+FRANS R.E. BLOM, OLGA VAN MARION</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-brilhante" target="_blank" rel="noopener noreferrer">A implantação do modelo aristotélico no teatro europeu: revisitando os discursos (dis) sonantes de Lope de Vega e de Pierre Corneille</a><br />
+MARIA JOÃO BRILHANTE</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-vescovo" target="_blank" rel="noopener noreferrer">Discorso sull’«arte»</a><br />
+PIERMARIO VESCOVO</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-fernandez-rodriguez-1" target="_blank" rel="noopener noreferrer">Las comedias bizantinas de Lope en su contexto teatral español e italiano</a><br />
+DANIEL FERNÁNDEZ RODRÍGUEZ</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-fernandez" target="_blank" rel="noopener noreferrer">Pactar con el diablo en la escena europea: Christopher Marlowe y Lope de Vega</a><br />
+NATALIA FERNÁNDEZ RODRÍGUEZ</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-gilabert" target="_blank" rel="noopener noreferrer">«I will play the swan and die in music». Shakespeare y Lope de Vega ante la música teatral trágica</a><br />
+GASTON GILABERT</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-carmona-1" target="_blank" rel="noopener noreferrer">Ausencias y presencias: la recepción de Lope y Shakespeare a través del cine</a><br />
+ALBA CARMONA LÁZARO</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-greer" target="_blank" rel="noopener noreferrer">«Move over» Shakespeare: El lugar de Lope en el teatro europeo de su tiempo</a><br />
+MARGARET R. GREER</p>
+
+      <p class="article-lead-subtitle">ARTÍCULOS. SECCIÓN MISCELÁNEA</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-coenen" target="_blank" rel="noopener noreferrer">La atribución a Lope de Vega de «La mayor hazaña de Alejandro Magno»</a><br />
+ERIK COENEN</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-conde-parrado" target="_blank" rel="noopener noreferrer">Los «Epitheta» de Ravisius Textor y la «Picta poesis Ovidiana» de Niklaus Reusner en la «Jerusalén conquistada» y en otras obras de Lope de Vega</a><br />
+PEDRO CONDE PARRADO</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-escudero-baztan" target="_blank" rel="noopener noreferrer">Algunos ejemplos de paradigmas hexaemerales en la poesía de Lope</a><br />
+JUAN MANUEL ESCUDERO BAZTÁN</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-gomez" target="_blank" rel="noopener noreferrer">El «artificio griego» en Lope de Vega: narrativa y teatro</a><br />
+JESUS GÓMEZ</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-gomez-canseco" target="_blank" rel="noopener noreferrer">Lope de Vega y Johannes Nauclerus: de la cronografía a la profecía épica</a><br />
+LUIS GÓMEZ CANSECO</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-lorenzo-domingez" target="_blank" rel="noopener noreferrer">Una adelfa en tierras extrañas: emblemática y misoginia en la «Comedia famosa de los guanches de Tenerife y conquista de Canaria»</a><br />
+JAVIER LORENZO DOMINGUEZ</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-moreno-imenez" target="_blank" rel="noopener noreferrer">El original de la loa «Pariendo juró Pelaya», recogida en la «Octava Parte»</a><br />
+SERGIO MORENO JIMÉNEZ</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-norton" target="_blank" rel="noopener noreferrer">«¡España viva!»: Las personificaciones de España en las comedias de santos de Lope de Vega</a><br />
+ROY NORTON</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-sanchez-jimenez" target="_blank" rel="noopener noreferrer">Lope de Vega y la ambigüedad de los signos: la incertidumbre del significado en unas variaciones sobre el tema de la «Arcadia»</a><br />
+ANTONIO SÁNCHEZ JIMÉNEZ</p>
+
+      <p class="article-lead-subtitle">NOTAS</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-sanchez-jimenez-carriazo" target="_blank" rel="noopener noreferrer">Pájaros dorilos y otras aves parleras: una referencia intertextual en «La Arcadia»</a><br />
+ANTONIO SÁNCHEZ JIMÉNEZ, JOSÉ RAMÓN CARRIAZO RUIZ</p>
+
+      <p class="article-lead-subtitle">RESEÑAS</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-alberro" target="_blank" rel="noopener noreferrer">Judith Farré Vidal, «Espacio y tiempo de fiesta en Nueva España (1665-1760)»</a><br />
+SOLANGE ALBERRO</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-antonucci-2" target="_blank" rel="noopener noreferrer">Lope de Vega, «La vega del Parnaso»</a><br />
+FAUSTA ANTONUCCI</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-boadas" target="_blank" rel="noopener noreferrer">M.ª Jesús Framiñán de Miguel, «El espectáculo dramático-festivo del Corpus en la Salamanca del Renacimiento»</a><br />
+SÒNIA BOADAS</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-cammarata" target="_blank" rel="noopener noreferrer">Ana Zúñiga Lacruz, «Mujer y poder en el teatro español del Siglo de Oro: la figura de la reina</a>»<br />
+JOAN CAMMARATA</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-carmona-2" target="_blank" rel="noopener noreferrer">Harley Erdman y Susan Paun de García, eds., «Remaking the Comedia. Spanish Classical Theater in Adaptation»</a><br />
+ALBA CARMONA LÁZARO</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-dartois" target="_blank" rel="noopener noreferrer">Juan de la Cueva, «Tragedias»</a><br />
+FLORENCE D’ARTOIS</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-di-pastena" target="_blank" rel="noopener noreferrer">Felipe B. Pedraza Jiménez, Rafael González Cañal y Elena E. Marcello, eds., «El último Lope (1618-1635) y la escena. XXXVI Jornadas de teatro clásico. Almagro, 11, 12 y 13 de julio de 2013»</a><br />
+ENRICO DI PASTENA</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-fernandez-rodriguez-2" target="_blank" rel="noopener noreferrer">María de Zayas, «La traición en la amistad»</a><br />
+DANIEL FERNÁNDEZ RODRÍGUEZ</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-valls" target="_blank" rel="noopener noreferrer">María Asunción Flórez Asensio, «Músicos de compañía y empresa teatral en Madrid en el siglo XVII»</a><br />
+TERESA FERRER VALLS</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-garcia-reidy" target="_blank" rel="noopener noreferrer">Gwyn E. Campbell y Amy R. Williamsen, eds., «Prismatic Reflections on Spanish Golden Age Theater. Essays in Honor of Matthew D. Stroud»</a><br />
+ALEJANDRO GARCÍA-REIDY</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-gavela" target="_blank" rel="noopener noreferrer">Marcella Trambaioli, «La épica de amor en las comedias urbanas de Lope de Vega, y su contexto representacional cortesano»</a><br />
+DELIA GAVELA</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-giuliani" target="_blank" rel="noopener noreferrer">Tonina Paba, «Loas palaciegas nella Sardegna spagnola. Studio e edizione di testi»</a><br />
+LUIGI GIULIANI</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-londero" target="_blank" rel="noopener noreferrer">Pedro Calderón de la Barca, Luis Vélez de Guevara, Juan Ruiz de Alarcón, Antonio Mira de Amescua, Francisco de Rojas Zorrilla, Agustín Moreto, «Il teatro spagnolo dei Secoli d’Oro»</a><br />
+RENATA LONDERO</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-lopez-martinez" target="_blank" rel="noopener noreferrer">Mariela Insúa y Felix K.E. Schmelzer, eds., «Teatro y poder en el Siglo de Oro»</a><br />
+JOSÉ ENRIQUE LÓPEZ MARTÍNEZ</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-ponton-2" target="_blank" rel="noopener noreferrer">«Obras de Juan Pérez de Montalbán. Primer tomo de comedias»</a><br />
+GONZALO PONTÓN</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-presotto" target="_blank" rel="noopener noreferrer">María Ángeles Fernández-Cifuentes, «Tradición e innovación en las «Novelas a Marcia Leonarda» de Lope de Vega»</a><br />
+MARCO PRESOTTO</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-raboni" target="_blank" rel="noopener noreferrer">Joan R. Veny-Mesquida, «Criticar el text. Per a una metodologia de l’aparat crític d’autor»</a><br />
+GIULIA RABONI</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-rubiera" target="_blank" rel="noopener noreferrer">«Teatro español de los Siglos de Oro: Dramaturgos, textos, escenarios, fiestas»; «Lope sin fronteras»; «Diferentes y escogidas. Homenaje al profesor Luis Iglesias Feijoo»</a><br />
+JAVIER RUBIERA</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-seres" target="_blank" rel="noopener noreferrer">Gaspar Aguilar, «La comedia segunda de los agravios perdonados»</a><br />
+GUILLERMO SERÉS</p>
+
+      <p><a href="https://revistes.uab.cat/anuariolopedevega/article/view/v23-vueltagarcia" target="_blank" rel="noopener noreferrer">María del Valle Ojeda, Marco Presotto, eds., «Teatro clásico italiano y español. Sabbioneta y los lugares del teatro»</a><br />
+SALOME VUELTA GARCÍA</p>
+
+      <div class="article-links">
+        <a class="article-ext-link" href="https://revistes.uab.cat/anuariolopedevega/issue/view/v23" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Número completo
+        </a>
+      </div>
+
+      <div style="clear:both"></div>
+
+      <a class="back-link" href="noticias.html">← Volver a todas las noticias</a>
+
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside class="article-sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-card-header">
+          <h3>Noticias recientes</h3>
+        </div>
+        <ul class="sidebar-news-list">
+        </ul>
+        <a class="sidebar-all-link" href="noticias.html">Ver todas las noticias →</a>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">✕</button>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+
+
+  <!-- FUNDERS -->
+  <section class="funders">
+    <div class="funders-inner">
+      <p class="funders-title">Entidades financiadoras</p>
+      <div class="funders-logos">
+        <a class="funder-logo-link" href="https://www.march.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/fundacion-march.png" alt="Fundación March" />
+        </a>
+        <a class="funder-logo-link" href="https://www.culturaydeporte.gob.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/ace.png" alt="ACE" />
+        </a>
+        <a class="funder-logo-link" href="https://agaur.gencat.cat/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/agaur_gencat.png" alt="AGAUR Gencat" />
+        </a>
+        <a class="funder-logo-link" href="https://www.ciencia.gob.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/ministerio-feder.png" alt="Ministerio / FEDER" />
+        </a>
+        <a class="funder-logo-link" href="https://www.uab.cat/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/uab.png" alt="UAB" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <img src="../media/logo-prolope_inici.png" alt="PROLOPE" />
+        </div>
+        <address class="footer-address" style="font-style:normal;">
+          Grupo de investigación PROLOPE.<br />
+          Departament de Filologia Espanyola.<br /><br />
+          Facultat de Filosofia i Lletres UAB<br />
+          CAMPUS DE LA UAB<br />
+          Carrer de la fortuna s/n<br />
+          08193 Bellaterra (Barcelona)<br /><br />
+          Teléfono (Secretaría): <a href="tel:+34935811034">93 581 10 34</a><br />
+          Correo: <a href="mailto:prolope@uab.es">prolope@uab.es</a>
+        </address>
+        <div class="footer-social">
+          <a href="https://twitter.com/ProlopeUab" target="_blank" rel="noopener noreferrer" title="Seguir en X">𝕏</a>
+          <a href="https://www.facebook.com/prolope.uab" target="_blank" rel="noopener noreferrer" title="Seguir en Facebook">f</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Grupo de Investigación PROLOPE – Universitat Autònoma de Barcelona
+    </div>
+  </footer>
+
+  <script>
+    /* ---- Page reveal animations ---- */
+    (function () {
+      if (!('IntersectionObserver' in window)) return;
+      var els = document.querySelectorAll('.card, .sidebar-card, .founder-card, .news-card, .video-card, .congress-card, .funders, .inline-figure, .inline-figure-left, .event-box, .article-figure');
+      if (!els.length) return;
+      els.forEach(function (el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+      });
+      var obs = new IntersectionObserver(function (entries) {
+        var visible = entries.filter(function (e) { return e.isIntersecting; });
+        visible.forEach(function (e, i) {
+          e.target.style.transition = 'opacity 0.5s ease-out ' + (i * 0.07) + 's, transform 0.5s ease-out ' + (i * 0.07) + 's';
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          obs.unobserve(e.target);
+        });
+      }, { threshold: 0.1 });
+      els.forEach(function (el) { obs.observe(el); });
+    })();
+  </script>
+  <script>
+    // Mobile menu toggle
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('mainNav');
+    toggle.addEventListener('click', () => { nav.classList.toggle('open'); document.body.classList.toggle('menu-open', nav.classList.contains('open')); });
+
+    // Accordion dropdowns on mobile
+    document.querySelectorAll('.has-dropdown > span').forEach(function(el) {
+      el.addEventListener('click', function() {
+        if (window.innerWidth <= 1100) {
+          el.parentElement.classList.toggle('open');
+        }
+      });
+    });
+  </script>
+
+  <script src="../noticias-data.js"></script>
+  <script src="../sidebar-noticias.js"></script>
+  <script>var SITE_ROOT='../';</script>
+  <script src="../search-data.js"></script>
+<script src="../site-search.js"></script>
+  <script>
+    // Modo noche
+    (function() {
+      var toggle = document.getElementById('themeToggle');
+      var saved = localStorage.getItem('theme');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      }
+      toggle.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+          document.documentElement.removeAttribute('data-theme');
+          localStorage.setItem('theme', 'light');
+          toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+          } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+          toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

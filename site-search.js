@@ -94,10 +94,37 @@
       return;
     }
 
+    var SECTION_LABELS = {
+      'el-grupo/miembros.html': 'Miembros',
+      'eventos/seminarios.html': 'Seminarios',
+      'eventos/congresos.html': 'Congresos',
+      'publicaciones/partes-comedias.html': 'Partes de comedias',
+      'publicaciones/otras-publicaciones.html': 'Otras publicaciones',
+      'el-grupo/historial-proyectos.html': 'Proyectos',
+      'formacion/tesis.html': 'Tesis',
+      'multimedia/multimedia.html': 'Multimedia',
+    };
+
+    function getSectionLabel(pageUrl) {
+      var hash = pageUrl.indexOf('#');
+      if (hash !== -1) {
+        var base = pageUrl.substring(0, hash);
+        return SECTION_LABELS[base] || null;
+      }
+      if (pageUrl.startsWith('noticias/') && pageUrl !== 'noticias/noticias.html') {
+        return 'Noticias';
+      }
+      return null;
+    }
+
     var html = '';
     scored.forEach(function (item) {
+      var label = getSectionLabel(item.page.url);
+      var labelHtml = label
+        ? ' <span style="display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.04em;padding:1px 6px;border-radius:3px;vertical-align:middle;background:var(--dorado,#8b6914);color:#fff;margin-left:5px;opacity:.85">' + escapeHtml(label) + '</span>'
+        : '';
       html += '<a class="site-search-item" href="' + (typeof SITE_ROOT !== 'undefined' ? SITE_ROOT : '') + item.page.url + '">' +
-        '<span class="site-search-item-title">' + escapeHtml(item.page.title) + '</span>' +
+        '<span class="site-search-item-title">' + escapeHtml(item.page.title) + labelHtml + '</span>' +
         '<span class="site-search-item-desc">' + escapeHtml(item.page.description) + '</span>' +
         '</a>';
     });

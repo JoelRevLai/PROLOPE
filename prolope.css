@@ -3736,6 +3736,17 @@ footer > .footer-bottom {
 /* h2 con anchor id — margen de scroll para el header fijo */
 h2[id] { scroll-margin-top: 88px; }
 
+/* Elementos con id que son destino de resultados de búsqueda */
+.seminar-item[id],
+.thesis-item[id],
+.project-item[id],
+.video-card[id],
+.parte-card[id],
+.libro-block[id] { scroll-margin-top: 90px; }
+
+.card[id],
+.congress-card[id] { scroll-margin-top: 130px; }
+
 /* Thumbnail de vídeo externo con botón play */
 .video-wrap {
   position: relative;

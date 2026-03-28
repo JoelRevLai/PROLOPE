@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" href="media/favicon_5.gif" type="image/gif" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; base-uri 'self'; connect-src 'self'" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PROLOPE | Grupo de Investigación PROLOPE - UAB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="prolope.css" />
+  <!-- early theme -->
+  <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'||(! t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.setAttribute('data-theme','dark');})();
+  </script>
+
+</head>
+<body>
+
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="media/logo-menu.png" alt="PROLOPE" />
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li class="has-dropdown">
+            <span>El grupo <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="el-grupo/el-grupo.html">El grupo de investigación</a></li>
+                <li><a href="el-grupo/historial-proyectos.html">Historial de proyectos</a></li>
+                <li><a href="el-grupo/estatutos.html">Estatutos del grupo</a></li>
+                <li><a href="el-grupo/miembros.html">Miembros</a></li>
+                <li><a href="el-grupo/contacto.html">Contacto y ubicación</a></li>
+                <li><a href="el-grupo/bad-gyal.html">Bad gyal</a></li>
+                <li><a href="el-grupo/bad-gyal.html">Bad Gyal</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Objetivos <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="objetivos/vida-obra.html">Vida y obra de Lope de Vega</a></li>
+                <li><a href="objetivos/transmision.html">Transmisión y edición del teatro de Lope de Vega</a></li>
+                <li><a href="objetivos/criterios.html">Criterios y materiales para la edición</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Publicaciones <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="publicaciones/partes-comedias.html">Partes de comedias</a></li>
+                <li><a href="https://revistes.uab.cat/anuariolopedevega/index" target="_blank" rel="noopener noreferrer">Anuario Lope de Vega <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="publicaciones/otras-publicaciones.html">Otras publicaciones</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Proyectos digitales <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="proyectos-digitales/biblioteca-virtual.html">Biblioteca virtual</a></li>
+                <li><a href="https://prolope.uab.cat/biblioteca/" target="_blank" rel="noopener noreferrer">Biblioteca Digital Prolope <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="proyectos-digitales/mujeres-criados.html">Mujeres y criados</a></li>
+                <li><a href="proyectos-digitales/mapping-lope.html">Mapping Lope</a></li>
+                <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="proyectos-digitales/la-dama-boba.html">La dama boba</a></li>
+                <li><a href="proyectos-digitales/gondomar.html" target="_blank" rel="noopener noreferrer">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Formación <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="formacion/tesis.html">Tesis</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Eventos <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="eventos/congresos.html">Congresos</a></li>
+                <li><a href="eventos/seminarios.html">Seminarios</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="multimedia/multimedia.html">Multimedia</a></li>
+          <li><a href="noticias/noticias.html">Noticias</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo noche" title="Modo noche"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+      <button class="site-search-btn" id="siteSearchBtn" aria-label="Buscar en el sitio">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <div class="site-search-inline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="siteSearchInput" placeholder="Buscar en el sitio…" autocomplete="off" />
+        <button class="site-search-close" id="siteSearchClose" aria-label="Cerrar búsqueda">✕</button>
+        <div class="site-search-dropdown" id="siteSearchDropdown">
+          <div id="siteSearchCount" class="site-search-count"></div>
+          <div id="siteSearchResults" class="site-search-results"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================
+       HERO — fullscreen cinematic
+       ======================== -->
+  <section class="idx-hero" id="idxHero">
+    <div class="idx-hero-bg">
+      <img src="media/foto-index2.png" alt="" class="idx-hero-bg-img" />
+    </div>
+    <div class="idx-hero-overlay"></div>
+    <img class="idx-hero-firma" src="media/firma-lope.png" alt="" aria-hidden="true" />
+    <div class="idx-hero-content">
+      <img class="idx-hero-logo anim-fade-down" src="media/logo_positiu.png" alt="PROLOPE" />
+      <div class="idx-hero-rule anim-fade-in"></div>
+      <p class="idx-hero-sub anim-fade-up">Grupo fundado en 1989 por Alberto Blecua</p>
+    </div>
+    <a href="#idxSections" class="idx-scroll-hint" aria-label="Bajar">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 10l5 5 5-5"/></svg>
+    </a>
+  </section>
+
+  <!-- ========================
+       SECTIONS MOSAIC
+       ======================== -->
+  <div class="idx-sections" id="idxSections">
+    <a href="el-grupo/el-grupo.html" class="idx-sec-card anim-reveal" style="--delay:.05s">
+      <img src="media/Grupo_UAB.jpg" alt="" class="idx-sec-bg" />
+      <div class="idx-sec-overlay"></div>
+      <div class="idx-sec-label">El grupo</div>
+    </a>
+    <a href="objetivos/vida-obra.html" class="idx-sec-card anim-reveal" style="--delay:.12s">
+      <img src="media/lope-de-vega-carpio.jpg" alt="" class="idx-sec-bg" />
+      <div class="idx-sec-overlay"></div>
+      <div class="idx-sec-label">Vida y obra</div>
+    </a>
+    <a href="publicaciones/partes-comedias.html" class="idx-sec-card anim-reveal" style="--delay:.18s">
+      <img src="media/parte-xxi.jpg" alt="" class="idx-sec-bg" />
+      <div class="idx-sec-overlay"></div>
+      <div class="idx-sec-label">Publicaciones</div>
+    </a>
+    <a href="proyectos-digitales/biblioteca-virtual.html" class="idx-sec-card anim-reveal" style="--delay:.24s">
+      <img src="media/foto-proyectos-digitales.png" alt="" class="idx-sec-bg" />
+      <div class="idx-sec-overlay"></div>
+      <div class="idx-sec-label">Proyectos digitales</div>
+    </a>
+    <a href="eventos/congresos.html" class="idx-sec-card anim-reveal" style="--delay:.30s">
+      <img src="media/dama-boba-representacio.jpg" alt="" class="idx-sec-bg" />
+      <div class="idx-sec-overlay"></div>
+      <div class="idx-sec-label">Eventos</div>
+    </a>
+    <a href="multimedia/multimedia.html" class="idx-sec-card anim-reveal" style="--delay:.36s">
+      <img src="media/foto-multimedia.jpg" alt="" class="idx-sec-bg" />
+      <div class="idx-sec-overlay"></div>
+      <div class="idx-sec-label">Multimedia</div>
+    </a>
+  </div>
+
+  <!-- ========================
+       NEWS + FOOTER (third snap panel)
+       ======================== -->
+  <main>
+    <div class="section">
+      <h2 class="section-heading">Últimas noticias</h2>
+      <div class="news-grid">
+
+        <article class="news-card">
+          <a href="noticias/noticia-ecuador-2025.html">
+            <img
+              class="news-card-img"
+              src="media/lope-de-vega_ecuador.jpg"
+              alt="Descubren dos libros de la biblioteca personal de Lope de Vega en Ecuador"
+            />
+          </a>
+          <div class="news-card-body">
+            <p class="news-card-meta">30 Jul, 2025 &nbsp;|&nbsp; <a href="noticias/noticias.html">Noticias</a></p>
+            <h3 class="news-card-title">
+              <a href="noticias/noticia-ecuador-2025.html">
+                Descubren dos libros de la biblioteca personal de Lope de Vega en Ecuador
+              </a>
+            </h3>
+            <p class="news-card-excerpt">
+              El investigador Antonio Sánchez Jiménez halla los volúmenes en un convento de Santo Domingo en…
+            </p>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <a href="noticias/noticia-congreso-xi-2024.html">
+            <img
+              class="news-card-img"
+              src="media/XI-Congreso-Prolope.jpg"
+              alt="XI Congreso Internacional Lope de Vega"
+            />
+          </a>
+          <div class="news-card-body">
+            <p class="news-card-meta">13 Nov, 2024 &nbsp;|&nbsp; <a href="eventos/congresos.html">Congreso</a></p>
+            <h3 class="news-card-title">
+              <a href="noticias/noticia-congreso-xi-2024.html">
+                XI Congreso Internacional Lope de Vega: «Lope político»
+              </a>
+            </h3>
+            <p class="news-card-excerpt">
+              Los próximos días 27, 28 y 29 de noviembre tendrá lugar el XI Congreso Internacional Lope de Vega…
+            </p>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <a href="noticias/noticia-olmedo-clasico-18-2024.html">
+            <img
+              class="news-card-img"
+              src="media/olmedo-clasico_18.jpg"
+              alt="Olmedo Clásico: 18 Jornadas"
+            />
+          </a>
+          <div class="news-card-body">
+            <p class="news-card-meta">12 Jul, 2024 &nbsp;|&nbsp; <a href="noticias/noticias.html">Noticias</a></p>
+            <h3 class="news-card-title">
+              <a href="noticias/noticia-olmedo-clasico-18-2024.html">Olmedo Clásico: 18 Jornadas</a>
+            </h3>
+            <p class="news-card-excerpt">
+              18 Jornadas sobre teatro clásico. Y sin embargo, amigos: estudiar y representar a nuestros clásicos…
+            </p>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <a href="noticias/noticia-thal-ia-2024.html">
+            <img
+              class="news-card-img"
+              src="media/Thal-IA.jpg"
+              alt="Convocadas dos plazas postdoctorales para el proyecto Thal-IA"
+            />
+          </a>
+          <div class="news-card-body">
+            <p class="news-card-meta">12 Jul, 2024 &nbsp;|&nbsp; <a href="noticias/noticias.html">Noticias</a></p>
+            <h3 class="news-card-title">
+              <a href="noticias/noticia-thal-ia-2024.html">
+                Convocadas dos plazas postdoctorales para el proyecto Thal-IA
+              </a>
+            </h3>
+            <p class="news-card-excerpt">
+              Se han convocado dos plazas de un contrato postdoctoral para el proyecto Thal-IA…
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+
+  <!-- FUNDERS -->
+  <section class="funders">
+    <div class="funders-inner">
+      <p class="funders-title">Entidades financiadoras</p>
+      <div class="funders-logos">
+        <a class="funder-logo-link" href="https://www.march.es/" target="_blank" rel="noopener noreferrer">
+          <img src="media/fundacion-march.png" alt="Fundación March" />
+        </a>
+        <a class="funder-logo-link" href="https://www.culturaydeporte.gob.es/" target="_blank" rel="noopener noreferrer">
+          <img src="media/ace.png" alt="ACE" />
+        </a>
+        <a class="funder-logo-link" href="https://agaur.gencat.cat/" target="_blank" rel="noopener noreferrer">
+          <img src="media/agaur_gencat.png" alt="AGAUR Gencat" />
+        </a>
+        <a class="funder-logo-link" href="https://www.ciencia.gob.es/" target="_blank" rel="noopener noreferrer">
+          <img src="media/ministerio-feder.png" alt="Ministerio / FEDER" />
+        </a>
+        <a class="funder-logo-link" href="https://www.uab.cat/" target="_blank" rel="noopener noreferrer">
+          <img src="media/uab.png" alt="UAB" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="media/logo-prolope_inici.png" alt="PROLOPE" />
+      </div>
+      <address class="footer-address" style="font-style:normal;">
+        Grupo de investigación PROLOPE.<br />
+        Departament de Filologia Espanyola.<br /><br />
+        Facultat de Filosofia i Lletres UAB<br />
+        CAMPUS DE LA UAB<br />
+        Carrer de la fortuna s/n<br />
+        08193 Bellaterra (Barcelona)
+      </address>
+      <div class="footer-contact">
+        Teléfono (Secretaría): <a href="tel:+34935811034">93 581 10 34</a><br />
+        Correo: <a href="mailto:prolope@uab.es">prolope@uab.es</a>
+        <div class="footer-social">
+          <a href="https://twitter.com/ProlopeUab" target="_blank" rel="noopener noreferrer" title="Seguir en X">𝕏</a>
+          <a href="https://www.facebook.com/prolope.uab" target="_blank" rel="noopener noreferrer" title="Seguir en Facebook">f</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Grupo de Investigación PROLOPE – Universitat Autònoma de Barcelona
+    </div>
+  </footer>
+
+  <!-- ========================
+       SCRIPTS
+       ======================== -->
+
+
+  <script>
+    /* ---- Index: snap scroll + animations ---- */
+    (function () {
+      document.body.classList.add('idx-page');
+
+      // Scroll-triggered reveal for mosaic cards
+      var reveals = document.querySelectorAll('.anim-reveal');
+      if (reveals.length && 'IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+              obs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        reveals.forEach(function (el) { obs.observe(el); });
+      }
+
+      // Smooth scroll for scroll hint
+      var hint = document.querySelector('.idx-scroll-hint');
+      if (hint) {
+        hint.addEventListener('click', function (e) {
+          e.preventDefault();
+          var target = document.querySelector(hint.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+
+      // Reveal news cards on scroll
+      var newsCards = document.querySelectorAll('.news-card');
+      if (newsCards.length && 'IntersectionObserver' in window) {
+        newsCards.forEach(function (card, i) {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(40px)';
+          card.style.transition = 'opacity 0.6s ease-out ' + (i * 0.08) + 's, transform 0.6s ease-out ' + (i * 0.08) + 's';
+        });
+        var newsObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.style.opacity = '1';
+              e.target.style.transform = 'translateY(0)';
+              newsObs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        newsCards.forEach(function (card) { newsObs.observe(card); });
+      }
+    })();
+  </script>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('mainNav');
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+      document.body.classList.toggle('menu-open', nav.classList.contains('open'));
+    });
+
+    // Accordion dropdowns on mobile
+    document.querySelectorAll('.has-dropdown > span').forEach(function(el) {
+      el.addEventListener('click', function() {
+        if (window.innerWidth <= 1100) {
+          el.parentElement.classList.toggle('open');
+        }
+      });
+    });
+  </script>
+  <script>var SITE_ROOT='';</script>
+  <script src="search-data.js"></script>
+<script src="site-search.js"></script>
+  <script>
+    // Modo noche
+    (function() {
+      var toggle = document.getElementById('themeToggle');
+      var saved = localStorage.getItem('theme');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      }
+      toggle.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+          document.documentElement.removeAttribute('data-theme');
+          localStorage.setItem('theme', 'light');
+          toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+          } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+          toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
