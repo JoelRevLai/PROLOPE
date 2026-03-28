@@ -4297,7 +4297,7 @@ h2[id] { scroll-margin-top: 88px; }
 .biblio-list li .biblio-note {
   display: block;
   margin-top: 7px;
-  font-style: italic;
+  font-style: normal;
   color: var(--gris-texto);
   font-size: 0.93rem;
   line-height: 1.65;
