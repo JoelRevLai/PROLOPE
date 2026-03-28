@@ -335,20 +335,20 @@ function buildNewPageHtml({ dir, title, breadcrumbSection, navHtml }) {
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <div>
-        <div class="footer-logo">
-          <img src="../media/logo-prolope_inici.png" alt="PROLOPE" />
-        </div>
-        <address class="footer-address" style="font-style:normal;">
-          Grupo de investigación PROLOPE.<br />
-          Departament de Filologia Espanyola.<br /><br />
-          Facultat de Filosofia i Lletres UAB<br />
-          CAMPUS DE LA UAB<br />
-          Carrer de la fortuna s/n<br />
-          08193 Bellaterra (Barcelona)<br /><br />
-          Teléfono (Secretaría): <a href="tel:+34935811034">93 581 10 34</a><br />
-          Correo: <a href="mailto:prolope@uab.es">prolope@uab.es</a>
-        </address>
+      <div class="footer-logo">
+        <img src="../media/logo-prolope_inici.png" alt="PROLOPE" />
+      </div>
+      <address class="footer-address" style="font-style:normal;">
+        Grupo de investigación PROLOPE.<br />
+        Departament de Filologia Espanyola.<br /><br />
+        Facultat de Filosofia i Lletres UAB<br />
+        CAMPUS DE LA UAB<br />
+        Carrer de la fortuna s/n<br />
+        08193 Bellaterra (Barcelona)
+      </address>
+      <div class="footer-contact">
+        Teléfono (Secretaría): <a href="tel:+34935811034">93 581 10 34</a><br />
+        Correo: <a href="mailto:prolope@uab.es">prolope@uab.es</a>
         <div class="footer-social">
           <a href="https://twitter.com/ProlopeUab" target="_blank" rel="noopener noreferrer" title="Seguir en X">𝕏</a>
           <a href="https://www.facebook.com/prolope.uab" target="_blank" rel="noopener noreferrer" title="Seguir en Facebook">f</a>
@@ -774,6 +774,29 @@ const server = http.createServer(async (req, res) => {
       if (fs.existsSync(full)) {
         fs.copyFileSync(full, full + '.bak');
         fs.unlinkSync(full);
+      }
+      // Remove entry from noticias-data.js if this is a news page
+      if (pageDir === 'noticias') {
+        const ndPath = path.join(ROOT, 'noticias-data.js');
+        if (fs.existsSync(ndPath)) {
+          try {
+            let ndSrc = fs.readFileSync(ndPath, 'utf8');
+            // Parse: replace leading `const` with `var` so new Function can return it
+            const parseSrc = ndSrc.replace(/^\s*const\s+news\s*=/, 'var news =');
+            let newsArr = [];
+            try { const fn = new Function(parseSrc + '; return news;'); newsArr = fn(); } catch(e) { /* keep empty */ }
+            const before = newsArr.length;
+            newsArr = newsArr.filter(n => n.url !== deletedFilename);
+            if (newsArr.length !== before) {
+              // Re-assign ids to keep them sequential
+              newsArr = newsArr.map((n, i) => Object.assign({}, n, { id: i + 1 }));
+              const entries = newsArr.map(n => '  ' + JSON.stringify(n, null, 2).replace(/\n/g, '\n  '));
+              const newNd = '// ── NEWS DATA (shared across noticias.html and individual news pages) ──\nconst news = [\n\n' + entries.join(',\n\n') + '\n];\n';
+              fs.copyFileSync(ndPath, ndPath + '.bak');
+              fs.writeFileSync(ndPath, newNd, 'utf8');
+            }
+          } catch(e) { /* ignore noticias-data errors */ }
+        }
       }
       // Remove deleted page from sidebar-nav-list cards in sibling pages
       if (pageDir) {

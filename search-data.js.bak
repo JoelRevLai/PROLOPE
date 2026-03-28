@@ -3,6 +3,12 @@
  */
 var SEARCH_INDEX = [
   {
+    title: "spiderman",
+    url: "noticias/noticia-asa.html",
+    description: "asas",
+    content: "spiderman beca sasa asas"
+  },
+  {
     title: "Inicio — PROLOPE",
     url: "index.html",
     description: "Página principal del grupo de investigación PROLOPE de la UAB, dedicado al estudio y edición crítica del teatro de Lope de Vega.",
@@ -1717,11 +1723,5 @@ var SEARCH_INDEX = [
     url: "el-grupo/miembros.html#ramon-valdes",
     description: "Comité científico — Universitat Autònoma de Barcelona",
     content: "Ramón Valdés Comité científico Universitat Autònoma de Barcelona Ramón Valdés Gázquez es profesor Agregado de la Universitat Autònoma de Barcelona, doctor en Filosofía y Letras por la misma universidad desde 1997 y co-Investigadro prinicipal, junto a Gonzalo Pontón, del Grupo de Investigación PROLOPE, en el que participa desde el año 2000. Sus principales líneas de investigación se centran en la sátira, la sátira menipea del Siglo de Oro; la edición de textos; el estudio del autor Lope de Vega y el Humanismo digital.Su trayectoria científica inicia con la redacción de un trabajo de curso y luego un trabajo de Máster (en el ámbito de los cursos de Doctorado) sobre Los Sueños y discursos de Quevedo: el modelo del sueño humanista y el género de la sátira menipea (Departament de Filologia Espanyola, UAB, 1990). Ahí inicia su interés por el género de la sátira menipea y por Quevedo, uno de sus principales centros de interés y tema de muchas de sus publicaciones, desde libros colectivos a capítulos de libro y artículos en revistas, así como de ponencias y conferencias. De ahí derivó, asimismo, un encargo editorial para la prestigiosa colección «Biblioteca Clásica» dirigida por Francisco Rico, la edición crítica de El diablo Cojuelo , de Luis Vélez de Guevara. Ese encargo editorial acabó por convertirse, antes de su publicacion, en su tesis doctoral, dirigida por el profesor Alberto Blecua. Así se produjo su iniciación en el terreno de la Crítica Textual y en la labor de edición de textos. Como alumno del profesor Alberto Blecua y de la Universitat Autònoma de Barcelona, después de una estancia de ocho años en Italia; la formación y curriculum en Crítica Textual y edición de textos permitieron a Ramón Valdés reincorporarse con una beca postdoctoral en la misma universidad, y dentro del proyecto de edición de textos que llevaba adelante el grupo de investigación PROLOPE. Desde su llegada al grupo de investigación PROLOPE en el año 2000, su dedicación a la edición del teatro de Lope de Vega ha sido intensa: realizó la edición crítica de varias obras, como La fe rompida y La batalla del honor , además de, en colaboración con María Nogués, La octava maravilla ; y ahora, en colaboración con Santiago Restrepo, El caballero del milagro . Asumió asimismo la coordinación de la Parte IV de las Comedias de Lope de Vega con Luigi Giuliani, y con María Morrás la de la Parte X . También ha coordinado y participado en las ediciones de Fuenteovejuna y El castigo sin venganza para la editorial PPU, y se ha encargado de las relaciones con la compañía de teatro Rakatá, actualmente Fundación Siglo de Oro. Desde junio de 2011 dirige con Gonzalo Pontón, el grupo de investigación PROLOPE. Entre los años 2003 y 2008 fue investigador Ramón y Cajal, siendo evaluado positivamente en el último año e integrándose como investigador en el Programa I3. Desde el año 2009, y durante el quinquenio 2009-2014, ha sido miembro, a través de PROLOPE, del macroproyecto en red TC/12 Patrimonio Teatral Clásico Español , del Programa Consolider-Ingenio 2010 CSD 2009 00033. Problemas prácticos y reflexiones teóricas han acercado a Ramón Valdés, además, al ámbito de la edición digital. En 2013, organizó unas Jornadas sobre Humanidades y Ediciones críticas digitales en la UAB en las que participaron varios especialistas de primer orden mundial: A. Bía, D. Fiormonte, S. Hagel, P. Spence y F. Tomasi, entre otros. Ha realizado una propuesta de Máster en Humanidades Digitales que presentó con A. Bía en el I Congreso de HDH («Una propuesta educativa para las HD: el nuevo máster en HD de la UAB», A Coruña, Julio, 2013), la cual fue aprobada por la Comisión de Posgrado de la UAB. En 2014 ha coordinado un número de la revista Anuario Lope de Vega sobre «Edición digital y edición crítica», con participación de varios de los especialistas ya mencionados así como de otros."
-  },
-  {
-    title: "Bad Gyal | PROLOPE – UAB",
-    url: "el-grupo/bad-gyal.html",
-    description: "El grupo — Bad Gyal",
-    content: "Bad Gyal El grupo PROLOPE"
   }
 ];
