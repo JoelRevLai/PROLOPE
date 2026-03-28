@@ -201,6 +201,29 @@ const SECTION_LABEL = {
   'eventos': 'Eventos', 'multimedia': 'Multimedia',
 };
 
+// Adds a new <li> entry to sidebar-nav-list blocks that contain section-style links (.html hrefs)
+function addPageToSidebarNavLists(html, filename, title) {
+  return html.replace(/(<ul class="sidebar-nav-list">)([\s\S]*?)(<\/ul>)/g, function(match, open, inner, close) {
+    // Only touch lists that have at least one .html link (section nav, not TOC anchors)
+    if (!/<a\s[^>]*href="[^#"][^"]*\.html[^"]*"/.test(inner)) return match;
+    // Skip if already present
+    if (inner.includes('href="' + filename + '"')) return match;
+    const indent = (inner.match(/^(\s*)<li/) || ['','          '])[1];
+    return open + inner.trimEnd() + '\n' + indent + '<li><a href="' + filename + '">' + title + '</a></li>\n        ' + close;
+  });
+}
+
+// Removes a <li> entry matching filename from sidebar-nav-list blocks
+function removePageFromSidebarNavLists(html, filename) {
+  const escaped = filename.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // Match a single <li> containing exactly the target href — no cross-entry matching
+  const liRe = new RegExp('\\n?[ \\t]*<li><a[^>]*href="' + escaped + '"[^>]*>[^<]*<\\/a><\\/li>', 'g');
+  return html.replace(/(<ul class="sidebar-nav-list">)([\s\S]*?)(<\/ul>)/g, function(match, open, inner, close) {
+    if (!inner.includes('href="' + filename + '"')) return match;
+    return open + inner.replace(liRe, '') + close;
+  });
+}
+
 function buildNewPageHtml({ dir, title, breadcrumbSection, navHtml }) {
   const bg = SECTION_BG[dir] || 'fondo-grupo.png';
   const sectionLabel = SECTION_LABEL[dir] || dir;
@@ -673,6 +696,19 @@ const server = http.createServer(async (req, res) => {
       const navHtml = buildNavHtml(menu, dir);
       const html = buildNewPageHtml({ dir, title, breadcrumbSection, navHtml });
       fs.writeFileSync(full, html, 'utf8');
+      // Add new page to sidebar-nav-list cards in sibling pages of the same section
+      const siblingPages = listHtmlFiles(ROOT).filter(p => p.dir === dir && p.path !== rel);
+      siblingPages.forEach(p => {
+        const sibFull = path.join(ROOT, p.path);
+        try {
+          const orig = fs.readFileSync(sibFull, 'utf8');
+          const updated = addPageToSidebarNavLists(orig, filename, title);
+          if (updated !== orig) {
+            fs.copyFileSync(sibFull, sibFull + '.bak');
+            fs.writeFileSync(sibFull, updated, 'utf8');
+          }
+        } catch(e) { /* ignore individual file errors */ }
+      });
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ ok: true, path: rel }));
     } catch(e) {
@@ -734,9 +770,25 @@ const server = http.createServer(async (req, res) => {
       const pageDir = rel.includes('/') ? rel.split('/')[0] : '';
       if (!validDirs.includes(pageDir)) { res.writeHead(403, {'Content-Type':'application/json'}); res.end(JSON.stringify({error:'Directorio no permitido.'})); return; }
       if (!rel.endsWith('.html')) { res.writeHead(400, {'Content-Type':'application/json'}); res.end(JSON.stringify({error:'Solo se pueden eliminar archivos .html'})); return; }
+      const deletedFilename = rel.includes('/') ? rel.split('/').pop() : rel;
       if (fs.existsSync(full)) {
         fs.copyFileSync(full, full + '.bak');
         fs.unlinkSync(full);
+      }
+      // Remove deleted page from sidebar-nav-list cards in sibling pages
+      if (pageDir) {
+        const siblingPages = listHtmlFiles(ROOT).filter(p => p.dir === pageDir && p.path !== rel);
+        siblingPages.forEach(p => {
+          const sibFull = path.join(ROOT, p.path);
+          try {
+            const orig = fs.readFileSync(sibFull, 'utf8');
+            const updated = removePageFromSidebarNavLists(orig, deletedFilename);
+            if (updated !== orig) {
+              fs.copyFileSync(sibFull, sibFull + '.bak');
+              fs.writeFileSync(sibFull, updated, 'utf8');
+            }
+          } catch(e) { /* ignore individual file errors */ }
+        });
       }
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ ok: true }));

@@ -18,7 +18,7 @@ var SEARCH_INDEX = [
     title: "Estatutos del grupo",
     url: "el-grupo/estatutos.html",
     description: "Estatutos y normativa interna del grupo de investigación PROLOPE.",
-    content: "Estatutos de PROLOPE. Normativa sobre miembros, órganos de gobierno, procedimientos de edición, derechos y obligaciones de los investigadores."
+    content: "Título Primero Naturaleza, funciones y composición Art. 1 Naturaleza y finalidad ▾ Fundado en 1989 y dirigido desde ese año por el Dr. Luis Alberto Blecua Perdices, PROLOPE es un Grupo de investigación formado por miembros de diferente procedencia e integrado en el Departamento de Filología Española de la Universitat Autònoma de Barcelona. Desde su fundación el Grupo se ha vinculado estrecha y fundamentalmente con proyectos de investigación financiados por el Gobierno de España y concedidos en distintas convocatorias de ayuda a la investigación (Ministerio de Educación y Ciencia, Ciencia y Tecnología, Ciencia e innovación, etc) y también con otras instituciones públicas o privadas. Sus fines son los siguientes: 1.1.Llevar a cabo la edición crítica de la obra dramática completa de Lope de Vega. 1.2.Desarrollar otras líneas de investigación especializada que se derivan del punto anterior, señaladamente en los ámbitos siguientes: 1.2.1.La obra y la figura de Lope de Vega. 1.2.2.El teatro español del período 1580–1635. 1.2.3.Los estudios textuales y la edición de los clásicos españoles. 1.3.Divulgar convenientemente estos objetivos de investigación mediante publicaciones, seminarios, cursos, congresos y participación en la actividad académica. 1.4.Promover el intercambio científico a nivel nacional e internacional. 1.5.Promover la formación de investigadores mediante estudios de posgrado, la asunción de dirección de tesis relacionadas con las líneas de investigación antedichas así como el apoyo a candidatos a becas predoctorales y postdoctorales. 1.6.Fomentar la transferencia de conocimiento mediante la realización de materiales didácticos, el asesoramiento a instituciones culturales y organismos públicos o privados y otras actividades divulgativas relacionadas con las finalidades científicas del Grupo. Art. 2 Criterios de procedimiento ▾ El Grupo asume también, como principios fundamentales de funcionamiento, los siguientes compromisos: 2.1.Búsqueda de la excelencia. 2.2.Voluntad de colaboración con otras entidades e internacionalización. 2.3.Atención a nuevas propuestas metodológicas. 2.4.Modernización y adaptación a las nuevas tecnologías de la información. 2.5.Crecimiento acorde con los fines principales y recursos del Grupo. 2.6.Imparcialidad, transparencia informativa, descentralización, procedimiento democrático, búsqueda del consenso y respeto a las decisiones acordadas en los distintos órganos del Grupo. Art. 3 De los miembros ▾ 3.1.Son miembros del Grupo: 3.1.1.El personal académico adscrito a PROLOPE. 3.1.2.El personal de investigación en formación adscrito a PROLOPE. 3.1.3.Los alumnos de grado y posgrado que llevan a cabo labores de investigación en PROLOPE. 3.1.4.El personal de administración y servicios, técnicos superiores o técnicos de apoyo a la investigación adscritos al Grupo. 3.1.5.De forma excepcional pueden participar también en los distintos órganos de decisión, gestión y en la investigación, a propuesta del Equipo de Dirección, aquellas personas que no encajan en ninguno de los supuestos anteriores pero por su actividad y colaboración están incorporadas en la práctica al Grupo, así como aquellos que se hallen en proceso administrativo de incorporación oficial. 3.2.Las altas y bajas de miembros son decididas por la Comisión Científica. 3.3.Obligaciones y derechos de los miembros del Grupo: 3.3.1.Es derecho de todo miembro de PROLOPE recibir información puntual de todas las actividades desarrolladas por el Grupo, y obligación participar en ellas en la medida de sus intereses y posibilidades. 3.3.2.Es obligación de los miembros de PROLOPE aceptar al menos el encargo de la edición de una comedia o trabajo que implique esfuerzo similar en cada periodo de renovación del proyecto ministerial (es decir, una vez por trienio). 3.3.3.Los becarios deben satisfacer, ante todo, las obligaciones derivadas de su Convocatoria. El Equipo de Dirección y la Comisión Ejecutiva velarán para que puedan desarrollar su formación, su tesis y su currículum. 3.3.4.Es derecho de cualquier miembro de PROLOPE que el trabajo realizado en el ámbito del Grupo tenga resultado y visibilidad curricular. El Equipo de Dirección y la Comisión Ejecutiva velarán para que este principio se respete en todo caso. 3.3.5.Es obligación de los miembros de PROLOPE consignar, en todas sus publicaciones científicas relacionadas con el Grupo, o derivadas de él, su pertenencia al mismo así como la correspondiente mención al proyecto y la entidad financiadora, a efectos de impacto y reconocimiento científicos. Título Segundo Órganos de gobierno Art. 4 Órganos de gobierno ▾ Los órganos de gobierno del Grupo de investigación PROLOPE son los siguientes: 4.1.El Equipo de Dirección. 4.2.La Comisión Ejecutiva. 4.3.La Comisión Científica. 4.4.El Consejo Plenario. Capítulo primero — El Equipo de Dirección Art. 5 Composición del Equipo de Dirección ▾ Integran el Equipo de Dirección el Director Investigador Principal y por lo menos un Codirector del Grupo, designado por el IP y ratificado en el Consejo Plenario por mayoría simple. Art. 6 Competencias del Director Investigador Principal ▾ 6.1.Presidir la Comisión Ejecutiva y el Consejo Plenario. 6.2.Tener voto de calidad y derecho de veto en todos los equipos, comisiones, áreas e instancias del Grupo. 6.3.Representar al Grupo. 6.4.Ejercer las funciones de dirección y gestión ordinaria del Grupo. 6.5.Dirigir, coordinar y supervisar todas las actividades del Grupo. 6.6.El director podrá delegar aquellas funciones que considere oportunas. Art. 7 Competencias del Equipo de Dirección ▾ 7.1.Representar al Grupo. 7.2.Ejercer las funciones de dirección y gestión ordinaria del Grupo. 7.3.Dirigir, coordinar y supervisar todas las actividades del Grupo. 7.4.Crear las comisiones que considere adecuadas para el funcionamiento del Grupo y designar a las personas encargadas de llevar a cabo proyectos y acciones de corto, medio o largo plazo según se regula en los artículos 12.1 y 12.2. 7.5.Administrar las partidas presupuestarias. 7.6.Velar por el cumplimiento de estos estatutos. 7.7.Velar por que los miembros del Grupo cumplan sus deberes y se les respeten sus derechos, de acuerdo con las normas que en cada caso los regulen. 7.8.Convocar la Comisión Ejecutiva por lo menos una vez al año en sesión ordinaria, y cuando lo considere pertinente en sesión extraordinaria. 7.9.Asumir cualquier otra competencia que no haya sido expresamente atribuida a otros órganos. Capítulo segundo — La Comisión Ejecutiva Art. 8 Composición de la Comisión Ejecutiva ▾ Integran la Comisión Ejecutiva el Equipo de Dirección, un secretario, representante del personal de administración y servicios, y un representante del personal investigador en formación, elegidos estos últimos por sus respectivos colectivos. Art. 9 Funciones de la Comisión Ejecutiva ▾ 9.1.El gobierno ordinario del Grupo. 9.2.Elaborar la memoria de actividades y proponerla al Consejo Plenario para su aprobación. 9.3.Acordar el orden del día de las convocatorias del Consejo y atender las peticiones que en este sentido se le dirijan. 9.4.La Comisión Ejecutiva debe reunirse en sesión ordinaria por lo menos una vez al año, y en extraordinaria cuando la convoque el Director Investigador Principal o cualquiera de sus miembros motivadamente. Art. 10 Del secretario ▾ Son competencias del Secretario: 10.1.El control administrativo. 10.2.La elaboración del informe económico para el Consejo Plenario. 10.3.El control y en su caso administración, de acuerdo con las indicaciones del Equipo de Dirección, de las convocatorias de ayudas ministeriales y de otras entidades en concurso competitivo. 10.4.La custodia y mantenimiento al día del archivo científico y administrativo de PROLOPE. 10.5.Levantar acta de reuniones y sesiones. Capítulo tercero — La Comisión Científica Art. 11 Composición de la Comisión Científica ▾ Integran la Comisión Científica el Equipo de Dirección y un número no determinado (pero no inferior a tres) de miembros doctores de PROLOPE escogidos por el Equipo de Dirección y con más de cinco años de antigüedad en el Grupo. Art. 12 Funciones de la Comisión Científica ▾ 12.1.Organizar el funcionamiento científico por áreas a propuesta del Equipo de Dirección. Determinar el número, componentes, objetivos y plazo de cumplimiento de los mismos, así como su evaluación. 12.2.Determinar objetivos científicos a medio o largo plazo y proponer a los responsables para llevarlos a cabo. 12.3.En particular le corresponde designar al coordinador (o coordinadores) de la edición de las partes de comedias. 12.4.Proponer y decidir las altas y bajas de los miembros del grupo de investigación. 12.5.Ser órgano consultivo del Equipo de Dirección. 12.6.Tener derecho de veto en los aspectos científicos reseñados en el articulado inicial; se considera emitido el veto cuando lo respalda la mayoría simple de los miembros de la Comisión. 12.7.No es necesario que esta Comisión se reúna físicamente, y sus funciones pueden realizarse mediante comunicaciones escritas o reuniones virtuales (correo electrónico y videoconferencias, por ejemplo). Capítulo cuarto — El Consejo Plenario Art. 13 Composición del Consejo Plenario ▾ Integran el Consejo Plenario todos los miembros del Grupo de Investigación PROLOPE. Art. 14 Funciones del Consejo Plenario ▾ 14.1.Aprobar los estatutos de PROLOPE y sus posibles modificaciones. 14.2.Aprobar el plan de actividades del año y el informe económico. 14.3.Proponer, debatir y aprobar las convocatorias de congresos y seminarios. 14.4.Aprobar la renovación de cargos. 14.5.Elevar propuestas particulares al conjunto del Grupo. Todo miembro en activo de PROLOPE puede plantear en Consejo una iniciativa, cuya aprobación requiere mayoría simple. Art. 15 Frecuencia y procedimiento del Consejo Plenario ▾ 15.1.El Consejo Plenario se celebra una vez al año. 15.2.Cabe convocar Consejo Plenario extraordinario a petición de un 50% de los miembros del Grupo o por iniciativa del Equipo de Dirección. 15.3.No puede votarse por correo, pero cabe delegación por escrito del voto en uno de los miembros presentes. 15.4.Las votaciones se realizan a mano alzada, pero todo miembro presente en el Consejo puede solicitar votación secreta. 15.5.Por principio se evitará el procedimiento de aprobación de decisiones «por anuencia» y siempre se atenderá cualquier petición de votación. Capítulo quinto — Duración y renovación de los cargos Art. 16 Régimen de los cargos ▾ Los cargos son trienales (vinculados a la duración de los proyectos oficiales) y pueden renovarse sin límite, pero a propuesta del Director Investigador Principal y con el apoyo del Consejo Plenario por mayoría simple. Entre el final de la duración de un proyecto y la renovación del siguiente los cargos pueden mantenerse de forma interina. Art. 17 Candidaturas ▾ Todo miembro de PROLOPE con más de dos años de antigüedad puede postularse en el Consejo Plenario como miembro para los distintos equipos y comisiones. Para ser atendida, su petición necesita mayoría simple. Título Tercero Reforma de los estatutos y marco regulador Art. 18 Competencia y modificación ▾ 18.1.Pueden proponer una reforma de los Estatutos del Grupo la Comisión Ejecutiva (por unanimidad) o un tercio de los miembros del Grupo (por escrito o en Consejo Plenario). 18.2.La propuesta debe ser aprobada por dos tercios de los miembros del Consejo. Art. 19 Marco regulador ▾ En aquellos aspectos que no queden recogidos expresamente por los presentes estatutos, el Grupo se regirá por la doctrina que emana del reglamento del Departamento de Filología Española de la Universitat Autònoma de Barcelona, las respectivas convocatorias de proyectos y de becas de investigación del Gobierno de España que los vinculen, así como la Carta europea del investigador y el Estatuto del investigador en formación. Disposición adicional Se adjuntan los siguientes documentos que dan cuenta del funcionamiento científico del Grupo de investigación en su tarea principal: un contrato de edición de una comedia, que debe firmar el colaborador encargado, el coordinador de la Parte correspondiente y el Director de PROLOPE, así como un Contrato para el encargo de la coordinación de una Parte, firmado por el coordinador designado y el Director de PROLOPE. Se adjuntan asimismo con carácter vinculante para cualquier colaborador los Criterios de Edición de PROLOPE."
   },
   {
     title: "Contacto y ubicación",
@@ -1101,108 +1101,6 @@ var SEARCH_INDEX = [
     content: "Congreso Internacional «Estudio y Edición del Teatro del Siglo de Oro» 2007 15–17 nov. 2007 UAB / RABLB, Barcelona «Estudio y Edición del Teatro del Siglo de Oro» Congreso internacional sobre el estudio y la edición del teatro español del Siglo de Oro. Organizado por PROLOPE, GRISO y el Centro para la Edición de los Clásicos Españoles. Se abordaron los problemas filológicos y ecdóticos específicos del teatro áureo."
   },
   {
-    title: "La integral dramática de Lope de Vega: textos, métodos, problemas, proyección (2022–2025)",
-    url: "el-grupo/historial-proyectos.html#2022-2025-la-integral-dramatica-de-lope-de-vega-t",
-    description: "2022–2025. IP: Gonzalo Pontón (UAB) Ref.: PID2021-124737NB-I00 Financiación: Ministerio de Ciencia e Innovación Presupuesto: 116.644 €",
-    content: "2022–2025 La integral dramática de Lope de Vega: textos, métodos, problemas, proyección IP: Gonzalo Pontón (UAB) Ref.: PID2021-124737NB-I00 Financiación: Ministerio de Ciencia e Innovación Presupuesto: 116.644 €"
-  },
-  {
-    title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2019–2021)",
-    url: "el-grupo/historial-proyectos.html#2019-2021-edicion-y-estudio-de-treinta-y-seis-come",
-    description: "2019–2021. IP: Ramón Valdés Gázquez (UAB) Ref.: PGC2018-094395-B-I00 Financiación: Ministerio de Ciencia",
-    content: "2019–2021 Edición y estudio de treinta y seis comedias de Lope de Vega IP: Ramón Valdés Gázquez (UAB) Ref.: PGC2018-094395-B-I00 Financiación: Ministerio de Ciencia, Innovación y Universidades Presupuesto: 61.710 €"
-  },
-  {
-    title: "LT&T: Literary Traditions and Texts of the Early Modern Period: Iberia and Italy (2017–2020)",
-    url: "el-grupo/historial-proyectos.html#2017-2020-lt-t-literary-traditions-and-texts-of-t",
-    description: "2017–2020. IP: Gonzalo Pontón (UAB) Ref.: 2017SGR00390 Financiación: AGAUR (Generalitat de Catalunya) Presupuesto: 37.200 €",
-    content: "2017–2020 LT&T: Literary Traditions and Texts of the Early Modern Period: Iberia and Italy IP: Gonzalo Pontón (UAB) Ref.: 2017SGR00390 Financiación: AGAUR (Generalitat de Catalunya) Presupuesto: 37.200 €"
-  },
-  {
-    title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2016–2019)",
-    url: "el-grupo/historial-proyectos.html#2016-2019-edicion-y-estudio-de-treinta-y-seis-come",
-    description: "2016–2019. IP: Gonzalo Pontón y Ramón Valdés Gázquez (UAB) Ref.: FFI2015-66216-P Financiación: Ministerio de Economía y Competitividad Presupuesto: 73.500 €",
-    content: "2016–2019 Edición y estudio de treinta y seis comedias de Lope de Vega IPs: Gonzalo Pontón y Ramón Valdés Gázquez (UAB) Ref.: FFI2015-66216-P Financiación: Ministerio de Economía y Competitividad Presupuesto: 73.500 €"
-  },
-  {
-    title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2013–2015)",
-    url: "el-grupo/historial-proyectos.html#2013-2015-edicion-y-estudio-de-treinta-y-seis-come",
-    description: "2013–2015. IP: Luis Alberto Blecua Perdices (UAB) Ref.: FFI2012-35950 Financiación: Ministerio de Economía y Competitividad",
-    content: "2013–2015 Edición y estudio de treinta y seis comedias de Lope de Vega IP: Luis Alberto Blecua Perdices (UAB) Ref.: FFI2012-35950 Financiación: Ministerio de Economía y Competitividad"
-  },
-  {
-    title: "TETSO: Transmisión y estudio de textos del Siglo de Oro (2010–2014)",
-    url: "el-grupo/historial-proyectos.html#2010-2014-tetso-transmision-y-estudio-de-textos-d",
-    description: "2010–2014",
-    content: "2010–2014 TETSO: Transmisión y estudio de textos del Siglo de Oro Ref.: 2009 SGR 297 Financiación: AGAUR (Generalitat de Catalunya) Presupuesto: 43.000 € El principal objetivo del grupo consolidado fue la transmisión y el estudio de textos del Siglo de Oro."
-  },
-  {
-    title: "TC/12 – Patrimonio teatral clásico español. Textos e instrumentos de investigación (2010–2014)",
-    url: "el-grupo/historial-proyectos.html#2010-2014-tc-12-patrimonio-teatral-clasico-espan",
-    description: "2010–2014. IP: Joan Oleza Ref.: CSD2009-00033 Financiación: Ministerio de Ciencia e Innovación (Consolider) Presupuesto: 2.300.000 €",
-    content: "2010–2014 TC/12 – Patrimonio teatral clásico español. Textos e instrumentos de investigación IP: Joan Oleza Ref.: CSD2009-00033 Financiación: Ministerio de Ciencia e Innovación (Consolider) Presupuesto: 2.300.000 € Red de excelencia de gran envergadura en la que PROLOPE participó como grupo integrante junto con otros equipos del ámbito del teatro clásico español."
-  },
-  {
-    title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2010–2012)",
-    url: "el-grupo/historial-proyectos.html#2010-2012-edicion-y-estudio-de-treinta-y-seis-come",
-    description: "2010–2012. IP: Luis Alberto Blecua Perdices (UAB) Ref.: FFI2009-13563 Financiación: Ministerio de Ciencia e Innovación",
-    content: "2010–2012 Edición y estudio de treinta y seis comedias de Lope de Vega IP: Luis Alberto Blecua Perdices (UAB) Ref.: FFI2009-13563 Financiación: Ministerio de Ciencia e Innovación"
-  },
-  {
-    title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2007–2009)",
-    url: "el-grupo/historial-proyectos.html#2007-2009-edicion-y-estudio-de-treinta-y-seis-come",
-    description: "2007–2009. IP: Luis Alberto Blecua Perdices (UAB) Ref.: HUM2006-09046/FILO Financiación: Ministerio de Educación y Ciencia",
-    content: "2007–2009 Edición y estudio de treinta y seis comedias de Lope de Vega IP: Luis Alberto Blecua Perdices (UAB) Ref.: HUM2006-09046/FILO Financiación: Ministerio de Educación y Ciencia"
-  },
-  {
-    title: "TETSO: Transmisión y estudio de textos del Siglo de Oro (2005–2009)",
-    url: "el-grupo/historial-proyectos.html#2005-2009-tetso-transmision-y-estudio-de-textos-d",
-    description: "2005–2009. IP: Francisco Rico (UAB) Ref.: 2005 SGR 01091 Financiación: AGAUR (Generalitat de Catalunya)",
-    content: "2005–2009 TETSO: Transmisión y estudio de textos del Siglo de Oro IP: Francisco Rico (UAB) Ref.: 2005 SGR 01091 Financiación: AGAUR (Generalitat de Catalunya)"
-  },
-  {
-    title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2004–2007)",
-    url: "el-grupo/historial-proyectos.html#2004-2007-edicion-y-estudio-de-treinta-y-seis-come",
-    description: "2004–2007. IP: Luis Alberto Blecua Perdices (UAB) Ref.: BFF 2003-02480 Financiación: Ministerio de Educación y Ciencia",
-    content: "2004–2007 Edición y estudio de treinta y seis comedias de Lope de Vega IP: Luis Alberto Blecua Perdices (UAB) Ref.: BFF 2003-02480 Financiación: Ministerio de Educación y Ciencia"
-  },
-  {
-    title: "Centre Especial de Recerca PROLOPE (2003)",
-    url: "el-grupo/historial-proyectos.html#2003-centre-especial-de-recerca-prolope",
-    description: "2003. IP: Luis Alberto Blecua Perdices (UAB) Financiación: Universitat Autònoma de Barcelona",
-    content: "2003 Centre Especial de Recerca PROLOPE IP: Luis Alberto Blecua Perdices (UAB) Financiación: Universitat Autònoma de Barcelona En el año 2003, la UAB reconoció a PROLOPE como Centre Especial de Recerca, distinción que refrendó su trayectoria y visibilidad institucional."
-  },
-  {
-    title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2001–2004)",
-    url: "el-grupo/historial-proyectos.html#2001-2004-edicion-y-estudio-de-treinta-y-seis-come",
-    description: "2001–2004. IP: Luis Alberto Blecua Perdices (UAB) Financiación: Ministerio de Ciencia y Tecnología – DGICYT",
-    content: "2001–2004 Edición y estudio de treinta y seis comedias de Lope de Vega IP: Luis Alberto Blecua Perdices (UAB) Financiación: Ministerio de Ciencia y Tecnología – DGICYT"
-  },
-  {
-    title: "Edición y estudio de treinta comedias de Lope de Vega (1998–2001)",
-    url: "el-grupo/historial-proyectos.html#1998-2001-edicion-y-estudio-de-treinta-comedias-de",
-    description: "1998–2001. IP: Luis Alberto Blecua Perdices (UAB) Financiación: Ministerio de Educación y Cultura – DGICYT",
-    content: "1998–2001 Edición y estudio de treinta comedias de Lope de Vega IP: Luis Alberto Blecua Perdices (UAB) Financiación: Ministerio de Educación y Cultura – DGICYT"
-  },
-  {
-    title: "Edición y estudio de veinte comedias de Lope de Vega (1995–1998)",
-    url: "el-grupo/historial-proyectos.html#1995-1998-edicion-y-estudio-de-veinte-comedias-de",
-    description: "1995–1998. IP: Luis Alberto Blecua Perdices (UAB) Financiación: Ministerio de Educación y Cultura – DGICYT",
-    content: "1995–1998 Edición y estudio de veinte comedias de Lope de Vega IP: Luis Alberto Blecua Perdices (UAB) Financiación: Ministerio de Educación y Cultura – DGICYT"
-  },
-  {
-    title: "Edición y estudio de las veinte primeras obras dramáticas de Lope de Vega (1989–1995)",
-    url: "el-grupo/historial-proyectos.html#1989-1995-edicion-y-estudio-de-las-veinte-primeras",
-    description: "1989–1995. IP: Luis Alberto Blecua Perdices (UAB) Financiación: Ministerio de Educación y Cultura – DGICYT",
-    content: "1989–1995 Edición y estudio de las veinte primeras obras dramáticas de Lope de Vega IP: Luis Alberto Blecua Perdices (UAB) Financiación: Ministerio de Educación y Cultura – DGICYT"
-  },
-  {
-    title: "Otras subvenciones y relaciones con instituciones (Otras subvenciones y relaciones con instituciones)",
-    url: "el-grupo/historial-proyectos.html#otras-subvenciones-y-relaciones-con-instituciones",
-    description: "Otras subvenciones y relaciones con instituciones",
-    content: "Otras subvenciones y relaciones con instituciones Otras subvenciones y relaciones con instituciones El Grupo de Investigación PROLOPE, además de las subvenciones relacionadas en este apartado, ha contado a lo largo de su trayectoria con el apoyo de la Fundación Juan March, la Sociedad Estatal de Celebraciones y Conmemoraciones Culturales y diversas instituciones que han contribuido a la difusión y financiación de sus actividades científicas."
-  },
-  {
     title: "Informe Semanal: Lo que aún esconde Lope",
     url: "multimedia/multimedia.html#informe-semanal-lo-que-aun-esconde-lope",
     description: "RTVE, 20 de abril de 2024",
@@ -1405,6 +1303,114 @@ var SEARCH_INDEX = [
     url: "formacion/tesis.html#2010-la-representacion-de-la-historia-contemporane",
     description: "2010",
     content: "2010 La representación de la historia contemporánea en el teatro de Lope de Vega"
+  },
+  {
+    title: "Expostulatio Spongiae",
+    url: "publicaciones/otras-publicaciones.html#expostulatio-spongiae",
+    description: "Lope de Vega Carpio, 2016",
+    content: "Lope de Vega Carpio Pedro Conde Parrado y Xavier Tubau Moreu 2016 Gredos Barcelona Biblioteca Lope de Vega 9788424928964"
+  },
+  {
+    title: "La integral dramática de Lope de Vega: textos, métodos, problemas, proyección (2022–2025)",
+    url: "el-grupo/historial-proyectos.html#2022-2025-la-integral-dramatica-de-lope-de-vega-t",
+    description: "2022–2025",
+    content: "2022–2025 La integral dramática de Lope de Vega: textos, métodos, problemas, proyección PID2021-124737NB-I00 Ministerio de Ciencia e Innovación 116.644 €"
+  },
+  {
+    title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2019–2021)",
+    url: "el-grupo/historial-proyectos.html#2019-2021-edicion-y-estudio-de-treinta-y-seis-come",
+    description: "2019–2021",
+    content: "2019–2021 Edición y estudio de treinta y seis comedias de Lope de Vega PGC2018-094395-B-I00 Ministerio de Ciencia, Innovación y Universidades 61.710 €"
+  },
+  {
+    title: "LT&T: Literary Traditions and Texts of the Early Modern Period: Iberia and Italy (2017–2020)",
+    url: "el-grupo/historial-proyectos.html#2017-2020-lt-t-literary-traditions-and-texts-of-t",
+    description: "2017–2020",
+    content: "2017–2020 LT&T: Literary Traditions and Texts of the Early Modern Period: Iberia and Italy 2017SGR00390 AGAUR (Generalitat de Catalunya) 37.200 €"
+  },
+  {
+    title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2016–2019)",
+    url: "el-grupo/historial-proyectos.html#2016-2019-edicion-y-estudio-de-treinta-y-seis-come",
+    description: "2016–2019",
+    content: "2016–2019 Edición y estudio de treinta y seis comedias de Lope de Vega FFI2015-66216-P Ministerio de Economía y Competitividad 73.500 €"
+  },
+  {
+    title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2013–2015)",
+    url: "el-grupo/historial-proyectos.html#2013-2015-edicion-y-estudio-de-treinta-y-seis-come",
+    description: "2013–2015",
+    content: "2013–2015 Edición y estudio de treinta y seis comedias de Lope de Vega FFI2012-35950 Ministerio de Economía y Competitividad"
+  },
+  {
+    title: "TETSO: Transmisión y estudio de textos del Siglo de Oro (2010–2014)",
+    url: "el-grupo/historial-proyectos.html#2010-2014-tetso-transmision-y-estudio-de-textos-d",
+    description: "2010–2014",
+    content: "2010–2014 TETSO: Transmisión y estudio de textos del Siglo de Oro 2009 SGR 297 AGAUR (Generalitat de Catalunya) 43.000 € El principal objetivo del grupo consolidado fue la transmisión y el estudio de textos del Siglo de Oro."
+  },
+  {
+    title: "TC/12 – Patrimonio teatral clásico español. Textos e instrumentos de investigación (2010–2014)",
+    url: "el-grupo/historial-proyectos.html#2010-2014-tc-12-patrimonio-teatral-clasico-espan",
+    description: "2010–2014",
+    content: "2010–2014 TC/12 – Patrimonio teatral clásico español. Textos e instrumentos de investigación CSD2009-00033 Ministerio de Ciencia e Innovación (Consolider) 2.300.000 € Red de excelencia de gran envergadura en la que PROLOPE participó como grupo integrante junto con otros equipos del ámbito del teatro clásico español."
+  },
+  {
+    title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2010–2012)",
+    url: "el-grupo/historial-proyectos.html#2010-2012-edicion-y-estudio-de-treinta-y-seis-come",
+    description: "2010–2012",
+    content: "2010–2012 Edición y estudio de treinta y seis comedias de Lope de Vega FFI2009-13563 Ministerio de Ciencia e Innovación"
+  },
+  {
+    title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2007–2009)",
+    url: "el-grupo/historial-proyectos.html#2007-2009-edicion-y-estudio-de-treinta-y-seis-come",
+    description: "2007–2009",
+    content: "2007–2009 Edición y estudio de treinta y seis comedias de Lope de Vega HUM2006-09046/FILO Ministerio de Educación y Ciencia"
+  },
+  {
+    title: "TETSO: Transmisión y estudio de textos del Siglo de Oro (2005–2009)",
+    url: "el-grupo/historial-proyectos.html#2005-2009-tetso-transmision-y-estudio-de-textos-d",
+    description: "2005–2009",
+    content: "2005–2009 TETSO: Transmisión y estudio de textos del Siglo de Oro 2005 SGR 01091 AGAUR (Generalitat de Catalunya)"
+  },
+  {
+    title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2004–2007)",
+    url: "el-grupo/historial-proyectos.html#2004-2007-edicion-y-estudio-de-treinta-y-seis-come",
+    description: "2004–2007",
+    content: "2004–2007 Edición y estudio de treinta y seis comedias de Lope de Vega BFF 2003-02480 Ministerio de Educación y Ciencia"
+  },
+  {
+    title: "Centre Especial de Recerca PROLOPE (2003)",
+    url: "el-grupo/historial-proyectos.html#2003-centre-especial-de-recerca-prolope",
+    description: "2003",
+    content: "2003 Centre Especial de Recerca PROLOPE Universitat Autònoma de Barcelona En el año 2003, la UAB reconoció a PROLOPE como Centre Especial de Recerca, distinción que refrendó su trayectoria y visibilidad institucional."
+  },
+  {
+    title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2001–2004)",
+    url: "el-grupo/historial-proyectos.html#2001-2004-edicion-y-estudio-de-treinta-y-seis-come",
+    description: "2001–2004",
+    content: "2001–2004 Edición y estudio de treinta y seis comedias de Lope de Vega Ministerio de Ciencia y Tecnología – DGICYT"
+  },
+  {
+    title: "Edición y estudio de treinta comedias de Lope de Vega (1998–2001)",
+    url: "el-grupo/historial-proyectos.html#1998-2001-edicion-y-estudio-de-treinta-comedias-de",
+    description: "1998–2001",
+    content: "1998–2001 Edición y estudio de treinta comedias de Lope de Vega Ministerio de Educación y Cultura – DGICYT"
+  },
+  {
+    title: "Edición y estudio de veinte comedias de Lope de Vega (1995–1998)",
+    url: "el-grupo/historial-proyectos.html#1995-1998-edicion-y-estudio-de-veinte-comedias-de",
+    description: "1995–1998",
+    content: "1995–1998 Edición y estudio de veinte comedias de Lope de Vega Ministerio de Educación y Cultura – DGICYT"
+  },
+  {
+    title: "Edición y estudio de las veinte primeras obras dramáticas de Lope de Vega (1989–1995)",
+    url: "el-grupo/historial-proyectos.html#1989-1995-edicion-y-estudio-de-las-veinte-primeras",
+    description: "1989–1995",
+    content: "1989–1995 Edición y estudio de las veinte primeras obras dramáticas de Lope de Vega Ministerio de Educación y Cultura – DGICYT"
+  },
+  {
+    title: "Otras subvenciones y relaciones con instituciones",
+    url: "el-grupo/historial-proyectos.html#otras-subvenciones-y-relaciones-con-instituciones",
+    description: "",
+    content: "Otras subvenciones y relaciones con instituciones El Grupo de Investigación PROLOPE, además de las subvenciones relacionadas en este apartado, ha contado a lo largo de su trayectoria con el apoyo de la Fundación Juan March, la Sociedad Estatal de Celebraciones y Conmemoraciones Culturales y diversas instituciones que han contribuido a la difusión y financiación de sus actividades científicas."
   },
   {
     title: "Sònia Boadas",
@@ -1711,17 +1717,5 @@ var SEARCH_INDEX = [
     url: "el-grupo/miembros.html#ramon-valdes",
     description: "Comité científico — Universitat Autònoma de Barcelona",
     content: "Ramón Valdés Comité científico Universitat Autònoma de Barcelona Ramón Valdés Gázquez es profesor Agregado de la Universitat Autònoma de Barcelona, doctor en Filosofía y Letras por la misma universidad desde 1997 y co-Investigadro prinicipal, junto a Gonzalo Pontón, del Grupo de Investigación PROLOPE, en el que participa desde el año 2000. Sus principales líneas de investigación se centran en la sátira, la sátira menipea del Siglo de Oro; la edición de textos; el estudio del autor Lope de Vega y el Humanismo digital.Su trayectoria científica inicia con la redacción de un trabajo de curso y luego un trabajo de Máster (en el ámbito de los cursos de Doctorado) sobre Los Sueños y discursos de Quevedo: el modelo del sueño humanista y el género de la sátira menipea (Departament de Filologia Espanyola, UAB, 1990). Ahí inicia su interés por el género de la sátira menipea y por Quevedo, uno de sus principales centros de interés y tema de muchas de sus publicaciones, desde libros colectivos a capítulos de libro y artículos en revistas, así como de ponencias y conferencias. De ahí derivó, asimismo, un encargo editorial para la prestigiosa colección «Biblioteca Clásica» dirigida por Francisco Rico, la edición crítica de El diablo Cojuelo , de Luis Vélez de Guevara. Ese encargo editorial acabó por convertirse, antes de su publicacion, en su tesis doctoral, dirigida por el profesor Alberto Blecua. Así se produjo su iniciación en el terreno de la Crítica Textual y en la labor de edición de textos. Como alumno del profesor Alberto Blecua y de la Universitat Autònoma de Barcelona, después de una estancia de ocho años en Italia; la formación y curriculum en Crítica Textual y edición de textos permitieron a Ramón Valdés reincorporarse con una beca postdoctoral en la misma universidad, y dentro del proyecto de edición de textos que llevaba adelante el grupo de investigación PROLOPE. Desde su llegada al grupo de investigación PROLOPE en el año 2000, su dedicación a la edición del teatro de Lope de Vega ha sido intensa: realizó la edición crítica de varias obras, como La fe rompida y La batalla del honor , además de, en colaboración con María Nogués, La octava maravilla ; y ahora, en colaboración con Santiago Restrepo, El caballero del milagro . Asumió asimismo la coordinación de la Parte IV de las Comedias de Lope de Vega con Luigi Giuliani, y con María Morrás la de la Parte X . También ha coordinado y participado en las ediciones de Fuenteovejuna y El castigo sin venganza para la editorial PPU, y se ha encargado de las relaciones con la compañía de teatro Rakatá, actualmente Fundación Siglo de Oro. Desde junio de 2011 dirige con Gonzalo Pontón, el grupo de investigación PROLOPE. Entre los años 2003 y 2008 fue investigador Ramón y Cajal, siendo evaluado positivamente en el último año e integrándose como investigador en el Programa I3. Desde el año 2009, y durante el quinquenio 2009-2014, ha sido miembro, a través de PROLOPE, del macroproyecto en red TC/12 Patrimonio Teatral Clásico Español , del Programa Consolider-Ingenio 2010 CSD 2009 00033. Problemas prácticos y reflexiones teóricas han acercado a Ramón Valdés, además, al ámbito de la edición digital. En 2013, organizó unas Jornadas sobre Humanidades y Ediciones críticas digitales en la UAB en las que participaron varios especialistas de primer orden mundial: A. Bía, D. Fiormonte, S. Hagel, P. Spence y F. Tomasi, entre otros. Ha realizado una propuesta de Máster en Humanidades Digitales que presentó con A. Bía en el I Congreso de HDH («Una propuesta educativa para las HD: el nuevo máster en HD de la UAB», A Coruña, Julio, 2013), la cual fue aprobada por la Comisión de Posgrado de la UAB. En 2014 ha coordinado un número de la revista Anuario Lope de Vega sobre «Edición digital y edición crítica», con participación de varios de los especialistas ya mencionados así como de otros."
-  },
-  {
-    title: "Expostulatio Spongiae",
-    url: "publicaciones/otras-publicaciones.html#expostulatio-spongiae",
-    description: "Lope de Vega Carpio, 2016",
-    content: "Lope de Vega Carpio Pedro Conde Parrado y Xavier Tubau Moreu 2016 Gredos Barcelona Biblioteca Lope de Vega 9788424928964"
-  },
-  {
-    title: "Bad Gyal | PROLOPE – UAB",
-    url: "el-grupo/bad-gyal.html",
-    description: "El grupo — Bad Gyal",
-    content: "pruea spiderman octopus"
   }
 ];

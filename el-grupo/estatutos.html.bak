@@ -41,7 +41,6 @@
                 <li><a href="estatutos.html">Estatutos del grupo</a></li>
                 <li><a href="miembros.html">Miembros</a></li>
                 <li><a href="contacto.html">Contacto y ubicación</a></li>
-                <li><a href="bad-gyal.html">Bad gyal</a></li>
                 <li><a href="bad-gyal.html">Bad Gyal</a></li>
               </ul>
             </div>
@@ -76,7 +75,7 @@
                 <li><a href="../proyectos-digitales/mapping-lope.html">Mapping Lope</a></li>
                 <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
                 <li><a href="../proyectos-digitales/la-dama-boba.html">La dama boba</a></li>
-                <li><a href="../proyectos-digitales/gondomar.html" target="_blank" rel="noopener noreferrer">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="../proyectos-digitales/gondomar.html">Gondomar Digital</a></li>
               </ul>
             </div>
           </li>
@@ -117,7 +116,6 @@
     </div>
   </header>
 
-  <!-- PAGE HERO -->
   <section class="page-hero">
     <div class="page-hero-bg" style="background-image: url('../media/fondo-grupo.png'); background-size: fill; background-repeat: no-repeat; background-position: right; opacity: 0.15;"></div>
     <div class="page-hero-inner">
@@ -134,19 +132,11 @@
     </div>
   </section>
 
-  <!-- SUB-NAV -->
-
-  <!-- MAIN LAYOUT -->
   <div class="page-layout">
-
-    <button class="expand-all-btn expand-all-btn-mobile" id="expandAllBtnMobile">Expandir todos los artículos</button>
 
     <main id="estatutos-content">
 
-      <!-- ══════════════════════════════
-           TÍTULO PRIMERO
-           ══════════════════════════════ -->
-      <div class="titulo-section" id="titulo-1">
+<div class="titulo-section" id="titulo-1">
         <p class="titulo-section-header">Título Primero</p>
         <h2 class="titulo-section-title">Naturaleza, funciones y composición</h2>
 
@@ -240,13 +230,9 @@
             </div>
           </div>
         </div>
-      </div><!-- /titulo-1 -->
+      </div>
 
-
-      <!-- ══════════════════════════════
-           TÍTULO SEGUNDO
-           ══════════════════════════════ -->
-      <div class="titulo-section" id="titulo-2">
+<div class="titulo-section" id="titulo-2">
         <p class="titulo-section-header">Título Segundo</p>
         <h2 class="titulo-section-title">Órganos de gobierno</h2>
 
@@ -539,13 +525,9 @@
           </div>
         </div>
 
-      </div><!-- /titulo-2 -->
+      </div>
 
-
-      <!-- ══════════════════════════════
-           TÍTULO TERCERO
-           ══════════════════════════════ -->
-      <div class="titulo-section" id="titulo-3">
+<div class="titulo-section" id="titulo-3">
         <p class="titulo-section-header">Título Tercero</p>
         <h2 class="titulo-section-title">Reforma de los estatutos y marco regulador</h2>
 
@@ -584,22 +566,18 @@
           </div>
         </div>
 
-      </div><!-- /titulo-3 -->
+      </div>
 
-      <!-- DISPOSICIÓN ADICIONAL -->
-      <div class="disposicion" id="disposicion">
+<div class="disposicion" id="disposicion">
         <p class="disposicion-title">Disposición adicional</p>
         <p>Se adjuntan los siguientes documentos que dan cuenta del funcionamiento científico del Grupo de investigación en su tarea principal: un contrato de edición de una comedia, que debe firmar el colaborador encargado, el coordinador de la Parte correspondiente y el Director de PROLOPE, así como un Contrato para el encargo de la coordinación de una Parte, firmado por el coordinador designado y el Director de PROLOPE. Se adjuntan asimismo con carácter vinculante para cualquier colaborador los Criterios de Edición de PROLOPE.</p>
       </div>
 
     </main>
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-
-      <button class="expand-all-btn" id="expandAllBtn">Expandir todos los artículos</button>
+    <aside class="article-sidebar">
       <div class="sidebar-card">
-        <p class="sidebar-card-title">Índice de artículos</p>
+<p class="sidebar-card-title">Índice de artículos</p>
         <ul class="toc-list">
 
           <li class="toc-item">
@@ -636,7 +614,6 @@
 
         </ul>
       </div>
-
       <div class="sidebar-card">
         <p class="sidebar-card-title">En esta sección</p>
         <ul class="sidebar-nav-list">
@@ -645,14 +622,15 @@
           <li><a href="estatutos.html" class="active">Estatutos del grupo</a></li>
           <li><a href="miembros.html">Miembros</a></li>
           <li><a href="contacto.html">Contacto y ubicación</a></li>
+
         </ul>
       </div>
 
     </aside>
+
   </div>
 
-
-  <!-- FUNDERS -->
+<!-- FUNDERS -->
   <section class="funders">
     <div class="funders-inner">
       <p class="funders-title">Entidades financiadoras</p>

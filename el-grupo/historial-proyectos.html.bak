@@ -41,7 +41,6 @@
                 <li><a href="estatutos.html">Estatutos del grupo</a></li>
                 <li><a href="miembros.html">Miembros</a></li>
                 <li><a href="contacto.html">Contacto y ubicación</a></li>
-                <li><a href="bad-gyal.html">Bad gyal</a></li>
                 <li><a href="bad-gyal.html">Bad Gyal</a></li>
               </ul>
             </div>
@@ -76,7 +75,7 @@
                 <li><a href="../proyectos-digitales/mapping-lope.html">Mapping Lope</a></li>
                 <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
                 <li><a href="../proyectos-digitales/la-dama-boba.html">La dama boba</a></li>
-                <li><a href="../proyectos-digitales/gondomar.html" target="_blank" rel="noopener noreferrer">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="../proyectos-digitales/gondomar.html">Gondomar Digital</a></li>
               </ul>
             </div>
           </li>
@@ -391,16 +390,17 @@
 
     </main>
 
-    <aside class="sidebar">
-
+    <aside class="article-sidebar">
       <div class="sidebar-card">
         <p class="sidebar-card-title">Ir a una etapa</p>
         <ul class="sidebar-nav-list">
+          <li><a href="historial-proyectos.html" class="active">Historial Proyectos</a></li>
           <li><a href="#era-2020">Década de 2020</a></li>
           <li><a href="#era-2010">Década de 2010</a></li>
           <li><a href="#era-2000">Década de 2000</a></li>
           <li><a href="#era-1990">Década de 1990</a></li>
           <li><a href="#era-otras">Otras subvenciones</a></li>
+
         </ul>
       </div>
       <div class="sidebar-card">
@@ -411,16 +411,10 @@
           <li><a href="estatutos.html">Estatutos del grupo</a></li>
           <li><a href="miembros.html">Miembros</a></li>
           <li><a href="contacto.html">Contacto y ubicación</a></li>
+
         </ul>
       </div>
 
-      
-
-      
-
-      
-
-    
     </aside>
 
   </div>

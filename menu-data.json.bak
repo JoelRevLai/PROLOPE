@@ -23,10 +23,6 @@
         "url": "el-grupo/contacto.html"
       },
       {
-        "label": "Bad gyal",
-        "url": "el-grupo/bad-gyal.html"
-      },
-      {
         "label": "Bad Gyal",
         "url": "el-grupo/bad-gyal.html"
       }
@@ -98,8 +94,7 @@
       },
       {
         "label": "Gondomar Digital",
-        "url": "proyectos-digitales/gondomar.html",
-        "external": true
+        "url": "proyectos-digitales/gondomar.html"
       }
     ]
   },
