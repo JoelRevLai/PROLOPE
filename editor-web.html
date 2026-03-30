@@ -2133,7 +2133,7 @@ function renderBlockCard(b) {
     h += '<div style="width:70px"><label>Nivel</label><select onchange="updBlock('+b.id+',\'tag\',this.value)">';
     h += '<option value="h2"'+(b.tag==='h2'?' selected':'')+'>Título de sección</option>';
     h += '<option value="h3"'+(b.tag==='h3'?' selected':'')+'>Subtítulo</option></select></div>';
-    h += '<div style="flex:1"><label>Texto</label><input type="text" value="'+escA(b.html.replace(/<[^>]+>/g,''))+'" onchange="updBlock('+b.id+',\'html\',this.value)"></div>';
+    h += '<div style="flex:1">'+richLineField('Texto','heading-'+b.id,b.html)+'</div>';
     h += '</div>';
   } else if (b.type==='paragraph') {
     h += richField('Contenido',b.html,'block-'+b.id);
@@ -2348,7 +2348,7 @@ function readAllBlocks() {
       var szi=document.getElementById('size-'+b.id); if(szi) b.size=szi.value;
     }
     if (b.type==='heading') {
-      // Already updated via onchange
+      b.html = gR('heading-'+b.id);
     }
     if (b.type==='links') {
       var container = document.getElementById('links-'+b.id);
