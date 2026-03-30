@@ -1,4 +1,7 @@
 {
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "permissions": {
     "allow": [
       "Bash(curl -s \"https://prolope.uab.cat/wp-json/wp/v2/media/264939\" -o \"c:/Users/joelr/Desktop/Archivo_Digital/PROLOPE/tmp_media.json\")",

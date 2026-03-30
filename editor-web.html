@@ -11,7 +11,7 @@
     body{font-family:'EB Garamond',Georgia,serif;background:#eae6df;color:var(--texto);line-height:1.6;display:flex;height:100vh;overflow:hidden}
 
     /* ── SIDEBAR NAV ──────────────────── */
-    .ed-nav{width:260px;min-width:260px;background:var(--azul);color:#fff;display:flex;flex-direction:column;overflow:hidden}
+    .ed-nav{width:260px;min-width:260px;background:var(--azul);color:#fff;display:flex;flex-direction:column;overflow:hidden;box-shadow:4px 0 18px rgba(0,0,0,.18)}
     .ed-nav-header{padding:1rem 1rem .5rem;text-align:center;border-bottom:1px solid rgba(255,255,255,.1)}
     .ed-nav-header h1{font-family:'Raleway',sans-serif;font-size:1rem;font-weight:600}
     .ed-nav-header p{font-size:.75rem;opacity:.6;margin-top:.2rem}
@@ -30,9 +30,16 @@
     .ed-body{flex:1;overflow-y:auto;padding:1.5rem 2rem 3rem}
 
     /* welcome */
-    .welcome{text-align:center;padding:4rem 1rem}
-    .welcome h2{font-family:'Raleway',sans-serif;color:var(--azul);margin-bottom:.5rem}
-    .welcome p{color:#888;max-width:400px;margin:0 auto}
+    .welcome{text-align:center;padding:3rem 1rem 4rem}
+    .welcome h2{font-family:'Raleway',sans-serif;color:var(--azul);margin-bottom:.6rem;font-size:1.5rem}
+    .welcome p{color:#666;max-width:460px;margin:0 auto 2rem;font-size:1.05rem}
+    .welcome-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;max-width:720px;margin:0 auto 2rem;text-align:left}
+    .welcome-step{background:var(--bg);border:1px solid var(--borde);border-radius:10px;padding:1.1rem 1.2rem;box-shadow:0 2px 8px var(--sombra)}
+    .welcome-step-num{font-family:'Raleway',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--dorado);margin-bottom:.4rem}
+    .welcome-step-icon{font-size:1.6rem;margin-bottom:.4rem;line-height:1}
+    .welcome-step h3{font-family:'Raleway',sans-serif;font-size:.88rem;font-weight:600;color:var(--azul);margin-bottom:.25rem}
+    .welcome-step p{font-size:.82rem;color:#666;margin:0}
+    .welcome-note{background:#fffbf0;border:1px solid #e8d9aa;border-radius:8px;padding:.85rem 1.1rem;max-width:500px;margin:0 auto;font-size:.82rem;color:#7a6020;display:flex;align-items:flex-start;gap:.5rem;text-align:left}
 
     /* ── SECTIONS ─────────────────────── */
     .ed-section{background:var(--bg);border:1px solid var(--borde);border-radius:8px;padding:1.4rem 1.6rem;margin-bottom:1rem;box-shadow:0 2px 6px var(--sombra)}
@@ -43,7 +50,7 @@
     label{display:block;font-family:'Raleway',sans-serif;font-weight:500;font-size:.82rem;color:var(--azul);margin:0 0 .2rem}
     .field{margin-bottom:.8rem}
     .field:last-child{margin-bottom:0}
-    .help{font-size:.75rem;color:#999;margin-bottom:.2rem}
+    .help{font-size:.75rem;color:#666;margin-bottom:.25rem;line-height:1.4}
     input[type=text],select,textarea{width:100%;padding:.45rem .6rem;font-family:'EB Garamond',serif;font-size:.92rem;border:1px solid var(--borde);border-radius:5px;background:var(--crema);color:var(--texto);transition:border-color .2s}
     input:focus,select:focus,textarea:focus{outline:none;border-color:var(--dorado);box-shadow:0 0 0 2px rgba(200,164,90,.18)}
     textarea{resize:vertical;min-height:70px}
@@ -71,7 +78,9 @@
 
     /* ── ITEM CARDS (tesis, congresos…) ─ */
     .item-card{border:1px solid var(--borde);border-radius:6px;padding:1rem 1.2rem 1rem 2.4rem;margin-bottom:.7rem;background:var(--crema);position:relative}
-    .item-card.drag-over{border-color:var(--azul);background:#eef3fb}
+    .item-card.drag-over{border-color:var(--azul);background:#eef3fb;box-shadow:0 0 0 2px var(--azul);outline:none}
+    .dragging{opacity:.5;box-shadow:0 4px 16px rgba(0,0,0,.18)!important}
+    .drag-over-indicator{outline:2px solid var(--azul)!important;outline-offset:2px;background:#eef3fb!important}
     .drag-handle{position:absolute;left:.4rem;top:50%;transform:translateY(-50%);cursor:grab;color:#bbb;font-size:1.1rem;line-height:1;user-select:none;padding:.2rem}
     .drag-handle:active{cursor:grabbing}
     .item-card-header{display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem}
@@ -105,9 +114,17 @@
     .block-actions button{background:none;border:1px solid var(--borde);border-radius:3px;width:24px;height:24px;cursor:pointer;font-size:.78rem;display:flex;align-items:center;justify-content:center;color:var(--azul)}
     .block-actions button:hover{background:var(--crema)}
     .block-actions .del{color:var(--rojo)}
+    .block-card.drag-over{border-color:var(--azul);background:#eef3fb;box-shadow:0 0 0 2px var(--azul)}
+    /* ── FOCUS VISIBLE ────────────────── */
+    .block-actions button:focus-visible,
+    .sb-card-actions button:focus-visible,
+    .menu-section-actions button:focus-visible,
+    .btn-del-item:focus-visible,
+    .btn:focus-visible{outline:2px solid var(--dorado);outline-offset:2px}
+    button:focus-visible{outline:2px solid var(--dorado);outline-offset:1px}
 
     /* ── TOAST ────────────────────────── */
-    .toast{position:fixed;bottom:1.5rem;right:1.5rem;padding:.7rem 1.2rem;border-radius:8px;font-family:'Raleway',sans-serif;font-size:.85rem;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.2);transform:translateY(80px);opacity:0;transition:transform .3s,opacity .3s;z-index:1000}
+    .toast{position:fixed;bottom:1.5rem;right:1.5rem;padding:.9rem 1.4rem;border-radius:10px;font-family:'Raleway',sans-serif;font-size:.92rem;color:#fff;box-shadow:0 6px 24px rgba(0,0,0,.28);transform:translateY(80px);opacity:0;transition:transform .3s,opacity .3s;z-index:1000;display:flex;align-items:center;gap:.5rem;max-width:340px}
     .toast.show{transform:translateY(0);opacity:1}
     .toast.ok{background:var(--verde)}.toast.err{background:var(--rojo)}.toast.info{background:var(--azul)}
 
@@ -167,6 +184,40 @@
     /* ── RESPONSIVE ──────────────────── */
     @media(max-width:800px){.ed-nav{width:200px;min-width:200px} .ed-body{padding:1rem} .item-card .row{flex-direction:column;gap:0}}
     @media(max-width:600px){.ed-nav{display:none} .ed-body{padding:.8rem}}
+
+    /* ── NAV SEARCH ──────────────────── */
+    .nav-search-wrap{padding:.5rem .7rem .3rem;flex-shrink:0}
+    .nav-search-wrap input{width:100%;padding:.35rem .6rem;font-family:'Raleway',sans-serif;font-size:.78rem;border:1px solid rgba(255,255,255,.2);border-radius:4px;background:rgba(255,255,255,.1);color:#fff;outline:none}
+    .nav-search-wrap input::placeholder{color:rgba(255,255,255,.4)}
+    .nav-search-wrap input:focus{border-color:var(--dorado);background:rgba(255,255,255,.15)}
+    .nav-item.nav-hidden{display:none}
+    .nav-group.nav-group-hidden{display:none}
+
+    /* ── HELP SYSTEM ─────────────────── */
+    .help-btn{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--dorado);background:none;color:var(--dorado);font-family:'Raleway',sans-serif;font-size:.7rem;font-weight:700;cursor:pointer;flex-shrink:0;margin-left:auto;line-height:1;padding:0;transition:background .15s,color .15s}
+    .help-btn:hover{background:var(--dorado);color:#fff}
+    .help-panel{display:none;background:#f7f4ee;border:1px solid var(--dorado);border-radius:6px;padding:.8rem 1rem;margin-top:.5rem;font-family:'Raleway',sans-serif;font-size:.8rem;color:#555;line-height:1.55}
+    .help-panel.open{display:block}
+    .help-panel strong{color:var(--azul);display:block;margin-bottom:.3rem;font-size:.82rem}
+    .help-panel ul{margin:.3rem 0 .3rem 1.1rem;padding:0}
+    .help-panel ul li{margin-bottom:.18rem}
+    .help-panel .help-tip{margin-top:.5rem;padding:.35rem .6rem;background:#fffbe8;border-left:3px solid var(--dorado);font-size:.77rem;color:#7a6030;border-radius:0 3px 3px 0}
+
+    /* ── SAVING SPINNER ──────────────────────── */
+    .saving-spinner{display:inline-block;width:12px;height:12px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;margin-right:.3rem;vertical-align:middle}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* ── UNSAVED INDICATOR ───────────── */
+    .unsaved-dot{width:9px;height:9px;border-radius:50%;background:#e8852a;flex-shrink:0;display:none}
+    .unsaved-dot.active{display:block;animation:pulse-dot 1.4s ease-in-out infinite}
+    @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(1.25)}}
+    .unsaved-label{font-family:'Raleway',sans-serif;font-size:.75rem;color:#e8852a;display:none;white-space:nowrap}
+    .unsaved-label.active{display:block}
+    .save-time-label{font-family:'Raleway',sans-serif;font-size:.73rem;color:#aaa;white-space:nowrap;display:none}
+    .save-time-label.active{display:block}
+
+    /* ── COMPACT/EXPAND TOGGLE ───────── */
+    .btn-compact{font-size:.73rem;padding:.3rem .55rem}
   </style>
 </head>
 <body>
@@ -176,6 +227,9 @@
   <div class="ed-nav-header">
     <h1>PROLOPE</h1>
     <p>Editor de contenidos</p>
+  </div>
+  <div class="nav-search-wrap">
+    <input type="text" id="navSearchInput" placeholder="Buscar página…" oninput="filterNav(this.value)" autocomplete="off">
   </div>
   <div class="ed-nav-list" id="navList">
     <p style="padding:1rem;font-size:.82rem;opacity:.5">Cargando páginas…</p>
@@ -187,14 +241,26 @@
   <div class="ed-topbar" id="topbar" style="display:none">
     <span class="ed-topbar-title" id="topTitle"></span>
     <span class="ed-topbar-badge" id="topBadge"></span>
-    <button class="btn btn-outline btn-sm" onclick="previewPage()">Vista previa</button>
-    <button class="btn btn-danger btn-sm" id="btnDelete" onclick="deletePage()" style="display:none" title="Eliminar esta página">Eliminar página</button>
-    <button class="btn btn-green" id="btnSave" onclick="savePage()">Guardar cambios</button>
+    <span class="unsaved-dot" id="unsavedDot" title="Hay cambios sin guardar"></span>
+    <span class="unsaved-label" id="unsavedLabel">Sin guardar</span>
+    <span class="save-time-label" id="saveTimeLabel"></span>
+    <button class="btn btn-outline btn-sm btn-compact" id="btnUndo" onclick="undoLastSave()" style="display:none" title="Deshacer cambios desde el último guardado">↩ Deshacer</button>
+    <button class="btn btn-outline btn-sm btn-compact" onclick="toggleCompact()" id="btnCompact" title="Contraer/expandir todas las secciones">⊟ Compactar</button>
+    <button class="btn btn-outline btn-sm" onclick="previewPage()">👁 Vista previa</button>
+    <button class="btn btn-danger btn-sm" id="btnDelete" onclick="deletePage()" style="display:none" title="Eliminar esta página">🗑 Eliminar página</button>
+    <button class="btn btn-green" id="btnSave" onclick="savePage()">💾 Guardar cambios</button>
   </div>
   <div class="ed-body" id="edBody">
     <div class="welcome" id="welcomeScreen">
       <h2>Editor de contenidos PROLOPE</h2>
       <p>Selecciona una página del panel de la izquierda para empezar a editarla.</p>
+      <div class="welcome-steps">
+        <div class="welcome-step"><div class="welcome-step-num">Paso 1</div><div class="welcome-step-icon">📂</div><h3>Selecciona</h3><p>Elige una página del menú lateral izquierdo.</p></div>
+        <div class="welcome-step"><div class="welcome-step-num">Paso 2</div><div class="welcome-step-icon">✏️</div><h3>Edita</h3><p>Modifica los campos y bloques de contenido.</p></div>
+        <div class="welcome-step"><div class="welcome-step-num">Paso 3</div><div class="welcome-step-icon">💾</div><h3>Guarda</h3><p>Pulsa "Guardar cambios" o usa Ctrl+S.</p></div>
+        <div class="welcome-step"><div class="welcome-step-num">Paso 4</div><div class="welcome-step-icon">👁</div><h3>Vista previa</h3><p>Revisa el resultado en el navegador.</p></div>
+      </div>
+      <div class="welcome-note">💡 Tip: usa el buscador del menú lateral para encontrar páginas rápidamente.</div>
     </div>
   </div>
 </div>
@@ -212,6 +278,9 @@
 
 <!-- toast -->
 <div class="toast" id="toast"></div>
+
+<!-- help overlay -->
+<div id="helpOverlay" style="display:none;position:fixed;inset:0;z-index:800" onclick="closeHelpPanel()"></div>
 
 
 <script>
@@ -268,6 +337,7 @@ var NC = { blockId: 0, cats: [] }; // news creation state
 function renderNav() {
   var groups = {};
   var labels = {'(raíz)':'Inicio','el-grupo':'El grupo','objetivos':'Objetivos','publicaciones':'Publicaciones','proyectos-digitales':'Proyectos digitales','formacion':'Formación','eventos':'Eventos','multimedia':'Multimedia','noticias':'Noticias'};
+  var icons = {'(raíz)':'🏠','el-grupo':'👥','objetivos':'🎯','publicaciones':'📚','proyectos-digitales':'💻','formacion':'🎓','eventos':'📅','multimedia':'🖼️','noticias':'📰','Herramientas':'🔧'};
   S.pages.forEach(function(p){
     var g = p.dir;
     if (!groups[g]) groups[g] = [];
@@ -277,7 +347,7 @@ function renderNav() {
   var order = ['(raíz)','el-grupo','objetivos','publicaciones','proyectos-digitales','formacion','eventos','multimedia','noticias'];
   order.forEach(function(g){
     if (!groups[g]) return;
-    html += '<div class="nav-group"><div class="nav-group-title">'+(labels[g]||g)+'</div>';
+    html += '<div class="nav-group"><div class="nav-group-title">'+(icons[g]?'<span>'+icons[g]+'</span> ':'')+(labels[g]||g)+'</div>';
     groups[g].forEach(function(p){
       if (g === 'noticias' && /^noticia-/.test(p.name)) return; // individual news handled by manager
       var name = p.name.replace('.html','').replace(/-/g,' ');
@@ -290,7 +360,7 @@ function renderNav() {
     }
     html += '</div>';
   });
-  html += '<div class="nav-group"><div class="nav-group-title">Herramientas</div>';
+  html += '<div class="nav-group"><div class="nav-group-title"><span>🔧</span> Herramientas</div>';
   html += '<button class="nav-item" data-path="__recursos__" onclick="loadRecursos()">Recursos multimedia</button>';
   html += '<button class="nav-item" data-path="__menu_editor__" onclick="loadMenuEditor()">Editor de menú</button>';
   html += '<button class="nav-item" style="color:rgba(200,164,90,.9)" data-path="__new_page__" onclick="loadNewPage()">+ Nueva página</button>';
@@ -319,6 +389,7 @@ async function loadPage(pagePath) {
 
   S.currentPath = pagePath;
   S.newsEntry = null;
+  S.newsFormData = null;
   parseFile(S.originalHtml, pagePath);
   if (S.pageType === 'news') await loadNewsEntry(pagePath);
   renderEditor();
@@ -363,9 +434,7 @@ function parseFile(html, path) {
   S.pageTitle = m ? m[1].trim() : '';
 
   // Parse content zone into DOM
-  var doc = new DOMParser().parseFromString('<div id="__cz__">'+S.footerPart_raw+'</div>','text/html');
-  // Actually parse the content zone
-  doc = new DOMParser().parseFromString('<div id="__cz__">'+S.contentZone+'</div>','text/html');
+  var doc = new DOMParser().parseFromString('<div id="__cz__">'+S.contentZone+'</div>','text/html');
   var cz = doc.getElementById('__cz__');
 
   // Hero
@@ -978,9 +1047,6 @@ function renderEditor() {
   else if (S.pageType==='partes') h += renderPartesEditor();
   else h += renderBlocksEditor();
 
-  // News card data section
-  if (S.pageType === 'news') h += renderNewsCardEditor();
-
   // Sidebar
   h += renderSidebarEditor();
 
@@ -990,6 +1056,11 @@ function renderEditor() {
   initRichEditors();
   if (S.pageType === 'members') initMembersDrag();
   if (S.pageType==='theses' || S.pageType==='congresses' || S.pageType==='seminars' || S.pageType==='projects') initThesisDrag();
+  if (S.pageType==='article' || S.pageType==='libros' || S.pageType==='contact') initBlocksDrag();
+
+  // Nuevas funcionalidades
+  resetEditorState();
+  injectHelpButtons();
 }
 
 function field(label,id,value,placeholder) {
@@ -1180,9 +1251,9 @@ function renderSbCardEditor(card, idx) {
   h += '<span class="sb-type-badge '+typeCls[card.type]+'">'+typeLabels[card.type]+'</span>';
   h += '<span class="sb-card-label">'+esc(label)+'</span>';
   h += '<div class="sb-card-actions" onclick="event.stopPropagation()">';
-  if (idx > 0) h += '<button title="Subir" onclick="moveSidebarCard('+idx+',-1)">↑</button>';
-  if (idx < S.sidebarCards.length-1) h += '<button title="Bajar" onclick="moveSidebarCard('+idx+',1)">↓</button>';
-  h += '<button class="del" title="Eliminar" onclick="removeSidebarCard('+idx+')">✕</button>';
+  if (idx > 0) h += '<button title="Subir tarjeta" aria-label="Subir tarjeta" onclick="moveSidebarCard('+idx+',-1)">↑</button>';
+  if (idx < S.sidebarCards.length-1) h += '<button title="Bajar tarjeta" aria-label="Bajar tarjeta" onclick="moveSidebarCard('+idx+',1)">↓</button>';
+  h += '<button class="del" title="Eliminar tarjeta" aria-label="Eliminar tarjeta" onclick="removeSidebarCard('+idx+')">✕</button>';
   h += '</div></div>';
   h += '<div class="sb-card-body open" id="sbBody_'+card.id+'">';
 
@@ -1587,7 +1658,7 @@ function openImgPicker(inputId) {
   imgPickerCallback = inputId;
   var grid = document.getElementById('imgGrid');
   grid.innerHTML = S.media.map(function(f) {
-    return '<img src="media/'+f+'" alt="'+esc(f)+'" title="'+esc(f)+'" onclick="pickImage(\''+esc(f)+'\')">';
+    return '<img src="media/'+escA(f)+'" alt="'+escA(f)+'" title="'+escA(f)+'" data-filename="'+escA(f)+'" onclick="pickImage(this.dataset.filename)">';
   }).join('');
   document.getElementById('imgModal').classList.add('open');
   document.getElementById('imgSearch').value = '';
@@ -1649,12 +1720,12 @@ function renderBlockCard(b) {
   var tcls = {heading:'type-h',paragraph:'type-p',lead:'type-quote',figure:'type-fig',imagegrid:'type-fig',pullquote:'type-quote',links:'type-links',highlight:'type-quote',list:'type-p',libro:'type-links','_preserve':'type-p'};
   var h = '<div class="block-card" data-bid="'+b.id+'">';
   h += '<div class="block-header">';
-  h += '<span class="block-handle">☰</span>';
+  h += '<span class="block-handle" title="Arrastrar para reordenar" aria-label="Arrastrar">⠿</span>';
   h += '<span class="block-type '+(tcls[b.type]||'type-p')+'">'+(types[b.type]||b.type)+'</span>';
   h += '<div class="block-actions">';
-  h += '<button title="Subir" onclick="moveBlock('+b.id+',-1)">↑</button>';
-  h += '<button title="Bajar" onclick="moveBlock('+b.id+',1)">↓</button>';
-  h += '<button class="del" title="Eliminar" onclick="removeBlock('+b.id+')">✕</button>';
+  h += '<button title="Subir bloque" aria-label="Subir bloque" onclick="moveBlock('+b.id+',-1)">↑</button>';
+  h += '<button title="Bajar bloque" aria-label="Bajar bloque" onclick="moveBlock('+b.id+',1)">↓</button>';
+  h += '<button class="del" title="Eliminar bloque" aria-label="Eliminar bloque" onclick="removeBlock('+b.id+')">✕</button>';
   h += '</div></div>';
 
   if (b.type==='heading') {
@@ -1741,7 +1812,7 @@ function renderBlockCard(b) {
 function addBlock(type) {
   var b = {id:blockId++,type:type};
   if (type==='heading') { b.tag='h2'; b.html=''; b.cls=''; }
-  else if (type==='paragraph') { b.html='<p>Nuevo párrafo</p>'; b.cls=''; }
+  else if (type==='paragraph') { b.html='Nuevo párrafo'; b.cls=''; }
   else if (type==='figure') { b.src=''; b.alt=''; b.caption=''; b.position='right'; b.cls=''; b.size='medium'; }
   else if (type==='pullquote') { b.html='Cita destacada'; }
   else if (type==='links') { b.links=[{label:'',url:''}]; }
@@ -1852,6 +1923,7 @@ function rerenderBlocks() {
   });
   c.innerHTML = h;
   initRichEditors();
+  initBlocksDrag();
 }
 
 function readAllBlocks() {
@@ -2564,70 +2636,96 @@ function rerenderItems() {
   if (S.pageType==='theses' || S.pageType==='congresses' || S.pageType==='seminars' || S.pageType==='projects') initThesisDrag();
 }
 
-function initMembersDrag() {
-  ['itemsContainer','pastItemsContainer'].forEach(function(cid) {
-    var c = document.getElementById(cid);
+// ── DRAG GENÉRICO ────────────────────────────────────────────────────────────
+// cardSelector: selector CSS de las tarjetas arrastrables
+// onDrop(srcCard, tgtCard): callback cuando se completa el drop
+var _uniDragSrc = null;
+
+function initDraggable(containerIds, cardSelector, onDrop) {
+  if (!Array.isArray(containerIds)) containerIds = [containerIds];
+  containerIds.forEach(function(cid) {
+    var c = typeof cid === 'string' ? document.getElementById(cid) : cid;
     if (!c) return;
-    c.querySelectorAll('.item-card[draggable]').forEach(function(card) {
+    c.querySelectorAll(cardSelector).forEach(function(card) {
+      if (card._dragBound) return;
+      card._dragBound = true;
       card.addEventListener('dragstart', function(e) {
-        _dragSrcId = parseInt(card.getAttribute('data-iid'));
+        // No iniciar drag desde contenteditable
+        var t = e.target;
+        while (t && t !== card) {
+          if (t.contentEditable === 'true') { e.preventDefault(); return; }
+          t = t.parentElement;
+        }
+        _uniDragSrc = card;
         e.dataTransfer.effectAllowed = 'move';
+        card.classList.add('dragging');
       });
       card.addEventListener('dragover', function(e) {
-        e.preventDefault(); e.dataTransfer.dropEffect = 'move';
+        if (!_uniDragSrc || _uniDragSrc === card) return;
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
         card.classList.add('drag-over');
       });
-      card.addEventListener('dragleave', function() { card.classList.remove('drag-over'); });
-      card.addEventListener('drop', function(e) {
-        e.preventDefault(); card.classList.remove('drag-over');
-        var targetId = parseInt(card.getAttribute('data-iid'));
-        if (_dragSrcId === null || _dragSrcId === targetId) return;
-        readAllItems();
-        var srcIdx = S.items.findIndex(function(it){return it.id===_dragSrcId;});
-        var tgtIdx = S.items.findIndex(function(it){return it.id===targetId;});
-        if (srcIdx<0||tgtIdx<0) return;
-        var removed = S.items.splice(srcIdx,1)[0];
-        S.items.splice(tgtIdx,0,removed);
-        rerenderItems();
+      card.addEventListener('dragleave', function() {
+        card.classList.remove('drag-over');
       });
-      card.addEventListener('dragend', function() { card.classList.remove('drag-over'); });
+      card.addEventListener('drop', function(e) {
+        e.preventDefault();
+        card.classList.remove('drag-over');
+        if (!_uniDragSrc || _uniDragSrc === card) return;
+        onDrop(_uniDragSrc, card);
+        _uniDragSrc = null;
+      });
+      card.addEventListener('dragend', function() {
+        card.classList.remove('drag-over', 'dragging');
+        _uniDragSrc = null;
+      });
     });
   });
 }
 
-var _dragSrcId = null;
-function initThesisDrag() {
-  var c = document.getElementById('itemsContainer');
-  if (!c) return;
-  c.querySelectorAll('.item-card[draggable]').forEach(function(card) {
-    card.addEventListener('dragstart', function(e) {
-      _dragSrcId = parseInt(card.getAttribute('data-iid'));
-      e.dataTransfer.effectAllowed = 'move';
-    });
-    card.addEventListener('dragover', function(e) {
-      e.preventDefault();
-      e.dataTransfer.dropEffect = 'move';
-      card.classList.add('drag-over');
-    });
-    card.addEventListener('dragleave', function() {
-      card.classList.remove('drag-over');
-    });
-    card.addEventListener('drop', function(e) {
-      e.preventDefault();
-      card.classList.remove('drag-over');
-      var targetId = parseInt(card.getAttribute('data-iid'));
-      if (_dragSrcId === null || _dragSrcId === targetId) return;
+function initMembersDrag() {
+  ['itemsContainer','pastItemsContainer'].forEach(function(cid) {
+    initDraggable(cid, '.item-card[draggable]', function(srcCard, tgtCard) {
+      var srcId = parseInt(srcCard.getAttribute('data-iid'));
+      var tgtId = parseInt(tgtCard.getAttribute('data-iid'));
       readAllItems();
-      var srcIdx = S.items.findIndex(function(it){return it.id===_dragSrcId;});
-      var tgtIdx = S.items.findIndex(function(it){return it.id===targetId;});
+      var srcIdx = S.items.findIndex(function(it){return it.id===srcId;});
+      var tgtIdx = S.items.findIndex(function(it){return it.id===tgtId;});
       if (srcIdx<0||tgtIdx<0) return;
       var removed = S.items.splice(srcIdx,1)[0];
       S.items.splice(tgtIdx,0,removed);
       rerenderItems();
     });
-    card.addEventListener('dragend', function() {
-      card.classList.remove('drag-over');
-    });
+  });
+}
+
+var _dragSrcId = null; // mantenido por compatibilidad con menuDrag
+function initThesisDrag() {
+  initDraggable('itemsContainer', '.item-card[draggable]', function(srcCard, tgtCard) {
+    var srcId = parseInt(srcCard.getAttribute('data-iid'));
+    var tgtId = parseInt(tgtCard.getAttribute('data-iid'));
+    readAllItems();
+    var srcIdx = S.items.findIndex(function(it){return it.id===srcId;});
+    var tgtIdx = S.items.findIndex(function(it){return it.id===tgtId;});
+    if (srcIdx<0||tgtIdx<0) return;
+    var removed = S.items.splice(srcIdx,1)[0];
+    S.items.splice(tgtIdx,0,removed);
+    rerenderItems();
+  });
+}
+
+function initBlocksDrag() {
+  initDraggable('blocksContainer', '.block-card[draggable]', function(srcCard, tgtCard) {
+    readAllBlocks();
+    var srcId = parseInt(srcCard.getAttribute('data-bid'));
+    var tgtId = parseInt(tgtCard.getAttribute('data-bid'));
+    var srcIdx = S.blocks.findIndex(function(b){return b.id===srcId;});
+    var tgtIdx = S.blocks.findIndex(function(b){return b.id===tgtId;});
+    if (srcIdx<0||tgtIdx<0) return;
+    var removed = S.blocks.splice(srcIdx,1)[0];
+    S.blocks.splice(tgtIdx,0,removed);
+    rerenderBlocks();
   });
 }
 
@@ -3784,11 +3882,13 @@ async function updateGenericSearchData() {
 
 async function savePage() {
   if (S.pageType === 'news') { await saveNewsPage(); return; }
+  takeSnapshot();
   var html = generateHtml();
   var btn = document.getElementById('btnSave');
-  btn.textContent = 'Guardando…';
+  btn.innerHTML = '<span class="saving-spinner"></span>Guardando…';
   btn.disabled = true;
 
+  var savedOk = false;
   try {
     var r = await fetch('/api/page?path='+encodeURIComponent(S.currentPath), {
       method: 'POST',
@@ -3797,6 +3897,7 @@ async function savePage() {
     });
     var data = await r.json();
     if (data.ok) {
+      savedOk = true;
       toast('Cambios guardados correctamente','ok');
       S.originalHtml = html;
       if (S.pageType==='theses') await updateThesesSearchData();
@@ -3813,8 +3914,12 @@ async function savePage() {
   } catch(e) {
     toast('Error de conexión al guardar','err');
   }
-  btn.textContent = 'Guardar cambios';
+  btn.innerHTML = savedOk ? '✓ Guardado' : '💾 Guardar cambios';
   btn.disabled = false;
+  if (savedOk) {
+    markClean();
+    setTimeout(function(){ btn.innerHTML = '💾 Guardar cambios'; }, 2000);
+  }
 }
 
 function previewPage() {
@@ -4380,6 +4485,10 @@ function renderNewsEditor() {
 
   // Pre-populate evento links
   (f.evLinks||[]).forEach(function(l){ ncAddLinkWithValues('nc-ev-links', l.label, l.url); });
+
+  // Nuevas funcionalidades
+  resetEditorState();
+  injectHelpButtons();
 }
 
 function ncAddBlockWithContent(b) {
@@ -4526,6 +4635,7 @@ async function saveNewsPage() {
     await fetch('/api/search-data',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:'noticias/'+S.currentPath.split('/').pop(),content:desc})});
   } catch(ex) { /* silent */ }
 
+  markClean();
   toast('Noticia guardada correctamente','ok');
   // Reload to reflect saved state
   setTimeout(function(){ loadPage(S.currentPath); }, 1000);
@@ -4970,45 +5080,14 @@ function ncAddBlock(type) {
   initNcBlocksDrag();
 }
 
-var _ncDragSrc = null;
 function initNcBlocksDrag() {
-  var c = document.getElementById('nc-blocks');
-  if (!c) return;
-  c.querySelectorAll('[data-ncbid]').forEach(function(card) {
-    // Avoid double-binding
-    if (card._ncDragBound) return;
-    card._ncDragBound = true;
-    card.addEventListener('dragstart', function(e) {
-      // Don't initiate drag when clicking inside the text editor
-      var t = e.target;
-      while (t && t !== card) {
-        if (t.contentEditable === 'true') { e.preventDefault(); return; }
-        t = t.parentElement;
-      }
-      _ncDragSrc = card;
-      e.dataTransfer.effectAllowed = 'move';
-    });
-    card.addEventListener('dragover', function(e) {
-      if (!_ncDragSrc) return;
-      e.preventDefault(); e.dataTransfer.dropEffect = 'move';
-      card.classList.add('drag-over');
-    });
-    card.addEventListener('dragleave', function() { card.classList.remove('drag-over'); });
-    card.addEventListener('drop', function(e) {
-      e.preventDefault(); card.classList.remove('drag-over');
-      if (!_ncDragSrc || _ncDragSrc === card) return;
-      var c2 = card.parentNode;
-      var cards = Array.from(c2.children);
-      var srcIdx = cards.indexOf(_ncDragSrc);
-      var tgtIdx = cards.indexOf(card);
-      if (srcIdx < tgtIdx) c2.insertBefore(_ncDragSrc, card.nextSibling);
-      else c2.insertBefore(_ncDragSrc, card);
-      _ncDragSrc = null;
-    });
-    card.addEventListener('dragend', function() {
-      card.classList.remove('drag-over');
-      _ncDragSrc = null;
-    });
+  initDraggable('nc-blocks', '[data-ncbid]', function(srcCard, tgtCard) {
+    var c2 = tgtCard.parentNode;
+    var cards = Array.from(c2.children);
+    var srcIdx = cards.indexOf(srcCard);
+    var tgtIdx = cards.indexOf(tgtCard);
+    if (srcIdx < tgtIdx) c2.insertBefore(srcCard, tgtCard.nextSibling);
+    else c2.insertBefore(srcCard, tgtCard);
   });
 }
 
@@ -5343,7 +5422,7 @@ async function ncUpdateSearchData(data) {
 
 function ncBuildSearchContent(data) {
   var parts = [data.tituloPlain,data.cat,data.fechaCorta,data.excerpt];
-  (data.contentBlocks||[]).forEach(function(b){ parts.push(b.text.replace(/<[^>]+>/g,'')); });
+  (data.contentBlocks||[]).forEach(function(b){ if (b.text) parts.push(b.text.replace(/<[^>]+>/g,'')); });
   (data.links||[]).forEach(function(l){ parts.push(l.label); });
   (data.evLinks||[]).forEach(function(l){ parts.push(l.label); });
   var text = parts.join(' ');
@@ -5553,13 +5632,432 @@ function ncGenerateHtml(d) {
   return H;
 }
 
+// ══════════════════════════════════════════════════════════════════════════════
+// NUEVAS FUNCIONALIDADES v1.1
+// ══════════════════════════════════════════════════════════════════════════════
+
+// ── #1 SISTEMA DE AYUDA CONTEXTUAL ───────────────────────────────────────────
+var HELP_TEXTS = {
+  'Metadatos': {
+    desc: 'Información básica de la página que los buscadores como Google utilizan para indexarla.',
+    fields: [
+      '<b>Título de la página:</b> Texto que aparece en la pestaña del navegador y en los resultados de búsqueda. Debe ser descriptivo y conciso (50-60 caracteres ideales).'
+    ],
+    tip: 'El título SEO no es el mismo que el título visible en la página. Aquí controlas lo que aparece en la pestaña del navegador.'
+  },
+  'Cabecera': {
+    desc: 'La "cabecera héroe" es la gran banda visual en la parte superior de la página con título y navegación de migas de pan.',
+    fields: [
+      '<b>Título principal:</b> El H1 de la página, visible en grande en la cabecera.',
+      '<b>Breadcrumb:</b> El último segmento de la ruta de navegación (ej.: "El grupo"). Ayuda al usuario a saber dónde está.',
+      '<b>Categoría:</b> Etiqueta de color que clasifica el artículo (ej.: "Evento", "Investigación").',
+      '<b>Fecha:</b> Fecha visible en la cabecera del artículo.'
+    ],
+    tip: 'El título puede contener HTML básico como <em>cursiva</em> si es necesario. El breadcrumb debe coincidir con el nombre de la sección en el menú.'
+  },
+  'Contenido': {
+    desc: 'El cuerpo principal de la página, compuesto por bloques de texto, imágenes, citas, etc. Se construye bloque a bloque.',
+    fields: [
+      '<b>Párrafo:</b> Texto normal. Usar el editor de texto enriquecido para negrita, cursiva y enlaces.',
+      '<b>Encabezado:</b> Título interno (H2 o H3) para organizar las secciones del artículo.',
+      '<b>Figura:</b> Imagen con pie de foto opcional. Se puede posicionar a la izquierda, derecha o centrada.',
+      '<b>Cita destacada:</b> Bloque visual resaltado para frases importantes.',
+      '<b>Lista de enlaces:</b> Conjunto de enlaces externos relacionados.',
+      '<b>Rejilla de imágenes:</b> Varias imágenes en formato cuadrícula.'
+    ],
+    tip: 'Arrastra los bloques por el icono "⠿" de la izquierda para reordenarlos. Usa "Añadir bloque" para agregar nuevo contenido al final.'
+  },
+  'Sidebar': {
+    desc: 'Panel lateral derecho con tarjetas de navegación o contenido adicional. Aparece junto al artículo principal en pantallas anchas.',
+    fields: [
+      '<b>Tabla de contenidos:</b> Lista automática de los encabezados del artículo.',
+      '<b>Navegación:</b> Lista de enlaces personalizados (ej.: otras páginas de la sección).',
+      '<b>Texto libre:</b> Bloque de texto con editor enriquecido para notas o información complementaria.'
+    ],
+    tip: 'No todas las páginas tienen sidebar. Si la página actual no lo tiene, este apartado estará vacío. Los cambios en el sidebar se guardan junto con el resto de la página.'
+  },
+  'Tesis': {
+    desc: 'Listado de tesis doctorales dirigidas por miembros del grupo.',
+    fields: [
+      '<b>Texto introductorio:</b> Párrafo inicial visible antes del listado de tesis.',
+      '<b>Año:</b> Año de lectura o defensa de la tesis.',
+      '<b>Título:</b> Título completo de la tesis (admite cursiva con etiqueta <em>).',
+      '<b>Meta:</b> Autor, directores, universidad, etc.',
+      '<b>Enlace:</b> URL al repositorio o texto descriptivo del estado (ej.: "En curso").',
+      '<b>En curso:</b> Marcar si la tesis todavía no se ha leído.'
+    ],
+    tip: 'Arrastra las tarjetas para reordenar las tesis. Las tesis "en curso" se muestran sin enlace. Para eliminar una tesis, usa el botón rojo "×" de la esquina.'
+  },
+  'Congresos': {
+    desc: 'Catálogo de congresos organizados por PROLOPE, con ficha detallada para cada edición.',
+    fields: [
+      '<b>Imagen:</b> Fotografía o cartel del congreso.',
+      '<b>Año y edición:</b> Identificadores principales del congreso.',
+      '<b>Nombre:</b> Título completo del congreso.',
+      '<b>Fechas y lugar:</b> Cuándo y dónde se celebró.',
+      '<b>Descripción modal:</b> Texto que aparece al hacer clic en la tarjeta.',
+      '<b>Enlace modal:</b> Botones de acción dentro del modal (actas, programa, etc.).'
+    ],
+    tip: 'Los congresos se agrupan por series (encabezados de grupo). Usa "Añadir grupo" para crear una nueva serie y "Añadir congreso" para agregar ediciones dentro de ella.'
+  },
+  'Seminarios': {
+    desc: 'Listado de seminarios organizados o coorganizados por PROLOPE.',
+    fields: [
+      '<b>Título:</b> Nombre del seminario.',
+      '<b>Imagen:</b> Fotografía o cartel del seminario.',
+      '<b>Campos adicionales:</b> Información libre que aparece en el panel desplegable (fechas, lugar, organizadores, etc.).'
+    ],
+    tip: 'Los campos adicionales son flexibles: puedes añadir o eliminar los que necesites con el botón "+ Campo". Arrastra para reordenar los seminarios dentro de cada grupo.'
+  },
+  'Miembros': {
+    desc: 'Directorio de miembros del grupo de investigación, dividido en miembros actuales y antiguos.',
+    fields: [
+      '<b>Nombre:</b> Nombre completo del miembro.',
+      '<b>Cargo/Rol:</b> Puesto o función dentro del grupo.',
+      '<b>Universidad:</b> Institución de afiliación.',
+      '<b>Email:</b> Correo electrónico de contacto.',
+      '<b>ORCID:</b> Identificador ORCID del investigador.',
+      '<b>Foto:</b> Ruta a la fotografía del miembro.',
+      '<b>Biografía:</b> Texto breve sobre el investigador.',
+      '<b>Miembro anterior:</b> Marcar si ya no forma parte activa del grupo.'
+    ],
+    tip: 'Las fotos deben estar en la carpeta media/. Usa el botón "Elegir" para seleccionar una imagen ya subida, o "Subir" para cargar una nueva.'
+  },
+  'Proyectos': {
+    desc: 'Historial de proyectos de investigación financiados, agrupados por etapa o era temporal.',
+    fields: [
+      '<b>Era:</b> Período o etapa temporal que agrupa varios proyectos.',
+      '<b>Año:</b> Año o rango de años del proyecto.',
+      '<b>Título:</b> Nombre del proyecto.',
+      '<b>Descripción:</b> Texto explicativo del proyecto.',
+      '<b>IP / Investigador Principal:</b> Nombre de la persona responsable.',
+      '<b>En curso:</b> Marcar si el proyecto está activo actualmente.',
+      '<b>Campos adicionales:</b> Financiación, entidad convocante, referencia, etc.'
+    ],
+    tip: 'Los proyectos "en curso" se destacan visualmente. Puedes añadir campos adicionales de metadatos con el botón "+ Metadato".'
+  },
+  'Multimedia': {
+    desc: 'Catálogo de vídeos y contenido audiovisual de PROLOPE.',
+    fields: [
+      '<b>Tipo:</b> YouTube/Vimeo (externo) o vídeo local (archivo del servidor).',
+      '<b>URL del vídeo:</b> Enlace de YouTube o Vimeo.',
+      '<b>Vídeo local:</b> Ruta al archivo de vídeo en el servidor.',
+      '<b>Fuente:</b> Canal o plataforma de origen.',
+      '<b>Fecha:</b> Fecha de publicación o grabación.',
+      '<b>Título y descripción:</b> Metadatos visibles en la tarjeta del vídeo.',
+      '<b>Miniatura:</b> Imagen de previsualización del vídeo.'
+    ],
+    tip: 'Para vídeos de YouTube, solo necesitas la URL completa; el editor extraerá automáticamente el ID del vídeo.'
+  },
+  'Partes de comedias': {
+    desc: 'Catálogo de las Partes de comedias publicadas por PROLOPE con su información bibliográfica.',
+    fields: [
+      '<b>Texto introductorio:</b> Párrafo inicial visible antes del catálogo.',
+      '<b>Cada parte:</b> Número, título, año, editorial, ISBN, imagen de portada, y enlace de compra.'
+    ],
+    tip: 'Las partes se muestran en una cuadrícula visual. El orden de las tarjetas determina el orden de aparición en la página.'
+  },
+  'Noticias': {
+    desc: 'Editor de la ficha completa de una noticia: cabecera, cuerpo, tipo (suceso o evento) e imagen.',
+    fields: [
+      '<b>Tipo:</b> "Suceso" (noticia informativa) o "Evento" (convocatoria con fecha, lugar y enlaces).',
+      '<b>Categoría:</b> Etiqueta visible en la cabecera (ej.: "Publicación", "Jornada").',
+      '<b>Fecha:</b> Fecha larga visible (ej.: "15 de enero de 2025").',
+      '<b>Imagen principal:</b> Fotografía que acompaña la noticia.',
+      '<b>Bloques de contenido:</b> Cuerpo de la noticia (párrafos, imágenes, citas, etc.).',
+      '<b>Datos del evento:</b> Solo para tipo "Evento": título, subtítulo, fechas, lugar y enlaces.'
+    ],
+    tip: 'El "Extracto" y la "Descripción para búsqueda" son textos cortos que aparecen en el listado de noticias y en los resultados del buscador interno.'
+  }
+};
+
+function helpKey(sectionTitle) {
+  // Match section title to HELP_TEXTS key (partial, case-insensitive)
+  var title = sectionTitle.trim();
+  var keys = Object.keys(HELP_TEXTS);
+  // Exact match
+  if (HELP_TEXTS[title]) return title;
+  // Partial match
+  for (var i = 0; i < keys.length; i++) {
+    if (title.toLowerCase().indexOf(keys[i].toLowerCase()) !== -1 || keys[i].toLowerCase().indexOf(title.toLowerCase()) !== -1) return keys[i];
+  }
+  return null;
+}
+
+function sectionHelpBtn(sectionTitle) {
+  var key = helpKey(sectionTitle);
+  if (!key) return '';
+  var safeKey = escA(key);
+  return '<button class="help-btn" onclick="toggleHelpPanel(event,\''+safeKey+'\')" title="Ayuda sobre esta sección">?</button>';
+}
+
+var _activeHelpKey = null;
+function toggleHelpPanel(e, key) {
+  e.stopPropagation();
+  // Find the panel
+  var panel = document.getElementById('helpPanel_'+key.replace(/\s/g,'_'));
+  if (!panel) return;
+  var isOpen = panel.classList.contains('open');
+  // Close all panels
+  document.querySelectorAll('.help-panel.open').forEach(function(p){ p.classList.remove('open'); });
+  document.getElementById('helpOverlay').style.display = 'none';
+  if (!isOpen) {
+    panel.classList.add('open');
+    document.getElementById('helpOverlay').style.display = 'block';
+    _activeHelpKey = key;
+  } else {
+    _activeHelpKey = null;
+  }
+}
+
+function closeHelpPanel() {
+  document.querySelectorAll('.help-panel.open').forEach(function(p){ p.classList.remove('open'); });
+  document.getElementById('helpOverlay').style.display = 'none';
+  _activeHelpKey = null;
+}
+
+function renderHelpPanel(key) {
+  var data = HELP_TEXTS[key];
+  if (!data) return '';
+  var id = 'helpPanel_' + key.replace(/\s/g,'_');
+  var html = '<div class="help-panel" id="'+id+'">';
+  html += '<strong>'+esc(key)+'</strong>';
+  if (data.desc) html += '<p>'+data.desc+'</p>';
+  if (data.fields && data.fields.length) {
+    html += '<ul>';
+    data.fields.forEach(function(f){ html += '<li>'+f+'</li>'; });
+    html += '</ul>';
+  }
+  if (data.tip) html += '<div class="help-tip">💡 '+data.tip+'</div>';
+  html += '</div>';
+  return html;
+}
+
+// Patch: inject help button into section h2 titles
+// Called after renderEditor sets innerHTML
+function injectHelpButtons() {
+  document.querySelectorAll('.ed-section h2').forEach(function(h2) {
+    // Get text content, excluding badges
+    var textNodes = Array.from(h2.childNodes).filter(function(n){ return n.nodeType === 3; });
+    var titleText = textNodes.map(function(n){ return n.textContent; }).join('').trim();
+    if (!titleText) {
+      // Try first text content
+      titleText = h2.textContent.replace(/REQUERIDO|OPCIONAL|NEW/gi,'').trim();
+    }
+    var key = helpKey(titleText);
+    if (!key) return;
+    // Avoid double injection
+    if (h2.querySelector('.help-btn')) return;
+    var btn = document.createElement('button');
+    btn.className = 'help-btn';
+    btn.textContent = '?';
+    btn.title = 'Ayuda sobre esta sección';
+    btn.onclick = function(e){ toggleHelpPanel(e, key); };
+    h2.appendChild(btn);
+    // Insert panel after h2's parent section's h2
+    var section = h2.closest('.ed-section');
+    if (section) {
+      var panelId = 'helpPanel_' + key.replace(/\s/g,'_');
+      if (!document.getElementById(panelId)) {
+        var panelDiv = document.createElement('div');
+        panelDiv.innerHTML = renderHelpPanel(key);
+        h2.insertAdjacentElement('afterend', panelDiv.firstChild);
+      }
+    }
+  });
+}
+
+// ── #2 HISTORIAL / DESHACER ───────────────────────────────────────────────────
+var H = {
+  snapshot: null,       // saved snapshot of S state at last save
+  snapshotTime: null,   // Date of last save
+  _dirty: false,        // whether there are unsaved changes
+  _saveTimeInterval: null,
+};
+
+function markDirty() {
+  if (H._dirty) return;
+  H._dirty = true;
+  var dot = document.getElementById('unsavedDot');
+  var lbl = document.getElementById('unsavedLabel');
+  if (dot) dot.classList.add('active');
+  if (lbl) lbl.classList.add('active');
+}
+
+function markClean(saveTime) {
+  H._dirty = false;
+  H.snapshotTime = saveTime || new Date();
+  var dot = document.getElementById('unsavedDot');
+  var lbl = document.getElementById('unsavedLabel');
+  if (dot) dot.classList.remove('active');
+  if (lbl) lbl.classList.remove('active');
+  updateSaveTimeLabel();
+  // Show undo button
+  var undoBtn = document.getElementById('btnUndo');
+  if (undoBtn) undoBtn.style.display = '';
+}
+
+function updateSaveTimeLabel() {
+  var el = document.getElementById('saveTimeLabel');
+  if (!el) return;
+  if (!H.snapshotTime) { el.classList.remove('active'); return; }
+  var diff = Math.round((Date.now() - H.snapshotTime.getTime()) / 60000);
+  var text = diff < 1 ? 'Guardado hace un momento' : diff === 1 ? 'Guardado hace 1 min' : 'Guardado hace ' + diff + ' min';
+  el.textContent = text;
+  el.classList.add('active');
+}
+
+function takeSnapshot() {
+  // Store a JSON snapshot of key S fields before saving
+  H.snapshot = JSON.stringify({
+    blocks: S.blocks,
+    items: S.items,
+    introHtml: S.introHtml,
+    heroData: S.heroData,
+    pageTitle: S.pageTitle,
+    sidebarCards: S.sidebarCards,
+    newsFormData: S.newsFormData,
+    partesData: S.partesData,
+    afterGridHtml: S.afterGridHtml,
+  });
+}
+
+function undoLastSave() {
+  if (!H.snapshot) { toast('No hay snapshot guardado', 'info'); return; }
+  if (!confirm('¿Restaurar el estado de la última vez que se guardó? Se perderán los cambios actuales.')) return;
+  var snap;
+  try { snap = JSON.parse(H.snapshot); } catch(e) { toast('Error al restaurar', 'err'); return; }
+  Object.assign(S, snap);
+  renderEditor();
+  H._dirty = false;
+  var dot = document.getElementById('unsavedDot');
+  var lbl = document.getElementById('unsavedLabel');
+  if (dot) dot.classList.remove('active');
+  if (lbl) lbl.classList.remove('active');
+  toast('Cambios revertidos al último guardado', 'info');
+}
+
+// Intercept input events on edBody to detect unsaved changes
+(function setupDirtyDetection() {
+  // We hook into document-level input/change events inside edBody
+  document.addEventListener('input', function(e) {
+    var edBody = document.getElementById('edBody');
+    if (edBody && edBody.contains(e.target)) markDirty();
+  }, true);
+  document.addEventListener('change', function(e) {
+    var edBody = document.getElementById('edBody');
+    if (edBody && edBody.contains(e.target)) markDirty();
+  }, true);
+  // Update save-time label every minute
+  H._saveTimeInterval = setInterval(updateSaveTimeLabel, 60000);
+})();
+
+// ── #3 PREVENCIÓN PÉRDIDA DE CAMBIOS + Ctrl+S ────────────────────────────────
+window.addEventListener('beforeunload', function(e) {
+  if (H._dirty) {
+    e.preventDefault();
+    e.returnValue = 'Hay cambios sin guardar. ¿Seguro que quieres salir?';
+    return e.returnValue;
+  }
+});
+
+document.addEventListener('keydown', function(e) {
+  if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+    e.preventDefault();
+    var topbar = document.getElementById('topbar');
+    if (topbar && topbar.style.display !== 'none') {
+      savePage();
+    }
+  }
+});
+
+// ── #4 BÚSQUEDA EN NAV ────────────────────────────────────────────────────────
+function filterNav(query) {
+  var q = query.trim().toLowerCase();
+  var groups = document.querySelectorAll('#navList .nav-group');
+  groups.forEach(function(group) {
+    var items = group.querySelectorAll('.nav-item');
+    var anyVisible = false;
+    items.forEach(function(item) {
+      var text = item.textContent.toLowerCase();
+      var match = !q || text.indexOf(q) !== -1;
+      item.classList.toggle('nav-hidden', !match);
+      if (match) anyVisible = true;
+    });
+    group.classList.toggle('nav-group-hidden', !anyVisible);
+  });
+}
+
+// ── #5 MODO COMPACTO / EXPANDIDO ─────────────────────────────────────────────
+var _compactMode = false;
+function toggleCompact() {
+  _compactMode = !_compactMode;
+  var sections = document.querySelectorAll('.ed-section');
+  sections.forEach(function(sec) {
+    var h2 = sec.querySelector('h2');
+    // Store original content (skip h2 and help-panel)
+    if (_compactMode) {
+      var children = Array.from(sec.children);
+      children.forEach(function(child) {
+        if (child.tagName !== 'H2' && !child.classList.contains('help-panel')) {
+          child.style.display = 'none';
+        }
+      });
+      sec.style.paddingBottom = '.6rem';
+      sec.style.cursor = 'pointer';
+      if (!sec._compactClick) {
+        sec._compactClick = function(e) {
+          if (!_compactMode) return;
+          if (e.target.closest('.help-btn')) return;
+          var children = Array.from(sec.children);
+          var collapsed = children.some(function(c){ return c.tagName !== 'H2' && !c.classList.contains('help-panel') && c.style.display === 'none'; });
+          children.forEach(function(child) {
+            if (child.tagName !== 'H2' && !child.classList.contains('help-panel')) {
+              child.style.display = collapsed ? '' : 'none';
+            }
+          });
+        };
+        sec.addEventListener('click', sec._compactClick);
+      }
+    } else {
+      var children = Array.from(sec.children);
+      children.forEach(function(child) {
+        child.style.display = '';
+      });
+      sec.style.paddingBottom = '';
+      sec.style.cursor = '';
+    }
+  });
+  var btn = document.getElementById('btnCompact');
+  if (btn) {
+    btn.textContent = _compactMode ? '⊞ Expandir' : '⊟ Compactar';
+    btn.title = _compactMode ? 'Expandir todas las secciones' : 'Contraer todas las secciones';
+  }
+}
+
+// ── HELPERS PARA RESETEAR UI EN CARGA DE PÁGINA ──────────────────────────────
+function resetEditorState() {
+  H._dirty = false;
+  H.snapshot = null;
+  var dot = document.getElementById('unsavedDot');
+  var lbl = document.getElementById('unsavedLabel');
+  var undoBtn = document.getElementById('btnUndo');
+  if (dot) dot.classList.remove('active');
+  if (lbl) lbl.classList.remove('active');
+  if (undoBtn) undoBtn.style.display = 'none';
+  _compactMode = false;
+  var btn = document.getElementById('btnCompact');
+  if (btn) { btn.textContent = '⊟ Compactar'; btn.title = 'Contraer todas las secciones'; }
+}
+
 // ── TOAST ────────────────────────────────────────────────────────────────────
 function toast(msg,type) {
   var el = document.getElementById('toast');
-  el.textContent = msg;
+  var icon = type==='ok' ? '✅' : type==='err' ? '❌' : 'ℹ️';
+  el.innerHTML = '<span>'+icon+'</span><span>'+esc(msg)+'</span>';
   el.className = 'toast '+(type||'info')+' show';
   clearTimeout(el._t);
-  el._t = setTimeout(function(){ el.classList.remove('show'); },3000);
+  el._t = setTimeout(function(){ el.classList.remove('show'); },4500);
 }
 </script>
 </body>
