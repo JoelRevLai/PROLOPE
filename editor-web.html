@@ -2118,13 +2118,11 @@ function renderBlocksEditor() {
 function renderBlockCard(b) {
   var types = {heading:'Título',paragraph:'Párrafo',lead:'Texto destacado',figure:'Figura',imagegrid:'Cuadrícula de imágenes',pullquote:'Cita',links:'Enlaces',highlight:'Recuadro destacado con enlace',list:'Lista',libro:'Libro','_preserve':'HTML directo'};
   var tcls = {heading:'type-h',paragraph:'type-p',lead:'type-quote',figure:'type-fig',imagegrid:'type-fig',pullquote:'type-quote',links:'type-links',highlight:'type-quote',list:'type-p',libro:'type-links','_preserve':'type-p'};
-  var h = '<div class="block-card" data-bid="'+b.id+'">';
+  var h = '<div class="block-card" data-bid="'+b.id+'" draggable="true">';
   h += '<div class="block-header">';
   h += '<span class="block-handle" title="Arrastrar para reordenar" aria-label="Arrastrar">⠿</span>';
   h += '<span class="block-type '+(tcls[b.type]||'type-p')+'">'+(types[b.type]||b.type)+'</span>';
   h += '<div class="block-actions">';
-  h += '<button title="Subir bloque" aria-label="Subir bloque" onclick="moveBlock('+b.id+',-1)">↑</button>';
-  h += '<button title="Bajar bloque" aria-label="Bajar bloque" onclick="moveBlock('+b.id+',1)">↓</button>';
   h += '<button class="del" title="Eliminar bloque" aria-label="Eliminar bloque" onclick="removeBlock('+b.id+')">✕</button>';
   h += '</div></div>';
 
