@@ -313,6 +313,13 @@
     .rich-edit:focus { background: #fff }
     .rich-edit p { margin-bottom: .6em }
     .rich-edit a { color: var(--azul); text-decoration: underline }
+    .rich-edit-sm { min-height: 38px; }
+    .rich-edit[data-placeholder]:empty::before {
+      content: attr(data-placeholder);
+      color: var(--texto-suave);
+      pointer-events: none;
+      font-style: italic;
+    }
 
     /* ── BUTTONS ──────────────────────── */
     .btn {
@@ -1397,14 +1404,14 @@ function renderEditor() {
   // Hero
   if (S.heroData) {
     h += '<div class="ed-section"><h2>Cabecera <span class="badge">HERO</span></h2>';
-    h += field('Título principal','edHeroTitle',S.heroData.title);
+    h += richLineField('Título principal','edHeroTitle',S.heroData.title);
     h += field('Breadcrumb (último segmento)','edBreadcrumb',S.heroData.breadcrumbLast,'Ej.: El grupo');
     if (S.heroData.type==='article') {
       h += field('Categoría','edHeroCat',S.heroData.catBadge);
       h += field('Fecha','edHeroDate',S.heroData.date);
     }
     if (S.heroData.type==='index') {
-      h += field('Subtítulo','edHeroSub',S.heroData.subtitle);
+      h += richLineField('Subtítulo','edHeroSub',S.heroData.subtitle);
     }
     h += '</div>';
   }
@@ -1482,6 +1489,27 @@ function richFieldBiblio(label,html,dataId) {
     +'</div>'
     +'<div class="rich-edit" contenteditable="true" data-rich-id="'+dataId+'">'+html+'</div>'
     +'</div></div>';
+}
+
+function richLineField(label,id,value,placeholder) {
+  return '<div class="field"><label>'+label+'</label>'
+    +'<div class="rich-wrap">'
+    +'<div class="rich-toolbar">'
+    +'<button onmousedown="execRich(event,\'bold\')"><b>N</b></button>'
+    +'<button onmousedown="execRich(event,\'italic\')"><i>C</i></button>'
+    +'<button onmousedown="execRich(event,\'link\')">Enlace</button>'
+    +'<button onmousedown="execRich(event,\'removeLink\')">× enlace</button>'
+    +'<button onmousedown="execRich(event,\'insertUnorderedList\')">• Lista</button>'
+    +'<button onmousedown="execRich(event,\'insertOrderedList\')">1. Lista</button>'
+    +'</div>'
+    +'<div class="rich-edit rich-edit-sm" contenteditable="true" data-rich-id="'+id+'"'
+    +(placeholder?' data-placeholder="'+escA(placeholder)+'"':'')+'>'+( value||'')+'</div>'
+    +'</div></div>';
+}
+// Helper to read a richLineField value by its data-rich-id
+function gR(id) {
+  var el = document.querySelector('[data-rich-id="'+id+'"]');
+  return el ? el.innerHTML : '';
 }
 
 function imgField(label,value,inputId) {
@@ -2403,7 +2431,7 @@ function renderThesisCard(it) {
   h += '<div>'+field('Año','thy-'+it.id,it.year,'2024')+'</div>';
   h += '<div><div class="field"><label>Estado</label><select id="thp-'+it.id+'"><option value="link"'+(it.pending?'':' selected')+'>Con enlace</option><option value="pending"'+(it.pending?' selected':'')+'>Pendiente</option></select></div></div>';
   h += '</div>';
-  h += field('Título (puede incluir cursiva con <em>)','tht-'+it.id,it.title);
+  h += richLineField('Título','tht-'+it.id,it.title);
   h += richField('Datos (autor, director, universidad, fecha…)',it.meta,'thm-'+it.id);
   h += field('URL de la tesis (si tiene enlace)','thl-'+it.id,it.link,'https://...');
   h += '</div>';
@@ -2436,7 +2464,7 @@ function renderCongressesEditor() {
 function renderCongressCard(it) {
   if (it._group) return renderCongressGroupHeader(it);
   var openAttr = it._open ? ' open' : '';
-  var label = esc(it.edition||'Nuevo congreso') + (it.year ? ' ('+it.year+')' : '');
+  var label = esc((it.edition||'Nuevo congreso').replace(/<[^>]+>/g,'')) + (it.year ? ' ('+it.year+')' : '');
   var h = '<details class="item-card" data-iid="'+it.id+'" draggable="true"'+openAttr+'>';
   h += '<summary style="cursor:pointer;display:flex;align-items:center;gap:.5rem;list-style:none;padding-right:2rem">';
   h += '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>';
@@ -2446,9 +2474,9 @@ function renderCongressCard(it) {
   h += '<div style="padding-top:.75rem">';
   h += '<div class="row">';
   h += '<div>'+field('Año','cgy-'+it.id,it.year)+'</div>';
-  h += '<div>'+field('Edición','cge-'+it.id,it.edition,'XI Congreso Internacional')+'</div>';
+  h += '<div>'+richLineField('Edición','cge-'+it.id,it.edition,'XI Congreso Internacional')+'</div>';
   h += '</div>';
-  h += field('Título / tema','cgn-'+it.id,it.name);
+  h += richLineField('Título / tema','cgn-'+it.id,it.name);
   h += '<div class="row">';
   h += '<div>'+field('Fechas','cgd-'+it.id,it.dates,'27-29 nov. 2024')+'</div>';
   h += '<div>'+field('Lugar','cgl-'+it.id,it.location,'UAB, Barcelona')+'</div>';
@@ -2459,7 +2487,7 @@ function renderCongressCard(it) {
   h += '<input type="hidden" id="cgoid-'+it.id+'" value="'+escA(it.modalId||'')+'">';
   h += '<details style="margin-top:.6rem"><summary style="cursor:pointer;font-weight:600;font-size:.82rem;color:var(--azul)">▶ Detalle del modal (ventana emergente)</summary>';
   h += '<div style="margin-top:.5rem;padding:.5rem;background:rgba(200,164,90,.06);border-radius:6px;border-left:3px solid var(--dorado)">';
-  h += field('Título del congreso (en el modal)','cgmt-'+it.id, it.modalTitle || '');
+  h += richLineField('Título del congreso (en el modal)','cgmt-'+it.id, it.modalTitle || '');
   h += '<label style="display:block;margin-top:.4rem;font-size:.78rem;font-weight:600;color:var(--azul-oscuro)">Descripción del modal</label>';
   h += '<textarea id="cgmd-'+it.id+'" rows="4" style="width:100%;box-sizing:border-box;padding:.4rem .5rem;border:1px solid #c5b99a;border-radius:4px;font-size:.83rem;resize:vertical">'+esc(it.modalDescription||'')+'</textarea>';
   h += '<label style="display:block;margin-top:.6rem;font-size:.78rem;font-weight:600;color:var(--azul-oscuro)">Botones de enlace en el modal</label>';
@@ -2494,8 +2522,8 @@ function renderCongressGroupHeader(it) {
   h += '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>';
   h += '<button class="btn-del-item" onclick="removeCongressGroup('+it.id+')">✕</button>';
   h += '<div class="item-card-header"><strong style="color:var(--azul)">— Subcategoría —</strong></div>';
-  h += field('Título de la subcategoría','grpt-'+it.id, it.title, 'Ej.: Congreso Internacional Lope de Vega');
-  h += field('Texto del contador','grpc-'+it.id, it.count, 'Ej.: 11 ediciones');
+  h += richLineField('Título de la subcategoría','grpt-'+it.id, it.title, 'Ej.: Congreso Internacional Lope de Vega');
+  h += richLineField('Texto del contador','grpc-'+it.id, it.count, 'Ej.: 11 ediciones');
   h += '<button class="btn btn-blue btn-sm" style="margin-top:.5rem" onclick="addCongressAfterGroup('+it.id+')">+ Añadir congreso aquí</button>';
   h += '</div>';
   return h;
@@ -2634,7 +2662,7 @@ function renderSeminarCard(it) {
   h += '</div>';
   h += '<label style="display:block;font-size:.78rem;font-weight:600;color:var(--azul-oscuro)">Nombre</label>';
   h += '<input type="text" id="smn-'+it.id+'" value="'+escA(it.name||'')+'" oninput="updateSeminarLabel('+it.id+')">';
-  h += field('Tema (opcional)','smt-'+it.id,it.theme);
+  h += richLineField('Tema (opcional)','smt-'+it.id,it.theme);
   h += '<label style="margin-top:.4rem">Campos del panel desplegable</label>';
   h += '<p class="help">Estos campos aparecen cuando se despliega el seminario.</p>';
   h += '<div id="smf-'+it.id+'">';
@@ -2665,8 +2693,8 @@ function renderSeminarGroupHeader(it) {
   h += '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>';
   h += '<button class="btn-del-item" onclick="removeSeminarGroup('+it.id+')">✕</button>';
   h += '<div class="item-card-header"><strong style="color:var(--azul)">— Subcategoría —</strong></div>';
-  h += field('Título de la subcategoría','grpt-'+it.id, it.title, 'Ej.: Seminario Internacional Lope de Vega');
-  h += field('Texto del contador','grpc-'+it.id, it.count, 'Ej.: 8 ediciones');
+  h += richLineField('Título de la subcategoría','grpt-'+it.id, it.title, 'Ej.: Seminario Internacional Lope de Vega');
+  h += richLineField('Texto del contador','grpc-'+it.id, it.count, 'Ej.: 8 ediciones');
   h += '<button class="btn btn-blue btn-sm" style="margin-top:.5rem" onclick="addSeminarAfterGroup('+it.id+')">+ Añadir seminario aquí</button>';
   h += '</div>';
   return h;
@@ -2751,8 +2779,8 @@ function renderVideoCard(it) {
     +'<input type="text" id="vis-txt-'+it.id+'" value="'+escA(isCustomSrc?it.source:'')+'" placeholder="Nombre del canal"'+(isCustomSrc?'':' style="display:none"')+'>'
     +'</div></div>';
   h += '</div>';
-  h += field('Título','vit-'+it.id,it.title);
-  h += field('Descripción','vin-'+it.id,it.desc);
+  h += richLineField('Título','vit-'+it.id,it.title);
+  h += richLineField('Descripción','vin-'+it.id,it.desc);
   h += '<div class="field"><label style="flex-direction:row;align-items:center;gap:.5rem;cursor:pointer">'
     +'<input type="checkbox" id="vilocal-'+it.id+'"'+(isLocal?' checked':'')+' onchange="updateVideoCardUI('+it.id+')" style="width:auto;margin:0"> '
     +'Archivo local (el vídeo está guardado en el servidor, no en internet)</label></div>';
@@ -2865,7 +2893,7 @@ function renderMemberCard(it) {
   h += '<div><label style="display:block;font-size:.78rem;font-weight:600;color:var(--azul-oscuro)">Rol corto (tarjeta)</label>'
     +'<input type="text" id="mdr-'+it.id+'" value="'+escA(it.displayRole||'')+'" oninput="updateMemberLabel('+it.id+')"></div>';
   h += '</div>';
-  h += field('Universidad / Institución','mu-'+it.id,it.uni);
+  h += richLineField('Universidad / Institución','mu-'+it.id,it.uni);
   h += '<div class="row">';
   h += '<div>'+field('Email','me-'+it.id,it.email)+'</div>';
   h += '<div>'+field('ORCID (solo el ID, p.ej. 0000-0002-1825-0097)','mo-'+it.id,it.orcid||'')+'</div>';
@@ -2950,12 +2978,12 @@ function renderProjectCard(it) {
   var h = '<div class="item-card" data-iid="'+it.id+'" draggable="true">';
   h += '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>';
   h += '<button class="btn-del-item" onclick="removeItem('+it.id+')">✕</button>';
-  h += '<div class="item-card-header"><strong>'+esc(it.title||'Nuevo proyecto')+'</strong></div>';
+  h += '<div class="item-card-header"><strong>'+esc((it.title||'Nuevo proyecto').replace(/<[^>]+>/g,''))+'</strong></div>';
   h += '<div class="row">';
   h += '<div>'+field('Años','py-'+it.id,it.year,'2021-2024')+'</div>';
   h += '<div><div class="field"><label>Estado</label><select id="ps-'+it.id+'"><option value="1"'+(it.isCurrent?' selected':'')+'>Vigente</option><option value="0"'+(!it.isCurrent?' selected':'')+'>Completado</option></select></div></div>';
   h += '</div>';
-  h += field('Título del proyecto','pt-'+it.id,it.title);
+  h += richLineField('Título del proyecto','pt-'+it.id,it.title);
   h += '<div class="field"><label>Investigador/a principal</label><div class="row" style="gap:.4rem">'
     + '<select id="pilab-'+it.id+'" style="width:7rem;flex:none"><option value="IP"'+((!it.ipLabel||it.ipLabel==='IP')?' selected':'')+'>IP</option><option value="IPs"'+(it.ipLabel==='IPs'?' selected':'')+'>IPs</option><option value="IP RED"'+(it.ipLabel==='IP RED'?' selected':'')+'>IP RED</option></select>'
     + '<input type="text" id="pi-'+it.id+'" value="'+escA(it.ipValue||'')+'"></div></div>';
@@ -3371,8 +3399,8 @@ function readAllItems() {
   S.items.forEach(function(it) {
     if (it._group) {
       if (S.pageType==='congresses' || S.pageType==='seminars') {
-        var t=document.getElementById('grpt-'+it.id); if(t) it.title=t.value;
-        var c=document.getElementById('grpc-'+it.id); if(c) it.count=c.value;
+        it.title = gR('grpt-'+it.id);
+        it.count = gR('grpc-'+it.id);
       }
       if (S.pageType==='projects') {
         var el=document.getElementById('pera-label-'+it.id); if(el) it.eraLabel=el.value;
@@ -3383,7 +3411,7 @@ function readAllItems() {
     var type = S.pageType;
     if (type==='theses') {
       var y=document.getElementById('thy-'+it.id); if(y) it.year=y.value;
-      var t=document.getElementById('tht-'+it.id); if(t) it.title=t.value;
+      it.title = gR('tht-'+it.id);
       var m=document.querySelector('[data-rich-id="thm-'+it.id+'"]'); if(m) it.meta=m.innerHTML;
       var l=document.getElementById('thl-'+it.id); if(l) it.link=l.value;
       var p=document.getElementById('thp-'+it.id); if(p) it.pending=p.value==='pending';
@@ -3391,15 +3419,15 @@ function readAllItems() {
     if (type==='congresses') {
       var det=document.querySelector('details.item-card[data-iid="'+it.id+'"]'); if(det) it._open=det.open;
       var y=document.getElementById('cgy-'+it.id); if(y) it.year=y.value;
-      var e=document.getElementById('cge-'+it.id); if(e) it.edition=e.value;
-      var n=document.getElementById('cgn-'+it.id); if(n) it.name=n.value;
+      it.edition = gR('cge-'+it.id);
+      it.name = gR('cgn-'+it.id);
       var d=document.getElementById('cgd-'+it.id); if(d) it.dates=d.value;
       var l=document.getElementById('cgl-'+it.id); if(l) it.location=l.value;
       var i=document.getElementById('cgi-'+it.id); if(i) it.image=i.value;
       var a=document.getElementById('cga-'+it.id); if(a) it.imageAlt=a.value;
       var oid=document.getElementById('cgoid-'+it.id); if(oid) it.modalId=oid.value.trim();
       if (!it.modalId) it.modalId = 'cg' + it.id; // auto-generate stable ID
-      var mt=document.getElementById('cgmt-'+it.id); if(mt) it.modalTitle=mt.value;
+      it.modalTitle = gR('cgmt-'+it.id);
       var md=document.getElementById('cgmd-'+it.id); if(md) it.modalDescription=md.value;
       var mlc=document.getElementById('cgml-'+it.id);
       if (mlc) {
@@ -3416,7 +3444,7 @@ function readAllItems() {
       var det=document.querySelector('details.item-card[data-iid="'+it.id+'"]'); if(det) it._open=det.open;
       var y=document.getElementById('smy-'+it.id); if(y) it.year=y.value;
       var n=document.getElementById('smn-'+it.id); if(n) it.name=n.value;
-      var t=document.getElementById('smt-'+it.id); if(t) it.theme=t.value;
+      it.theme = gR('smt-'+it.id);
       var d=document.getElementById('smd-'+it.id); if(d) it.dates=d.value;
       var p=document.getElementById('smp-'+it.id); if(p) it.pdfUrl=p.value;
       var fc=document.getElementById('smf-'+it.id);
@@ -3432,8 +3460,8 @@ function readAllItems() {
       var d=document.getElementById('vid-'+it.id); if(d) it.date=d.value;
       var vssel=document.getElementById('vis-sel-'+it.id),vstxt=document.getElementById('vis-txt-'+it.id);
       if(vssel) it.source=(vssel.value==='_custom'?(vstxt?vstxt.value.trim():''):vssel.value);
-      var t=document.getElementById('vit-'+it.id); if(t) it.title=t.value;
-      var n=document.getElementById('vin-'+it.id); if(n) it.desc=n.value;
+      it.title = gR('vit-'+it.id);
+      it.desc = gR('vin-'+it.id);
       var lc=document.getElementById('vilocal-'+it.id); it.isLocal=lc?lc.checked:false;
       if (it.isLocal) {
         var lp=document.getElementById('vilp-'+it.id); if(lp) it.localSrc=lp.value;
@@ -3449,7 +3477,7 @@ function readAllItems() {
       var n=document.getElementById('mn-'+it.id); if(n) it.name=n.value;
       var r=document.getElementById('mr-'+it.id); if(r) it.role=r.value;
       var dr=document.getElementById('mdr-'+it.id); if(dr) it.displayRole=dr.value;
-      var u=document.getElementById('mu-'+it.id); if(u) it.uni=u.value;
+      it.uni = gR('mu-'+it.id);
       var e=document.getElementById('me-'+it.id); if(e) it.email=e.value;
       var o=document.getElementById('mo-'+it.id); if(o) it.orcid=o.value;
       var p=document.getElementById('mp-'+it.id); if(p) it.photo=p.value.replace(/^\.\.\//,'');
@@ -3458,7 +3486,7 @@ function readAllItems() {
     if (type==='projects') {
       var y=document.getElementById('py-'+it.id); if(y) it.year=y.value;
       var s=document.getElementById('ps-'+it.id); if(s) it.isCurrent=s.value==='1';
-      var t=document.getElementById('pt-'+it.id); if(t) it.title=t.value;
+      it.title = gR('pt-'+it.id);
       var pilab=document.getElementById('pilab-'+it.id); if(pilab) it.ipLabel=pilab.value||'IP';
       var pi=document.getElementById('pi-'+it.id); if(pi) it.ipValue=pi.value;
       var r=document.getElementById('pr-'+it.id); if(r) it.metas['Ref.']=r.value;
@@ -3535,11 +3563,11 @@ function generateHtml() {
 function readFormValues() {
   var t=document.getElementById('edTitle'); if(t) S.pageTitle=t.value;
   if (S.heroData) {
-    var h=document.getElementById('edHeroTitle'); if(h) S.heroData.title=h.value;
+    var hEl=document.querySelector('[data-rich-id="edHeroTitle"]'); if(hEl) S.heroData.title=hEl.innerHTML; else { var h2=document.getElementById('edHeroTitle'); if(h2) S.heroData.title=h2.value; }
     var b=document.getElementById('edBreadcrumb'); if(b) S.heroData.breadcrumbLast=b.value;
     var c=document.getElementById('edHeroCat'); if(c) S.heroData.catBadge=c.value;
     var d=document.getElementById('edHeroDate'); if(d) S.heroData.date=d.value;
-    var s=document.getElementById('edHeroSub'); if(s) S.heroData.subtitle=s.value;
+    var sEl=document.querySelector('[data-rich-id="edHeroSub"]'); if(sEl) S.heroData.subtitle=sEl.innerHTML; else { var s2=document.getElementById('edHeroSub'); if(s2) S.heroData.subtitle=s2.value; }
   }
   readSidebarCards();
   if (S.pageType === 'news') {
@@ -3569,7 +3597,7 @@ function genHero() {
     var ds=hero.querySelector('.article-date'); if(ds) ds.textContent=S.heroData.date;
   }
   if (S.heroData.type==='index') {
-    var sub=hero.querySelector('.idx-hero-sub'); if(sub) sub.textContent=S.heroData.subtitle;
+    var sub=hero.querySelector('.idx-hero-sub'); if(sub) sub.innerHTML=S.heroData.subtitle;
   }
   var html = hero.outerHTML.replace(/<(img|br|hr|meta|link|input|source)(\s[^>]*?)(?<!\/)>/gi,'<$1$2 />');
   return '\n  '+html+'\n';
@@ -3810,9 +3838,9 @@ function genCongresses() {
     if (it._group) {
       if (inGrid) { h += '    </div>\n\n'; inGrid = false; }
       h += '\n    <div class="series-header">\n';
-      h += '      <span class="series-title">'+esc(it.title)+'</span>\n';
+      h += '      <span class="series-title">'+it.title+'</span>\n';
       h += '      <span class="series-rule"></span>\n';
-      h += '      <span class="series-count">'+esc(it.count)+'</span>\n';
+      h += '      <span class="series-count">'+it.count+'</span>\n';
       h += '    </div>\n\n';
       h += '    <div class="congress-grid">\n';
       inGrid = true;
@@ -3820,7 +3848,7 @@ function genCongresses() {
     }
     if (!it.year && !it.edition && !it.name && !it.dates && !it.location && !it.image) return;
     if (!inGrid) { h += '\n    <div class="congress-grid">\n'; inGrid = true; }
-    var conId = slugifyStr(((it.edition||'') + '-' + (it.name ? it.name.replace(/<[^>]+>/g,'') : '')).substring(0,60));
+    var conId = slugifyStr(((it.edition ? it.edition.replace(/<[^>]+>/g,'') : '') + '-' + (it.name ? it.name.replace(/<[^>]+>/g,'') : '')).substring(0,60));
     h += '\n      <div class="congress-card" id="'+escA(conId)+'"'+(it.onclick?' onclick="'+escA(it.onclick)+'"':'')+'>\n';
     h += '        <div class="congress-poster">\n';
     if(it.image) h += '          <img src="'+escA(it.image)+'" alt="'+escA(it.imageAlt)+'" />\n';
@@ -3828,7 +3856,7 @@ function genCongresses() {
     h += '          <span class="congress-year-badge">'+esc(it.year)+'</span>\n';
     h += '        </div>\n';
     h += '        <div class="congress-info">\n';
-    h += '          <div class="congress-edition">'+esc(it.edition)+'</div>\n';
+    h += '          <div class="congress-edition">'+it.edition+'</div>\n';
     h += '          <div class="congress-name">'+it.name+'</div>\n';
     var meta = esc(it.dates);
     if (it.location) meta += '<br /><strong>'+esc(it.location)+'</strong>';
@@ -3849,8 +3877,8 @@ function rebuildCongressesModalScript() {
   S.items.forEach(function(it) {
     if (it._group || !it.modalId) return;
     lines += '      ' + it.modalId + ': {\n';
-    lines += '        edition: ' + JSON.stringify(it.edition || '') + ',\n';
-    lines += '        title: ' + JSON.stringify(it.modalTitle || '') + ',\n';
+    lines += '        edition: ' + JSON.stringify((it.edition||'').replace(/<[^>]+>/g,'')) + ',\n';
+    lines += '        title: ' + JSON.stringify((it.modalTitle||'').replace(/<[^>]+>/g,'')) + ',\n';
     lines += '        dates: ' + JSON.stringify(it.dates || '') + ',\n';
     lines += '        location: ' + JSON.stringify(it.location || '') + ',\n';
     lines += '        img: ' + JSON.stringify(it.image || '') + ',\n';
@@ -3881,9 +3909,9 @@ function genSeminars() {
     if (it._group) {
       if (inList) { h += '    </ul>\n\n'; inList = false; }
       h += '\n    <div class="series-header">\n';
-      h += '      <span class="series-title">'+esc(it.title)+'</span>\n';
+      h += '      <span class="series-title">'+it.title+'</span>\n';
       h += '      <span class="series-rule"></span>\n';
-      h += '      <span class="series-count">'+esc(it.count)+'</span>\n';
+      h += '      <span class="series-count">'+it.count+'</span>\n';
       h += '    </div>\n\n';
       h += '    <ul class="seminar-list">\n';
       inList = true;
@@ -3897,7 +3925,7 @@ function genSeminars() {
     h += '          <span class="seminar-year">'+esc(it.year)+'</span>\n';
     h += '          <span class="seminar-title-wrap">\n';
     h += '            <span class="seminar-name">'+esc(it.name)+'</span>\n';
-    if(it.theme) h += '            <span class="seminar-theme">'+esc(it.theme)+'</span>\n';
+    if(it.theme) h += '            <span class="seminar-theme">'+it.theme+'</span>\n';
     h += '          </span>\n';
     h += '          <span class="seminar-dates-inline">'+esc(it.dates)+'</span>\n';
     h += '          <span class="seminar-chevron">▼</span>\n';
@@ -3958,7 +3986,7 @@ function genMultimedia() {
     h += '        <div class="video-info">\n';
     h += '          <div class="video-date">'+esc(it.date)+'</div>\n';
     h += '          <h2 class="video-title">'+it.title+'</h2>\n';
-    h += '          <p class="video-desc">'+esc(it.desc)+'</p>\n';
+    h += '          <p class="video-desc">'+it.desc+'</p>\n';
     h += '        </div>\n';
     h += '        <span class="video-hint">Ver vídeo →</span>\n';
     h += '      </article>\n';
@@ -3975,8 +4003,8 @@ function updateFooterVideosScript(footerPart, localVideos) {
     var v = localVideos[id];
     lines.push('      '+JSON.stringify(id)+': {');
     lines.push('        date: '+JSON.stringify(v.date)+',');
-    lines.push('        title: '+JSON.stringify(v.title)+',');
-    lines.push('        desc: '+JSON.stringify(v.desc)+',');
+    lines.push('        title: '+JSON.stringify(v.title ? v.title.replace(/<[^>]+>/g,'') : '')+',');
+    lines.push('        desc: '+JSON.stringify(v.desc ? v.desc.replace(/<[^>]+>/g,'') : '')+',');
     lines.push('        type: \'inline\',');
     lines.push('        src: '+JSON.stringify(v.src));
     lines.push('      }'+(i < ids.length-1 ? ',' : ''));
@@ -4001,11 +4029,11 @@ function genMembers() {
     var photo=m.photo||'';
     var imgSrc=photo?'../'+photo:'';
     var s = '\n<div class="card" id="'+slugifyStr(m.name)+'" tabindex="0" role="button"\n';
-    s += '  data-name="'+escA(m.name)+'" data-role="'+escA(m.role)+'" data-uni="'+escA(m.uni)+'" data-email="'+escA(m.email)+'" data-orcid="'+escA(m.orcid||'')+'"\n';
+    s += '  data-name="'+escA(m.name)+'" data-role="'+escA(m.role)+'" data-uni="'+escA((m.uni||'').replace(/<[^>]+>/g,''))+'" data-email="'+escA(m.email)+'" data-orcid="'+escA(m.orcid||'')+'"\n';
     s += '  data-photo="'+escA(imgSrc)+'"\n';
     s += '  data-bio="'+escAttr(m.bio)+'">\n';
     s += '<img class="cphoto" src="'+escA(imgSrc)+'" alt="'+escA(m.name)+'" onerror="this.onerror=null;this.src=\'../media/logo_positiu.png\';this.style.objectFit=\'contain\';this.style.padding=\'28px\'"/>\n';
-    s += '<div class="cbody"><p class="cname">'+esc(m.name)+'</p><p class="crole">'+esc(m.displayRole||m.role)+'</p><p class="cuni">'+esc(m.uni)+'</p></div>\n';
+    s += '<div class="cbody"><p class="cname">'+esc(m.name)+'</p><p class="crole">'+esc(m.displayRole||m.role)+'</p><p class="cuni">'+(m.uni||'')+'</p></div>\n';
     s += '<span class="chint">Ver ficha →</span>\n</div>\n';
     return s;
   }
@@ -4037,13 +4065,13 @@ function genProjects() {
     var indent = inEra ? '        ' : '      ';
     var indent2 = inEra ? '          ' : '        ';
     var indent3 = inEra ? '            ' : '          ';
-    var prjId = slugifyStr(((it.year||'') + '-' + (it.title||'')).substring(0,50));
+    var prjId = slugifyStr(((it.year||'') + '-' + (it.title ? it.title.replace(/<[^>]+>/g,'') : '')).substring(0,50));
     h += indent+'<div class="project-item" id="'+escA(prjId)+'">\n';
     h += indent2+'<div class="project-year"><span class="year-text">'+esc(it.year)+'</span></div>\n';
     h += indent2+'<div class="project-card'+(it.isCurrent?' current':'')+'">\n';
     if(it.isCurrent) h += indent3+'<span class="project-badge">Vigente</span>\n';
     h += indent3+'<span class="year-text-mobile">'+esc(it.year)+'</span>\n';
-    h += indent3+'<p class="project-title">'+esc(it.title)+'</p>\n';
+    h += indent3+'<p class="project-title">'+it.title+'</p>\n';
     h += indent3+'<div class="project-meta">\n';
     if(it.ipValue) h += indent3+'  <span class="project-meta-item"><span class="label">'+esc(it.ipLabel||'IP')+'</span><span class="value">'+esc(it.ipValue)+'</span></span>\n';
     var metaLabels = ['Ref.','Financiación','Presupuesto'];
@@ -4084,12 +4112,13 @@ async function updateCongressesSearchData() {
   S.items.forEach(function(it) {
     if (it._group || (!it.edition && !it.name)) return;
     var namePlain = it.name ? it.name.replace(/<[^>]+>/g,'') : '';
-    var conParts = [it.edition, namePlain, it.year, it.dates, it.location, it.modalTitle,
+    var editionPlain = it.edition ? it.edition.replace(/<[^>]+>/g,'') : '';
+    var conParts = [editionPlain, namePlain, it.year, it.dates, it.location, it.modalTitle,
       it.modalDescription ? it.modalDescription.replace(/<[^>]+>/g,'') : ''];
-    var s = slugifyStr(((it.edition||'') + '-' + (namePlain||'')).substring(0,60));
+    var s = slugifyStr((editionPlain + '-' + (namePlain||'')).substring(0,60));
     entries.push({
       url: 'eventos/congresos.html#' + s,
-      title: (it.edition ? it.edition + ': ' : '') + namePlain,
+      title: (editionPlain ? editionPlain + ': ' : '') + namePlain,
       description: [it.dates, it.location].filter(Boolean).join(', '),
       content: conParts.filter(Boolean).join(' ')
     });
@@ -4101,7 +4130,8 @@ async function updateSeminarsSearchData() {
   var entries = [];
   S.items.forEach(function(it) {
     if (it._group || !it.name) return;
-    var semParts = [it.year, it.name, it.dates, it.theme];
+    var themePlain = it.theme ? it.theme.replace(/<[^>]+>/g,'') : '';
+    var semParts = [it.year, it.name, it.dates, themePlain];
     (it.fields||[]).forEach(function(f){ if(f.value) semParts.push(f.value); });
     var s = slugifyStr(((it.year||'') + '-' + (it.name||'').substring(0,40)));
     entries.push({
@@ -4152,7 +4182,7 @@ async function updateMultimediaSearchData() {
       url: 'multimedia/multimedia.html#' + s,
       title: titlePlain,
       description: (it.source||'') + (it.date ? ', ' + it.date : ''),
-      content: [titlePlain, it.date, it.source, it.desc].filter(Boolean).join(' ')
+      content: [titlePlain, it.date, it.source, it.desc ? it.desc.replace(/<[^>]+>/g,'') : ''].filter(Boolean).join(' ')
     });
   });
   await postSearchSection('multimedia/multimedia.html', entries);
@@ -4164,11 +4194,12 @@ async function updateMembersSearchData() {
     if (!it.name) return;
     var bio = it.bio ? it.bio.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim() : '';
     var s = slugifyStr(it.name);
+    var uniPlain = it.uni ? it.uni.replace(/<[^>]+>/g,'') : '';
     entries.push({
       url: 'el-grupo/miembros.html#' + s,
       title: it.name,
-      description: (it.role||'') + (it.uni ? ' — ' + it.uni : ''),
-      content: [it.name, it.role, it.uni, bio].filter(Boolean).join(' ')
+      description: (it.role||'') + (uniPlain ? ' — ' + uniPlain : ''),
+      content: [it.name, it.role, uniPlain, bio].filter(Boolean).join(' ')
     });
   });
   await postSearchSection('el-grupo/miembros.html', entries);
@@ -4178,15 +4209,16 @@ async function updateProjectsSearchData() {
   var entries = [];
   S.items.forEach(function(it) {
     if (it._group || !it.title) return;
-    var prjParts = [it.year, it.title];
+    var titlePlain = it.title ? it.title.replace(/<[^>]+>/g,'') : '';
+    var prjParts = [it.year, titlePlain];
     var m = it.metas || {};
     Object.keys(m).forEach(function(k){ if(m[k]) prjParts.push(m[k]); });
     if (it.desc) prjParts.push(it.desc.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim());
-    var s = slugifyStr(((it.year||'') + '-' + (it.title||'')).substring(0,50));
+    var s = slugifyStr(((it.year||'') + '-' + titlePlain.substring(0,50)));
     var ipVal = m['IP'] || m['IPs'] || '';
     entries.push({
       url: 'el-grupo/historial-proyectos.html#' + s,
-      title: it.title + (it.year ? ' (' + it.year + ')' : ''),
+      title: titlePlain + (it.year ? ' (' + it.year + ')' : ''),
       description: (it.year||'') + (ipVal ? '. IP: ' + ipVal : ''),
       content: prjParts.filter(Boolean).join(' ')
     });
