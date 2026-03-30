@@ -2380,7 +2380,7 @@ function readAllBlocks() {
     }
     if (b.type==='libro') {
       var mEl=document.querySelector('input[name="lbmode-'+b.id+'"]:checked'); if(mEl) b.displayMode=mEl.value;
-      var ti=document.getElementById('lbtitle-'+b.id); if(ti) b.title=ti.value;
+      b.title = gR('lbtitle-'+b.id);
       var au=document.getElementById('lbauthor-'+b.id); if(au) b.author=au.value;
       var en=document.getElementById('lbeditor-'+b.id); if(en) b.editor=en.value;
       var yr=document.getElementById('lbyear-'+b.id); if(yr) b.year=yr.value;
@@ -3202,7 +3202,7 @@ function renderPlayRow(idx, vi, pi, play) {
   var h = '<div class="item-card" data-play-idx="'+pi+'" style="margin:.3rem 0;padding:.4rem .6rem;border:1px solid var(--border)">';
   h += '<button class="btn-del-item" onclick="removePlay('+idx+','+vi+','+pi+')" style="top:.3rem;right:.3rem">✕</button>';
   h += '<div class="row">';
-  h += '<div style="flex:2">'+field('Título','pptitle-'+idx+'-'+vi+'-'+pi,play.title||'')+'</div>';
+  h += '<div style="flex:2">'+richLineField('Título','pptitle-'+idx+'-'+vi+'-'+pi,play.title||'')+'</div>';
   h += '<div style="flex:1">'+field('Páginas','pppages-'+idx+'-'+vi+'-'+pi,play.pages||'')+'</div>';
   h += '</div>';
   h += field('Editores','ppeditors-'+idx+'-'+vi+'-'+pi,play.editors||'','Ej.: ed. Luigi Giuliani');
@@ -3284,7 +3284,7 @@ function readPartesFormValues() {
       el = document.getElementById('pvlabel-'+idx+'-'+vi); if(el) v.label = el.value;
       el = document.getElementById('pvisbn-'+idx+'-'+vi); if(el) v.isbn = el.value;
       (v.plays||[]).forEach(function(play, pi) {
-        el = document.getElementById('pptitle-'+idx+'-'+vi+'-'+pi); if(el) play.title = el.value;
+        play.title = gR('pptitle-'+idx+'-'+vi+'-'+pi);
         el = document.getElementById('ppeditors-'+idx+'-'+vi+'-'+pi); if(el) play.editors = el.value;
         el = document.getElementById('pppages-'+idx+'-'+vi+'-'+pi); if(el) play.pages = el.value;
         var hEl = document.getElementById('pphistory-'+idx+'-'+vi+'-'+pi);
@@ -3341,7 +3341,7 @@ function renderLibroBlockFields(b) {
   h += '<label style="font-weight:400;cursor:pointer"><input type="radio" name="lbmode-'+b.id+'" value="modal"'+(isMod?' checked':'')+' onchange="updLibroMode('+b.id+',this.value)"> Modal emergente (portada clicable abre ventana)</label>';
   h += '<label style="font-weight:400;cursor:pointer"><input type="radio" name="lbmode-'+b.id+'" value="dropdown"'+(!isMod?' checked':'')+' onchange="updLibroMode('+b.id+',this.value)"> Desplegable (se abre debajo de la portada)</label>';
   h += '</div></div>';
-  h += field('Título *', 'lbtitle-'+b.id, b.title||'');
+  h += richLineField('Título *', 'lbtitle-'+b.id, b.title||'');
   h += '<div class="row">';
   h += '<div>'+field('Autor/es','lbauthor-'+b.id,b.author||'')+'</div>';
   h += '<div>'+field('Editor/es','lbeditor-'+b.id,b.editor||'')+'</div>';
@@ -3685,17 +3685,17 @@ function genBlocks() {
       h += '      </ul>\n';
     } else if (b.type==='libro') {
       var lbJson = JSON.stringify({title:b.title,author:b.author,editor:b.editor,year:b.year,editorial:b.editorial,city:b.city,collection:b.collection,isbn:b.isbn,buyUrl:b.buyUrl,image:b.image,displayMode:b.displayMode,extraFields:b.extraFields||[]}).replace(/'/g,'&#39;');
-      var lbImg = b.image ? '<img src="'+escA(b.image)+'" alt="'+escA(b.title)+'" class="libro-block-cover">' : '<div class="libro-block-cover libro-block-cover--ph"></div>';
+      var lbImg = b.image ? '<img src="'+escA(b.image)+'" alt="'+escA(b.title?(b.title.replace(/<[^>]+>/g,'')):'')+'" class="libro-block-cover">' : '<div class="libro-block-cover libro-block-cover--ph"></div>';
       var lbDl = '';
       var lbFields = [['Autor/es',b.author],['Editor/es',b.editor],['Año',b.year],['Editorial',b.editorial],['Ciudad',b.city],['Colección',b.collection],['ISBN',b.isbn]];
       (b.extraFields||[]).forEach(function(ef){ if(ef.label&&ef.value) lbFields.push([ef.label,ef.value]); });
       lbFields.forEach(function(f){ if(f[0]&&f[1]) lbDl += '\n          <dt>'+esc(f[0])+'</dt><dd>'+esc(f[1])+'</dd>'; });
       var lbBuy = b.buyUrl ? '\n          <a href="'+escA(b.buyUrl)+'" class="libro-block-buy" target="_blank" rel="noopener noreferrer">Más información</a>' : '';
-      var lbId = slugifyStr(b.title);
+      var lbId = slugifyStr(b.title ? b.title.replace(/<[^>]+>/g,'') : '');
       if (!b.displayMode || b.displayMode === 'modal') {
         h += '\n      <div class="libro-block libro-block--modal" id="'+lbId+'" data-lb=\''+lbJson+'\' onclick="openLb(this)">';
         h += '\n        '+lbImg;
-        h += '\n        <div class="libro-block-title">'+esc(b.title)+'</div>';
+        h += '\n        <div class="libro-block-title">'+b.title+'</div>';
         if (b.author) h += '\n        <div class="libro-block-author">'+esc(b.author)+'</div>';
         h += '\n      </div>\n';
       } else {
@@ -3703,7 +3703,7 @@ function genBlocks() {
         h += '\n        <summary class="libro-block-summary">';
         h += '\n          '+lbImg;
         h += '\n          <div class="libro-block-caption">';
-        h += '\n            <strong class="libro-block-title">'+esc(b.title)+'</strong>';
+        h += '\n            <strong class="libro-block-title">'+b.title+'</strong>';
         if (b.author||b.year) h += '\n            <span class="libro-block-author">'+esc([b.author,b.year].filter(Boolean).join(' · '))+'</span>';
         h += '\n          </div>';
         h += '\n        </summary>';
