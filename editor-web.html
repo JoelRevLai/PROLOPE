@@ -4342,7 +4342,34 @@ async function savePage() {
 }
 
 function previewPage() {
-  var html = generateHtml();
+  var html;
+  if (S.pageType === 'news') {
+    var tipo = document.getElementById('nc-tipo').value;
+    var cat = ncGetCat();
+    var tituloEl = document.getElementById('nc-titulo');
+    var titulo = tituloEl ? tituloEl.innerHTML.trim() : '';
+    var tituloPlain = titulo.replace(/<[^>]+>/g,'');
+    var slug = (S.newsFormData||{}).slug || document.getElementById('nc-slug').value.trim();
+    var fechaLarga = document.getElementById('nc-fecha').value.trim();
+    var fechaCorta = ncGetFechaCorta();
+    var breadcrumb = document.getElementById('nc-breadcrumb').value.trim();
+    var tituloSeo = document.getElementById('nc-seo').value.trim();
+    var imgInput = document.getElementById('nc-img');
+    var imgRaw = imgInput ? imgInput.value.trim() : '';
+    var imgPath = imgRaw ? '../media/'+imgRaw.replace(/^(\.\.\/)?media\//,'') : '';
+    var imagenAlt = document.getElementById('nc-img-alt').value.trim();
+    var excerpt = document.getElementById('nc-excerpt').value.trim();
+    var contentBlocks = ncGetBlocks();
+    var links = ncGetLinks('nc-links');
+    var evTitulo = (document.getElementById('nc-ev-titulo')||{}).value||'';
+    var evSubtitulo = (document.getElementById('nc-ev-subtitulo')||{}).value||'';
+    var evFechas = (document.getElementById('nc-ev-fechas')||{}).value||'';
+    var evLugar = (document.getElementById('nc-ev-lugar')||{}).value||'';
+    var evLinks = ncGetLinks('nc-ev-links');
+    html = ncGenerateHtml({tipo,cat,titulo,tituloPlain,slug,fechaLarga,fechaCorta,breadcrumb,tituloSeo,imgPath,imagenAlt,excerpt,contentBlocks,links,evTitulo:evTitulo.trim(),evSubtitulo:evSubtitulo.trim(),evFechas:evFechas.trim(),evLugar:evLugar.trim(),evLinks,filename:S.currentPath.split('/').pop()});
+  } else {
+    html = generateHtml();
+  }
   // Inject <base> so relative paths (CSS, JS, images) resolve correctly from the blob URL
   var base = '<base href="'+location.origin+'/">';
   html = html.replace(/(<head[^>]*>)/i, '$1\n  '+base);
@@ -4898,7 +4925,7 @@ function renderNewsEditor() {
   h += '<button class="btn btn-sm" style="background:#6d7a60;color:#fff" onclick="ncAddBlock(\'cita\')">+ Cita destacada</button>';
   h += '<button class="btn btn-sm" style="background:#4a6a8a;color:#fff" onclick="ncAddBlock(\'enlaces\')">+ Enlaces</button>';
   h += '<button class="btn btn-sm" style="background:#8a6a4a;color:#fff" onclick="ncAddBlock(\'recuadro\')">+ Recuadro destacado con enlace</button>';
-  h += '<button class="btn btn-sm" style="background:#4a7a8a;color:#fff" onclick="ncAddBlock(\'lista\')">+ Lista bibliográfica</button>';
+  h += '<button class="btn btn-sm" style="background:#4a7a8a;color:#fff;font-weight:600" onclick="ncAddBlock(\'lista\')">+ Lista bibliográfica</button>';
   h += '<button class="btn btn-sm" style="background:#5a7a5a;color:#fff" onclick="ncAddBlock(\'imagegrid\')">+ Cuadrícula de imágenes</button>';
   h += '</div></div></div>';
 
@@ -5299,10 +5326,10 @@ async function loadNewNews() {
   try {
     var r = await fetch('/api/page?path=noticias-data.js');
     var src = await r.text();
-    var catMatches = src.match(/\bcat:\s*'([^']+)'/g)||[];
+    var catMatches = src.match(/"cat":\s*"([^"]+)"/g)||[];
     var seen = {};
     catMatches.forEach(function(m){
-      var c = m.replace(/\bcat:\s*'/,'').replace(/'$/,'').trim();
+      var c = m.replace(/"cat":\s*"/,'').replace(/"$/,'').trim();
       if (c&&!seen[c]){seen[c]=true;NC.cats.push(c);}
     });
     NC.cats.sort();
@@ -5326,9 +5353,9 @@ function renderNewNewsForm() {
   h += '<div class="field"><label>Título</label>';
   h += '<div class="rich-wrap"><div class="rich-toolbar"><button onmousedown="execRich(event,\'bold\')"><b>N</b></button><button onmousedown="execRich(event,\'italic\')"><i>C</i></button></div>';
   h += '<div class="rich-edit" contenteditable="true" id="nc-titulo" style="min-height:40px"></div></div></div>';
-  h += '<div class="field"><label>Nombre del archivo (slug)</label>';
-  h += '<p class="help">Sin espacios ni acentos, en minúsculas, con guiones. Ej.: congreso-xi-2024</p>';
-  h += '<input type="text" id="nc-slug" placeholder="Ej.: congreso-xi-2024"></div>';
+  h += '<div class="field"><label>Nombre del archivo</label>';
+  h += '<p class="help">Se genera automáticamente del título. <a href="#" onclick="(function(){var s=document.getElementById(\'nc-slug\');s.removeAttribute(\'readonly\');s.style.background=\'\';s.style.color=\'\';s.dataset.manual=\'1\';s.focus();return false;})();return false">Editar manualmente</a></p>';
+  h += '<input type="text" id="nc-slug" placeholder="se completará al escribir el título" readonly style="background:#eee;color:#555"></div>';
   h += '<div class="field"><label>Fecha (completa)</label>';
   h += '<p class="help">Ej.: 27 de noviembre de 2024. Fecha corta: <strong id="nc-fecha-corta">—</strong></p>';
   h += '<input type="text" id="nc-fecha" placeholder="Ej.: 27 de noviembre de 2024"></div>';
@@ -5368,7 +5395,7 @@ function renderNewNewsForm() {
   h += '<button class="btn btn-sm" style="background:#6d7a60;color:#fff" onclick="ncAddBlock(\'cita\')">+ Cita destacada</button>';
   h += '<button class="btn btn-sm" style="background:#4a6a8a;color:#fff" onclick="ncAddBlock(\'enlaces\')">+ Enlaces</button>';
   h += '<button class="btn btn-sm" style="background:#8a6a4a;color:#fff" onclick="ncAddBlock(\'recuadro\')">+ Recuadro destacado con enlace</button>';
-  h += '<button class="btn btn-sm" style="background:#4a7a8a;color:#fff" onclick="ncAddBlock(\'lista\')">+ Lista bibliográfica</button>';
+  h += '<button class="btn btn-sm" style="background:#4a7a8a;color:#fff;font-weight:600" onclick="ncAddBlock(\'lista\')">+ Lista bibliográfica</button>';
   h += '<button class="btn btn-sm" style="background:#5a7a5a;color:#fff" onclick="ncAddBlock(\'imagegrid\')">+ Cuadrícula de imágenes</button>';
   h += '</div></div></div>';
 
@@ -5391,6 +5418,7 @@ function renderNewNewsForm() {
   // Wire up events
   document.getElementById('nc-fecha').addEventListener('input', ncAutoFechaCorta);
   document.getElementById('nc-slug').addEventListener('input', function(){ this.value=this.value.toLowerCase().replace(/[^a-z0-9\-]/g,''); });
+  document.getElementById('nc-titulo').addEventListener('input', ncAutoSlug);
 
   if (NC.cats.length) document.getElementById('nc-cat-sel').value = NC.cats[0];
 
@@ -5429,6 +5457,21 @@ function ncAutoFechaCorta() {
 
 function ncGetFechaCorta() {
   return document.getElementById('nc-fecha-corta').textContent.trim();
+}
+
+function ncAutoSlug() {
+  var slugEl = document.getElementById('nc-slug');
+  if (!slugEl || slugEl.dataset.manual === '1') return;
+  var titulo = document.getElementById('nc-titulo');
+  if (!titulo) return;
+  var text = (titulo.textContent || titulo.innerText || '').trim();
+  var slug = text.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s\-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+  slugEl.value = slug;
 }
 
 function ncAddBlock(type) {
@@ -5607,9 +5650,9 @@ async function ncUploadBlockImg(fileInput, cls, bid) {
       body: file,
     });
     var data = await r.json();
-    if (!data.path) throw new Error(data.error||'Sin ruta');
+    if (!data.filename) throw new Error(data.error||'Sin ruta');
     var card = fileInput.closest('[data-ncbid]');
-    if (card) { var inp = card.querySelector('.'+cls); if (inp) inp.value = data.path; }
+    if (card) { var inp = card.querySelector('.'+cls); if (inp) inp.value = '../media/'+data.filename; }
     toast('Imagen subida', 'ok');
   } catch(e) { toast('Error al subir: '+e.message, 'err'); }
 }
@@ -5625,9 +5668,9 @@ async function ncUploadBlockImgInRow(fileInput) {
       body: file,
     });
     var data = await r.json();
-    if (!data.path) throw new Error(data.error||'Sin ruta');
+    if (!data.filename) throw new Error(data.error||'Sin ruta');
     var row = fileInput.closest('.nc-igrid-row');
-    if (row) { var inp = row.querySelector('.nc-igrid-src'); if (inp) inp.value = data.path; }
+    if (row) { var inp = row.querySelector('.nc-igrid-src'); if (inp) inp.value = '../media/'+data.filename; }
     toast('Imagen subida', 'ok');
   } catch(e) { toast('Error al subir: '+e.message, 'err'); }
 }
@@ -5643,9 +5686,9 @@ async function ncUploadBlockFile(fileInput, cls, bid) {
       body: file,
     });
     var data = await r.json();
-    if (!data.path) throw new Error(data.error||'Sin ruta');
+    if (!data.filename) throw new Error(data.error||'Sin ruta');
     var card = fileInput.closest('[data-ncbid]');
-    if (card) { var inp = card.querySelector('.'+cls); if (inp) inp.value = data.path; }
+    if (card) { var inp = card.querySelector('.'+cls); if (inp) inp.value = '../media/'+data.filename; }
     toast('Archivo subido', 'ok');
   } catch(e) { toast('Error al subir: '+e.message, 'err'); }
 }
