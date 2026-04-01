@@ -231,7 +231,34 @@
       align-items: center;
       gap: .5rem;
       letter-spacing: .01em;
+      cursor: pointer;
+      user-select: none;
     }
+    .toggle-chevron {
+      display: inline-block;
+      font-size: .72rem;
+      color: var(--dorado);
+      flex-shrink: 0;
+      transition: transform .15s;
+      line-height: 1;
+    }
+    .ed-section.is-collapsed h2 .toggle-chevron { transform: rotate(-90deg) }
+    .ed-section.is-collapsed { padding-bottom: .5rem }
+    .ed-section.is-collapsed h2 { margin-bottom: 0; border-bottom-color: transparent }
+    .ed-section.is-collapsed > *:not(h2):not(.help-panel) { display: none !important }
+    .block-card .block-header { cursor: pointer; user-select: none }
+    .block-toggle {
+      display: inline-block;
+      font-size: .65rem;
+      color: #bbb;
+      flex-shrink: 0;
+      transition: transform .15s;
+      line-height: 1;
+    }
+    .block-card.is-collapsed .block-toggle { transform: rotate(-90deg) }
+    .block-card.is-collapsed { padding-bottom: .5rem }
+    .block-card.is-collapsed .block-header { margin-bottom: 0 }
+    .block-card.is-collapsed > *:not(.block-header) { display: none !important }
     .ed-section h2 .badge {
       font-size: .62rem;
       font-weight: 700;
@@ -371,6 +398,9 @@
     .drag-handle:active { cursor: grabbing }
     .item-card-header { display: flex; align-items: center; gap: .5rem; margin-bottom: .5rem }
     .item-card-header strong { font-family: 'Raleway', sans-serif; font-size: .86rem; flex: 1 }
+    #nc-blocks .item-card.is-collapsed .item-card-header { margin-bottom: 0 }
+    #nc-blocks .item-card.is-collapsed > *:not(.drag-handle):not(.btn-del-item):not(.item-card-header) { display: none !important }
+    #nc-blocks .item-card .item-card-header { cursor: pointer; user-select: none }
     .item-card .row { display: flex; gap: .6rem }
     .item-card .row > div { flex: 1 }
     .item-card .btn-del-item {
@@ -627,7 +657,7 @@
     <span class="unsaved-label" id="unsavedLabel">Sin guardar</span>
     <span class="save-time-label" id="saveTimeLabel"></span>
     <button class="btn btn-outline btn-sm btn-compact" id="btnUndo" onclick="undoLastSave()" style="display:none" title="Deshacer cambios desde el último guardado">↩ Deshacer</button>
-    <button class="btn btn-outline btn-sm btn-compact" onclick="toggleCompact()" id="btnCompact" title="Contraer/expandir todas las secciones">⊟ Compactar</button>
+    <button class="btn btn-outline btn-sm btn-compact" onclick="toggleCompact()" id="btnCompact" title="Expandir todas las secciones">⊞ Expandir todo</button>
     <button class="btn btn-outline btn-sm" onclick="previewPage()">👁 Vista previa</button>
     <button class="btn btn-danger btn-sm" id="btnDelete" onclick="deletePage()" style="display:none" title="Eliminar esta página">🗑 Eliminar página</button>
     <button class="btn btn-green" id="btnSave" onclick="savePage()">💾 Guardar cambios</button>
@@ -693,6 +723,7 @@ var S = {
   // Specialized data
   items: [],       // for tesis, congresos, seminarios, multimedia, members, projects
   introHtml: '',   // intro text before items
+  htmlBlocks: [],  // raw HTML blocks appended at end of specialized pages
   afterGridHtml: '',
   newsEntry: null, // matching noticias-data.js entry for current news page
   newsFormData: null, // parsed form data for existing news editor
@@ -802,7 +833,7 @@ var TYPE_LABELS = {index:'Página de inicio',theses:'Tesis',congresses:'Congreso
 // ── PARSE FILE ───────────────────────────────────────────────────────────────
 function parseFile(html, path) {
   blockId = 0;
-  S.blocks = []; S.items = []; S.introHtml = ''; S.afterGridHtml = '';
+  S.blocks = []; S.items = []; S.introHtml = ''; S.htmlBlocks = []; S.afterGridHtml = '';
   S.hasSidebar = false; S.sidebarCards = [];
   S.wrapperOpen = ''; S.wrapperClose = '';
   S.innerWrapperClass = '';
@@ -1060,6 +1091,8 @@ function parseNews(mainEl) {
       if(igStyle.indexOf('max-width:400')!==-1||igStyle.indexOf('max-width: 400')!==-1) igSize='small';
       else if(igStyle.indexOf('max-width:700')!==-1||igStyle.indexOf('max-width: 700')!==-1) igSize='large';
       f.contentBlocks.push({type:'imagegrid', cols:cols, size:igSize, imgs:imgs});
+    } else if (tag && !cls.includes('back-link')) {
+      f.contentBlocks.push({type:'html-directo', html: el.outerHTML});
     }
   });
   // External links (only divs without data-block="enlaces" which are inline content blocks)
@@ -1447,6 +1480,7 @@ function renderEditor() {
   // Nuevas funcionalidades
   resetEditorState();
   injectHelpButtons();
+  injectCollapseToggles();
 }
 
 function field(label,id,value,placeholder) {
@@ -2130,9 +2164,53 @@ function renderBlocksEditor() {
   h += '<button class="btn btn-sm" style="background:#5a7a5a;color:#fff" onclick="addBlock(\'imagegrid\')">+ Cuadrícula de imágenes</button>';
   h += '<button class="btn btn-sm" style="background:#5a6a7a;color:#fff" onclick="addBlock(\'lead\')">+ Texto destacado</button>';
   h += '<button class="btn btn-sm" style="background:#7a4a6a;color:#fff" onclick="addBlock(\'libro\')">+ Libro</button>';
+  h += '<button class="btn btn-sm" style="background:#5a5a6a;color:#fff" onclick="addBlock(\'_preserve\')">+ HTML directo</button>';
   h += '</div>';
   h += '</div>';
   return h;
+}
+
+// ── HTML BLOCKS (shared section for specialized page types) ──────────────────
+function renderHtmlBlocksSection() {
+  var h = '<div class="ed-section"><h2>Bloques HTML adicionales</h2>';
+  h += '<p class="help" style="margin-bottom:.6rem">Bloques de HTML directo insertados al final del contenido de la página.</p>';
+  h += '<div id="htmlBlocksContainer">';
+  (S.htmlBlocks||[]).forEach(function(blockHtml, i) { h += renderHtmlBlockCard(i, blockHtml); });
+  h += '</div>';
+  h += '<button class="btn btn-sm" style="background:#5a5a6a;color:#fff;margin-top:.5rem" onclick="addHtmlBlock()">+ HTML directo</button>';
+  h += '</div>';
+  return h;
+}
+function renderHtmlBlockCard(i, blockHtml) {
+  return '<div class="block-card" data-hbidx="'+i+'">'
+    +'<div class="block-header">'
+    +'<span class="block-type type-p" style="background:#5a5a6a">HTML directo</span>'
+    +'<div class="block-actions"><button class="del" onclick="removeHtmlBlock('+i+')" title="Eliminar bloque" aria-label="Eliminar bloque">✕</button></div>'
+    +'</div>'
+    +'<textarea class="html-block-ta" style="font-family:monospace;font-size:.78rem;min-height:80px;width:100%;resize:vertical;border:1px solid var(--borde);border-radius:4px;padding:.4rem .5rem;display:block">'+esc(blockHtml)+'</textarea>'
+    +'</div>';
+}
+function addHtmlBlock() {
+  readHtmlBlocks();
+  S.htmlBlocks.push('');
+  rerenderHtmlBlocks();
+}
+function removeHtmlBlock(i) {
+  readHtmlBlocks();
+  S.htmlBlocks.splice(i, 1);
+  rerenderHtmlBlocks();
+}
+function readHtmlBlocks() {
+  S.htmlBlocks = [];
+  document.querySelectorAll('#htmlBlocksContainer .html-block-ta').forEach(function(ta) {
+    S.htmlBlocks.push(ta.value);
+  });
+}
+function rerenderHtmlBlocks() {
+  var c = document.getElementById('htmlBlocksContainer');
+  if (!c) return;
+  c.innerHTML = (S.htmlBlocks||[]).map(function(b, i){ return renderHtmlBlockCard(i, b); }).join('');
+  injectCollapseToggles();
 }
 
 function renderBlockCard(b) {
@@ -2238,6 +2316,7 @@ function addBlock(type) {
   else if (type==='imagegrid') { b.cols=2; b.imgs=[{src:'',alt:''},{src:'',alt:''}]; b.size='medium'; }
   else if (type==='list') { b.cls='biblio-list'; b.items=[{main:'',note:''}]; }
   else if (type==='libro') { b.title=''; b.author=''; b.editor=''; b.year=''; b.editorial=''; b.city=''; b.collection=''; b.isbn=''; b.buyUrl=''; b.image=''; b.displayMode='modal'; b.extraFields=[]; }
+  else if (type==='_preserve') { b.html=''; }
   S.blocks.push(b);
   rerenderBlocks();
 }
@@ -2342,6 +2421,7 @@ function rerenderBlocks() {
   c.innerHTML = h;
   initRichEditors();
   initBlocksDrag();
+  injectCollapseToggles();
 }
 
 function readAllBlocks() {
@@ -2437,6 +2517,7 @@ function renderThesesEditor() {
   h += '</div>';
   h += '<button class="btn btn-blue btn-sm" style="margin-top:.5rem" onclick="addThesis()">+ Añadir tesis</button>';
   h += '</div>';
+  h += renderHtmlBlocksSection();
   return h;
 }
 
@@ -2476,6 +2557,7 @@ function renderCongressesEditor() {
   h += '<button class="btn btn-outline btn-sm" onclick="addCongressGroup()">+ Añadir subcategoría</button>';
   h += '</div>';
   h += '</div>';
+  h += renderHtmlBlocksSection();
   return h;
 }
 
@@ -2660,6 +2742,7 @@ function renderSeminarsEditor() {
   h += '<button class="btn btn-outline btn-sm" onclick="addSeminarGroup()">+ Añadir subcategoría</button>';
   h += '</div>';
   h += '</div>';
+  h += renderHtmlBlocksSection();
   return h;
 }
 
@@ -2777,6 +2860,7 @@ function renderMultimediaEditor() {
   h += '</div>';
   h += '<button class="btn btn-blue btn-sm" style="margin-top:.5rem" onclick="addVideo()">+ Añadir vídeo</button>';
   h += '</div>';
+  h += renderHtmlBlocksSection();
   return h;
 }
 
@@ -2889,6 +2973,7 @@ function renderMembersEditor() {
   h += '</div>';
   h += '<button class="btn btn-blue btn-sm" style="margin-top:.5rem" onclick="addPastMember()">+ Añadir investigador histórico</button>';
   h += '</div>';
+  h += renderHtmlBlocksSection();
   return h;
 }
 
@@ -2965,6 +3050,7 @@ function renderProjectsEditor() {
   h += '<button class="btn btn-blue btn-sm" style="margin-top:.5rem" onclick="addProject()">+ Añadir proyecto</button>';
   h += ' <button class="btn btn-sm" style="margin-top:.5rem" onclick="addProjectEra()">+ Añadir década</button>';
   h += '</div>';
+  h += renderHtmlBlocksSection();
   return h;
 }
 
@@ -4930,6 +5016,7 @@ function renderNewsEditor() {
   h += '<button class="btn btn-sm" style="background:#8a6a4a;color:#fff" onclick="ncAddBlock(\'recuadro\')">+ Recuadro destacado con enlace</button>';
   h += '<button class="btn btn-sm" style="background:#4a7a8a;color:#fff;font-weight:600" onclick="ncAddBlock(\'lista\')">+ Lista bibliográfica</button>';
   h += '<button class="btn btn-sm" style="background:#5a7a5a;color:#fff" onclick="ncAddBlock(\'imagegrid\')">+ Cuadrícula de imágenes</button>';
+  h += '<button class="btn btn-sm" style="background:#5a5a6a;color:#fff" onclick="ncAddBlock(\'html-directo\')">+ HTML directo</button>';
   h += '</div></div></div>';
 
   // Enlaces externos
@@ -4964,6 +5051,7 @@ function renderNewsEditor() {
   // Nuevas funcionalidades
   resetEditorState();
   injectHelpButtons();
+  injectCollapseToggles();
 }
 
 function ncAddBlockWithContent(b) {
@@ -5021,6 +5109,8 @@ function ncAddBlockWithContent(b) {
         }
       });
     }
+  } else if (type==='html-directo') {
+    var ta = last.querySelector('.nc-rawhtml'); if (ta) ta.value = b.html||'';
   } else {
     var ed2 = last.querySelector('.rich-edit'); if (ed2) ed2.innerHTML = b.text||'';
   }
@@ -5407,6 +5497,7 @@ function renderNewNewsForm() {
   h += '<button class="btn btn-sm" style="background:#8a6a4a;color:#fff" onclick="ncAddBlock(\'recuadro\')">+ Recuadro destacado con enlace</button>';
   h += '<button class="btn btn-sm" style="background:#4a7a8a;color:#fff;font-weight:600" onclick="ncAddBlock(\'lista\')">+ Lista bibliográfica</button>';
   h += '<button class="btn btn-sm" style="background:#5a7a5a;color:#fff" onclick="ncAddBlock(\'imagegrid\')">+ Cuadrícula de imágenes</button>';
+  h += '<button class="btn btn-sm" style="background:#5a5a6a;color:#fff" onclick="ncAddBlock(\'html-directo\')">+ HTML directo</button>';
   h += '</div></div></div>';
 
   // Enlaces externos
@@ -5491,8 +5582,8 @@ function ncAddBlock(type) {
   div.setAttribute('draggable', 'true');
   div.dataset.ncbid = id;
   div.dataset.ncbtype = type;
-  var colors = {parrafo:'var(--azul)',titulo:'var(--dorado)',subtitulo:'#7a6f60',figura:'#5a7d5a',cita:'#6d7a60',enlaces:'#6a5a8a',recuadro:'#8a6a4a',lista:'#4a7a8a',imagegrid:'#5a7a5a'};
-  var labels = {parrafo:'PÁRRAFO',titulo:'TÍTULO',subtitulo:'SUBTÍTULO',figura:'FIGURA',cita:'CITA DESTACADA',enlaces:'ENLACES',recuadro:'RECUADRO DESTACADO',lista:'LISTA BIBLIOGRÁFICA',imagegrid:'CUADRÍCULA DE IMÁGENES'};
+  var colors = {parrafo:'var(--azul)',titulo:'var(--dorado)',subtitulo:'#7a6f60',figura:'#5a7d5a',cita:'#6d7a60',enlaces:'#6a5a8a',recuadro:'#8a6a4a',lista:'#4a7a8a',imagegrid:'#5a7a5a','html-directo':'#5a5a6a'};
+  var labels = {parrafo:'PÁRRAFO',titulo:'TÍTULO',subtitulo:'SUBTÍTULO',figura:'FIGURA',cita:'CITA DESTACADA',enlaces:'ENLACES',recuadro:'RECUADRO DESTACADO',lista:'LISTA BIBLIOGRÁFICA',imagegrid:'CUADRÍCULA DE IMÁGENES','html-directo':'HTML DIRECTO'};
   var richToolbar = '<div class="rich-toolbar" style="margin:.3rem 0">'
     +'<button onmousedown="execRich(event,\'bold\')"><b>N</b></button>'
     +'<button onmousedown="execRich(event,\'italic\')"><i>C</i></button>'
@@ -5509,8 +5600,8 @@ function ncAddBlock(type) {
     +'</div>';
   var header = '<span class="drag-handle" title="Arrastrar para reordenar">⠿</span>'
     +'<button class="btn-del-item" onclick="this.closest(\'[data-ncbid]\').remove()">✕</button>'
-    +'<div class="item-card-header" style="margin-bottom:0">'
-    +'<strong style="font-size:.73rem;background:'+(colors[type]||'var(--azul)')+';color:#fff;padding:.1rem .4rem;border-radius:3px">'+(labels[type]||type)+'</strong>'
+    +'<div class="item-card-header" style="margin-bottom:.5rem">'
+    +'<strong style="font-size:.73rem;background:'+(colors[type]||'var(--azul)')+';color:#fff;padding:.1rem .4rem;border-radius:3px;flex:none">'+(labels[type]||type)+'</strong>'
     +'</div>';
 
   if (type==='parrafo') {
@@ -5572,10 +5663,14 @@ function ncAddBlock(type) {
       +'<button class="btn btn-outline btn-sm" style="margin-top:.3rem" onclick="ncBlockAddGridImg(this)">+ Añadir imagen</button>';
     ncBlockAddGridImg(div.querySelector('button[onclick*=ncBlockAddGridImg]'), true);
     ncBlockAddGridImg(div.querySelector('button[onclick*=ncBlockAddGridImg]'), true);
+  } else if (type==='html-directo') {
+    div.innerHTML = header
+      +'<textarea class="nc-rawhtml" style="font-family:monospace;font-size:.78rem;min-height:100px;width:100%;resize:vertical;border:1px solid var(--borde);border-radius:4px;padding:.4rem .5rem" placeholder="Escribe HTML directo aquí…"></textarea>';
   }
 
   c.appendChild(div);
   initNcBlocksDrag();
+  injectCollapseToggles();
 }
 
 function initNcBlocksDrag() {
@@ -5801,6 +5896,10 @@ function ncGetBlocks() {
         imgs.push({src:src.trim(), alt:alt.trim()});
       });
       blocks.push({type:'imagegrid', cols:cols, size:gsz, imgs:imgs});
+    } else if (type==='html-directo') {
+      var ta = el.querySelector('.nc-rawhtml');
+      var raw = ta ? ta.value.trim() : '';
+      if (raw) blocks.push({type:'html-directo', html: raw});
     } else {
       var ed = el.querySelector('.rich-edit');
       var html = ed ? ed.innerHTML.trim() : '';
@@ -6035,6 +6134,8 @@ function ncGenerateHtml(d) {
         cH += '          </div>\n        </figure>\n';
       });
       cH += '      </div>\n';
+    } else if (b.type==='html-directo') {
+      cH += '\n' + (b.html||'') + '\n';
     } else {
       cH += '\n      <p>'+b.text+'</p>\n';
     }
@@ -6487,48 +6588,71 @@ function filterNav(query) {
 }
 
 // ── #5 MODO COMPACTO / EXPANDIDO ─────────────────────────────────────────────
-var _compactMode = false;
+var _compactMode = true; // default: everything collapsed
+
+function injectCollapseToggles() {
+  // Sections: inject chevron into h2 and bind click
+  document.querySelectorAll('.ed-section').forEach(function(sec) {
+    var h2 = sec.querySelector(':scope > h2');
+    if (!h2 || h2.querySelector('.toggle-chevron')) return;
+    var chev = document.createElement('span');
+    chev.className = 'toggle-chevron';
+    chev.setAttribute('aria-hidden', 'true');
+    chev.textContent = '▾';
+    h2.insertBefore(chev, h2.firstChild);
+    h2.addEventListener('click', function(e) {
+      if (e.target.closest('.help-btn')) return;
+      sec.classList.toggle('is-collapsed');
+    });
+    sec.classList.add('is-collapsed');
+  });
+
+  // Block cards: inject toggle into block-header and bind click
+  document.querySelectorAll('.block-card').forEach(function(card) {
+    var header = card.querySelector('.block-header');
+    if (!header || header.querySelector('.block-toggle')) return;
+    var tog = document.createElement('span');
+    tog.className = 'block-toggle';
+    tog.setAttribute('aria-hidden', 'true');
+    tog.textContent = '▾';
+    header.insertBefore(tog, header.firstChild);
+    header.addEventListener('click', function(e) {
+      if (e.target.closest('.block-actions')) return;
+      card.classList.toggle('is-collapsed');
+    });
+    card.classList.add('is-collapsed');
+  });
+
+  // News content blocks: inject toggle into item-card-header inside #nc-blocks
+  var ncBlocks = document.getElementById('nc-blocks');
+  if (ncBlocks) {
+    ncBlocks.querySelectorAll('.item-card').forEach(function(card) {
+      var header = card.querySelector('.item-card-header');
+      if (!header || header.querySelector('.block-toggle')) return;
+      var tog = document.createElement('span');
+      tog.className = 'block-toggle';
+      tog.setAttribute('aria-hidden', 'true');
+      tog.textContent = '▾';
+      header.insertBefore(tog, header.firstChild);
+      header.addEventListener('click', function(e) {
+        card.classList.toggle('is-collapsed');
+      });
+      card.classList.add('is-collapsed');
+    });
+  }
+}
+
 function toggleCompact() {
   _compactMode = !_compactMode;
-  var sections = document.querySelectorAll('.ed-section');
-  sections.forEach(function(sec) {
-    var h2 = sec.querySelector('h2');
-    // Store original content (skip h2 and help-panel)
-    if (_compactMode) {
-      var children = Array.from(sec.children);
-      children.forEach(function(child) {
-        if (child.tagName !== 'H2' && !child.classList.contains('help-panel')) {
-          child.style.display = 'none';
-        }
-      });
-      sec.style.paddingBottom = '.6rem';
-      sec.style.cursor = 'pointer';
-      if (!sec._compactClick) {
-        sec._compactClick = function(e) {
-          if (!_compactMode) return;
-          if (e.target.closest('.help-btn')) return;
-          var children = Array.from(sec.children);
-          var collapsed = children.some(function(c){ return c.tagName !== 'H2' && !c.classList.contains('help-panel') && c.style.display === 'none'; });
-          children.forEach(function(child) {
-            if (child.tagName !== 'H2' && !child.classList.contains('help-panel')) {
-              child.style.display = collapsed ? '' : 'none';
-            }
-          });
-        };
-        sec.addEventListener('click', sec._compactClick);
-      }
-    } else {
-      var children = Array.from(sec.children);
-      children.forEach(function(child) {
-        child.style.display = '';
-      });
-      sec.style.paddingBottom = '';
-      sec.style.cursor = '';
-    }
+  document.querySelectorAll('.ed-section').forEach(function(sec) {
+    sec.classList.toggle('is-collapsed', _compactMode);
+  });
+  document.querySelectorAll('.block-card').forEach(function(card) {
+    card.classList.toggle('is-collapsed', _compactMode);
   });
   var btn = document.getElementById('btnCompact');
   if (btn) {
-    btn.textContent = _compactMode ? '⊞ Expandir' : '⊟ Compactar';
+    btn.textContent = _compactMode ? '⊞ Expandir todo' : '⊟ Compactar todo';
     btn.title = _compactMode ? 'Expandir todas las secciones' : 'Contraer todas las secciones';
   }
 }
@@ -6543,9 +6667,9 @@ function resetEditorState() {
   if (dot) dot.classList.remove('active');
   if (lbl) lbl.classList.remove('active');
   if (undoBtn) undoBtn.style.display = 'none';
-  _compactMode = false;
+  _compactMode = true;
   var btn = document.getElementById('btnCompact');
-  if (btn) { btn.textContent = '⊟ Compactar'; btn.title = 'Contraer todas las secciones'; }
+  if (btn) { btn.textContent = '⊞ Expandir todo'; btn.title = 'Expandir todas las secciones'; }
 }
 
 // ── TOAST ────────────────────────────────────────────────────────────────────
