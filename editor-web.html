@@ -594,6 +594,7 @@
     .nav-search-wrap input::placeholder { color: rgba(255,255,255,.35) }
     .nav-search-wrap input:focus { border-color: var(--dorado); background: rgba(0,0,0,.3) }
     .nav-item.nav-hidden { display: none }
+    .nav-item.nav-news-hidden { display: none }
     .nav-group.nav-group-hidden { display: none }
 
     /* ── HELP SYSTEM ─────────────────── */
@@ -730,6 +731,7 @@ var S = {
 };
 var blockId = 0;
 var imgPickerCallback = null;
+var pendingUploads = {}; // { inputId: { file, tempUrl } }
 var NC = { blockId: 0, cats: [] }; // news creation state
 
 // ── INIT ─────────────────────────────────────────────────────────────────────
@@ -762,7 +764,13 @@ function renderNav() {
     if (!groups[g]) return;
     html += '<div class="nav-group"><div class="nav-group-title">'+(icons[g]?'<span>'+icons[g]+'</span> ':'')+(labels[g]||g)+'</div>';
     groups[g].forEach(function(p){
-      if (g === 'noticias' && /^noticia-/.test(p.name)) return; // individual news handled by manager
+      if (g === 'noticias' && /^noticia-/.test(p.name)) {
+        // Rendered but hidden; only visible when buscador has a query
+        var newsName = p.name.replace('.html','').replace(/^noticia-/,'').replace(/-/g,' ');
+        newsName = newsName.charAt(0).toUpperCase()+newsName.slice(1);
+        html += '<button class="nav-item nav-news-hidden" data-path="'+p.path+'" onclick="loadPage(\''+p.path+'\')">📰 '+esc(newsName)+'</button>';
+        return;
+      }
       var name = p.name.replace('.html','').replace(/-/g,' ');
       name = name.charAt(0).toUpperCase()+name.slice(1);
       html += '<button class="nav-item" data-path="'+p.path+'" onclick="loadPage(\''+p.path+'\')">'+esc(name)+'</button>';
@@ -892,6 +900,17 @@ function parseFile(html, path) {
       _sib = _sib.nextSibling;
     }
     S.afterGridHtml = _afterHtml.trim();
+  }
+  // Parse shared HTML blocks (for specialized page types)
+  S.htmlBlocks = [];
+  var _hbMarker = '\x3C!--html-blocks:';
+  var _hbEnd = '--\x3E';
+  var _hbStart = html.indexOf(_hbMarker);
+  if (_hbStart !== -1) {
+    var _hbClose = html.indexOf(_hbEnd, _hbStart);
+    if (_hbClose !== -1) {
+      try { S.htmlBlocks = JSON.parse(html.slice(_hbStart + _hbMarker.length, _hbClose)); } catch(e) {}
+    }
   }
   // After afterGridHtml is set, enrich congress items with modal data
   if (S.pageType === 'congresses') enrichCongressItems();
@@ -1562,35 +1581,50 @@ function imgField(label,value,inputId) {
     +'</div></div>';
 }
 
-async function uploadImage(inputId, fileInput) {
+function uploadImage(inputId, fileInput) {
   if (!fileInput.files || !fileInput.files.length) return;
   var file = fileInput.files[0];
-  toast('Subiendo imagen…', 'info');
-  try {
-    var r = await fetch('/api/upload-image?name='+encodeURIComponent(file.name), {
-      method: 'POST',
-      headers: {'Content-Type': file.type || 'application/octet-stream'},
-      body: file,
-    });
-    var data = await r.json();
-    if (data.ok) {
-      var input = document.getElementById(inputId);
-      if (input) {
-        var depth = S.currentPath.split('/').length - 1;
-        var prefix = depth > 0 ? '../' : '';
-        input.value = prefix + 'media/' + data.filename;
-      }
-      // Refresh media list
-      var mr = await fetch('/api/media');
-      S.media = await mr.json();
-      toast('Imagen subida: ' + data.filename, 'ok');
-    } else {
-      toast('Error al subir: ' + (data.error || 'desconocido'), 'err');
-    }
-  } catch(e) {
-    toast('Error de conexión al subir imagen', 'err');
+  // Revoke previous temp URL for this input if any
+  if (pendingUploads[inputId]) {
+    URL.revokeObjectURL(pendingUploads[inputId].tempUrl);
   }
+  var tempUrl = URL.createObjectURL(file);
+  pendingUploads[inputId] = { file: file, tempUrl: tempUrl };
+  var input = document.getElementById(inputId);
+  if (input) input.value = tempUrl;
+  toast('Imagen lista. Se subirá al guardar.', 'info');
   fileInput.value = '';
+}
+
+async function flushPendingUploads() {
+  var ids = Object.keys(pendingUploads);
+  if (!ids.length) return;
+  var depth = S.currentPath.split('/').length - 1;
+  var prefix = depth > 0 ? '../' : '';
+  for (var i = 0; i < ids.length; i++) {
+    var id = ids[i];
+    var entry = pendingUploads[id];
+    try {
+      var r = await fetch('/api/upload-image?name='+encodeURIComponent(entry.file.name), {
+        method: 'POST',
+        headers: {'Content-Type': entry.file.type || 'application/octet-stream'},
+        body: entry.file,
+      });
+      var data = await r.json();
+      if (data.ok) {
+        var realPath = prefix + 'media/' + data.filename;
+        var input = document.getElementById(id);
+        if (input && input.value === entry.tempUrl) input.value = realPath;
+        URL.revokeObjectURL(entry.tempUrl);
+      } else {
+        toast('Error al subir imagen: ' + (data.error || 'desconocido'), 'err');
+      }
+    } catch(e) {
+      toast('Error de conexión al subir imagen', 'err');
+    }
+  }
+  pendingUploads = {};
+  try { var mr = await fetch('/api/media'); S.media = await mr.json(); } catch(e) {}
 }
 
 // ── RICH TEXT COMMANDS ────────────────────────────────────────────────────────
@@ -3153,8 +3187,17 @@ function initDraggable(containerIds, cardSelector, onDrop) {
     c.querySelectorAll(cardSelector).forEach(function(card) {
       if (card._dragBound) return;
       card._dragBound = true;
+      card.addEventListener('mousedown', function(e) {
+        var cur = e.target;
+        var fromHandle = false;
+        while (cur && cur !== card) {
+          if (cur.classList && (cur.classList.contains('drag-handle') || cur.classList.contains('sb-drag-handle') || cur.classList.contains('block-handle'))) { fromHandle = true; break; }
+          cur = cur.parentElement;
+        }
+        card.draggable = fromHandle;
+      });
       card.addEventListener('dragstart', function(e) {
-        // No iniciar drag desde contenteditable
+        // No iniciar drag desde contenteditable (por si acaso)
         var t = e.target;
         while (t && t !== card) {
           if (t.contentEditable === 'true') { e.preventDefault(); return; }
@@ -3245,6 +3288,7 @@ function renderPartesEditor() {
   h += '</div>';
   h += '<button class="btn btn-blue btn-sm" style="margin-top:.75rem" onclick="addParte()">+ Añadir Parte</button>';
   h += '</div>';
+  h += renderHtmlBlocksSection();
   return h;
 }
 
@@ -3638,6 +3682,15 @@ function generateHtml() {
   else if (S.pageType==='partes') content += genPartes();
   else content += genBlocks();
 
+  // Shared HTML blocks (specialized page types)
+  if (S.htmlBlocks && S.htmlBlocks.length) {
+    var _validHb = S.htmlBlocks.filter(function(b){ return b && b.trim(); });
+    if (_validHb.length) {
+      content += '\n      \x3C!--html-blocks:' + JSON.stringify(_validHb) + '--\x3E\n';
+      _validHb.forEach(function(b){ content += '      ' + b.trim() + '\n'; });
+    }
+  }
+
   // Main close
   if (S.mainTag) content += '\n    </'+S.mainTag+'>\n';
 
@@ -3681,6 +3734,7 @@ function readFormValues() {
   }
   readAllBlocks();
   readAllItems();
+  readHtmlBlocks();
 }
 
 function genHero() {
@@ -3841,7 +3895,7 @@ function genLibroModalScript() {
     + '  +\'.lbMdlClose{position:absolute;top:.7rem;right:.9rem;background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--gris-texto,#aaa);line-height:1;padding:.2rem .4rem;border-radius:4px;transition:color .12s;z-index:1}\'\n'
     + '  +\'.lbMdlClose:hover{color:var(--azul,#1a3a5c)}\'\n'
     /* layout = grid 2 cols, imagen llena todo el alto */
-    + '  +\'.lbMdlLayout{display:grid;grid-template-columns:220px 1fr;flex:1;min-height:0;overflow:hidden}\'\n'
+    + '  +\'.lbMdlLayout{display:grid;grid-template-columns:220px 1fr;flex:1;min-height:380px;overflow:hidden}\'\n'
     + '  +\'.lbMdlSide{overflow:hidden;min-height:0;background:var(--azul,#1a3a5c)}\'\n'
     + '  +\'.lbMdlImg{width:100%;height:100%;object-fit:contain;object-position:top;display:block;cursor:zoom-in}\'\n'
     + '  +\'.lbMdlMain{overflow-y:auto;padding:1.8rem 2rem;display:flex;flex-direction:column;min-height:0}\'\n'
@@ -4390,6 +4444,7 @@ async function updateGenericSearchData() {
 
 async function savePage() {
   if (S.pageType === 'news') { await saveNewsPage(); return; }
+  await flushPendingUploads();
   takeSnapshot();
   var html = generateHtml();
   var btn = document.getElementById('btnSave');
@@ -5125,6 +5180,7 @@ function ncAddLinkWithValues(containerId, label, url) {
 }
 
 async function saveNewsPage() {
+  await flushPendingUploads();
   var tipo = document.getElementById('nc-tipo').value;
   var cat = ncGetCat();
   var tituloEl = document.getElementById('nc-titulo');
@@ -6578,6 +6634,15 @@ function filterNav(query) {
     var items = group.querySelectorAll('.nav-item');
     var anyVisible = false;
     items.forEach(function(item) {
+      var isNewsHidden = item.classList.contains('nav-news-hidden');
+      // Individual news: only show when there's a query AND it matches
+      if (isNewsHidden) {
+        var text = item.textContent.toLowerCase();
+        var match = q && text.indexOf(q) !== -1;
+        item.style.display = match ? 'block' : '';
+        if (match) anyVisible = true;
+        return;
+      }
       var text = item.textContent.toLowerCase();
       var match = !q || text.indexOf(q) !== -1;
       item.classList.toggle('nav-hidden', !match);
