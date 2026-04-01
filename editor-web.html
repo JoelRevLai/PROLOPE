@@ -432,7 +432,7 @@
     .type-h { background: var(--dorado) }
     .type-fig { background: #5a7d5a }
     .type-quote { background: #7a6f60 }
-    .type-links { background: #6a5a8a }
+    .type-links { background: #4a6a8a }
     .block-actions { margin-left: auto; display: flex; gap: .25rem }
     .block-actions button {
       background: transparent;
@@ -510,8 +510,11 @@
     /* ── SIDEBAR CARD EDITOR ─────────── */
     .sb-editor { margin-top: .4rem }
     .sb-card { border: 1px solid var(--borde); border-radius: 8px; margin-bottom: .55rem; background: var(--crema); overflow: hidden; box-shadow: 0 1px 4px var(--sombra) }
+    .sb-card.drag-over { border-color: var(--azul); background: #eef3fb; box-shadow: 0 0 0 2px var(--azul) }
     .sb-card-header { display: flex; align-items: center; gap: .45rem; padding: .5rem .8rem; background: var(--bg); border-bottom: 1px solid var(--borde); cursor: pointer; user-select: none; transition: background .15s }
     .sb-card-header:hover { background: var(--crema) }
+    .sb-drag-handle { color: #c4bbb0; cursor: grab; font-size: .9rem; padding: 0 .1rem; flex-shrink: 0; user-select: none }
+    .sb-drag-handle:hover { color: var(--azul) }
     .sb-type-badge { font-family: 'Raleway', sans-serif; font-size: .6rem; font-weight: 700; letter-spacing: .05em; padding: .12rem .4rem; border-radius: 4px; color: #fff; text-transform: uppercase; flex-shrink: 0 }
     .sb-type-toc { background: #2a7a9a }
     .sb-type-nav { background: var(--azul) }
@@ -1436,6 +1439,7 @@ function renderEditor() {
   if (S.pageType === 'members') initMembersDrag();
   if (S.pageType==='theses' || S.pageType==='congresses' || S.pageType==='seminars' || S.pageType==='projects') initThesisDrag();
   if (S.pageType==='article' || S.pageType==='libros' || S.pageType==='contact') initBlocksDrag();
+  if (S.hasSidebar) initSidebarDrag();
 
   // Nuevas funcionalidades
   resetEditorState();
@@ -1646,13 +1650,12 @@ function renderSbCardEditor(card, idx) {
   var label = card.type==='toc' ? (card.title||'Índice de contenido')
              : card.type==='nav' ? (card.title||'Menú de sección')
              : 'Caja de texto';
-  var h = '<div class="sb-card" id="sbCard_'+card.id+'">';
+  var h = '<div class="sb-card" id="sbCard_'+card.id+'" draggable="true" data-sbid="'+card.id+'">';
   h += '<div class="sb-card-header" onclick="toggleSbCard('+card.id+')">';
+  h += '<span class="sb-drag-handle" onclick="event.stopPropagation()" title="Arrastrar para reordenar">⠿</span>';
   h += '<span class="sb-type-badge '+typeCls[card.type]+'">'+typeLabels[card.type]+'</span>';
   h += '<span class="sb-card-label">'+esc(label)+'</span>';
   h += '<div class="sb-card-actions" onclick="event.stopPropagation()">';
-  if (idx > 0) h += '<button title="Subir tarjeta" aria-label="Subir tarjeta" onclick="moveSidebarCard('+idx+',-1)">↑</button>';
-  if (idx < S.sidebarCards.length-1) h += '<button title="Bajar tarjeta" aria-label="Bajar tarjeta" onclick="moveSidebarCard('+idx+',1)">↓</button>';
   h += '<button class="del" title="Eliminar tarjeta" aria-label="Eliminar tarjeta" onclick="removeSidebarCard('+idx+')">✕</button>';
   h += '</div></div>';
   h += '<div class="sb-card-body open" id="sbBody_'+card.id+'">';
@@ -1799,6 +1802,20 @@ function moveSidebarCard(idx, dir) {
   if (ni < 0 || ni >= S.sidebarCards.length) return;
   var tmp = S.sidebarCards[idx]; S.sidebarCards[idx] = S.sidebarCards[ni]; S.sidebarCards[ni] = tmp;
   renderEditor();
+}
+
+function initSidebarDrag() {
+  initDraggable('sbEditor', '.sb-card[draggable]', function(srcCard, tgtCard) {
+    var srcId = parseInt(srcCard.getAttribute('data-sbid'));
+    var tgtId = parseInt(tgtCard.getAttribute('data-sbid'));
+    readSidebarCards();
+    var srcIdx = S.sidebarCards.findIndex(function(c){ return c.id === srcId; });
+    var tgtIdx = S.sidebarCards.findIndex(function(c){ return c.id === tgtId; });
+    if (srcIdx === -1 || tgtIdx === -1) return;
+    var tmp = S.sidebarCards.splice(srcIdx, 1)[0];
+    S.sidebarCards.splice(tgtIdx, 0, tmp);
+    renderEditor();
+  });
 }
 
 function addNavExtra(cardId) {
@@ -2104,7 +2121,7 @@ function renderBlocksEditor() {
   h += '<button class="btn btn-sm" style="background:var(--dorado);color:#fff" onclick="addBlock(\'heading\')">+ Título</button>';
   h += '<button class="btn btn-sm" style="background:#5a7d5a;color:#fff" onclick="addBlock(\'figure\')">+ Figura</button>';
   h += '<button class="btn btn-sm" style="background:#7a6f60;color:#fff" onclick="addBlock(\'pullquote\')">+ Cita destacada</button>';
-  h += '<button class="btn btn-sm" style="background:#6a5a8a;color:#fff" onclick="addBlock(\'links\')">+ Enlaces</button>';
+  h += '<button class="btn btn-sm" style="background:#4a6a8a;color:#fff" onclick="addBlock(\'links\')">+ Enlaces</button>';
   h += '<button class="btn btn-sm" style="background:#8a6a4a;color:#fff" onclick="addBlock(\'highlight\')">+ Recuadro destacado con enlace</button>';
   h += '<button class="btn btn-sm" style="background:#4a7a8a;color:#fff" onclick="addBlock(\'list\')">+ Lista bibliográfica</button>';
   h += '<button class="btn btn-sm" style="background:#5a7a5a;color:#fff" onclick="addBlock(\'imagegrid\')">+ Cuadrícula de imágenes</button>';
@@ -2212,11 +2229,11 @@ function addBlock(type) {
   if (type==='heading') { b.tag='h2'; b.html=''; b.cls=''; }
   else if (type==='paragraph') { b.html='Nuevo párrafo'; b.cls=''; }
   else if (type==='figure') { b.src=''; b.alt=''; b.caption=''; b.position='right'; b.cls=''; b.size='medium'; }
-  else if (type==='pullquote') { b.html='Cita destacada'; }
+  else if (type==='pullquote') { b.html=''; }
   else if (type==='links') { b.links=[{label:'',url:''}]; }
   else if (type==='highlight') { b.html=''; b.btnLabel='↓ Consultar aquí (PDF)'; b.btnUrl=''; }
   else if (type==='imagegrid') { b.cols=2; b.imgs=[{src:'',alt:''},{src:'',alt:''}]; b.size='medium'; }
-  else if (type==='list') { b.cls='biblio-list'; b.items=[{main:'Nueva entrada bibliográfica.',note:''}]; }
+  else if (type==='list') { b.cls='biblio-list'; b.items=[{main:'',note:''}]; }
   else if (type==='libro') { b.title=''; b.author=''; b.editor=''; b.year=''; b.editorial=''; b.city=''; b.collection=''; b.isbn=''; b.buyUrl=''; b.image=''; b.displayMode='modal'; b.extraFields=[]; }
   S.blocks.push(b);
   rerenderBlocks();
@@ -4496,7 +4513,15 @@ function renderMenuEditor() {
     h += '<div class="field"><label>Etiqueta de la sección</label><input type="text" value="'+escA(section.label)+'" oninput="menuUpdateSection('+si+',\'label\',this.value)"></div>';
     if (!section.items) {
       // Direct link
-      h += '<div class="field"><label>URL</label><input type="text" value="'+escA(section.url||'')+'" placeholder="ej: multimedia/multimedia.html o https://..." oninput="menuUpdateSection('+si+',\'url\',this.value)"></div>';
+      var secIsExt = /^https?:\/\//.test(section.url||'');
+      h += '<div class="field"><label>Página</label>';
+      if (secIsExt) {
+        h += '<input type="text" value="'+escA(section.url||'')+'" placeholder="https://..." oninput="menuUpdateSection('+si+',\'url\',this.value)">';
+      } else {
+        h += '<select onchange="menuUpdateSection('+si+',\'url\',this.value)" style="flex:1">'+menuPageSelectOptions(section.url||'')+'</select>';
+      }
+      h += '</div>';
+      h += '<label style="font-family:\'Raleway\',sans-serif;font-size:.8rem;display:flex;align-items:center;gap:.35rem;margin-bottom:.6rem"><input type="checkbox"'+(secIsExt?' checked':'')+' onchange="_menuData['+si+'].url=\'\';_menuData['+si+'].externalUrl=this.checked;renderMenuEditor()"> URL externa (https://…)</label>';
     } else {
       // Dropdown items
       h += '<div style="margin-top:.5rem"><label style="margin-bottom:.4rem">Elementos del desplegable</label>';
@@ -4505,7 +4530,11 @@ function renderMenuEditor() {
         h += '<div class="menu-item-row" data-ii="'+ii+'">';
         h += '<span style="color:#ccc;cursor:grab;font-size:.9rem;padding:0 .2rem" draggable="true" ondragstart="menuItemDragStart(event,'+si+','+ii+')" ondragover="menuItemDragOver(event,'+si+','+ii+')" ondrop="menuItemDrop(event,'+si+','+ii+')">⋮</span>';
         h += '<input type="text" value="'+escA(item.label)+'" placeholder="Etiqueta" oninput="menuUpdateItem('+si+','+ii+',\'label\',this.value)" style="flex:1.2">';
-        h += '<input type="text" value="'+escA(item.url||'')+'" placeholder="URL (ej: el-grupo/el-grupo.html)" oninput="menuUpdateItem('+si+','+ii+',\'url\',this.value)">';
+        if (item.external) {
+          h += '<input type="text" value="'+escA(item.url||'')+'" placeholder="https://..." oninput="menuUpdateItem('+si+','+ii+',\'url\',this.value)" style="flex:1">';
+        } else {
+          h += '<select style="flex:1;min-width:0" onchange="menuUpdateItem('+si+','+ii+',\'url\',this.value)">'+menuPageSelectOptions(item.url||'')+'</select>';
+        }
         h += '<button class="ext-toggle'+(item.external?' on':'')+'" title="Enlace externo (abre en nueva pestaña)" onclick="menuToggleExternal('+si+','+ii+',this)">'+(item.external?'↗ ext':'int')+'</button>';
         h += '<button style="background:var(--rojo);color:#fff;border:none;border-radius:4px;width:22px;height:22px;cursor:pointer;font-size:.8rem;flex-shrink:0" onclick="menuRemoveItem('+si+','+ii+')">✕</button>';
         h += '</div>';
@@ -4539,10 +4568,25 @@ function menuUpdateItem(si, ii, key, val) {
 function menuToggleExternal(si, ii, btn) {
   var item = _menuData[si].items[ii];
   item.external = !item.external;
-  btn.classList.toggle('on', item.external);
-  btn.textContent = item.external ? '↗ ext' : 'int';
-  // Auto-detect external from URL
-  if (/^https?:\/\//.test(item.url)) { item.external = true; btn.classList.add('on'); btn.textContent='↗ ext'; }
+  if (!item.external) item.url = '';
+  renderMenuEditor();
+}
+function menuPageSelectOptions(selectedPath) {
+  var opts = '<option value="">— Seleccionar página —</option>';
+  var groups = {};
+  var dirOrder = ['(raíz)','el-grupo','objetivos','publicaciones','proyectos-digitales','formacion','eventos','multimedia','noticias'];
+  var dirLabels = {'(raíz)':'Inicio','el-grupo':'El grupo','objetivos':'Objetivos','publicaciones':'Publicaciones','proyectos-digitales':'Proyectos digitales','formacion':'Formación','eventos':'Eventos','multimedia':'Multimedia','noticias':'Noticias'};
+  (S.pages||[]).forEach(function(p) { if (!groups[p.dir]) groups[p.dir] = []; groups[p.dir].push(p); });
+  var dirs = dirOrder.filter(function(d){ return groups[d]; }).concat(Object.keys(groups).filter(function(d){ return dirOrder.indexOf(d)===-1; }));
+  dirs.forEach(function(dir) {
+    opts += '<optgroup label="'+ escA(dirLabels[dir]||dir)+'">';
+    groups[dir].forEach(function(p) {
+      var sel = (p.path === selectedPath || p.name === selectedPath) ? ' selected' : '';
+      opts += '<option value="'+escA(p.path)+'"'+sel+'>'+esc(prettifyFilename(p.name))+'</option>';
+    });
+    opts += '</optgroup>';
+  });
+  return opts;
 }
 function menuAddItem(si) {
   _menuData[si].items.push({ label: '', url: '', external: false });
@@ -4852,7 +4896,7 @@ function renderNewsEditor() {
   h += '<button class="btn btn-sm" style="background:#7a6f60;color:#fff" onclick="ncAddBlock(\'subtitulo\')">+ Subtítulo</button>';
   h += '<button class="btn btn-sm" style="background:#5a7d5a;color:#fff" onclick="ncAddBlock(\'figura\')">+ Figura</button>';
   h += '<button class="btn btn-sm" style="background:#6d7a60;color:#fff" onclick="ncAddBlock(\'cita\')">+ Cita destacada</button>';
-  h += '<button class="btn btn-sm" style="background:#6a5a8a;color:#fff" onclick="ncAddBlock(\'enlaces\')">+ Enlaces</button>';
+  h += '<button class="btn btn-sm" style="background:#4a6a8a;color:#fff" onclick="ncAddBlock(\'enlaces\')">+ Enlaces</button>';
   h += '<button class="btn btn-sm" style="background:#8a6a4a;color:#fff" onclick="ncAddBlock(\'recuadro\')">+ Recuadro destacado con enlace</button>';
   h += '<button class="btn btn-sm" style="background:#4a7a8a;color:#fff" onclick="ncAddBlock(\'lista\')">+ Lista bibliográfica</button>';
   h += '<button class="btn btn-sm" style="background:#5a7a5a;color:#fff" onclick="ncAddBlock(\'imagegrid\')">+ Cuadrícula de imágenes</button>';
@@ -5322,7 +5366,7 @@ function renderNewNewsForm() {
   h += '<button class="btn btn-sm" style="background:#7a6f60;color:#fff" onclick="ncAddBlock(\'subtitulo\')">+ Subtítulo</button>';
   h += '<button class="btn btn-sm" style="background:#5a7d5a;color:#fff" onclick="ncAddBlock(\'figura\')">+ Figura</button>';
   h += '<button class="btn btn-sm" style="background:#6d7a60;color:#fff" onclick="ncAddBlock(\'cita\')">+ Cita destacada</button>';
-  h += '<button class="btn btn-sm" style="background:#6a5a8a;color:#fff" onclick="ncAddBlock(\'enlaces\')">+ Enlaces</button>';
+  h += '<button class="btn btn-sm" style="background:#4a6a8a;color:#fff" onclick="ncAddBlock(\'enlaces\')">+ Enlaces</button>';
   h += '<button class="btn btn-sm" style="background:#8a6a4a;color:#fff" onclick="ncAddBlock(\'recuadro\')">+ Recuadro destacado con enlace</button>';
   h += '<button class="btn btn-sm" style="background:#4a7a8a;color:#fff" onclick="ncAddBlock(\'lista\')">+ Lista bibliográfica</button>';
   h += '<button class="btn btn-sm" style="background:#5a7a5a;color:#fff" onclick="ncAddBlock(\'imagegrid\')">+ Cuadrícula de imágenes</button>';

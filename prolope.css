@@ -1311,6 +1311,17 @@ a.news-card,
   color: var(--blanco);
 }
 
+/* Garantiza que el color del texto del botón no sea sobreescrito por reglas genéricas de enlaces */
+.article-main .article-ext-link,
+.page-content .article-ext-link {
+  color: var(--blanco);
+  text-decoration: none;
+}
+.article-main .article-ext-link:hover,
+.page-content .article-ext-link:hover {
+  color: var(--blanco);
+}
+
 .article-ext-link svg {
   width: 12px;
   height: 12px;
