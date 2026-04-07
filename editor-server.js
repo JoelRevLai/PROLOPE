@@ -14,6 +14,63 @@ const path = require('path');
 
 const PORT = 3000;
 const ROOT = __dirname;
+const VERSIONS_DIR = path.join(ROOT, '_versions');
+
+/* ── versioning helpers ───────────────────────────────────── */
+
+function versionKey(rel) {
+  // Convert "el-grupo/el-grupo.html" → "el-grupo__el-grupo.html"
+  return rel.replace(/[\\/]/g, '__');
+}
+
+function versionDir(rel) {
+  return path.join(VERSIONS_DIR, versionKey(rel));
+}
+
+function tsNow() {
+  // "20240115T143022"
+  return new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, '').replace('T', 'T');
+}
+
+// type: 'save' (default) or 'prerestore' (snapshot taken just before restoring)
+function saveVersion(rel, fullPath, type) {
+  if (!fs.existsSync(fullPath)) return null;
+  const dir = versionDir(rel);
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  const ts = tsNow();
+  const suffix = (type === 'prerestore') ? '_r.html' : '.html';
+  const dest = path.join(dir, ts + suffix);
+  fs.copyFileSync(fullPath, dest);
+  return ts;
+}
+
+function parseVersionFile(f) {
+  // f is filename without directory: "20240115T143022.html" or "20240115T143022_r.html"
+  const isPreRestore = f.endsWith('_r.html');
+  const ts = f.replace('_r.html', '').replace('.html', '');
+  if (!/^\d{8}T\d{6}$/.test(ts)) return null;
+  const y = ts.slice(0,4), mo = ts.slice(4,6), d = ts.slice(6,8);
+  const h = ts.slice(9,11), mi = ts.slice(11,13), s = ts.slice(13,15);
+  const dt = new Date(`${y}-${mo}-${d}T${h}:${mi}:${s}`);
+  const label = dt.toLocaleString('es-ES', { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+  return { ts, label, isPreRestore, filename: f };
+}
+
+function listVersions(rel) {
+  const dir = versionDir(rel);
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir)
+    .filter(f => f.endsWith('.html'))
+    .sort()
+    .reverse()
+    .map(f => {
+      const parsed = parseVersionFile(f);
+      if (!parsed) return null;
+      const stat = fs.statSync(path.join(dir, f));
+      return { ...parsed, size: stat.size };
+    })
+    .filter(Boolean);
+}
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -487,9 +544,10 @@ const server = http.createServer(async (req, res) => {
     if (req.method === 'POST') {
       try {
         const body = await readBody(req);
-        // Create backup
+        // Create backup (.bak) and versioned copy
         if (fs.existsSync(full)) {
           fs.copyFileSync(full, full + '.bak');
+          saveVersion(rel, full);
         }
         fs.writeFileSync(full, body, 'utf8');
         res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -869,6 +927,137 @@ const server = http.createServer(async (req, res) => {
       });
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ ok: true, updated, errors }));
+    } catch(e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: e.message }));
+    }
+    return;
+  }
+
+  // ── API: list versions for a file ──
+  if (url.pathname === '/api/versions' && req.method === 'GET') {
+    const rel = url.searchParams.get('file');
+    if (!rel) { res.writeHead(400); res.end('Missing file'); return; }
+    const full = safePath(rel);
+    if (!full) { res.writeHead(403); res.end('Forbidden'); return; }
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(listVersions(rel)));
+    return;
+  }
+
+  // ── API: get content of a specific version (raw, for download/tab) ──
+  if (url.pathname === '/api/version' && req.method === 'GET') {
+    const rel = url.searchParams.get('file');
+    const ts  = url.searchParams.get('ts');
+    if (!rel || !ts) { res.writeHead(400); res.end('Missing params'); return; }
+    if (!/^\d{8}T\d{6}$/.test(ts)) { res.writeHead(400); res.end('Invalid ts'); return; }
+    const dir = versionDir(rel);
+    // Check both regular and pre-restore filenames
+    let vFile = path.join(dir, ts + '.html');
+    if (!fs.existsSync(vFile)) vFile = path.join(dir, ts + '_r.html');
+    if (!fs.existsSync(vFile)) { res.writeHead(404); res.end('Version not found'); return; }
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(fs.readFileSync(vFile, 'utf8'));
+    return;
+  }
+
+  // ── API: version preview proxy — serves versioned HTML with correct base URL ──
+  // URL: /_vp/el-grupo/el-grupo.html?ts=20240115T143022
+  // Injects <base href="/el-grupo/"> so relative paths (../prolope.css, ../media/…) resolve correctly.
+  if (url.pathname.startsWith('/_vp/')) {
+    const rel = url.pathname.slice('/_vp/'.length);
+    const ts  = url.searchParams.get('ts');
+    if (!rel || !ts || !/^\d{8}T\d{6}$/.test(ts)) { res.writeHead(400); res.end('Bad request'); return; }
+    const full = safePath(rel);
+    if (!full) { res.writeHead(403); res.end('Forbidden'); return; }
+    const dir = versionDir(rel);
+    let vFile = path.join(dir, ts + '.html');
+    if (!fs.existsSync(vFile)) vFile = path.join(dir, ts + '_r.html');
+    if (!fs.existsSync(vFile)) { res.writeHead(404); res.end('Version not found'); return; }
+    let html = fs.readFileSync(vFile, 'utf8');
+    // Compute base href: directory of the page relative to site root
+    const pageDir = rel.includes('/') ? '/' + rel.substring(0, rel.lastIndexOf('/') + 1) : '/';
+    const baseTag = '<base href="' + pageDir + '">';
+    // Inject <base> as first element inside <head> (before any relative resource loads)
+    html = html.replace(/(<head[^>]*>)/i, '$1\n  ' + baseTag);
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(html);
+    return;
+  }
+
+  // ── API: restore a specific version ──
+  if (url.pathname === '/api/restore' && req.method === 'POST') {
+    try {
+      const body = await readBody(req);
+      const { file: rel, ts } = JSON.parse(body);
+      if (!rel || !ts) throw new Error('Faltan parámetros');
+      if (!/^\d{8}T\d{6}$/.test(ts)) throw new Error('Timestamp inválido');
+      const full = safePath(rel);
+      if (!full) { res.writeHead(403); res.end('Forbidden'); return; }
+      const dir = versionDir(rel);
+      let vFile = path.join(dir, ts + '.html');
+      if (!fs.existsSync(vFile)) vFile = path.join(dir, ts + '_r.html');
+      if (!fs.existsSync(vFile)) throw new Error('Versión no encontrada');
+      // Save current state as a pre-restore snapshot before overwriting
+      if (fs.existsSync(full)) {
+        saveVersion(rel, full, 'prerestore');
+        fs.copyFileSync(full, full + '.bak');
+      }
+      fs.copyFileSync(vFile, full);
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ ok: true }));
+    } catch(e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: e.message }));
+    }
+    return;
+  }
+
+  // ── API: delete a single version ──
+  if (url.pathname === '/api/version' && req.method === 'DELETE') {
+    try {
+      const rel = url.searchParams.get('file');
+      const ts  = url.searchParams.get('ts');
+      if (!rel || !ts) throw new Error('Faltan parámetros');
+      if (!/^\d{8}T\d{6}$/.test(ts)) throw new Error('Timestamp inválido');
+      const full = safePath(rel);
+      if (!full) { res.writeHead(403); res.end('Forbidden'); return; }
+      const dir = versionDir(rel);
+      let deleted = 0;
+      [ts + '.html', ts + '_r.html'].forEach(f => {
+        const fp = path.join(dir, f);
+        if (fs.existsSync(fp)) { fs.unlinkSync(fp); deleted++; }
+      });
+      if (!deleted) throw new Error('Versión no encontrada');
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ ok: true }));
+    } catch(e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: e.message }));
+    }
+    return;
+  }
+
+  // ── API: bulk prune versions ──
+  // Body: { file, keepLast: N }  — deletes oldest versions keeping only the last N
+  if (url.pathname === '/api/versions-prune' && req.method === 'POST') {
+    try {
+      const body = await readBody(req);
+      const { file: rel, keepLast } = JSON.parse(body);
+      if (!rel) throw new Error('Falta el archivo');
+      const full = safePath(rel);
+      if (!full) { res.writeHead(403); res.end('Forbidden'); return; }
+      const dir = versionDir(rel);
+      if (!fs.existsSync(dir)) { res.writeHead(200, {'Content-Type':'application/json'}); res.end(JSON.stringify({ok:true,deleted:0})); return; }
+      const all = fs.readdirSync(dir).filter(f => f.endsWith('.html')).sort(); // oldest first
+      const keep = Math.max(0, Number(keepLast) || 0);
+      const toDelete = keep === 0 ? all : all.slice(0, Math.max(0, all.length - keep));
+      let deleted = 0;
+      toDelete.forEach(f => {
+        try { fs.unlinkSync(path.join(dir, f)); deleted++; } catch(e) { /* ignore */ }
+      });
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ ok: true, deleted }));
     } catch(e) {
       res.writeHead(500, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ error: e.message }));

@@ -631,6 +631,44 @@
 
     /* ── COMPACT/EXPAND TOGGLE ───────── */
     .btn-compact { font-size: .72rem; padding: .3rem .58rem }
+
+    /* ── HISTORY MODAL ───────────────── */
+    .hist-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:950; align-items:center; justify-content:center; backdrop-filter:blur(3px) }
+    .hist-overlay.open { display:flex }
+    .hist-modal { background:var(--bg); border-radius:14px; width:96vw; height:92vh; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,.4) }
+    .hist-modal-head { padding:.85rem 1.3rem; border-bottom:1px solid var(--borde); display:flex; align-items:center; gap:.7rem; flex-shrink:0 }
+    .hist-modal-head h2 { font-family:'Raleway',sans-serif; font-size:1rem; font-weight:700; color:var(--azul); flex:1; margin:0 }
+    .hist-modal-head .hist-file { font-size:.76rem; color:var(--texto-suave); font-family:'Raleway',sans-serif; background:var(--crema-oscuro); border:1px solid var(--borde); padding:.18rem .55rem; border-radius:4px; max-width:340px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap }
+    .hist-body { display:flex; flex:1; overflow:hidden; min-height:0 }
+    /* sidebar */
+    .hist-sidebar { width:300px; min-width:260px; border-right:1px solid var(--borde); display:flex; flex-direction:column; overflow:hidden }
+    .hist-list { flex:1; overflow-y:auto; padding:.4rem 0 }
+    .hist-list-empty { padding:1.5rem 1rem; text-align:center; color:var(--texto-suave); font-size:.83rem; font-family:'Raleway',sans-serif; line-height:1.6 }
+    /* version item */
+    .hist-item { display:flex; align-items:flex-start; gap:.4rem; padding:.55rem .85rem .55rem .7rem; cursor:pointer; border-left:3px solid transparent; transition:background .12s, border-color .12s; position:relative }
+    .hist-item:hover { background:var(--crema-oscuro) }
+    .hist-item.active { background:rgba(200,164,90,.1); border-left-color:var(--dorado) }
+    .hist-item-inner { flex:1; min-width:0 }
+    .hist-item-tag { display:inline-block; font-family:'Raleway',sans-serif; font-size:.62rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:.1rem .38rem; border-radius:3px; margin-bottom:.2rem }
+    .hist-item-tag.tag-current    { background:#e8eef8; color:#1a3a5c }
+    .hist-item-tag.tag-save       { background:#e8f4ec; color:#2a7d4f }
+    .hist-item-tag.tag-prerestore { background:#fef3e2; color:#a0620a }
+    .hist-item-date { font-family:'Raleway',sans-serif; font-size:.82rem; color:var(--texto); display:block }
+    .hist-item-size { font-size:.69rem; color:var(--texto-suave); font-family:'Raleway',sans-serif }
+    .hist-item-del { background:none; border:none; cursor:pointer; color:#ccc; font-size:.85rem; padding:.1rem .25rem; border-radius:4px; transition:color .12s, background .12s; flex-shrink:0; align-self:flex-start; margin-top:.05rem }
+    .hist-item-del:hover { color:var(--rojo); background:rgba(184,50,50,.08) }
+    /* prune bar */
+    .hist-prune-bar { padding:.6rem .85rem; border-top:1px solid var(--borde); background:var(--crema-oscuro); flex-shrink:0 }
+    .hist-prune-bar-row { display:flex; align-items:center; gap:.4rem; flex-wrap:wrap }
+    .hist-prune-bar label { font-family:'Raleway',sans-serif; font-size:.75rem; color:var(--texto-suave); margin:0 }
+    .hist-prune-bar input[type=number] { width:52px; padding:.22rem .38rem; font-size:.8rem; border:1.5px solid var(--borde); border-radius:5px; background:var(--crema); color:var(--texto) }
+    /* preview */
+    .hist-preview-panel { flex:1; overflow:hidden; display:flex; flex-direction:column; min-width:0 }
+    .hist-preview-bar { padding:.55rem 1rem; border-bottom:1px solid var(--borde); display:flex; align-items:center; gap:.6rem; background:var(--crema-oscuro); flex-shrink:0 }
+    .hist-preview-bar .hist-preview-label { font-family:'Raleway',sans-serif; font-size:.82rem; color:var(--texto-suave); flex:1 }
+    .hist-preview-empty { flex:1; display:flex; align-items:center; justify-content:center; color:var(--texto-suave); font-family:'Raleway',sans-serif; font-size:.9rem; text-align:center; line-height:1.7 }
+    .hist-iframe { flex:1; border:none; background:#fff; display:block; width:100%; height:100%; min-height:0 }
+    .hist-loading { padding:2rem; text-align:center; color:var(--texto-suave); font-family:'Raleway',sans-serif; font-size:.85rem }
   </style>
 </head>
 <body>
@@ -660,8 +698,45 @@
     <button class="btn btn-outline btn-sm btn-compact" id="btnUndo" onclick="undoLastSave()" style="display:none" title="Deshacer cambios desde el último guardado">↩ Deshacer</button>
     <button class="btn btn-outline btn-sm btn-compact" onclick="toggleCompact()" id="btnCompact" title="Expandir todas las secciones">⊞ Expandir todo</button>
     <button class="btn btn-outline btn-sm" onclick="previewPage()">👁 Vista previa</button>
+    <button class="btn btn-outline btn-sm" id="btnHistory" onclick="openHistory()" title="Ver versiones anteriores guardadas">🕓 Historial</button>
     <button class="btn btn-danger btn-sm" id="btnDelete" onclick="deletePage()" style="display:none" title="Eliminar esta página">🗑 Eliminar página</button>
     <button class="btn btn-green" id="btnSave" onclick="savePage()">💾 Guardar cambios</button>
+  </div>
+
+  <!-- ── HISTORY MODAL ────────────────────────────── -->
+  <div class="hist-overlay" id="histOverlay" onclick="if(event.target===this)closeHistory()">
+    <div class="hist-modal" role="dialog" aria-modal="true" aria-label="Historial de versiones">
+      <div class="hist-modal-head">
+        <h2>🕓 Historial de versiones</h2>
+        <span class="hist-file" id="histFile"></span>
+        <button class="btn btn-outline btn-sm" onclick="closeHistory()">✕ Cerrar</button>
+      </div>
+      <div class="hist-body">
+        <!-- sidebar: version list + prune bar -->
+        <div class="hist-sidebar">
+          <div class="hist-list" id="histList">
+            <div class="hist-loading">Cargando versiones…</div>
+          </div>
+          <div class="hist-prune-bar" id="histPruneBar" style="display:none">
+            <div class="hist-prune-bar-row">
+              <label>Eliminar antiguas, conservar las últimas</label>
+              <input type="number" id="histKeepN" value="5" min="1" max="999" style="width:54px">
+              <button class="btn btn-outline btn-sm" onclick="pruneVersions()">Eliminar</button>
+            </div>
+          </div>
+        </div>
+        <!-- preview panel -->
+        <div class="hist-preview-panel">
+          <div class="hist-preview-empty" id="histPreviewEmpty">Selecciona una versión de la lista para previsualizarla</div>
+          <div class="hist-preview-bar" id="histPreviewBar" style="display:none">
+            <span class="hist-preview-label" id="histPreviewLabel"></span>
+            <button class="btn btn-outline btn-sm" onclick="openVersionInTab()">↗ Nueva pestaña</button>
+            <button class="btn btn-primary btn-sm" id="btnRestoreVersion" onclick="restoreVersion()">↩ Restaurar esta versión</button>
+          </div>
+          <iframe id="histIframe" class="hist-iframe" style="display:none"></iframe>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="ed-body" id="edBody">
     <div class="welcome" id="welcomeScreen">
@@ -6952,6 +7027,180 @@ function toast(msg,type) {
   el.className = 'toast '+(type||'info')+' show';
   clearTimeout(el._t);
   el._t = setTimeout(function(){ el.classList.remove('show'); },4500);
+}
+
+// ── HISTORIAL DE VERSIONES ────────────────────────────────────────────────────
+
+var _histCurrentTs = null;
+
+function openHistory() {
+  if (!S.currentPath) return;
+  _histCurrentTs = null;
+  document.getElementById('histFile').textContent = S.currentPath;
+  document.getElementById('histPreviewEmpty').style.display = '';
+  document.getElementById('histPreviewBar').style.display = 'none';
+  document.getElementById('histIframe').style.display = 'none';
+  document.getElementById('histPruneBar').style.display = 'none';
+  document.getElementById('histList').innerHTML = '<div class="hist-loading">Cargando versiones…</div>';
+  document.getElementById('histOverlay').classList.add('open');
+  loadVersionList();
+}
+
+function closeHistory() {
+  document.getElementById('histOverlay').classList.remove('open');
+  var iframe = document.getElementById('histIframe');
+  iframe.src = 'about:blank';
+  iframe.style.display = 'none';
+}
+
+async function loadVersionList() {
+  try {
+    var r = await fetch('/api/versions?file=' + encodeURIComponent(S.currentPath));
+    var versions = await r.json();
+    var list = document.getElementById('histList');
+    var pruneBar = document.getElementById('histPruneBar');
+    if (!versions.length) {
+      list.innerHTML = '<div class="hist-list-empty">No hay versiones guardadas todavía.<br><br>Las versiones se crean automáticamente cada vez que guardas la página.</div>';
+      pruneBar.style.display = 'none';
+      return;
+    }
+    pruneBar.style.display = '';
+    // Synthetic "versión actual" entry always at top
+    var currentEntry = '<div class="hist-item" data-ts="__current__" data-label="Versión actual" data-prerestore="0" onclick="selectVersion(this)">'
+      + '<div class="hist-item-inner">'
+      + '<span class="hist-item-tag tag-current">📌 Versión actual</span>'
+      + '<span class="hist-item-date">Lo que está en el sitio ahora</span>'
+      + '</div>'
+      + '</div>';
+    var historyEntries = versions.map(function(v) {
+      var kb = (v.size / 1024).toFixed(1) + ' KB';
+      var tagClass = v.isPreRestore ? 'tag-prerestore' : 'tag-save';
+      var tagText  = v.isPreRestore ? '🔄 Versión revertida' : '💾 Versión anterior';
+      return '<div class="hist-item" data-ts="' + esc(v.ts) + '" data-label="' + esc(v.label) + '" data-prerestore="' + (v.isPreRestore?'1':'0') + '" onclick="selectVersion(this)">'
+        + '<div class="hist-item-inner">'
+        + '<span class="hist-item-tag ' + tagClass + '">' + tagText + '</span>'
+        + '<span class="hist-item-date">' + esc(v.label) + '</span>'
+        + '<span class="hist-item-size">' + esc(kb) + '</span>'
+        + '</div>'
+        + '<button class="hist-item-del" onclick="deleteVersion(event,\'' + esc(v.ts) + '\')" title="Eliminar esta versión">✕</button>'
+        + '</div>';
+    });
+    list.innerHTML = currentEntry + historyEntries.join('');
+  } catch(e) {
+    document.getElementById('histList').innerHTML = '<div class="hist-list-empty">Error al cargar versiones.</div>';
+  }
+}
+
+function selectVersion(el) {
+  document.querySelectorAll('.hist-item').forEach(function(i){ i.classList.remove('active'); });
+  el.classList.add('active');
+  _histCurrentTs = el.dataset.ts;
+  var isCurrent   = (_histCurrentTs === '__current__');
+  var isPreRestore = el.dataset.prerestore === '1';
+  var label = el.dataset.label;
+  var typeLabel = isCurrent ? '' : (isPreRestore ? 'Versión revertida — ' : 'Versión anterior — ');
+  document.getElementById('histPreviewLabel').textContent = typeLabel + label;
+  document.getElementById('histPreviewBar').style.display = '';
+  document.getElementById('histPreviewEmpty').style.display = 'none';
+  // Hide restore button for the current version (it's already on the site)
+  document.getElementById('btnRestoreVersion').style.display = isCurrent ? 'none' : '';
+  var iframe = document.getElementById('histIframe');
+  iframe.style.display = 'block';
+  if (isCurrent) {
+    iframe.src = '/' + S.currentPath;
+  } else {
+    iframe.src = '/_vp/' + S.currentPath + '?ts=' + encodeURIComponent(_histCurrentTs);
+  }
+}
+
+function openVersionInTab() {
+  if (!_histCurrentTs) return;
+  var url = (_histCurrentTs === '__current__')
+    ? '/' + S.currentPath
+    : '/_vp/' + S.currentPath + '?ts=' + encodeURIComponent(_histCurrentTs);
+  window.open(url, '_blank');
+}
+
+async function deleteVersion(event, ts) {
+  event.stopPropagation();
+  if (!confirm('¿Eliminar definitivamente esta versión del historial?')) return;
+  try {
+    var r = await fetch('/api/version?file=' + encodeURIComponent(S.currentPath) + '&ts=' + encodeURIComponent(ts), { method: 'DELETE' });
+    var data = await r.json();
+    if (data.ok) {
+      if (_histCurrentTs === ts) {
+        _histCurrentTs = null;
+        document.getElementById('histPreviewBar').style.display = 'none';
+        document.getElementById('histPreviewEmpty').style.display = '';
+        document.getElementById('histIframe').style.display = 'none';
+        document.getElementById('histIframe').src = 'about:blank';
+      }
+      loadVersionList();
+    } else {
+      toast('Error al eliminar: ' + (data.error || 'desconocido'), 'err');
+    }
+  } catch(e) {
+    toast('Error de conexión', 'err');
+  }
+}
+
+async function pruneVersions() {
+  var keepN = parseInt(document.getElementById('histKeepN').value, 10);
+  if (isNaN(keepN) || keepN < 1) { toast('Introduce un número válido de versiones a conservar.', 'err'); return; }
+  var totalItems = document.querySelectorAll('.hist-item').length;
+  var toDelete = Math.max(0, totalItems - keepN);
+  if (toDelete === 0) { toast('No hay versiones antiguas que eliminar con ese criterio.', 'info'); return; }
+  if (!confirm('Se eliminarán las ' + toDelete + ' versiones más antiguas, conservando las ' + keepN + ' más recientes. ¿Continuar?')) return;
+  try {
+    var r = await fetch('/api/versions-prune', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ file: S.currentPath, keepLast: keepN })
+    });
+    var data = await r.json();
+    if (data.ok) {
+      toast(data.deleted + ' versiones eliminadas.', 'ok');
+      _histCurrentTs = null;
+      document.getElementById('histPreviewBar').style.display = 'none';
+      document.getElementById('histPreviewEmpty').style.display = '';
+      document.getElementById('histIframe').style.display = 'none';
+      document.getElementById('histIframe').src = 'about:blank';
+      loadVersionList();
+    } else {
+      toast('Error: ' + (data.error || 'desconocido'), 'err');
+    }
+  } catch(e) {
+    toast('Error de conexión', 'err');
+  }
+}
+
+async function restoreVersion() {
+  if (!_histCurrentTs) return;
+  var labelEl = document.querySelector('.hist-item.active .hist-item-date');
+  var labelText = labelEl ? labelEl.textContent : _histCurrentTs;
+  if (!confirm('¿Seguro que quieres restaurar la versión del ' + labelText + '?\n\nEl estado actual de la página se guardará automáticamente en el historial antes de restaurar.')) return;
+  var btn = document.getElementById('btnRestoreVersion');
+  btn.textContent = 'Restaurando…';
+  btn.disabled = true;
+  try {
+    var r = await fetch('/api/restore', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ file: S.currentPath, ts: _histCurrentTs })
+    });
+    var data = await r.json();
+    if (data.ok) {
+      closeHistory();
+      toast('Versión restaurada. Recargando página…', 'ok');
+      setTimeout(function(){ loadPage(S.currentPath); }, 800);
+    } else {
+      toast('Error al restaurar: ' + (data.error || 'desconocido'), 'err');
+    }
+  } catch(e) {
+    toast('Error de conexión al restaurar', 'err');
+  }
+  btn.textContent = '↩ Restaurar esta versión';
+  btn.disabled = false;
 }
 </script>
 </body>
