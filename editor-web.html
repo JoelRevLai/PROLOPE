@@ -85,7 +85,7 @@
     .nav-group { padding: .3rem 0 }
     .nav-group-title {
       font-family: 'Raleway', sans-serif;
-      font-size: .62rem;
+      font-size: .69rem;
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
@@ -95,7 +95,7 @@
     .nav-item {
       display: block;
       padding: .38rem 1.1rem .38rem 1.3rem;
-      font-size: .84rem;
+      font-size: .91rem;
       color: rgba(255,255,255,.65);
       cursor: pointer;
       transition: background .15s, color .15s, padding-left .15s;
@@ -104,7 +104,7 @@
       background: none;
       width: 100%;
       text-align: left;
-      font-family: 'EB Garamond', serif;
+      font-family: 'Raleway', sans-serif;
       border-left: 2px solid transparent;
       line-height: 1.4;
     }
@@ -221,7 +221,7 @@
     }
     .ed-section h2 {
       font-family: 'Raleway', sans-serif;
-      font-size: .93rem;
+      font-size: 1rem;
       font-weight: 600;
       color: var(--azul);
       margin-bottom: .9rem;
@@ -274,19 +274,19 @@
       display: block;
       font-family: 'Raleway', sans-serif;
       font-weight: 600;
-      font-size: .78rem;
+      font-size: .85rem;
       color: var(--azul);
       margin: 0 0 .28rem;
       letter-spacing: .01em;
     }
     .field { margin-bottom: .9rem }
     .field:last-child { margin-bottom: 0 }
-    .help { font-size: .74rem; color: var(--texto-suave); margin-bottom: .28rem; line-height: 1.45; font-family: 'Raleway', sans-serif }
+    .help { font-size: .8rem; color: var(--texto-suave); margin-bottom: .28rem; line-height: 1.45; font-family: 'Raleway', sans-serif }
     input[type=text], select, textarea {
       width: 100%;
       padding: .48rem .7rem;
       font-family: 'EB Garamond', serif;
-      font-size: .93rem;
+      font-size: 1rem;
       border: 1.5px solid var(--borde);
       border-radius: 6px;
       background: var(--crema);
@@ -331,7 +331,7 @@
       padding: .55rem .7rem;
       background: var(--crema);
       font-family: 'EB Garamond', serif;
-      font-size: .95rem;
+      font-size: 1rem;
       line-height: 1.65;
       color: var(--texto);
       outline: none;
@@ -358,7 +358,7 @@
       border-radius: 6px;
       cursor: pointer;
       font-family: 'Raleway', sans-serif;
-      font-size: .79rem;
+      font-size: .86rem;
       font-weight: 600;
       letter-spacing: .01em;
       transition: opacity .15s, transform .1s, box-shadow .15s;
@@ -933,6 +933,13 @@ function splitHtml(html) {
 function extractHero(el) {
   var h1 = el.querySelector('h1');
   var bc = el.querySelector('.breadcrumb, .article-breadcrumb, .page-hero-breadcrumb');
+  var bgEl = el.querySelector('.page-hero-bg, .article-hero-bg');
+  var bgImage = '';
+  if (bgEl) {
+    var bgStyle = bgEl.style.backgroundImage || bgEl.getAttribute('style') || '';
+    var mBg = bgStyle.match(/url\(['"]?(.*?)['"]?\)/);
+    if (mBg) bgImage = mBg[1];
+  }
   var d = {
     title: h1 ? h1.innerHTML.trim() : '',
     breadcrumbLast: '',
@@ -940,6 +947,7 @@ function extractHero(el) {
     date: (el.querySelector('.article-date')||{}).textContent||'',
     subtitle: (el.querySelector('.idx-hero-sub')||{}).textContent||'',
     type: el.classList.contains('article-hero') ? 'article' : el.classList.contains('idx-hero') ? 'index' : 'page',
+    bgImage: bgImage,
   };
   if (bc) {
     var nodes = bc.childNodes;
@@ -1471,6 +1479,18 @@ function renderEditor() {
     if (S.heroData.type==='index') {
       h += richLineField('Subtítulo','edHeroSub',S.heroData.subtitle);
     }
+    // Hero background image picker
+    h += '<div class="field"><label>Fotografía de cabecera</label>';
+    h += '<p class="help">Imagen de fondo del encabezado de esta página. Puede seleccionar una de la galería o subir una nueva.</p>';
+    h += '<div class="img-picker">';
+    h += '<input type="text" id="edHeroBg" value="'+escA(S.heroData.bgImage||'')+'" placeholder="ej: ../media/fondo-grupo.png">';
+    h += '<button class="btn btn-outline btn-sm" type="button" onclick="openImgModal(\'edHeroBg\')">🖼 Galería</button>';
+    h += '<label class="btn btn-outline btn-sm img-upload-btn" title="Subir imagen nueva">📁 Subir<input type="file" accept="image/*" style="display:none" onchange="handleImgUpload(this,\'edHeroBg\')"></label>';
+    h += '</div>';
+    if (S.heroData.bgImage) {
+      h += '<div style="margin-top:.5rem"><img src="'+escA(S.heroData.bgImage)+'" alt="Vista previa" style="max-height:80px;border-radius:5px;border:1px solid var(--borde);object-fit:cover;max-width:100%"></div>';
+    }
+    h += '</div>';
     h += '</div>';
   }
 
@@ -3751,6 +3771,7 @@ function readFormValues() {
     var c=document.getElementById('edHeroCat'); if(c) S.heroData.catBadge=c.value;
     var d=document.getElementById('edHeroDate'); if(d) S.heroData.date=d.value;
     var sEl=document.querySelector('[data-rich-id="edHeroSub"]'); if(sEl) S.heroData.subtitle=sEl.innerHTML; else { var s2=document.getElementById('edHeroSub'); if(s2) S.heroData.subtitle=s2.value; }
+    var bgI=document.getElementById('edHeroBg'); if(bgI) S.heroData.bgImage=bgI.value.trim();
   }
   readSidebarCards();
   if (S.pageType === 'news') {
@@ -3782,6 +3803,10 @@ function genHero() {
   }
   if (S.heroData.type==='index') {
     var sub=hero.querySelector('.idx-hero-sub'); if(sub) sub.innerHTML=S.heroData.subtitle;
+  }
+  if (S.heroData.bgImage) {
+    var bgDiv=hero.querySelector('.page-hero-bg, .article-hero-bg');
+    if (bgDiv) bgDiv.style.backgroundImage="url('"+S.heroData.bgImage+"')";
   }
   var html = hero.outerHTML.replace(/<(img|br|hr|meta|link|input|source)(\s[^>]*?)(?<!\/)>/gi,'<$1$2 />');
   return '\n  '+html+'\n';
@@ -4869,33 +4894,53 @@ function loadNewPage() {
   var _ws = document.getElementById('welcomeScreen'); if (_ws) _ws.style.display = 'none';
 
   var dirs = [
-    {v:'el-grupo', l:'El grupo'},
-    {v:'objetivos', l:'Objetivos'},
-    {v:'publicaciones', l:'Publicaciones'},
-    {v:'proyectos-digitales', l:'Proyectos digitales'},
-    {v:'formacion', l:'Formación'},
-    {v:'eventos', l:'Eventos'},
-    {v:'multimedia', l:'Multimedia'},
+    {v:'el-grupo', l:'El grupo', bg:'fondo-grupo.png'},
+    {v:'objetivos', l:'Objetivos', bg:'fondo-vida.jpg'},
+    {v:'publicaciones', l:'Publicaciones', bg:'fondo-grupo.png'},
+    {v:'proyectos-digitales', l:'Proyectos digitales', bg:'fondo-grupo.png'},
+    {v:'formacion', l:'Formación', bg:'fondo-tesis.jpg'},
+    {v:'eventos', l:'Eventos', bg:'eventos-fondo.jpg'},
+    {v:'multimedia', l:'Multimedia', bg:'fondo-multimedia.jpg'},
   ];
-  var dirOpts = dirs.map(function(d){ return '<option value="'+d.v+'">'+d.l+'</option>'; }).join('');
+  var dirOpts = dirs.map(function(d){ return '<option value="'+d.v+'" data-bg="'+d.bg+'">'+d.l+'</option>'; }).join('');
 
-  var h = '<div class="ed-section" style="padding:1.5rem;max-width:600px">';
+  var h = '<div class="ed-section" style="padding:1.5rem;max-width:620px">';
   h += '<h2 style="margin-bottom:.5rem">Nueva página</h2>';
   h += '<p class="help" style="margin-bottom:1.2rem">Crea una nueva página de contenido en el sitio. La página se generará con la plantilla estándar de artículo.</p>';
   h += '<div class="field"><label>Sección *</label>';
-  h += '<select id="np-dir">'+dirOpts+'</select></div>';
+  h += '<select id="np-dir" onchange="npUpdateBg()">'+dirOpts+'</select></div>';
   h += '<div class="field"><label>Título de la página *</label>';
   h += '<input type="text" id="np-title" placeholder="ej: Nuestra historia" oninput="npAutoSlug()"></div>';
   h += '<div class="field"><label>Nombre del archivo *</label><p class="help">Solo letras minúsculas, números y guiones. Termina en .html</p>';
   h += '<input type="text" id="np-filename" placeholder="ej: nuestra-historia.html"></div>';
   h += '<div class="field"><label>Texto del breadcrumb (opcional)</label><p class="help">Si se deja vacío, se usa el título.</p>';
   h += '<input type="text" id="np-breadcrumb" placeholder="ej: El grupo › Nuestra historia"></div>';
+  h += '<div class="field"><label>Fotografía de cabecera</label>';
+  h += '<p class="help">Imagen de fondo del encabezado. Se usa la predeterminada de la sección, pero puedes cambiarla.</p>';
+  h += '<div class="img-picker">';
+  h += '<input type="text" id="np-bg" value="../media/'+dirs[0].bg+'" placeholder="../media/fondo-grupo.png">';
+  h += '<button class="btn btn-outline btn-sm" type="button" onclick="openImgModal(\'np-bg\')">🖼 Galería</button>';
+  h += '<label class="btn btn-outline btn-sm img-upload-btn" title="Subir imagen nueva">📁 Subir<input type="file" accept="image/*" style="display:none" onchange="handleImgUpload(this,\'np-bg\')"></label>';
+  h += '</div>';
+  h += '<div id="np-bg-preview" style="margin-top:.5rem"><img src="../media/'+dirs[0].bg+'" alt="Vista previa" style="max-height:70px;border-radius:5px;border:1px solid var(--borde);object-fit:cover;max-width:100%"></div>';
+  h += '</div>';
   h += '<div style="margin-top:1.2rem;display:flex;gap:.8rem;align-items:center">';
   h += '<button class="btn btn-green" onclick="createNewPage()">Crear página</button>';
   h += '<span id="np-msg" style="font-size:.82rem;color:#888"></span>';
   h += '</div></div>';
 
   document.getElementById('edBody').innerHTML = h;
+}
+
+function npUpdateBg() {
+  var sel = document.getElementById('np-dir');
+  var opt = sel.options[sel.selectedIndex];
+  var bg = opt.dataset.bg || 'fondo-grupo.png';
+  var bgPath = '../media/'+bg;
+  var inp = document.getElementById('np-bg');
+  var prev = document.getElementById('np-bg-preview');
+  if (inp) inp.value = bgPath;
+  if (prev) prev.innerHTML = '<img src="'+bgPath+'" alt="Vista previa" style="max-height:70px;border-radius:5px;border:1px solid var(--borde);object-fit:cover;max-width:100%">';
 }
 
 function npAutoSlug() {
@@ -4913,6 +4958,9 @@ async function createNewPage() {
   var title = document.getElementById('np-title').value.trim();
   var filename = document.getElementById('np-filename').value.trim();
   var breadcrumbSection = document.getElementById('np-breadcrumb').value.trim();
+  var bgImageRaw = (document.getElementById('np-bg')||{}).value || '';
+  // Normalize: strip leading '../' so server gets 'media/filename.jpg'
+  var bgImage = bgImageRaw.trim().replace(/^\.\.\//, '');
   var msg = document.getElementById('np-msg');
   if (!title || !filename) { msg.textContent = 'El título y el nombre de archivo son obligatorios.'; msg.style.color='var(--rojo)'; return; }
   if (!/^[a-z0-9][a-z0-9\-]*\.html$/.test(filename)) { msg.textContent = 'Nombre de archivo inválido (solo letras minúsculas, números y guiones, termina en .html).'; msg.style.color='var(--rojo)'; return; }
@@ -4921,7 +4969,7 @@ async function createNewPage() {
     var r = await fetch('/api/new-page', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ dir, filename, title, breadcrumbSection })
+      body: JSON.stringify({ dir, filename, title, breadcrumbSection, bgImage })
     });
     var data = await r.json();
     if (!data.ok) throw new Error(data.error || 'Error desconocido');

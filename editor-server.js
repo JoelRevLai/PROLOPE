@@ -224,8 +224,10 @@ function removePageFromSidebarNavLists(html, filename) {
   });
 }
 
-function buildNewPageHtml({ dir, title, breadcrumbSection, navHtml }) {
-  const bg = SECTION_BG[dir] || 'fondo-grupo.png';
+function buildNewPageHtml({ dir, title, breadcrumbSection, navHtml, bgImage }) {
+  // bgImage may arrive as 'media/file.jpg' — strip the prefix since template adds '../media/'
+  const bgNorm = bgImage ? bgImage.replace(/^(\.\.\/)?media\//, '') : '';
+  const bg = bgNorm || SECTION_BG[dir] || 'fondo-grupo.png';
   const sectionLabel = SECTION_LABEL[dir] || dir;
   const themeToggleSvgSun = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
   const themeToggleSvgMoon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
@@ -683,7 +685,7 @@ const server = http.createServer(async (req, res) => {
     try {
       const body = await readBody(req);
       const data = JSON.parse(body);
-      const { dir, filename, title, breadcrumbSection } = data;
+      const { dir, filename, title, breadcrumbSection, bgImage } = data;
       if (!dir || !filename || !title) throw new Error('Faltan campos obligatorios (dir, filename, title).');
       const validDirs = ['el-grupo','objetivos','publicaciones','proyectos-digitales','formacion','eventos','multimedia'];
       if (!validDirs.includes(dir)) throw new Error('Sección inválida: ' + dir);
@@ -694,7 +696,7 @@ const server = http.createServer(async (req, res) => {
       const menuPath = path.join(ROOT, 'menu-data.json');
       const menu = fs.existsSync(menuPath) ? JSON.parse(fs.readFileSync(menuPath, 'utf8')) : getDefaultMenu();
       const navHtml = buildNavHtml(menu, dir);
-      const html = buildNewPageHtml({ dir, title, breadcrumbSection, navHtml });
+      const html = buildNewPageHtml({ dir, title, breadcrumbSection, navHtml, bgImage });
       fs.writeFileSync(full, html, 'utf8');
       // Add new page to sidebar-nav-list cards in sibling pages of the same section
       const siblingPages = listHtmlFiles(ROOT).filter(p => p.dir === dir && p.path !== rel);

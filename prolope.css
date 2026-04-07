@@ -274,6 +274,8 @@ body {
   background: var(--crema);
   font-size: 17px;
   line-height: 1.65;
+  font-feature-settings: "liga" 1, "calt" 1, "kern" 1;
+  -webkit-font-feature-settings: "liga" 1, "calt" 1, "kern" 1;
 }
 
 a {
