@@ -189,8 +189,8 @@ function getDefaultMenu() {
 const SECTION_BG = {
   'el-grupo': 'fondo-grupo.png',
   'objetivos': 'fondo-vida.jpg',
-  'publicaciones': 'fondo-grupo.png',
-  'proyectos-digitales': 'fondo-grupo.png',
+  'publicaciones': 'comedias_parte-veinte-y-una-fondo.jpg',
+  'proyectos-digitales': 'foto-proyectos-digitales.png',
   'formacion': 'fondo-tesis.jpg',
   'eventos': 'eventos-fondo.jpg',
   'multimedia': 'fondo-multimedia.jpg',
