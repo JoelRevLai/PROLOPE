@@ -136,11 +136,47 @@
 
       <h2>Bilbioteca Lope de Vega</h2>
 
-      <div class="libro-block libro-block--modal" id="expostulatio-spongiae" data-lb='{"title":"Expostulatio Spongiae","author":"Lope de Vega Carpio","editor":"Pedro Conde Parrado y Xavier Tubau Moreu","year":"2016","editorial":"Gredos","city":"Barcelona","collection":"Biblioteca Lope de Vega","isbn":"9788424928964","buyUrl":"https://www.rbalibros.com/gredos/expostulatio_4503","image":"../media/expostulatio_c68feee3.jpg","displayMode":"modal","extraFields":[]}' onclick="openLb(this)">
-        <img src="../media/expostulatio_c68feee3.jpg" alt="Expostulatio Spongiae" class="libro-block-cover">
-        <div class="libro-block-title">Expostulatio Spongiae</div>
-        <div class="libro-block-author">Lope de Vega Carpio</div>
-      </div>
+      <details class="libro-block libro-block--dropdown" id="expostulatio-spongiae" data-lb='{"title":"Expostulatio Spongiae","author":"Lope de Vega Carpio","editor":"Pedro Conde Parrado y Xavier Tubau Moreu","year":"2016","editorial":"Gredos","city":"Barcelona","collection":"Biblioteca Lope de Vega","isbn":"9788424928964","buyUrl":"https://www.rbalibros.com/gredos/expostulatio_4503","image":"../media/expostulatio_c68feee3.jpg","displayMode":"dropdown","extraFields":[]}'>
+        <summary class="libro-block-summary">
+          <img src="../media/expostulatio_c68feee3.jpg" alt="Expostulatio Spongiae" class="libro-block-cover">
+          <div class="libro-block-caption">
+            <strong class="libro-block-title">Expostulatio Spongiae</strong>
+            <span class="libro-block-author">Lope de Vega Carpio · 2016</span>
+          </div>
+        </summary>
+        <div class="libro-block-panel"><dl>
+          <dt>Autor/es</dt><dd>Lope de Vega Carpio</dd>
+          <dt>Editor/es</dt><dd>Pedro Conde Parrado y Xavier Tubau Moreu</dd>
+          <dt>Año</dt><dd>2016</dd>
+          <dt>Editorial</dt><dd>Gredos</dd>
+          <dt>Ciudad</dt><dd>Barcelona</dd>
+          <dt>Colección</dt><dd>Biblioteca Lope de Vega</dd>
+          <dt>ISBN</dt><dd>9788424928964</dd>
+        </dl>
+          <a href="https://www.rbalibros.com/gredos/expostulatio_4503" class="libro-block-buy" target="_blank" rel="noopener noreferrer">Más información</a>
+        </div>
+      </details>
+
+      <details class="libro-block libro-block--dropdown" id="el-maestro-del-danzar-la-creacion-del-mundo" data-lb='{"title":"El maestro del danzar - La creación del mundo","author":"Lope de Vega Carpio","editor":"Daniel Fernández Rodríguez y Alessandro Martinengo","year":"2012","editorial":"Gredos","city":"Barcelona","collection":"Biblioteca Lope de Vega","isbn":"9788424936594","buyUrl":"https://www.rbalibros.com/gredos/maestro-danzar-creacion-del-mundo_4499","image":"../media/maestro_danzar.webp","displayMode":"dropdown","extraFields":[]}'>
+        <summary class="libro-block-summary">
+          <img src="../media/maestro_danzar.webp" alt="El maestro del danzar - La creación del mundo" class="libro-block-cover">
+          <div class="libro-block-caption">
+            <strong class="libro-block-title">El maestro del danzar - La creación del mundo</strong>
+            <span class="libro-block-author">Lope de Vega Carpio · 2012</span>
+          </div>
+        </summary>
+        <div class="libro-block-panel"><dl>
+          <dt>Autor/es</dt><dd>Lope de Vega Carpio</dd>
+          <dt>Editor/es</dt><dd>Daniel Fernández Rodríguez y Alessandro Martinengo</dd>
+          <dt>Año</dt><dd>2012</dd>
+          <dt>Editorial</dt><dd>Gredos</dd>
+          <dt>Ciudad</dt><dd>Barcelona</dd>
+          <dt>Colección</dt><dd>Biblioteca Lope de Vega</dd>
+          <dt>ISBN</dt><dd>9788424936594</dd>
+        </dl>
+          <a href="https://www.rbalibros.com/gredos/maestro-danzar-creacion-del-mundo_4499" class="libro-block-buy" target="_blank" rel="noopener noreferrer">Más información</a>
+        </div>
+      </details>
 
 
 
@@ -149,7 +185,7 @@
   if(window.__lbI)return;window.__lbI=1;
   var s=document.createElement('style');
   s.textContent='.libro-block{display:inline-flex;flex-direction:column;align-items:center;text-align:center;max-width:175px;margin:0 1.2rem 1.5rem 0;vertical-align:top;cursor:pointer}'
-  +'.libro-block-cover{width:160px;border-radius:5px;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:transform .18s,box-shadow .18s}'
+  +'.libro-block-cover{width:160px;height:240px;object-fit:cover;object-position:center;border-radius:5px;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:transform .18s,box-shadow .18s}'
   +'.libro-block--modal .libro-block-cover:hover{transform:translateY(-5px);box-shadow:0 10px 28px rgba(0,0,0,.28)}'
   +'.libro-block-cover--ph{width:160px;height:240px;background:var(--crema,#faf8f4);border:1px solid var(--borde,#d5cfc5);border-radius:5px;display:inline-block}'
   +'.libro-block-title{margin-top:.5rem;font-family:Raleway,sans-serif;font-weight:600;font-size:.82rem;color:var(--azul,#1a3a5c);max-width:160px;line-height:1.3}'
@@ -159,9 +195,9 @@
   +'.lbMdlBox{background:var(--blanco,#fff);border-radius:4px;width:100%;max-width:780px;max-height:85vh;display:flex;flex-direction:column;overflow:hidden;position:relative;box-shadow:0 24px 80px rgba(0,0,0,.35)}'
   +'.lbMdlClose{position:absolute;top:.7rem;right:.9rem;background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--gris-texto,#aaa);line-height:1;padding:.2rem .4rem;border-radius:4px;transition:color .12s;z-index:1}'
   +'.lbMdlClose:hover{color:var(--azul,#1a3a5c)}'
-  +'.lbMdlLayout{display:grid;grid-template-columns:220px 1fr;flex:1;min-height:0;overflow:hidden}'
+  +'.lbMdlLayout{display:grid;grid-template-columns:220px 1fr;height:420px;overflow:hidden}'
   +'.lbMdlSide{overflow:hidden;min-height:0;background:var(--azul,#1a3a5c)}'
-  +'.lbMdlImg{width:100%;height:100%;object-fit:contain;object-position:top;display:block;cursor:zoom-in}'
+  +'.lbMdlImg{width:100%;height:100%;object-fit:cover;object-position:center;display:block;cursor:zoom-in}'
   +'.lbMdlMain{overflow-y:auto;padding:1.8rem 2rem;display:flex;flex-direction:column;min-height:0}'
   +'.lbMdlH{font-family:Raleway,sans-serif;font-size:1.25rem;font-weight:700;color:var(--azul,#1a3a5c);margin:0 0 .8rem;line-height:1.3;padding-right:1.5rem}'
   +'.lbMdlDl{display:grid;grid-template-columns:auto 1fr;gap:.28rem .8rem;margin:.1rem 0 0}'

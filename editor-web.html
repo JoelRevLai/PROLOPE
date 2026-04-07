@@ -3947,7 +3947,7 @@ function genLibroModalScript() {
     + '  var s=document.createElement(\'style\');\n'
     /* ── Modal-mode thumbnail (inline portada clicable) ── */
     + '  s.textContent=\'.libro-block{display:inline-flex;flex-direction:column;align-items:center;text-align:center;max-width:175px;margin:0 1.2rem 1.5rem 0;vertical-align:top;cursor:pointer}\'\n'
-    + '  +\'.libro-block-cover{width:160px;height:240px;object-fit:cover;object-position:top;border-radius:5px;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:transform .18s,box-shadow .18s}\'\n'
+    + '  +\'.libro-block-cover{width:160px;height:240px;object-fit:cover;object-position:center;border-radius:5px;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:transform .18s,box-shadow .18s}\'\n'
     + '  +\'.libro-block--modal .libro-block-cover:hover{transform:translateY(-5px);box-shadow:0 10px 28px rgba(0,0,0,.28)}\'\n'
     + '  +\'.libro-block-cover--ph{width:160px;height:240px;background:var(--crema,#faf8f4);border:1px solid var(--borde,#d5cfc5);border-radius:5px;display:inline-block}\'\n'
     + '  +\'.libro-block-title{margin-top:.5rem;font-family:Raleway,sans-serif;font-weight:600;font-size:.82rem;color:var(--azul,#1a3a5c);max-width:160px;line-height:1.3}\'\n'
@@ -3962,7 +3962,7 @@ function genLibroModalScript() {
     /* layout = grid 2 cols, imagen llena todo el alto */
     + '  +\'.lbMdlLayout{display:grid;grid-template-columns:220px 1fr;height:420px;overflow:hidden}\'\n'
     + '  +\'.lbMdlSide{overflow:hidden;min-height:0;background:var(--azul,#1a3a5c)}\'\n'
-    + '  +\'.lbMdlImg{width:100%;height:100%;object-fit:contain;object-position:top;display:block;cursor:zoom-in}\'\n'
+    + '  +\'.lbMdlImg{width:100%;height:100%;object-fit:cover;object-position:center;display:block;cursor:zoom-in}\'\n'
     + '  +\'.lbMdlMain{overflow-y:auto;padding:1.8rem 2rem;display:flex;flex-direction:column;min-height:0}\'\n'
     + '  +\'.lbMdlH{font-family:Raleway,sans-serif;font-size:1.25rem;font-weight:700;color:var(--azul,#1a3a5c);margin:0 0 .8rem;line-height:1.3;padding-right:1.5rem}\'\n'
     + '  +\'.lbMdlDl{display:grid;grid-template-columns:auto 1fr;gap:.28rem .8rem;margin:.1rem 0 0}\'\n'
