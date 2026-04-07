@@ -41,7 +41,6 @@
                 <li><a href="estatutos.html">Estatutos del grupo</a></li>
                 <li><a href="miembros.html">Miembros</a></li>
                 <li><a href="contacto.html">Contacto y ubicación</a></li>
-                <li><a href="bad-gyal.html">Bad Gyal</a></li>
               </ul>
             </div>
           </li>
@@ -117,7 +116,7 @@
   </header>
 
   <section class="page-hero">
-    <div class="page-hero-bg" style="background-image: url('../media/fondo-grupo.png'); background-size: fill; background-repeat: no-repeat; background-position: right; opacity: 0.15;"></div>
+    <div class="page-hero-bg" style="background-image: url('../media/foto-cotejo2.jpg'); background-size: fill; background-repeat: no-repeat; background-position: right; opacity: 0.15;"></div>
     <div class="page-hero-inner">
       <div class="breadcrumb">
         Inicio

@@ -116,7 +116,7 @@
   </header>
 
   <section class="page-hero">
-    <div class="page-hero-bg" style="background-image: url('../media/fondo-grupo.png'); background-size: fill; background-repeat: no-repeat; background-position: right; opacity: 0.15;"></div>
+    <div class="page-hero-bg" style="background-image: url('../media/foto-cotejo2.jpg'); background-size: fill; background-repeat: no-repeat; background-position: right; opacity: 0.15;"></div>
     <div class="page-hero-inner">
       <div class="breadcrumb">
         Inicio
@@ -567,15 +567,6 @@
   data-bio="&lt;p&gt;Directora de Investigación en Filología Inglesa (sección Literatura) en la Universitat Autònoma de Barcelona. Research Associate del CMRS Center for Early Global Studies, UCLA.&lt;/p&gt;&lt;p&gt;Especialista en literatura premoderna escrita por mujeres con una visión integradora global, su enfoque abarca los estudios de género, la crítica textual, la historia intelectual, estudios sobre recepción, historia social de la religión, y cultura material.&lt;/p&gt;&lt;p&gt;Dirige el proyecto del Consejo Europeo de Investigación ERC Starting Grant &lt;em&gt;WINK: Women’s Invisible Ink: Trans-Genre Writing and the Gendering of Intellectual Value in Early Modernity&lt;/em&gt;. He obtenido becas de investigación postdoctoral de la University of California Los Angeles y Harvard University, entre otras.&lt;/p&gt;&lt;p&gt;Entre sus publicaciones destacan los libros &lt;em&gt;Women’s Prophetic Writings in Seventeenth Century Britain&lt;/em&gt; (Routledge, 2017), y, en coedición con Nina Geerdink, &lt;em&gt;Economic Imperatives for Women’s Writing in Early Modern Europe&lt;/em&gt; (Brill, 2018). Dirige la colección &lt;em&gt;Early Modern Women Writers in Europe: Texts, Debates and Genealogies of Knowledge&lt;/em&gt; (Brepols).&lt;/p&gt;&lt;p&gt;Ha sido galardonada con el premio ICREA Academia y es miembro de la Young Academy of Europe (YAE).&lt;/p&gt;">
 <img class="cphoto" src="../media/font_carme.jpg" alt="Carme Font" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
 <div class="cbody"><p class="cname">Carme Font</p><p class="crole">Investigadora</p><p class="cuni">Universitat Autònoma de Barcelona</p></div>
-<span class="chint">Ver ficha →</span>
-</div>
-
-<div class="card" id="joan-antoni" tabindex="0" role="button"
-  data-name="joan antoni" data-role="Investigador" data-uni="" data-email="" data-orcid="0000-0001-5787-7741"
-  data-photo=""
-  data-bio="&lt;p&gt;Biografía del miembro.&lt;/p&gt;">
-<img class="cphoto" src="" alt="joan antoni" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
-<div class="cbody"><p class="cname">joan antoni</p><p class="crole">Investigador</p><p class="cuni"></p></div>
 <span class="chint">Ver ficha →</span>
 </div>
 

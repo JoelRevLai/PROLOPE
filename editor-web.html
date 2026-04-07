@@ -1484,13 +1484,11 @@ function renderEditor() {
     h += '<div class="field"><label>Fotografía de cabecera</label>';
     h += '<p class="help">Imagen de fondo del encabezado de esta página. Puede seleccionar una de la galería o subir una nueva.</p>';
     h += '<div class="img-picker">';
-    h += '<input type="text" id="edHeroBg" value="'+escA(S.heroData.bgImage||'')+'" placeholder="ej: ../media/fondo-grupo.png">';
+    h += '<input type="text" id="edHeroBg" value="'+escA(S.heroData.bgImage||'')+'" placeholder="ej: ../media/fondo-grupo.png" oninput="refreshImgPreview(\'edHeroBg\',this.value)">';
     h += '<button class="btn btn-outline btn-sm" type="button" onclick="openImgPicker(\'edHeroBg\')">🖼 Galería</button>';
     h += '<label class="btn btn-outline btn-sm img-upload-btn" title="Subir imagen nueva">📁 Subir<input type="file" accept="image/*" style="display:none" onchange="uploadImage(\'edHeroBg\',this)"></label>';
     h += '</div>';
-    if (S.heroData.bgImage) {
-      h += '<div style="margin-top:.5rem"><img src="'+escA(S.heroData.bgImage)+'" alt="Vista previa" style="max-height:80px;border-radius:5px;border:1px solid var(--borde);object-fit:cover;max-width:100%"></div>';
-    }
+    h += '<div id="edHeroBg-preview" style="margin-top:.5rem">'+(S.heroData.bgImage?'<img src="'+escA(S.heroData.bgImage)+'" alt="Vista previa" style="max-height:80px;border-radius:5px;border:1px solid var(--borde);object-fit:cover;max-width:100%">':'')+'</div>';
     h += '</div>';
     h += '</div>';
   }
@@ -1613,6 +1611,7 @@ function uploadImage(inputId, fileInput) {
   pendingUploads[inputId] = { file: file, tempUrl: tempUrl };
   var input = document.getElementById(inputId);
   if (input) input.value = tempUrl;
+  refreshImgPreview(inputId, tempUrl);
   toast('Imagen lista. Se subirá al guardar.', 'info');
   fileInput.value = '';
 }
@@ -2199,6 +2198,14 @@ function openImgPicker(inputId) {
   document.getElementById('imgSearch').value = '';
 }
 
+function refreshImgPreview(inputId, val) {
+  // Look for a sibling preview div named <inputId>-preview
+  var prev = document.getElementById(inputId+'-preview');
+  if (!prev) return;
+  var img = prev.querySelector('img');
+  if (img) img.src = val;
+}
+
 function pickImage(filename) {
   if (imgPickerCallback) {
     var input = document.getElementById(imgPickerCallback);
@@ -2206,6 +2213,7 @@ function pickImage(filename) {
     var depth = S.currentPath.split('/').length - 1;
     var prefix = depth > 0 ? '../' : '';
     input.value = prefix + 'media/' + filename;
+    refreshImgPreview(imgPickerCallback, input.value);
   }
   closeImgModal();
 }
@@ -4914,11 +4922,11 @@ function loadSectionHero() {
   h += '<div class="field"><label>Nueva fotografía de cabecera</label>';
   h += '<p class="help">Selecciona de la galería o sube una imagen nueva. La imagen predeterminada de la sección se muestra a continuación.</p>';
   h += '<div class="img-picker">';
-  h += '<input type="text" id="sh-bg" value="../media/'+dirs[0].bg+'" placeholder="../media/fondo-grupo.png">';
+  h += '<input type="text" id="sh-bg" value="../media/'+dirs[0].bg+'" placeholder="../media/fondo-grupo.png" oninput="refreshImgPreview(\'sh-bg\',this.value)">';
   h += '<button class="btn btn-outline btn-sm" type="button" onclick="openImgPicker(\'sh-bg\')">🖼 Galería</button>';
   h += '<label class="btn btn-outline btn-sm img-upload-btn" title="Subir imagen nueva">📁 Subir<input type="file" accept="image/*" style="display:none" onchange="shUploadAndSet(this)"></label>';
   h += '</div>';
-  h += '<div id="sh-preview" style="margin-top:.6rem"><img src="../media/'+dirs[0].bg+'" alt="Vista previa" style="max-height:100px;border-radius:6px;border:1px solid var(--borde);object-fit:cover;max-width:100%"></div>';
+  h += '<div id="sh-bg-preview" style="margin-top:.6rem"><img src="../media/'+dirs[0].bg+'" alt="Vista previa" style="max-height:100px;border-radius:6px;border:1px solid var(--borde);object-fit:cover;max-width:100%"></div>';
   h += '</div>';
   h += '<div id="sh-page-list" style="margin:.5rem 0 1rem"></div>';
   h += '<div style="display:flex;gap:.8rem;align-items:center;margin-top:.5rem">';
@@ -4937,9 +4945,8 @@ function shUpdatePreview() {
   var bg = opt.dataset.bg || 'fondo-grupo.png';
   var bgPath = '../media/'+bg;
   var inp = document.getElementById('sh-bg');
-  var prev = document.getElementById('sh-preview');
   if (inp) inp.value = bgPath;
-  if (prev) prev.innerHTML = '<img src="'+bgPath+'" alt="Vista previa" style="max-height:100px;border-radius:6px;border:1px solid var(--borde);object-fit:cover;max-width:100%">';
+  refreshImgPreview('sh-bg', bgPath);
   shRenderPageList();
 }
 
@@ -4972,8 +4979,7 @@ async function shUploadAndSet(fileInput) {
     var inp = document.getElementById('sh-bg');
     var val = '../media/'+data.name;
     if (inp) inp.value = val;
-    var prev = document.getElementById('sh-preview');
-    if (prev) prev.innerHTML = '<img src="'+val+'" alt="Vista previa" style="max-height:100px;border-radius:6px;border:1px solid var(--borde);object-fit:cover;max-width:100%">';
+    refreshImgPreview('sh-bg', val);
     toast('Imagen subida: '+data.name, 'ok');
   } catch(e) {
     toast('Error al subir: '+e.message, 'err');
@@ -5041,7 +5047,7 @@ function loadNewPage() {
   h += '<div class="field"><label>Fotografía de cabecera</label>';
   h += '<p class="help">Imagen de fondo del encabezado. Se usa la predeterminada de la sección, pero puedes cambiarla.</p>';
   h += '<div class="img-picker">';
-  h += '<input type="text" id="np-bg" value="../media/'+dirs[0].bg+'" placeholder="../media/fondo-grupo.png">';
+  h += '<input type="text" id="np-bg" value="../media/'+dirs[0].bg+'" placeholder="../media/fondo-grupo.png" oninput="refreshImgPreview(\'np-bg\',this.value)">';
   h += '<button class="btn btn-outline btn-sm" type="button" onclick="openImgPicker(\'np-bg\')">🖼 Galería</button>';
   h += '<label class="btn btn-outline btn-sm img-upload-btn" title="Subir imagen nueva">📁 Subir<input type="file" accept="image/*" style="display:none" onchange="uploadImage(\'np-bg\',this)"></label>';
   h += '</div>';
@@ -5061,9 +5067,8 @@ function npUpdateBg() {
   var bg = opt.dataset.bg || 'fondo-grupo.png';
   var bgPath = '../media/'+bg;
   var inp = document.getElementById('np-bg');
-  var prev = document.getElementById('np-bg-preview');
   if (inp) inp.value = bgPath;
-  if (prev) prev.innerHTML = '<img src="'+bgPath+'" alt="Vista previa" style="max-height:70px;border-radius:5px;border:1px solid var(--borde);object-fit:cover;max-width:100%">';
+  refreshImgPreview('np-bg', bgPath);
 }
 
 function npAutoSlug() {
