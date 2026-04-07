@@ -49,10 +49,26 @@ function listHtmlFiles(root) {
     fs.readdirSync(abs).forEach(f => {
       if (!/\.html?$/i.test(f)) return;
       if (f === 'editor-web.html' || f === 'generador-noticias.html') return;
+      const rel = dir ? dir + '/' + f : f;
+      // Extract <title> from file to preserve special characters (apostrophes, accents…)
+      let title = '';
+      try {
+        const src = fs.readFileSync(path.join(root, rel), 'utf8');
+        const m = src.match(/<title>([\s\S]*?)<\/title>/i);
+        if (m) {
+          // Strip " | PROLOPE" suffix and HTML entities like &rsquo; → '
+          title = m[1].replace(/\s*\|\s*PROLOPE.*$/i, '').trim();
+          title = title.replace(/&rsquo;/g, '\u2019').replace(/&lsquo;/g, '\u2018')
+                       .replace(/&amp;/g, '&').replace(/&quot;/g, '"')
+                       .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n))
+                       .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCharCode(parseInt(h, 16)));
+        }
+      } catch(e) { /* use filename fallback */ }
       pages.push({
-        path: dir ? dir + '/' + f : f,
+        path: rel,
         name: f,
         dir:  dir || '(raíz)',
+        title: title,
       });
     });
   });

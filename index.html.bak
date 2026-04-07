@@ -41,7 +41,6 @@
                 <li><a href="el-grupo/estatutos.html">Estatutos del grupo</a></li>
                 <li><a href="el-grupo/miembros.html">Miembros</a></li>
                 <li><a href="el-grupo/contacto.html">Contacto y ubicación</a></li>
-                <li><a href="el-grupo/bad-gyal.html">Bad Gyal</a></li>
               </ul>
             </div>
           </li>
@@ -177,91 +176,7 @@
   <main>
     <div class="section">
       <h2 class="section-heading">Últimas noticias</h2>
-      <div class="news-grid">
-
-        <article class="news-card">
-          <a href="noticias/noticia-ecuador-2025.html">
-            <img
-              class="news-card-img"
-              src="media/lope-de-vega_ecuador.jpg"
-              alt="Descubren dos libros de la biblioteca personal de Lope de Vega en Ecuador"
-            />
-          </a>
-          <div class="news-card-body">
-            <p class="news-card-meta">30 Jul, 2025 &nbsp;|&nbsp; <a href="noticias/noticias.html">Noticias</a></p>
-            <h3 class="news-card-title">
-              <a href="noticias/noticia-ecuador-2025.html">
-                Descubren dos libros de la biblioteca personal de Lope de Vega en Ecuador
-              </a>
-            </h3>
-            <p class="news-card-excerpt">
-              El investigador Antonio Sánchez Jiménez halla los volúmenes en un convento de Santo Domingo en…
-            </p>
-          </div>
-        </article>
-
-        <article class="news-card">
-          <a href="noticias/noticia-congreso-xi-2024.html">
-            <img
-              class="news-card-img"
-              src="media/XI-Congreso-Prolope.jpg"
-              alt="XI Congreso Internacional Lope de Vega"
-            />
-          </a>
-          <div class="news-card-body">
-            <p class="news-card-meta">13 Nov, 2024 &nbsp;|&nbsp; <a href="eventos/congresos.html">Congreso</a></p>
-            <h3 class="news-card-title">
-              <a href="noticias/noticia-congreso-xi-2024.html">
-                XI Congreso Internacional Lope de Vega: «Lope político»
-              </a>
-            </h3>
-            <p class="news-card-excerpt">
-              Los próximos días 27, 28 y 29 de noviembre tendrá lugar el XI Congreso Internacional Lope de Vega…
-            </p>
-          </div>
-        </article>
-
-        <article class="news-card">
-          <a href="noticias/noticia-olmedo-clasico-18-2024.html">
-            <img
-              class="news-card-img"
-              src="media/olmedo-clasico_18.jpg"
-              alt="Olmedo Clásico: 18 Jornadas"
-            />
-          </a>
-          <div class="news-card-body">
-            <p class="news-card-meta">12 Jul, 2024 &nbsp;|&nbsp; <a href="noticias/noticias.html">Noticias</a></p>
-            <h3 class="news-card-title">
-              <a href="noticias/noticia-olmedo-clasico-18-2024.html">Olmedo Clásico: 18 Jornadas</a>
-            </h3>
-            <p class="news-card-excerpt">
-              18 Jornadas sobre teatro clásico. Y sin embargo, amigos: estudiar y representar a nuestros clásicos…
-            </p>
-          </div>
-        </article>
-
-        <article class="news-card">
-          <a href="noticias/noticia-thal-ia-2024.html">
-            <img
-              class="news-card-img"
-              src="media/Thal-IA.jpg"
-              alt="Convocadas dos plazas postdoctorales para el proyecto Thal-IA"
-            />
-          </a>
-          <div class="news-card-body">
-            <p class="news-card-meta">12 Jul, 2024 &nbsp;|&nbsp; <a href="noticias/noticias.html">Noticias</a></p>
-            <h3 class="news-card-title">
-              <a href="noticias/noticia-thal-ia-2024.html">
-                Convocadas dos plazas postdoctorales para el proyecto Thal-IA
-              </a>
-            </h3>
-            <p class="news-card-excerpt">
-              Se han convocado dos plazas de un contrato postdoctoral para el proyecto Thal-IA…
-            </p>
-          </div>
-        </article>
-
-      </div>
+      <div class="news-grid" id="homeNewsGrid"></div>
     </div>
   </main>
 
@@ -352,25 +267,7 @@
         });
       }
 
-      // Reveal news cards on scroll
-      var newsCards = document.querySelectorAll('.news-card');
-      if (newsCards.length && 'IntersectionObserver' in window) {
-        newsCards.forEach(function (card, i) {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(40px)';
-          card.style.transition = 'opacity 0.6s ease-out ' + (i * 0.08) + 's, transform 0.6s ease-out ' + (i * 0.08) + 's';
-        });
-        var newsObs = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) {
-              e.target.style.opacity = '1';
-              e.target.style.transform = 'translateY(0)';
-              newsObs.unobserve(e.target);
-            }
-          });
-        }, { threshold: 0.1 });
-        newsCards.forEach(function (card) { newsObs.observe(card); });
-      }
+      // News card animations are applied after dynamic render (see render script below)
     })();
   </script>
 
@@ -391,6 +288,49 @@
         }
       });
     });
+  </script>
+  <script src="noticias-data.js"></script>
+  <script>
+    // Render the 4 most recent news items from noticias-data.js
+    (function () {
+      var grid = document.getElementById('homeNewsGrid');
+      if (!grid || typeof news === 'undefined') return;
+      var items = news.slice(0, 4);
+      var html = '';
+      items.forEach(function (n) {
+        var imgSrc = n.img ? n.img.replace('../media/', 'media/') : '';
+        var url = 'noticias/' + n.url;
+        html += '<article class="news-card">' +
+          '<a href="' + url + '">' +
+          '<img class="news-card-img" src="' + imgSrc + '" alt="' + n.title.replace(/"/g, '&quot;') + '" />' +
+          '</a>' +
+          '<div class="news-card-body">' +
+          '<p class="news-card-meta">' + n.date + ' &nbsp;|&nbsp; <a href="noticias/noticias.html">' + n.cat + '</a></p>' +
+          '<h3 class="news-card-title"><a href="' + url + '">' + n.title + '</a></h3>' +
+          '<p class="news-card-excerpt">' + n.excerpt + '</p>' +
+          '</div></article>';
+      });
+      grid.innerHTML = html;
+      // Apply scroll-reveal animation to the freshly rendered cards
+      if ('IntersectionObserver' in window) {
+        var cards = grid.querySelectorAll('.news-card');
+        cards.forEach(function (card, i) {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(40px)';
+          card.style.transition = 'opacity 0.6s ease-out ' + (i * 0.08) + 's, transform 0.6s ease-out ' + (i * 0.08) + 's';
+        });
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.style.opacity = '1';
+              e.target.style.transform = 'translateY(0)';
+              obs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        cards.forEach(function (card) { obs.observe(card); });
+      }
+    })();
   </script>
   <script>var SITE_ROOT='';</script>
   <script src="search-data.js"></script>
