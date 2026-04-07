@@ -104,7 +104,7 @@
       background: none;
       width: 100%;
       text-align: left;
-      font-family: 'Raleway', sans-serif;
+      font-family: 'Raleway', 'Helvetica Neue', Arial, sans-serif;
       border-left: 2px solid transparent;
       line-height: 1.4;
     }
@@ -784,6 +784,7 @@ function renderNav() {
   html += '<div class="nav-group"><div class="nav-group-title"><span>🔧</span> Herramientas</div>';
   html += '<button class="nav-item" data-path="__recursos__" onclick="loadRecursos()">Recursos multimedia</button>';
   html += '<button class="nav-item" data-path="__menu_editor__" onclick="loadMenuEditor()">Editor de menú</button>';
+  html += '<button class="nav-item" data-path="__section_hero__" onclick="loadSectionHero()">Imagen de cabecera por sección</button>';
   html += '<button class="nav-item" style="color:rgba(200,164,90,.9)" data-path="__new_page__" onclick="loadNewPage()">+ Nueva página</button>';
   html += '</div>';
   document.getElementById('navList').innerHTML = html;
@@ -1484,8 +1485,8 @@ function renderEditor() {
     h += '<p class="help">Imagen de fondo del encabezado de esta página. Puede seleccionar una de la galería o subir una nueva.</p>';
     h += '<div class="img-picker">';
     h += '<input type="text" id="edHeroBg" value="'+escA(S.heroData.bgImage||'')+'" placeholder="ej: ../media/fondo-grupo.png">';
-    h += '<button class="btn btn-outline btn-sm" type="button" onclick="openImgModal(\'edHeroBg\')">🖼 Galería</button>';
-    h += '<label class="btn btn-outline btn-sm img-upload-btn" title="Subir imagen nueva">📁 Subir<input type="file" accept="image/*" style="display:none" onchange="handleImgUpload(this,\'edHeroBg\')"></label>';
+    h += '<button class="btn btn-outline btn-sm" type="button" onclick="openImgPicker(\'edHeroBg\')">🖼 Galería</button>';
+    h += '<label class="btn btn-outline btn-sm img-upload-btn" title="Subir imagen nueva">📁 Subir<input type="file" accept="image/*" style="display:none" onchange="uploadImage(\'edHeroBg\',this)"></label>';
     h += '</div>';
     if (S.heroData.bgImage) {
       h += '<div style="margin-top:.5rem"><img src="'+escA(S.heroData.bgImage)+'" alt="Vista previa" style="max-height:80px;border-radius:5px;border:1px solid var(--borde);object-fit:cover;max-width:100%"></div>';
@@ -4885,6 +4886,128 @@ async function saveMenuEditor() {
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
+// SECTION HERO IMAGE BATCH TOOL
+// ══════════════════════════════════════════════════════════════════════════════
+
+function loadSectionHero() {
+  document.querySelectorAll('.nav-item').forEach(function(el){ el.classList.toggle('active', el.dataset.path === '__section_hero__'); });
+  document.getElementById('topbar').style.display = 'none';
+  var _ws = document.getElementById('welcomeScreen'); if (_ws) _ws.style.display = 'none';
+
+  var dirs = [
+    {v:'el-grupo',           l:'El grupo',           bg:'fondo-grupo.png'},
+    {v:'objetivos',          l:'Objetivos',           bg:'fondo-vida.jpg'},
+    {v:'publicaciones',      l:'Publicaciones',       bg:'comedias_parte-veinte-y-una-fondo.jpg'},
+    {v:'proyectos-digitales',l:'Proyectos digitales', bg:'foto-proyectos-digitales.png'},
+    {v:'formacion',          l:'Formación',           bg:'fondo-tesis.jpg'},
+    {v:'eventos',            l:'Eventos',             bg:'eventos-fondo.jpg'},
+    {v:'multimedia',         l:'Multimedia',          bg:'fondo-multimedia.jpg'},
+    {v:'noticias',           l:'Noticias',            bg:'fondo-noticias.jpg'},
+  ];
+  var dirOpts = dirs.map(function(d){ return '<option value="'+d.v+'" data-bg="'+d.bg+'">'+d.l+'</option>'; }).join('');
+
+  var h = '<div class="ed-section" style="padding:1.5rem;max-width:640px">';
+  h += '<h2>Imagen de cabecera por sección</h2>';
+  h += '<p class="help" style="margin-bottom:1.2rem">Cambia la fotografía de cabecera de <strong>todas las páginas</strong> de una sección a la vez. Útil para aplicar un cambio de imagen globalmente sin tener que editar cada página.</p>';
+  h += '<div class="field"><label>Sección</label>';
+  h += '<select id="sh-dir" onchange="shUpdatePreview()">'+dirOpts+'</select></div>';
+  h += '<div class="field"><label>Nueva fotografía de cabecera</label>';
+  h += '<p class="help">Selecciona de la galería o sube una imagen nueva. La imagen predeterminada de la sección se muestra a continuación.</p>';
+  h += '<div class="img-picker">';
+  h += '<input type="text" id="sh-bg" value="../media/'+dirs[0].bg+'" placeholder="../media/fondo-grupo.png">';
+  h += '<button class="btn btn-outline btn-sm" type="button" onclick="openImgPicker(\'sh-bg\')">🖼 Galería</button>';
+  h += '<label class="btn btn-outline btn-sm img-upload-btn" title="Subir imagen nueva">📁 Subir<input type="file" accept="image/*" style="display:none" onchange="shUploadAndSet(this)"></label>';
+  h += '</div>';
+  h += '<div id="sh-preview" style="margin-top:.6rem"><img src="../media/'+dirs[0].bg+'" alt="Vista previa" style="max-height:100px;border-radius:6px;border:1px solid var(--borde);object-fit:cover;max-width:100%"></div>';
+  h += '</div>';
+  h += '<div id="sh-page-list" style="margin:.5rem 0 1rem"></div>';
+  h += '<div style="display:flex;gap:.8rem;align-items:center;margin-top:.5rem">';
+  h += '<button class="btn btn-blue" onclick="applySectionHero()">Aplicar a todas las páginas de la sección</button>';
+  h += '<span id="sh-msg" style="font-size:.82rem;color:#888"></span>';
+  h += '</div></div>';
+
+  document.getElementById('edBody').innerHTML = h;
+  shUpdatePreview();
+}
+
+function shUpdatePreview() {
+  var sel = document.getElementById('sh-dir');
+  if (!sel) return;
+  var opt = sel.options[sel.selectedIndex];
+  var bg = opt.dataset.bg || 'fondo-grupo.png';
+  var bgPath = '../media/'+bg;
+  var inp = document.getElementById('sh-bg');
+  var prev = document.getElementById('sh-preview');
+  if (inp) inp.value = bgPath;
+  if (prev) prev.innerHTML = '<img src="'+bgPath+'" alt="Vista previa" style="max-height:100px;border-radius:6px;border:1px solid var(--borde);object-fit:cover;max-width:100%">';
+  shRenderPageList();
+}
+
+function shRenderPageList() {
+  var dir = (document.getElementById('sh-dir')||{}).value;
+  if (!dir) return;
+  var pages = S.pages.filter(function(p){ return p.dir === dir || (dir === '(raíz)' && p.dir === '(raíz)'); });
+  var el = document.getElementById('sh-page-list');
+  if (!el) return;
+  if (!pages.length) { el.innerHTML = '<p class="help">No hay páginas en esta sección.</p>'; return; }
+  var names = pages.map(function(p){ return p.name.replace('.html','').replace(/-/g,' '); });
+  el.innerHTML = '<p class="help">Páginas que se actualizarán ('+pages.length+'): '
+    + names.map(function(n){ return '<strong>'+esc(n)+'</strong>'; }).join(', ')
+    + '</p>';
+}
+
+async function shUploadAndSet(fileInput) {
+  if (!fileInput.files || !fileInput.files.length) return;
+  var file = fileInput.files[0];
+  var form = new FormData();
+  form.append('file', file);
+  try {
+    var r = await fetch('/api/upload-image?name='+encodeURIComponent(file.name), {
+      method: 'POST',
+      headers: {'Content-Type': file.type},
+      body: file,
+    });
+    var data = await r.json();
+    if (!data.ok) throw new Error(data.error || 'Error');
+    var inp = document.getElementById('sh-bg');
+    var val = '../media/'+data.name;
+    if (inp) inp.value = val;
+    var prev = document.getElementById('sh-preview');
+    if (prev) prev.innerHTML = '<img src="'+val+'" alt="Vista previa" style="max-height:100px;border-radius:6px;border:1px solid var(--borde);object-fit:cover;max-width:100%">';
+    toast('Imagen subida: '+data.name, 'ok');
+  } catch(e) {
+    toast('Error al subir: '+e.message, 'err');
+  }
+  fileInput.value = '';
+}
+
+async function applySectionHero() {
+  var dir = (document.getElementById('sh-dir')||{}).value;
+  var bgRaw = ((document.getElementById('sh-bg')||{}).value || '').trim();
+  // Normalize to just the filename (server template uses '../media/<filename>')
+  var bgFile = bgRaw.replace(/^(\.\.\/)?media\//, '');
+  if (!dir || !bgFile) { toast('Selecciona sección e imagen', 'err'); return; }
+  var msg = document.getElementById('sh-msg');
+  if (msg) { msg.textContent = 'Aplicando…'; msg.style.color='#888'; }
+  try {
+    var r = await fetch('/api/section-hero', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ dir: dir, bgFile: bgFile })
+    });
+    var data = await r.json();
+    if (!data.ok) throw new Error(data.error || 'Error desconocido');
+    var txt = '✓ Actualizada en '+data.updated+' página'+(data.updated!==1?'s':'');
+    if (data.errors && data.errors.length) txt += ' ('+data.errors.length+' errores)';
+    if (msg) { msg.textContent = txt; msg.style.color='var(--verde)'; }
+    toast(txt, 'ok');
+  } catch(e) {
+    if (msg) { msg.textContent = 'Error: '+e.message; msg.style.color='var(--rojo)'; }
+    toast('Error: '+e.message, 'err');
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
 // NEW PAGE CREATOR
 // ══════════════════════════════════════════════════════════════════════════════
 
@@ -4919,8 +5042,8 @@ function loadNewPage() {
   h += '<p class="help">Imagen de fondo del encabezado. Se usa la predeterminada de la sección, pero puedes cambiarla.</p>';
   h += '<div class="img-picker">';
   h += '<input type="text" id="np-bg" value="../media/'+dirs[0].bg+'" placeholder="../media/fondo-grupo.png">';
-  h += '<button class="btn btn-outline btn-sm" type="button" onclick="openImgModal(\'np-bg\')">🖼 Galería</button>';
-  h += '<label class="btn btn-outline btn-sm img-upload-btn" title="Subir imagen nueva">📁 Subir<input type="file" accept="image/*" style="display:none" onchange="handleImgUpload(this,\'np-bg\')"></label>';
+  h += '<button class="btn btn-outline btn-sm" type="button" onclick="openImgPicker(\'np-bg\')">🖼 Galería</button>';
+  h += '<label class="btn btn-outline btn-sm img-upload-btn" title="Subir imagen nueva">📁 Subir<input type="file" accept="image/*" style="display:none" onchange="uploadImage(\'np-bg\',this)"></label>';
   h += '</div>';
   h += '<div id="np-bg-preview" style="margin-top:.5rem"><img src="../media/'+dirs[0].bg+'" alt="Vista previa" style="max-height:70px;border-radius:5px;border:1px solid var(--borde);object-fit:cover;max-width:100%"></div>';
   h += '</div>';

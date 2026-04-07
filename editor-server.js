@@ -824,6 +824,42 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  // ── API: update hero background image for all pages in a section ──
+  if (url.pathname === '/api/section-hero' && req.method === 'POST') {
+    try {
+      const body = await readBody(req);
+      const { dir, bgFile } = JSON.parse(body);
+      const validDirs = ['el-grupo','objetivos','publicaciones','proyectos-digitales','formacion','eventos','multimedia','noticias','(raíz)'];
+      if (!validDirs.includes(dir)) throw new Error('Sección inválida: ' + dir);
+      if (!bgFile || /[<>"'&]/.test(bgFile)) throw new Error('Nombre de imagen inválido.');
+      const pages = listHtmlFiles(ROOT).filter(p => (p.dir === dir) || (dir === '(raíz)' && p.dir === '(raíz)'));
+      let updated = 0;
+      const errors = [];
+      pages.forEach(p => {
+        const full = path.join(ROOT, p.path);
+        try {
+          let src = fs.readFileSync(full, 'utf8');
+          // Replace background-image in .page-hero-bg or .article-hero-bg style attributes
+          const newSrc = src.replace(
+            /(class="(?:page-hero-bg|article-hero-bg)"[^>]*style="[^"]*background-image:\s*url\()['"](.*?)['"]/g,
+            (match, pre) => pre + "'../media/" + bgFile + "'"
+          );
+          if (newSrc !== src) {
+            fs.copyFileSync(full, full + '.bak');
+            fs.writeFileSync(full, newSrc, 'utf8');
+            updated++;
+          }
+        } catch(e) { errors.push(p.path + ': ' + e.message); }
+      });
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ ok: true, updated, errors }));
+    } catch(e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: e.message }));
+    }
+    return;
+  }
+
   // ── Static files (for preview, CSS, images…) ──
   const full = safePath(url.pathname.slice(1));
   if (full && fs.existsSync(full) && fs.statSync(full).isFile()) {
