@@ -1398,6 +1398,7 @@ function parseSeminars(main) {
           });
         }
         var pdfBtn = el.querySelector('.seminar-pdf-btn');
+        var posterBtn = el.querySelector('.seminar-poster-btn');
         S.items.push({
           id: blockId++,
           year: txt(el,'.seminar-year'),
@@ -1407,6 +1408,8 @@ function parseSeminars(main) {
           fields: fields,
           pdfUrl: pdfBtn ? pdfBtn.getAttribute('href') : '',
           pdfText: pdfBtn ? pdfBtn.textContent.trim() : '',
+          posterUrl: posterBtn ? posterBtn.getAttribute('href') : '',
+          posterText: posterBtn ? posterBtn.textContent.trim() : '',
         });
       });
     }
@@ -2952,6 +2955,12 @@ function renderSeminarCard(it) {
   h += '<label class="btn btn-outline btn-sm img-upload-btn" title="Subir archivo (PDF, imagen)">';
   h += '<input type="file" accept=".pdf,image/*" style="display:none" onchange="uploadSeminarPdfFile(this,\'smp-'+it.id+'\')">Subir</label>';
   h += '</div>';
+  h += '<label style="display:block;margin-top:.4rem;font-size:.78rem;font-weight:600;color:var(--azul-oscuro)">URL del cartel (imagen o PDF, opcional)</label>';
+  h += '<div class="link-row">';
+  h += '<input type="text" id="smpost-'+it.id+'" value="'+escA(it.posterUrl||'')+'" placeholder="https://... (dejar vacío si no hay cartel)" style="flex:1">';
+  h += '<label class="btn btn-outline btn-sm img-upload-btn" title="Subir imagen o PDF del cartel">';
+  h += '<input type="file" accept=".pdf,image/*" style="display:none" onchange="uploadSeminarPdfFile(this,\'smpost-'+it.id+'\')">Subir</label>';
+  h += '</div>';
   h += '</div>';
   h += '</div>';
   h += '</details>';
@@ -2993,7 +3002,7 @@ function delSemField(iid, fi) {
 
 function addSeminar() {
   readAllItems();
-  S.items.unshift({id:blockId++,year:'',name:'',theme:'',dates:'',fields:[{label:'Fechas',value:''},{label:'Organizado por',value:''}],pdfUrl:'',pdfText:''});
+  S.items.unshift({id:blockId++,year:'',name:'',theme:'',dates:'',fields:[{label:'Fechas',value:''},{label:'Organizado por',value:''}],pdfUrl:'',pdfText:'',posterUrl:'',posterText:''});
   rerenderItems();
 }
 
@@ -3016,7 +3025,7 @@ function updateSeminarLabel(iid) {
 function addSeminarAfterGroup(gid) {
   readAllItems();
   var idx = S.items.findIndex(function(it){return it.id===gid;});
-  var newItem = {id:blockId++,year:'',name:'',theme:'',dates:'',fields:[{label:'Fechas',value:''},{label:'Organizado por',value:''}],pdfUrl:'',pdfText:'',_open:true};
+  var newItem = {id:blockId++,year:'',name:'',theme:'',dates:'',fields:[{label:'Fechas',value:''},{label:'Organizado por',value:''}],pdfUrl:'',pdfText:'',posterUrl:'',posterText:'',_open:true};
   S.items.splice(idx+1, 0, newItem);
   rerenderItems();
 }
@@ -3730,6 +3739,7 @@ function readAllItems() {
       it.theme = gR('smt-'+it.id);
       var d=document.getElementById('smd-'+it.id); if(d) it.dates=d.value;
       var p=document.getElementById('smp-'+it.id); if(p) it.pdfUrl=p.value;
+      var post=document.getElementById('smpost-'+it.id); if(post) it.posterUrl=post.value;
       var fc=document.getElementById('smf-'+it.id);
       if (fc) {
         it.fields = [];
@@ -3930,7 +3940,7 @@ function genBlocks() {
       h += '\n      <div class="article-imagegrid" style="'+gridStyle+'">\n';
       (b.imgs||[]).forEach(function(img){
         h += '        <figure class="inline-figure" style="float: none; width: 100%; margin: 0;">\n';
-        h += '          <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector(\'img\').src)">\n';
+        h += '          <div class="article-figure-img-wrap" onclick="openLightbox(\''+escA(img.src).replace(/'/g,'\\\'')+'\')">\n';
         h += '            <img src="'+escA(img.src)+'" alt="'+escA(img.alt)+'" />\n';
         h += '            <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>\n';
         h += '          </div>\n        </figure>\n';
@@ -3945,7 +3955,7 @@ function genBlocks() {
       if(figPos2==='center'&&figSz2!=='full') figSS=(figSS?figSS+';':'')+'float:none;clear:both;margin-left:auto;margin-right:auto;display:block';
       var figWrapStyle = (figSz2==='full') ? ' style="display:block;max-width:100%"' : '';
       h += '\n      <figure class="'+fc+'"'+(figSS?' style="'+figSS+'"':'')+'>'+'\n';
-      h += '        <div class="article-figure-img-wrap"'+figWrapStyle+' onclick="openLightbox(this.querySelector(\'img\').src)">\n';
+      h += '        <div class="article-figure-img-wrap"'+figWrapStyle+' onclick="openLightbox(\''+escA(b.src).replace(/'/g,'\\\'')+'\')">\n';
       h += '          <img src="'+escA(b.src)+'" alt="'+escA(b.alt)+'" />\n';
       h += '          <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>\n';
       h += '        </div>\n';
@@ -4021,12 +4031,13 @@ function genLibroModalScript() {
     + '  if(window.__lbI)return;window.__lbI=1;\n'
     + '  var s=document.createElement(\'style\');\n'
     /* ── Modal-mode thumbnail (inline portada clicable) ── */
-    + '  s.textContent=\'.libro-block{display:inline-flex;flex-direction:column;align-items:center;text-align:center;max-width:175px;margin:0 1.2rem 1.5rem 0;vertical-align:top;cursor:pointer}\'\n'
-    + '  +\'.libro-block-cover{width:160px;height:240px;object-fit:cover;object-position:center;border-radius:5px;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:transform .18s,box-shadow .18s}\'\n'
+    + '  s.textContent=\'.libro-block{display:flex;flex-direction:column;align-items:center;text-align:center;cursor:pointer}\'\n'
+    + '  +\'.libros-modal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1.5rem 1.2rem;margin:0 0 1.5rem}\'\n'
+    + '  +\'.libro-block-cover{width:100%;max-width:160px;height:240px;object-fit:cover;object-position:center;border-radius:5px;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:transform .18s,box-shadow .18s}\'\n'
     + '  +\'.libro-block--modal .libro-block-cover:hover{transform:translateY(-5px);box-shadow:0 10px 28px rgba(0,0,0,.28)}\'\n'
-    + '  +\'.libro-block-cover--ph{width:160px;height:240px;background:var(--crema,#faf8f4);border:1px solid var(--borde,#d5cfc5);border-radius:5px;display:inline-block}\'\n'
-    + '  +\'.libro-block-title{margin-top:.5rem;font-family:Raleway,sans-serif;font-weight:600;font-size:.82rem;color:var(--azul,#1a3a5c);max-width:160px;line-height:1.3}\'\n'
-    + '  +\'.libro-block-author{font-size:.72rem;color:var(--gris-texto,#888);max-width:160px}\'\n'
+    + '  +\'.libro-block-cover--ph{width:100%;max-width:160px;height:240px;background:var(--crema,#faf8f4);border:1px solid var(--borde,#d5cfc5);border-radius:5px;display:block}\'\n'
+    + '  +\'.libro-block-title{margin-top:.5rem;font-family:Raleway,sans-serif;font-weight:600;font-size:.82rem;color:var(--azul,#1a3a5c);line-height:1.3}\'\n'
+    + '  +\'.libro-block-author{font-size:.72rem;color:var(--gris-texto,#888)}\'\n'
     /* ── Overlay ── */
     + '  +\'#lbMdlOv{display:none;position:fixed;inset:0;background:rgba(10,20,36,.78);z-index:800;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(2px)}\'\n'
     + '  +\'#lbMdlOv.open{display:flex}\'\n'
@@ -4035,10 +4046,10 @@ function genLibroModalScript() {
     + '  +\'.lbMdlClose{position:absolute;top:.7rem;right:.9rem;background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--gris-texto,#aaa);line-height:1;padding:.2rem .4rem;border-radius:4px;transition:color .12s;z-index:1}\'\n'
     + '  +\'.lbMdlClose:hover{color:var(--azul,#1a3a5c)}\'\n'
     /* layout = grid 2 cols, imagen llena todo el alto */
-    + '  +\'.lbMdlLayout{display:grid;grid-template-columns:220px 1fr;height:420px;overflow:hidden}\'\n'
-    + '  +\'.lbMdlSide{overflow:hidden;min-height:0;background:var(--azul,#1a3a5c)}\'\n'
+    + '  +\'.lbMdlLayout{display:grid;grid-template-columns:200px 1fr;min-height:0;overflow:hidden}\'\n'
+    + '  +\'.lbMdlSide{overflow:hidden;min-height:0;background:var(--azul,#1a3a5c);min-height:300px}\'\n'
     + '  +\'.lbMdlImg{width:100%;height:100%;object-fit:cover;object-position:center;display:block;cursor:zoom-in}\'\n'
-    + '  +\'.lbMdlMain{overflow-y:auto;padding:1.8rem 2rem;display:flex;flex-direction:column;min-height:0}\'\n'
+    + '  +\'.lbMdlMain{overflow-y:auto;padding:1.5rem 1.5rem;display:flex;flex-direction:column;min-height:0}\'\n'
     + '  +\'.lbMdlH{font-family:Raleway,sans-serif;font-size:1.25rem;font-weight:700;color:var(--azul,#1a3a5c);margin:0 0 .8rem;line-height:1.3;padding-right:1.5rem}\'\n'
     + '  +\'.lbMdlDl{display:grid;grid-template-columns:auto 1fr;gap:.28rem .8rem;margin:.1rem 0 0}\'\n'
     + '  +\'.lbMdlDl dt{font-weight:600;font-size:.88rem;color:var(--azul,#1a3a5c);white-space:nowrap;padding:.06rem 0}\'\n'
@@ -4046,8 +4057,9 @@ function genLibroModalScript() {
     /* botón igual que btn-consultar / modal-link-btn */
     + '  +\'.lbMdlBuy{display:inline-flex;align-items:center;align-self:flex-start;margin-top:1.2rem;padding:11px 18px;background:var(--azul,#1a3a5c);color:#fff!important;border-radius:3px;font-family:Raleway,sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none!important;transition:background .2s}\'\n'
     + '  +\'.lbMdlBuy:hover{background:var(--dorado,#c8a45a);color:#fff!important}\'\n'
-    /* responsive: ocultar imagen en móvil como congresos */
-    + '  +\'@media(max-width:600px){.lbMdlLayout{grid-template-columns:1fr}.lbMdlSide{display:none}}\'\n'
+    /* responsive: simplificar en tablet, ocultar imagen en móvil */
+    + '  +\'@media(max-width:700px){.lbMdlLayout{grid-template-columns:160px 1fr}}\'\n'
+    + '  +\'@media(max-width:500px){.lbMdlLayout{grid-template-columns:1fr}.lbMdlSide{display:none}.lbMdlMain{padding:1.2rem 1rem}}\'\n'
     + '  +\'.libros-dd-grid{display:flex;flex-wrap:wrap;gap:1.2rem;align-items:flex-start}\'\n'
     /* ── Dropdown CSS ── */
     + '  +\'.libro-block--dropdown{display:flex;flex-direction:column;width:360px;max-width:100%;align-items:stretch;text-align:left;vertical-align:top;margin:0;border:1px solid var(--borde,#d5cfc5);border-radius:10px;overflow:hidden;cursor:default;transition:box-shadow .2s}\'\n'
@@ -4093,7 +4105,7 @@ function genLibroModalScript() {
     + '    document.getElementById(\'lbMdlBody\').innerHTML=\'<div class="lbMdlLayout">\'+imgH+\'<div class="lbMdlMain"><h3 class="lbMdlH">\'+d.title+\'<\\/h3><dl class="lbMdlDl">\'+dl+\'<\\/dl>\'+buy+\'<\\/div><\\/div>\';\n'
     + '    ov.classList.add(\'open\');document.body.style.overflow=\'hidden\';\n'
     + '  };\n'
-    /* ── Grid JS: agrupa dropdowns consecutivos en flex wrapper ── */
+    /* ── Grid JS: agrupa libros consecutivos en grid wrapper ── */
     + '  function wrapLibroGrids(){\n'
     + '    document.querySelectorAll(\'.libro-block--dropdown\').forEach(function(el){\n'
     + '      if(el.parentNode.classList.contains(\'libros-dd-grid\'))return;\n'
@@ -4101,6 +4113,13 @@ function genLibroModalScript() {
     + '      el.parentNode.insertBefore(wrap,el);wrap.appendChild(el);\n'
     + '      var nx;\n'
     + '      while((nx=wrap.nextElementSibling)&&nx.classList.contains(\'libro-block--dropdown\'))wrap.appendChild(nx);\n'
+    + '    });\n'
+    + '    document.querySelectorAll(\'.libro-block--modal\').forEach(function(el){\n'
+    + '      if(el.parentNode.classList.contains(\'libros-modal-grid\'))return;\n'
+    + '      var wrap=document.createElement(\'div\');wrap.className=\'libros-modal-grid\';\n'
+    + '      el.parentNode.insertBefore(wrap,el);wrap.appendChild(el);\n'
+    + '      var nx;\n'
+    + '      while((nx=wrap.nextElementSibling)&&nx.classList.contains(\'libro-block--modal\'))wrap.appendChild(nx);\n'
     + '    });\n'
     + '  }\n'
     + '  if(document.readyState===\'loading\')document.addEventListener(\'DOMContentLoaded\',wrapLibroGrids);else wrapLibroGrids();\n'
@@ -4236,6 +4255,7 @@ function genSeminars() {
     });
     h += '          </div>\n';
     if(it.pdfUrl) h += '          <a class="seminar-pdf-btn" href="'+escA(it.pdfUrl)+'" target="_blank" rel="noopener noreferrer">'+(it.pdfText||'Programa (PDF)')+'</a>\n';
+    if(it.posterUrl) h += '          <a class="seminar-poster-btn" href="'+escA(it.posterUrl)+'" target="_blank" rel="noopener noreferrer">'+(it.posterText||'Cartel')+'</a>\n';
     h += '        </div>\n';
     h += '      </li>\n';
     semIdx++;
@@ -6421,7 +6441,7 @@ function ncGenerateHtml(d) {
       if(ncFigPos==='center'&&ncFigSz!=='full') ncFigSS=(ncFigSS?ncFigSS+';':'')+'float:none;clear:both;margin-left:auto;margin-right:auto;display:block';
       var ncFigWrapStyle = (ncFigSz==='full') ? ' style="display:block;max-width:100%"' : '';
       cH += '\n      <figure class="'+fc+'"'+(ncFigSS?' style="'+ncFigSS+'"':'')+'>'+'\n';
-      cH += '        <div class="article-figure-img-wrap"'+ncFigWrapStyle+' onclick="openLightbox(this.querySelector(\'img\').src)">\n';
+      cH += '        <div class="article-figure-img-wrap"'+ncFigWrapStyle+' onclick="openLightbox(\''+escA(b.src).replace(/'/g,'\\\'')+'\')">\n';
       cH += '          <img src="'+escA(b.src)+'" alt="'+escA(b.alt)+'" />\n';
       cH += '          <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>\n';
       cH += '        </div>\n';
@@ -6466,7 +6486,7 @@ function ncGenerateHtml(d) {
       cH += '\n      <div class="article-imagegrid" style="'+ncGridStyle+'">\n';
       (b.imgs||[]).forEach(function(img){
         cH += '        <figure class="inline-figure" style="float: none; width: 100%; margin: 0;">\n';
-        cH += '          <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector(\'img\').src)">\n';
+        cH += '          <div class="article-figure-img-wrap" onclick="openLightbox(\''+escA(img.src).replace(/'/g,'\\\'')+'\')">\n';
         cH += '            <img src="'+escA(img.src)+'" alt="'+escA(img.alt)+'" />\n';
         cH += '            <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>\n';
         cH += '          </div>\n        </figure>\n';

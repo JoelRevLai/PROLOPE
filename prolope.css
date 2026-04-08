@@ -3121,6 +3121,31 @@ footer > .footer-bottom {
 .seminar-pdf-btn:hover,
 .page-content .seminar-pdf-btn:hover { background: var(--dorado); color: var(--blanco); text-decoration: none; }
 
+.seminar-poster-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blanco);
+  background: var(--dorado);
+  padding: 12px 18px;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: background 0.2s;
+  margin-top: 4px;
+  margin-left: 6px;
+}
+
+.seminar-poster-btn,
+.page-content .seminar-poster-btn { color: var(--blanco); text-decoration: none; }
+
+.seminar-poster-btn:hover,
+.page-content .seminar-poster-btn:hover { background: var(--azul); color: var(--blanco); text-decoration: none; }
+
 
 /* ============================================================
    29. GRID DE VÍDEOS Y MODAL (multimedia.html)
@@ -5309,4 +5334,30 @@ nav.mn > ul > li:hover .dd { opacity: 1; visibility: visible; transform: transla
     grid-template-rows: repeat(6, 1fr);
   }
   .idx-hero-logo { width: 280px; }
+}
+
+/* Header muy pequeño (≤ 400px) */
+@media (max-width: 400px) {
+  .header-inner {
+    padding: 0 10px;
+    gap: 0;
+  }
+  .logo-link img {
+    height: 34px;
+    max-width: 160px;
+  }
+  .menu-toggle {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    padding: 6px;
+  }
+  .site-search-btn,
+  .theme-toggle {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    padding: 5px;
+    margin-left: 2px;
+  }
 }
