@@ -136,49 +136,61 @@
 
       <h2>Bilbioteca Lope de Vega</h2>
 
-      <details class="libro-block libro-block--dropdown" id="expostulatio-spongiae" data-lb='{"title":"Expostulatio Spongiae","author":"Lope de Vega Carpio","editor":"Pedro Conde Parrado y Xavier Tubau Moreu","year":"2016","editorial":"Gredos","city":"Barcelona","collection":"Biblioteca Lope de Vega","isbn":"9788424928964","buyUrl":"https://www.rbalibros.com/gredos/expostulatio_4503","image":"../media/expostulatio_c68feee3.jpg","displayMode":"dropdown","extraFields":[]}'>
-        <summary class="libro-block-summary">
-          <img src="../media/expostulatio_c68feee3.jpg" alt="Expostulatio Spongiae" class="libro-block-cover">
-          <div class="libro-block-caption">
-            <strong class="libro-block-title">Expostulatio Spongiae</strong>
-            <span class="libro-block-author">Lope de Vega Carpio · 2016</span>
-          </div>
-        </summary>
-        <div class="libro-block-panel"><dl>
-          <dt>Autor/es</dt><dd>Lope de Vega Carpio</dd>
-          <dt>Editor/es</dt><dd>Pedro Conde Parrado y Xavier Tubau Moreu</dd>
-          <dt>Año</dt><dd>2016</dd>
-          <dt>Editorial</dt><dd>Gredos</dd>
-          <dt>Ciudad</dt><dd>Barcelona</dd>
-          <dt>Colección</dt><dd>Biblioteca Lope de Vega</dd>
-          <dt>ISBN</dt><dd>9788424928964</dd>
-        </dl>
-          <a href="https://www.rbalibros.com/gredos/expostulatio_4503" class="libro-block-buy" target="_blank" rel="noopener noreferrer">Más información</a>
-        </div>
-      </details>
+      <div class="libro-block libro-block--modal" id="los-locos-de-valencia" data-lb='{"title":"<i>Los locos de Valencia</i>","author":"Lope de Vega Carpio","editor":"Carlos Peña López","year":"2024","editorial":"Gredos","city":"Barcelona","collection":"Biblioteca Lope de Vega","isbn":"9788424999605","buyUrl":"https://www.rbalibros.com/gredos/los-locos-de-valencia_7615","image":"../media/locos-valencia-cubierta.jpg","displayMode":"modal","extraFields":[]}' onclick="openLb(this)">
+        <img src="../media/locos-valencia-cubierta.jpg" alt="Los locos de Valencia" class="libro-block-cover">
+        <div class="libro-block-title"><i>Los locos de Valencia</i></div>
+        <div class="libro-block-author">Lope de Vega Carpio</div>
+      </div>
 
-      <details class="libro-block libro-block--dropdown" id="el-maestro-del-danzar-la-creacion-del-mundo" data-lb='{"title":"El maestro del danzar - La creación del mundo","author":"Lope de Vega Carpio","editor":"Daniel Fernández Rodríguez y Alessandro Martinengo","year":"2012","editorial":"Gredos","city":"Barcelona","collection":"Biblioteca Lope de Vega","isbn":"9788424936594","buyUrl":"https://www.rbalibros.com/gredos/maestro-danzar-creacion-del-mundo_4499","image":"../media/maestro_danzar.webp","displayMode":"dropdown","extraFields":[]}'>
-        <summary class="libro-block-summary">
-          <img src="../media/maestro_danzar.webp" alt="El maestro del danzar - La creación del mundo" class="libro-block-cover">
-          <div class="libro-block-caption">
-            <strong class="libro-block-title">El maestro del danzar - La creación del mundo</strong>
-            <span class="libro-block-author">Lope de Vega Carpio · 2012</span>
-          </div>
-        </summary>
-        <div class="libro-block-panel"><dl>
-          <dt>Autor/es</dt><dd>Lope de Vega Carpio</dd>
-          <dt>Editor/es</dt><dd>Daniel Fernández Rodríguez y Alessandro Martinengo</dd>
-          <dt>Año</dt><dd>2012</dd>
-          <dt>Editorial</dt><dd>Gredos</dd>
-          <dt>Ciudad</dt><dd>Barcelona</dd>
-          <dt>Colección</dt><dd>Biblioteca Lope de Vega</dd>
-          <dt>ISBN</dt><dd>9788424936594</dd>
-        </dl>
-          <a href="https://www.rbalibros.com/gredos/maestro-danzar-creacion-del-mundo_4499" class="libro-block-buy" target="_blank" rel="noopener noreferrer">Más información</a>
-        </div>
-      </details>
+      <div class="libro-block libro-block--modal" id="lo-fingido-verdaadero" data-lb='{"title":"<i>Lo fingido verdaadero</i>","author":"Lope de Vega Carpio","editor":"Luigi Giuliani","year":"2024","editorial":"Gredos","city":"Barcelona","collection":"Biblioteca Lope de Vega","isbn":"9788424941123","buyUrl":"https://www.rbalibros.com/gredos/lo-fingido-verdadero_7443","image":"../media/fingido-verdadero-cubierta.jpg","displayMode":"modal","extraFields":[]}' onclick="openLb(this)">
+        <img src="../media/fingido-verdadero-cubierta.jpg" alt="Lo fingido verdaadero" class="libro-block-cover">
+        <div class="libro-block-title"><i>Lo fingido verdaadero</i></div>
+        <div class="libro-block-author">Lope de Vega Carpio</div>
+      </div>
+
+      <div class="libro-block libro-block--modal" id="fuente-ovejuna" data-lb='{"title":"<i>Fuente Ovejuna</i>","author":"Lope de Vega Carpio","editor":"PROLOPE","year":"2024","editorial":"Gredos","city":"Barcelona","collection":"Biblioteca Lope de Vega","isbn":"9788424941116","buyUrl":"https://www.rbalibros.com/gredos/fuente-ovejuna_7442","image":"../media/fuente-ovejuna-cubierta.jpg","displayMode":"modal","extraFields":[]}' onclick="openLb(this)">
+        <img src="../media/fuente-ovejuna-cubierta.jpg" alt="Fuente Ovejuna" class="libro-block-cover">
+        <div class="libro-block-title"><i>Fuente Ovejuna</i></div>
+        <div class="libro-block-author">Lope de Vega Carpio</div>
+      </div>
+
+      <div class="libro-block libro-block--modal" id="yo-me-entiendo" data-lb='{"title":"<i>Yo me entiendo</i>","author":"Lope de Vega Carpio","editor":"Donald McGrady","year":"2023","editorial":"Gredos","city":"Barcelona","collection":"Biblioteca Lope de Vega","isbn":"9788424940201","buyUrl":"https://www.rbalibros.com/gredos/yo-me-entiendo-inedita_7293","image":"../media/yo-me-entiendo-cubierta.jpg","displayMode":"modal","extraFields":[]}' onclick="openLb(this)">
+        <img src="../media/yo-me-entiendo-cubierta.jpg" alt="Yo me entiendo" class="libro-block-cover">
+        <div class="libro-block-title"><i>Yo me entiendo</i></div>
+        <div class="libro-block-author">Lope de Vega Carpio</div>
+      </div>
+
+      <div class="libro-block libro-block--modal" id="el-castigo-sin-venganza" data-lb='{"title":"<i>El castigo sin venganza</i>","author":"Lope de Vega Carpio","editor":"Alejandro García-Reidy y Ramón Valdés","year":"2023","editorial":"Gredos","city":"Barcelona","collection":"Biblioteca Lope de Vega","isbn":"9788424940218","buyUrl":"https://www.rbalibros.com/gredos/el-castigo-sin-venganza_7129","image":"../media/castigo-venganza-cubierta.jpg","displayMode":"modal","extraFields":[]}' onclick="openLb(this)">
+        <img src="../media/castigo-venganza-cubierta.jpg" alt="El castigo sin venganza" class="libro-block-cover">
+        <div class="libro-block-title"><i>El castigo sin venganza</i></div>
+        <div class="libro-block-author">Lope de Vega Carpio</div>
+      </div>
+
+      <div class="libro-block libro-block--modal" id="la-francesa-laura" data-lb='{"title":"<i>La francesa Laura</i>","author":"Lope de Vega Carpio","editor":"Álvaro Cuéllar y Germán Vega","year":"2023","editorial":"Gredos","city":"Barcelona","collection":"Biblioteca Lope de Vega","isbn":"9788424940621","buyUrl":"https://www.rbalibros.com/gredos/la-francesa-laura_7132","image":"../media/francesa-laura-cubierta.jpg","displayMode":"modal","extraFields":[]}' onclick="openLb(this)">
+        <img src="../media/francesa-laura-cubierta.jpg" alt="La francesa Laura" class="libro-block-cover">
+        <div class="libro-block-title"><i>La francesa Laura</i></div>
+        <div class="libro-block-author">Lope de Vega Carpio</div>
+      </div>
+
+      <div class="libro-block libro-block--modal" id="expostulatio-spongiae" data-lb='{"title":"<i>Expostulatio Spongiae</i>","author":"Lope de Vega Carpio","editor":"Pedro Conde Parrado y Xavier Tubau Moreu","year":"2016","editorial":"Gredos","city":"Barcelona","collection":"Biblioteca Lope de Vega","isbn":"9788424928964","buyUrl":"https://www.rbalibros.com/gredos/expostulatio_4503","image":"../media/expostulatio_c68feee3.jpg","displayMode":"modal","extraFields":[]}' onclick="openLb(this)">
+        <img src="../media/expostulatio_c68feee3.jpg" alt="Expostulatio Spongiae" class="libro-block-cover">
+        <div class="libro-block-title"><i>Expostulatio Spongiae</i></div>
+        <div class="libro-block-author">Lope de Vega Carpio</div>
+      </div>
+
+      <div class="libro-block libro-block--modal" id="el-maestro-del-danzar-la-creacion-del-mundo" data-lb='{"title":"<i>El maestro del danzar</i> - <i>La creación del mundo</i>","author":"Lope de Vega Carpio","editor":"Daniel Fernández Rodríguez y Alessandro Martinengo","year":"2012","editorial":"Gredos","city":"Barcelona","collection":"Biblioteca Lope de Vega","isbn":"9788424936594","buyUrl":"https://www.rbalibros.com/gredos/maestro-danzar-creacion-del-mundo_4499","image":"../media/maestro_danzar.webp","displayMode":"modal","extraFields":[]}' onclick="openLb(this)">
+        <img src="../media/maestro_danzar.webp" alt="El maestro del danzar - La creación del mundo" class="libro-block-cover">
+        <div class="libro-block-title"><i>El maestro del danzar</i> - <i>La creación del mundo</i></div>
+        <div class="libro-block-author">Lope de Vega Carpio</div>
+      </div>
 
 
+
+      <div class="libro-block libro-block--modal" id="mujeres-y-criados" data-lb='{"title":"<i>Mujeres y criados</i>","author":"Lope de Vega Carpio","editor":"Alejandro García-Reidy","year":"2014","editorial":"Gredos","city":"Barcelona","collection":"Biblioteca Lope de Vega","isbn":"9788424926793","buyUrl":"https://www.rbalibros.com/gredos/mujeres-criados_4502","image":"../media/mujeres-criados-cubierta.jpg","displayMode":"modal","extraFields":[]}' onclick="openLb(this)">
+        <img src="../media/mujeres-criados-cubierta.jpg" alt="Mujeres y criados" class="libro-block-cover">
+        <div class="libro-block-title"><i>Mujeres y criados</i></div>
+        <div class="libro-block-author">Lope de Vega Carpio</div>
+      </div>
 
       <script id="libroModalScript">
 (function(){

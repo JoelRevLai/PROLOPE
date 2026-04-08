@@ -73,8 +73,8 @@
                 <li><a href="../proyectos-digitales/mujeres-criados.html">Mujeres y criados</a></li>
                 <li><a href="../proyectos-digitales/mapping-lope.html">Mapping Lope</a></li>
                 <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
-                <li><a href="../proyectos-digitales/la-dama-boba.html">La dama boba</a></li>
-                <li><a href="../proyectos-digitales/gondomar.html">Gondomar Digital</a></li>
+                <li><a href="https://damaboba.unibo.it/" target="_blank" rel="noopener noreferrer">La dama boba <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="https://gondomar.tespasiglodeoro.it/" target="_blank" rel="noopener noreferrer">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
               </ul>
             </div>
           </li>
@@ -135,17 +135,23 @@
     <main class="page-content">
 
 <div class="content-section">
-        <h2>Contacto y ubicación</h2>
+      <h2>Contacto y ubicación</h2>
 
-        <p>
+      <p>
+        
+        
           Las dependencias de <a href="el-grupo.html">PROLOPE</a> se encuentran repartidas por los distintos
           seminarios y despachos del profesorado del grupo. La sede institucional e histórica del grupo es el
           seminario B9/122, en el edificio de la
           <a href="https://www.uab.cat/lletres/" target="_blank" rel="noopener noreferrer">Facultat de Lletres</a>
           de la Universitat Autònoma de Barcelona (en Bellaterra, Barcelona).
-        </p>
+        
+      
+      </p>
 
-        <p>
+      <p>
+        
+        
           Aparte de los despachos de los profesores
           <a href="miembros.html">Pontón</a> y
           <a href="miembros.html">Valdés</a>
@@ -154,9 +160,11 @@
           y la mencionada sede institucional, PROLOPE dispone de otro seminario de estudio en el
           <a href="https://www.pruab.cat/ca/serveis/ubica-teves-idees/modul-recerca" target="_blank" rel="noopener noreferrer">Mòdul de Recerca A (MRA)</a>
           de la Universitat Autònoma de Barcelona.
-        </p>
+        
+      
+      </p>
 
-        <div class="contact-block">
+<div class="contact-block">
 
           <div class="contact-stamp">
             <img src="../media/lope-sello.png" alt="Sello de correos con retrato de Lope de Vega. España, 10 cts.">
@@ -182,8 +190,7 @@
 
         </div>
 
-        <!-- Mapa -->
-        <div class="map-section">
+<div class="map-section">
           <h2>Mapa y accesos</h2>
           <div class="map-wrapper">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2988.5!2d2.1077!3d41.5012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49538f2e1c469%3A0x9fb17c0c78e52f4b!2sFacultat%20de%20Filosofia%20i%20Lletres%2C%20Universitat%20Aut%C3%B2noma%20de%20Barcelona!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" allowfullscreen="" sandbox="allow-scripts allow-same-origin" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de la Facultat de Filosofia i Lletres de la UAB"></iframe>
@@ -194,7 +201,11 @@
           </p>
         </div>
 
-      </div>
+      <p>
+        Nuevo párrafo
+      </p>
+
+</div>
 
     </main>
 
@@ -225,12 +236,11 @@
       <div class="sidebar-card">
         <p class="sidebar-card-title">En esta sección</p>
         <ul class="sidebar-nav-list">
-          <li><a href="el-grupo.html">El grupo de investigación</a></li>
-          <li><a href="historial-proyectos.html">Historial de proyectos</a></li>
-          <li><a href="estatutos.html">Estatutos del grupo</a></li>
-          <li><a href="miembros.html">Miembros</a></li>
           <li><a href="contacto.html" class="active">Contacto y ubicación</a></li>
-
+          <li><a href="el-grupo.html">El grupo de investigación</a></li>
+          <li><a href="estatutos.html">Estatutos del grupo</a></li>
+          <li><a href="historial-proyectos.html">Historial de proyectos</a></li>
+          <li><a href="miembros.html">Miembros</a></li>
         </ul>
       </div>
 

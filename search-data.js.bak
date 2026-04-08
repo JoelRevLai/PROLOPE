@@ -837,156 +837,6 @@ var SEARCH_INDEX = [
     content: "Mapping Lope cartografía comedia nueva Lope de Vega proyecto digital humanidades digitales Miguel Betti estadísticas geografía teatro Siglo de Oro."
   },
   {
-    title: "Jornada Internacional ICREA Academia–PROLOPE (2019)",
-    url: "eventos/seminarios.html#2019-jornada-internacional-icrea-academia-pro",
-    description: "17 junio 2019",
-    content: "2019 Jornada Internacional ICREA Academia–PROLOPE 17 junio 2019 Investigación avanzada en Literatura Española y teatro del Siglo de Oro 17 de junio de 2019 PROLOPE – UAB / ICREA-Academia"
-  },
-  {
-    title: "II Seminario Internacional ICREA Academia–PROLOPE (2018)",
-    url: "eventos/seminarios.html#2018-ii-seminario-internacional-icrea-academi",
-    description: "11–12 enero 2018",
-    content: "2018 II Seminario Internacional ICREA Academia–PROLOPE 11–12 enero 2018 Texto crítico y edición digital: modelos, codificación, alojamiento, publicación 11–12 de enero de 2018 UAB – Facultad de Filosofía y Letras / Departamento de Filología Española / PROLOPE / ICREA-Academia"
-  },
-  {
-    title: "I Seminario Internacional ICREA Academia–PROLOPE (2017)",
-    url: "eventos/seminarios.html#2017-i-seminario-internacional-icrea-academia",
-    description: "29–30 mayo 2017",
-    content: "2017 I Seminario Internacional ICREA Academia–PROLOPE 29–30 mayo 2017 Producción, configuración y circulación del texto dramático en el Siglo de Oro 29–30 de mayo de 2017 UAB – Facultad de Filosofía y Letras / PROLOPE / ICREA-Academia"
-  },
-  {
-    title: "XVIII Taller Internacional de Estudios Textuales (2025)",
-    url: "eventos/seminarios.html#2025-xviii-taller-internacional-de-estudios-t",
-    description: "3–4 marzo 2025",
-    content: "2025 XVIII Taller Internacional de Estudios Textuales 3–4 marzo 2025 3–4 de marzo de 2025 Universidad de Perugia y PROLOPE"
-  },
-  {
-    title: "XVII Taller Internacional de Estudios Textuales (2024)",
-    url: "eventos/seminarios.html#2024-xvii-taller-internacional-de-estudios-te",
-    description: "6–7 mayo 2024",
-    content: "2024 XVII Taller Internacional de Estudios Textuales 6–7 mayo 2024 6–7 de mayo de 2024 Universidad de Perugia y PROLOPE"
-  },
-  {
-    title: "XVI Taller Internacional de Estudios Textuales (2019)",
-    url: "eventos/seminarios.html#2019-xvi-taller-internacional-de-estudios-tex",
-    description: "2–3 diciembre 2019",
-    content: "2019 XVI Taller Internacional de Estudios Textuales 2–3 diciembre 2019 2–3 de diciembre de 2019 Universidad de Perugia, Grupo de Investigación Arenga de la Universidad de Extremadura y PROLOPE"
-  },
-  {
-    title: "XV Taller Internacional de Estudios Textuales (2018)",
-    url: "eventos/seminarios.html#2018-xv-taller-internacional-de-estudios-text",
-    description: "6–7 diciembre 2018",
-    content: "2018 XV Taller Internacional de Estudios Textuales 6–7 diciembre 2018 6–7 diciembre de 2018 Universidad de Perugia, Proyecto de Investigación Arenga de la Universidad de Extremadura y PROLOPE"
-  },
-  {
-    title: "XIV Taller Internacional de Estudios Textuales (2017)",
-    url: "eventos/seminarios.html#2017-xiv-taller-internacional-de-estudios-tex",
-    description: "11–12 diciembre 2025",
-    content: "2017 XIV Taller Internacional de Estudios Textuales 11–12 diciembre 2025 11–12 diciembre de 2025 Universidad de Perugia, Proyecto de Investigación Arenga de la Universidad de Extremadura y PROLOPE"
-  },
-  {
-    title: "XIII Taller Internacional de Estudios Textuales (2016)",
-    url: "eventos/seminarios.html#2016-xiii-taller-internacional-de-estudios-te",
-    description: "6 diciembre 2016",
-    content: "2016 XIII Taller Internacional de Estudios Textuales 6 diciembre 2016 6 diciembre de 2016 Universidad de Perugia, PROLOPE y Grupo de Investigación Arenga de la Universidad de Extremadura"
-  },
-  {
-    title: "XII Taller Internacional de Estudios Textuales (2015)",
-    url: "eventos/seminarios.html#2015-xii-taller-internacional-de-estudios-tex",
-    description: "30 noviembre–1 diciembre 2015",
-    content: "2015 XII Taller Internacional de Estudios Textuales 30 noviembre–1 diciembre 2015 30 noviembre–1 diciembre de 2015 Universidad de Perugia, PROLOPE, Grupo de Investigación Arenga de la Universidad de Extremadura e Instituto de Español de la Universidad de Neuchâtel"
-  },
-  {
-    title: "XI Taller Internacional de Estudios Textuales (2014)",
-    url: "eventos/seminarios.html#2014-xi-taller-internacional-de-estudios-text",
-    description: "1–2 diciembre 2014",
-    content: "2014 XI Taller Internacional de Estudios Textuales 1–2 diciembre 2014 1–2 diciembre de 2014 Universidad de Perugia, PROLOPE, Grupo de Investigación Arenga de la Universidad de Extremadura e Instituto de Español de la Universidad de Neuchâtel"
-  },
-  {
-    title: "X Taller Internacional de Estudios Textuales (2013)",
-    url: "eventos/seminarios.html#2013-x-taller-internacional-de-estudios-textu",
-    description: "29–30 noviembre 2013",
-    content: "2013 X Taller Internacional de Estudios Textuales 29–30 noviembre 2013 29–30 de noviembre de 2013 Universidad de Extremadura, PROLOPE, Grupo de Investigación Arenga de la Universidad de Extremadura y Universidad de Córdoba"
-  },
-  {
-    title: "IX Taller Internacional de Estudios Textuales (2012)",
-    url: "eventos/seminarios.html#2012-ix-taller-internacional-de-estudios-text",
-    description: "9–10 mayo 2012",
-    content: "2012 IX Taller Internacional de Estudios Textuales 9–10 mayo 2012 9–10 de mayo de 2012 Universidad de Extremadura y PROLOPE"
-  },
-  {
-    title: "VIII Taller Internacional de Estudios Textuales (2011)",
-    url: "eventos/seminarios.html#2011-viii-taller-internacional-de-estudios-te",
-    description: "11–12 abril 2011",
-    content: "2011 VIII Taller Internacional de Estudios Textuales 11–12 abril 2011 11–12 abril de 2011 Universidad de Extremadura y PROLOPE"
-  },
-  {
-    title: "VII Taller Internacional de Estudios Textuales (2010)",
-    url: "eventos/seminarios.html#2010-vii-taller-internacional-de-estudios-tex",
-    description: "3–4 mayo 2010",
-    content: "2010 VII Taller Internacional de Estudios Textuales 3–4 mayo 2010 3–4 mayo de 2010 Universidad de Extremadura y PROLOPE"
-  },
-  {
-    title: "VI Taller Internacional de Estudios Textuales (2009)",
-    url: "eventos/seminarios.html#2009-vi-taller-internacional-de-estudios-text",
-    description: "11–12 mayo 2009",
-    content: "2009 VI Taller Internacional de Estudios Textuales 11–12 mayo 2009 11–12 mayo de 2009 Universidad de Extremadura y PROLOPE"
-  },
-  {
-    title: "V Taller Internacional de Estudios Textuales (2008)",
-    url: "eventos/seminarios.html#2008-v-taller-internacional-de-estudios-textu",
-    description: "15–16 mayo 2008",
-    content: "2008 V Taller Internacional de Estudios Textuales 15–16 mayo 2008 15–16 mayo de 2008 Universidad de Extremadura y PROLOPE"
-  },
-  {
-    title: "IV Taller Internacional de Estudios Textuales (2007)",
-    url: "eventos/seminarios.html#2007-iv-taller-internacional-de-estudios-text",
-    description: "24–25 mayo 2007",
-    content: "2007 IV Taller Internacional de Estudios Textuales 24–25 mayo 2007 24–25 mayo de 2007 Universidad de Extremadura y PROLOPE"
-  },
-  {
-    title: "IV Seminario de Estudios Literarios de los Siglos XVI y XVII (2010)",
-    url: "eventos/seminarios.html#2010-iv-seminario-de-estudios-literarios-de-l",
-    description: "22–24 abril 2010",
-    content: "2010 IV Seminario de Estudios Literarios de los Siglos XVI y XVII 22–24 abril 2010 Espacios de representación, espacios representados: la puesta en escena en el teatro clásico español 22–24 de abril de 2010 PROLOPE"
-  },
-  {
-    title: "III Seminario de Estudios Literarios de los Siglos XVI y XVII (2008–09)",
-    url: "eventos/seminarios.html#2008-09-iii-seminario-de-estudios-literarios-de",
-    description: "nov. 2008 – mayo 2009",
-    content: "2008–09 III Seminario de Estudios Literarios de los Siglos XVI y XVII nov. 2008 – mayo 2009 Las reescrituras de la tradición en la España del Siglo de Oro 21 de noviembre de 2008 – 29 de mayo de 2009 PROLOPE"
-  },
-  {
-    title: "II Seminario de Estudios Literarios de los Siglos XVI y XVII (2006–07)",
-    url: "eventos/seminarios.html#2006-07-ii-seminario-de-estudios-literarios-de-l",
-    description: "oct. 2006 – feb. 2007",
-    content: "2006–07 II Seminario de Estudios Literarios de los Siglos XVI y XVII oct. 2006 – feb. 2007 10 de octubre de 2006 – 16 de febrero de 2007 PROLOPE"
-  },
-  {
-    title: "I Seminario de Estudios Literarios de los Siglos XVI y XVII (2005–06)",
-    url: "eventos/seminarios.html#2005-06-i-seminario-de-estudios-literarios-de-lo",
-    description: "oct. 2005 – abr. 2006",
-    content: "2005–06 I Seminario de Estudios Literarios de los Siglos XVI y XVII oct. 2005 – abr. 2006 14 de octubre de 2005 – 24 de abril de 2006 PROLOPE"
-  },
-  {
-    title: "Jornadas sobre Humanidades Digitales y Ediciones Críticas Electrónicas (2013)",
-    url: "eventos/seminarios.html#2013-jornadas-sobre-humanidades-digitales-y-e",
-    description: "17–18 enero 2013",
-    content: "2013 Jornadas sobre Humanidades Digitales y Ediciones Críticas Electrónicas 17–18 enero 2013 17–18 de enero de 2013 PROLOPE"
-  },
-  {
-    title: "II Seminario Internacional (2001)",
-    url: "eventos/seminarios.html#2001-ii-seminario-internacional",
-    description: "23–24 noviembre 2001",
-    content: "2001 II Seminario Internacional 23–24 noviembre 2001 La versificación dramática en el Siglo de Oro 23–24 de noviembre de 2001 PROLOPE"
-  },
-  {
-    title: "De la pluma a las tablas, de las tablas al lector: el texto dramático en el Siglo de Oro (1999)",
-    url: "eventos/seminarios.html#1999-de-la-pluma-a-las-tablas-de-las-tablas",
-    description: "8–9 octubre 1999",
-    content: "1999 De la pluma a las tablas, de las tablas al lector: el texto dramático en el Siglo de Oro 8–9 octubre 1999 8–9 de octubre de 1999 PROLOPE"
-  },
-  {
     title: "XI Congreso Internacional: «Lope político»",
     url: "eventos/congresos.html#xi-congreso-internacional-lope-politico",
     description: "27–29 nov. 2024 UAB, Barcelona",
@@ -1713,15 +1563,219 @@ var SEARCH_INDEX = [
     content: "Ramón Valdés Comité científico Universitat Autònoma de Barcelona Ramón Valdés Gázquez es profesor Agregado de la Universitat Autònoma de Barcelona, doctor en Filosofía y Letras por la misma universidad desde 1997 y co-Investigadro prinicipal, junto a Gonzalo Pontón, del Grupo de Investigación PROLOPE, en el que participa desde el año 2000. Sus principales líneas de investigación se centran en la sátira, la sátira menipea del Siglo de Oro; la edición de textos; el estudio del autor Lope de Vega y el Humanismo digital.Su trayectoria científica inicia con la redacción de un trabajo de curso y luego un trabajo de Máster (en el ámbito de los cursos de Doctorado) sobre Los Sueños y discursos de Quevedo: el modelo del sueño humanista y el género de la sátira menipea (Departament de Filologia Espanyola, UAB, 1990). Ahí inicia su interés por el género de la sátira menipea y por Quevedo, uno de sus principales centros de interés y tema de muchas de sus publicaciones, desde libros colectivos a capítulos de libro y artículos en revistas, así como de ponencias y conferencias. De ahí derivó, asimismo, un encargo editorial para la prestigiosa colección «Biblioteca Clásica» dirigida por Francisco Rico, la edición crítica de El diablo Cojuelo , de Luis Vélez de Guevara. Ese encargo editorial acabó por convertirse, antes de su publicacion, en su tesis doctoral, dirigida por el profesor Alberto Blecua. Así se produjo su iniciación en el terreno de la Crítica Textual y en la labor de edición de textos. Como alumno del profesor Alberto Blecua y de la Universitat Autònoma de Barcelona, después de una estancia de ocho años en Italia; la formación y curriculum en Crítica Textual y edición de textos permitieron a Ramón Valdés reincorporarse con una beca postdoctoral en la misma universidad, y dentro del proyecto de edición de textos que llevaba adelante el grupo de investigación PROLOPE. Desde su llegada al grupo de investigación PROLOPE en el año 2000, su dedicación a la edición del teatro de Lope de Vega ha sido intensa: realizó la edición crítica de varias obras, como La fe rompida y La batalla del honor , además de, en colaboración con María Nogués, La octava maravilla ; y ahora, en colaboración con Santiago Restrepo, El caballero del milagro . Asumió asimismo la coordinación de la Parte IV de las Comedias de Lope de Vega con Luigi Giuliani, y con María Morrás la de la Parte X . También ha coordinado y participado en las ediciones de Fuenteovejuna y El castigo sin venganza para la editorial PPU, y se ha encargado de las relaciones con la compañía de teatro Rakatá, actualmente Fundación Siglo de Oro. Desde junio de 2011 dirige con Gonzalo Pontón, el grupo de investigación PROLOPE. Entre los años 2003 y 2008 fue investigador Ramón y Cajal, siendo evaluado positivamente en el último año e integrándose como investigador en el Programa I3. Desde el año 2009, y durante el quinquenio 2009-2014, ha sido miembro, a través de PROLOPE, del macroproyecto en red TC/12 Patrimonio Teatral Clásico Español , del Programa Consolider-Ingenio 2010 CSD 2009 00033. Problemas prácticos y reflexiones teóricas han acercado a Ramón Valdés, además, al ámbito de la edición digital. En 2013, organizó unas Jornadas sobre Humanidades y Ediciones críticas digitales en la UAB en las que participaron varios especialistas de primer orden mundial: A. Bía, D. Fiormonte, S. Hagel, P. Spence y F. Tomasi, entre otros. Ha realizado una propuesta de Máster en Humanidades Digitales que presentó con A. Bía en el I Congreso de HDH («Una propuesta educativa para las HD: el nuevo máster en HD de la UAB», A Coruña, Julio, 2013), la cual fue aprobada por la Comisión de Posgrado de la UAB. En 2014 ha coordinado un número de la revista Anuario Lope de Vega sobre «Edición digital y edición crítica», con participación de varios de los especialistas ya mencionados así como de otros."
   },
   {
-    title: "Expostulatio Spongiae",
-    url: "publicaciones/otras-publicaciones.html#expostulatio-spongiae",
+    title: "<i>Los locos de Valencia</i>",
+    url: "publicaciones/otras-publicaciones.html#i-los-locos-de-valencia-i",
+    description: "Lope de Vega Carpio, 2024",
+    content: "Lope de Vega Carpio Carlos Peña López 2024 Gredos Barcelona Biblioteca Lope de Vega 9788424999605"
+  },
+  {
+    title: "<i>Lo fingido verdadero</i>",
+    url: "publicaciones/otras-publicaciones.html#i-lo-fingido-verdadero-i",
+    description: "Lope de Vega Carpio, 2024",
+    content: "Lope de Vega Carpio Luigi Giuliani 2024 Gredos Barcelona Biblioteca Lope de Vega 9788424941123"
+  },
+  {
+    title: "<i>Fuente Ovejuna</i>",
+    url: "publicaciones/otras-publicaciones.html#i-fuente-ovejuna-i",
+    description: "Lope de Vega Carpio, 2024",
+    content: "Lope de Vega Carpio PROLOPE 2024 Gredos Barcelona Biblioteca Lope de Vega 9788424941116"
+  },
+  {
+    title: "<i>Yo me entiendo</i>",
+    url: "publicaciones/otras-publicaciones.html#i-yo-me-entiendo-i",
+    description: "Lope de Vega Carpio, 2023",
+    content: "Lope de Vega Carpio Donald McGrady 2023 Gredos Barcelona Biblioteca Lope de Vega 9788424940201"
+  },
+  {
+    title: "<i>El castigo sin venganza</i>",
+    url: "publicaciones/otras-publicaciones.html#i-el-castigo-sin-venganza-i",
+    description: "Lope de Vega Carpio, 2023",
+    content: "Lope de Vega Carpio Alejandro García-Reidy y Ramón Valdés 2023 Gredos Barcelona Biblioteca Lope de Vega 9788424940218"
+  },
+  {
+    title: "<i>La francesa Laura</i>",
+    url: "publicaciones/otras-publicaciones.html#i-la-francesa-laura-i",
+    description: "Lope de Vega Carpio, 2023",
+    content: "Lope de Vega Carpio Álvaro Cuéllar y Germán Vega 2023 Gredos Barcelona Biblioteca Lope de Vega 9788424940621"
+  },
+  {
+    title: "<i>Expostulatio Spongiae</i>",
+    url: "publicaciones/otras-publicaciones.html#i-expostulatio-spongiae-i",
     description: "Lope de Vega Carpio, 2016",
     content: "Lope de Vega Carpio Pedro Conde Parrado y Xavier Tubau Moreu 2016 Gredos Barcelona Biblioteca Lope de Vega 9788424928964"
   },
   {
-    title: "El maestro del danzar - La creación del mundo",
-    url: "publicaciones/otras-publicaciones.html#el-maestro-del-danzar-la-creacion-del-mundo",
+    title: "<i>El maestro del danzar</i> - <i>La creación del mundo</i>",
+    url: "publicaciones/otras-publicaciones.html#i-el-maestro-del-danzar-i-i-la-creacion-del-mundo-i",
     description: "Lope de Vega Carpio, 2012",
     content: "Lope de Vega Carpio Daniel Fernández Rodríguez y Alessandro Martinengo 2012 Gredos Barcelona Biblioteca Lope de Vega 9788424936594"
+  },
+  {
+    title: "<i>Mujeres y criados</i>",
+    url: "publicaciones/otras-publicaciones.html#i-mujeres-y-criados-i",
+    description: "Lope de Vega Carpio, 2014",
+    content: "Lope de Vega Carpio Alejandro García-Reidy 2014 Gredos Barcelona Biblioteca Lope de Vega 9788424926793"
+  },
+  {
+    title: "Jornada Internacional ICREA Academia–PROLOPE (2019)",
+    url: "eventos/seminarios.html#2019-jornada-internacional-icrea-academia-pro",
+    description: "17 junio 2019",
+    content: "2019 Jornada Internacional ICREA Academia–PROLOPE 17 junio 2019 Investigación avanzada en Literatura Española y teatro del Siglo de Oro 17 de junio de 2019 PROLOPE – UAB / ICREA-Academia"
+  },
+  {
+    title: "II Seminario Internacional ICREA Academia–PROLOPE (2018)",
+    url: "eventos/seminarios.html#2018-ii-seminario-internacional-icrea-academi",
+    description: "11–12 enero 2018",
+    content: "2018 II Seminario Internacional ICREA Academia–PROLOPE 11–12 enero 2018 Texto crítico y edición digital: modelos, codificación, alojamiento, publicación 11–12 de enero de 2018 UAB – Facultad de Filosofía y Letras / Departamento de Filología Española / PROLOPE / ICREA-Academia"
+  },
+  {
+    title: "I Seminario Internacional ICREA Academia–PROLOPE (2017)",
+    url: "eventos/seminarios.html#2017-i-seminario-internacional-icrea-academia",
+    description: "29–30 mayo 2017",
+    content: "2017 I Seminario Internacional ICREA Academia–PROLOPE 29–30 mayo 2017 Producción, configuración y circulación del texto dramático en el Siglo de Oro 29–30 de mayo de 2017 UAB – Facultad de Filosofía y Letras / PROLOPE / ICREA-Academia"
+  },
+  {
+    title: "XVIII Taller Internacional de Estudios Textuales (2025)",
+    url: "eventos/seminarios.html#2025-xviii-taller-internacional-de-estudios-t",
+    description: "3–4 marzo 2025",
+    content: "2025 XVIII Taller Internacional de Estudios Textuales 3–4 marzo 2025 3–4 de marzo de 2025 Universidad de Perugia y PROLOPE"
+  },
+  {
+    title: "XVII Taller Internacional de Estudios Textuales (2024)",
+    url: "eventos/seminarios.html#2024-xvii-taller-internacional-de-estudios-te",
+    description: "6–7 mayo 2024",
+    content: "2024 XVII Taller Internacional de Estudios Textuales 6–7 mayo 2024 6–7 de mayo de 2024 Universidad de Perugia y PROLOPE"
+  },
+  {
+    title: "XVI Taller Internacional de Estudios Textuales (2019)",
+    url: "eventos/seminarios.html#2019-xvi-taller-internacional-de-estudios-tex",
+    description: "2–3 diciembre 2019",
+    content: "2019 XVI Taller Internacional de Estudios Textuales 2–3 diciembre 2019 2–3 de diciembre de 2019 Universidad de Perugia, Grupo de Investigación Arenga de la Universidad de Extremadura y PROLOPE"
+  },
+  {
+    title: "XV Taller Internacional de Estudios Textuales (2018)",
+    url: "eventos/seminarios.html#2018-xv-taller-internacional-de-estudios-text",
+    description: "6–7 diciembre 2018",
+    content: "2018 XV Taller Internacional de Estudios Textuales 6–7 diciembre 2018 6–7 diciembre de 2018 Universidad de Perugia, Proyecto de Investigación Arenga de la Universidad de Extremadura y PROLOPE"
+  },
+  {
+    title: "XIV Taller Internacional de Estudios Textuales (2017)",
+    url: "eventos/seminarios.html#2017-xiv-taller-internacional-de-estudios-tex",
+    description: "11–12 diciembre 2025",
+    content: "2017 XIV Taller Internacional de Estudios Textuales 11–12 diciembre 2025 11–12 diciembre de 2025 Universidad de Perugia, Proyecto de Investigación Arenga de la Universidad de Extremadura y PROLOPE"
+  },
+  {
+    title: "XIII Taller Internacional de Estudios Textuales (2016)",
+    url: "eventos/seminarios.html#2016-xiii-taller-internacional-de-estudios-te",
+    description: "6 diciembre 2016",
+    content: "2016 XIII Taller Internacional de Estudios Textuales 6 diciembre 2016 6 diciembre de 2016 Universidad de Perugia, PROLOPE y Grupo de Investigación Arenga de la Universidad de Extremadura"
+  },
+  {
+    title: "XII Taller Internacional de Estudios Textuales (2015)",
+    url: "eventos/seminarios.html#2015-xii-taller-internacional-de-estudios-tex",
+    description: "30 noviembre–1 diciembre 2015",
+    content: "2015 XII Taller Internacional de Estudios Textuales 30 noviembre–1 diciembre 2015 30 noviembre–1 diciembre de 2015 Universidad de Perugia, PROLOPE, Grupo de Investigación Arenga de la Universidad de Extremadura e Instituto de Español de la Universidad de Neuchâtel"
+  },
+  {
+    title: "XI Taller Internacional de Estudios Textuales (2014)",
+    url: "eventos/seminarios.html#2014-xi-taller-internacional-de-estudios-text",
+    description: "1–2 diciembre 2014",
+    content: "2014 XI Taller Internacional de Estudios Textuales 1–2 diciembre 2014 1–2 diciembre de 2014 Universidad de Perugia, PROLOPE, Grupo de Investigación Arenga de la Universidad de Extremadura e Instituto de Español de la Universidad de Neuchâtel"
+  },
+  {
+    title: "X Taller Internacional de Estudios Textuales (2013)",
+    url: "eventos/seminarios.html#2013-x-taller-internacional-de-estudios-textu",
+    description: "29–30 noviembre 2013",
+    content: "2013 X Taller Internacional de Estudios Textuales 29–30 noviembre 2013 29–30 de noviembre de 2013 Universidad de Extremadura, PROLOPE, Grupo de Investigación Arenga de la Universidad de Extremadura y Universidad de Córdoba"
+  },
+  {
+    title: "IX Taller Internacional de Estudios Textuales (2012)",
+    url: "eventos/seminarios.html#2012-ix-taller-internacional-de-estudios-text",
+    description: "9–10 mayo 2012",
+    content: "2012 IX Taller Internacional de Estudios Textuales 9–10 mayo 2012 9–10 de mayo de 2012 Universidad de Extremadura y PROLOPE"
+  },
+  {
+    title: "VIII Taller Internacional de Estudios Textuales (2011)",
+    url: "eventos/seminarios.html#2011-viii-taller-internacional-de-estudios-te",
+    description: "11–12 abril 2011",
+    content: "2011 VIII Taller Internacional de Estudios Textuales 11–12 abril 2011 11–12 abril de 2011 Universidad de Extremadura y PROLOPE"
+  },
+  {
+    title: "VII Taller Internacional de Estudios Textuales (2010)",
+    url: "eventos/seminarios.html#2010-vii-taller-internacional-de-estudios-tex",
+    description: "3–4 mayo 2010",
+    content: "2010 VII Taller Internacional de Estudios Textuales 3–4 mayo 2010 3–4 mayo de 2010 Universidad de Extremadura y PROLOPE"
+  },
+  {
+    title: "VI Taller Internacional de Estudios Textuales (2009)",
+    url: "eventos/seminarios.html#2009-vi-taller-internacional-de-estudios-text",
+    description: "11–12 mayo 2009",
+    content: "2009 VI Taller Internacional de Estudios Textuales 11–12 mayo 2009 11–12 mayo de 2009 Universidad de Extremadura y PROLOPE"
+  },
+  {
+    title: "V Taller Internacional de Estudios Textuales (2008)",
+    url: "eventos/seminarios.html#2008-v-taller-internacional-de-estudios-textu",
+    description: "15–16 mayo 2008",
+    content: "2008 V Taller Internacional de Estudios Textuales 15–16 mayo 2008 15–16 mayo de 2008 Universidad de Extremadura y PROLOPE"
+  },
+  {
+    title: "IV Taller Internacional de Estudios Textuales (2007)",
+    url: "eventos/seminarios.html#2007-iv-taller-internacional-de-estudios-text",
+    description: "24–25 mayo 2007",
+    content: "2007 IV Taller Internacional de Estudios Textuales 24–25 mayo 2007 24–25 mayo de 2007 Universidad de Extremadura y PROLOPE"
+  },
+  {
+    title: "IV Seminario de Estudios Literarios de los Siglos XVI y XVII (2010)",
+    url: "eventos/seminarios.html#2010-iv-seminario-de-estudios-literarios-de-l",
+    description: "22–24 abril 2010",
+    content: "2010 IV Seminario de Estudios Literarios de los Siglos XVI y XVII 22–24 abril 2010 Espacios de representación, espacios representados: la puesta en escena en el teatro clásico español 22–24 de abril de 2010 PROLOPE"
+  },
+  {
+    title: "III Seminario de Estudios Literarios de los Siglos XVI y XVII (2008–09)",
+    url: "eventos/seminarios.html#2008-09-iii-seminario-de-estudios-literarios-de",
+    description: "nov. 2008 – mayo 2009",
+    content: "2008–09 III Seminario de Estudios Literarios de los Siglos XVI y XVII nov. 2008 – mayo 2009 Las reescrituras de la tradición en la España del Siglo de Oro 21 de noviembre de 2008 – 29 de mayo de 2009 PROLOPE"
+  },
+  {
+    title: "II Seminario de Estudios Literarios de los Siglos XVI y XVII (2006–07)",
+    url: "eventos/seminarios.html#2006-07-ii-seminario-de-estudios-literarios-de-l",
+    description: "oct. 2006 – feb. 2007",
+    content: "2006–07 II Seminario de Estudios Literarios de los Siglos XVI y XVII oct. 2006 – feb. 2007 10 de octubre de 2006 – 16 de febrero de 2007 PROLOPE"
+  },
+  {
+    title: "I Seminario de Estudios Literarios de los Siglos XVI y XVII (2005–06)",
+    url: "eventos/seminarios.html#2005-06-i-seminario-de-estudios-literarios-de-lo",
+    description: "oct. 2005 – abr. 2006",
+    content: "2005–06 I Seminario de Estudios Literarios de los Siglos XVI y XVII oct. 2005 – abr. 2006 14 de octubre de 2005 – 24 de abril de 2006 PROLOPE"
+  },
+  {
+    title: "Encuentro de investigación PROLOPE-THALÍA-BADEMS (2025)",
+    url: "eventos/seminarios.html#2025-encuentro-de-investigacion-prolope-thali",
+    description: "2 jun. 2025",
+    content: "2025 Encuentro de investigación PROLOPE-THALÍA-BADEMS 2 jun. 2025 Espacio de intercambio entre proyectos e investigadores para compartir líneas de trabajo actuales, explorar posibles sinergias y dar voz a las investigaciones en curso.&nbsp; 2 de junio de 2025 PROLOPE-THALÍA-BADEMS"
+  },
+  {
+    title: "El proceso de composición de los autógrafos teatrales del Siglo de Oro (2025)",
+    url: "eventos/seminarios.html#2025-el-proceso-de-composicion-de-los-autogra",
+    description: "8-9 may. 2025",
+    content: "2025 El proceso de composición de los autógrafos teatrales del Siglo de Oro 8-9 may. 2025 Coordinado por Sònia Boadas y Marco Presotto 8 y 9 de mayo de 2025 PROLOPE"
+  },
+  {
+    title: "Jornadas sobre Humanidades Digitales y Ediciones Críticas Electrónicas (2013)",
+    url: "eventos/seminarios.html#2013-jornadas-sobre-humanidades-digitales-y-e",
+    description: "17–18 enero 2013",
+    content: "2013 Jornadas sobre Humanidades Digitales y Ediciones Críticas Electrónicas 17–18 enero 2013 17–18 de enero de 2013 PROLOPE"
+  },
+  {
+    title: "II Seminario Internacional (2001)",
+    url: "eventos/seminarios.html#2001-ii-seminario-internacional",
+    description: "23–24 noviembre 2001",
+    content: "2001 II Seminario Internacional 23–24 noviembre 2001 La versificación dramática en el Siglo de Oro 23–24 de noviembre de 2001 PROLOPE"
+  },
+  {
+    title: "De la pluma a las tablas, de las tablas al lector: el texto dramático en el Siglo de Oro (1999)",
+    url: "eventos/seminarios.html#1999-de-la-pluma-a-las-tablas-de-las-tablas",
+    description: "8–9 octubre 1999",
+    content: "1999 De la pluma a las tablas, de las tablas al lector: el texto dramático en el Siglo de Oro 8–9 octubre 1999 8–9 de octubre de 1999 PROLOPE"
   }
 ];

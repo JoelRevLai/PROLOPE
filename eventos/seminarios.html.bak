@@ -73,8 +73,8 @@
                 <li><a href="../proyectos-digitales/mujeres-criados.html">Mujeres y criados</a></li>
                 <li><a href="../proyectos-digitales/mapping-lope.html">Mapping Lope</a></li>
                 <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
-                <li><a href="../proyectos-digitales/la-dama-boba.html">La dama boba</a></li>
-                <li><a href="../proyectos-digitales/gondomar.html">Gondomar Digital</a></li>
+                <li><a href="https://damaboba.unibo.it/" target="_blank" rel="noopener noreferrer">La dama boba <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="https://gondomar.tespasiglodeoro.it/" target="_blank" rel="noopener noreferrer">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
               </ul>
             </div>
           </li>
@@ -576,6 +576,44 @@
 
     <ul class="seminar-list">
 
+      <li class="seminar-item" id="2025-encuentro-de-investigacion-prolope-thali">
+        <button class="seminar-trigger" onclick="toggleSeminar(this)">
+          <span class="seminar-year">2025</span>
+          <span class="seminar-title-wrap">
+            <span class="seminar-name">Encuentro de investigación PROLOPE-THALÍA-BADEMS</span>
+            <span class="seminar-theme">Espacio de intercambio entre proyectos e investigadores para compartir líneas de trabajo actuales, explorar posibles sinergias y dar voz a las investigaciones en curso.&nbsp;</span>
+          </span>
+          <span class="seminar-dates-inline">2 jun. 2025</span>
+          <span class="seminar-chevron">▼</span>
+        </button>
+        <div class="seminar-panel" id="sem-panel-22">
+          <div class="seminar-panel-grid">
+            <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">2 de junio de 2025</div></div>
+            <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">PROLOPE-THALÍA-BADEMS</div></div>
+          </div>
+          <a class="seminar-pdf-btn" href="../media/encuentro-prolope-thalia-badems.pdf" target="_blank" rel="noopener noreferrer">Programa (PDF)</a>
+        </div>
+      </li>
+
+      <li class="seminar-item" id="2025-el-proceso-de-composicion-de-los-autogra">
+        <button class="seminar-trigger" onclick="toggleSeminar(this)">
+          <span class="seminar-year">2025</span>
+          <span class="seminar-title-wrap">
+            <span class="seminar-name">El proceso de composición de los autógrafos teatrales del Siglo de Oro</span>
+            <span class="seminar-theme"><!--StartFragment-->Coordinado por Sònia Boadas y Marco Presotto<!--EndFragment--></span>
+          </span>
+          <span class="seminar-dates-inline">8-9 may. 2025</span>
+          <span class="seminar-chevron">▼</span>
+        </button>
+        <div class="seminar-panel" id="sem-panel-23">
+          <div class="seminar-panel-grid">
+            <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">8 y 9 de mayo de 2025</div></div>
+            <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">PROLOPE</div></div>
+          </div>
+          <a class="seminar-pdf-btn" href="../media/Seminario-Thal-IA-Programa.pdf" target="_blank" rel="noopener noreferrer">Programa (PDF)</a>
+        </div>
+      </li>
+
       <li class="seminar-item" id="2013-jornadas-sobre-humanidades-digitales-y-e">
         <button class="seminar-trigger" onclick="toggleSeminar(this)">
           <span class="seminar-year">2013</span>
@@ -585,7 +623,7 @@
           <span class="seminar-dates-inline">17–18 enero 2013</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-22">
+        <div class="seminar-panel" id="sem-panel-24">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">17–18 de enero de 2013</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">PROLOPE</div></div>
@@ -604,7 +642,7 @@
           <span class="seminar-dates-inline">23–24 noviembre 2001</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-23">
+        <div class="seminar-panel" id="sem-panel-25">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">23–24 de noviembre de 2001</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">PROLOPE</div></div>
@@ -621,7 +659,7 @@
           <span class="seminar-dates-inline">8–9 octubre 1999</span>
           <span class="seminar-chevron">▼</span>
         </button>
-        <div class="seminar-panel" id="sem-panel-24">
+        <div class="seminar-panel" id="sem-panel-26">
           <div class="seminar-panel-grid">
             <div class="seminar-field"><div class="seminar-field-label">Fechas</div><div class="seminar-field-value">8–9 de octubre de 1999</div></div>
             <div class="seminar-field"><div class="seminar-field-label">Organizado por</div><div class="seminar-field-value">PROLOPE</div></div>
