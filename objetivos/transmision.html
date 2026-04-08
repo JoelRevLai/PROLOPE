@@ -532,6 +532,7 @@
       document.body.style.overflow = '';
     }
     document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+    document.addEventListener('click', function(e) { var w = e.target.closest('.article-figure-img-wrap,.event-box-img-wrap'); if (!w) return; var img = w.querySelector('img'); if (img) openLightbox(img.src); });
   </script>
 
   <script>

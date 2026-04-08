@@ -2646,6 +2646,12 @@ footer > .footer-bottom {
   align-items: start;
 }
 
+/* Cuando no hay sidebar, usar una sola columna para evitar margen derecho vacío */
+.page-wrap:not(:has(aside)):not(:has(.sidebar)) {
+  grid-template-columns: 1fr;
+  max-width: 900px;
+}
+
 .article-main {
   min-width: 0;
 }

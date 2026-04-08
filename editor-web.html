@@ -2585,6 +2585,7 @@ async function uploadHighlightFile(fileInput, bid) {
 function rerenderBlocks() {
   var c = document.getElementById('blocksContainer');
   if (!c) return;
+  readAllBlocks();
   var h = '';
   S.blocks.forEach(function(b) {
     if (b.type==='_skip') return;
@@ -3859,6 +3860,23 @@ function generateHtml() {
   var footer = S.footerPart;
   if (_pendingLocalVideos) footer = updateFooterVideosScript(footer, _pendingLocalVideos);
 
+  // Ensure lightbox is present if the page has figures or image grids
+  if (/article-figure-img-wrap|event-box-img-wrap/.test(content) && !/id="lightbox"/.test(footer) && !/id="lightbox"/.test(content)) {
+    var lbHtml = '\n  <!-- LIGHTBOX -->\n  <div class="lightbox" id="lightbox" onclick="closeLightbox()">\n    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">✕</button>\n    <img id="lightbox-img" src="" alt="" />\n  </div>\n  <script>function openLightbox(src){document.getElementById(\'lightbox-img\').src=src;document.getElementById(\'lightbox\').classList.add(\'open\');document.body.style.overflow=\'hidden\';}function closeLightbox(){document.getElementById(\'lightbox\').classList.remove(\'open\');document.body.style.overflow=\'\';}document.addEventListener(\'keydown\',function(e){if(e.key===\'Escape\')closeLightbox();});document.addEventListener(\'click\',function(e){var w=e.target.closest(\'.article-figure-img-wrap,.event-box-img-wrap\');if(!w)return;var img=w.querySelector(\'img\');if(img)openLightbox(img.src);});<\/script>\n';
+    // Insert just after </footer> or before </body>
+    if (/<\/footer>/i.test(footer)) {
+      footer = footer.replace(/<\/footer>/i, '</footer>'+lbHtml);
+    } else {
+      footer = lbHtml + footer;
+    }
+  } else if (/id="lightbox"/.test(footer) && !/e\.target\.closest\('\.article-figure-img-wrap/.test(footer)) {
+    // Lightbox exists but missing the delegated click listener — add it
+    footer = footer.replace(
+      /(document\.addEventListener\('keydown',\s*function\(e\)\s*\{\s*if\s*\(e\.key\s*===\s*'Escape'\)\s*closeLightbox\(\);\s*\}\);)/,
+      "$1document.addEventListener('click',function(e){var w=e.target.closest('.article-figure-img-wrap,.event-box-img-wrap');if(!w)return;var img=w.querySelector('img');if(img)openLightbox(img.src);});"
+    );
+  }
+
   return header + content + footer;
 }
 
@@ -4031,9 +4049,9 @@ function genLibroModalScript() {
     + '  if(window.__lbI)return;window.__lbI=1;\n'
     + '  var s=document.createElement(\'style\');\n'
     /* ── Modal-mode thumbnail (inline portada clicable) ── */
-    + '  s.textContent=\'.libro-block{display:flex;flex-direction:column;align-items:center;text-align:center;cursor:pointer}\'\n'
-    + '  +\'.libros-modal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1.5rem 1.2rem;margin:0 0 1.5rem}\'\n'
-    + '  +\'.libro-block-cover{width:100%;max-width:160px;height:240px;object-fit:cover;object-position:center;border-radius:5px;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:transform .18s,box-shadow .18s}\'\n'
+    + '  s.textContent=\'.libro-block{display:flex;flex-direction:column;align-items:center;text-align:center;cursor:pointer;width:160px}\'\n'
+    + '  +\'.libros-modal-grid{display:flex;flex-wrap:wrap;gap:1.5rem 1.2rem;margin:0 0 1.5rem;align-items:flex-start}\'\n'
+    + '  +\'.libro-block-cover{width:160px;height:240px;object-fit:cover;object-position:center;border-radius:5px;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:transform .18s,box-shadow .18s}\'\n'
     + '  +\'.libro-block--modal .libro-block-cover:hover{transform:translateY(-5px);box-shadow:0 10px 28px rgba(0,0,0,.28)}\'\n'
     + '  +\'.libro-block-cover--ph{width:100%;max-width:160px;height:240px;background:var(--crema,#faf8f4);border:1px solid var(--borde,#d5cfc5);border-radius:5px;display:block}\'\n'
     + '  +\'.libro-block-title{margin-top:.5rem;font-family:Raleway,sans-serif;font-weight:600;font-size:.82rem;color:var(--azul,#1a3a5c);line-height:1.3}\'\n'
@@ -6561,7 +6579,7 @@ function ncGenerateHtml(d) {
   H += '  <!-- LIGHTBOX -->\n  <div class="lightbox" id="lightbox" onclick="closeLightbox()">\n';
   H += '    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">✕</button>\n';
   H += '    <img id="lightbox-img" src="" alt="" />\n  </div>\n';
-  H += '  <script>function openLightbox(src){document.getElementById(\'lightbox-img\').src=src;document.getElementById(\'lightbox\').classList.add(\'open\');document.body.style.overflow=\'hidden\';}function closeLightbox(){document.getElementById(\'lightbox\').classList.remove(\'open\');document.body.style.overflow=\'\';}document.addEventListener(\'keydown\',function(e){if(e.key===\'Escape\')closeLightbox();});<\/script>\n\n';
+  H += '  <script>function openLightbox(src){document.getElementById(\'lightbox-img\').src=src;document.getElementById(\'lightbox\').classList.add(\'open\');document.body.style.overflow=\'hidden\';}function closeLightbox(){document.getElementById(\'lightbox\').classList.remove(\'open\');document.body.style.overflow=\'\';}document.addEventListener(\'keydown\',function(e){if(e.key===\'Escape\')closeLightbox();});document.addEventListener(\'click\',function(e){var w=e.target.closest(\'.article-figure-img-wrap,.event-box-img-wrap\');if(!w)return;var img=w.querySelector(\'img\');if(img)openLightbox(img.src);});<\/script>\n\n';
 
   H += '  <!-- FUNDERS -->\n  <section class="funders">\n    <div class="funders-inner">\n      <p class="funders-title">Entidades financiadoras</p>\n      <div class="funders-logos">\n';
   H += '        <a class="funder-logo-link" href="https://www.march.es/" target="_blank" rel="noopener noreferrer"><img src="../media/fundacion-march.png" alt="Fundación March" /></a>\n';
