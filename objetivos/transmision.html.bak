@@ -41,6 +41,7 @@
                 <li><a href="../el-grupo/estatutos.html">Estatutos del grupo</a></li>
                 <li><a href="../el-grupo/miembros.html">Miembros</a></li>
                 <li><a href="../el-grupo/contacto.html">Contacto y ubicación</a></li>
+                <li><a href="../el-grupo/bad-gyal.html">Bad Gyal</a></li>
               </ul>
             </div>
           </li>
@@ -73,8 +74,8 @@
                 <li><a href="../proyectos-digitales/mujeres-criados.html">Mujeres y criados</a></li>
                 <li><a href="../proyectos-digitales/mapping-lope.html">Mapping Lope</a></li>
                 <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
-                <li><a href="../proyectos-digitales/la-dama-boba.html">La dama boba</a></li>
-                <li><a href="../proyectos-digitales/gondomar.html">Gondomar Digital</a></li>
+                <li><a href="https://damaboba.unibo.it/" target="_blank" rel="noopener noreferrer">La dama boba <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="https://gondomar.tespasiglodeoro.it/" target="_blank" rel="noopener noreferrer">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
               </ul>
             </div>
           </li>
@@ -136,7 +137,9 @@
 
       <p class="article-lead">
         
+        
         La obra dramática de Lope de Vega, cuya edición crítica es el objetivo principal del Grupo de Investigación PROLOPE, ha sobrevivido y llegado a nosotros a través de sus textos en manuscritos e impresos de mejor o peor calidad. La labor del grupo PROLOPE consiste en recuperar, estudiar y restaurar dichos textos.
+      
       
       </p>
 
@@ -145,7 +148,7 @@
       <h3>a. Los manuscritos autógrafos</h3>
 
       <figure class="inline-figure">
-        <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector('img').src)">
+        <div class="article-figure-img-wrap" onclick="openLightbox('../media/dama-boba_portada.jpg')">
           <img src="../media/dama-boba_portada.jpg" alt="Portada de La dama boba, comedia de Lope de Vega" />
           <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
         </div>
@@ -153,21 +156,27 @@
       </figure>
 
       <p>
+        
         Se conservan unos cuarenta manuscritos autógrafos de Lope de Vega. Es una situación excepcional dentro de la literatura del Siglo de Oro. Diferentes razones han favorecido esta pervivencia: desde el valor literario y estético de los textos que esos manuscritos contienen y que suscitaron el interés de coleccionistas, hasta el propio valor legal y comercial que tuvo originalmente el documento (como propiedad del «autor de comedias» o director de compañía de teatro que lo poseía legítimamente para su representación exclusiva).
+      
       </p>
 
       <p>
+        
         Por eso hoy en día se conservan en varias bibliotecas del mundo un número tan alto de manuscritos autógrafos del propio Lope de Vega. En ellos podemos reconocer su letra (algunos rasgos peculiares), sus costumbres al copiar manuscritos (marcas, invocaciones, dataciones, firmas y rúbricas) e incluso su proceso creativo (con frecuencia tachaba y volvía a escribir pasajes).
+      
       </p>
 
       <p>
+        
         Estos manuscritos tienen un valor extraordinario en la fijación del texto, pues al tratarse de autógrafos salidos de mano del poeta se libran del proceso de corrupción textual progresiva que implica el proceso de copia (cuando se realizan copias, siempre se introducen indefectiblemente errores): sabemos exactamente qué es lo que Lope escribió.
+      
       </p>
 
       <h3>b. Los manuscritos apógrafos</h3>
 
       <figure class="inline-figure">
-        <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector('img').src)">
+        <div class="article-figure-img-wrap" onclick="openLightbox('../media/caballero-milagro_manuscrito-galvez.png')">
           <img src="../media/caballero-milagro_manuscrito-galvez.png" alt="Manuscrito apógrafo de El caballero del milagro, de la colección Gálvez" />
           <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
         </div>
@@ -175,21 +184,27 @@
       </figure>
 
       <p>
+        
         Otros manuscritos de muchísimo valor textual, es decir, copias muy buenas, son los que realizaron algunos copistas por encargo de coleccionistas de obras de Lope de Vega. Los modelos que se utilizaron para la realización de esos manuscritos fueron los propios autógrafos de Lope.
+      
       </p>
 
       <p>
+        
         En ocasiones, esos autógrafos se perdieron con el tiempo, pero en cambio seguimos disponiendo de estos manuscritos apógrafos.
+      
       </p>
 
       <p>
+        
         Son muy importantes y de gran calidad textual dos colecciones: los que conocemos como «manuscritos Gálvez» y los «manuscritos Sanz de Pliegos», copiados en el siglo XVIII por encargo de coleccionistas nobles y por los copistas que les dan nombre.
+      
       </p>
 
       <h3>c. Otros manuscritos</h3>
 
       <figure class="inline-figure-left">
-        <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector('img').src)">
+        <div class="article-figure-img-wrap" onclick="openLightbox('../media/castigo-sin-venganza_melbury.jpg')">
           <img src="../media/castigo-sin-venganza_melbury.jpg" alt="Manuscrito de El castigo sin venganza, Melbury House" />
           <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
         </div>
@@ -197,11 +212,15 @@
       </figure>
 
       <p>
+        
         Es muy grande la variedad de manuscritos de obras dramáticas de Lope, y también muy diversa su calidad textual. Existen manuscritos muy cercanos al original, aunque no podamos asegurar que sean copia directa de él (como ocurría con los apógrafos), manuscritos copiados para ser puestos en escena con las modificaciones propias de esa labor (acortamiento de escenas, variación o reducción de personajes, de lugares de la ficción dramática, pasajes censurados, etc.), manuscritos que son copiados de impresos o incluso manuscritos «pirateados», tomados de memoria, según se decía, mientras se asistía al espectáculo.
+      
       </p>
 
       <p>
+        
         Conforme nos alejamos del manuscrito original autógrafo van aumentando nuestras dudas respecto a la autenticidad y calidad del texto. ¿Refleja exactamente lo que Lope escribió o hay errores e intervenciones ajenas a Lope de por medio?
+      
       </p>
 
       <h2>II. Los impresos</h2>
@@ -209,7 +228,7 @@
       <h3>a. Las <em>Partes de comedias</em> al margen del control de Lope (1603–1617)</h3>
 
       <figure class="inline-figure">
-        <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector('img').src)">
+        <div class="article-figure-img-wrap" onclick="openLightbox('../media/comedias_primera-parte.jpg')">
           <img src="../media/comedias_primera-parte.jpg" alt="Portada de Las comedias del famoso poeta Lope de Vega Carpio (Zaragoza, 1604)" />
           <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
         </div>
@@ -217,19 +236,25 @@
       </figure>
 
       <p>
+        
         Las primeras ediciones impresas de las comedias de Lope de Vega nacieron al margen de su iniciativa y de su control. En 1603 se publica en Lisboa y Madrid un volumen titulado <em>Seis comedias de Lope de Vega</em>, por Pedro Crasbeeck a costa de Francisco López. En realidad, solo una de las comedias recogidas en el volumen es de Lope: <em>El perseguido</em>.
+      
       </p>
 
       <p>
+        
         Al año siguiente, 1604, se imprime en Zaragoza una colección titulada <em>Las comedias del famoso poeta Lope de Vega Carpio</em> (por el tipógrafo y mercader de libros Angelo Tavanno): así nace la serie de las que conocemos como <em>Partes de comedias</em>, ya que, ahora sí, todas y cada una de las doce comedias incluidas en este libro eran efectivamente de Lope (por eso el volumen es también conocido como la «Primera parte de las comedias de Lope de Vega» a pesar de no ser este su título).
+      
       </p>
 
       <p>
+        
         Las <em>Partes</em> de comedias, que recogían doce comedias por volumen, se convierten en un éxito y prácticamente en un género editorial en que se publicarán también después las obras de otros autores (Guillén de Castro, «Tirso», Calderón, las de <em>Los mejores ingenios</em>, etc.).
+      
       </p>
 
       <figure class="inline-figure-left">
-        <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector('img').src)">
+        <div class="article-figure-img-wrap" onclick="openLightbox('../media/comedias_tercera-parte.jpg')">
           <img src="../media/comedias_tercera-parte.jpg" alt="Portada de la Tercera parte de las comedias de Lope de Vega" />
           <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
         </div>
@@ -237,21 +262,27 @@
       </figure>
 
       <p>
+        
         La calidad textual de estos impresos es variable y en algunos casos deja mucho que desear: lo habitual era que las comedias que se imprimían procedieran de copias corrompidas después de haberse puesto en escena. E incluso, como ocurre en las <em>Partes Tercera</em> y <em>Quinta</em>, igual que había ocurrido en 1603, se habían mezclado textos de Lope con los de otros autores con títulos engañosos utilizando como reclamo al Fénix de los ingenios.
+      
       </p>
 
       <p>
+        
         Por eso el dramaturgo madrileño, cansado de la situación y quejoso de ella en múltiples textos desde 1604, en 1616 presenta una súplica a las autoridades pidiendo que se impida la impresión de las <em>partes de comedias</em> VII y VIII, que había iniciado un mercader de telas, Francisco de Ávila, quien había comprado los manuscritos a los directores de compañías teatrales y estaba tramitando y preparando ya la edición. En su súplica decía Lope que muchas de las comedias que se imprimían a su nombre eran ajenas, y que las propias se imprimían «muy contrarias a sus originales».
+      
       </p>
 
       <p>
+        
         Lope perdió el pleito porque todos los procesos de compra y venta habían sido regulares y él había quedado enajenado de su bien al venderlo al director de la compañía de teatro. Pero, perdida la batalla, ganó la guerra. A los directores de compañías teatrales les interesaba mantener buenas relaciones con el mejor dramaturgo del momento, y a partir de 1617 y de la <em>Novena parte</em> toma el control y se involucra en la edición de sus obras, por mucho que inicialmente las concibiera para ser puestas en escena y no para ser publicadas impresas.
+      
       </p>
 
       <h3>b. Las <em>Partes de comedias</em> bajo control de Lope (1617–1635)</h3>
 
       <figure class="inline-figure">
-        <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector('img').src)">
+        <div class="article-figure-img-wrap" onclick="openLightbox('../media/doze-comedias_parte_novena.jpg')">
           <img src="../media/doze-comedias_parte_novena.jpg" alt="Portada de la Novena parte de comedias" />
           <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
         </div>
@@ -259,25 +290,33 @@
       </figure>
 
       <p>
+        
         Aunque ya antes de esta ocasión algunos volúmenes habían ostentado en el título la frase «sacadas de sus originales» (en las partes <em>Cuarta</em> y segunda edición madrileña de la <em>Sexta</em>, cuya calidad textual efectivamente lleva a sospechar ya alguna participación de Lope o una preocupación por la calidad del texto), ahora añade «por él mismo». Tenemos rastros de su involucración incluso en su correspondencia con el duque de Sessa, que también hizo de proveedor de manuscritos originales, pues los había comprado a los directores de compañía y coleccionado. Así van apareciendo las partes <em>Novena</em> (1617), <em>Décima</em> (1618), <em>Oncena</em> (1618), <em>Docena</em> (1619)…
+      
       </p>
 
       <p>
+        
         Pero incluso con el deseo de ofrecer buenos textos e implicarse para ello personalmente, no siempre lo consigue. En la <em>Novena</em>, por ejemplo, incluye <em>La dama boba</em> por su indiscutible valor literario; pero, como el manuscrito original se lo había regalado a Jerónima de Burgos, actriz con la que en el momento de la escritura y estreno tenía relaciones amorosas y, al llegar el momento de la publicación impresa, había roto ya con ella, tuvo que servirse de un manuscrito de menor valor, tal vez incluso relacionado con esa actividad de copias «piratas» de las comedias que llevaban a cabo los memoriones, esos personajes que decían poder retener una comedia en la memoria sólo con asistir a su representación.
+      
       </p>
 
       <p>
+        
         En la <em>Trecena parte</em> (Viuda de Alonso Martín, 1620) se lamentaba Lope de las dificultades que ya estaba encontrando en ocasiones para recuperar buenas copias de sus comedias, a pesar de las muchas que había escrito. También en otros lugares Lope y sus corresponsales dejan constancia de la fatiga que para él llegó a implicar esa labor. Por eso, aunque es cierto que Lope se preocupó por la calidad de los textos que se imprimían en las <em>Partes</em> de sus comedias, a veces la advertencia «sacadas de sus originales por él mismo» hay que tomarla con precaución y estudiar bien los textos que nos brindan.
+      
       </p>
 
       <p>
+        
         Se van sucediendo las <em>Partes</em> hasta 1625 en que aparece la <em>Parte veinte</em>. En menos de ocho años Lope había publicado doce partes de comedias con mayor o menor ritmo pero sin interrupción. Pero en marzo de 1625 la Junta de Reformación emitía una instrucción: «porque se ha reconocido el daño de imprimir libros de comedias, novelas ni otros deste género, por el que blandamente hacen a las costumbres de la juventud, se consulte a su Majestad ordene al Consejo que en ninguna manera se dé licencia para imprimirlos». Esta restricción legal durará hasta 1634, y en 1635, año de la muerte del dramaturgo, se comienzan a conceder de nuevo licencias.
+      
       </p>
 
       <h3>c. Las <em>Partes</em> extravagantes, póstumas, las sueltas y otras colecciones</h3>
 
       <figure class="inline-figure">
-        <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector('img').src)">
+        <div class="article-figure-img-wrap" onclick="openLightbox('../media/comedias_parte-veinte-y-una.jpg')">
           <img src="../media/comedias_parte-veinte-y-una.jpg" alt="Portada de la Veinte y una parte verdadera de las comedias del Fénix" />
           <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
         </div>
@@ -285,21 +324,27 @@
       </figure>
 
       <p>
+        
         La prohibición favoreció, paradójicamente, que aparecieran comedias falsamente atribuidas a Lope y publicadas ilegalmente en Andalucía: así surgieron toda una serie de partes «extravagantes» de comedias de Lope y otros autores a veces en textos muy estragados o con atribuciones falsas. Y de aquí nacieron también, además, nuevas colecciones de tomos de doce comedias de varios o diferentes autores cuyas series se prolongarían más allá de la prohibición.
+      
       </p>
 
       <p>
+        
         Frente a estos volúmenes que menudearon en Aragón o en Andalucía (con preliminares falsos) y que plantean un complejo problema bibliográfico, se establece la continuidad de la serie legítima de Partes auténticas (ciertamente con algún desliz, como una comedia de Ruiz de Alarcón). Aunque la <em>Parte XX</em> fue la última publicada en vida de Lope, lo cierto es que antes de morir ya había pedido y obtenido licencia (en mayo y junio de 1635; él muere en agosto) para imprimir las <em>Partes XXI</em> y <em>XXII</em>. El día antes de morir, Lope se preocupa también de su legado literario y editorial y al dictar testamento hay testigos a los que deja encargados de continuar la labor. Están también preparadas para la edición, según la voluntad del autor, <em>La vega del Parnaso</em> (publicada en 1637) y las <em>Fiestas del Santísimo Sacramento</em>. El yerno de Lope promueve la edición de la <em>Parte XXIII</em> (Pedro Coello, 1638). Por iniciativa de Pedro Verges aparece en Zaragoza la <em>Parte XXIV</em> (Pedro Verges, 1641), en la que pudo estar también implicado uno de los testigos testamentarios, el sacerdote José Ortiz de Villena. Se considera que la serie de <em>Partes de comedias</em> auténticas de Lope termina con la <em>Parte XXV</em> (Roberto Deuport, Zaragoza, 1647).
+      
       </p>
 
       <p>
+        
         Excepcionalmente, en vida de Lope se publica alguna comedia suelta, como <em>El castigo sin venganza</em>, en Barcelona en 1634, seguramente para sortear la prohibición y por iniciativa del propio poeta. Las comedias sueltas se multiplicaron, aunque Lope no fue de los autores más impresos en este formato. Sea como fuere, Lope siguió imprimiéndose a lo largo del siglo XVIII y XIX pero por lo general sin una preocupación por la calidad de los textos, que se iban deturpando cada vez más.
+      
       </p>
 
       <h2>III. La edición del teatro de Lope con criterios filológicos</h2>
 
       <figure class="inline-figure">
-        <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector('img').src)">
+        <div class="article-figure-img-wrap" onclick="openLightbox('../media/comedias-escogidas_bae.jpg')">
           <img src="../media/comedias-escogidas_bae.jpg" alt="Portada del primer volumen de las Comedias escogidas de Lope editadas por Hartzenbusch" />
           <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
         </div>
@@ -307,15 +352,19 @@
       </figure>
 
       <p>
+        
         Superada la mitad del siglo XIX, en 1860, la Real Academia Española se plantea en sus reuniones la necesidad de afrontar desde un punto de vista científico el reto de editar el teatro completo de Lope, y en 1889 se produce la provisión económica y se encarga ya el proyecto a Marcelino Menéndez y Pelayo. Las ediciones de éste, y las de Juan Eugenio Hartzenbusch para la <em>Biblioteca de Autores Españoles</em>, así como la nueva edición de la RAE con que luego continuó la labor de Menéndez Pelayo en torno a 1930 Emilio Cotarelo en colaboración con Federico Ruiz Morcuende, Ángel González Palencia y Justo García Soriano, fueron las más completas que durante mucho tiempo pudieron consultarse.
+      
       </p>
 
       <p>
+        
         Pero pasados cien años a la altura de 1989 esas ediciones, que habían utilizado métodos científicos ya periclitados y que presentaban más de una deficiencia, eran las únicas que se podían consultar y en las que se podía leer una colección amplia —ni siquiera completa— de la obra dramática de Lope.
+      
       </p>
 
       <figure class="inline-figure-left">
-        <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector('img').src)">
+        <div class="article-figure-img-wrap" onclick="openLightbox('../media/profeti_maria-grazia.jpg')">
           <img src="../media/profeti_maria-grazia.jpg" alt="Maria Grazia Profeti, lopista y biblióloga italiana" />
           <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
         </div>
@@ -323,17 +372,21 @@
       </figure>
 
       <p>
+        
         Todavía a inicios de los años noventa del siglo XX Maria Grazia Profeti, Premio Nacional de Bibliografía en 1998 y cuya trayectoria científica indiscutible de dedicación al estudio y difusión del teatro del Siglo de Oro ha sido homenajeada por la red TC/12 en 2013, se planteaba la escasez y carencias de ese «repertorio de lectura» del teatro de Lope: «la tendencia más acusada es la reiterada propuesta de textos bien conocidos (por ejemplo, se continúa presentando <em>Fuenteovejuna</em>, <em>El caballero de Olmedo</em>, <em>El castigo sin venganza</em>, etc.). Lo más grave es que sigue faltando un proyecto editorial serio y programado que prevea la edición <em>crítica</em> del <em>corpus</em> dramático de Lope; se da así el caso —único creo en todas las literaturas nacionales europeas— de un autor fundamental que sigue circulando en ediciones desacreditadas o por lo menos que obedecen a criterios ecdóticos decimonónicos, completamente superados desde un punto de vista científico».
+      
       </p>
 
       <p>
+        
         Aunque el libro en que se publicaban estas palabras apareció en 1992 (el <em>Primer suplemento</em> coordinado por Aurora Egido de la fundamental <em>Historia y crítica</em> dirigida por F. Rico, p. 173), seguramente el periodo que estudió para realizar el balance abarcaba desde 1983 hasta 1988. Desde luego, por ese entonces, tenía razón la filóloga florentina. Eran muchas, muchísimas, las obras que no podían leerse sino en ediciones de finales del siglo XIX o inicios del XX, gracias sólo a las citadas ediciones de Menéndez Pelayo, Emilio Cotarelo y Mori o Juan Eugenio Hartzenbusch. Si partimos del año siguiente, 1989, y llegamos hasta el día de hoy, podríamos decir sin asomo de duda que el panorama ha cambiado radicalmente por varios factores, que van desde iniciativas individuales, hasta la concepción de proyectos de edición ambiciosos y coordinados, precisamente aquello cuya falta se denunciaba.
+      
       </p>
 
       <h3>Los años noventa: un nuevo panorama</h3>
 
       <figure class="inline-figure">
-        <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector('img').src)">
+        <div class="article-figure-img-wrap" onclick="openLightbox('../media/obras-completas_biblioteca-castro.jpg')">
           <img src="../media/obras-completas_biblioteca-castro.jpg" alt="Primer volumen de la edición de las Comedias en la Biblioteca Castro" />
           <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
         </div>
@@ -341,45 +394,63 @@
       </figure>
 
       <p>
+        
         Hay que decir sin embargo que los años noventa implicaron un cambio crucial en la situación por varias razones y lo que entonces era necesario denunciar, sería injusto repetirlo hoy. En primer lugar, podemos percibir que hay un aumento, que luego experimenta incluso una aceleración a partir del año 2000, en el interés de los filólogos por cubrir esa laguna. Son muchos los estudiosos (entre otros la propia Profeti y alumnos formados por ella) que han decidido realizar ediciones académicas y con rigor filológico de obras que no pertenecían al clásico canon de Lope.
+      
       </p>
 
       <p>
+        
         Porque ocurre que, además, en los años noventa, empiezan a ver la luz los volúmenes de dos colecciones que aspiran a ofrecer en textos fiables la edición del teatro completo del Fénix de los ingenios. Una colección nace en el ámbito de la Fundación José Antonio de Castro: en la <em>Biblioteca Castro</em> se aspira a publicar la obra completa de Lope de Vega. Los encargados de llevar a cabo la edición del teatro son Jesús Gómez y Paloma Cuenca.
+      
       </p>
 
       <p>
+        
         En el trienio 1993-1995 aparecen los doce primeros volúmenes de esta colección, y en el bienio 1997-1998 los volúmenes XIII al XV, a razón de diez comedias por volumen, lo que suman ciento cincuenta comedias en total, pues la colección quedó interrumpida en esa fecha. El orden de publicación de las comedias es el de la cronología establecida por Morley y Bruerton. Cada volumen se compone de un prólogo común en el que a cada una de las comedias se le dedican unos pocos párrafos.
+      
       </p>
 
       <p>
+        
         Las comedias aparecen tipográficamente limpias, sin marcas, número de verso, notas ni aparato crítico. En este sentido, aunque según sostenían, se basaran en testimonios antiguos, no es posible considerar este proyecto como un proyecto de edición crítica ni parece haber sido su objetivo. Sea como sea, se pusieron al alcance del público en brevísimo tiempo ciento cincuenta comedias de Lope, lo cual es ya de por sí un notable esfuerzo.
+      
       </p>
 
       <h3>d. El proyecto de investigación y edición PROLOPE</h3>
 
       <p>
+        
         <strong>Origen</strong>
+      
       </p>
 
       <p>
+        
         La otra colección que aspira a ofrecer la producción dramática íntegra es la que acomete el Grupo de Investigación PROLOPE en 1989. Volvamos de nuevo un momento la mirada atrás, al año 1989, el punto de partida que habíamos establecido para este «estado de la cuestión» o «estado de la edición» del repertorio de lectura de Lope. Recordemos que Profeti decía: «Lo más grave es que sigue faltando un proyecto editorial serio y programado que prevea la edición <em>crítica</em> del <em>corpus</em> dramático de Lope». Pues bien, es justo en 1989 cuando se crea y empieza a trabajar nuestro Grupo de Investigación, PROLOPE.
+      
       </p>
 
       <p>
+        
         Cuando Alberto Blecua concibió el reto de editar críticamente el teatro de Lope de Vega la tarea se auguraba entre titánica y quimérica. Era entonces cuando escribía la frase antes recordada: «la abundancia de Lope abruma».
+      
       </p>
 
       <p>
+        
         <strong>Método de trabajo</strong>
+      
       </p>
 
       <p>
+        
         Desde el principio, en un proyecto que se planteaba realizar la edición crítica de esa abundante obra, más de trescientas obras de autoría segura, de las cuales más del 80% se transmitieron en las <em>Partes de comedias de Lope de Vega</em>, la estrategia fue clara: el texto base para la mayoría de las comedias iba a ser el que aparecía en la <em>Parte</em>. Para establecer bien el <em>stemma</em> y transmisión textual de la mayoría de las comedias, había que proceder por <em>Partes</em>, y a su vez, para establecer el <em>stemma</em> de la <em>Parte</em>, lógicamente, había que proceder en conjunto, tomándola como un todo. Cada comedia, en ese testimonio común que compartían las doce, la <em>Parte</em>, señalaría a un <em>stemma</em> o proceso de transmisión que sería confirmado por el resto. Así nos asegurábamos de establecer rigurosamente el texto de la gran mayoría de las comedias. Y si por <em>Partes</em> había que proceder por una razón científica en la que el criterio de decisión, lógicamente, era el de la historia de la transmisión textual, entonces lo lógico, parecía, también, era seguir el orden de publicación original de las mismas: <em>Primera</em>, <em>Segunda</em>, <em>Tercera</em>…
+      
       </p>
 
       <figure class="figure-wide">
-        <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector('img').src)">
+        <div class="article-figure-img-wrap" onclick="openLightbox('../media/foto-cotejo2.jpg')">
           <img src="../media/foto-cotejo2.jpg" alt="Cotejo colectivo realizado en mayo de 2010 para la edición de El castigo sin venganza" />
           <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
         </div>
@@ -387,15 +458,19 @@
       </figure>
 
       <p>
+        
         Para la realización de las ediciones críticas es necesaria, por tanto, una previa labor de localización y acopio de testimonios en bibliotecas de todo el mundo: todas las ediciones de la <em>Parte</em> así como todas las ediciones individuales y manuscritos que transmiten cada comedia. Tras ello se lleva a cabo el cotejo, la filiación, elección del texto base (excepcionalmente se opta por la edición de varias versiones) y fijación de un texto crítico depurado de errores y erratas y adecuadamente modernizado en la grafía y puntuación según los <a href="criterios.html">criterios establecidos por PROLOPE</a>. El aparato crítico que resulta de la exhaustiva colación practicada con impresos y manuscritos se reproduce a pie de página para la rápida consulta del lector interesado en los problemas textuales que presenta la transmisión de las obras.
+      
       </p>
 
       <p>
+        
         <strong>Notas, prólogos y apéndices</strong>
+      
       </p>
 
       <figure class="inline-figure">
-        <div class="article-figure-img-wrap" onclick="openLightbox(this.querySelector('img').src)">
+        <div class="article-figure-img-wrap" onclick="openLightbox('../media/comedias_gredos.jpg')">
           <img src="../media/comedias_gredos.jpg" alt="Volúmenes de la edición de PROLOPE en la Editorial Gredos de la Parte XI de Comedias" />
           <span class="zoom-hint" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
         </div>
@@ -403,60 +478,67 @@
       </figure>
 
       <p>
+        
         Desde la Parte X PROLOPE optó por ofrecer también todas las notas aclaratorias semánticas, relativas a <em>realia</em>, decisiones textuales, lugares paralelos, figuras, ortología, alusiones culturales, etc. a pie de página, para la plena comprensión del texto en su contexto. Además, se ofrecen en apéndice índices onomásticos, variantes lingüísticas, erratas de los impresos de la <em>Parte</em> y, claro está, la bibliografía.
+      
       </p>
 
       <p>
+        
         Los prólogos individuales para cada una de las comedias buscan la brevedad y abordan cuestiones como las fechas de composición, relaciones con otras comedias, fuentes del argumento o motivos concretos, consideraciones de la crítica y nuevas propuestas de interpretación. En una sección específica se estudian los problemas textuales en relación con un análisis de los testimonios antiguos y las ediciones modernas no comunes a las demás comedias de la <em>Parte</em>. Al final se ofrecen un argumento y una sinopsis de la versificación.
+      
       </p>
 
       <p>
+        
         Además del prólogo a cada comedia, en las ediciones de las <em>Partes de comedias</em> de PROLOPE se ofrece una introducción general a la misma. Es ahí donde se realiza la filiación de las distintas ediciones de la <em>Parte</em>, un <em>stemma</em> que es común y válido, en principio, para todas las comedias que recogía. En ese prólogo se ofrecen también consideraciones sobre la concepción literaria de la <em>Parte</em>, si es que la selección de comedias respondió a un preciso criterio, y la descripción bibliográfica analítica de los testimonios localizados y utilizados, y se editan asimismo los preliminares de las ediciones antiguas normalmente sobre la base de la <em>princeps</em>.
+      
       </p>
 
       <h3>e. Un proyecto a largo plazo y un trabajo en equipo</h3>
 
       <p>
+        
         El otro pilar del proyecto consiste en el trabajo en equipo. El corpus es de tal magnitud que parece inabarcable a corto plazo de modo riguroso por un grupo reducido de personas. En nuestro sistema de trabajo, cada <em>Parte</em> es dirigida científica y editorialmente por un coordinador (o dos) de reconocido prestigio y probada experiencia, que vela por la corrección de todo el trabajo filológico del conjunto: desde el acopio de testimonios (ediciones antiguas y modernas así como manuscritos), pasando por la fijación de los textos hasta los más mínimos detalles de anotación y elaboración de los distintos apéndices (de variantes lingüísticas, nombres propios, erratas) y los prólogos de presentación. Todas las ediciones son supervisadas nuevamente desde la sede central del grupo, y remitidas ya para su publicación.
+      
       </p>
 
       <p>
+        
         Este sistema supone la asignación de coordinaciones de <em>Parte</em> y de comedias con una antelación de unos cuatro o cinco años, de modo que en todo momento hay colaborando en esta magna tarea unos 60, si no más, filólogos de todo el mundo. Y poco a poco, más despacio al principio, tras un laborioso proceso en que se establecieron unos criterios de transcripción y edición y aparecieron las primeras partes (en 1997 apareció la <em>Primera Parte de las Comedias</em>), y a velocidad de crucero después (a <em>Parte</em> por año desde 2007), hemos alcanzado la edición de 137 comedias y la <em>Parte XIII</em>; además de <em>El castigo sin venganza</em>, <em>La creación del mundo</em> y <em>El maestro de danzar</em>, así como la recientemente descubierta <em>Mujeres y criados</em>. Entre los títulos que ya han aparecido se pueden contar varios que estaban en el canon (<em>Fuenteovejuna</em>, <em>Peribáñez</em>, <em>El perro del hortelano</em>, etc.), pero también muchos otros que merecerían mayor atención, así como otros menos significativos. Hemos ampliado asimismo en ediciones fiables enormemente ese «repertorio de lectura» del que veníamos hablando.
+      
       </p>
 
     </main>
 
     <aside class="article-sidebar">
-
-
       <div class="sidebar-card">
         <p class="sidebar-card-title">Índice</p>
         <ul class="sidebar-nav-list">
-          <li><a href="#s-manuscritos" data-section="s-manuscritos">I. Los manuscritos</a></li>
-          <li class="sidebar-nav-sub"><a href="#s-autografos" data-section="s-autografos">Los autógrafos</a></li>
-          <li class="sidebar-nav-sub"><a href="#s-apografos" data-section="s-apografos">Los apógrafos</a></li>
-          <li class="sidebar-nav-sub"><a href="#s-otros-mss" data-section="s-otros-mss">Otros manuscritos</a></li>
-          <li><a href="#s-impresos" data-section="s-impresos">II. Los impresos</a></li>
-          <li class="sidebar-nav-sub"><a href="#s-fuera-control" data-section="s-fuera-control">Al margen de Lope (1603–1617)</a></li>
-          <li class="sidebar-nav-sub"><a href="#s-bajo-control" data-section="s-bajo-control">Bajo control de Lope (1617–1635)</a></li>
-          <li class="sidebar-nav-sub"><a href="#s-extravagantes" data-section="s-extravagantes">Extravagantes y póstumas</a></li>
-          <li><a href="#s-edicion" data-section="s-edicion">III. La edición filológica</a></li>
-          <li class="sidebar-nav-sub"><a href="#s-noventa" data-section="s-noventa">Los años noventa</a></li>
-          <li class="sidebar-nav-sub"><a href="#s-prolope" data-section="s-prolope">El proyecto PROLOPE</a></li>
-          <li class="sidebar-nav-sub"><a href="#s-equipo" data-section="s-equipo">Un trabajo en equipo</a></li>
+          <li><a href="transmision.html" class="active">Transmision</a></li>
+          <li><a href="#s-manuscritos">I. Los manuscritos</a></li>
+          <li><a href="#s-autografos">Los autógrafos</a></li>
+          <li><a href="#s-apografos">Los apógrafos</a></li>
+          <li><a href="#s-otros-mss">Otros manuscritos</a></li>
+          <li><a href="#s-impresos">II. Los impresos</a></li>
+          <li><a href="#s-fuera-control">Al margen de Lope (1603–1617)</a></li>
+          <li><a href="#s-bajo-control">Bajo control de Lope (1617–1635)</a></li>
+          <li><a href="#s-extravagantes">Extravagantes y póstumas</a></li>
+          <li><a href="#s-edicion">III. La edición filológica</a></li>
+          <li><a href="#s-noventa">Los años noventa</a></li>
+          <li><a href="#s-prolope">El proyecto PROLOPE</a></li>
+          <li><a href="#s-equipo">Un trabajo en equipo</a></li>
         </ul>
       </div>
-
       <div class="sidebar-card">
         <p class="sidebar-card-title">En esta sección</p>
         <ul class="sidebar-nav-list">
-          <li><a href="vida-obra.html">Vida y obra de Lope de Vega</a></li>
-          <li><a href="transmision.html" class="active">Transmisión y edición del teatro</a></li>
           <li><a href="criterios.html">Criterios y materiales para la edición</a></li>
+          <li><a href="transmision.html" class="active">Transmisión y edición del teatro</a></li>
+          <li><a href="vida-obra.html">Vida y obra de Lope de Vega</a></li>
         </ul>
       </div>
 
-    
     </aside>
 
   </div>
@@ -532,6 +614,7 @@
       document.body.style.overflow = '';
     }
     document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+    document.addEventListener('click', function(e) { var w = e.target.closest('.article-figure-img-wrap,.event-box-img-wrap'); if (!w) return; var img = w.querySelector('img'); if (img) openLightbox(img.src); });
   </script>
 
   <script>

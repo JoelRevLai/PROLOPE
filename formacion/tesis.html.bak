@@ -41,6 +41,7 @@
                 <li><a href="../el-grupo/estatutos.html">Estatutos del grupo</a></li>
                 <li><a href="../el-grupo/miembros.html">Miembros</a></li>
                 <li><a href="../el-grupo/contacto.html">Contacto y ubicación</a></li>
+                <li><a href="../el-grupo/bad-gyal.html">Bad Gyal</a></li>
               </ul>
             </div>
           </li>
@@ -73,8 +74,8 @@
                 <li><a href="../proyectos-digitales/mujeres-criados.html">Mujeres y criados</a></li>
                 <li><a href="../proyectos-digitales/mapping-lope.html">Mapping Lope</a></li>
                 <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
-                <li><a href="../proyectos-digitales/la-dama-boba.html">La dama boba</a></li>
-                <li><a href="../proyectos-digitales/gondomar.html">Gondomar Digital</a></li>
+                <li><a href="https://damaboba.unibo.it/" target="_blank" rel="noopener noreferrer">La dama boba <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="https://gondomar.tespasiglodeoro.it/" target="_blank" rel="noopener noreferrer">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
               </ul>
             </div>
           </li>
@@ -130,7 +131,7 @@
     </div>
   </section>
 
-  <div class="page-wrap">
+  <div class="article-wrap">
 
     <main class="article-main" id="article-main">
 
@@ -144,18 +145,17 @@
       </p>
 
       <div class="thesis-list">
-        <div class="thesis-item" id="2024-el-otro-a-las-tablas-lo-musulman-en-la-puest">
+        <div class="thesis-item" id="2024-el-otro-a-las-tablas-lo-musulman">
           <span class="thesis-year">2024</span>
           <p class="thesis-title">            <em>El otro a las tablas: lo musulmán en la puesta en escena contemporánea del teatro            clásico (1986–2021)</em>          </p>
           <div class="thesis-meta">
             <strong>Khatereh Gorji</strong><br>
             Directores: Gonzalo Pontón y Guillermo Gómez Sánchez-Ferrer<br>
             Doctorado en Filología Española, Universitat Autònoma de Barcelona<br>
-            Defensa: 17-06-2024
-          </div>
+            Defensa: 17-06-2024</div>
           <span class="thesis-pending">Consulta de la tesis pendiente</span>
         </div>
-        <div class="thesis-item" id="2024-la-superbia-negli-orrori-dido-en-el-teatro">
+        <div class="thesis-item" id="2024-la-superbia-negli-orrori-dido">
           <span class="thesis-year">2024</span>
           <p class="thesis-title">            <em>«La superbia negli orrori». Dido en el teatro trágico europeo del siglo XVI</em>          </p>
           <div class="thesis-meta">
@@ -166,7 +166,7 @@
           </div>
           <span class="thesis-pending">Consulta de la tesis pendiente</span>
         </div>
-        <div class="thesis-item" id="2022-la-mascara-en-las-comedias-y-entremeses-cerva">
+        <div class="thesis-item" id="2022-la-mascara-en-las-comedias-y-entr">
           <span class="thesis-year">2022</span>
           <p class="thesis-title">            <em>La máscara en las comedias y entremeses cervantinos: Una relación entre esencia y            apariencia</em>          </p>
           <div class="thesis-meta">
@@ -177,7 +177,7 @@
           </div>
           <a class="thesis-link" href="https://hdl.handle.net/10803/675972" target="_blank" rel="noopener noreferrer">→ Consultar tesis</a>
         </div>
-        <div class="thesis-item" id="2022-investigaciones-sobre-la-transmision-recepci">
+        <div class="thesis-item" id="2022-investigaciones-sobre-la-transmis">
           <span class="thesis-year">2022</span>
           <p class="thesis-title">            <em>Investigaciones sobre la transmisión, recepción y tradición cultural de            <em>La dama boba</em>: del manuscrito autógrafo a la era digital</em>          </p>
           <div class="thesis-meta">
@@ -188,7 +188,7 @@
           </div>
           <a class="thesis-link" href="https://hdl.handle.net/10803/689108" target="_blank" rel="noopener noreferrer">→ Consultar tesis</a>
         </div>
-        <div class="thesis-item" id="2022-el-recurso-de-la-carta-en-el-teatro-de-lope-d">
+        <div class="thesis-item" id="2022-el-recurso-de-la-carta-en-el-teat">
           <span class="thesis-year">2022</span>
           <p class="thesis-title">            <em>El recurso de la carta en el teatro de Lope de Vega: unas calas</em>          </p>
           <div class="thesis-meta">
@@ -199,7 +199,7 @@
           </div>
           <a class="thesis-link" href="https://hdl.handle.net/10803/689106" target="_blank" rel="noopener noreferrer">→ Consultar tesis</a>
         </div>
-        <div class="thesis-item" id="2018-la-comedia-aurea-en-el-lienzo-de-plata-anali">
+        <div class="thesis-item" id="2018-la-comedia-aurea-en-el-lienzo-de">
           <span class="thesis-year">2018</span>
           <p class="thesis-title">            <em>La comedia áurea en el lienzo de plata: análisis de la recepción de la comedia nueva            a partir de sus reescrituras fílmicas</em>          </p>
           <div class="thesis-meta">
@@ -210,7 +210,7 @@
           </div>
           <a class="thesis-link" href="https://hdl.handle.net/10803/523500" target="_blank" rel="noopener noreferrer">→ Consultar tesis</a>
         </div>
-        <div class="thesis-item" id="2016-las-comedias-bizantinas-de-lope-de-vega-cara">
+        <div class="thesis-item" id="2016-las-comedias-bizantinas-de-lope-d">
           <span class="thesis-year">2016</span>
           <p class="thesis-title">            <em>Las comedias bizantinas de Lope de Vega: caracterización genérica, tradición y            trascendencia</em>          </p>
           <div class="thesis-meta">
@@ -221,7 +221,7 @@
           </div>
           <a class="thesis-link" href="https://hdl.handle.net/10803/400700" target="_blank" rel="noopener noreferrer">→ Consultar tesis</a>
         </div>
-        <div class="thesis-item" id="2015-le-pere-trompe-traduzioni-e-ricezione-del">
+        <div class="thesis-item" id="2015-le-pere-trompe-traduzioni-e-ri">
           <span class="thesis-year">2015</span>
           <p class="thesis-title">            <em>«Le père trompé». Traduzioni e ricezione del teatro di Lope de Vega in Francia tra            Seicento e Settecento. Con un'appendice su Manzoni, lettore di Lope de Vega</em>          </p>
           <div class="thesis-meta">
@@ -232,7 +232,7 @@
           </div>
           <a class="thesis-link" href="https://hdl.handle.net/10803/309136" target="_blank" rel="noopener noreferrer">→ Consultar tesis</a>
         </div>
-        <div class="thesis-item" id="2010-la-representacion-de-la-historia-contemporane">
+        <div class="thesis-item" id="2010-la-representacion-de-la-historia">
           <span class="thesis-year">2010</span>
           <p class="thesis-title">            <em>La representación de la historia contemporánea en el teatro de Lope de Vega</em>          </p>
           <div class="thesis-meta">
@@ -247,7 +247,8 @@
 
     </main>
 
-    <aside class="sidebar">
+    <aside class="article-sidebar">
+      <div class="sidebar-card">
 <em><em><em>
 
       <div class="sidebar-card">
@@ -269,6 +270,8 @@
       
 
     </em></em></em>
+      </div>
+
     </aside>
 
   </div>

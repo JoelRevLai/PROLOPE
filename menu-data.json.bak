@@ -21,6 +21,10 @@
       {
         "label": "Contacto y ubicación",
         "url": "el-grupo/contacto.html"
+      },
+      {
+        "label": "Bad Gyal",
+        "url": "el-grupo/bad-gyal.html"
       }
     ]
   },
@@ -86,11 +90,13 @@
       },
       {
         "label": "La dama boba",
-        "url": "proyectos-digitales/la-dama-boba.html"
+        "url": "https://damaboba.unibo.it/",
+        "external": true
       },
       {
         "label": "Gondomar Digital",
-        "url": "proyectos-digitales/gondomar.html"
+        "url": "https://gondomar.tespasiglodeoro.it/",
+        "external": true
       }
     ]
   },

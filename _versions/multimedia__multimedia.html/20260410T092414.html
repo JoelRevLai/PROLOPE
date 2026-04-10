@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" href="../media/favicon_5.gif" type="image/gif" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; base-uri 'self'; connect-src 'self'" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multimedia | PROLOPE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../prolope.css" />
+  <!-- early theme -->
+  <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'||(! t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.setAttribute('data-theme','dark');})();
+  </script>
+
+</head>
+<body>
+
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="logo-link">
+        <img src="../media/logo-menu.png" alt="PROLOPE" />
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li class="has-dropdown">
+            <span>El grupo <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../el-grupo/el-grupo.html">El grupo de investigación</a></li>
+                <li><a href="../el-grupo/historial-proyectos.html">Historial de proyectos</a></li>
+                <li><a href="../el-grupo/estatutos.html">Estatutos del grupo</a></li>
+                <li><a href="../el-grupo/miembros.html">Miembros</a></li>
+                <li><a href="../el-grupo/contacto.html">Contacto y ubicación</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Objetivos <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../objetivos/vida-obra.html">Vida y obra de Lope de Vega</a></li>
+                <li><a href="../objetivos/transmision.html">Transmisión y edición del teatro de Lope de Vega</a></li>
+                <li><a href="../objetivos/criterios.html">Criterios y materiales para la edición</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Publicaciones <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../publicaciones/partes-comedias.html">Partes de comedias</a></li>
+                <li><a href="https://revistes.uab.cat/anuariolopedevega/index" target="_blank" rel="noopener noreferrer">Anuario Lope de Vega <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="../publicaciones/otras-publicaciones.html">Otras publicaciones</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Proyectos digitales <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../proyectos-digitales/biblioteca-virtual.html">Biblioteca virtual</a></li>
+                <li><a href="https://prolope.uab.cat/biblioteca/" target="_blank" rel="noopener noreferrer">Biblioteca Digital Prolope <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="../proyectos-digitales/mujeres-criados.html">Mujeres y criados</a></li>
+                <li><a href="../proyectos-digitales/mapping-lope.html">Mapping Lope</a></li>
+                <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="https://damaboba.unibo.it/" target="_blank" rel="noopener noreferrer">La dama boba <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="https://gondomar.tespasiglodeoro.it/" target="_blank" rel="noopener noreferrer">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Formación <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../formacion/tesis.html">Tesis</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Eventos <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../eventos/congresos.html">Congresos</a></li>
+                <li><a href="../eventos/seminarios.html">Seminarios</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="multimedia.html">Multimedia</a></li>
+          <li><a href="../noticias/noticias.html">Noticias</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo noche" title="Modo noche"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+      <button class="site-search-btn" id="siteSearchBtn" aria-label="Buscar en el sitio">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <div class="site-search-inline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="siteSearchInput" placeholder="Buscar en el sitio…" autocomplete="off" />
+        <button class="site-search-close" id="siteSearchClose" aria-label="Cerrar búsqueda">✕</button>
+        <div class="site-search-dropdown" id="siteSearchDropdown">
+          <div id="siteSearchCount" class="site-search-count"></div>
+          <div id="siteSearchResults" class="site-search-results"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('../media/firma-lope.png'); background-size: auto; background-repeat: no-repeat; background-position: right; opacity: 0.15;"></div>
+    <div class="page-hero-inner">
+      <p class="page-hero-breadcrumb">
+        Inicio<span>›</span>
+        Multimedia
+      </p>
+      <h1>Multimedia</h1>
+      <p class="page-hero-byline">Documentales, entrevistas y material audiovisual relacionados con la investigación de PROLOPE sobre Lope de Vega y el teatro del Siglo de Oro.</p>
+      <div class="page-hero-rule"></div>
+    </div>
+  </section>
+
+    <div class="page-content-full">
+
+    <div class="video-grid">
+
+      <article class="video-card" id="informe-semanal-lo-que-aun-esconde-lope-bad-gyal" onclick="window.open('https://www.rtve.es/play/videos/informe-semanal/lo-que-aun-esconde-lope/16069618/','_blank')">
+        <div class="video-thumb-wrap">
+          <img src="../media/documental-lope_rtve.jpg" alt="Informe Semanal: Lo que aún esconde Lope" loading="lazy" />
+          <div class="play-btn">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="40" r="38" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.8)" stroke-width="2"/>
+              <polygon points="32,24 60,40 32,56" fill="white"/>
+            </svg>
+          </div>
+          <span class="video-source-badge">RTVE</span>
+        </div>
+        <div class="video-info">
+          <div class="video-date">20 de abril de 2024</div>
+          <h2 class="video-title">Informe Semanal: Lo que aún esconde Lope bad gyal</h2>
+          <p class="video-desc">En vísperas del Día del Libro, Informe Semanal se sumerge en los archivos de la Biblioteca Nacional y en las entrañas de la creación de Lope de Vega. Técnicas forenses como la fotografía espectral o la Inteligencia Artificial descubren nuevos detalles de su proceso creativo.</p>
+        </div>
+        <span class="video-hint">Ver vídeo →</span>
+      </article>
+
+      <article class="video-card" id="17-jornadas-sobre-teatro-clasico-de-olmedo-cuand" onclick="window.open('https://www.youtube.com/watch?v=7SBshd5ImiU','_blank')">
+        <div class="video-thumb-wrap">
+          <img src="../media/cuando-prolope-quiere_olmedo_2024.jpg" alt="17 Jornadas sobre teatro clásico de Olmedo" loading="lazy" />
+          <div class="play-btn">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="40" r="38" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.8)" stroke-width="2"/>
+              <polygon points="32,24 60,40 32,56" fill="white"/>
+            </svg>
+          </div>
+          <span class="video-source-badge">YouTube</span>
+        </div>
+        <div class="video-info">
+          <div class="video-date">25 de julio de 2023</div>
+          <h2 class="video-title">17 Jornadas sobre teatro clásico de Olmedo: «Cuando PROLOPE quiere quiere»</h2>
+          <p class="video-desc">Diálogo 3.ª de las 17 Jornadas sobre teatro clásico («Lope sin fin»), con Sònia Boadas, Daniel Fernández Rodríguez, Laura Fernández y Javier J. González Martínez.</p>
+        </div>
+        <span class="video-hint">Ver vídeo →</span>
+      </article>
+
+      <article class="video-card" id="biblioteca-nacional-de-espana-acto-de-presentacio" onclick="window.open('https://www.youtube.com/watch?v=3fCWF2y9L3U','_blank')">
+        <div class="video-thumb-wrap">
+          <img src="../media/mujeres-criados_presentacion.jpg" alt="BNE: Presentación de Mujeres y criados" loading="lazy" />
+          <div class="play-btn">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="40" r="38" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.8)" stroke-width="2"/>
+              <polygon points="32,24 60,40 32,56" fill="white"/>
+            </svg>
+          </div>
+          <span class="video-source-badge">YouTube</span>
+        </div>
+        <div class="video-info">
+          <div class="video-date">22 de mayo de 2014</div>
+          <h2 class="video-title">Biblioteca Nacional de España: Acto de presentación del manuscrito de <em>Mujeres y criados</em></h2>
+          <p class="video-desc">Con Alberto Blecua, director de PROLOPE; José Manuel Martos, director de Gredos; Rodrigo Arribas, presidente de la Fundación Siglo de Oro; y Alejandro García Reidy, Universidad de Syracuse.</p>
+        </div>
+        <span class="video-hint">Ver vídeo →</span>
+      </article>
+
+      <article class="video-card" id="qwerty-btv-dos-nuevos-volumenes-de-las-comedias-d" onclick="openVideo('qwerty')">
+        <div class="video-thumb-wrap">
+          <img src="../media/qwerty-btv-2012.jpg" alt="Qwerty BTV: Comedias de Lope de Vega" loading="lazy" />
+          <div class="play-btn">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="40" r="38" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.8)" stroke-width="2"/>
+              <polygon points="32,24 60,40 32,56" fill="white"/>
+            </svg>
+          </div>
+          <span class="video-source-badge">BTV</span>
+        </div>
+        <div class="video-info">
+          <div class="video-date">2012</div>
+          <h2 class="video-title">Qwerty BTV: Dos nuevos volúmenes de las comedias de Lope de Vega</h2>
+          <p class="video-desc">La Editorial Gredos ha publicado dos nuevos volúmenes de la edición crítica completa de las comedias de Lope de Vega. Qwerty entrevista a Gonzalo Pontón, co-director de PROLOPE.</p>
+        </div>
+        <span class="video-hint">Ver vídeo →</span>
+      </article>
+    </div>
+
+    </div>
+
+<!-- FUNDERS -->
+  <section class="funders">
+    <div class="funders-inner">
+      <p class="funders-title">Entidades financiadoras</p>
+      <div class="funders-logos">
+        <a class="funder-logo-link" href="https://www.march.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/fundacion-march.png" alt="Fundación March" />
+        </a>
+        <a class="funder-logo-link" href="https://www.culturaydeporte.gob.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/ace.png" alt="ACE" />
+        </a>
+        <a class="funder-logo-link" href="https://agaur.gencat.cat/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/agaur_gencat.png" alt="AGAUR Gencat" />
+        </a>
+        <a class="funder-logo-link" href="https://www.ciencia.gob.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/ministerio-feder.png" alt="Ministerio / FEDER" />
+        </a>
+        <a class="funder-logo-link" href="https://www.uab.cat/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/uab.png" alt="UAB" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="../media/logo-prolope_inici.png" alt="PROLOPE" />
+      </div>
+      <address class="footer-address" style="font-style:normal;">
+        Grupo de investigación PROLOPE.<br />
+        Departament de Filologia Espanyola.<br /><br />
+        Facultat de Filosofia i Lletres UAB<br />
+        CAMPUS DE LA UAB<br />
+        Carrer de la fortuna s/n<br />
+        08193 Bellaterra (Barcelona)
+      </address>
+      <div class="footer-contact">
+        Teléfono (Secretaría): <a href="tel:+34935811034">93 581 10 34</a><br />
+        Correo: <a href="mailto:prolope@uab.es">prolope@uab.es</a>
+        <div class="footer-social">
+          <a href="https://twitter.com/ProlopeUab" target="_blank" rel="noopener noreferrer" title="Seguir en X">𝕏</a>
+          <a href="https://www.facebook.com/prolope.uab" target="_blank" rel="noopener noreferrer" title="Seguir en Facebook">f</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Grupo de Investigación PROLOPE – Universitat Autònoma de Barcelona
+    </div>
+  </footer>
+
+  <!-- VIDEO MODAL -->
+  <div class="modal-overlay" id="videoModal" onclick="closeVideoOnOverlay(event)">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-header-text">
+          <div class="modal-header-date" id="modalDate"></div>
+          <h2 id="modalTitle"></h2>
+        </div>
+        <button class="modal-close" onclick="closeVideo()" aria-label="Cerrar">✕</button>
+      </div>
+      <div class="modal-body">
+        <div id="modalMediaWrap"></div>
+        <div class="modal-desc">
+          <p id="modalDesc"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const videos = {
+      "qwerty": {
+        date: "2012",
+        title: "Qwerty BTV: Dos nuevos volúmenes de las comedias de Lope de Vega",
+        desc: "La Editorial Gredos ha publicado dos nuevos volúmenes de la edición crítica completa de las comedias de Lope de Vega. Qwerty entrevista a Gonzalo Pontón, co-director de PROLOPE.",
+        type: 'inline',
+        src: "../media/qwerty-btv-2012.mp4"
+      }
+    };
+
+    function openVideo(id) {
+      const v = videos[id];
+      document.getElementById('modalDate').textContent = v.date;
+      document.getElementById('modalTitle').textContent = v.title;
+      document.getElementById('modalDesc').textContent = v.desc;
+
+      const wrap = document.getElementById('modalMediaWrap');
+      if (v.type === 'inline') {
+        wrap.className = 'modal-video-wrap';
+        wrap.innerHTML = `<video src="${v.src}" controls></video>`;
+      } else {
+        wrap.className = 'modal-thumb-wrap';
+        wrap.innerHTML = `
+          <img src="${v.thumb}" alt="" />
+          <div class="modal-thumb-overlay">
+            <a class="modal-play-link" href="${v.url}" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+              ${v.source}
+            </a>
+            <span class="modal-source-note">Se abrirá en una nueva pestaña</span>
+          </div>`;
+      }
+
+      document.getElementById('videoModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideo() {
+      document.getElementById('videoModal').classList.remove('open');
+      document.getElementById('modalMediaWrap').innerHTML = '';
+      document.body.style.overflow = '';
+    }
+
+    function closeVideoOnOverlay(e) {
+      if (e.target === document.getElementById('videoModal')) closeVideo();
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo(); });
+  </script>
+
+  <script>
+    /* ---- Page reveal animations ---- */
+    (function () {
+      if (!('IntersectionObserver' in window)) return;
+      var els = document.querySelectorAll('.card, .sidebar-card, .founder-card, .news-card, .video-card, .congress-card, .funders, .inline-figure, .inline-figure-left');
+      if (!els.length) return;
+      els.forEach(function (el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+      });
+      var obs = new IntersectionObserver(function (entries) {
+        var visible = entries.filter(function (e) { return e.isIntersecting; });
+        visible.forEach(function (e, i) {
+          e.target.style.transition = 'opacity 0.5s ease-out ' + (i * 0.07) + 's, transform 0.5s ease-out ' + (i * 0.07) + 's';
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          obs.unobserve(e.target);
+        });
+      }, { threshold: 0.1 });
+      els.forEach(function (el) { obs.observe(el); });
+    })();
+  </script>
+  <script>
+    // Mobile menu toggle
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('mainNav');
+    toggle.addEventListener('click', () => { nav.classList.toggle('open'); document.body.classList.toggle('menu-open', nav.classList.contains('open')); });
+
+    // Accordion dropdowns on mobile
+    document.querySelectorAll('.has-dropdown > span').forEach(function(el) {
+      el.addEventListener('click', function() {
+        if (window.innerWidth <= 1100) {
+          el.parentElement.classList.toggle('open');
+        }
+      });
+    });
+  </script>
+  <script>var SITE_ROOT='../';</script>
+  <script src="../search-data.js"></script>
+<script src="../site-search.js"></script>
+  <script>
+    // Modo noche
+    (function() {
+      var toggle = document.getElementById('themeToggle');
+      var saved = localStorage.getItem('theme');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      }
+      toggle.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+          document.documentElement.removeAttribute('data-theme');
+          localStorage.setItem('theme', 'light');
+          toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+          } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+          toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

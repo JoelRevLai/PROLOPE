@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" href="../media/favicon_5.gif" type="image/gif" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; base-uri 'self'; connect-src 'self'" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tesis | PROLOPE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../prolope.css" />
+  <!-- early theme -->
+  <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'||(! t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.setAttribute('data-theme','dark');})();
+  </script>
+
+</head>
+<body>
+
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="logo-link">
+        <img src="../media/logo-menu.png" alt="PROLOPE" />
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li class="has-dropdown">
+            <span>El grupo <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../el-grupo/el-grupo.html">El grupo de investigación</a></li>
+                <li><a href="../el-grupo/historial-proyectos.html">Historial de proyectos</a></li>
+                <li><a href="../el-grupo/estatutos.html">Estatutos del grupo</a></li>
+                <li><a href="../el-grupo/miembros.html">Miembros</a></li>
+                <li><a href="../el-grupo/contacto.html">Contacto y ubicación</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Objetivos <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../objetivos/vida-obra.html">Vida y obra de Lope de Vega</a></li>
+                <li><a href="../objetivos/transmision.html">Transmisión y edición del teatro de Lope de Vega</a></li>
+                <li><a href="../objetivos/criterios.html">Criterios y materiales para la edición</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Publicaciones <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../publicaciones/partes-comedias.html">Partes de comedias</a></li>
+                <li><a href="https://revistes.uab.cat/anuariolopedevega/index" target="_blank" rel="noopener noreferrer">Anuario Lope de Vega <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="../publicaciones/otras-publicaciones.html">Otras publicaciones</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Proyectos digitales <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../proyectos-digitales/biblioteca-virtual.html">Biblioteca virtual</a></li>
+                <li><a href="https://prolope.uab.cat/biblioteca/" target="_blank" rel="noopener noreferrer">Biblioteca Digital Prolope <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="../proyectos-digitales/mujeres-criados.html">Mujeres y criados</a></li>
+                <li><a href="../proyectos-digitales/mapping-lope.html">Mapping Lope</a></li>
+                <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="https://damaboba.unibo.it/" target="_blank" rel="noopener noreferrer">La dama boba <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="https://gondomar.tespasiglodeoro.it/" target="_blank" rel="noopener noreferrer">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Formación <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="tesis.html">Tesis</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Eventos <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../eventos/congresos.html">Congresos</a></li>
+                <li><a href="../eventos/seminarios.html">Seminarios</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="../multimedia/multimedia.html">Multimedia</a></li>
+          <li><a href="../noticias/noticias.html">Noticias</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo noche" title="Modo noche"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+      <button class="site-search-btn" id="siteSearchBtn" aria-label="Buscar en el sitio">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <div class="site-search-inline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="siteSearchInput" placeholder="Buscar en el sitio…" autocomplete="off" />
+        <button class="site-search-close" id="siteSearchClose" aria-label="Cerrar búsqueda">✕</button>
+        <div class="site-search-dropdown" id="siteSearchDropdown">
+          <div id="siteSearchCount" class="site-search-count"></div>
+          <div id="siteSearchResults" class="site-search-results"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('../media/fondo-tesis.jpg'); background-size: fill; background-repeat: no-repeat; background-position: right; opacity: 0.15;"></div>
+    <div class="page-hero-inner">
+      <p class="page-hero-breadcrumb">
+        Inicio
+        <span>›</span>
+        Formación
+        <span>›</span>
+        Tesis
+      </p>
+      <h1>Tesis</h1>
+      <div class="page-hero-rule"></div>
+    </div>
+  </section>
+
+  <div class="page-wrap">
+
+    <main class="article-main" id="article-main">
+
+      <p class="article-lead">
+        Una de las tareas fundamentales asumidas por PROLOPE es la formación de investigadores y
+        doctores. Por ello PROLOPE participa en el Programa de Doctorado en Filología Española de
+        la Universitat Autònoma de Barcelona, y se ofrece también como lugar de destino para
+        intercambios y estancias de carácter científico predoctorales o postdoctorales, así como de
+        profesores e investigadores senior. Numerosos doctorandos, hoy doctores, han realizado su
+        formación en nuestro grupo de investigación.
+      </p>
+
+      <div class="thesis-list">
+        <div class="thesis-item" id="2024-el-otro-a-las-tablas-lo-musulman-en-la-puest">
+          <span class="thesis-year">2024</span>
+          <p class="thesis-title">            <em>El otro a las tablas: lo musulmán en la puesta en escena contemporánea del teatro            clásico (1986–2021)</em>          </p>
+          <div class="thesis-meta">
+            <strong>Khatereh Gorji</strong><br>
+            Directores: Gonzalo Pontón y Guillermo Gómez Sánchez-Ferrer<br>
+            Doctorado en Filología Española, Universitat Autònoma de Barcelona<br>
+            Defensa: 17-06-2024
+          </div>
+          <span class="thesis-pending">Consulta de la tesis pendiente</span>
+        </div>
+        <div class="thesis-item" id="2024-la-superbia-negli-orrori-dido-en-el-teatro">
+          <span class="thesis-year">2024</span>
+          <p class="thesis-title">            <em>«La superbia negli orrori». Dido en el teatro trágico europeo del siglo XVI</em>          </p>
+          <div class="thesis-meta">
+            <strong>Rosa Carmen Bono Velilla</strong><br>
+            Director: Gonzalo Pontón<br>
+            Teoría de la Literatura y Literatura Comparada, Universitat Autònoma de Barcelona<br>
+            Defensa: 13-05-2024
+          </div>
+          <span class="thesis-pending">Consulta de la tesis pendiente</span>
+        </div>
+        <div class="thesis-item" id="2022-la-mascara-en-las-comedias-y-entremeses-cerva">
+          <span class="thesis-year">2022</span>
+          <p class="thesis-title">            <em>La máscara en las comedias y entremeses cervantinos: Una relación entre esencia y            apariencia</em>          </p>
+          <div class="thesis-meta">
+            <strong>Giselle Cristina Gonçalves Macedo</strong><br>
+            Director: Gonzalo Pontón<br>
+            Doctorado en Filología Española, Universitat Autònoma de Barcelona<br>
+            Defensa: 10-06-2022
+          </div>
+          <a class="thesis-link" href="https://hdl.handle.net/10803/675972" target="_blank" rel="noopener noreferrer">→ Consultar tesis</a>
+        </div>
+        <div class="thesis-item" id="2022-investigaciones-sobre-la-transmision-recepci">
+          <span class="thesis-year">2022</span>
+          <p class="thesis-title">            <em>Investigaciones sobre la transmisión, recepción y tradición cultural de            <em>La dama boba</em>: del manuscrito autógrafo a la era digital</em>          </p>
+          <div class="thesis-meta">
+            <strong>Celio Hernández Tornero</strong><br>
+            Directores: Ramón Valdés Gázquez (UAB), M.ª Luz Mandigorra Llavata (UV) y Enrique Vidal Ruiz (UPV)<br>
+            Doctorado en Filología Española, Universitat Autònoma de Barcelona<br>
+            Defensa: 04-03-2022
+          </div>
+          <a class="thesis-link" href="https://hdl.handle.net/10803/689108" target="_blank" rel="noopener noreferrer">→ Consultar tesis</a>
+        </div>
+        <div class="thesis-item" id="2022-el-recurso-de-la-carta-en-el-teatro-de-lope-d">
+          <span class="thesis-year">2022</span>
+          <p class="thesis-title">            <em>El recurso de la carta en el teatro de Lope de Vega: unas calas</em>          </p>
+          <div class="thesis-meta">
+            <strong>Montserrat Fernández Crespo</strong><br>
+            Director: Gonzalo Pontón<br>
+            Doctorado en Filología Española, Universitat Autònoma de Barcelona<br>
+            Defensa: 28-02-2022
+          </div>
+          <a class="thesis-link" href="https://hdl.handle.net/10803/689106" target="_blank" rel="noopener noreferrer">→ Consultar tesis</a>
+        </div>
+        <div class="thesis-item" id="2018-la-comedia-aurea-en-el-lienzo-de-plata-anali">
+          <span class="thesis-year">2018</span>
+          <p class="thesis-title">            <em>La comedia áurea en el lienzo de plata: análisis de la recepción de la comedia nueva            a partir de sus reescrituras fílmicas</em>          </p>
+          <div class="thesis-meta">
+            <strong>Alba Carmona</strong><br>
+            Director: Gonzalo Pontón<br>
+            Doctorado en Filología Española, Universitat Autònoma de Barcelona<br>
+            Defensa: 16-03-2018
+          </div>
+          <a class="thesis-link" href="https://hdl.handle.net/10803/523500" target="_blank" rel="noopener noreferrer">→ Consultar tesis</a>
+        </div>
+        <div class="thesis-item" id="2016-las-comedias-bizantinas-de-lope-de-vega-cara">
+          <span class="thesis-year">2016</span>
+          <p class="thesis-title">            <em>Las comedias bizantinas de Lope de Vega: caracterización genérica, tradición y            trascendencia</em>          </p>
+          <div class="thesis-meta">
+            <strong>Daniel Fernández Rodríguez</strong><br>
+            Directores: Luis Alberto Blecua Perdices (†) y Ramón Valdés Gázquez<br>
+            Doctorado en Filología Española, Universitat Autònoma de Barcelona<br>
+            Defensa: 16-12-2016
+          </div>
+          <a class="thesis-link" href="https://hdl.handle.net/10803/400700" target="_blank" rel="noopener noreferrer">→ Consultar tesis</a>
+        </div>
+        <div class="thesis-item" id="2015-le-pere-trompe-traduzioni-e-ricezione-del">
+          <span class="thesis-year">2015</span>
+          <p class="thesis-title">            <em>«Le père trompé». Traduzioni e ricezione del teatro di Lope de Vega in Francia tra            Seicento e Settecento. Con un'appendice su Manzoni, lettore di Lope de Vega</em>          </p>
+          <div class="thesis-meta">
+            <strong>Francesca Suppa</strong><br>
+            Director: Pietro Gibellini<br>
+            Doctorado en Filología Española, Universitat Autònoma de Barcelona<br>
+            Defensa: 15-09-2015
+          </div>
+          <a class="thesis-link" href="https://hdl.handle.net/10803/309136" target="_blank" rel="noopener noreferrer">→ Consultar tesis</a>
+        </div>
+        <div class="thesis-item" id="2010-la-representacion-de-la-historia-contemporane">
+          <span class="thesis-year">2010</span>
+          <p class="thesis-title">            <em>La representación de la historia contemporánea en el teatro de Lope de Vega</em>          </p>
+          <div class="thesis-meta">
+            <strong>Guillem Usandizaga</strong><br>
+            Directores: Gonzalo Pontón y Luis Alberto Blecua Perdices (†)<br>
+            Doctorado en Filología Española, Universitat Autònoma de Barcelona<br>
+            Defensa: 17-12-2010
+          </div>
+          <a class="thesis-link" href="https://dialnet.unirioja.es/servlet/tesis?codigo=182105" target="_blank" rel="noopener noreferrer">→ Consultar tesis</a>
+        </div>
+      </div>
+
+    </main>
+
+    <aside class="sidebar">
+<em><em><em>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-head">
+          <h2>Doctorado en PROLOPE</h2>
+        </div>
+        <div class="sidebar-card-body">
+          <div class="sidebar-stat">
+            <span class="stat-num">10</span>
+            <span class="stat-label">Tesis doctorales</span>
+          </div>
+          <p>PROLOPE participa en el Programa de Doctorado en Filología Española de la UAB y acoge
+          estancias predoctorales y postdoctorales de investigadores nacionales e internacionales.</p>
+          <p>Para consultas sobre el doctorado, contacte con el grupo a través de
+          <a href="mailto:prolope@uab.cat">prolope@uab.cat</a>.</p>
+        </div>
+      </div>
+
+      
+
+    </em></em></em>
+    </aside>
+
+  </div>
+
+<!-- FUNDERS -->
+  <section class="funders">
+    <div class="funders-inner">
+      <p class="funders-title">Entidades financiadoras</p>
+      <div class="funders-logos">
+        <a class="funder-logo-link" href="https://www.march.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/fundacion-march.png" alt="Fundación March" />
+        </a>
+        <a class="funder-logo-link" href="https://www.culturaydeporte.gob.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/ace.png" alt="ACE" />
+        </a>
+        <a class="funder-logo-link" href="https://agaur.gencat.cat/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/agaur_gencat.png" alt="AGAUR Gencat" />
+        </a>
+        <a class="funder-logo-link" href="https://www.ciencia.gob.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/ministerio-feder.png" alt="Ministerio / FEDER" />
+        </a>
+        <a class="funder-logo-link" href="https://www.uab.cat/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/uab.png" alt="UAB" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="../media/logo-prolope_inici.png" alt="PROLOPE" />
+      </div>
+      <address class="footer-address" style="font-style:normal;">
+        Grupo de investigación PROLOPE.<br />
+        Departament de Filologia Espanyola.<br /><br />
+        Facultat de Filosofia i Lletres UAB<br />
+        CAMPUS DE LA UAB<br />
+        Carrer de la fortuna s/n<br />
+        08193 Bellaterra (Barcelona)
+      </address>
+      <div class="footer-contact">
+        Teléfono (Secretaría): <a href="tel:+34935811034">93 581 10 34</a><br />
+        Correo: <a href="mailto:prolope@uab.es">prolope@uab.es</a>
+        <div class="footer-social">
+          <a href="https://twitter.com/ProlopeUab" target="_blank" rel="noopener noreferrer" title="Seguir en X">𝕏</a>
+          <a href="https://www.facebook.com/prolope.uab" target="_blank" rel="noopener noreferrer" title="Seguir en Facebook">f</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Grupo de Investigación PROLOPE – Universitat Autònoma de Barcelona
+    </div>
+  </footer>
+
+
+
+  <script>
+    /* ---- Page reveal animations ---- */
+    (function () {
+      if (!('IntersectionObserver' in window)) return;
+      var els = document.querySelectorAll('.card, .sidebar-card, .founder-card, .news-card, .video-card, .congress-card, .funders, .inline-figure, .inline-figure-left');
+      if (!els.length) return;
+      els.forEach(function (el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+      });
+      var obs = new IntersectionObserver(function (entries) {
+        var visible = entries.filter(function (e) { return e.isIntersecting; });
+        visible.forEach(function (e, i) {
+          e.target.style.transition = 'opacity 0.5s ease-out ' + (i * 0.07) + 's, transform 0.5s ease-out ' + (i * 0.07) + 's';
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          obs.unobserve(e.target);
+        });
+      }, { threshold: 0.1 });
+      els.forEach(function (el) { obs.observe(el); });
+    })();
+  </script>
+  <script>
+    // Mobile menu toggle
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('mainNav');
+    toggle.addEventListener('click', () => { nav.classList.toggle('open'); document.body.classList.toggle('menu-open', nav.classList.contains('open')); });
+
+    // Accordion dropdowns on mobile
+    document.querySelectorAll('.has-dropdown > span').forEach(function(el) {
+      el.addEventListener('click', function() {
+        if (window.innerWidth <= 1100) {
+          el.parentElement.classList.toggle('open');
+        }
+      });
+    });
+  </script>
+  <script>var SITE_ROOT='../';</script>
+  <script src="../search-data.js"></script>
+<script src="../site-search.js"></script>
+  <script>
+    // Modo noche
+    (function() {
+      var toggle = document.getElementById('themeToggle');
+      var saved = localStorage.getItem('theme');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      }
+      toggle.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+          document.documentElement.removeAttribute('data-theme');
+          localStorage.setItem('theme', 'light');
+          toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+          } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+          toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

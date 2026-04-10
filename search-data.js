@@ -21,16 +21,10 @@ var SEARCH_INDEX = [
     content: "Título Primero Naturaleza, funciones y composición Art. 1 Naturaleza y finalidad ▾ Fundado en 1989 y dirigido desde ese año por el Dr. Luis Alberto Blecua Perdices, PROLOPE es un Grupo de investigación formado por miembros de diferente procedencia e integrado en el Departamento de Filología Española de la Universitat Autònoma de Barcelona. Desde su fundación el Grupo se ha vinculado estrecha y fundamentalmente con proyectos de investigación financiados por el Gobierno de España y concedidos en distintas convocatorias de ayuda a la investigación (Ministerio de Educación y Ciencia, Ciencia y Tecnología, Ciencia e innovación, etc) y también con otras instituciones públicas o privadas. Sus fines son los siguientes: 1.1.Llevar a cabo la edición crítica de la obra dramática completa de Lope de Vega. 1.2.Desarrollar otras líneas de investigación especializada que se derivan del punto anterior, señaladamente en los ámbitos siguientes: 1.2.1.La obra y la figura de Lope de Vega. 1.2.2.El teatro español del período 1580–1635. 1.2.3.Los estudios textuales y la edición de los clásicos españoles. 1.3.Divulgar convenientemente estos objetivos de investigación mediante publicaciones, seminarios, cursos, congresos y participación en la actividad académica. 1.4.Promover el intercambio científico a nivel nacional e internacional. 1.5.Promover la formación de investigadores mediante estudios de posgrado, la asunción de dirección de tesis relacionadas con las líneas de investigación antedichas así como el apoyo a candidatos a becas predoctorales y postdoctorales. 1.6.Fomentar la transferencia de conocimiento mediante la realización de materiales didácticos, el asesoramiento a instituciones culturales y organismos públicos o privados y otras actividades divulgativas relacionadas con las finalidades científicas del Grupo. Art. 2 Criterios de procedimiento ▾ El Grupo asume también, como principios fundamentales de funcionamiento, los siguientes compromisos: 2.1.Búsqueda de la excelencia. 2.2.Voluntad de colaboración con otras entidades e internacionalización. 2.3.Atención a nuevas propuestas metodológicas. 2.4.Modernización y adaptación a las nuevas tecnologías de la información. 2.5.Crecimiento acorde con los fines principales y recursos del Grupo. 2.6.Imparcialidad, transparencia informativa, descentralización, procedimiento democrático, búsqueda del consenso y respeto a las decisiones acordadas en los distintos órganos del Grupo. Art. 3 De los miembros ▾ 3.1.Son miembros del Grupo: 3.1.1.El personal académico adscrito a PROLOPE. 3.1.2.El personal de investigación en formación adscrito a PROLOPE. 3.1.3.Los alumnos de grado y posgrado que llevan a cabo labores de investigación en PROLOPE. 3.1.4.El personal de administración y servicios, técnicos superiores o técnicos de apoyo a la investigación adscritos al Grupo. 3.1.5.De forma excepcional pueden participar también en los distintos órganos de decisión, gestión y en la investigación, a propuesta del Equipo de Dirección, aquellas personas que no encajan en ninguno de los supuestos anteriores pero por su actividad y colaboración están incorporadas en la práctica al Grupo, así como aquellos que se hallen en proceso administrativo de incorporación oficial. 3.2.Las altas y bajas de miembros son decididas por la Comisión Científica. 3.3.Obligaciones y derechos de los miembros del Grupo: 3.3.1.Es derecho de todo miembro de PROLOPE recibir información puntual de todas las actividades desarrolladas por el Grupo, y obligación participar en ellas en la medida de sus intereses y posibilidades. 3.3.2.Es obligación de los miembros de PROLOPE aceptar al menos el encargo de la edición de una comedia o trabajo que implique esfuerzo similar en cada periodo de renovación del proyecto ministerial (es decir, una vez por trienio). 3.3.3.Los becarios deben satisfacer, ante todo, las obligaciones derivadas de su Convocatoria. El Equipo de Dirección y la Comisión Ejecutiva velarán para que puedan desarrollar su formación, su tesis y su currículum. 3.3.4.Es derecho de cualquier miembro de PROLOPE que el trabajo realizado en el ámbito del Grupo tenga resultado y visibilidad curricular. El Equipo de Dirección y la Comisión Ejecutiva velarán para que este principio se respete en todo caso. 3.3.5.Es obligación de los miembros de PROLOPE consignar, en todas sus publicaciones científicas relacionadas con el Grupo, o derivadas de él, su pertenencia al mismo así como la correspondiente mención al proyecto y la entidad financiadora, a efectos de impacto y reconocimiento científicos. Título Segundo Órganos de gobierno Art. 4 Órganos de gobierno ▾ Los órganos de gobierno del Grupo de investigación PROLOPE son los siguientes: 4.1.El Equipo de Dirección. 4.2.La Comisión Ejecutiva. 4.3.La Comisión Científica. 4.4.El Consejo Plenario. Capítulo primero — El Equipo de Dirección Art. 5 Composición del Equipo de Dirección ▾ Integran el Equipo de Dirección el Director Investigador Principal y por lo menos un Codirector del Grupo, designado por el IP y ratificado en el Consejo Plenario por mayoría simple. Art. 6 Competencias del Director Investigador Principal ▾ 6.1.Presidir la Comisión Ejecutiva y el Consejo Plenario. 6.2.Tener voto de calidad y derecho de veto en todos los equipos, comisiones, áreas e instancias del Grupo. 6.3.Representar al Grupo. 6.4.Ejercer las funciones de dirección y gestión ordinaria del Grupo. 6.5.Dirigir, coordinar y supervisar todas las actividades del Grupo. 6.6.El director podrá delegar aquellas funciones que considere oportunas. Art. 7 Competencias del Equipo de Dirección ▾ 7.1.Representar al Grupo. 7.2.Ejercer las funciones de dirección y gestión ordinaria del Grupo. 7.3.Dirigir, coordinar y supervisar todas las actividades del Grupo. 7.4.Crear las comisiones que considere adecuadas para el funcionamiento del Grupo y designar a las personas encargadas de llevar a cabo proyectos y acciones de corto, medio o largo plazo según se regula en los artículos 12.1 y 12.2. 7.5.Administrar las partidas presupuestarias. 7.6.Velar por el cumplimiento de estos estatutos. 7.7.Velar por que los miembros del Grupo cumplan sus deberes y se les respeten sus derechos, de acuerdo con las normas que en cada caso los regulen. 7.8.Convocar la Comisión Ejecutiva por lo menos una vez al año en sesión ordinaria, y cuando lo considere pertinente en sesión extraordinaria. 7.9.Asumir cualquier otra competencia que no haya sido expresamente atribuida a otros órganos. Capítulo segundo — La Comisión Ejecutiva Art. 8 Composición de la Comisión Ejecutiva ▾ Integran la Comisión Ejecutiva el Equipo de Dirección, un secretario, representante del personal de administración y servicios, y un representante del personal investigador en formación, elegidos estos últimos por sus respectivos colectivos. Art. 9 Funciones de la Comisión Ejecutiva ▾ 9.1.El gobierno ordinario del Grupo. 9.2.Elaborar la memoria de actividades y proponerla al Consejo Plenario para su aprobación. 9.3.Acordar el orden del día de las convocatorias del Consejo y atender las peticiones que en este sentido se le dirijan. 9.4.La Comisión Ejecutiva debe reunirse en sesión ordinaria por lo menos una vez al año, y en extraordinaria cuando la convoque el Director Investigador Principal o cualquiera de sus miembros motivadamente. Art. 10 Del secretario ▾ Son competencias del Secretario: 10.1.El control administrativo. 10.2.La elaboración del informe económico para el Consejo Plenario. 10.3.El control y en su caso administración, de acuerdo con las indicaciones del Equipo de Dirección, de las convocatorias de ayudas ministeriales y de otras entidades en concurso competitivo. 10.4.La custodia y mantenimiento al día del archivo científico y administrativo de PROLOPE. 10.5.Levantar acta de reuniones y sesiones. Capítulo tercero — La Comisión Científica Art. 11 Composición de la Comisión Científica ▾ Integran la Comisión Científica el Equipo de Dirección y un número no determinado (pero no inferior a tres) de miembros doctores de PROLOPE escogidos por el Equipo de Dirección y con más de cinco años de antigüedad en el Grupo. Art. 12 Funciones de la Comisión Científica ▾ 12.1.Organizar el funcionamiento científico por áreas a propuesta del Equipo de Dirección. Determinar el número, componentes, objetivos y plazo de cumplimiento de los mismos, así como su evaluación. 12.2.Determinar objetivos científicos a medio o largo plazo y proponer a los responsables para llevarlos a cabo. 12.3.En particular le corresponde designar al coordinador (o coordinadores) de la edición de las partes de comedias. 12.4.Proponer y decidir las altas y bajas de los miembros del grupo de investigación. 12.5.Ser órgano consultivo del Equipo de Dirección. 12.6.Tener derecho de veto en los aspectos científicos reseñados en el articulado inicial; se considera emitido el veto cuando lo respalda la mayoría simple de los miembros de la Comisión. 12.7.No es necesario que esta Comisión se reúna físicamente, y sus funciones pueden realizarse mediante comunicaciones escritas o reuniones virtuales (correo electrónico y videoconferencias, por ejemplo). Capítulo cuarto — El Consejo Plenario Art. 13 Composición del Consejo Plenario ▾ Integran el Consejo Plenario todos los miembros del Grupo de Investigación PROLOPE. Art. 14 Funciones del Consejo Plenario ▾ 14.1.Aprobar los estatutos de PROLOPE y sus posibles modificaciones. 14.2.Aprobar el plan de actividades del año y el informe económico. 14.3.Proponer, debatir y aprobar las convocatorias de congresos y seminarios. 14.4.Aprobar la renovación de cargos. 14.5.Elevar propuestas particulares al conjunto del Grupo. Todo miembro en activo de PROLOPE puede plantear en Consejo una iniciativa, cuya aprobación requiere mayoría simple. Art. 15 Frecuencia y procedimiento del Consejo Plenario ▾ 15.1.El Consejo Plenario se celebra una vez al año. 15.2.Cabe convocar Consejo Plenario extraordinario a petición de un 50% de los miembros del Grupo o por iniciativa del Equipo de Dirección. 15.3.No puede votarse por correo, pero cabe delegación por escrito del voto en uno de los miembros presentes. 15.4.Las votaciones se realizan a mano alzada, pero todo miembro presente en el Consejo puede solicitar votación secreta. 15.5.Por principio se evitará el procedimiento de aprobación de decisiones «por anuencia» y siempre se atenderá cualquier petición de votación. Capítulo quinto — Duración y renovación de los cargos Art. 16 Régimen de los cargos ▾ Los cargos son trienales (vinculados a la duración de los proyectos oficiales) y pueden renovarse sin límite, pero a propuesta del Director Investigador Principal y con el apoyo del Consejo Plenario por mayoría simple. Entre el final de la duración de un proyecto y la renovación del siguiente los cargos pueden mantenerse de forma interina. Art. 17 Candidaturas ▾ Todo miembro de PROLOPE con más de dos años de antigüedad puede postularse en el Consejo Plenario como miembro para los distintos equipos y comisiones. Para ser atendida, su petición necesita mayoría simple. Título Tercero Reforma de los estatutos y marco regulador Art. 18 Competencia y modificación ▾ 18.1.Pueden proponer una reforma de los Estatutos del Grupo la Comisión Ejecutiva (por unanimidad) o un tercio de los miembros del Grupo (por escrito o en Consejo Plenario). 18.2.La propuesta debe ser aprobada por dos tercios de los miembros del Consejo. Art. 19 Marco regulador ▾ En aquellos aspectos que no queden recogidos expresamente por los presentes estatutos, el Grupo se regirá por la doctrina que emana del reglamento del Departamento de Filología Española de la Universitat Autònoma de Barcelona, las respectivas convocatorias de proyectos y de becas de investigación del Gobierno de España que los vinculen, así como la Carta europea del investigador y el Estatuto del investigador en formación. Disposición adicional Se adjuntan los siguientes documentos que dan cuenta del funcionamiento científico del Grupo de investigación en su tarea principal: un contrato de edición de una comedia, que debe firmar el colaborador encargado, el coordinador de la Parte correspondiente y el Director de PROLOPE, así como un Contrato para el encargo de la coordinación de una Parte, firmado por el coordinador designado y el Director de PROLOPE. Se adjuntan asimismo con carácter vinculante para cualquier colaborador los Criterios de Edición de PROLOPE."
   },
   {
-    title: "Contacto y ubicación",
-    url: "el-grupo/contacto.html",
-    description: "Información de contacto del grupo PROLOPE en la UAB.",
-    content: "Contacto Departament de Filologia Espanyola Facultat de Lletres Universitat Autònoma de Barcelona 08193 Bellaterra. Email prolope@uab.es. Tel 93 581 10 34. Mòdul de Recerca A MRA. Gonzalo Pontón Ramón Valdés."
-  },
-  {
     title: "Vida y obra de Lope de Vega",
     url: "objetivos/vida-obra.html",
     description: "Biografía completa de Lope de Vega desde su nacimiento en 1562 hasta su legado póstumo.",
-    content: "Vida de Lope de Vega 1562-1635. Nacimiento Madrid estudios destierros amores sacerdocio. Obra comedias poesía novela. Fénix de los Ingenios. Legado póstumo."
+    content: "Lope Félix de Vega Carpio nació en Madrid el 25 de noviembre de 1562 y fue bautizado el 6 de diciembre siguiente, según relató su discípulo y primer biógrafo Juan Pérez de Montalbán. Era el cuarto hijo de Francisca Fernández Flores y del bordador Félix de Vega, hombre caritativo y aficionado a la poesía. Naturales del valle de Carriedo, los padres de Lope se habían afincado en Madrid apenas un año antes del nacimiento del dramaturgo, atraídos, seguramente, por las posibilidades que ofrecía la Corte, recientemente trasladada a la Villa. Pese a su origen humilde, Lope disfrazó con ensoñaciones de abolengo nobiliario su propia genealogía, como quedó patente en las diecinueve torres del escudo de los Carpio que imprimiría en la portada de la Arcadia en 1598. Infancia, formación y primeros versos Retrato del escritor Lope de Vega Contamos con pocos datos en torno a la infancia y juventud de Lope, y la mayoría son autobiográficos y evocan una época feliz en la que se desenvolvió con audacia y manifestó dotes para el estudio. Siendo niño participó de la vida cristiana y piadosa de su hogar a través de la amistad de su padre con el beato Bernardino de Obregón, asistiendo a los enfermos del Hospital de la Corte con sus hermanos. Parece ser que pasó una temporada en Sevilla junto a su tío, el inquisidor don Miguel del Carpio, de quien adoptaría el apellido. Sus primeros estudios fueron de la mano del músico y escritor Vicente Espinel, a quien siempre recordaría con gran estima. Desde 1574 hasta 1576, siguió su formación con los jesuitas, gracias a la cual entraría en contacto con el teatro hagiográfico que se representaba habitualmente en los colegios de la Compañía. Practicaría entonces sus primeros versos que irían ganando en perfeccionamiento conforme avanzaba en su conocimiento e imitación de los clásicos. Tras dejar sus estudios, empezó a servir como paje a don Jerónimo Manrique de Lara, inquisidor general y obispo de Cartagena. Es posible que bajo su protección estudiase en la Universidad de Alcalá de Henares, entre 1577 y 1581, y después en Salamanca, sin que al parecer alcanzara ninguna titulación. En 1583 probablemente participó como soldado en la expedición a las Azores, entrando posteriormente al servicio del marqués de las Navas, hasta 1587. A partir de 1580, Lope empezó a despuntar como poeta y dramaturgo, con obras como Los cinco misterios dolorosos de la Pasión y Muerte de Nuestro Señor Jesucristo o Los hechos de Garcilaso de la Vega y el moro Tarfe. Como muestra de la reputación que había ido adquiriendo en el ámbito literario, en 1585 Cervantes lo incluyó en el Canto de Calíope de La Galatea, entre los escritores más destacados del momento. El destierro y la Armada Invencible Poco después de su supuesto regreso de las Azores, el dramaturgo inició una relación con la actriz Elena Osorio. Era hija del autor de comedias Jerónimo Velázquez, y estaba casada, desde 1576, con el actor Cristóbal Calderón, que había emigrado a Indias. En los cinco años que aproximadamente duró la tormentosa relación, el dramaturgo siguió su formación recibiendo clases de matemáticas y astrología con Juan Bautista Lasaña y lecciones de esgrima de manos de Pablo de Paredes. La relación con Elena se trastocó con la entrada en juego de Francisco Perrenot, sobrino del Cardenal Granvela, que era un pretendiente para la actriz mejor posicionado económicamente. Lope, despechado, dejó de vender sus comedias a Jerónimo Velázquez y escribió unos libelos difamatorios contra Elena y su familia que desembocaron en un proceso judicial contra el dramaturgo. Puerta de la casa del escritor en Alba de Tormes. Fue derribada en 2004 Lope fue detenido el 29 de diciembre de 1587 en el Corral de la Cruz, durante una representación. Tras el juicio, y una nueva querella por reincidir en sus injurias, el 5 de febrero de 1588 se dictó definitivamente sentencia y Lope fue condenado a ocho años de destierro de la Corte y a dos del Reino de Castilla. Decidió entonces trasladarse a Valencia, por consejo del autor de comedias Gaspar de Porres, con quien partiría, junto a su amigo Claudio Conde y una joven a la que convenció para que le siguiera, dándole palabra de matrimonio. Era una doncella de veinte años, llamada Isabel de Urbina y Alderete, hija de un regidor de Madrid y rey de armas de Felipe II. La familia denunció al poeta por rapto y la trifulca judicial se saldó con la boda por poderes el 10 de mayo de ese mismo año. Apenas unas dos semanas después, el dramaturgo se dirigió a Lisboa y se alistó en la Armada Invencible. Tras regresar, se reunió con su esposa en Toledo y se establecieron nuevamente en Valencia en 1589, donde cumplieron los dos años fuera del Reino a los que había sido condenado. Lope frecuentó los círculos literarios de la ciudad del Turia, entrando en contacto con dramaturgos como Guillén de Castro, Francisco Agustín de Tárrega o Cristóbal de Virués. Su teatro experimentó una evolución cada vez más próxima a la conformación de la comedia nueva y al establecimiento de la escritura dramática como su modus vivendi. Al servicio del duque de Alba En 1590 se trasladó con su esposa a Toledo y entró al servicio del futuro marqués de Malpica, cargo que desempeñó apenas unos meses, porque en junio de 1591 empezó a ejercer como secretario del duque de Alba, don Antonio Álvarez de Toledo. Permaneció en Alba de Tormes hasta 1595, en una casa en la Plazuela de Barrionuevo. En ese periodo compuso varias comedias (El maestro de danzar, Laura perseguida, El favor agradecido, El caballero del milagro, San Segundo de Ávila…) y la novela pastoril la Arcadia, impresa unos años más tarde, en 1598. El ámbito familiar se vio sacudido por varios sucesos trágicos: en noviembre de 1590 falleció su hija Teodora de Urbina y a finales de 1593 su segunda hija, Antonia. En agosto de 1594, su esposa, nuevamente embarazada, cayó gravemente enferma y murió al dar a luz el 18 de septiembre de 1594, cuando apenas contaba con 26 años. La recién nacida recibió el nombre de Teodora, en memoria de su hermana, y apenas logró superar el primer año de vida. El 5 de febrero de 1595, Lope puso en almoneda sus bienes en Alba de Tormes y se dispuso a regresar a Madrid, donde se le concedió el indulto y se le levantó la condena, a instancias de una solicitud presentada por Jerónimo Velázquez el 18 de marzo de ese mismo año. De regreso a Madrid: Juana de Guardo y Micaela de Luján Portada de la edición príncipe de la Arcadia De nuevo en la Villa, ya convertido en una celebridad de las letras, entabló una relación amorosa con Antonia Trillo de Armentera, una treintañera de familia acomodada que también había enviudado recientemente. El enredo amoroso le costó a Lope un nuevo proceso judicial por amancebamiento, que no debió prosperar o del que salió absuelto. Rota la relación y ante el cierre de los teatros hasta abril de 1599, como duelo por la muerte de la infanta Catalina Micaela (6 de noviembre de 1597) y el posterior fallecimiento de Felipe II (13 de septiembre de 1598), Lope volvió a desempeñar cargos de secretario, esta vez en la casa del marqués de Malpica, y hacia 1598 en la del marqués de Sarria, don Pedro Fernández Ruiz de Castro, futuro conde de Lemos. En marzo de ese mismo año, el dramaturgo conoció a Juana de Guardo, hija de un abastecedor de carnes, con la que contrajo matrimonio apenas un mes después, el 25 de abril de 1598. Todo parece apuntar que se trató de un matrimonio de conveniencia, fruto del cual nacieron cuatro hijos: Jacinta y Juana, que murieron a temprana edad, Carlos Félix (1606-1612) y Feliciana (1613-1657). Estas segundas nupcias de Lope no impidieron que acabara enredado en amores con la actriz Micaela de Luján, una joven analfabeta y notablemente bella, casada con Diego Díaz de Castro, un actor de la compañía de Alonso Cisneros, que se había trasladado a América. La actriz, retirada de las tablas cuando inició su relación con Lope (seguramente a partir del verano de 1598), se convirtió en la Lucinda o Camila Lucinda de los versos del poeta, quien al firmar pasó a anteponer a su nombre la M de Micaela. Con ella el dramaturgo estableció una familia paralela a la que oficialmente tenía junto a Juana de Guardo. La relación se mantuvo hasta 1608 y algunos de los hijos que nacieron fruto de ella, fueron registrados a nombre del legítimo esposo de Micaela. Juan (1601) y Félix (1603), los dos primeros, murieron siendo niños. Marcela (1605-1688) profesó en las trinitarias y sobrevivió a su padre, mientras que Lope Félix (1607-1634) murió en la isla Margarita un año antes de fallecer el poeta. Las obras que Lope escribió y publicó durante esos años, como La hermosura de Angélica (1602), las Rimas (1602 y 1604), El peregrino en su patria (1604) o la Jerusalén conquistada (1609, pero escrita en 1605), reflejan en multitud de ocasiones las vicisitudes de su relación con Micaela de Luján. Fueron años de muchos viajes para el Fénix, pasando unas temporadas en el hogar que tenía con Juana y otras en el que tenía junto a su amante, en Sevilla. Hasta que en 1604, logró establecer a sus dos familias en Toledo. Ese mismo año se publicó en Zaragoza, sin su autorización, la Primera Parte de sus comedias bajo el título: Las comedias del famoso poeta Lope de Vega Carpio. A partir de entonces continuaron editándose las distintas Partes, aunque no pasaron a imprimirse oficialmente bajo su voluntad y control hasta 1617 (véase La transmisión). La calle Francos, el sacerdocio y las obras maestras Retrato de Sor Marcela de San Félix, hija de Lope de Vega El 23 de abril de 1605 falleció su hermana Isabel, y unas semanas después bautizó a su hija Marcela y organizó y dirigió una justa poética celebrada con motivo del nacimiento del Príncipe de Asturias. El verano de ese año conoció en Madrid a don Luis Fernández de Córdoba y de Aragón, conde de Cabra y futuro duque de Sessa, con quien trabó una amistad que mantuvo a lo largo de su vida, recibiendo la protección del aristócrata al que sirvió extraoficialmente como secretario, consejero sentimental y de Estado. En octubre de 1607, mientras su familia oficial residía en Toledo, trasladó la formada con Micaela a Madrid, a donde viajaba con frecuencia tanto por asuntos personales, como por su labor profesional y sus servicios al Duque. En la primavera de 1608 escribió varios autos sacramentales para las fiestas de ese año y participó en las justas poéticas celebradas en Toledo durante las fiestas del Corpus, donde obtuvo el primer premio. Precisamente, para el enaltecimiento de estas festividades religiosas, Lope solicitó su ingreso en la Congregación de Esclavos del Santísimo Sacramento en septiembre de 1609, el año en que además de su Jerusalén conquistada, apareció la Segunda parte de las Comedias y una nueva edición de las Rimas que incluía el Arte nuevo de hacer comedias en este tiempo, escrito probablemente el otoño anterior. El 24 de enero de 1610 Lope ingresó en la Congregación del Oratorio de las Trinitarias Descalzas. Había pasado los dos últimos años en constantes idas y venidas de Toledo a Madrid, hasta que ese año decidió instalarse definitivamente en la capital, comprando una casa en la calle Francos (hoy de Cervantes) en la que se instaló junto a su esposa Juana y los hijos habidos con ella. Su ánimo esos años fue debatiéndose entre el recogimiento de la vida familiar y constantes recaídas espirituales, que le llevaron a componer obras piadosas como los Cuatro soliloquios de Lope de Vega Carpio (1612), escritos con motivo de su ingreso en la Orden Tercera de San Francisco (septiembre de 1611). El verano de 1612 Lope cayó enfermo de calenturas, como su hijo Carlos Félix, al que había dedicado poco antes Los pastores de Belén (1612). El pequeño no logró sobrevivir y abrió con su muerte un periodo de nuevas fatalidades en la vida del dramaturgo. Puerta de la casa de Lope en la calle Francos, hoy denominada Cervantes, donde el autor vivió la mayor parte de su vida Se cree que en torno a ese mismo año falleció también Micaela de Luján; así como su esposa Juana lo haría el 13 de agosto de 1613, pocos días después de haber dado a luz a su hija Feliciana. Lope agrupó en la casa de la calle Francos a los hijos que había tenido en sus dos relaciones. Y tal vez en un intento de remediar su crisis espiritual, agravada por las recientes perdidas, acabó ordenándose sacerdote en 1614, aunque no abandonó sus servicios como alcahuete del duque de Sessa ni los brazos de la actriz Jerónima de Burgos, una antigua amante con la que había vuelto a relacionarse. De estos años datan obras tan significativas como: El villano en su rincón (1611), Fuenteovejuna (1612-1614), La dama boba (1613), El perro del hortelano (1613-1615) o las Rimas sacras (1614). En 1614, también apareció en Madrid la Cuarta parte de las Comedias, y un año después, la Parte V y la VI. Marta de Nevares y la madurez literaria Detalle de un retrato anónimo de Lope de Vega. Siglo XVII, óleo sobre lienzo. Fundación Lázaro Galdiano Cuando Lope contaba con cincuenta y cuatro años, en 1616, después de mantener una aventura pasajera con la actriz Lucía de Salcedo, inició una relación con Marta de Nevares Santoyo (Amarilis), el último gran amor de su vida. Era una joven de veintiséis años, bellísima y culta, casada contra su voluntad cuando apenas era una niña. Fruto de los amores sacrílegos y adúlteros de Lope y Marta, nació el 12 de agosto de 1617, Antonia Clara. Ese año y el siguiente, la vida del poeta se vio marcada por continuos altercados a nivel personal y profesional. A la persecución del marido de Marta, y las sátiras y habladurías sobre su relación con la joven, se sumaron los ataques y polémicas literarias en las que se hallaba inmerso. En 1617 apareció la Spongia, un libelo contra el dramaturgo y sus obras poéticas, al que se daría réplica al año siguiente mediante la Expostulatio spongiae. Con todo, las publicaciones de sus obras no dejaron de sucederse a un ritmo acelerado. Aparecieron las Partes de Comedias VII, VIII y IX; en estos años pleiteó contra los que imprimían sus comedias sin su control ni beneficio y, a pesar de perder el pleito, desde 1617 y la Novena parte de comedias, se ocupó personalmente de la edición de sus comedias con mayor o menor atención hasta la fecha de su muerte (véase La transmisión). En 1618 se publicó la Parte X y la sexta edición de El peregrino en su patria, en la cual se recogía una lista actualizada de las comedias que reconocía como suyas y auténticas. En el terreno personal, sufrió a principios de año un intento de asesinato del que salió airoso; su salud se vio aquejada por el trabajo y los sobresaltos sufridos, y Marta perdió a la criatura de la que estaba embarazada. La muerte del marido de Amarilis, a finales de 1619, supuso un notable alivio para la pareja. Desaparecida la amenaza, la casa de Lope alcanzó una cierta estabilidad y sosiego que permitieron al poeta centrarse en su trabajo y en su vida familiar, al margen de las pullas y críticas de sus enemigos. Se encargó en 1620 de la dirección del certamen poético por la beatificación de San Isidro y en el de 1622 con motivo de la canonización del santo; solicitó el puesto de Cronista Real, que finalmente no le concedieron; y salieron a la luz las Partes XIII y XIV de sus comedias en 1620 y un año después las Partes XV, XVI y XVII, así como La Filomena que incluía la primera de las cuatro novelas a Marcia Leonarda (Las fortunas de Diana). Se considera que fue en estos años cuando Lope escribió El caballero de Olmedo, que se publicaría por primera vez en Zaragoza, en 1641, recogida en la Parte XXIV de sus comedias. Tras ese periodo productivo una nueva fatalidad sobrevino en la casa de Lope. Hacia 1623, poco después de que su hija Marcela profesase en las Trinitarias Descalzas, Marta de Nevares cayó enferma e inició una pérdida progresiva de la vista, que la llevaría a quedar completamente ciega. Además de la pesadumbre que experimentó Lope en la dedicación y cuidado de Marta, tuvo que hacer frente a cierto desengaño y agotamiento en torno a su trabajo, al no ver reconocidos suficientemente sus méritos y percibir el creciente entusiasmo que despertaba la nueva generación de literatos y especialmente la estética gongorina. Detalle del primer retrato anónimo del autor. Grabado en madera, apareció en las dos primeras ediciones de La Arcadia y en la primera de Isidro En 1623 se publicaron las Partes XVIII y XIX de sus comedias y la primera edición de La Circe, que incluía tres nuevas novelas dedicadas a Marcia Leonarda, fruto de la influencia positiva que ejercía Marta sobre Lope, animándolo a experimentar nuevos géneros y a seguir sumando logros a su haber literario. Ese año apareció en Pamplona su Romancero espiritual y Lope siguió con la literatura de tono religioso al publicar al año siguiente sus Triunfos divinos, además de la Parte XX, que salió a la luz antes de que la Junta de Reformación solicitase la prohibición de imprimir libros de comedias y novelas por razones morales (en 1625 dejaron de concederse licencias). En julio de 1626 publicó los Soliloquios amorosos de un alma a Dios, y en septiembre de 1627 La Corona trágica, dedicada al Papa Urbano VIII, que unos meses después le concedió el título de doctor en Teología y el hábito de la Orden de San Juan, por el que pudo pasar a anteponer el «frey» a su nombre. En esa época, Marta se trasladó a vivir a una casa contigua a la de Lope, en la calle Francos, y vio agravada su enfermedad, llegando a tener accesos de locura. Hacia 1630 Lope amenazó con dejar de escribir comedias y suplicó al duque de Sessa que le diera un cargo oficial en su casa, algo que nunca llegó a concederle. El pasado escandaloso del dramaturgo lo perseguía y apartaba de ese tipo de prebendas, como lo había alejado del puesto de Cronista Real, que en 1629 pasó a ocupar Pellicer. Publicó entonces el Laurel de Apolo, en el que llevaba trabajando desde 1628 y donde elogiaba a más de 280 poetas de su tiempo. En esos últimos años escribió menos teatro que en épocas precedentes, pero de una calidad inestimable, como El castigo sin venganza, una tragedia de nuevo corte compuesta en 1631. Los últimos años y la muerte Portada de la edición príncipe de los Triunfos divinos Las desventuras siguieron sucediéndose en su entorno. El 7 de abril de 1632 falleció Marta. Los gastos del entierro corrieron a cargo de Alonso Pérez, librero e impresor amigo de Lope. Ese mismo año publicó su obra maestra La Dorotea, una «acción en prosa» en la que rememoró sus amores juveniles con Elena Osorio, engarzados con la experiencia de su amor maduro y trágico por Marta. El canto de corte virgiliano, Égloga a Amarilis (1633), le permitió también evocar la honda amargura que sentía tras la pérdida de ese último gran amor. En los años posteriores, nuevas ausencias vendrían a seguir afligiendo al dramaturgo. Su hija Feliciana se casó el 18 de diciembre de 1633 y dejó el hogar paterno, donde solo quedaron Lope, su hija Antonia Clara, y la criada, Lorenza Sánchez. Ese mismo mes, falleció su amigo fray Hortensio F. Paravicino. Y apenas unos meses después, en agosto de 1634, su hija Antonia se fugó de casa con Cristóbal Tenorio, un criado del duque de Medina de las Torres. Nunca más volvería Lope a ver a su hija pequeña. En noviembre de 1634, publicó las Rimas humanas y divinas del licenciado Tomé de Burguillos, alter ego creado en 1620, y a finales de ese año recibió la funesta noticia de la muerte de su hijo Lope Félix durante el naufragio de la embarcación en que viajaba en una expedición a la isla Margarita. El zarpazo de esta última noticia lo sumió en un dolor profundo del que ya no pudo recuperarse. Lope se enfrentó a sus últimos días solo, hundido en la tristeza, habiendo recibido el desaire de los poderosos, la falta de reconocimiento a su trayectoria, viéndose relegado profesionalmente por el éxito de la nuevas generaciones y desengañado y malherido por las desgracias familiares. El sábado 25 de agosto de 1635 sufrió un desmayo en el Seminario de los Escoceses a donde había asistido como invitado. Al día siguiente firmó su testamento y recibió el viático y la extremaunción. El lunes 27, a las cinco y media de la tarde, falleció rodeado de amigos. A su funeral, celebrado un día después y sufragado por el duque de Sessa, acudió una multitud. La comitiva fúnebre pasó ante el convento de las Trinitarias Descalzas, desde el que su hija Marcela pudo despedirse de su padre. Finalmente fue sepultado a las dos y media de la tarde en la iglesia de San Sebastián. Los actos religiosos por su alma duraron nueve días, y a falta de un homenaje institucional, se sucedieron los promovidos por sus amigos y admiradores, para honrarle y dejar eterna la memoria de sus obras y sus días. Legado y memoria póstuma Manuscrito original autógrafo de la Égloga Amarilis Juan Pérez de Montalbán publicó un año después de la muerte del dramaturgo su primera biografía y gran homenaje, la Fama póstuma a la vida y muerte del Doctor Frey Lope Félix de Vega Carpio, que recoge versos panegíricos de ciento cincuenta y tres poetas. El mismo día de su muerte, su amigo José Valdivielso firmó la aprobación de una última obra de Lope, La vega del Parnaso, que, preparada por su yerno y su hija, no vería la luz hasta dos años después de la muerte del dramaturgo, en 1637. También había dejado Lope preparada la Parte XXI de comedias que saldría de la imprenta apenas unos días después de su muerte y, antes de finalizar el año, la Parte XXII dedicada expresamente por Lope a la marquesa de Cañete. La ingente producción lopiana que permanecía inédita continuaría conociendo nuevas publicaciones a través de las sucesivas Partes de comedias o de otras ediciones extravagantes. Pintura de Ignacio Suárez de Llanos (1862), muestra a Sor Marcela de San Félix asistiendo al entierro de su padre"
   },
   {
     title: "Transmisión y edición del teatro de Lope de Vega",
@@ -42,19 +36,19 @@ var SEARCH_INDEX = [
     title: "Criterios y materiales para la edición",
     url: "objetivos/criterios.html",
     description: "Criterios editoriales y materiales para la edición crítica del teatro de Lope de Vega.",
-    content: "El proyecto de edición crítica del teatro de Lope de Vega que está llevando a cabo PROLOPE se plantea desde un seguimiento riguroso de los principios filológicos más válidos en el ámbito de la crítica textual y, atenta a las peculiaridades que se observan en la transmisión manuscrita e impresa de sus obras teatrales. En numerosas, dilatadas y acaloradas reuniones el Grupo de Investigación PROLOPE elaboró unos Criterios de edición (octubre de 1995, documento de trabajo interno) que pautaron el trabajo de los editores que colaboraron con el grupo durante la preparación de las primeras Partes de comedias. Hay que recordar la participación en esta laboriosa tarea de Alberto Blecua, Patrizia Campana, Luigi Giuliani, María Morrás, Victoria Pineda, Ana Navarro, Gerardo Salvador, Silvia Iriso, Gonzalo Pontón y Teresa Santa María. La experiencia acumulada durante estos años se ha traducido en un número creciente de revisiones y correcciones de los criterios de edición originales. Se impuso entonces la necesidad de preparar una nueva versión de estas normas que reflejara todos los cambios y facilitara, por lo tanto, el trabajo de nuestros editores así como la consulta de sus contenidos por parte de investigadores interesados en los problemas de edición en general. Así es como surgieron, con principal papel en la revisión y redacción de Xavier Tubau y asesoría lingüística de Margarita Freixas, los Criterios de edición actualmente vigentes que en 2008 ya se publicaron en formato de libro y que aquí se ofrecen, titulados en verdad La edición del teatro de Lope de Vega. Las «Partes de comedias». Criterios de edición (Grupo de Investigación PROLOPE, Bellaterra, 2008). Esta nueva versión de los criterios no modificaba ni la estructura de nuestras ediciones, ni las premisas ecdóticas que las habían vertebrado hasta la fecha, como no podía ser de otro modo teniendo en cuenta la coherencia que requiere necesariamente un proyecto de esta magnitud. Es posible que en el futuro haya nuevas modificaciones o nuevas directrices, porque a medida que avanzamos van apareciendo nuevos problemas o vamos, o al menos lo pretendemos, mejorando nuestro sistema de trabajo, aunque sólo es previsible que se trate de cuestiones de detalle. PROLOPE, La edición del teatro de Lope de Vega. Las «Partes de comedias». Criterios de edición, PROLOPE-UAB, Bellaterra, 2008. ↓ Consultar aquí (PDF) Aparte de estos Criterios de edición de PROLOPE, se ofrecen también aquí algunas referencias y materiales que serán de utilidad para el editor del teatro de Lope y del teatro del Siglo de Oro: ARJONA, J. H., «Defective Rhymes and Rhyming Techniques in Lope de Vega's Autograph Comedias», Hispanic Review, 23 (1955), pp. 1082-1088. [CONSULTAR AQUÍ] ARJONA, J. H., «False Andalusian Rhymes in Lope de Vega and Their Bearing on the Autorship of Doubtful Comedias», Hispanic Review, pp. 290-305. [CONSULTAR AQUÍ] ARTELOPE. Base de datos y argumentos del teatro de Lope de Vega, dir. Joan Oleza, 2012. La base de datos ofrece datos bibliográficos, datación, dedicatorias, cómputo de versos, listados de personajes, anotaciones sobre género dramático, espacio y tiempo, resumen del argumento. → CONSULTAR AQUÍ BOUZA, Fernando, Dásele licencia y privilegio: don Quijote y la aprobación de libros en el Siglo de Oro, Akal, Madrid, 2012. Casa di Lope, La, coord. Fausta Antonucci. La casa di Lope en Roma, fundada por Stefano Arata y mantenida por Fausta Antonucci, recoge en su página amplísima noticia de la bibliografía del teatro del Siglo de Oro. Incluye ahora también una exhaustiva sección de «Enlaces comentados sobre el tema» a cargo de Germán Vega García-Luengos, actualizada por él mismo y Fausta Antonucci. → CONSULTAR AQUÍ Catálogo de la exposición bibliográfica de Lope de Vega, Junta del Centenario de Lope de Vega – Biblioteca Nacional, Madrid, 1935. Catálogo que reúne materiales bibliográficos diversos (manuscritos e impresos) de obras de Lope, provenientes de diversas bibliotecas públicas y privadas y que conformaron la exposición que organizó la BNE en el III centenario de la muerte del autor. → PARTE 1, PARTE 2, PARTE 3, PARTE 4, PARTE 5 DIXON, Victor, «La intervención de Lope en la publicación de sus comedias», Anuario Lope de Vega, II (1996), pp. 45-63. Estudio fundamental para entender las diferentes fases y vicisitudes por las que pasó la publicación de las comedias de Lope y el grado de involucración del poeta. Véase también en relación con el mismo tema Profeti (1996) así como los prólogos e historias editoriales que prologan las distintas Partes de comedias ya editadas por PROLOPE. → CONSULTAR AQUÍ GIULIANI, Luigi, y Victoria PINEDA, eds., «Entra el editor y dice»: ecdótica y acotaciones teatrales (siglos XVI y XVII), Edizioni Ca' Foscari (Biblioteca de Rassegna Iberistica, 10), Venecia, 2018, DOI 10.30687/978-88-6969-304-5. La edición de las didascalias escénicas es uno de los pasos más delicados de la labor del crítico textual, sobre todo en el caso de las acotaciones del teatro de los siglos XVI y XVII, cuyos textos nos han llegado de manera azarosa en versiones manipuladas por compañías de actores. Este volumen aborda la ecdótica de las didascalias desde distintas perspectivas: la semiótica, la estemmática, la transmisión manuscrita e impresa, la evolución de la escritura dramatúrgica, la historia del teatro, la praxis editorial pasada y presente, la traducción y la mirada comparatista hacia textos del Siglo de Oro español y los teatros nacionales inglés, francés, portugués y holandés. → CONSULTAR AQUÍ KENISTON, Hayward, The Sintax of Castilian Prose. The Sixteenth Century, The University of Chicago Press, Chicago (Illinois), 1937. [CONSULTAR AQUÍ] MERINO RECALDE, David, Estudios teatrales y Humanidades digitales. Un estado de la cuestión del cruce entre disciplinas en la investigación del teatro español, Trabajo de Fin de Máster, UNED, 2020. [CONSULTAR AQUÍ] MORLEY, S. Griswold, «Ortología de cinco comedias autógrafas de Lope de Vega», en Estudios eruditos in memoriam de Bonilla y San Martín, I, ed. Luis Gil Fagoaga y Gerhard Moldenauer, Facultad de Filosofía y Letras de la Universidad Central, Madrid, 1927, pp. 525-544. [CONSULTAR AQUÍ] MORLEY, S. Griswold, y Courtney BRUERTON, Cronología de las comedias de Lope de Vega, Gredos, Madrid, 1968. [CONSULTAR AQUÍ] MORRÁS, María, y Gonzalo PONTÓN, «Hacia una metodología crítica en la edición de las acotaciones: la Parte primera de comedias de Lope de Vega», Anuario Lope de Vega, I (1995), pp. 75-117. Las acotaciones dramáticas, sometidas muchas veces a la acción del copista, plantean un peculiar problema de actuación por parte del editor. → CONSULTAR AQUÍ EL PREPRINT NAVARRO, Tomás, «Notas fonológicas sobre Lope de Vega», Archivum. Revista de la facultad de filosofía y letras, IV (1954), pp. 45-52. [CONSULTAR AQUÍ] RESTORI, Antonio, Una collezione di commedie di Lope de Vega Carpio, Livorno, 1891. [CONSULTAR AQUÍ] Sección «Recursos» del portal «Teatro del Siglo de Oro» de la Biblioteca Nacional de España, coordinado por Germán Vega García-Luengos. [CONSULTAR AQUÍ] VEGA CARPIO, Lope de, Comedias escogidas de frey Lope Félix de Vega Carpio, ed. Juan Eugenio Hartzenbusch, Manuel Rivadeneyra (Biblioteca de Autores Españoles, 24, 34, 41, 52), Madrid, 1853-1860, 4 vols. Vol. I, 1853 → [AQUÍ] Vol. II, 1855 → [AQUÍ] Vol. III, 1857 → [AQUÍ] Vol. IV, 1860 → [AQUÍ] Vol. I, 1853 → [AQUÍ] Vol. II, 1855 → [AQUÍ] Vol. III, 1857 → [AQUÍ] Vol. IV, 1860 → [AQUÍ] VEGA CARPIO, Lope de, Obras de Lope de Vega, Real Academia Española, Madrid, 1890-1913, 15 vols. Contienen: Vol. I: 1890, Nueva Biografía, por Cayetano Alberto de la Barrera; Vol. II, 1892, Autos y coloquios (El ejemplo de casadas y prueba de la paciencia, El ruiseñor de Sevilla, No son todos ruiseñores, La mayor victoria, ¡Si no vieran las mujeres!, El Mayordomo de la duquesa de Amalfi, El castigo sin venganza, El villano en su rincón, Castelvines y Monteses, La Quinta de Florencia, El desdén vengado, El perseguido, La viuda valenciana, El piadoso veneciano, Servir a señor discreto), ed. Marcelino Menéndez y Pelayo. → CONSULTAR AQUÍ VEGA CARPIO, Lope de, Obras de Lope de Vega publicadas por la Real Academia Española (nueva edición). Obras dramáticas, Madrid, 1916-1930, 13 vols. Vol. I, 1916 → [AQUÍ] Vol. II, 1916 → [AQUÍ] Vol. III, 1917 → [AQUÍ] Vol. IV, 1917 → [AQUÍ] Vol. V, 1918 → [AQUÍ] Vol. VI, 1928 → [AQUÍ] Vol. VII, 1930 → [AQUÍ] Vol. VIII, 1930 → [AQUÍ] Vol. IX, 1930 → [AQUÍ] Vol. X, 1930 → [AQUÍ] Vol. XI, 1929 → [AQUÍ] Vol. XII, 1930 → [AQUÍ] Vol. XIII, 1930 → [AQUÍ] Vol. I, 1916 → [AQUÍ] Vol. II, 1916 → [AQUÍ] Vol. III, 1917 → [AQUÍ] Vol. IV, 1917 → [AQUÍ] Vol. V, 1918 → [AQUÍ] Vol. VI, 1928 → [AQUÍ] Vol. VII, 1930 → [AQUÍ] Vol. VIII, 1930 → [AQUÍ] Vol. IX, 1930 → [AQUÍ] Vol. X, 1930 → [AQUÍ] Vol. XI, 1929 → [AQUÍ] Vol. XII, 1930 → [AQUÍ] Vol. XIII, 1930 → [AQUÍ] VEGA GARCÍA-LUENGOS, Germán, «Sobre la identidad de las partes de comedias», Criticón, núm. 108 (2010), pp. 57-78. [CONSULTAR AQUÍ]"
+    content: "El proyecto de edición crítica del teatro de Lope de Vega que está llevando a cabo PROLOPE se plantea desde un seguimiento riguroso de los principios filológicos más válidos en el ámbito de la crítica textual y, atenta a las peculiaridades que se observan en la transmisión manuscrita e impresa de sus obras teatrales. En numerosas, dilatadas y acaloradas reuniones el Grupo de Investigación PROLOPE elaboró unos Criterios de edición (octubre de 1995, documento de trabajo interno) que pautaron el trabajo de los editores que colaboraron con el grupo durante la preparación de las primeras Partes de comedias. Hay que recordar la participación en esta laboriosa tarea de Alberto Blecua, Patrizia Campana, Luigi Giuliani, María Morrás, Victoria Pineda, Ana Navarro, Gerardo Salvador, Silvia Iriso, Gonzalo Pontón y Teresa Santa María. La experiencia acumulada durante estos años se ha traducido en un número creciente de revisiones y correcciones de los criterios de edición originales. Se impuso entonces la necesidad de preparar una nueva versión de estas normas que reflejara todos los cambios y facilitara, por lo tanto, el trabajo de nuestros editores así como la consulta de sus contenidos por parte de investigadores interesados en los problemas de edición en general. Así es como surgieron, con principal papel en la revisión y redacción de Xavier Tubau y asesoría lingüística de Margarita Freixas, los Criterios de edición actualmente vigentes que en 2008 ya se publicaron en formato de libro y que aquí se ofrecen, titulados en verdad La edición del teatro de Lope de Vega. Las «Partes de comedias». Criterios de edición (Grupo de Investigación PROLOPE, Bellaterra, 2008). Esta nueva versión de los criterios no modificaba ni la estructura de nuestras ediciones, ni las premisas ecdóticas que las habían vertebrado hasta la fecha, como no podía ser de otro modo teniendo en cuenta la coherencia que requiere necesariamente un proyecto de esta magnitud. Es posible que en el futuro haya nuevas modificaciones o nuevas directrices, porque a medida que avanzamos van apareciendo nuevos problemas o vamos, o al menos lo pretendemos, mejorando nuestro sistema de trabajo, aunque sólo es previsible que se trate de cuestiones de detalle. PROLOPE, La edición del teatro de Lope de Vega. Las «Partes de comedias». Criterios de edición, PROLOPE-UAB, Bellaterra, 2008. ↓ Consultar aquí (PDF) Aparte de estos Criterios de edición de PROLOPE, se ofrecen también aquí algunas referencias y materiales que serán de utilidad para el editor del teatro de Lope y del teatro del Siglo de Oro: ARJONA, J. H., «Defective Rhymes and Rhyming Techniques in Lope de Vega's Autograph Comedias», Hispanic Review, 23 (1955), pp. 1082-1088. [CONSULTAR AQUÍ] ARJONA, J. H., «False Andalusian Rhymes in Lope de Vega and Their Bearing on the Autorship of Doubtful Comedias», Hispanic Review, pp. 290-305. [CONSULTAR AQUÍ] ARTELOPE. Base de datos y argumentos del teatro de Lope de Vega, dir. Joan Oleza, 2012. La base de datos ofrece datos bibliográficos, datación, dedicatorias, cómputo de versos, listados de personajes, anotaciones sobre género dramático, espacio y tiempo, resumen del argumento. → CONSULTAR AQUÍ BOUZA, Fernando, Dásele licencia y privilegio: don Quijote y la aprobación de libros en el Siglo de Oro, Akal, Madrid, 2012. Casa di Lope, La, coord. Fausta Antonucci. La casa di Lope en Roma, fundada por Stefano Arata y mantenida por Fausta Antonucci, recoge en su página amplísima noticia de la bibliografía del teatro del Siglo de Oro. Incluye ahora también una exhaustiva sección de «Enlaces comentados sobre el tema» a cargo de Germán Vega García-Luengos, actualizada por él mismo y Fausta Antonucci. → CONSULTAR AQUÍ Catálogo de la exposición bibliográfica de Lope de Vega, Junta del Centenario de Lope de Vega – Biblioteca Nacional, Madrid, 1935. Catálogo que reúne materiales bibliográficos diversos (manuscritos e impresos) de obras de Lope, provenientes de diversas bibliotecas públicas y privadas y que conformaron la exposición que organizó la BNE en el III centenario de la muerte del autor. → PARTE 1, PARTE 2, PARTE 3, PARTE 4, PARTE 5 DIXON, Victor, «La intervención de Lope en la publicación de sus comedias», Anuario Lope de Vega, II (1996), pp. 45-63. Estudio fundamental para entender las diferentes fases y vicisitudes por las que pasó la publicación de las comedias de Lope y el grado de involucración del poeta. Véase también en relación con el mismo tema Profeti (1996) así como los prólogos e historias editoriales que prologan las distintas Partes de comedias ya editadas por PROLOPE. → CONSULTAR AQUÍ GIULIANI, Luigi, y Victoria PINEDA, eds., «Entra el editor y dice»: ecdótica y acotaciones teatrales (siglos XVI y XVII), Edizioni Ca' Foscari (Biblioteca de Rassegna Iberistica, 10), Venecia, 2018, DOI 10.30687/978-88-6969-304-5. La edición de las didascalias escénicas es uno de los pasos más delicados de la labor del crítico textual, sobre todo en el caso de las acotaciones del teatro de los siglos XVI y XVII, cuyos textos nos han llegado de manera azarosa en versiones manipuladas por compañías de actores. Este volumen aborda la ecdótica de las didascalias desde distintas perspectivas: la semiótica, la estemmática, la transmisión manuscrita e impresa, la evolución de la escritura dramatúrgica, la historia del teatro, la praxis editorial pasada y presente, la traducción y la mirada comparatista hacia textos del Siglo de Oro español y los teatros nacionales inglés, francés, portugués y holandés. → CONSULTAR AQUÍ KENISTON, Hayward, The Sintax of Castilian Prose. The Sixteenth Century, The University of Chicago Press, Chicago (Illinois), 1937. [CONSULTAR AQUÍ] MERINO RECALDE, David, Estudios teatrales y Humanidades digitales. Un estado de la cuestión del cruce entre disciplinas en la investigación del teatro español, Trabajo de Fin de Máster, UNED, 2020. [CONSULTAR AQUÍ] MORLEY, S. Griswold, «Ortología de cinco comedias autógrafas de Lope de Vega», en Estudios eruditos in memoriam de Bonilla y San Martín, I, ed. Luis Gil Fagoaga y Gerhard Moldenauer, Facultad de Filosofía y Letras de la Universidad Central, Madrid, 1927, pp. 525-544. [CONSULTAR AQUÍ] MORLEY, S. Griswold, y Courtney BRUERTON, Cronología de las comedias de Lope de Vega, Gredos, Madrid, 1968. [CONSULTAR AQUÍ] MORRÁS, María, y Gonzalo PONTÓN, «Hacia una metodología crítica en la edición de las acotaciones: la Parte primera de comedias de Lope de Vega», Anuario Lope de Vega, I (1995), pp. 75-117. Las acotaciones dramáticas, sometidas muchas veces a la acción del copista, plantean un peculiar problema de actuación por parte del editor. → CONSULTAR AQUÍ EL PREPRINT NAVARRO, Tomás, «Notas fonológicas sobre Lope de Vega», Archivum. Revista de la facultad de filosofía y letras, IV (1954), pp. 45-52. [CONSULTAR AQUÍ] RESTORI, Antonio, Una collezione di commedie di Lope de Vega Carpio, Livorno, 1891. [CONSULTAR AQUÍ] Sección «Recursos» del portal «Teatro del Siglo de Oro» de la Biblioteca Nacional de España, coordinado por Germán Vega García-Luengos. [CONSULTAR AQUÍ] VEGA CARPIO, Lope de, Comedias escogidas de frey Lope Félix de Vega Carpio, ed. Juan Eugenio Hartzenbusch, Manuel Rivadeneyra (Biblioteca de Autores Españoles, 24, 34, 41, 52), Madrid, 1853-1860, 4 vols. Vol. I, 1853 → [AQUÍ] Vol. II, 1855 → [AQUÍ] Vol. III, 1857 → [AQUÍ] Vol. IV, 1860 → [AQUÍ] Vol. I, 1853 → [AQUÍ] Vol. II, 1855 → [AQUÍ] Vol. III, 1857 → [AQUÍ] Vol. IV, 1860 → [AQUÍ] Vol. I, 1853 → [AQUÍ] Vol. II, 1855 → [AQUÍ] Vol. III, 1857 → [AQUÍ] Vol. IV, 1860 → [AQUÍ] VEGA CARPIO, Lope de, Obras de Lope de Vega, Real Academia Española, Madrid, 1890-1913, 15 vols. Contienen: Vol. I: 1890, Nueva Biografía, por Cayetano Alberto de la Barrera; Vol. II, 1892, Autos y coloquios (El ejemplo de casadas y prueba de la paciencia, El ruiseñor de Sevilla, No son todos ruiseñores, La mayor victoria, ¡Si no vieran las mujeres!, El Mayordomo de la duquesa de Amalfi, El castigo sin venganza, El villano en su rincón, Castelvines y Monteses, La Quinta de Florencia, El desdén vengado, El perseguido, La viuda valenciana, El piadoso veneciano, Servir a señor discreto), ed. Marcelino Menéndez y Pelayo. → CONSULTAR AQUÍ VEGA CARPIO, Lope de, Obras de Lope de Vega publicadas por la Real Academia Española (nueva edición). Obras dramáticas, Madrid, 1916-1930, 13 vols. Vol. I, 1916 → [AQUÍ] Vol. II, 1916 → [AQUÍ] Vol. III, 1917 → [AQUÍ] Vol. IV, 1917 → [AQUÍ] Vol. V, 1918 → [AQUÍ] Vol. VI, 1928 → [AQUÍ] Vol. VII, 1930 → [AQUÍ] Vol. VIII, 1930 → [AQUÍ] Vol. IX, 1930 → [AQUÍ] Vol. X, 1930 → [AQUÍ] Vol. XI, 1929 → [AQUÍ] Vol. XII, 1930 → [AQUÍ] Vol. XIII, 1930 → [AQUÍ] Vol. I, 1916 → [AQUÍ] Vol. II, 1916 → [AQUÍ] Vol. III, 1917 → [AQUÍ] Vol. IV, 1917 → [AQUÍ] Vol. V, 1918 → [AQUÍ] Vol. VI, 1928 → [AQUÍ] Vol. VII, 1930 → [AQUÍ] Vol. VIII, 1930 → [AQUÍ] Vol. IX, 1930 → [AQUÍ] Vol. X, 1930 → [AQUÍ] Vol. XI, 1929 → [AQUÍ] Vol. XII, 1930 → [AQUÍ] Vol. XIII, 1930 → [AQUÍ] Vol. I, 1916 → [AQUÍ] Vol. II, 1916 → [AQUÍ] Vol. III, 1917 → [AQUÍ] Vol. IV, 1917 → [AQUÍ] Vol. V, 1918 → [AQUÍ] Vol. VI, 1928 → [AQUÍ] Vol. VII, 1930 → [AQUÍ] Vol. VIII, 1930 → [AQUÍ] Vol. IX, 1930 → [AQUÍ] Vol. X, 1930 → [AQUÍ] Vol. XI, 1929 → [AQUÍ] Vol. XII, 1930 → [AQUÍ] Vol. XIII, 1930 → [AQUÍ] VEGA GARCÍA-LUENGOS, Germán, «Sobre la identidad de las partes de comedias», Criticón, núm. 108 (2010), pp. 57-78. [CONSULTAR AQUÍ]"
   },
   {
     title: "Biblioteca virtual de PROLOPE",
     url: "proyectos-digitales/biblioteca-virtual.html",
     description: "Ediciones digitales de comedias de Lope de Vega preparadas por PROLOPE.",
-    content: "Biblioteca virtual. Ediciones digitales El anzuelo de Fenisa El galán Castrucho El villano en su rincón La dama boba Mujeres y criados El castigo sin venganza. Editores Alejandro García Reidy Ramón Valdés Gázquez Gonzalo Pontón Marco Presotto Sònia Boadas Aurèlia Pessarrodona Luis Gómez Canseco Julián Molina Guillermo Serés. Textos críticos en línea."
+    content: "En la Biblioteca Virtual de PROLOPE se incluye una sección de comedias presentadas en formato digital. En esta Biblioteca se incorporarán todas las ediciones digitales (o digitalizadas) de PROLOPE. Algunas de estas comedias se pueden consultar también en otras páginas, como las de la compañía de teatro Rakatá (ahora Fundación Siglo de Oro, pues fueron fruto de una colaboración con dicha compañía teatral), en Canon 60 de TC/12, en la Biblioteca Digital Hispánica de la Biblioteca Nacional de España (pues en su momento las donamos), etc. Estas comedias pueden ofrecerse en diferentes formatos, según fueran concebidas, e incluso con los criterios de PROLOPE ligeramente modificados, aunque serán siempre ediciones críticas elaboradas con método y rigor filológico, como corresponde en cualquier producto de PROLOPE. Ediciones digitales disponibles en la Biblioteca Virtual de PROLOPE: GARCÍA REIDY, Alejandro, y Ramón VALDÉS GÁZQUEZ, Animación de apoyo sobre los finales de «El castigo sin venganza», en Comedias de Lope de Vega. Parte XXI, ed. Gonzalo Pontón y Ramón Valdés Gázquez, Barcelona, Gredos, 2022, 2 vols, I, p. 1018. GARCÍA REIDY, Alejandro, y Ramón VALDÉS GÁZQUEZ, Apéndices a la edición crítica de «El castigo sin venganza», en Comedias de Lope de Vega. Parte XXI, ed. Gonzalo Pontón y Ramón Valdés Gázquez, Barcelona, Gredos, 2022, 2 vols, I, p. 1017. VEGA CARPIO, Lope de, El anzuelo de Fenisa. Edición digital en línea, ed. Luis Gómez Canseco, TC/12-PROLOPE («Canon 60»), 2014. VEGA CARPIO, Lope de, El galán Castrucho. Edición digital en línea, ed. Julián Molina, TC/12-PROLOPE, 2014. VEGA CARPIO, Lope de, El villano en su rincón. Edición digital en línea, ed. Guillermo Serés, TC/12-PROLOPE («Canon 60»), 2014. VEGA CARPIO, Lope de, La dama boba. Edición crítica y archivo digital, dir. Marco Presotto, coord. Sònia Boadas y Aurèlia Pessarrodona, Bolonia, Alma Mater Studiorum – Università di Bologna, CRR-MM, 2015. VEGA CARPIO, Lope de, Mujeres y criados. Edición en línea, ed. Alejandro García Reidy, coord. Ramón Valdés Gázquez y Sònia Boadas, Bellaterra, Grupo de investigación PROLOPE – Universitat Autònoma de Barcelona, 2014."
   },
   {
     title: "Mujeres y criados",
     url: "proyectos-digitales/mujeres-criados.html",
     description: "Edición digital de la comedia Mujeres y criados de Lope de Vega.",
-    content: "Mujeres y criados de Lope de Vega. Edición en línea con prólogo audiovisual libro virtual interactivo y PDF descargable. Comedia descubierta en 2014. Alejandro García Reidy Sònia Boadas Ramón Valdés Gázquez María José Rucio Teresa Ferrer Margaret R. Greer Alberto Blecua Rodrigo Arribas Ernesto Arias Ana Santos José Manuel Martos Joan Oleza Gonzalo Pontón. BNE manuscrito Fundación Siglo de Oro Gredos editorial flipbook."
+    content: "Tras el descubrimiento en la Biblioteca Nacional por parte de Alejandro García Reidy del manuscrito que contenía la copia de la obra perdida de Lope de Vega, PROLOPE le invitó a publicarla en el ámbito de nuestro grupo de investigación. La edición es accesible desde ordenadores, tabletas y teléfonos móviles. Aceptada la invitación, PROLOPE promovió la publicación en la Editorial Gredos, en nuestra «Biblioteca Lope de Vega» (la Editorial la publicó también en su «Biblioteca Universal»), y, conforme fue nuestro deseo, el texto se difundió también simultáneamente en nuestra página web, ofreciendo materiales y funcionalidades suplementarias (pues se ofrecían nuevos prólogos, imágenes del manuscrito con posibilidades de ampliación, búsqueda por palabras, etc.). Esta edición en línea, que utiliza tecnología HTML5 y se puede consultar a través de ordenadores y de dispositivos móviles, ha sido posible gracias a un convenio con la BNE e incluye diferentes materiales: un prólogo audiovisual que se compone de dos vídeos alojados en YouTube; el libro virtual (con el texto editado por A. García Reidy, imágenes del manuscrito y varios preliminares); un archivo PDF descargable del texto, así como, bajo petición, un documento Word para facilitar la puesta en escena por grupos de teatro educativos y de aficionados sin ánimo de lucro. Esta edición en línea ha sido un proyecto coordinado por S. Boadas y R. Valdés. 1. Prólogo audiovisual 1.a. La famosa comedia de Mujeres y criados. El hallazgo En este videoclip de 00:08:48 se relata el proceso científico que condujo al hallazgo de Mujeres y criados y la posterior tarea de edición. Participan Alejandro García Reidy, así como María José Rucio, Jefa de Servicio de Manuscritos e Incunables de la BNE, y los directores de los grupos de investigación involucrados en el hallazgo y su difusión: Joan Oleza, Teresa Ferrer, Margaret Greer, Alberto Blecua, Gonzalo Pontón y Ramón Valdés. Interviene asimismo Rodrigo Arribas, de la compañía de teatro Fundación Siglo de Oro. 1.b. Acto de presentación del manuscrito de Mujeres y criados en la Biblioteca Nacional de España El 22 de mayo de 2014, cuatro meses después de divulgarse la noticia del hallazgo del manuscrito, se presentó en la Biblioteca Nacional de España la edición crítica del texto a cargo de Alejandro García Reidy en Editorial Gredos, así como la edición en línea en la web de PROLOPE, y la primera lectura pública de varios fragmentos a cargo de Fundación Siglo de Oro. En el acto participaron Mar Hernández, que leyó palabras de Ana Santos, directora de la Biblioteca Nacional, José Manuel Martos (director de Editorial Gredos), Alberto Blecua (director de PROLOPE), Rodrigo Arribas (Fundación Siglo de Oro), y a continuación pronunció una conferencia el profesor Alejandro García Reidy (Syracuse University), con una selección de escenas que la ilustraron a la perfección, en la que los actores componentes de Fundación Siglo de Oro fueron dirigidos por Ernesto Arias. La conferencia de García Reidy funciona como una perfecta introducción a la comedia, dando cuenta detallada de su proceso de investigación, así como una sólida justificación de la atribución a Lope de la obra encontrada. 2. Libro virtual: Mujeres y criados, edición facsímil. Texto crítico de Alejandro García Reidy El libro virtual contiene textos preliminares de María José Rucio (Jefa de la sección de manuscritos e incunables de la Biblioteca Nacional de España), Teresa Ferrer (directora de DICAT y CATCOM), Margaret R. Greer (directora de Manos Teatrales), y Sònia Boadas y Ramón Valdés (PROLOPE), coordinadores de este proyecto de edición en línea y este libro virtual. Vista del libro virtual con el texto crítico e imágenes facsímiles del manuscrito. A continuación se ofrece una breve introducción de Alejandro García Reidy a la que siguen ya las imágenes de las páginas del manuscrito de Pedro de Valdés custodiado en la Biblioteca Nacional y la correspondiente transcripción. En el libro virtual se pueden realizar búsquedas de texto así como ampliación de imagen sin pérdida de calidad. Puede consultarse desde ordenadores y desde diversos dispositivos como tabletas y teléfonos móviles. Preliminares y acto I ↗ Acto II ↗ Acto III ↗ 3. Archivos descargables Se ofrece el texto completo de Mujeres y criados en un archivo PDF para quien desee una lectura continua del texto sin las imágenes, pudiendo exportarlo y guardarlo donde más cómoda le resulte la consulta y la lectura. ↓ Descargar texto completo (PDF) 4. Documento Word El texto de Mujeres y criados se ofrece también en un documento Word para facilitar y promover proyectos colaborativos, especialmente los destinados a puestas en escena de aficionados y con intenciones pedagógicas y sin ánimo de lucro. Para estos proyectos será necesaria la presentación de una solicitud formal y motivada dirigida al Grupo de Investigación prolope@uab.cat. Las solicitudes serán estudiadas y atendidas por Alejandro García Reidy y el grupo de investigación PROLOPE. Repositorio digital Puede acceder al dossier de prensa de Mujeres y criados."
   },
   {
     title: "La dama boba",
@@ -834,145 +828,13 @@ var SEARCH_INDEX = [
     title: "Mapping Lope: A Cartographic Exploration of the Comedia Nueva",
     url: "proyectos-digitales/mapping-lope.html",
     description: "Proyecto digital de Miguel Betti: exploración cartográfica de la Comedia Nueva de Lope de Vega.",
-    content: "Mapping Lope cartografía comedia nueva Lope de Vega proyecto digital humanidades digitales Miguel Betti estadísticas geografía teatro Siglo de Oro."
+    content: "Mapping Lope: A Cartographic Exploration of the Comedia Nueva (2025–2027) es un proyecto de investigación posdoctoral dirigido por Miguel Betti y financiado por la beca Postdoc.Mobility del Fondo Nacional Suizo para la Investigación Científica (SNSF). Se enmarca en las actividades de innovación del grupo PROLOPE, bajo la supervisión de Sònia Boadas. Combinando filología, geografía literaria y aprendizaje automático, el proyecto aplica herramientas de las Humanidades Digitales para extraer topónimos de las obras dramáticas de Lope de Vega, generar análisis estadísticos y crear mapas interactivos y dinámicos. El proyecto tiene dos objetivos principales. En primer lugar, en el plano filológico, analizar el papel del espacio verbal, imaginado y diegético en este corpus, así como las relaciones entre la toponimia y la clasificación de las obras en diversos géneros y subgéneros. En segundo lugar, en el plano histórico, examinar la relación entre el uso de la toponimia y el contexto político, social y cultural del Siglo de Oro. Los topónimos han sido extraídos automáticamente mediante el entrenamiento de un modelo de reconocimiento de entidades nombradas (NER) con la biblioteca Flair. El modelo más preciso (F1-score: 95%) permitió identificar más de 1000 nombres distintos de imperios, reinos, ciudades, villas, parques, calles, edificios y accidentes geográficos, en 364 obras. El mapa presentado a continuación, desarrollado con la biblioteca Peripleo, permite a los usuarios explorar esta lista de topónimos y, gracias a su sistema de filtros, realizar búsquedas por lugar, género, subgénero, título de la obra y periodo o fecha de composición. Haga clic aquí para acceder al mapa en pantalla completa. Para más información sobre el proyecto: Anuario Lope de Vega ↗ Estadísticas Los gráficos que siguen se han desarrollado a partir de nuestra base de datos y mediante la biblioteca ggplot2 en R. Presentan estadísticas que reflejan la relevancia y distribución de cada topónimo o región geográfica en la obra dramática de Lope de Vega."
   },
   {
-    title: "XI Congreso Internacional: «Lope político»",
-    url: "eventos/congresos.html#xi-congreso-internacional-lope-politico",
-    description: "27–29 nov. 2024 UAB, Barcelona",
-    content: "XI Congreso Internacional «Lope político» 2024 27–29 nov. 2024 UAB, Barcelona «Lope político» El congreso más reciente de la serie PROLOPE examinó las dimensiones políticas e ideológicas de la obra de Lope de Vega. Contó con ponentes plenarios como Jonathan Thacker (University of Oxford), Diana Berruezo-Sánchez (ICREA/UAB) y Luis González Fernández (Casa de Velázquez). También se conmemoró el 30.º aniversario del Anuario Lope de Vega y se anunció la publicación de la Parte XXIII. Las sesiones fueron retransmitidas en línea a través de Microsoft Teams."
-  },
-  {
-    title: "X Congreso Internacional: «Editar a Lope, treinta años después»",
-    url: "eventos/congresos.html#x-congreso-internacional-editar-a-lope-treinta-anos-despue",
-    description: "24–26 nov. 2021 UAB, Barcelona",
-    content: "X Congreso Internacional «Editar a Lope, treinta años después» 2021 24–26 nov. 2021 UAB, Barcelona «Editar a Lope, treinta años después» El X Congreso marcó tres décadas del proyecto editorial de PROLOPE. Bajo el lema «Editar a Lope, treinta años después», el congreso reflexionó sobre la metodología editorial y los logros acumulados durante treinta años de edición crítica del teatro de Lope de Vega."
-  },
-  {
-    title: "IX Congreso Internacional: «Lope y el teatro del Siglo de Oro. Patrimonio, difusión e investigación en la era digital»",
-    url: "eventos/congresos.html#ix-congreso-internacional-lope-y-el-teatro-del-siglo-de-oro",
-    description: "28–30 nov. 2018 BNE, Madrid",
-    content: "IX Congreso Internacional «Lope y el teatro del Siglo de Oro. Patrimonio, difusión e investigación en la era digital» 2018 28–30 nov. 2018 BNE, Madrid «Lope y el teatro del Siglo de Oro. Patrimonio, difusión e investigación en la era digital» Coorganizado con la Biblioteca Nacional de España, el IX Congreso abordó el patrimonio, la difusión y la investigación del teatro áureo en la era digital. Se debatieron cuestiones relacionadas con la digitalización de fuentes, las bases de datos de teatro clásico y las nuevas metodologías de las humanidades digitales aplicadas al estudio de Lope de Vega."
-  },
-  {
-    title: "VIII Congreso Internacional: «Lope y el teatro europeo de su tiempo»",
-    url: "eventos/congresos.html#viii-congreso-internacional-lope-y-el-teatro-europeo-de-su",
-    description: "10–12 dic. 2015 UAB, Barcelona",
-    content: "VIII Congreso Internacional «Lope y el teatro europeo de su tiempo» 2015 10–12 dic. 2015 UAB, Barcelona «Lope y el teatro europeo de su tiempo» El VIII Congreso situó la obra de Lope en el contexto del teatro europeo de su tiempo. Se examinaron las tradiciones dramáticas italiana, inglesa, francesa y portuguesa en paralelo a la producción lopesca, en un período crucial de la historia teatral europea."
-  },
-  {
-    title: "VII Congreso Internacional: «Lope y la Historia»",
-    url: "eventos/congresos.html#vii-congreso-internacional-lope-y-la-historia",
-    description: "24–26 oct. 2012 UAB / RABLB, Barcelona",
-    content: "VII Congreso Internacional «Lope y la Historia» 2012 24–26 oct. 2012 UAB / RABLB, Barcelona «Lope y la Historia» El VII Congreso se centró en la relación de Lope de Vega con la historia y los temas históricos en su obra. Organizado por PROLOPE y TC/12 (Consolider CSD 2009-00033)."
-  },
-  {
-    title: "VI Congreso Internacional: «Lope Polemista»",
-    url: "eventos/congresos.html#vi-congreso-internacional-lope-polemista",
-    description: "13–15 nov. 2008 UAB / RABLB, Barcelona",
-    content: "VI Congreso Internacional «Lope Polemista» 2008 13–15 nov. 2008 UAB / RABLB, Barcelona «Lope Polemista» El VI Congreso estuvo dedicado a la faceta polémica de Lope: sus controversias literarias, sus enfrentamientos con contemporáneos y su posición combativa en el campo cultural de la España de su tiempo. Organizado por PROLOPE y el Centro para la Edición de Clásicos Españoles."
-  },
-  {
-    title: "V Congreso Internacional: «Lope y la tradición clásica»",
-    url: "eventos/congresos.html#v-congreso-internacional-lope-y-la-tradicion-clasica",
-    description: "10–12 nov. 2005 UAB / RABLB, Barcelona",
-    content: "V Congreso Internacional «Lope y la tradición clásica» 2005 10–12 nov. 2005 UAB / RABLB, Barcelona «Lope y la tradición clásica» El V Congreso analizó la relación de Lope con la herencia clásica grecolatina y su transformación creativa de esa tradición en el contexto del teatro del Siglo de Oro."
-  },
-  {
-    title: "IV Congreso Internacional: «El Lope de senectute (1622–1635)»",
-    url: "eventos/congresos.html#iv-congreso-internacional-el-lope-de-senectute-1622-1635",
-    description: "7–9 nov. 2002 UAB, Barcelona",
-    content: "IV Congreso Internacional «El Lope de senectute (1622–1635)» 2002 7–9 nov. 2002 UAB, Barcelona «El Lope de senectute (1622–1635)» El IV Congreso se enfocó en el último período creativo de Lope de Vega (1622–1635), sus obras de madurez y el proceso de revisión y edición que el propio Lope ejerció sobre su producción en los años finales de su vida."
-  },
-  {
-    title: "III Congreso Internacional: «Lope en la época de Felipe III (1598–1621)»",
-    url: "eventos/congresos.html#iii-congreso-internacional-lope-en-la-epoca-de-felipe-iii",
-    description: "23–25 nov. 2000 UAB, Barcelona",
-    content: "III Congreso Internacional «Lope en la época de Felipe III (1598–1621)» 2000 23–25 nov. 2000 UAB, Barcelona «Lope en la época de Felipe III (1598–1621)» El III Congreso abordó el período más prolífico de Lope de Vega, correspondiente al reinado de Felipe III (1598–1621), en el que el Fénix alcanzó la cima de su fama y productividad como dramaturgo."
-  },
-  {
-    title: "II Congreso Internacional: «El Primer Lope»",
-    url: "eventos/congresos.html#ii-congreso-internacional-el-primer-lope",
-    description: "5–7 nov. 1998 UAB / RABLB, Barcelona",
-    content: "II Congreso Internacional «El Primer Lope» 1998 5–7 nov. 1998 UAB / RABLB, Barcelona «El Primer Lope» El II Congreso exploró los inicios de la trayectoria literaria y dramática de Lope de Vega: sus primeras obras, su formación, y los rasgos que caracterizan al primer Lope antes de que su fama se consolidara plenamente."
-  },
-  {
-    title: "I Congreso Internacional: «Edición y anotación»",
-    url: "eventos/congresos.html#i-congreso-internacional-edicion-y-anotacion",
-    description: "10–11 abr. 1996 UAB, Barcelona",
-    content: "I Congreso Internacional «Edición y anotación» 1996 10–11 abr. 1996 UAB, Barcelona «Edición y anotación» El congreso inaugural de la serie PROLOPE, celebrado apenas un año después de la fundación del grupo de investigación, se centró en los principios y métodos de edición y anotación de la obra de Lope de Vega. Sentó las bases de la metodología editorial que ha guiado el trabajo del grupo durante casi tres décadas."
-  },
-  {
-    title: "Congreso Internacional: IX Congreso BETA: «Edición, difusión y recepción de las culturas hispánicas»",
-    url: "eventos/congresos.html#congreso-internacional-ix-congreso-beta-edicion-difusion",
-    description: "5–7 jun. 2019 UAB / RABLB, Barcelona",
-    content: "Congreso Internacional IX Congreso BETA: «Edición, difusión y recepción de las culturas hispánicas» 2019 5–7 jun. 2019 UAB / RABLB, Barcelona «Edición, difusión y recepción de las culturas hispánicas» Organizado por PROLOPE, BETA (Jóvenes Doctores en Estudios Hispánicos), ICREA-Academia, la Reial Acadèmia de Bones Lletres y el Centro para la Edición de Clásicos Españoles. El congreso reunió a jóvenes investigadores hispanistas en torno a los problemas de edición, difusión y recepción de las culturas hispánicas."
-  },
-  {
-    title: "Congreso Internacional: «Lope de Vega y la puesta en escena de la Comedia Nueva»",
-    url: "eventos/congresos.html#congreso-internacional-lope-de-vega-y-la-puesta-en-escena-d",
-    description: "27–28 oct. 2014 UCM, Madrid",
-    content: "Congreso Internacional «Lope de Vega y la puesta en escena de la Comedia Nueva» 2014 27–28 oct. 2014 UCM, Madrid «Lope de Vega y la puesta en escena de la Comedia Nueva» Congreso internacional dedicado a las técnicas de puesta en escena de Lope de Vega y la forma teatral de la Comedia Nueva. Se analizaron los recursos dramáticos, la relación entre texto y representación, y la recepción escénica del teatro lopesco."
-  },
-  {
-    title: "Coloquio Internacional: «El teatro dentro del teatro en la comedia española del Siglo de Oro»",
-    url: "eventos/congresos.html#coloquio-internacional-el-teatro-dentro-del-teatro-en-la-co",
-    description: "29–30 ago. 2013 UNAM, México",
-    content: "Coloquio Internacional «El teatro dentro del teatro en la comedia española del Siglo de Oro» 2013 29–30 ago. 2013 UNAM, México «El teatro dentro del teatro en la comedia española del Siglo de Oro» Coloquio internacional dedicado al recurso del metateatro —el teatro dentro del teatro— en la comedia española del Siglo de Oro. Coorganizado por PROLOPE y el Instituto de Investigaciones Filológicas de la UNAM."
-  },
-  {
-    title: "Coloquio Internacional: «La comedia española en la imprenta catalana»",
-    url: "eventos/congresos.html#coloquio-internacional-la-comedia-espanola-en-la-imprenta-c",
-    description: "11–12 abr. 2013 UAB / UB, Barcelona",
-    content: "Coloquio Internacional «La comedia española en la imprenta catalana» 2013 11–12 abr. 2013 UAB / UB, Barcelona «La comedia española en la imprenta catalana» Coloquio internacional sobre la historia de la imprenta y la edición de comedias españolas en Cataluña. Organizado por PROLOPE, el Instituto Almagro de Teatro Clásico (UCLM) y TC/12 (Consolider CSD 2009-00033)."
-  },
-  {
-    title: "Congreso Internacional: «Teatro y fiesta popular y religiosa»",
-    url: "eventos/congresos.html#congreso-internacional-teatro-y-fiesta-popular-y-religiosa",
-    description: "4–7 jun. 2012 Cusco, Perú",
-    content: "Congreso Internacional «Teatro y fiesta popular y religiosa» 2012 4–7 jun. 2012 Cusco, Perú «Teatro y fiesta popular y religiosa» Congreso internacional dedicado al teatro y la fiesta popular y religiosa en el Siglo de Oro. Coorganizado por nueve instituciones: PROLOPE, GRISO, Instituto Almagro (UCLM), TC/12, Instituto Riva Agüero (PUCP), IDEA, el Ministerio de Cultura de Perú, el Centro Regional para la Salvaguardia del Patrimonio Cultural Inmaterial de América Latina y la Fundación Visión Cultural (Bolivia)."
-  },
-  {
-    title: "Evento especial: Textoescena: «La investigación del espectáculo, el espectáculo de la investigación»",
-    url: "eventos/congresos.html#evento-especial-textoescena-la-investigacion-del-espectacu",
-    description: "Julio 2011 UAB, Barcelona",
-    content: "Evento especial Textoescena: «La investigación del espectáculo, el espectáculo de la investigación» 2011 Julio 2011 UAB, Barcelona Textoescena: «La investigación del espectáculo, el espectáculo de la investigación» Evento singular organizado por PROLOPE que exploró la intersección entre la investigación teatral y la práctica performativa, convirtiendo el propio acto de la investigación en espectáculo. Una propuesta que cruzó los límites entre la filología, la puesta en escena y la reflexión teórica sobre el teatro."
-  },
-  {
-    title: "Congreso Internacional: I Congreso Ibero-Asiático de Hispanistas del Siglo de Oro",
-    url: "eventos/congresos.html#congreso-internacional-i-congreso-ibero-asiatico-de-hispanis",
-    description: "9–12 nov. 2010 Universidad de Delhi, India",
-    content: "Congreso Internacional I Congreso Ibero-Asiático de Hispanistas del Siglo de Oro 2010 9–12 nov. 2010 Universidad de Delhi, India I Congreso Ibero-Asiático de Hispanistas del Siglo de Oro Primer congreso ibero-asiático para hispanistas especializados en el Siglo de Oro español, celebrado en la Universidad de Delhi. Organizado por PROLOPE, GRISO, Instituto Castellano y Leonés de la Lengua, Universidad de Delhi, Grupo Calderón, Grupo Proteo, The Hispanic Baroque Project (University of Western Ontario), Embajada de España en India, TC/12 y la Biblioteca Virtual Miguel de Cervantes."
-  },
-  {
-    title: "Congreso Internacional: «Estudio y Edición del Teatro del Siglo de Oro»",
-    url: "eventos/congresos.html#congreso-internacional-estudio-y-edicion-del-teatro-del-sig",
-    description: "15–17 nov. 2007 UAB / RABLB, Barcelona",
-    content: "Congreso Internacional «Estudio y Edición del Teatro del Siglo de Oro» 2007 15–17 nov. 2007 UAB / RABLB, Barcelona «Estudio y Edición del Teatro del Siglo de Oro» Congreso internacional sobre el estudio y la edición del teatro español del Siglo de Oro. Organizado por PROLOPE, GRISO y el Centro para la Edición de los Clásicos Españoles. Se abordaron los problemas filológicos y ecdóticos específicos del teatro áureo."
-  },
-  {
-    title: "Informe Semanal: Lo que aún esconde Lope",
-    url: "multimedia/multimedia.html#informe-semanal-lo-que-aun-esconde-lope",
-    description: "RTVE, 20 de abril de 2024",
-    content: "Informe Semanal: Lo que aún esconde Lope 20 de abril de 2024 RTVE En vísperas del Día del Libro, Informe Semanal se sumerge en los archivos de la Biblioteca Nacional y en las entrañas de la creación de Lope de Vega. Técnicas forenses como la fotografía espectral o la Inteligencia Artificial descubren nuevos detalles de su proceso creativo."
-  },
-  {
-    title: "17 Jornadas sobre teatro clásico de Olmedo: «Cuando PROLOPE quiere quiere»",
-    url: "multimedia/multimedia.html#17-jornadas-sobre-teatro-clasico-de-olmedo-cuand",
-    description: "YouTube, 25 de julio de 2023",
-    content: "17 Jornadas sobre teatro clásico de Olmedo: «Cuando PROLOPE quiere quiere» 25 de julio de 2023 YouTube Diálogo 3.ª de las 17 Jornadas sobre teatro clásico («Lope sin fin»), con Sònia Boadas, Daniel Fernández Rodríguez, Laura Fernández y Javier J. González Martínez."
-  },
-  {
-    title: "Biblioteca Nacional de España: Acto de presentación del manuscrito de Mujeres y criados",
-    url: "multimedia/multimedia.html#biblioteca-nacional-de-espana-acto-de-presentacio",
-    description: "YouTube, 22 de mayo de 2014",
-    content: "Biblioteca Nacional de España: Acto de presentación del manuscrito de Mujeres y criados 22 de mayo de 2014 YouTube Con Alberto Blecua, director de PROLOPE; José Manuel Martos, director de Gredos; Rodrigo Arribas, presidente de la Fundación Siglo de Oro; y Alejandro García Reidy, Universidad de Syracuse."
-  },
-  {
-    title: "Qwerty BTV: Dos nuevos volúmenes de las comedias de Lope de Vega",
-    url: "multimedia/multimedia.html#qwerty-btv-dos-nuevos-volumenes-de-las-comedias-d",
-    description: "BTV, 2012",
-    content: "Qwerty BTV: Dos nuevos volúmenes de las comedias de Lope de Vega 2012 BTV La Editorial Gredos ha publicado dos nuevos volúmenes de la edición crítica completa de las comedias de Lope de Vega. Qwerty entrevista a Gonzalo Pontón, co-director de PROLOPE."
+    title: "Contacto y ubicación | PROLOPE – UAB",
+    url: "el-grupo/contacto.html",
+    description: "",
+    content: "Contacto y ubicación Las dependencias de PROLOPE se encuentran repartidas por los distintos seminarios y despachos del profesorado del grupo. La sede institucional e histórica del grupo es el seminario B9/122, en el edificio de la Facultat de Lletres de la Universitat Autònoma de Barcelona (en Bellaterra, Barcelona). Aparte de los despachos de los profesores Pontón y Valdés (en el Departament de Filologia Espanyola, Facultat de Lletres) y la mencionada sede institucional, PROLOPE dispone de otro seminario de estudio en el Mòdul de Recerca A (MRA) de la Universitat Autònoma de Barcelona. Grupo de investigación PROLOPE Departament de Filologia Espanyola Facultat de Lletres Universitat Autònoma de Barcelona CAMPUS DE LA UAB 08193 Bellaterra (Barcelona) Teléfono de contacto: Secretaría: 93 581 10 34 Dirección de correo electrónico: prolope@uab.es Mapa e indicaciones de acceso: clique aquí. Mapa y accesos Facultat de Lletres, Campus de la UAB, 08193 Bellaterra (Cerdanyola del Vallès) Ver indicaciones de acceso en la web de la UAB"
   },
   {
     title: "Comedias de Lope de Vega. Parte I (1997)",
@@ -1101,122 +963,68 @@ var SEARCH_INDEX = [
     content: "Parte XXI 2022 Gonzalo Pontón y Ramón Valdés Gázquez Gredos Barcelona La bella Aurora ¡Ay, verdades, que en amor…! La boba para los otros y discreta para sí La noche de san Juan El castigo sin venganza Los bandos de Sena El mejor alcalde, el rey El premio del bien hablar La vitoria de la honra El piadoso aragonés Los Tellos de Meneses Por la puente, Juana Laura Fernández, Fernando Rodríguez-Gallego y Ramón Valdés Gázquez, ed. Rosa Bono Velilla, ed. Fernando Rodríguez-Gallego, ed. Paula Casariego Castiñeira y Alejandra Ulla Lorenzo, ed. Isabel Muguruza, ed. Alejandro García Reidy y Ramón Valdés Gázquez, ed. Clara Monzó Ribes y Daniel Fernández Rodríguez, ed. Fausta Antonucci, ed. Victoria Pineda, ed. José Enrique López Martínez, ed. Gonzalo Pontón y Daniele Crivellari, ed. Ane Zapatero Molinuevo, ed. Enrico di Pastena 978-84-249-99261 978-84-249-99261"
   },
   {
-    title: "El otro a las tablas: lo musulmán en la puesta en escena contemporánea del teatro clásico (1986–2021) (2024)",
-    url: "formacion/tesis.html#2024-el-otro-a-las-tablas-lo-musulman-en-la-puest",
-    description: "2024",
-    content: "2024 El otro a las tablas: lo musulmán en la puesta en escena contemporánea del teatro clásico (1986–2021)"
-  },
-  {
-    title: "«La superbia negli orrori». Dido en el teatro trágico europeo del siglo XVI (2024)",
-    url: "formacion/tesis.html#2024-la-superbia-negli-orrori-dido-en-el-teatro",
-    description: "2024",
-    content: "2024 «La superbia negli orrori». Dido en el teatro trágico europeo del siglo XVI"
-  },
-  {
-    title: "La máscara en las comedias y entremeses cervantinos: Una relación entre esencia y apariencia (2022)",
-    url: "formacion/tesis.html#2022-la-mascara-en-las-comedias-y-entremeses-cerva",
-    description: "2022",
-    content: "2022 La máscara en las comedias y entremeses cervantinos: Una relación entre esencia y apariencia"
-  },
-  {
-    title: "Investigaciones sobre la transmisión, recepción y tradición cultural de La dama boba (2022)",
-    url: "formacion/tesis.html#2022-investigaciones-sobre-la-transmision-recepci",
-    description: "2022",
-    content: "2022 Investigaciones sobre la transmisión, recepción y tradición cultural de La dama boba"
-  },
-  {
-    title: "El recurso de la carta en el teatro de Lope de Vega: unas calas (2022)",
-    url: "formacion/tesis.html#2022-el-recurso-de-la-carta-en-el-teatro-de-lope-d",
-    description: "2022",
-    content: "2022 El recurso de la carta en el teatro de Lope de Vega: unas calas"
-  },
-  {
-    title: "La comedia áurea en el lienzo de plata: análisis de la recepción de la comedia nueva a partir de sus reescrituras fílmicas (2018)",
-    url: "formacion/tesis.html#2018-la-comedia-aurea-en-el-lienzo-de-plata-anali",
-    description: "2018",
-    content: "2018 La comedia áurea en el lienzo de plata: análisis de la recepción de la comedia nueva a partir de sus reescrituras fílmicas"
-  },
-  {
-    title: "Las comedias bizantinas de Lope de Vega: caracterización genérica, tradición y trascendencia (2016)",
-    url: "formacion/tesis.html#2016-las-comedias-bizantinas-de-lope-de-vega-cara",
-    description: "2016",
-    content: "2016 Las comedias bizantinas de Lope de Vega: caracterización genérica, tradición y trascendencia"
-  },
-  {
-    title: "«Le père trompé». Traduzioni e ricezione del teatro di Lope de Vega in Francia tra Seicento e Settecento. Con un'appendice su Manzoni, lettore di Lope de Vega (2015)",
-    url: "formacion/tesis.html#2015-le-pere-trompe-traduzioni-e-ricezione-del",
-    description: "2015",
-    content: "2015 «Le père trompé». Traduzioni e ricezione del teatro di Lope de Vega in Francia tra Seicento e Settecento. Con un'appendice su Manzoni, lettore di Lope de Vega"
-  },
-  {
-    title: "La representación de la historia contemporánea en el teatro de Lope de Vega (2010)",
-    url: "formacion/tesis.html#2010-la-representacion-de-la-historia-contemporane",
-    description: "2010",
-    content: "2010 La representación de la historia contemporánea en el teatro de Lope de Vega"
-  },
-  {
     title: "La integral dramática de Lope de Vega: textos, métodos, problemas, proyección (2022–2025)",
-    url: "el-grupo/historial-proyectos.html#2022-2025-la-integral-dramatica-de-lope-de-vega-t",
+    url: "el-grupo/historial-proyectos.html#2022-2025-la-integral-dramatica-de-lope-de-vega-textos-met",
     description: "2022–2025",
     content: "2022–2025 La integral dramática de Lope de Vega: textos, métodos, problemas, proyección PID2021-124737NB-I00 Ministerio de Ciencia e Innovación 116.644 €"
   },
   {
     title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2019–2021)",
-    url: "el-grupo/historial-proyectos.html#2019-2021-edicion-y-estudio-de-treinta-y-seis-come",
+    url: "el-grupo/historial-proyectos.html#2019-2021-edicion-y-estudio-de-treinta-y-seis-comedias-de-lo",
     description: "2019–2021",
     content: "2019–2021 Edición y estudio de treinta y seis comedias de Lope de Vega PGC2018-094395-B-I00 Ministerio de Ciencia, Innovación y Universidades 61.710 €"
   },
   {
-    title: "LT&T: Literary Traditions and Texts of the Early Modern Period: Iberia and Italy (2017–2020)",
-    url: "el-grupo/historial-proyectos.html#2017-2020-lt-t-literary-traditions-and-texts-of-t",
+    title: "LT&amp;T: Literary Traditions and Texts of the Early Modern Period: Iberia and Italy (2017–2020)",
+    url: "el-grupo/historial-proyectos.html#2017-2020-lt-amp-t-literary-traditions-and-texts-of-the-ear",
     description: "2017–2020",
-    content: "2017–2020 LT&T: Literary Traditions and Texts of the Early Modern Period: Iberia and Italy 2017SGR00390 AGAUR (Generalitat de Catalunya) 37.200 €"
+    content: "2017–2020 LT&amp;T: Literary Traditions and Texts of the Early Modern Period: Iberia and Italy 2017SGR00390 AGAUR (Generalitat de Catalunya) 37.200 €"
   },
   {
     title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2016–2019)",
-    url: "el-grupo/historial-proyectos.html#2016-2019-edicion-y-estudio-de-treinta-y-seis-come",
+    url: "el-grupo/historial-proyectos.html#2016-2019-edicion-y-estudio-de-treinta-y-seis-comedias-de-lo",
     description: "2016–2019",
     content: "2016–2019 Edición y estudio de treinta y seis comedias de Lope de Vega FFI2015-66216-P Ministerio de Economía y Competitividad 73.500 €"
   },
   {
     title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2013–2015)",
-    url: "el-grupo/historial-proyectos.html#2013-2015-edicion-y-estudio-de-treinta-y-seis-come",
+    url: "el-grupo/historial-proyectos.html#2013-2015-edicion-y-estudio-de-treinta-y-seis-comedias-de-lo",
     description: "2013–2015",
     content: "2013–2015 Edición y estudio de treinta y seis comedias de Lope de Vega FFI2012-35950 Ministerio de Economía y Competitividad"
   },
   {
     title: "TETSO: Transmisión y estudio de textos del Siglo de Oro (2010–2014)",
-    url: "el-grupo/historial-proyectos.html#2010-2014-tetso-transmision-y-estudio-de-textos-d",
+    url: "el-grupo/historial-proyectos.html#2010-2014-tetso-transmision-y-estudio-de-textos-del-siglo-d",
     description: "2010–2014",
     content: "2010–2014 TETSO: Transmisión y estudio de textos del Siglo de Oro 2009 SGR 297 AGAUR (Generalitat de Catalunya) 43.000 € El principal objetivo del grupo consolidado fue la transmisión y el estudio de textos del Siglo de Oro."
   },
   {
     title: "TC/12 – Patrimonio teatral clásico español. Textos e instrumentos de investigación (2010–2014)",
-    url: "el-grupo/historial-proyectos.html#2010-2014-tc-12-patrimonio-teatral-clasico-espan",
+    url: "el-grupo/historial-proyectos.html#2010-2014-tc-12-patrimonio-teatral-clasico-espanol-textos",
     description: "2010–2014",
     content: "2010–2014 TC/12 – Patrimonio teatral clásico español. Textos e instrumentos de investigación CSD2009-00033 Ministerio de Ciencia e Innovación (Consolider) 2.300.000 € Red de excelencia de gran envergadura en la que PROLOPE participó como grupo integrante junto con otros equipos del ámbito del teatro clásico español."
   },
   {
     title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2010–2012)",
-    url: "el-grupo/historial-proyectos.html#2010-2012-edicion-y-estudio-de-treinta-y-seis-come",
+    url: "el-grupo/historial-proyectos.html#2010-2012-edicion-y-estudio-de-treinta-y-seis-comedias-de-lo",
     description: "2010–2012",
     content: "2010–2012 Edición y estudio de treinta y seis comedias de Lope de Vega FFI2009-13563 Ministerio de Ciencia e Innovación"
   },
   {
     title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2007–2009)",
-    url: "el-grupo/historial-proyectos.html#2007-2009-edicion-y-estudio-de-treinta-y-seis-come",
+    url: "el-grupo/historial-proyectos.html#2007-2009-edicion-y-estudio-de-treinta-y-seis-comedias-de-lo",
     description: "2007–2009",
     content: "2007–2009 Edición y estudio de treinta y seis comedias de Lope de Vega HUM2006-09046/FILO Ministerio de Educación y Ciencia"
   },
   {
     title: "TETSO: Transmisión y estudio de textos del Siglo de Oro (2005–2009)",
-    url: "el-grupo/historial-proyectos.html#2005-2009-tetso-transmision-y-estudio-de-textos-d",
+    url: "el-grupo/historial-proyectos.html#2005-2009-tetso-transmision-y-estudio-de-textos-del-siglo-d",
     description: "2005–2009",
     content: "2005–2009 TETSO: Transmisión y estudio de textos del Siglo de Oro 2005 SGR 01091 AGAUR (Generalitat de Catalunya)"
   },
   {
     title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2004–2007)",
-    url: "el-grupo/historial-proyectos.html#2004-2007-edicion-y-estudio-de-treinta-y-seis-come",
+    url: "el-grupo/historial-proyectos.html#2004-2007-edicion-y-estudio-de-treinta-y-seis-comedias-de-lo",
     description: "2004–2007",
     content: "2004–2007 Edición y estudio de treinta y seis comedias de Lope de Vega BFF 2003-02480 Ministerio de Educación y Ciencia"
   },
@@ -1228,25 +1036,25 @@ var SEARCH_INDEX = [
   },
   {
     title: "Edición y estudio de treinta y seis comedias de Lope de Vega (2001–2004)",
-    url: "el-grupo/historial-proyectos.html#2001-2004-edicion-y-estudio-de-treinta-y-seis-come",
+    url: "el-grupo/historial-proyectos.html#2001-2004-edicion-y-estudio-de-treinta-y-seis-comedias-de-lo",
     description: "2001–2004",
     content: "2001–2004 Edición y estudio de treinta y seis comedias de Lope de Vega Ministerio de Ciencia y Tecnología – DGICYT"
   },
   {
     title: "Edición y estudio de treinta comedias de Lope de Vega (1998–2001)",
-    url: "el-grupo/historial-proyectos.html#1998-2001-edicion-y-estudio-de-treinta-comedias-de",
+    url: "el-grupo/historial-proyectos.html#1998-2001-edicion-y-estudio-de-treinta-comedias-de-lope-de-v",
     description: "1998–2001",
     content: "1998–2001 Edición y estudio de treinta comedias de Lope de Vega Ministerio de Educación y Cultura – DGICYT"
   },
   {
     title: "Edición y estudio de veinte comedias de Lope de Vega (1995–1998)",
-    url: "el-grupo/historial-proyectos.html#1995-1998-edicion-y-estudio-de-veinte-comedias-de",
+    url: "el-grupo/historial-proyectos.html#1995-1998-edicion-y-estudio-de-veinte-comedias-de-lope-de-ve",
     description: "1995–1998",
     content: "1995–1998 Edición y estudio de veinte comedias de Lope de Vega Ministerio de Educación y Cultura – DGICYT"
   },
   {
     title: "Edición y estudio de las veinte primeras obras dramáticas de Lope de Vega (1989–1995)",
-    url: "el-grupo/historial-proyectos.html#1989-1995-edicion-y-estudio-de-las-veinte-primeras",
+    url: "el-grupo/historial-proyectos.html#1989-1995-edicion-y-estudio-de-las-veinte-primeras-obras-dra",
     description: "1989–1995",
     content: "1989–1995 Edición y estudio de las veinte primeras obras dramáticas de Lope de Vega Ministerio de Educación y Cultura – DGICYT"
   },
@@ -1499,8 +1307,8 @@ var SEARCH_INDEX = [
   {
     title: "Veronika Ryjik",
     url: "el-grupo/miembros.html#veronika-ryjik",
-    description: "Investigadora — Franklin & Marshall College",
-    content: "Veronika Ryjik Investigadora Franklin & Marshall College Biografía del miembro."
+    description: "Investigadora — Franklin &amp; Marshall College",
+    content: "Veronika Ryjik Investigadora Franklin &amp; Marshall College Biografía del miembro."
   },
   {
     title: "Antonio Sánchez Jiménez",
@@ -1563,58 +1371,172 @@ var SEARCH_INDEX = [
     content: "Ramón Valdés Comité científico Universitat Autònoma de Barcelona Ramón Valdés Gázquez es profesor Agregado de la Universitat Autònoma de Barcelona, doctor en Filosofía y Letras por la misma universidad desde 1997 y co-Investigadro prinicipal, junto a Gonzalo Pontón, del Grupo de Investigación PROLOPE, en el que participa desde el año 2000. Sus principales líneas de investigación se centran en la sátira, la sátira menipea del Siglo de Oro; la edición de textos; el estudio del autor Lope de Vega y el Humanismo digital.Su trayectoria científica inicia con la redacción de un trabajo de curso y luego un trabajo de Máster (en el ámbito de los cursos de Doctorado) sobre Los Sueños y discursos de Quevedo: el modelo del sueño humanista y el género de la sátira menipea (Departament de Filologia Espanyola, UAB, 1990). Ahí inicia su interés por el género de la sátira menipea y por Quevedo, uno de sus principales centros de interés y tema de muchas de sus publicaciones, desde libros colectivos a capítulos de libro y artículos en revistas, así como de ponencias y conferencias. De ahí derivó, asimismo, un encargo editorial para la prestigiosa colección «Biblioteca Clásica» dirigida por Francisco Rico, la edición crítica de El diablo Cojuelo , de Luis Vélez de Guevara. Ese encargo editorial acabó por convertirse, antes de su publicacion, en su tesis doctoral, dirigida por el profesor Alberto Blecua. Así se produjo su iniciación en el terreno de la Crítica Textual y en la labor de edición de textos. Como alumno del profesor Alberto Blecua y de la Universitat Autònoma de Barcelona, después de una estancia de ocho años en Italia; la formación y curriculum en Crítica Textual y edición de textos permitieron a Ramón Valdés reincorporarse con una beca postdoctoral en la misma universidad, y dentro del proyecto de edición de textos que llevaba adelante el grupo de investigación PROLOPE. Desde su llegada al grupo de investigación PROLOPE en el año 2000, su dedicación a la edición del teatro de Lope de Vega ha sido intensa: realizó la edición crítica de varias obras, como La fe rompida y La batalla del honor , además de, en colaboración con María Nogués, La octava maravilla ; y ahora, en colaboración con Santiago Restrepo, El caballero del milagro . Asumió asimismo la coordinación de la Parte IV de las Comedias de Lope de Vega con Luigi Giuliani, y con María Morrás la de la Parte X . También ha coordinado y participado en las ediciones de Fuenteovejuna y El castigo sin venganza para la editorial PPU, y se ha encargado de las relaciones con la compañía de teatro Rakatá, actualmente Fundación Siglo de Oro. Desde junio de 2011 dirige con Gonzalo Pontón, el grupo de investigación PROLOPE. Entre los años 2003 y 2008 fue investigador Ramón y Cajal, siendo evaluado positivamente en el último año e integrándose como investigador en el Programa I3. Desde el año 2009, y durante el quinquenio 2009-2014, ha sido miembro, a través de PROLOPE, del macroproyecto en red TC/12 Patrimonio Teatral Clásico Español , del Programa Consolider-Ingenio 2010 CSD 2009 00033. Problemas prácticos y reflexiones teóricas han acercado a Ramón Valdés, además, al ámbito de la edición digital. En 2013, organizó unas Jornadas sobre Humanidades y Ediciones críticas digitales en la UAB en las que participaron varios especialistas de primer orden mundial: A. Bía, D. Fiormonte, S. Hagel, P. Spence y F. Tomasi, entre otros. Ha realizado una propuesta de Máster en Humanidades Digitales que presentó con A. Bía en el I Congreso de HDH («Una propuesta educativa para las HD: el nuevo máster en HD de la UAB», A Coruña, Julio, 2013), la cual fue aprobada por la Comisión de Posgrado de la UAB. En 2014 ha coordinado un número de la revista Anuario Lope de Vega sobre «Edición digital y edición crítica», con participación de varios de los especialistas ya mencionados así como de otros."
   },
   {
-    title: "<i>Los locos de Valencia</i>",
-    url: "publicaciones/otras-publicaciones.html#i-los-locos-de-valencia-i",
-    description: "Lope de Vega Carpio, 2024",
-    content: "Lope de Vega Carpio Carlos Peña López 2024 Gredos Barcelona Biblioteca Lope de Vega 9788424999605"
+    title: "            El otro a las tablas: lo musulmán en la puesta en escena contemporánea del teatro            clásico (1986–2021)           (2024)",
+    url: "formacion/tesis.html#2024-el-otro-a-las-tablas-lo-musulman",
+    description: "2024. Khatereh Gorji",
+    content: "2024             El otro a las tablas: lo musulmán en la puesta en escena contemporánea del teatro            clásico (1986–2021)           Khatereh Gorji Directores: Gonzalo Pontón y Guillermo Gómez Sánchez-Ferrer Doctorado en Filología Española, Universitat Autònoma de Barcelona Defensa: 17-06-2024"
   },
   {
-    title: "<i>Lo fingido verdadero</i>",
-    url: "publicaciones/otras-publicaciones.html#i-lo-fingido-verdadero-i",
-    description: "Lope de Vega Carpio, 2024",
-    content: "Lope de Vega Carpio Luigi Giuliani 2024 Gredos Barcelona Biblioteca Lope de Vega 9788424941123"
+    title: "            «La superbia negli orrori». Dido en el teatro trágico europeo del siglo XVI           (2024)",
+    url: "formacion/tesis.html#2024-la-superbia-negli-orrori-dido",
+    description: "2024. Rosa Carmen Bono Velilla",
+    content: "2024             «La superbia negli orrori». Dido en el teatro trágico europeo del siglo XVI           Rosa Carmen Bono Velilla Director: Gonzalo Pontón Teoría de la Literatura y Literatura Comparada, Universitat Autònoma de Barcelona Defensa: 13-05-2024"
   },
   {
-    title: "<i>Fuente Ovejuna</i>",
-    url: "publicaciones/otras-publicaciones.html#i-fuente-ovejuna-i",
-    description: "Lope de Vega Carpio, 2024",
-    content: "Lope de Vega Carpio PROLOPE 2024 Gredos Barcelona Biblioteca Lope de Vega 9788424941116"
+    title: "            La máscara en las comedias y entremeses cervantinos: Una relación entre esencia y            apariencia           (2022)",
+    url: "formacion/tesis.html#2022-la-mascara-en-las-comedias-y-entr",
+    description: "2022. Giselle Cristina Gonçalves Macedo",
+    content: "2022             La máscara en las comedias y entremeses cervantinos: Una relación entre esencia y            apariencia           Giselle Cristina Gonçalves Macedo Director: Gonzalo Pontón Doctorado en Filología Española, Universitat Autònoma de Barcelona Defensa: 10-06-2022"
   },
   {
-    title: "<i>Yo me entiendo</i>",
-    url: "publicaciones/otras-publicaciones.html#i-yo-me-entiendo-i",
-    description: "Lope de Vega Carpio, 2023",
-    content: "Lope de Vega Carpio Donald McGrady 2023 Gredos Barcelona Biblioteca Lope de Vega 9788424940201"
+    title: "            Investigaciones sobre la transmisión, recepción y tradición cultural de            La dama boba: del manuscrito autógrafo a la era digital           (2022)",
+    url: "formacion/tesis.html#2022-investigaciones-sobre-la-transmis",
+    description: "2022. Celio Hernández Tornero",
+    content: "2022             Investigaciones sobre la transmisión, recepción y tradición cultural de            La dama boba: del manuscrito autógrafo a la era digital           Celio Hernández Tornero Directores: Ramón Valdés Gázquez (UAB), M.ª Luz Mandigorra Llavata (UV) y Enrique Vidal Ruiz (UPV) Doctorado en Filología Española, Universitat Autònoma de Barcelona Defensa: 04-03-2022"
   },
   {
-    title: "<i>El castigo sin venganza</i>",
-    url: "publicaciones/otras-publicaciones.html#i-el-castigo-sin-venganza-i",
-    description: "Lope de Vega Carpio, 2023",
-    content: "Lope de Vega Carpio Alejandro García-Reidy y Ramón Valdés 2023 Gredos Barcelona Biblioteca Lope de Vega 9788424940218"
+    title: "            El recurso de la carta en el teatro de Lope de Vega: unas calas           (2022)",
+    url: "formacion/tesis.html#2022-el-recurso-de-la-carta-en-el-teat",
+    description: "2022. Montserrat Fernández Crespo",
+    content: "2022             El recurso de la carta en el teatro de Lope de Vega: unas calas           Montserrat Fernández Crespo Director: Gonzalo Pontón Doctorado en Filología Española, Universitat Autònoma de Barcelona Defensa: 28-02-2022"
   },
   {
-    title: "<i>La francesa Laura</i>",
-    url: "publicaciones/otras-publicaciones.html#i-la-francesa-laura-i",
-    description: "Lope de Vega Carpio, 2023",
-    content: "Lope de Vega Carpio Álvaro Cuéllar y Germán Vega 2023 Gredos Barcelona Biblioteca Lope de Vega 9788424940621"
+    title: "            La comedia áurea en el lienzo de plata: análisis de la recepción de la comedia nueva            a partir de sus reescrituras fílmicas           (2018)",
+    url: "formacion/tesis.html#2018-la-comedia-aurea-en-el-lienzo-de",
+    description: "2018. Alba Carmona",
+    content: "2018             La comedia áurea en el lienzo de plata: análisis de la recepción de la comedia nueva            a partir de sus reescrituras fílmicas           Alba Carmona Director: Gonzalo Pontón Doctorado en Filología Española, Universitat Autònoma de Barcelona Defensa: 16-03-2018"
   },
   {
-    title: "<i>Expostulatio Spongiae</i>",
-    url: "publicaciones/otras-publicaciones.html#i-expostulatio-spongiae-i",
-    description: "Lope de Vega Carpio, 2016",
-    content: "Lope de Vega Carpio Pedro Conde Parrado y Xavier Tubau Moreu 2016 Gredos Barcelona Biblioteca Lope de Vega 9788424928964"
+    title: "            Las comedias bizantinas de Lope de Vega: caracterización genérica, tradición y            trascendencia           (2016)",
+    url: "formacion/tesis.html#2016-las-comedias-bizantinas-de-lope-d",
+    description: "2016. Daniel Fernández Rodríguez",
+    content: "2016             Las comedias bizantinas de Lope de Vega: caracterización genérica, tradición y            trascendencia           Daniel Fernández Rodríguez Directores: Luis Alberto Blecua Perdices (†) y Ramón Valdés Gázquez Doctorado en Filología Española, Universitat Autònoma de Barcelona Defensa: 16-12-2016"
   },
   {
-    title: "<i>El maestro del danzar</i> - <i>La creación del mundo</i>",
-    url: "publicaciones/otras-publicaciones.html#i-el-maestro-del-danzar-i-i-la-creacion-del-mundo-i",
-    description: "Lope de Vega Carpio, 2012",
-    content: "Lope de Vega Carpio Daniel Fernández Rodríguez y Alessandro Martinengo 2012 Gredos Barcelona Biblioteca Lope de Vega 9788424936594"
+    title: "            «Le père trompé». Traduzioni e ricezione del teatro di Lope de Vega in Francia tra            Seicento e Settecento. Con un'appendice su Manzoni, lettore di Lope de Vega           (2015)",
+    url: "formacion/tesis.html#2015-le-pere-trompe-traduzioni-e-ri",
+    description: "2015. Francesca Suppa",
+    content: "2015             «Le père trompé». Traduzioni e ricezione del teatro di Lope de Vega in Francia tra            Seicento e Settecento. Con un'appendice su Manzoni, lettore di Lope de Vega           Francesca Suppa Director: Pietro Gibellini Doctorado en Filología Española, Universitat Autònoma de Barcelona Defensa: 15-09-2015"
   },
   {
-    title: "<i>Mujeres y criados</i>",
-    url: "publicaciones/otras-publicaciones.html#i-mujeres-y-criados-i",
-    description: "Lope de Vega Carpio, 2014",
-    content: "Lope de Vega Carpio Alejandro García-Reidy 2014 Gredos Barcelona Biblioteca Lope de Vega 9788424926793"
+    title: "            La representación de la historia contemporánea en el teatro de Lope de Vega           (2010)",
+    url: "formacion/tesis.html#2010-la-representacion-de-la-historia",
+    description: "2010. Guillem Usandizaga",
+    content: "2010             La representación de la historia contemporánea en el teatro de Lope de Vega           Guillem Usandizaga Directores: Gonzalo Pontón y Luis Alberto Blecua Perdices (†) Doctorado en Filología Española, Universitat Autònoma de Barcelona Defensa: 17-12-2010"
+  },
+  {
+    title: "XI Congreso Internacional: «Lope político»",
+    url: "eventos/congresos.html#xi-congreso-internacional-lope-politico",
+    description: "27–29 nov. 2024, UAB, Barcelona",
+    content: "XI Congreso Internacional «Lope político» 2024 27–29 nov. 2024 UAB, Barcelona «Lope político» El congreso más reciente de la serie PROLOPE examinó las dimensiones políticas e ideológicas de la obra de Lope de Vega. Contó con ponentes plenarios como Jonathan Thacker (University of Oxford), Diana Berruezo-Sánchez (ICREA/UAB) y Luis González Fernández (Casa de Velázquez). También se conmemoró el 30.º aniversario del Anuario Lope de Vega y se anunció la publicación de la Parte XXIII. Las sesiones fueron retransmitidas en línea a través de Microsoft Teams."
+  },
+  {
+    title: "X Congreso Internacional: «Editar a Lope, treinta años después»",
+    url: "eventos/congresos.html#x-congreso-internacional-editar-a-lope-treinta-anos-despue",
+    description: "24–26 nov. 2021, UAB, Barcelona",
+    content: "X Congreso Internacional «Editar a Lope, treinta años después» 2021 24–26 nov. 2021 UAB, Barcelona «Editar a Lope, treinta años después» El X Congreso marcó tres décadas del proyecto editorial de PROLOPE. Bajo el lema «Editar a Lope, treinta años después», el congreso reflexionó sobre la metodología editorial y los logros acumulados durante treinta años de edición crítica del teatro de Lope de Vega."
+  },
+  {
+    title: "IX Congreso Internacional: «Lope y el teatro del Siglo de Oro. Patrimonio, difusión e investigación en la era digital»",
+    url: "eventos/congresos.html#ix-congreso-internacional-lope-y-el-teatro-del-siglo-de-oro",
+    description: "28–30 nov. 2018, BNE, Madrid",
+    content: "IX Congreso Internacional «Lope y el teatro del Siglo de Oro. Patrimonio, difusión e investigación en la era digital» 2018 28–30 nov. 2018 BNE, Madrid «Lope y el teatro del Siglo de Oro. Patrimonio, difusión e investigación en la era digital» Coorganizado con la Biblioteca Nacional de España, el IX Congreso abordó el patrimonio, la difusión y la investigación del teatro áureo en la era digital. Se debatieron cuestiones relacionadas con la digitalización de fuentes, las bases de datos de teatro clásico y las nuevas metodologías de las humanidades digitales aplicadas al estudio de Lope de Vega."
+  },
+  {
+    title: "VIII Congreso Internacional: «Lope y el teatro europeo de su tiempo»",
+    url: "eventos/congresos.html#viii-congreso-internacional-lope-y-el-teatro-europeo-de-su",
+    description: "10–12 dic. 2015, UAB, Barcelona",
+    content: "VIII Congreso Internacional «Lope y el teatro europeo de su tiempo» 2015 10–12 dic. 2015 UAB, Barcelona «Lope y el teatro europeo de su tiempo» El VIII Congreso situó la obra de Lope en el contexto del teatro europeo de su tiempo. Se examinaron las tradiciones dramáticas italiana, inglesa, francesa y portuguesa en paralelo a la producción lopesca, en un período crucial de la historia teatral europea."
+  },
+  {
+    title: "VII Congreso Internacional: «Lope y la Historia»",
+    url: "eventos/congresos.html#vii-congreso-internacional-lope-y-la-historia",
+    description: "24–26 oct. 2012, UAB / RABLB, Barcelona",
+    content: "VII Congreso Internacional «Lope y la Historia» 2012 24–26 oct. 2012 UAB / RABLB, Barcelona «Lope y la Historia» El VII Congreso se centró en la relación de Lope de Vega con la historia y los temas históricos en su obra. Organizado por PROLOPE y TC/12 (Consolider CSD 2009-00033)."
+  },
+  {
+    title: "VI Congreso Internacional: «Lope Polemista»",
+    url: "eventos/congresos.html#vi-congreso-internacional-lope-polemista",
+    description: "13–15 nov. 2008, UAB / RABLB, Barcelona",
+    content: "VI Congreso Internacional «Lope Polemista» 2008 13–15 nov. 2008 UAB / RABLB, Barcelona «Lope Polemista» El VI Congreso estuvo dedicado a la faceta polémica de Lope: sus controversias literarias, sus enfrentamientos con contemporáneos y su posición combativa en el campo cultural de la España de su tiempo. Organizado por PROLOPE y el Centro para la Edición de Clásicos Españoles."
+  },
+  {
+    title: "V Congreso Internacional: «Lope y la tradición clásica»",
+    url: "eventos/congresos.html#v-congreso-internacional-lope-y-la-tradicion-clasica",
+    description: "10–12 nov. 2005, UAB / RABLB, Barcelona",
+    content: "V Congreso Internacional «Lope y la tradición clásica» 2005 10–12 nov. 2005 UAB / RABLB, Barcelona «Lope y la tradición clásica» El V Congreso analizó la relación de Lope con la herencia clásica grecolatina y su transformación creativa de esa tradición en el contexto del teatro del Siglo de Oro."
+  },
+  {
+    title: "IV Congreso Internacional: «El Lope de senectute (1622–1635)»",
+    url: "eventos/congresos.html#iv-congreso-internacional-el-lope-de-senectute-1622-1635",
+    description: "7–9 nov. 2002, UAB, Barcelona",
+    content: "IV Congreso Internacional «El Lope de senectute (1622–1635)» 2002 7–9 nov. 2002 UAB, Barcelona «El Lope de senectute (1622–1635)» El IV Congreso se enfocó en el último período creativo de Lope de Vega (1622–1635), sus obras de madurez y el proceso de revisión y edición que el propio Lope ejerció sobre su producción en los años finales de su vida."
+  },
+  {
+    title: "III Congreso Internacional: «Lope en la época de Felipe III (1598–1621)»",
+    url: "eventos/congresos.html#iii-congreso-internacional-lope-en-la-epoca-de-felipe-iii",
+    description: "23–25 nov. 2000, UAB, Barcelona",
+    content: "III Congreso Internacional «Lope en la época de Felipe III (1598–1621)» 2000 23–25 nov. 2000 UAB, Barcelona «Lope en la época de Felipe III (1598–1621)» El III Congreso abordó el período más prolífico de Lope de Vega, correspondiente al reinado de Felipe III (1598–1621), en el que el Fénix alcanzó la cima de su fama y productividad como dramaturgo."
+  },
+  {
+    title: "II Congreso Internacional: «El Primer Lope»",
+    url: "eventos/congresos.html#ii-congreso-internacional-el-primer-lope",
+    description: "5–7 nov. 1998, UAB / RABLB, Barcelona",
+    content: "II Congreso Internacional «El Primer Lope» 1998 5–7 nov. 1998 UAB / RABLB, Barcelona «El Primer Lope» El II Congreso exploró los inicios de la trayectoria literaria y dramática de Lope de Vega: sus primeras obras, su formación, y los rasgos que caracterizan al primer Lope antes de que su fama se consolidara plenamente."
+  },
+  {
+    title: "I Congreso Internacional: «Edición y anotación»",
+    url: "eventos/congresos.html#i-congreso-internacional-edicion-y-anotacion",
+    description: "10–11 abr. 1996, UAB, Barcelona",
+    content: "I Congreso Internacional «Edición y anotación» 1996 10–11 abr. 1996 UAB, Barcelona «Edición y anotación» El congreso inaugural de la serie PROLOPE, celebrado apenas un año después de la fundación del grupo de investigación, se centró en los principios y métodos de edición y anotación de la obra de Lope de Vega. Sentó las bases de la metodología editorial que ha guiado el trabajo del grupo durante casi tres décadas."
+  },
+  {
+    title: "Congreso Internacional: IX Congreso BETA: «Edición, difusión y recepción de las culturas hispánicas»",
+    url: "eventos/congresos.html#congreso-internacional-ix-congreso-beta-edicion-difusion",
+    description: "5–7 jun. 2019, UAB / RABLB, Barcelona",
+    content: "Congreso Internacional IX Congreso BETA: «Edición, difusión y recepción de las culturas hispánicas» 2019 5–7 jun. 2019 UAB / RABLB, Barcelona «Edición, difusión y recepción de las culturas hispánicas» Organizado por PROLOPE, BETA (Jóvenes Doctores en Estudios Hispánicos), ICREA-Academia, la Reial Acadèmia de Bones Lletres y el Centro para la Edición de Clásicos Españoles. El congreso reunió a jóvenes investigadores hispanistas en torno a los problemas de edición, difusión y recepción de las culturas hispánicas."
+  },
+  {
+    title: "Congreso Internacional: «Lope de Vega y la puesta en escena de la Comedia Nueva»",
+    url: "eventos/congresos.html#congreso-internacional-lope-de-vega-y-la-puesta-en-escena-d",
+    description: "27–28 oct. 2014, UCM, Madrid",
+    content: "Congreso Internacional «Lope de Vega y la puesta en escena de la Comedia Nueva» 2014 27–28 oct. 2014 UCM, Madrid «Lope de Vega y la puesta en escena de la Comedia Nueva» Congreso internacional dedicado a las técnicas de puesta en escena de Lope de Vega y la forma teatral de la Comedia Nueva. Se analizaron los recursos dramáticos, la relación entre texto y representación, y la recepción escénica del teatro lopesco."
+  },
+  {
+    title: "Coloquio Internacional: «El teatro dentro del teatro en la comedia española del Siglo de Oro»",
+    url: "eventos/congresos.html#coloquio-internacional-el-teatro-dentro-del-teatro-en-la-co",
+    description: "29–30 ago. 2013, UNAM, México",
+    content: "Coloquio Internacional «El teatro dentro del teatro en la comedia española del Siglo de Oro» 2013 29–30 ago. 2013 UNAM, México «El teatro dentro del teatro en la comedia española del Siglo de Oro» Coloquio internacional dedicado al recurso del metateatro —el teatro dentro del teatro— en la comedia española del Siglo de Oro. Coorganizado por PROLOPE y el Instituto de Investigaciones Filológicas de la UNAM."
+  },
+  {
+    title: "Coloquio Internacional: «La comedia española en la imprenta catalana»",
+    url: "eventos/congresos.html#coloquio-internacional-la-comedia-espanola-en-la-imprenta-c",
+    description: "11–12 abr. 2013, UAB / UB, Barcelona",
+    content: "Coloquio Internacional «La comedia española en la imprenta catalana» 2013 11–12 abr. 2013 UAB / UB, Barcelona «La comedia española en la imprenta catalana» Coloquio internacional sobre la historia de la imprenta y la edición de comedias españolas en Cataluña. Organizado por PROLOPE, el Instituto Almagro de Teatro Clásico (UCLM) y TC/12 (Consolider CSD 2009-00033)."
+  },
+  {
+    title: "Congreso Internacional: «Teatro y fiesta popular y religiosa»",
+    url: "eventos/congresos.html#congreso-internacional-teatro-y-fiesta-popular-y-religiosa",
+    description: "4–7 jun. 2012, Cusco, Perú",
+    content: "Congreso Internacional «Teatro y fiesta popular y religiosa» 2012 4–7 jun. 2012 Cusco, Perú «Teatro y fiesta popular y religiosa» Congreso internacional dedicado al teatro y la fiesta popular y religiosa en el Siglo de Oro. Coorganizado por nueve instituciones: PROLOPE, GRISO, Instituto Almagro (UCLM), TC/12, Instituto Riva Agüero (PUCP), IDEA, el Ministerio de Cultura de Perú, el Centro Regional para la Salvaguardia del Patrimonio Cultural Inmaterial de América Latina y la Fundación Visión Cultural (Bolivia)."
+  },
+  {
+    title: "Evento especial: Textoescena: «La investigación del espectáculo, el espectáculo de la investigación»",
+    url: "eventos/congresos.html#evento-especial-textoescena-la-investigacion-del-espectacu",
+    description: "Julio 2011, UAB, Barcelona",
+    content: "Evento especial Textoescena: «La investigación del espectáculo, el espectáculo de la investigación» 2011 Julio 2011 UAB, Barcelona Textoescena: «La investigación del espectáculo, el espectáculo de la investigación» Evento singular organizado por PROLOPE que exploró la intersección entre la investigación teatral y la práctica performativa, convirtiendo el propio acto de la investigación en espectáculo. Una propuesta que cruzó los límites entre la filología, la puesta en escena y la reflexión teórica sobre el teatro."
+  },
+  {
+    title: "Congreso Internacional: I Congreso Ibero-Asiático de Hispanistas del Siglo de Oro",
+    url: "eventos/congresos.html#congreso-internacional-i-congreso-ibero-asiatico-de-hispanis",
+    description: "9–12 nov. 2010, Universidad de Delhi, India",
+    content: "Congreso Internacional I Congreso Ibero-Asiático de Hispanistas del Siglo de Oro 2010 9–12 nov. 2010 Universidad de Delhi, India I Congreso Ibero-Asiático de Hispanistas del Siglo de Oro Primer congreso ibero-asiático para hispanistas especializados en el Siglo de Oro español, celebrado en la Universidad de Delhi. Organizado por PROLOPE, GRISO, Instituto Castellano y Leonés de la Lengua, Universidad de Delhi, Grupo Calderón, Grupo Proteo, The Hispanic Baroque Project (University of Western Ontario), Embajada de España en India, TC/12 y la Biblioteca Virtual Miguel de Cervantes."
+  },
+  {
+    title: "Congreso Internacional: «Estudio y Edición del Teatro del Siglo de Oro»",
+    url: "eventos/congresos.html#congreso-internacional-estudio-y-edicion-del-teatro-del-sig",
+    description: "15–17 nov. 2007, UAB / RABLB, Barcelona",
+    content: "Congreso Internacional «Estudio y Edición del Teatro del Siglo de Oro» 2007 15–17 nov. 2007 UAB / RABLB, Barcelona «Estudio y Edición del Teatro del Siglo de Oro» Congreso internacional sobre el estudio y la edición del teatro español del Siglo de Oro. Organizado por PROLOPE, GRISO y el Centro para la Edición de los Clásicos Españoles. Se abordaron los problemas filológicos y ecdóticos específicos del teatro áureo."
   },
   {
     title: "Jornada Internacional ICREA Academia–PROLOPE (2019)",
@@ -1758,7 +1680,7 @@ var SEARCH_INDEX = [
     title: "Encuentro de investigación PROLOPE-THALÍA-BADEMS (2025)",
     url: "eventos/seminarios.html#2025-encuentro-de-investigacion-prolope-thali",
     description: "2 jun. 2025",
-    content: "2025 Encuentro de investigación PROLOPE-THALÍA-BADEMS 2 jun. 2025 Espacio de intercambio entre proyectos e investigadores para compartir líneas de trabajo actuales, explorar posibles sinergias y dar voz a las investigaciones en curso.&nbsp; 2 de junio de 2025 PROLOPE-THALÍA-BADEMS"
+    content: "2025 Encuentro de investigación PROLOPE-THALÍA-BADEMS 2 jun. 2025 Espacio de intercambio entre proyectos e investigadores para compartir líneas de trabajo actuales, explorar posibles sinergias y dar voz a las investigaciones en curso. 2 de junio de 2025 PROLOPE-THALÍA-BADEMS"
   },
   {
     title: "El proceso de composición de los autógrafos teatrales del Siglo de Oro (2025)",
@@ -1783,5 +1705,83 @@ var SEARCH_INDEX = [
     url: "eventos/seminarios.html#1999-de-la-pluma-a-las-tablas-de-las-tablas",
     description: "8–9 octubre 1999",
     content: "1999 De la pluma a las tablas, de las tablas al lector: el texto dramático en el Siglo de Oro 8–9 octubre 1999 8–9 de octubre de 1999 PROLOPE"
+  },
+  {
+    title: "Informe Semanal: Lo que aún esconde Lope",
+    url: "multimedia/multimedia.html#informe-semanal-lo-que-aun-esconde-lope",
+    description: "RTVE, 20 de abril de 2024",
+    content: "Informe Semanal: Lo que aún esconde Lope 20 de abril de 2024 RTVE En vísperas del Día del Libro, Informe Semanal se sumerge en los archivos de la Biblioteca Nacional y en las entrañas de la creación de Lope de Vega. Técnicas forenses como la fotografía espectral o la Inteligencia Artificial descubren nuevos detalles de su proceso creativo."
+  },
+  {
+    title: "17 Jornadas sobre teatro clásico de Olmedo: «Cuando PROLOPE quiere quiere»",
+    url: "multimedia/multimedia.html#17-jornadas-sobre-teatro-clasico-de-olmedo-cuand",
+    description: "YouTube, 25 de julio de 2023",
+    content: "17 Jornadas sobre teatro clásico de Olmedo: «Cuando PROLOPE quiere quiere» 25 de julio de 2023 YouTube Diálogo 3.ª de las 17 Jornadas sobre teatro clásico («Lope sin fin»), con Sònia Boadas, Daniel Fernández Rodríguez, Laura Fernández y Javier J. González Martínez."
+  },
+  {
+    title: "Biblioteca Nacional de España: Acto de presentación del manuscrito de Mujeres y criados",
+    url: "multimedia/multimedia.html#biblioteca-nacional-de-espana-acto-de-presentacio",
+    description: "YouTube, 22 de mayo de 2014",
+    content: "Biblioteca Nacional de España: Acto de presentación del manuscrito de Mujeres y criados 22 de mayo de 2014 YouTube Con Alberto Blecua, director de PROLOPE; José Manuel Martos, director de Gredos; Rodrigo Arribas, presidente de la Fundación Siglo de Oro; y Alejandro García Reidy, Universidad de Syracuse."
+  },
+  {
+    title: "Qwerty BTV: Dos nuevos volúmenes de las comedias de Lope de Vega",
+    url: "multimedia/multimedia.html#qwerty-btv-dos-nuevos-volumenes-de-las-comedias-d",
+    description: "BTV, 2012",
+    content: "Qwerty BTV: Dos nuevos volúmenes de las comedias de Lope de Vega 2012 BTV La Editorial Gredos ha publicado dos nuevos volúmenes de la edición crítica completa de las comedias de Lope de Vega. Qwerty entrevista a Gonzalo Pontón, co-director de PROLOPE."
+  },
+  {
+    title: "<i>Los locos de Valencia</i>",
+    url: "publicaciones/otras-publicaciones.html#i-los-locos-de-valencia-i",
+    description: "Lope de Vega Carpio, 2024",
+    content: "Lope de Vega Carpio Carlos Peña López 2024 Gredos Barcelona Biblioteca Lope de Vega 9788424999605"
+  },
+  {
+    title: "<i>Lo fingido verdadero</i>",
+    url: "publicaciones/otras-publicaciones.html#i-lo-fingido-verdadero-i",
+    description: "Lope de Vega Carpio, 2024",
+    content: "Lope de Vega Carpio Luigi Giuliani 2024 Gredos Barcelona Biblioteca Lope de Vega 9788424941123"
+  },
+  {
+    title: "<i>Fuente Ovejuna</i>",
+    url: "publicaciones/otras-publicaciones.html#i-fuente-ovejuna-i",
+    description: "Lope de Vega Carpio, 2024",
+    content: "Lope de Vega Carpio PROLOPE 2024 Gredos Barcelona Biblioteca Lope de Vega 9788424941116"
+  },
+  {
+    title: "<i>Yo me entiendo</i>",
+    url: "publicaciones/otras-publicaciones.html#i-yo-me-entiendo-i",
+    description: "Lope de Vega Carpio, 2023",
+    content: "Lope de Vega Carpio Donald McGrady 2023 Gredos Barcelona Biblioteca Lope de Vega 9788424940201"
+  },
+  {
+    title: "<i>El castigo sin venganza</i>",
+    url: "publicaciones/otras-publicaciones.html#i-el-castigo-sin-venganza-i",
+    description: "Lope de Vega Carpio, 2023",
+    content: "Lope de Vega Carpio Alejandro García-Reidy y Ramón Valdés 2023 Gredos Barcelona Biblioteca Lope de Vega 9788424940218"
+  },
+  {
+    title: "<i>La francesa Laura</i>",
+    url: "publicaciones/otras-publicaciones.html#i-la-francesa-laura-i",
+    description: "Lope de Vega Carpio, 2023",
+    content: "Lope de Vega Carpio Álvaro Cuéllar y Germán Vega 2023 Gredos Barcelona Biblioteca Lope de Vega 9788424940621"
+  },
+  {
+    title: "<i>Expostulatio Spongiae</i>",
+    url: "publicaciones/otras-publicaciones.html#i-expostulatio-spongiae-i",
+    description: "Lope de Vega Carpio, 2016",
+    content: "Lope de Vega Carpio Pedro Conde Parrado y Xavier Tubau Moreu 2016 Gredos Barcelona Biblioteca Lope de Vega 9788424928964"
+  },
+  {
+    title: "<i>El maestro del danzar</i> - <i>La creación del mundo</i>",
+    url: "publicaciones/otras-publicaciones.html#i-el-maestro-del-danzar-i-i-la-creacion-del-mundo-i",
+    description: "Lope de Vega Carpio, 2012",
+    content: "Lope de Vega Carpio Daniel Fernández Rodríguez y Alessandro Martinengo 2012 Gredos Barcelona Biblioteca Lope de Vega 9788424936594"
+  },
+  {
+    title: "<i>Mujeres y criados</i>",
+    url: "publicaciones/otras-publicaciones.html#i-mujeres-y-criados-i",
+    description: "Lope de Vega Carpio, 2014",
+    content: "Lope de Vega Carpio Alejandro García-Reidy 2014 Gredos Barcelona Biblioteca Lope de Vega 9788424926793"
   }
 ];

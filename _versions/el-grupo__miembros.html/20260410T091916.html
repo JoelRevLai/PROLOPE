@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" href="../media/favicon_5.gif" type="image/gif" />
+<meta charset="UTF-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; base-uri 'self'; connect-src 'self'" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Miembros | PROLOPE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../prolope.css" />
+  <!-- early theme -->
+  <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'||(! t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.setAttribute('data-theme','dark');})();
+  </script>
+
+</head>
+<body>
+
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="logo-link">
+        <img src="../media/logo-menu.png" alt="PROLOPE" />
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li class="has-dropdown">
+            <span>El grupo <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="el-grupo.html">El grupo de investigación</a></li>
+                <li><a href="historial-proyectos.html">Historial de proyectos</a></li>
+                <li><a href="estatutos.html">Estatutos del grupo</a></li>
+                <li><a href="miembros.html">Miembros</a></li>
+                <li><a href="contacto.html">Contacto y ubicación</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Objetivos <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../objetivos/vida-obra.html">Vida y obra de Lope de Vega</a></li>
+                <li><a href="../objetivos/transmision.html">Transmisión y edición del teatro de Lope de Vega</a></li>
+                <li><a href="../objetivos/criterios.html">Criterios y materiales para la edición</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Publicaciones <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../publicaciones/partes-comedias.html">Partes de comedias</a></li>
+                <li><a href="https://revistes.uab.cat/anuariolopedevega/index" target="_blank" rel="noopener noreferrer">Anuario Lope de Vega <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="../publicaciones/otras-publicaciones.html">Otras publicaciones</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Proyectos digitales <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../proyectos-digitales/biblioteca-virtual.html">Biblioteca virtual</a></li>
+                <li><a href="https://prolope.uab.cat/biblioteca/" target="_blank" rel="noopener noreferrer">Biblioteca Digital Prolope <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="../proyectos-digitales/mujeres-criados.html">Mujeres y criados</a></li>
+                <li><a href="../proyectos-digitales/mapping-lope.html">Mapping Lope</a></li>
+                <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="https://damaboba.unibo.it/" target="_blank" rel="noopener noreferrer">La dama boba <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="https://gondomar.tespasiglodeoro.it/" target="_blank" rel="noopener noreferrer">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Formación <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../formacion/tesis.html">Tesis</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Eventos <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../eventos/congresos.html">Congresos</a></li>
+                <li><a href="../eventos/seminarios.html">Seminarios</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="../multimedia/multimedia.html">Multimedia</a></li>
+          <li><a href="../noticias/noticias.html">Noticias</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo noche" title="Modo noche"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+      <button class="site-search-btn" id="siteSearchBtn" aria-label="Buscar en el sitio">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <div class="site-search-inline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="siteSearchInput" placeholder="Buscar en el sitio…" autocomplete="off" />
+        <button class="site-search-close" id="siteSearchClose" aria-label="Cerrar búsqueda">✕</button>
+        <div class="site-search-dropdown" id="siteSearchDropdown">
+          <div id="siteSearchCount" class="site-search-count"></div>
+          <div id="siteSearchResults" class="site-search-results"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('../media/fondo-grupo.png'); background-size: fill; background-repeat: no-repeat; background-position: right; opacity: 0.15;"></div>
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        Inicio
+        <span>›</span>
+        El grupo
+        <span>›</span>
+        Miembros
+      </div>
+      <h1>Miembros</h1>
+      <div class="page-hero-rule"></div>
+    </div>
+  </section>
+
+  <div class="page-layout">
+
+    <main class="page-content">
+
+<p class="intro">A continuación puede ver los miembros del grupo en el proyecto ministerial actualmente vigente. Es necesario insistir, no obstante, en que la labor científica realizada es fruto de la colaboración de personas que en otros momentos también pertenecieron al grupo, así como de una importante cantidad de colaboradores externos, como puede verse si se consulta la bibliografía de PROLOPE.</p>
+
+<div class="grid">
+
+<div class="card" id="sonia-boadas" tabindex="0" role="button"
+  data-name="Sònia Boadas" data-role="Investigador principal" data-uni="Universitat Autònoma de Barcelona" data-email="sonia.boadas@gmail.com" data-orcid=""
+  data-photo="../media/boadas_sonia.jpg"
+  data-bio="&lt;p&gt;Sònia Boadas es Licenciada en Filología Catalana (2007, Premio Extraordinario de Licenciatura), Licenciada en Filología Hispánica (2008, Premio Extraordinario de Licenciatura) y Doctora por la Universidad de Girona (2012, Premio Extraordinario de Doctorado). Actualmente es profesora lectora Serra Húnter en la Universitat Autònoma de Barcelona, y ha sido IP del proyecto Theatheor, financiado por las acciones Marie Skłodowska Curie (MSCA-IF), e investigadora Ramón y Cajal en la Universidad de Girona.&lt;/p&gt;&lt;p&gt;Sus principales líneas de investigación se pueden dividir en tres bloques, todos ellos relacionados con la producción y transmisión de la literatura del Siglo de Oro:&lt;/p&gt;&lt;p&gt;1. Estudios sobre la vida y la obra de Diego de Saavedra Fajardo, cuyos hitos principales son el descubrimiento de más de una veintena de manuscritos inéditos de sus principales obras literarias (&lt;em&gt;Empresas políticas&lt;/em&gt;, &lt;em&gt;Locuras de Europa&lt;/em&gt; y &lt;em&gt;República literaria&lt;/em&gt;) así como de una gran cantidad de correspondencia manuscrita inédita, muchas veces autógrafa. Los resultados de esta investigación han originado, además de varios artículos y capítulos de libro y coordinación de volúmenes, la aparición de dos monográficos: &lt;em&gt;Dos epistolarios inéditos de Diego de Saavedra&lt;/em&gt; (Presses de Franche-Comté, 2015) y &lt;em&gt;Locuras de Europa: Diego de Saavedra y la Guerra de los Treinta Años&lt;/em&gt; (Iberoamericana Vervuert, 2016).&lt;/p&gt;&lt;p&gt;2. Estudios sobre la configuración y transmisión de la Comedia Nueva, que se han desarrollado desde una vertiente filológica, a través de la edición crítica de varias comedias de Lope de Vega (&lt;em&gt;La ingratitud vengada&lt;/em&gt;, &lt;em&gt;La buena guarda&lt;/em&gt;, &lt;em&gt;El laberinto de Creta&lt;/em&gt;, &lt;em&gt;La inocente sangre&lt;/em&gt;, Gredos, Madrid), de la organización de congresos internacionales («Producción, configuración y circulación del texto teatral en el Siglo de Oro», UAB, 2017 y «Lope de Vega a través de sus autógrafos», Università di Bologna, 2019), de la dirección de trabajos de investigación y del liderazgo de proyectos de investigación europeos (TheaTheor, MSCA-IF).&lt;/p&gt;&lt;p&gt;3. Humanidades Digitales y espectrometría X-Raman aplicada al estudio de manuscritos. Además de su participación en la edición y archivo virtual de &lt;a href=&quot;http://damaboba.unibo.it/&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;La dama boba&lt;/em&gt;&lt;/a&gt;, ha coordinado dos volúmenes monográficos sobre Humanidades Digitales (&lt;em&gt;Presente y futuro de la literatura áurea en las Humanidades Digitales&lt;/em&gt;, Studia Aurea, 2017; &lt;em&gt;Arte novísimo de estudiar comedias: las Humanidades Digitales y el teatro áureo&lt;/em&gt;, Cuadernos de AISPI, 2018), ha impartido cursos y conferencias, y ha coorganizado un seminario internacional sobre restauración digital y análisis de tintas («Carte, penne e inchiostri: Immaging, 3D e ristauro digitale», Università di Bologna, 2019).&lt;/p&gt;">
+<img class="cphoto" src="../media/boadas_sonia.jpg" alt="Sònia Boadas" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Sònia Boadas</p><p class="crole">Investigador principal</p><p class="cuni">Universitat Autònoma de Barcelona</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="gonzalo-ponton" tabindex="0" role="button"
+  data-name="Gonzalo Pontón" data-role="Investigador principal" data-uni="Universitat Autònoma de Barcelona" data-email="gonzalo.ponton@uab.cat" data-orcid="0000-0002-6567-8299"
+  data-photo="../media/ponton_gonzalo.jpg"
+  data-bio="&lt;p&gt;&lt;!--StartFragment--&gt;Gonzalo Pontón Gijón es catedrático de Teoría de la Literatura y Literatura Comparada en la&amp;nbsp;Universitat&amp;nbsp;Autònoma&amp;nbsp;de Barcelona. Como estudioso de la literatura europea de los siglos XV a XVII ha prestado atención a la epistolografía, el discurso historiográfico, las ideas literarias y el teatro, así como a la crítica textual. Ha escrito monografías extensas sobre las cartas literarias (&lt;em&gt;Correspondencias&lt;/em&gt;, 2002) y la historiografía del Cuatrocientos (&lt;em&gt;Escrituras históricas&lt;/em&gt;, 2002) y es coautor de los volúmenes&amp;nbsp;&lt;em&gt;Las ideas literarias&lt;/em&gt;&amp;nbsp;(2011) y&amp;nbsp;&lt;em&gt;La conquista del clasicismo&lt;/em&gt;&amp;nbsp;(2013) de la Historia de la literatura española de Editorial Crítica. Autor de numerosas ediciones críticas de obras literarias de los Siglos de Oro, en particular comedias de Lope de Vega y narrativa breve de diversos autores (1997-2026), ha sido también colaborador principal de las sucesivas ediciones del&amp;nbsp;&lt;em&gt;Quijote&amp;nbsp;&lt;/em&gt;del Instituto Cervantes (1998, 2004, 2015) y ha publicado su propia edición de la novela cervantina (2015). En 2014 fue distinguido con el galardón ICREA Academia. Es director del grupo de investigación PROLOPE y de la Biblioteca Clásica de la Real Academia Española, como lo fue antes de otras colecciones de ensayo académico y clásicos (&quot;Letras de humanidad&quot;, &quot;Clásicos y modernos&quot;, &quot;El espejo y la lámpara&quot;, &quot;Escena clásica&quot;).&amp;nbsp;&amp;nbsp;&lt;!--EndFragment--&gt;&lt;/p&gt;">
+<img class="cphoto" src="../media/ponton_gonzalo.jpg" alt="Gonzalo Pontón" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Gonzalo Pontón</p><p class="crole">Investigador principal</p><p class="cuni">Universitat Autònoma de Barcelona</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="enrico-di-pastena" tabindex="0" role="button"
+  data-name="Enrico Di Pastena" data-role="Comité científico" data-uni="Università di Pisa" data-email="enrico.dipastena@unipi.it " data-orcid="0000-0002-7313-7759"
+  data-photo="../media/di-pastena_enrico.jpg"
+  data-bio="&lt;div&gt;&lt;p paraid=&quot;1446893568&quot; paraeid=&quot;{5ac33c2f-1627-47bb-8114-f88d944264f5}{169}&quot;&gt;Enrico Di&amp;nbsp;Pastena&amp;nbsp;es catedrático de Literatura Española de la&amp;nbsp;Università&amp;nbsp;di Pisa (Italia) y doctor en&amp;nbsp;Hispanística&amp;nbsp;por la misma universidad. Consiguió una maestría en Literatura Española en la&amp;nbsp;Universitat&amp;nbsp;Autònoma&amp;nbsp;de Barcelona.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;780833256&quot; paraeid=&quot;{5ac33c2f-1627-47bb-8114-f88d944264f5}{175}&quot;&gt;Es miembro del Comité Científico de&amp;nbsp;Prolope&amp;nbsp;y codirector desde 2011 de la revista&amp;nbsp;&lt;em&gt;Anuario Lope de Vega. Texto, literatura, cultura&lt;/em&gt;. Forma parte del comité científico de revistas internacionales (entre ellas,&amp;nbsp;&lt;em&gt;Rivista&amp;nbsp;di&amp;nbsp;filologia&amp;nbsp;e&amp;nbsp;letterature&amp;nbsp;ispaniche, Anuario calderoniano,&amp;nbsp;Impossibilia, Revista internacional de estudios literarios, La Perinola, Don Galán, Talía&lt;/em&gt;). Ha participado en numerosos proyectos de investigación nacionales e internacionales y ha dado clases y dictado conferencias en varias instituciones europeas.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;687015894&quot; paraeid=&quot;{5ac33c2f-1627-47bb-8114-f88d944264f5}{189}&quot;&gt;Se ha dedicado a la edición y al estudio de textos teatrales del Siglo de Oro, así como a la investigación de la novela del XIX y de textos teatrales contemporáneos, prestando especial atención al tema de la memoria histórica. Ha coordinado la&amp;nbsp;&lt;em&gt;Parte VII&lt;/em&gt;&amp;nbsp;de comedias de Lope y es&amp;nbsp;co-coordinador&amp;nbsp;de la&amp;nbsp;&lt;em&gt;Parte XXV&lt;/em&gt;. Además de obras teatrales del Fénix, ha realizado ediciones críticas de Agustín Moreto, Francisco de Rojas Zorrilla, Juan Pérez de Montalbán y de Juan Ruiz de Alarcón.&amp;nbsp;&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;1707494640&quot; paraeid=&quot;{5ac33c2f-1627-47bb-8114-f88d944264f5}{203}&quot;&gt;Ha traducido al italiano obras relevantes de la tradición literaria española, también en verso (&lt;em&gt;El&lt;/em&gt;&amp;nbsp;&lt;em&gt;Romancero&lt;/em&gt;,&amp;nbsp;&lt;em&gt;La Regenta&lt;/em&gt;,&amp;nbsp;&lt;em&gt;El desdén con el desdén&lt;/em&gt;,&amp;nbsp;&lt;em&gt;Juego y teoría del duende, La casa de Bernarda Alba&lt;/em&gt;).&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;!--StartFragment--&gt;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;990645532&quot; paraeid=&quot;{5ac33c2f-1627-47bb-8114-f88d944264f5}{229}&quot;&gt;Ha fundado y dirige la colección de teatro moderno y contemporáneo hispánico &quot;La&amp;nbsp;maschera&amp;nbsp;e&amp;nbsp;il&amp;nbsp;volto&quot; (&quot;La máscara y el rostro&quot;), para la que ha editado y traducido piezas de Juan Mayorga, José Ramón Fernández, Gracia Morales, Yolanda García Serrano, Juan Carlos Rubio e Itziar Pascual.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;">
+<img class="cphoto" src="../media/di-pastena_enrico.jpg" alt="Enrico Di Pastena" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Enrico Di Pastena</p><p class="crole">Comité científico</p><p class="cuni">Università di Pisa</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="laura-fernandez-garcia" tabindex="0" role="button"
+  data-name="Laura Fernández García" data-role="Comité científico" data-uni="Universitat Autònoma de Barcelona" data-email="laura.fernandez@uab.cat" data-orcid=""
+  data-photo="../media/fernandez_laura.jpg"
+  data-bio="&lt;div&gt;&lt;p paraid=&quot;192569874&quot; paraeid=&quot;{8967c19a-68c3-4164-996b-94e2056feafc}{44}&quot;&gt;(Lloret de Mar, 1972) Licenciada en Filología Hispánica por la&amp;nbsp;Universitat&amp;nbsp;de Girona, obtuvo la suficiencia investigadora en la&amp;nbsp;Universitat&amp;nbsp;Autònoma&amp;nbsp;de Barcelona con una edición del&amp;nbsp;&lt;em&gt;Diálogo de la discreción&lt;/em&gt;, de&amp;nbsp;Damasio&amp;nbsp;de Frías y, en la misma universidad, se doctoró con una tesis codirigida por los profesores Francisco Rico y Gonzalo Pontón, titulada “El texto del&amp;nbsp;&lt;em&gt;Persiles&lt;/em&gt;”, que obtuvo la calificación de Excelente, con mención&amp;nbsp;&lt;em&gt;Cum laude&lt;/em&gt;&amp;nbsp;y que fue publicada en la prestigiosa colección “Biblioteca Clásica”, de la Real Academia Española.&amp;nbsp;Su línea de investigación centrada en la obra de Cervantes se completa con una edición del&amp;nbsp;&lt;em&gt;Viaje del Parnaso&lt;/em&gt;&amp;nbsp;(Penguin, 2017), y varios artículos y capítulos de libro, entre los que destacan “Una nota a&amp;nbsp;&lt;em&gt;El rufián viudo&lt;/em&gt;” (&lt;em&gt;Boletín de la real Academia Española&lt;/em&gt;, 2001) y “Glosas cervantinas” (2012).&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;1896943494&quot; paraeid=&quot;{8967c19a-68c3-4164-996b-94e2056feafc}{84}&quot;&gt;En general, su trayectoria muestra un interés especial por el estudio y la edición de textos medievales y del Siglo de Oro, bajo el prisma de la crítica textual y la bibliografía material. Ha editado, entre otros,&amp;nbsp;&lt;em&gt;El Buscón&lt;/em&gt;, de Quevedo, y&amp;nbsp;&lt;em&gt;El cuerdo en su casa&lt;/em&gt;&amp;nbsp;y&amp;nbsp;&lt;em&gt;La inocente sangre&lt;/em&gt;, de Lope de Vega (ambas en colaboración). Así mismo, ha coordinado la&amp;nbsp;&lt;em&gt;Parte XI&lt;/em&gt;&amp;nbsp;de las&amp;nbsp;&lt;em&gt;Comedias de Lope de Vega&lt;/em&gt;, junto a Gonzalo Pontón, y está coordinando, con&amp;nbsp;Sònia&amp;nbsp;Boadas, la&amp;nbsp;&lt;em&gt;Parte XXIV&lt;/em&gt;&amp;nbsp;(2025).&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;915239003&quot; paraeid=&quot;{8967c19a-68c3-4164-996b-94e2056feafc}{122}&quot;&gt;En su historial pueden hallarse estudios dedicados al rastreo de fuentes y a la contextualización histórica, a la influencia de la censura, a la delimitación de géneros poéticos, a la recepción de los clásicos en los siglos&amp;nbsp;xix&amp;nbsp;y&amp;nbsp;xx, a los estudios de género, e, incluso, a las Humanidades digitales; pero, sobre todo, ha aplicado la tradición anglosajona de la&amp;nbsp;&lt;em&gt;Textual&amp;nbsp;bibliography&lt;/em&gt;&amp;nbsp;a algunos textos hispánicos, con descubrimientos significativos sobre el proceso de confección material de los libros y las estrategias del mercado editorial del siglo&amp;nbsp;xvii. En ese sentido, pueden señalarse la coordinación de un monográfico aparecido en la revista&amp;nbsp;&lt;em&gt;Studia&amp;nbsp;Aurea&lt;/em&gt;&amp;nbsp;(2020, junto a Rafael Ramos) y los artículos dedicados a&amp;nbsp;&lt;em&gt;El cardenal de Belén&lt;/em&gt;, publicados&amp;nbsp;en&amp;nbsp;&lt;em&gt;Criticón&lt;/em&gt;&amp;nbsp;(2021) y&amp;nbsp;&lt;em&gt;Bulletin&amp;nbsp;Hispanique&lt;/em&gt;&amp;nbsp;(2024).&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;!--StartFragment--&gt;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;1797006196&quot; paraeid=&quot;{8967c19a-68c3-4164-996b-94e2056feafc}{172}&quot;&gt;Cabe destacar también su labor como editora de volúmenes colectivos y de monografías, así como su participación (con tareas de gestión, edición y evaluación) en revistas científicas de acceso abierto. Su experiencia como miembro de equipos de investigación (19 proyectos y 12 convenios), como organizadora de encuentros científicos (29) y de acciones de transferencia (13) es reseñable. Desde 2004 ha sido coordinadora técnica del Grupo de Investigación&amp;nbsp;Prolope&amp;nbsp;y en la actualidad es profesora en la&amp;nbsp;Universitat&amp;nbsp;Autònoma&amp;nbsp;de Barcelona.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;">
+<img class="cphoto" src="../media/fernandez_laura.jpg" alt="Laura Fernández García" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Laura Fernández García</p><p class="crole">Comité científico</p><p class="cuni">Universitat Autònoma de Barcelona</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="daniel-fernandez-rodriguez" tabindex="0" role="button"
+  data-name="Daniel Fernández Rodríguez" data-role="Comité científico" data-uni="Universitat de València" data-email="daniel.fernandez@uab.cat" data-orcid=""
+  data-photo="../media/fernandez_daniel.jpg"
+  data-bio="&lt;p&gt;Daniel Fernández Rodríguez, doctor en Filología Española por la Universitat Autònoma de Barcelona, es profesor de literatura española del Siglo de Oro en la Universitat de València. A lo largo de su trayectoria académica, su línea de investigación principal ha sido el teatro de Lope de Vega y la literatura española de los siglos XVI y XVII, que ha abordado desde tres perspectivas complementarias:&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Imitación y reescritura.&lt;/strong&gt; El estudio del proceso creativo de Lope de Vega y de otros autores, particularmente en relación a la &lt;em&gt;novella&lt;/em&gt; italiana (Firenzuola, Parabosco, Erizzo o Granucci) y al aún poco conocido teatro de finales del siglo XVI (Loyola, Cepeda), le ha llevado a establecer el canon, los modelos y la tradición de las comedias bizantinas, así como a descubrir fuentes textuales ignoradas hasta la fecha, que atañen a escritores como Lope, Mateo Alemán o Castillo Solórzano. Del mismo modo, ha examinado algunas estrategias autoriales del Fénix, sobre todo en relación a las comedias citadas al principio y al final de &lt;em&gt;El peregrino en su patria&lt;/em&gt;.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Métrica, ortología y autoría.&lt;/strong&gt; El análisis del &lt;em&gt;usus scribendi&lt;/em&gt; le ha permitido corregir atribuciones erróneas a Lope de Vega (&lt;em&gt;La palabra vengada&lt;/em&gt;, &lt;em&gt;La Otomana&lt;/em&gt;), conformar el corpus de dramaturgos hoy apenas recordados pero muy relevantes en el Siglo de Oro (Cepeda) y, finalmente, determinar en qué medida ciertos rasgos lingüísticos y estilísticos (rimas, hiatos, léxico) son o no propios de Lope.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Edición crítica.&lt;/strong&gt; Ha llevado a cabo un total de cinco ediciones críticas (varias de ellas para el grupo Prolope), una tarea imprescindible para abordar el estudio de cualquier obra: así, ha editado cuatro comedias de Lope (&lt;em&gt;El maestro de danzar&lt;/em&gt;, &lt;em&gt;La gallarda toledana&lt;/em&gt;, &lt;em&gt;El Grao de Valencia&lt;/em&gt; y &lt;em&gt;Virtud, pobreza y mujer&lt;/em&gt;) y una de Loyola, &lt;em&gt;Miseno&lt;/em&gt;, pieza prácticamente desconocida pero que Lope imitó muy de cerca.&lt;/p&gt;&lt;p&gt;Además de las ediciones críticas mencionadas, hasta la fecha ha publicado el libro titulado &lt;em&gt;Entre corsarios y cautivos: las comedias bizantinas de Lope de Vega, su tradición y su legado&lt;/em&gt; (Iberoamericana-Vervuert, 2019), así como numerosos artículos de investigación; además, ha coordinado un número monográfico para el &lt;em&gt;Anuario Lope de Vega&lt;/em&gt;, dedicado a &lt;em&gt;Los primeros años del teatro comercial en España y el primer Lope&lt;/em&gt; (1560-1598). Finalmente, ha dictado más de cuarenta ponencias y comunicaciones en congresos, seminarios y jornadas nacionales e internacionales.&lt;/p&gt;&lt;p&gt;En lo que atañe a su formación, a lo largo de su trayectoria Daniel Fernández Rodríguez ha obtenido el Premio Extraordinario de Licenciatura y el Premio Extraordinario de Doctorado, así como una ayuda predoctoral FPU (con sendas ayudas adicionales para realizar estancias de investigación en Florencia y en Oxford) y dos ayudas posdoctorales Juan de la Cierva (Juan de la Cierva-Formación y Juan de la Cierva-Incorporación). Además, gozó de un contrato de investigación posdoctoral en la Univesité de Neuchâtel.&lt;/p&gt;">
+<img class="cphoto" src="../media/fernandez_daniel.jpg" alt="Daniel Fernández Rodríguez" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Daniel Fernández Rodríguez</p><p class="crole">Comité científico</p><p class="cuni">Universitat de València</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="guillermo-gomez-sanchez-ferrer" tabindex="0" role="button"
+  data-name="Guillermo Gómez Sánchez-Ferrer" data-role="Comité científico" data-uni="Universidad Complutense de Madrid" data-email="guillermo.gomez@ucm.es" data-orcid="0000-0002-4319-4840"
+  data-photo="../media/gomez_guillermo.jpg"
+  data-bio="&lt;p&gt;&lt;!--StartFragment--&gt;Guillermo Gómez Sánchez-Ferrer es doctor en Lengua Española y sus Literaturas por la Universidad Complutense de Madrid. Su tesis doctoral, dedicada al estudio de los impresores españoles de teatro en el siglo XVII, obtuvo la calificación de Sobresaliente cum laude y mereció el premio extraordinario de doctorado. Asimismo, su formación se completa con otros estudios de máster sobre literatura española (UCM), didáctica de la lengua castellana y sus literaturas (UNED) y gestión de bibliotecas (UCM).&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;Sus líneas de investigación abarcan, principalmente, el estudio y la edición del teatro de la Edad Moderna, el análisis de la recepción impresa del teatro del siglo XVII, el análisis de la puesta en escena contemporánea y la adaptación cinematográfica de los clásicos, así como la aplicación de las Humanidades Digitales al estudio de la literatura áurea.&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;Como consecuencia de lo anterior, ha colaborado con varios grupos de investigación y diversos proyectos internacionales relacionados con el teatro del Siglo de Oro desarrollados en instituciones como el CSIC, la Universidad Complutense de Madrid, la Universidad de Burgos, la Universidad de Santiago de Compostela, la Universidad de Salamanca, la&amp;nbsp;Univesidad&amp;nbsp;Autónoma de Madrid, la&amp;nbsp;Agence&amp;nbsp;Nationale&amp;nbsp;de la&amp;nbsp;Recherche&amp;nbsp;o la Duke&amp;nbsp;University. Su labor le ha llevado a leer trabajos en varios congresos y jornadas internacionales dedicadas al estudio del teatro español áureo, entre los que destacan las Jornadas de Teatro Clásico de la villa de Olmedo, las Jornadas de Teatro Clásico de Almagro y los congresos organizados por el TC/12 –&amp;nbsp;Consolíder, la Asociación Internacional Siglo de Oro (AISO) o la Sociedad de Estudios Medievales y Renacentistas (SEMYR).&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;Pertenece o ha pertenecido a varias asociaciones profesionales y académicas, entre las que se encuentran la AIH: Asociación Internacional de Hispanistas, BETA: Asociación de Jóvenes Doctores en Hispanismo, SEDIC: Asociación Española de Documentación e Información Científica o ALEPH: Asociación de Jóvenes Investigadores en Literatura Hispánica, cuya presidencia ha ostentado entre 2013 y 2014. Además, su perfil internacional se completa con estancias de investigación en Queen Mary&amp;nbsp;University&amp;nbsp;of&amp;nbsp;London,&amp;nbsp;State&amp;nbsp;University&amp;nbsp;of&amp;nbsp;New York at&amp;nbsp;Stony&amp;nbsp;Brook,&amp;nbsp;Università&amp;nbsp;degli&amp;nbsp;Studi&amp;nbsp;di Firenze y&amp;nbsp;Universität&amp;nbsp;Bonn.&amp;nbsp;&lt;!--EndFragment--&gt;&lt;/p&gt;">
+<img class="cphoto" src="../media/gomez_guillermo.jpg" alt="Guillermo Gómez Sánchez-Ferrer" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Guillermo Gómez Sánchez-Ferrer</p><p class="crole">Comité científico</p><p class="cuni">Universidad Complutense de Madrid</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="susanna-alles" tabindex="0" role="button"
+  data-name="Susanna Allés" data-role="Investigadora" data-uni="University of Miami" data-email="susanna_alles@miami.edu" data-orcid=""
+  data-photo="../media/alles_susanna.jpg"
+  data-bio="&lt;p&gt;Susanna Allés Torrent es doctora en Filología Románica, licenciada en Filología Clásica y Filología Italiana por la Universitat de Barcelona, y diplomada en Nuevas tecnologías aplicadas a la historia por la École Nationale des Chartes.&lt;/p&gt;&lt;p&gt;Actualmente es profesora de Humanidades digitales en la Universidad de Miami. Sus líneas de investigación son, por un lado, el estudio de la recepción de la literatura clásica e italiana en la Península Ibérica, especialmente a través de las traducciones, durante la Edad Media y el Renacimiento; por el otro, la edición digital y el análisis electrónico de textos.&lt;/p&gt;">
+<img class="cphoto" src="../media/alles_susanna.jpg" alt="Susanna Allés" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Susanna Allés</p><p class="crole">Investigadora</p><p class="cuni">University of Miami</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="miguel-betti" tabindex="0" role="button"
+  data-name="Miguel Betti" data-role="Investigador" data-uni="" data-email="" data-orcid=""
+  data-photo=""
+  data-bio="&lt;p&gt;Biografía del miembro.&lt;/p&gt;">
+<img class="cphoto" src="" alt="Miguel Betti" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Miguel Betti</p><p class="crole">Investigador</p><p class="cuni"></p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="rosa-bono" tabindex="0" role="button"
+  data-name="Rosa Bono" data-role="Investigadora" data-uni="Universitat Autònoma de Barcelona" data-email="rosabv15@gmail.com" data-orcid="0000-0003-2956-5956"
+  data-photo="../media/bono_rosa.jpg"
+  data-bio="&lt;p&gt;Rosa Bono Velilla es doctora en Teoría de la Literatura y Literatura Comparada por la Universitat Autònoma de Barcelona, donde defendió en 2024 una tesis sobre la tragedia europea del siglo XVI bajo la dirección de Gonzalo Pontón. Su trayectoria formativa ha sido reconocida con el Premio Extraordinario de Doctorado y previamente con el Premio Extraordinario de Grado.&lt;/p&gt;&lt;p&gt;En el seno de PROLOPE ha editado &lt;em&gt;La bella Aurora&lt;/em&gt; para la &lt;em&gt;Parte XXI&lt;/em&gt; de las &lt;em&gt;Comedias de Lope de Vega&lt;/em&gt; y prepara actualmente la edición de &lt;em&gt;La necedad del discreto&lt;/em&gt; para la &lt;em&gt;Parte XXV&lt;/em&gt;. Colabora con el Centro para la Edición de los Clásicos Españoles desde hace ocho años, desde donde ha participado como revisora editorial en proyectos como la &lt;em&gt;Biblioteca Clásica&lt;/em&gt; de la RAE.&lt;/p&gt;&lt;p&gt;Imparte docencia en la Universitat Autònoma de Barcelona y en la Universitat Oberta de Catalunya, en el área de teoría literaria y literatura comparada. Compagina su labor filológica con la práctica escénica como actriz en el Aula de Investigación Teatral METADRAMA de la Universitat de Barcelona, donde participa en proyectos que integran investigación académica, creación dramática y divulgación cultural del patrimonio teatral áureo.&lt;/p&gt;">
+<img class="cphoto" src="../media/bono_rosa.jpg" alt="Rosa Bono" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Rosa Bono</p><p class="crole">Investigadora</p><p class="cuni">Universitat Autònoma de Barcelona</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="alba-carmona" tabindex="0" role="button"
+  data-name="Alba Carmona" data-role="Investigadora" data-uni="University of Birmingham" data-email="a.carmonalazaro@bham.ac.uk" data-orcid=""
+  data-photo="../media/CarmonaAlba.jpg"
+  data-bio="&lt;p&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;Doctora en Filología Española por la Universidad Autónoma de Barcelona (Premio Extraordinario de Doctorado), Alba Carmona es Senior&amp;nbsp;Research&amp;nbsp;Fellow&amp;nbsp;en el&amp;nbsp;Department&amp;nbsp;of&amp;nbsp;Modern&amp;nbsp;Languages&amp;nbsp;de la&amp;nbsp;University&amp;nbsp;of&amp;nbsp;Birmingham. Anteriormente, ha desarrollado su actividad académica en la&amp;nbsp;University&amp;nbsp;of&amp;nbsp;Bergen (Noruega) y en la&amp;nbsp;University&amp;nbsp;of&amp;nbsp;Leeds (Reino Unido).&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;!--StartFragment--&gt;&lt;div&gt;&lt;p paraid=&quot;1182093601&quot; paraeid=&quot;{9684adec-9b2f-453f-bf2d-d077601299ea}{182}&quot;&gt;Su investigación se centra en el teatro del Siglo de Oro y su recepción contemporánea, con especial atención a la puesta en escena, la adaptación fílmica, el exilio, la circulación transnacional y el género. Su trabajo combina enfoques histórico-literarios y de los estudios culturales con metodologías digitales, como el análisis de redes sociales, e incorpora recientemente herramientas de procesamiento del lenguaje natural.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;306544078&quot; paraeid=&quot;{9684adec-9b2f-453f-bf2d-d077601299ea}{188}&quot;&gt;Ha recibido financiación competitiva, incluyendo una beca Marie&amp;nbsp;Skłodowska-Curie, de instituciones británicas, europeas y estadounidenses. Es autora de monografías, ha editado volúmenes colectivos y números monográficos, y ha publicado en revistas académicas como&amp;nbsp;The&amp;nbsp;Modern&amp;nbsp;Language&amp;nbsp;Review,&amp;nbsp;Hispanic&amp;nbsp;Research&amp;nbsp;Journal&amp;nbsp;y&amp;nbsp;Bulletin&amp;nbsp;of&amp;nbsp;Hispanic&amp;nbsp;Studies. En 2022 le fue concedido el premio al Mejor artículo científico publicado en 2021 por la Sociedad Internacional Humanidades Digitales Hispánicas.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;1457549306&quot; paraeid=&quot;{9684adec-9b2f-453f-bf2d-d077601299ea}{194}&quot;&gt;Ha realizado estancias de investigación en universidades como Princeton, Oxford, Stanford y la IT&amp;nbsp;University&amp;nbsp;of&amp;nbsp;Copenhagen. Asimismo, ha desarrollado actividades de transferencia, como el comisariado de dos exposiciones en la Casa Museo Lope de Vega (Madrid) y colaboraciones con medios como El País y RTVE.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;316498755&quot; paraeid=&quot;{9684adec-9b2f-453f-bf2d-d077601299ea}{200}&quot;&gt;Pueden consultarse sus publicaciones en:&amp;nbsp;&lt;a href=&quot;https://bham.academia.edu/AlbaCarmona&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener&quot;&gt;https://bham.academia.edu/AlbaCarmona&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;">
+<img class="cphoto" src="../media/CarmonaAlba.jpg" alt="Alba Carmona" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Alba Carmona</p><p class="crole">Investigadora</p><p class="cuni">University of Birmingham</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="pedro-conde-parrado" tabindex="0" role="button"
+  data-name="Pedro Conde Parrado" data-role="Investigador" data-uni="Universidad de Valladolid" data-email="ppconpar@uva.es" data-orcid=""
+  data-photo="../media/conde_pedro.jpg"
+  data-bio="&lt;div&gt;&lt;p paraid=&quot;1901027366&quot; paraeid=&quot;{9684adec-9b2f-453f-bf2d-d077601299ea}{244}&quot;&gt;Pedro Conde Parrado es Doctor en Filología Clásica y Profesor Titular de Filología Latina en la Universidad de Valladolid, en la que ha dirigido su Servicio de Publicaciones desde 2006 hasta este mismo año 2014, así como el Departamento de Filología Clásica desde 2016 hasta el presente. Ha sido miembro de la junta directiva nacional de la Sociedad de Estudios Latinos y director de la prestigiosa revista de Filología Clásica Minerva. Sus principales líneas de investigación y publicación se centran en la historia de la Medicina&amp;nbsp;greco-latina&amp;nbsp;y su influencia posterior, el Humanismo renacentista, la historia del enciclopedismo hasta el Renacimiento y las influencias de la cultura&amp;nbsp;greco-latina&amp;nbsp;en la literatura española hasta nuestros días, con especial atención al Siglo de Oro y a la poesía contemporánea (ss. XX-XXI). Entre sus obras publicadas cabe destacar Hipócrates latino. El De medicina de Cornelio Celso en el Renacimiento, Valladolid, Universidad, 2003, la obra colectiva&amp;nbsp;Antiquae&amp;nbsp;Lectiones. El legado clásico desde la Antigüedad hasta la Revolución Francesa, Madrid, Cátedra, 2005 (en colaboración con&amp;nbsp;otos&amp;nbsp;profesores de su Departamento universitario), y Orfeo XXI. Poesía española contemporánea y tradición clásica (en colaboración con Javier García Rodríguez), así como numerosos trabajos relacionados con la presencia del mundo clásico en autores de la literatura española. Es, además, estudioso y editor de textos de la literatura del Siglo de Oro (Lope de Vega, Luis de Góngora, Francisco de Quevedo…).&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;!--StartFragment--&gt;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;220755491&quot; paraeid=&quot;{9580c2d5-1eb6-4ddf-bb5b-a804a0d0fd78}{7}&quot;&gt;Sus trabajos en torno a la figura de Lope de Vega son los siguientes:&amp;nbsp;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;1682495637&quot; paraeid=&quot;{9580c2d5-1eb6-4ddf-bb5b-a804a0d0fd78}{13}&quot;&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;“Ravisio&amp;nbsp;Téxtor&amp;nbsp;entre Cervantes y Lope de Vega: una hipótesis de interpretación y una coda teórica”, Tonos Digital. Revista Electrónica de Estudios Filológicos 4 (2002) [www.tonosdigital.com] (en colaboración con Javier García Rodríguez).&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;“Invectivas&amp;nbsp;latinescas. Anatomía de la&amp;nbsp;Expostulatio&amp;nbsp;Spongiae&amp;nbsp;en defensa de Lope de Vega”, Castilla. Estudios de Literatura, 3 (2012), pp. 37-93.&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;“Los&amp;nbsp;Epitheta&amp;nbsp;de&amp;nbsp;Ravisius&amp;nbsp;Textor&amp;nbsp;y la&amp;nbsp;Picta&amp;nbsp;poesis&amp;nbsp;Ovidiana de&amp;nbsp;Niklaus&amp;nbsp;Reusner&amp;nbsp;en la Jerusalén conquistada y en otras obras de Lope de Vega”, Anuario Lope de Vega. Texto, literatura, cultura, 23 (2017), pp. 366-421.&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;“Las&amp;nbsp;Sententiae&amp;nbsp;de Andrés&amp;nbsp;Eborense&amp;nbsp;(Lyon, 1557) en las dedicatorias de comedias y en otras obras de Lope de Vega”,&amp;nbsp;Bulletin&amp;nbsp;of&amp;nbsp;the&amp;nbsp;Comediantes, 71, 1-2 (2019), pp. 21-47 (en colaboración con&amp;nbsp;Sònia&amp;nbsp;Boadas).&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;“La erudición jurídica en Lope de Vega: el De&amp;nbsp;methodo&amp;nbsp;de&amp;nbsp;Matteo&amp;nbsp;Gribaldi”, e-Spania.&amp;nbsp;Revue interdisciplinaire d’études hispaniques médiévales et modernes, 38 (février 2021) [https://journals.openedition.org/e-spania/38870]&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;“Lope de Vega y el&amp;nbsp;Parnassus&amp;nbsp;poeticus&amp;nbsp;de Nicolas de&amp;nbsp;Nomexy”, Boletín de la Real Academia Española, 101.34 (2021), pp. 401-413.&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;“Lope de Vega y las Fábulas de Gabriele&amp;nbsp;Faerno”,&amp;nbsp;Studia&amp;nbsp;Philologica&amp;nbsp;Valentina (Priscorum&amp;nbsp;Interpres. Homenaje al Prof. Jaime Siles), Anejo 2 (2021), pp. 411-422.&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;“Tras el coral perdido (en Lope de Vega y otros autores de su tiempo)”, Anuario Lope de Vega. Texto, literatura, cultura, 29 (2023), pp. 71-96.&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;Lope de Vega. La vega del Parnaso (Felipe B. Pedraza Jiménez- P. Conde Parrado,&amp;nbsp;dirs.) Cuenca, Ediciones de la Universidad de Castilla-La Mancha, 2015. 3 volúmenes (edición y estudio de los poemas “El siglo de oro” –en colaboración con Cristina Gutiérrez Valencia–, “Oración en el certamen en los Recoletos Agustinos”, “Sentimientos a los agravios de Cristo por la nación hebrea” –en colaboración con Rafael González Cañal–, “Canción al bienaventurado san Juan de Dios” –en colaboración con Cristina Gutiérrez Valencia–, “Isagoge a los Reales Estudios de la Compañía de Jesús” –en colaboración con Abraham Madroñal Durán– y “Pira sacra en la muerte de don Gonzalo Fernández de Córdoba” –en colaboración con Javier García Rodríguez–).&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;Expostulatio&amp;nbsp;Spongiae&amp;nbsp;en defensa de Lope de Vega, Madrid, Gredos-Prolope, 2015 (en colaboración con Xavier&amp;nbsp;Tubau&amp;nbsp;Moreu).&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;Felipe B. Pedraza Jiménez-P. Conde Parrado, Lope de Vega. Arte nuevo de hacer comedias. Edición crítica. Fuentes y ecos latinos, Cuenca, Ediciones de la Universidad de Castilla-La Mancha, 2016.&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;&amp;nbsp;Lope de Vega crítico de Góngora. Cartas de Lope a un “señor de estos reinos”. Respuestas de Colmenares (edición crítica, estudio y anotación), París, e-Spania&amp;nbsp;Books&amp;nbsp;(edición electrónica&amp;nbsp;on&amp;nbsp;line), 2019 [https://books.openedition.org/esb/2203]&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;“Creed que ha sido fuerza: Lope y el Arte por el arte”, en G. Vega García-Luengos-H.&amp;nbsp;Urzáiz&amp;nbsp;Tortajada, eds., Cuatrocientos años del Arte nuevo de hacer comedias de Lope de Vega, Valladolid, Universidad de Valladolid, 2010, pp. 391-400.&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;“Las paradojas de Lope ante los modelos clásicos”, en F. B. Pedraza Jiménez-R. González Cañal-E. E.&amp;nbsp;Marcello, eds., El Arte Nuevo de hacer comedias en su contexto europeo, Cuenca, Universidad de Castilla-La Mancha, 2010, pp. 41-54.&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;“Las fuentes de erudición y el humanismo cristiano en la poesía de Lope de Vega: el comienzo del décimo canto del Isidro”, en Jesús Ponce Cárdenas, ed., Lope de Vega y el Humanismo cristiano, Madrid-Frankfurt am&amp;nbsp;Main, Iberoamericana-Vervuert, 2018, pp. 81-106.&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;“La erudición al servicio de la épica en el canto II del Isidro de Lope de Vega: la infernal Envidia contra el santo de Madrid”, en Jesús Ponce Cárdenas, ed., Literatura y devoción&amp;nbsp;en tiempos de Lope de Vega, Madrid-Frankfurt am&amp;nbsp;Main, Iberoamericana-Vervuert, 2019, pp. 11-33.&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;“Teología de arte menor: el Pseudo-Dionisio y los Padres Apostólicos en el Isidro y en otras obras de Lope de Vega”, Jesús Ponce Cárdenas, ed., La escritura religiosa de Lope de Vega: entre lírica y epopeya, Madrid-Frankfurt am&amp;nbsp;Main, Iberoamericana-Vervuert, 2020, pp. 123-159.&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;“Lope de Vega en los preliminares de la primera edición (Barcelona, 1627) de los Sueños de Francisco de Quevedo”, en María José Alonso Veloso, coord., Perfiles de la literatura barroca desde la obra de Quevedo, Madrid, Sial Pigmalión, 2020, pp. 211-238.&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;“Entresijos de la erudición del Fénix: los&amp;nbsp;Dialogos&amp;nbsp;de Amador&amp;nbsp;Arraiz&amp;nbsp;en el Isidro y en otras obras de Lope de Vega”, en Jesús Ponce Cárdenas, ed., En torno al Lope sacro, Madrid-Frankfurt am&amp;nbsp;Main, Iberoamericana-Vervuert, 2021, pp. 57-88.&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;&lt;p paraid=&quot;220755491&quot; paraeid=&quot;{9580c2d5-1eb6-4ddf-bb5b-a804a0d0fd78}{7}&quot;&gt;&lt;!--StartFragment--&gt;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;/div&gt;">
+<img class="cphoto" src="../media/conde_pedro.jpg" alt="Pedro Conde Parrado" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Pedro Conde Parrado</p><p class="crole">Investigador</p><p class="cuni">Universidad de Valladolid</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="christophe-courderc" tabindex="0" role="button"
+  data-name="Christophe Courderc" data-role="Investigador" data-uni="Université Paris Nanterre" data-email="christophe.couderc@parisnanterre.fr" data-orcid=""
+  data-photo="../media/couderc_christophe.jpg"
+  data-bio="&lt;p&gt;Christophe Couderc (1967) es Catedrático de literatura y civilización de la España del Siglo de Oro de la Université Paris X-Nanterre y director del Departamento de estudios hispánicos e hispanoamericanos desde 2008.&lt;/p&gt;&lt;p&gt;Doctorado en Estudios Ibéricos en la Université de París X-Nanterre desde 1997, con una tesis sobre &lt;em&gt;Le système des personajes de la «Comedia» espagnole (1594-1630). Contribution à l’étude d’une dramaturgie&lt;/em&gt;, es también miembro titular del equipo CRIIA y responsable del eje Siglo de Oro (GREAC, &lt;em&gt;Groupe de recherches sur l’Espagne de l’Age classique&lt;/em&gt;), siendo especialista en el teatro de esta época.&lt;/p&gt;&lt;p&gt;Ha publicado numerosos estudios, entre los que destacan sus obras &lt;em&gt;Galanes y damas en la Comedia Nueva. Una lectura funcionalista del teatro español del Siglo de Oro&lt;/em&gt; y &lt;em&gt;Le théâtre espagnol du Siècle d’Or (1580-1680)&lt;/em&gt;, así como su &lt;em&gt;Manuel de version espagnole classique&lt;/em&gt;. Forma parte del comité editorial del &lt;em&gt;Anuario de Estudios Calderonianos&lt;/em&gt;.&lt;/p&gt;">
+<img class="cphoto" src="../media/couderc_christophe.jpg" alt="Christophe Courderc" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Christophe Courderc</p><p class="crole">Investigador</p><p class="cuni">Université Paris Nanterre</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="daniele-crivellari" tabindex="0" role="button"
+  data-name="Daniele Crivellari" data-role="Investigador" data-uni="Università degli Studi di Salerno" data-email="dcrivellari@unisa.it" data-orcid="0000-0002-1478-4788"
+  data-photo="../media/crivellari_daniele.jpg"
+  data-bio="&lt;div&gt;&lt;p paraid=&quot;349165383&quot; paraeid=&quot;{035dc96d-35af-4965-9df6-75b2d3f02c05}{100}&quot;&gt;Profesor catedrático de Literatura española en la Universidad de Salerno (Italia). Ha dedicado sus estudios a varios autores (Lope de Vega, Vélez de Guevara, Tirso de Molina, Antonio de Solís, Pérez de Montalbán, Agustín Moreto, etc.) y a diferentes temáticas y aspectos de la literatura aurisecular (presencia y evolución de los romances en el teatro, recepción del drama barroco en el siglo XX, comedias de privanza, segmentación de la comedia, estudio de manuscritos autógrafos, etc.).&amp;nbsp;&lt;/p&gt;&lt;p paraid=&quot;349165383&quot; paraeid=&quot;{035dc96d-35af-4965-9df6-75b2d3f02c05}{100}&quot;&gt;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;Entre sus trabajos destacan una monografía sobre la reescritura del Romancero en el teatro de Luis Vélez de Guevara (2008), la edición crítica de una comedia del mismo autor, &lt;i&gt;El privado perseguido &lt;/i&gt;(2012), además de un estudio de las marcas de segmentación en los manuscritos autógrafos teatrales de Lope de Vega (2013), la edición crítica de &lt;i&gt;Lo que son juicios del cielo&lt;/i&gt;, de Juan Pérez de Montalbán (2013) y de &lt;i&gt;El defensor de su agravio&lt;/i&gt;, de Agustín Moreto (2016).&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;!--StartFragment--&gt;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;236543319&quot; paraeid=&quot;{035dc96d-35af-4965-9df6-75b2d3f02c05}{114}&quot;&gt;Ha coordinado, junto con Eugenio Maggi, la edición de la &lt;i&gt;Parte XVII&lt;/i&gt; de comedias de Lope (2018), en la que ha editado el texto de &lt;i&gt;Con su pan se lo coma&lt;/i&gt;. En otras &lt;i&gt;Partes &lt;/i&gt;de comedias, ha editado asimismo &lt;i&gt;La ventura sin&amp;nbsp;buscalla&lt;/i&gt;&amp;nbsp;(&lt;i&gt;Parte XX&lt;/i&gt;), &lt;i&gt;El piadoso aragonés&lt;/i&gt; (con Gonzalo Pontón, &lt;i&gt;Parte XXI&lt;/i&gt;) y &lt;i&gt;La primera información&lt;/i&gt; (&lt;i&gt;Parte XXII&lt;/i&gt;). Tras hallar el paradero del manuscrito autógrafo −que se creía perdido− de la comedia hagiográfica de Lope&amp;nbsp;&lt;i&gt;Barlaán&amp;nbsp;y Josafat&lt;/i&gt;, ha editado la obra para Cátedra en 2021.&amp;nbsp;&lt;/p&gt;&lt;p paraid=&quot;236543319&quot; paraeid=&quot;{035dc96d-35af-4965-9df6-75b2d3f02c05}{114}&quot;&gt;&lt;!--StartFragment--&gt;CV en línea:&amp;nbsp;&lt;a href=&quot;https://docenti.unisa.it/025523/curriculum&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener&quot;&gt;https://docenti.unisa.it/025523/curriculum&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;/div&gt;">
+<img class="cphoto" src="../media/crivellari_daniele.jpg" alt="Daniele Crivellari" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Daniele Crivellari</p><p class="crole">Investigador</p><p class="cuni">Università degli Studi di Salerno</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="alvaro-cuellar" tabindex="0" role="button"
+  data-name="Álvaro Cuéllar" data-role="Investigador" data-uni="Universitat Autònoma de Barcelona" data-email="" data-orcid=""
+  data-photo=""
+  data-bio="&lt;p&gt;Biografía del miembro.&lt;/p&gt;">
+<img class="cphoto" src="" alt="Álvaro Cuéllar" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Álvaro Cuéllar</p><p class="crole">Investigador</p><p class="cuni">Universitat Autònoma de Barcelona</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="florence-d-artois" tabindex="0" role="button"
+  data-name="Florence D'Artois" data-role="Investigadora" data-uni="Université Paris-Sorbonne" data-email="florencedartois@gmail.com" data-orcid=""
+  data-photo="../media/d-artois_florence.jpg"
+  data-bio="&lt;p&gt;Florence d’Artois (1980) es doctora en literatura española por la Université París X-Nanterre desde 2009 y &lt;em&gt;maître de conférences&lt;/em&gt; en Literatura española del Siglo de Oro por el Institut d’Études Hispaniques de la Université París-Sorbonne.&lt;/p&gt;&lt;p&gt;Especializada en el teatro del Siglo de Oro, concretamente en lo que concierne a poéticas, retóricas y géneros, ha publicado una gran cantidad de artículos sobre comedias de Lope de Vega y es miembro del consejo científico del proyecto &lt;em&gt;ANR IDT (Les idées du Théâtre)&lt;/em&gt;, donde gestiona junto a Delia Gavela las ediciones de los paratextos de Lope. Asimismo, se ha centrado también en el estudio del helenismo y humanismo españoles.&lt;/p&gt;&lt;p&gt;Siendo miembro de PROLOPE desde 2008, ha realizado la edición crítica de &lt;em&gt;La locura por la honra&lt;/em&gt;, incluida en la &lt;em&gt;Parte XI&lt;/em&gt; de las comedias de Lope de Vega, y actualmente se encuentra preparando la coordinación de la edición de la &lt;em&gt;Parte XVI de Comedias de Lope de Vega&lt;/em&gt;, en colaboración con Luigi Giuliani, dentro de la cual se incluirá también su edición de &lt;em&gt;La felisarda&lt;/em&gt; (Gredos, 2016).&lt;/p&gt;">
+<img class="cphoto" src="../media/d-artois_florence.jpg" alt="Florence D'Artois" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Florence D'Artois</p><p class="crole">Investigadora</p><p class="cuni">Université Paris-Sorbonne</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="natalia-fernandez" tabindex="0" role="button"
+  data-name="Natalia Fernández" data-role="Investigadora" data-uni="" data-email="" data-orcid=""
+  data-photo=""
+  data-bio="&lt;p&gt;Biografía del miembro.&lt;/p&gt;">
+<img class="cphoto" src="" alt="Natalia Fernández" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Natalia Fernández</p><p class="crole">Investigadora</p><p class="cuni"></p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="folke-gernert" tabindex="0" role="button"
+  data-name="Folke Gernert" data-role="Investigador" data-uni="Trier Universität" data-email="gernertf@uni-trier.de" data-orcid="0000-0002-6424-0711"
+  data-photo="../media/GernertFolke_jpg.jpg"
+  data-bio="&lt;p&gt;&lt;!--StartFragment--&gt;Folke&amp;nbsp;Gernert&amp;nbsp;(Bergisch&amp;nbsp;Gladbach&amp;nbsp;1969) es catedrática de Filología Románica en la Universidad de Tréveris. Tras licenciarse y doctorarse en Filología Románica y Germánica en la Universidad de Colonia, se habilitó en la Universidad de Kiel con un estudio&amp;nbsp;sobre&amp;nbsp;&amp;nbsp;&lt;em&gt;Parodia&amp;nbsp;y&amp;nbsp;Contrafacta&amp;nbsp;de liturgia y Biblia en la literatura románica medieval y renacentista. Historia, teoría y textos&amp;nbsp;&lt;/em&gt;(San Millán de la Cogolla,&amp;nbsp;CiLengua&amp;nbsp;2009), que fue galardonado con el Premio Internacional del Libro La&amp;nbsp;Corónica&amp;nbsp;2011. Sus líneas de investigación se centran en la poesía románica medieval y renacentista, las relaciones hispano-italianas e&amp;nbsp;hispano-francesas, el teatro del Siglo de Oro y los estudios de literatura y ciencia. Entre sus publicaciones destacan la edición crítica de&amp;nbsp;&lt;em&gt;La Lozana Andaluza&lt;/em&gt;, coeditada con Jacques&amp;nbsp;Joset&amp;nbsp;(Madrid, RAE, 2013) y las monografías&amp;nbsp;&lt;em&gt;Lecturas del cuerpo. Fisiognomía y literatura en la España áurea&lt;/em&gt;&amp;nbsp;(Salamanca, Ediciones de la Universidad de Salamanca, 2018),&amp;nbsp;&lt;em&gt;Fictionalizing&amp;nbsp;heterodoxy&amp;nbsp;-&amp;nbsp;Various&amp;nbsp;uses&amp;nbsp;of&amp;nbsp;knowledge&amp;nbsp;in&amp;nbsp;the&amp;nbsp;Spanish&amp;nbsp;world&amp;nbsp;from&amp;nbsp;the&amp;nbsp;Archpriest&amp;nbsp;of&amp;nbsp;Hita&amp;nbsp;to&amp;nbsp;Mateo Alemán&amp;nbsp;&lt;/em&gt;(Berlín, De&amp;nbsp;Gruyter, 2019) y&amp;nbsp;&lt;em&gt;Divination&amp;nbsp;on&amp;nbsp;stage.&amp;nbsp;&lt;/em&gt;&lt;em&gt;Prophetic body signs in early modern theatre in Spain and Europe&lt;/em&gt;&amp;nbsp;(Berlín, De Gruyter, 2021).&amp;nbsp;Actualmente es coeditora del&amp;nbsp;&lt;em&gt;Romanistisches&amp;nbsp;Jahrbuch&lt;/em&gt;&amp;nbsp;y dirige el proyecto de investigación&amp;nbsp;&lt;em&gt;Lucian&amp;nbsp;and&amp;nbsp;the&amp;nbsp;doctors.&amp;nbsp;&lt;/em&gt;&lt;em&gt;Literary and medical forms of&amp;nbsp;textualisation&amp;nbsp;in early modern Spain&amp;nbsp;&lt;/em&gt;(financiado&amp;nbsp;por&amp;nbsp;la DFG).&amp;nbsp;&lt;!--EndFragment--&gt;&lt;/p&gt;">
+<img class="cphoto" src="../media/GernertFolke_jpg.jpg" alt="Folke Gernert" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Folke Gernert</p><p class="crole">Investigador</p><p class="cuni">Trier Universität</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="luigi-giuliani" tabindex="0" role="button"
+  data-name="Luigi Giuliani" data-role="Investigador" data-uni="Universidad de Perugia" data-email="" data-orcid=""
+  data-photo=""
+  data-bio="&lt;p&gt;Biografía del miembro.&lt;/p&gt;">
+<img class="cphoto" src="" alt="Luigi Giuliani" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Luigi Giuliani</p><p class="crole">Investigador</p><p class="cuni">Universidad de Perugia</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="khatereh-gorji" tabindex="0" role="button"
+  data-name="Khatereh Gorji" data-role="Investigadora" data-uni="Universitat Autònoma de Barcelona" data-email="khatereh_gorji@yahoo.com" data-orcid=""
+  data-photo="../media/gorji_khatereh.jpg"
+  data-bio="&lt;p&gt;Licenciada en Lengua y literatura españolas (2014) por la Universidad Allameh Tabatab’i de Teherán, obteniendo el premio extraordinario equivalente a la fórmula del sistema académico de Irán.&lt;/p&gt;&lt;p&gt;Máster en Lengua Española, Literatura Hispánica y Español como Lengua Extranjera (2018) por la Universidad Autónoma de Barcelona, realizando una investigación comparativa sobre la literatura del Siglo de Oro y la literatura isabelina para el trabajo final, bajo el título de &lt;em&gt;«Mujeres varoniles: un caso para la reflexión sobre personajes y tipos en Lope de Vega y Shakespeare»&lt;/em&gt;.&lt;/p&gt;&lt;p&gt;Obtuvo la beca FI de Generalitat de Catalunya en marzo de 2019, por lo cual ha pasado formar parte del grupo Prolope y trabajar como Personal Investigador Predoctoral. Actualmente está haciendo su tesis doctoral sobre &lt;em&gt;«La representación de la figura del morisco del teatro clásico español en la puesta en escena contemporánea»&lt;/em&gt;, dirigida por Guillermo Gómez Sánchez Ferrer y Gonzalo Pontón, y tutelada por Ramón Valdés.&lt;/p&gt;">
+<img class="cphoto" src="../media/gorji_khatereh.jpg" alt="Khatereh Gorji" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Khatereh Gorji</p><p class="crole">Investigadora</p><p class="cuni">Universitat Autònoma de Barcelona</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="emma-gonzalez-mesas" tabindex="0" role="button"
+  data-name="Emma González Mesas" data-role="Investigadora" data-uni="Universitat Autònoma de Barcelona" data-email="Emma.Gonzalez@uab.cat" data-orcid="0000-0002-2322-1434"
+  data-photo=""
+  data-bio="&lt;div&gt;&lt;p paraid=&quot;980854385&quot; paraeid=&quot;{9c52cf7a-95ee-4a7d-894f-8d2364f3e5da}{40}&quot;&gt;Emma González Mesas es investigadora predoctoral (FPI)&amp;nbsp;en&amp;nbsp;el&amp;nbsp;grupo de investigación PROLOPE. Es graduada en filología hispánica con Mención en literatura por la&amp;nbsp;Universitat&amp;nbsp;de Barcelona (2021) donde también realizó el Máster en Estudios Avanzados en literatura española e hispanoamericana (2022), por el que recibió el Premio Extraordinario de Máster concedido por la misma Universidad.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;1506975043&quot; paraeid=&quot;{9c52cf7a-95ee-4a7d-894f-8d2364f3e5da}{60}&quot;&gt;Su&amp;nbsp;investigación doctoral se centra en el estudio de las acotaciones&amp;nbsp;explíticas&amp;nbsp;del&amp;nbsp;Fondo Gondomar.&amp;nbsp;En ella ofrece una panorámica de estos&amp;nbsp;interliminares&amp;nbsp;desde los&amp;nbsp;inticios&amp;nbsp;del teatro castellano hasta los albores de la Comedia Nueva reflejados en los manuscritos del Fondo. Asimismo,&amp;nbsp;mediante la&amp;nbsp;clasificiación&amp;nbsp;de las acotaciones&amp;nbsp;de Gondomar&amp;nbsp;está construyendo una base de datos&amp;nbsp;que pretende contribuir&amp;nbsp;con la recuperación de este valioso conjunto teatral.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;1623726504&quot; paraeid=&quot;{9c52cf7a-95ee-4a7d-894f-8d2364f3e5da}{108}&quot;&gt;Ha realizado una estancia de investigación en la&amp;nbsp;Università&amp;nbsp;degli&amp;nbsp;Studi&amp;nbsp;di Perugia que le permitió colaborar con el proyecto Gondomar Digital&amp;nbsp;realizando la edición crítica de la comedia de&amp;nbsp;&lt;em&gt;Los amores de&amp;nbsp;Albanio&amp;nbsp;y Ismenia&lt;/em&gt;, de Lope de Vega.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;!--StartFragment--&gt;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;1663574454&quot; paraeid=&quot;{9c52cf7a-95ee-4a7d-894f-8d2364f3e5da}{140}&quot;&gt;También&amp;nbsp;forma parte de&amp;nbsp;METADRAMA, el grupo de investigación y el&amp;nbsp;aula de teatro&amp;nbsp;de la&amp;nbsp;Universitat&amp;nbsp;de Barcelona,&amp;nbsp;desempeñando un papel activo tanto en la vertiente filológica como en la escénica.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;">
+<img class="cphoto" src="" alt="Emma González Mesas" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Emma González Mesas</p><p class="crole">Investigadora</p><p class="cuni">Universitat Autònoma de Barcelona</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="margaret-r-greer" tabindex="0" role="button"
+  data-name="Margaret R. Greer" data-role="Investigadora" data-uni="Duke University" data-email="mgreerduke@gmail.com" data-orcid=""
+  data-photo="../media/greer_margaret.jpg"
+  data-bio="&lt;p&gt;Margaret Rich Greer es profesora titular de literatura española en la Universidad de Duke. Se doctoró en Literatura española por la Universidad de Texas, Austin, en 1983.&lt;/p&gt;&lt;p&gt;Su principal área de especialización es la cultura y literatura española moderna. Sus ediciones críticas incluyen obras como &lt;em&gt;La estatua de Prometeo&lt;/em&gt; de Pedro Calderón de la Barca (Kassel, Alemania, 1986) o &lt;em&gt;Basta callar&lt;/em&gt; del mismo autor (Ottawa, 2000). Como resultado de su participación en el Grupo de Investigación PROLOPE, ha publicado artículos como «Espacios teatrales: su significación dramática y social» (2010) y ha colaborado en el seminario «Espacios de representación, espacios representados: la puesta en escena del teatro clásico español» en Barcelona en abril del 2010.&lt;/p&gt;&lt;p&gt;Recientemente, ha trabajado en el proyecto &lt;em&gt;Early modern spanish&lt;/em&gt;, el cual se centra en los grandes archivos de los primeros manuscritos teatrales modernos de España, y en la representación de la caza en la Edad Media y la literatura de la Edad Moderna, teniendo en cuenta las etapas de colonización. También ha tratado otras áreas de investigación como la función del teatro como una institución cultural y la teoría literaria psicoanalítica y feminista.&lt;/p&gt;&lt;p&gt;En la actualidad dirige el importante proyecto de investigación &lt;a href=&quot;https://manos.net/&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Manos Teatrales: An Experiment in Cyber-Paleography&lt;/em&gt;&lt;/a&gt;, dedicado al análisis de los miles de manuscritos del teatro clásico español de finales del XVI hasta principios del XVIII que se han conservado.&lt;/p&gt;">
+<img class="cphoto" src="../media/greer_margaret.jpg" alt="Margaret R. Greer" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Margaret R. Greer</p><p class="crole">Investigadora</p><p class="cuni">Duke University</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="jose-enrique-laplana-gil" tabindex="0" role="button"
+  data-name="José Enrique Laplana Gil" data-role="Investigador" data-uni="Universidad de Zaragoza" data-email="jelaplana@unizar.es" data-orcid=""
+  data-photo="../media/laplana_jose-enrique.jpg"
+  data-bio="&lt;p&gt;&lt;!--StartFragment--&gt;Premio extraordinario de Licenciatura (1990) y de Doctorado (1993) en Filosofía y Letras, sección Filología Hispánica, por la Universidad de Zaragoza. Becario predoctoral de FPI (1988-1991) y becario Postdoctoral de la Diputación General de Aragón durante el año 1992 integrado en el equipo L. E. S. O. (Literatura Española del Siglo de Oro; URA 1050 del CNRS) de la Universidad de Toulouse-Le&amp;nbsp;Mirail. En la actualidad profesor Titular de Literatura Española de la Universidad de Zaragoza. Cuenta con cinco sexenios de investigación reconocidos y ha participado en numerosos proyectos de investigación nacionales (PROLOPE, desde 1994 hasta 2018: PB 89-0320; DGICTY, PB93-8091; BFF2000-0083; BFF 2003-02480; HUM2006-09046; FF2009-13563; FFI2012-35950; FFI2015-66216-P; sobre Baltasar Gracián: MYCT: BFF 2003-06314 y HUM2006-09749) y autonómicos (Grupos de investigación reconocidos por la Diputación General de Aragón: «Baltasar Gracián y la cultura de su tiempo» (H-48), reconocido por el Gobierno de Aragón, entre 2006-2017), y Grupo de Referencia «Edición y estudio diacrónico de la literatura hispánica» (H-04_17R). Ha editado, entre otras obras, el&amp;nbsp;&lt;em&gt;Diálogo de la lengua&lt;/em&gt;&amp;nbsp;de Juan de Valdés, la&amp;nbsp;&lt;em&gt;Obra no dramática completa&lt;/em&gt;&amp;nbsp;de Juan Pérez de Montalbán, el&amp;nbsp;&lt;em&gt;Trece por docena&lt;/em&gt;&amp;nbsp;de Valentín de&amp;nbsp;Céspedes&amp;nbsp;junto al profesor tolosano Francis Cerdán (†), la miscelánea barroca&amp;nbsp;&lt;em&gt;Cítara de Apolo y Parnaso&lt;/em&gt;&amp;nbsp;en Aragón de Ambrosio&amp;nbsp;Bondía, y varias comedias de Lope de Vega (&lt;em&gt;Los Comendadores de Córdoba&lt;/em&gt;,&amp;nbsp;&lt;em&gt;Fuente Ovejuna&lt;/em&gt;,&amp;nbsp;&lt;em&gt;El amigo por fuerza&lt;/em&gt;&amp;nbsp;–junto a G. Pontón-,&amp;nbsp;&lt;em&gt;El testigo contra sí&lt;/em&gt;,&amp;nbsp;&lt;em&gt;Servir a señor discreto&lt;/em&gt;,&amp;nbsp;&lt;em&gt;Al pasar del arroyo&lt;/em&gt;&amp;nbsp;–junto a B.&amp;nbsp;Zanusso-,&amp;nbsp;&lt;em&gt;Lo que hay que fiar del mundo&lt;/em&gt;&amp;nbsp;–junto a L. Sánchez&amp;nbsp;Laílla-,&amp;nbsp;&lt;em&gt;El ingrato arrepentido&lt;/em&gt;&amp;nbsp;y&amp;nbsp;&lt;em&gt;Arauco domado&lt;/em&gt;), siendo además coordinador de la publicación de la&amp;nbsp;&lt;em&gt;Docena Parte de comedias&amp;nbsp;&lt;/em&gt;del Fénix. Entre sus estudios dedicados a Baltasar Gracián cabe destacar los centrados en su epistolario, en el concepto y la práctica de la erudición humanística del jesuita y en la biblioteca de la Compañía de Jesús en Huesca. Ha realizado, junto a Luis Sánchez&amp;nbsp;Laílla&amp;nbsp;y&amp;nbsp;Mª&amp;nbsp;Pilar Cuartero, la edición crítica y anotada de&amp;nbsp;&lt;em&gt;El Criticón&lt;/em&gt;&amp;nbsp;de Baltasar Gracián (Zaragoza, Institución Fernando el&amp;nbsp;Católico, 2016, 2 vols.), galardonada con el Premio Real Academia Española a la investigación filológica de 2017.&amp;nbsp;&lt;!--EndFragment--&gt;&lt;/p&gt;">
+<img class="cphoto" src="../media/laplana_jose-enrique.jpg" alt="José Enrique Laplana Gil" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">José Enrique Laplana Gil</p><p class="crole">Investigador</p><p class="cuni">Universidad de Zaragoza</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="emanuele-leboffe" tabindex="0" role="button"
+  data-name="Emanuele Leboffe" data-role="Investigador" data-uni="Universitat Autònoma de Barcelona" data-email="Emanuele.Leboffe@uab.cat" data-orcid=""
+  data-photo="../media/LeboffeEmanuele.png"
+  data-bio="&lt;p&gt;&lt;!--StartFragment--&gt;Ha&amp;nbsp;conseguido&amp;nbsp;el&amp;nbsp;título&amp;nbsp;de Laurea Magistrale en Lingue e Letterature Moderne Europee e Americane en la Università degli Studi di Cassino e del Lazio Meridionale (2019), con una&amp;nbsp;tesis&amp;nbsp;en&amp;nbsp;Literatura&amp;nbsp;Española&amp;nbsp;titulada&amp;nbsp;“La degenerazione testuale in ambito ispanico: il caso dei sette Infanti di Lara”.&amp;nbsp;Actualmente está cursando un Máster en la&amp;nbsp;Università&amp;nbsp;degli&amp;nbsp;Studi&amp;nbsp;di Siena (Informatica&amp;nbsp;del Testo –&amp;nbsp;Edizione&amp;nbsp;Elettronica) para profundizar sus conocimientos y competencias en el ámbito de las Humanidades Digitales. Además, desde noviembre de 2023, es doctorando en Filología Española por la&amp;nbsp;Universitat&amp;nbsp;Autònoma&amp;nbsp;de Barcelona y trabaja en una tesis titulada “Perspectivas e-filológicas en la edición crítica de textos: avances, desafíos y experimentos con el teatro de Lope de Vega”.&amp;nbsp;&lt;!--EndFragment--&gt;&lt;/p&gt;">
+<img class="cphoto" src="../media/LeboffeEmanuele.png" alt="Emanuele Leboffe" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Emanuele Leboffe</p><p class="crole">Investigador</p><p class="cuni">Universitat Autònoma de Barcelona</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="arantxa-llacer" tabindex="0" role="button"
+  data-name="Arantxa Llàcer" data-role="Investigadora" data-uni="Università di Trento" data-email="arantxa.llacer@uab.cat" data-orcid=""
+  data-photo="../media/llacer_arantxa.jpg"
+  data-bio="&lt;p&gt;Arantxa Llàcer Martorell (Picassent, 1992) és filòloga i doctora en llengües, literatures i cultures i les seues aplicacions a la Universitat de València. La seua recerca se centra en l’estudi de textos memorialístics i historiogràfics d’època moderna, així com l’estudi de testimonis útils per a l’anàlisi de la història de la cultura moderna (pamflets, gojos, impressors, biblioteques i cercles culturals).&lt;/p&gt;&lt;p&gt;Actualment és investigadora postdoctoral a la Universitat de València, on desenvolupa el projecte &lt;em&gt;«Els impressors catalans de Lope de Vega»&lt;/em&gt;, en col·laboració amb la Università di Trento i el grup de recerca Prolope de la Universitat Autònoma de Barcelona.&lt;/p&gt;">
+<img class="cphoto" src="../media/llacer_arantxa.jpg" alt="Arantxa Llàcer" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Arantxa Llàcer</p><p class="crole">Investigadora</p><p class="cuni">Università di Trento</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="albert-lloret" tabindex="0" role="button"
+  data-name="Albert Lloret" data-role="Investigador" data-uni="Universidad Massachusetts Amherst" data-email="lloret@spanport.umass.edu" data-orcid=""
+  data-photo="../media/Lloret---foto.jpeg"
+  data-bio="&lt;p&gt;&lt;!--StartFragment--&gt;Albert Lloret es doctor por la Johns Hopkins&amp;nbsp;University&amp;nbsp;y profesor titular de literaturas ibéricas (española y catalana) en la&amp;nbsp;University&amp;nbsp;of&amp;nbsp;Massachusetts Amherst. Se ha especializado en el estudio de la Edad Media y la Edad Moderna, con especial atención a los estudios textuales, la imprenta, la traducción, la recepción de textos, la poesía y la espacialidad. Ha sido profesor visitante en la&amp;nbsp;University&amp;nbsp;of&amp;nbsp;Arkansas, Mount Holyoke&amp;nbsp;College&amp;nbsp;y Amherst&amp;nbsp;College, e investigador visitante en la&amp;nbsp;Universitat&amp;nbsp;Autònoma&amp;nbsp;de Barcelona. Es autor de&amp;nbsp;&lt;em&gt;Printing&amp;nbsp;Ausiàs March&amp;nbsp;&lt;/em&gt;y coautor de&amp;nbsp;&lt;em&gt;The&amp;nbsp;Classical&amp;nbsp;Tradition&amp;nbsp;in Medieval&amp;nbsp;Catalan&lt;/em&gt;. Ha editado números especiales de&amp;nbsp;&lt;em&gt;Translation&amp;nbsp;Review&lt;/em&gt;,&amp;nbsp;&lt;em&gt;Digital&amp;nbsp;Philology, Calíope y MLN&lt;/em&gt;. Sus trabajos han aparecido, además, entre otros lugares, en&amp;nbsp;&lt;em&gt;Ecdotica&lt;/em&gt;,&amp;nbsp;&lt;em&gt;Hispanic&amp;nbsp;Review&lt;/em&gt;,&amp;nbsp;&lt;em&gt;Viator&lt;/em&gt;,&amp;nbsp;&lt;em&gt;Anuario de Estudios Medievales&lt;/em&gt;,&amp;nbsp;&lt;em&gt;o&amp;nbsp;Journal&amp;nbsp;of&amp;nbsp;Spanish&amp;nbsp;Cultural&amp;nbsp;Studies&lt;/em&gt;. Es uno de los editores fundadores de&amp;nbsp;&lt;em&gt;Digital&amp;nbsp;Philology: A&amp;nbsp;Journal&amp;nbsp;of&amp;nbsp;Medieval Cultures&lt;/em&gt;&amp;nbsp;y coeditor de&amp;nbsp;&lt;em&gt;Translat&amp;nbsp;Library&lt;/em&gt;.&amp;nbsp;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;p&gt;&lt;!--StartFragment--&gt;Web personal:&amp;nbsp;&lt;a href=&quot;https://websites.umass.edu/lloret/&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener&quot;&gt;https://websites.umass.edu/lloret/&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;!--EndFragment--&gt;&lt;/p&gt;">
+<img class="cphoto" src="../media/Lloret---foto.jpeg" alt="Albert Lloret" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Albert Lloret</p><p class="crole">Investigador</p><p class="cuni">Universidad Massachusetts Amherst</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="eugenio-maggi" tabindex="0" role="button"
+  data-name="Eugenio Maggi" data-role="Investigador" data-uni="Università di Bologna" data-email="eugenio.maggi@unibo.it" data-orcid=""
+  data-photo="../media/maggi_eugenio.jpg"
+  data-bio="&lt;p&gt;Doctor de investigación en Filología hispánica por la Universidad de Pavía (Italia) en 2006. Actualmente es &lt;em&gt;ricercatore&lt;/em&gt; (investigador) y docente de Literatura Española y Traducción en la Universidad de Bolonia. En marzo de 2017, recibió la acreditación de profesor titular por el tribunal de la ASN (Abilitazione Scientifica Nazionale).&lt;/p&gt;&lt;p&gt;Se ha ocupado principalmente del drama hagiográfico barroco (&lt;em&gt;San Francesco di Paola nel teatro barocco spagnolo&lt;/em&gt;, Pisa, ETS, 2008; &lt;em&gt;El mejor padre de pobres&lt;/em&gt;, atribuida a Pedro Calderón de la Barca, Valencia, Parnaseo, 2013) y del teatro de Lope de Vega (incluidas las ediciones críticas de &lt;em&gt;El halcón de Federico&lt;/em&gt;, Gredos, 2014, y de &lt;em&gt;La serrana de Tormes&lt;/em&gt;, Gredos, 2017). Junto con Daniele Crivellari, está coordinando la &lt;em&gt;Parte XVII&lt;/em&gt; de la comedias de Lope (donde editará &lt;em&gt;El ruiseñor de Sevilla&lt;/em&gt;) en el marco del proyecto Prolope. Sus proyectos actuales en el ámbito de la literatura del Siglo de Oro comprenden la traducción y recepción de Calderón de la Barca en la Inglaterra victoriana y la obra en prosa de Jerónimo Fernández de Mata.&lt;/p&gt;&lt;p&gt;Además, ha publicado estudios sobre el antisemitismo en la novela del s. XIX, la poesía de la Guerra Civil española, la literatura del s. XVI (novela pastoril, adaptaciones teatrales del &lt;em&gt;Orlando Furioso&lt;/em&gt;, Miguel de Luna) y autores contemporáneos (Isaac Rosa, Rafael Chirbes, Juan Goytisolo).&lt;/p&gt;&lt;p&gt;Como traductor, ha cuidado una amplia selección de prosas de Antonio Machado para el &lt;em&gt;Meridiano Mondadori&lt;/em&gt; de 2010, el cap. 40 de la segunda parte del &lt;em&gt;Quijote&lt;/em&gt; (Modena, Mucchi, 2015) y la primera antología italiana de relatos de Max Aub, titulada &lt;em&gt;Gennaio senza nome&lt;/em&gt; (Roma, Nutrimenti, 2017).&lt;/p&gt;&lt;p&gt;Ha impartido cursos de Literatura, Historia de la cultura, Lengua y Traducción Españolas a partir de 2006.&lt;/p&gt;&lt;p&gt;Forma parte del comité editorial de las revistas &lt;em&gt;Anuario Lope de Vega&lt;/em&gt; (Universidad Autónoma de Barcelona), &lt;em&gt;Creneida&lt;/em&gt; (Universidad de Córdoba) y &lt;em&gt;Diablotexto Digital&lt;/em&gt; (Universidad de Valencia).&lt;/p&gt;&lt;p&gt;En 2016, entró en el colegio de doctorado del DESE (Les Littératures de l’Europe Unie-European Literatures), Universidad de Bolonia, que en 2017 confluyó en el nuevo doctorado en Lenguas, Literaturas y Culturas Modernas (Universidades de Bolonia y L’Aquila).&lt;/p&gt;">
+<img class="cphoto" src="../media/maggi_eugenio.jpg" alt="Eugenio Maggi" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Eugenio Maggi</p><p class="crole">Investigador</p><p class="cuni">Università di Bologna</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="david-merino-recalde" tabindex="0" role="button"
+  data-name="David Merino Recalde" data-role="Investigador" data-uni="Universitat Autònoma de Barcelona" data-email="david.merino@uab.cat" data-orcid="0000-0003-2740-7831"
+  data-photo="../media/MerinoDavid.jpg"
+  data-bio="&lt;div&gt;&lt;p paraid=&quot;1770137311&quot; paraeid=&quot;{80228e1c-d3ca-4c92-ac82-7388260d6f7e}{30}&quot;&gt;&lt;strong&gt;David Merino Recalde&amp;nbsp;&lt;/strong&gt;es investigador predoctoral (FI-Joan Oró, Generalitat de Catalunya) en el grupo de investigación PROLOPE del departamento de Filología Española de la&amp;nbsp;Universitat&amp;nbsp;Autònoma&amp;nbsp;de Barcelona. Su investigación doctoral se centra en la transmisión y recepción del teatro del Siglo de Oro, con especial atención a los materiales y mediaciones que configuran sus lecturas, usos y reescrituras en la época moderna y contemporánea. Desarrolla un proyecto participativo sobre&amp;nbsp;&lt;em&gt;Fuenteovejuna&lt;/em&gt;&amp;nbsp;que integra edición digital, archivo y modelado de datos para construir una plataforma web de divulgación e investigación.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;1869172746&quot; paraeid=&quot;{80228e1c-d3ca-4c92-ac82-7388260d6f7e}{42}&quot;&gt;Su trabajo se sitúa en las humanidades orientadas a datos (&lt;em&gt;data-driven&amp;nbsp;humanities&lt;/em&gt;) y se especializa en el diseño y desarrollo de infraestructuras digitales para el patrimonio literario y teatral (bases de datos, bibliotecas digitales y entornos de publicación y visualización).&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;1044752429&quot; paraeid=&quot;{80228e1c-d3ca-4c92-ac82-7388260d6f7e}{52}&quot;&gt;Ha realizado una estancia de investigación en la&amp;nbsp;University&amp;nbsp;of&amp;nbsp;Oxford y ha sido invitado a impartir conferencias y seminarios en la Universidad de los Andes (Colombia), la Universidad del País Vasco, la&amp;nbsp;University&amp;nbsp;of&amp;nbsp;Miami o la Universidad de León. Es editor de la sección de reseñas del&amp;nbsp;&lt;em&gt;Anuario Lope de Vega&lt;/em&gt;&amp;nbsp;y, desde 2021, forma parte de la Junta Directiva de la Sociedad Internacional de Humanidades Digitales Hispánicas. Ha colaborado en proyectos de transferencia y formación en Humanidades Digitales, produciendo recursos metodológicos y materiales docentes. Además, es miembro del laboratorio escénico METADRAMA (Universitat&amp;nbsp;de Barcelona), como actor e investigador.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;356250237&quot; paraeid=&quot;{80228e1c-d3ca-4c92-ac82-7388260d6f7e}{62}&quot;&gt;ORCID: &lt;a href=&quot;https://orcid.org/0000-0003-2740-7831&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener&quot;&gt;https://orcid.org/0000-0003-2740-7831&lt;/a&gt;&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;!--StartFragment--&gt;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;1951172405&quot; paraeid=&quot;{80228e1c-d3ca-4c92-ac82-7388260d6f7e}{74}&quot;&gt;Web personal: &lt;a href=&quot;https://dxvidmr.github.io/&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener&quot;&gt;https://dxvidmr.github.io/&lt;/a&gt;&amp;nbsp;&lt;/p&gt;&lt;/div&gt;">
+<img class="cphoto" src="../media/MerinoDavid.jpg" alt="David Merino Recalde" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">David Merino Recalde</p><p class="crole">Investigador</p><p class="cuni">Universitat Autònoma de Barcelona</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="clara-monzo" tabindex="0" role="button"
+  data-name="Clara Monzó" data-role="Investigadora" data-uni="" data-email="" data-orcid=""
+  data-photo=""
+  data-bio="&lt;p&gt;Biografía del miembro.&lt;/p&gt;">
+<img class="cphoto" src="" alt="Clara Monzó" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Clara Monzó</p><p class="crole">Investigadora</p><p class="cuni"></p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="isabel-muguruza" tabindex="0" role="button"
+  data-name="Isabel Muguruza" data-role="Investigadora" data-uni="Universidad del País Vasco" data-email="isabel.muguruza@ehu.eus" data-orcid=""
+  data-photo="../media/muguruza_isabel.jpg"
+  data-bio="&lt;div&gt;&lt;p paraid=&quot;2102492312&quot; paraeid=&quot;{80228e1c-d3ca-4c92-ac82-7388260d6f7e}{134}&quot;&gt;Isabel Muguruza Roca es licenciada y doctora en Filología Románica por la UPV/EHU, universidad en la que es profesora Titular de Universidad desde 1999 en el área de Literatura Española. Ha realizado labores docentes de grado y de posgrado; ha dirigido una Tesis Doctoral (2021) y dirige otras tres en proceso de realización. Ha realizado labores diversas en la gestión académica universitaria, y actualmente ejerce los cargos de&amp;nbsp;Directora&amp;nbsp;del Departamento de Filología e Historia y de Coordinadora de Titulación del Grado en Filología. Cuenta con dos sexenios de investigación. Su trayectoria investigadora se circunscribe a la literatura española de la Alta Edad Moderna, siendo sus líneas de investigación preferentes las siguientes: 1) Antonio de Torquemada y la narrativa renacentista, 2) los Estudios de Género aplicados a la literatura del Siglo de Oro, 3) la novela italiana y la novela corta española, y 4) el teatro del siglo XVII.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;975556851&quot; paraeid=&quot;{80228e1c-d3ca-4c92-ac82-7388260d6f7e}{140}&quot;&gt;Respecto a la primera, la investigación sobre Antonio de Torquemada se inició con la Edición y estudio del&amp;nbsp;Olivante&amp;nbsp;de Laura (1996). Tras algunas publicaciones sobre este libro de caballerías, sus últimos trabajos en esta línea de investigación se han dirigido hacia otras obras del escritor, en particular al Jardín de flores curiosas, pudiéndose citar de los 10 últimos años: “Antonio de Torquemada y el reciclado de emblemas en la literatura renacentista” (En la senda de&amp;nbsp;Alciato. Práctica y teoría emblemática, Valencia: Universidad, 2022, 159-174) “Verdad, credibilidad y curiosidad en la miscelánea renacentista: Problemas y estrategias en el Jardín de flores curiosas de Antonio de Torquemada” (Fabriques de&amp;nbsp;vérité(s), vol. 2, París:&amp;nbsp;L’Harmattan, 2016, 21-30); “La narración breve fantástica en la miscelánea de Antonio de&amp;nbsp;Torquemda” (Grandes y pequeños en la literatura medieval y renacentista, Salamanca: SEMYR, 2016, 495-507); y “De alegorías y maravillas: Reescritura, intertextualidad y autoplagio en la obra de Antonio de Torquemada”, (El texto infinito: Tradición y reescritura en la Edad Media y el Renacimiento, Salamanca: SEMYR, 2014, 832-843). Ha participado en la redacción de la Gran Enciclopedia Cervantina, a cargo de Carlos Alvar, con las entradas correspondientes a “Olivante&amp;nbsp;de Laura” (vol. IX, 2015), y “Torquemada, Antonio” (vol. XII, en prensa).&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;1473104979&quot; paraeid=&quot;{80228e1c-d3ca-4c92-ac82-7388260d6f7e}{166}&quot;&gt;El trabajo en estudios de género se vincula a la participación en tres proyectos de investigación bajo la dirección de&amp;nbsp;Eukene&amp;nbsp;Lacarra&amp;nbsp;Lanz entre los años 2000 y 2007. Ha estudiado desde una perspectiva retórica y de género los tratados de Juan Luis Vives,&amp;nbsp;Institutio&amp;nbsp;feminae&amp;nbsp;christianae&amp;nbsp;y De&amp;nbsp;officio&amp;nbsp;mariti, con varias publicaciones entre los años 2009-2011, así como el tratamiento de los pecados de las mujeres en los confesionales de la Contrarreforma, centrado en el Manual de Confesores de Martín de Azpilcueta (2011). La investigación sobre el confesional de Azpilcueta fue retomada dentro del proyecto de la Universidad de Stirling sobre “Los confesionarios ibéricos y coloniales de los siglos XV-XVIII” (2016), publicándose en 2018 “Del confesionario ibérico de la Contrarreforma a los manuales para confesores en la América colonial: el Manual de confesores y penitentes de Martín de Azpilcueta como texto de referencia”, Indiana (Berlín), 35,&amp;nbsp;nº&amp;nbsp;2.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;220488198&quot; paraeid=&quot;{80228e1c-d3ca-4c92-ac82-7388260d6f7e}{196}&quot;&gt;Aunque sin abandonar del todo estos intereses, en los últimos diez años han sido la novela corta y el teatro barroco sus principales terrenos de investigación. De la primera le interesan especialmente las traducciones españolas de los&amp;nbsp;novellieri, con particular atención a la de&amp;nbsp;Matteo&amp;nbsp;Bandello, cuya influencia en Cervantes ha abordado en “Las traducciones de los&amp;nbsp;novellieri&amp;nbsp;en las Novelas ejemplares: Cervantes frente a&amp;nbsp;Bandello&amp;nbsp;y la negación del modelo italiano” (en&amp;nbsp;Traduzioni,&amp;nbsp;riscritture,&amp;nbsp;ibridazioni: prosa e teatro&amp;nbsp;fra&amp;nbsp;Italia,&amp;nbsp;Spagna&amp;nbsp;e&amp;nbsp;Portogallo, Florencia: Leo S.&amp;nbsp;Olschki, 2016, 91-102), pero también las novelas cervantinas y las de María de Zayas, así como las relaciones entre la comedia y la novela corta (“Lope de Vega reescrito por María de Zayas: La viuda valenciana, una comedia entre dos novelas” (Anuario Lope de Vega, vol. 26, 2020, 445-469). Finalmente, por lo que respecta al teatro áureo, desde 2015 forma parte del grupo de investigación PROLOPE, para el que ha llevado a cabo la edición crítica (con estudio introductorio y anotaciones) de La noche de San Juan, comedia de la Parte XXI de Lope de Vega (Gredos, 2022), y para el que también se va a encargar de editar la comedia El juez en su causa&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;1204894157&quot; paraeid=&quot;{80228e1c-d3ca-4c92-ac82-7388260d6f7e}{242}&quot;&gt;(Parte XXV). Asimismo, ha sido IP del grupo de investigación “Concordia&amp;nbsp;discors: lo uno y lo diverso en la España de los Austrias” (UPV/EHU, 2019-2020), centrado en las implicaciones sociopolíticas de la dramaturgia áurea en torno a la crisis de 1640, y cuyos trabajos han pasado a integrarse en el proyecto Disrupciones y continuidades en el proceso de la modernidad, siglos XVI-XIX. Un análisis multidisciplinar (Historia, Arte, Literatura) (DISCON), del Ministerio de Ciencia e Innovación (IP Andoni Artola y José María&amp;nbsp;Imízcoz), de cuyo equipo de investigación forma parte. Un primer resultado de este trabajo es “«Concordia&amp;nbsp;discors: Lo uno y lo diverso en la literatura de la España de los Austrias». Avances de un proyecto de investigación” (en La actualidad de los estudios del Siglo de Oro, Kassel:&amp;nbsp;Reichenberger, 2023, 431-439).&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;!--StartFragment--&gt;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;2140204377&quot; paraeid=&quot;{fa13e8ba-a0ff-454d-893f-db65ddd3f5d8}{3}&quot;&gt;Enlace al CV&amp;nbsp;completo en:&amp;nbsp;&lt;a href=&quot;https://www.ehu.eus/es/web/graduak/grado-filologia/profesorado?p_redirect=fichaPDI&amp;amp;p_idp=4115&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener&quot;&gt;https://www.ehu.eus/es/web/graduak/grado-filologia/profesorado?p_redirect=fichaPDI&amp;amp;p_idp=4115&lt;/a&gt;&amp;nbsp;&lt;/p&gt;&lt;/div&gt;">
+<img class="cphoto" src="../media/muguruza_isabel.jpg" alt="Isabel Muguruza" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Isabel Muguruza</p><p class="crole">Investigadora</p><p class="cuni">Universidad del País Vasco</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="eduardo-paredes" tabindex="0" role="button"
+  data-name="Eduardo Paredes" data-role="Investigador" data-uni="Universitat Autònoma de Barcelona" data-email="" data-orcid=""
+  data-photo=""
+  data-bio="&lt;p&gt;Biografía del miembro.&lt;/p&gt;">
+<img class="cphoto" src="" alt="Eduardo Paredes" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Eduardo Paredes</p><p class="crole">Investigador</p><p class="cuni">Universitat Autònoma de Barcelona</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="carlos-pena-lopez" tabindex="0" role="button"
+  data-name="Carlos Peña López" data-role="Investigador" data-uni="Universitat Autònoma de Barcelona" data-email="salcedoolid@hotmail.com" data-orcid=""
+  data-photo="../media/pena_carlos.jpg"
+  data-bio="&lt;div&gt;&lt;p paraid=&quot;1751620935&quot; paraeid=&quot;{fa13e8ba-a0ff-454d-893f-db65ddd3f5d8}{61}&quot;&gt;Carlos Peña López es licenciado en Filología Hispánica y diplomado en Estudios Superiores Especializados por la Universidad Autónoma de Barcelona, donde también ha cursado el Máster en Lengua Española y Literatura Hispánica.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;473012721&quot; paraeid=&quot;{fa13e8ba-a0ff-454d-893f-db65ddd3f5d8}{67}&quot;&gt;Como miembro del Grupo de Investigación Prolope, al que lleva vinculado desde 2006, ha desarrollado gran parte de su formación en torno a la crítica textual, la literatura áurea y la producción&amp;nbsp;lopeveguesca.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;1240505235&quot; paraeid=&quot;{fa13e8ba-a0ff-454d-893f-db65ddd3f5d8}{73}&quot;&gt;Tras interesarse inicialmente por el estudio de la obra mística del trinitario San Juan Bautista de la Concepción, su labor investigadora se ha consolidado en torno a la vida y obra de Lope de Vega, autor del que prepara una edición crítica y anotada del conjunto de su correspondencia personal, después de haber participado en las ediciones colectivas del Grupo Prolope (&lt;em&gt;Fuenteovejuna &lt;/em&gt;y &lt;em&gt;El castigo sin venganza&lt;/em&gt;) y ser autor de la edición crítica de &lt;em&gt;Los locos de Valencia&lt;/em&gt;, publicada en la &lt;em&gt;Parte XIII&lt;/em&gt;.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;179638296&quot; paraeid=&quot;{fa13e8ba-a0ff-454d-893f-db65ddd3f5d8}{95}&quot;&gt;Fruto de sus investigaciones en torno a la biografía de Lope y su epistolario, ha participado en varios congresos y seminarios nacionales e internacionales, y en diversas publicaciones de carácter científico y divulgativo. &amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;!--StartFragment--&gt;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;88755962&quot; paraeid=&quot;{fa13e8ba-a0ff-454d-893f-db65ddd3f5d8}{101}&quot;&gt;Más allá del ámbito académico, ha colaborado en producciones audiovisuales y montajes teatrales que tenían la figura del Fénix como protagonista.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;">
+<img class="cphoto" src="../media/pena_carlos.jpg" alt="Carlos Peña López" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Carlos Peña López</p><p class="crole">Investigador</p><p class="cuni">Universitat Autònoma de Barcelona</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="fernando-plata" tabindex="0" role="button"
+  data-name="Fernando Plata" data-role="Investigador" data-uni="Colgate University" data-email="fplata@colgate.edu" data-orcid=""
+  data-photo="../media/plata_fernando.jpg"
+  data-bio="&lt;div&gt;&lt;p paraid=&quot;1473098032&quot; paraeid=&quot;{fa13e8ba-a0ff-454d-893f-db65ddd3f5d8}{137}&quot;&gt;Fernando Plata Parga es licenciado por la Universidad de Navarra; ganó el Tercer Premio Nacional de Terminación de Estudios del Ministerio de Educación y Ciencia y obtuvo un Máster y un Doctorado por la Universidad de Michigan (Ann Arbor).&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;1602851209&quot; paraeid=&quot;{fa13e8ba-a0ff-454d-893f-db65ddd3f5d8}{143}&quot;&gt;Ha ejercido la docencia en las universidades de Michigan y Colgate (Nueva York), donde es Catedrático de literatura española, y ha sido director del Departamento de Lenguas y Literaturas Románicas, del programa de estudios de Vassar-Wesleyan-Colgate en Madrid y del programa de estudios de Colgate en Madrid. Ha dictado cursos y conferencias en universidades de Europa, Asia y América, entre los cuales destacan cursos sobre Quevedo dentro de los programas de Doctorado de Calidad de las universidades de Santiago de Compostela y de Navarra.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;1402128867&quot; paraeid=&quot;{fa13e8ba-a0ff-454d-893f-db65ddd3f5d8}{157}&quot;&gt;Es autor de&amp;nbsp;&lt;em&gt;Ocho poemas satíricos de Quevedo&lt;/em&gt;&amp;nbsp;(Eunsa, 1997) y de ediciones críticas de grandes figuras: tres autos de Calderón,&amp;nbsp;&lt;em&gt;La&amp;nbsp;primer flor&amp;nbsp;del Carmelo&lt;/em&gt;&amp;nbsp;(Reichenberger, 1998),&amp;nbsp;&lt;em&gt;El pastor Fido&lt;/em&gt;&amp;nbsp;(Reichenberger, 2003) y&amp;nbsp;&lt;em&gt;La vida es sueño&lt;/em&gt;&amp;nbsp;(Reichenberger, 2012); dos comedias de Lope de Vega,&amp;nbsp;&lt;em&gt;El sol parado&lt;/em&gt;&amp;nbsp;(Gredos, 2018) y&amp;nbsp;&lt;em&gt;La limpieza no manchada&lt;/em&gt;&amp;nbsp;(Gredos, 2020); y varias obras de Quevedo, entre ellas,&amp;nbsp;&lt;em&gt;La Perinola&lt;/em&gt;&amp;nbsp;(Castalia, 2020). Es coeditor del volumen&amp;nbsp;&lt;em&gt;Estudios de filología y retórica en homenaje a Luisa López&amp;nbsp;Grigera&lt;/em&gt;&amp;nbsp;(Deusto, 2000) y coordinador de dos volúmenes monográficos de&amp;nbsp;&lt;em&gt;La Perinola&lt;/em&gt;: «La imagen de la mujer y el amor en Quevedo» (2005) y «Figuras, figurillas y figurones&amp;nbsp;quevedianos» (2018). Ha coordinado, con Alejandro García-Reidy, la edición de la&amp;nbsp;&lt;em&gt;Parte XIX de comedias&lt;/em&gt;&amp;nbsp;de Lope de Vega (Gredos, 2020) y ha publicado numerosos artículos sobre literatura del Siglo de Oro, entre los que destaca el rescate de textos perdidos, desconocidos o inéditos de Quevedo (traducción y paráfrasis de las&amp;nbsp;&lt;em&gt;Controversias&amp;nbsp;&lt;/em&gt;de Séneca el Viejo y otras obras breves), Calderón (loa para&amp;nbsp;&lt;em&gt;El pastor Fido&lt;/em&gt;&amp;nbsp;y&amp;nbsp;&lt;em&gt;Mojiganga del&amp;nbsp;mundinovo&lt;/em&gt;) y Zamora (Mojiganga para&amp;nbsp;&lt;em&gt;El templo vivo de Dios&lt;/em&gt;). Recientemente ha publicado con Adrián J. Sáez la antología de Quevedo&amp;nbsp;&lt;em&gt;Huye la hora&lt;/em&gt;&amp;nbsp;(Cátedra, 2025).&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;!--StartFragment--&gt;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;1783658227&quot; paraeid=&quot;{fa13e8ba-a0ff-454d-893f-db65ddd3f5d8}{251}&quot;&gt;&amp;nbsp;&lt;a href=&quot;https://colgate.academia.edu/FernandoPlata&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener&quot;&gt;https://colgate.academia.edu/FernandoPlata&lt;/a&gt;&amp;nbsp;&lt;/p&gt;&lt;/div&gt;">
+<img class="cphoto" src="../media/plata_fernando.jpg" alt="Fernando Plata" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Fernando Plata</p><p class="crole">Investigador</p><p class="cuni">Colgate University</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="marco-presotto" tabindex="0" role="button"
+  data-name="Marco Presotto" data-role="Investigador" data-uni="Università di Trento" data-email="marco.presotto@unitn.it" data-orcid=""
+  data-photo="../media/presotto_marco.jpg"
+  data-bio="&lt;div&gt;&lt;p paraid=&quot;1583463510&quot; paraeid=&quot;{099d994f-1144-4fc1-9c4c-402790924d4a}{38}&quot;&gt;Ha conseguido el título de Doctor en&amp;nbsp;Iberistica&amp;nbsp;en la Universidad de Bolonia en 1996 con una tesis sobre los manuscritos autógrafos de Lope de Vega, luego publicada por el editor&amp;nbsp;Reichenberger&amp;nbsp;(2000). Se ha ocupado principalmente de Teatro clásico español; también se ha dedicado a la poesía cancioneril medieval y a la producción dramática de los primeros años del siglo XVIII, especialmente la de José de Cañizares. Entre sus trabajos destacan la edición de las&lt;i&gt; Novelas a Marcia Leonarda&lt;/i&gt; por la editorial Castalia (2007), la coordinación de la edición crítica de las &lt;i&gt;Parte IX&lt;/i&gt; de las comedias de Lope de Vega y la edición de la obra de Antonio Mira de&amp;nbsp;Amescua&lt;i&gt;&amp;nbsp;No hay dicha ni desdicha hasta la muerte&lt;/i&gt; (2009).&amp;nbsp;&lt;/p&gt;&lt;p paraid=&quot;1583463510&quot; paraeid=&quot;{099d994f-1144-4fc1-9c4c-402790924d4a}{38}&quot;&gt;Se ha dedicado a la tradición teatral (siglos XVII y XVIII) de &lt;i&gt;La ilustre fregona&lt;/i&gt; y la edición de las tragedias de Juan de la Cueva (2013) dentro del proyecto editorial emprendido por Rinaldo&amp;nbsp;Froldi. Ha realizado la edición crítica y archivo digital de &lt;i&gt;La dama boba&lt;/i&gt; de Lope de Vega (2015). Se ha ocupado ampliamente del tema de la censura teatral en varios artículos, con contribuciones específicas y estudios de conjunto. Ha organizado varios congresos internacionales (Venecia,&amp;nbsp;Sabbioneta,&amp;nbsp;Bologna, Trento) sobre teatro clásico y contemporáneo, sociolingüística española, Historia del libro, didáctica de la literatura en ámbito universitario y temas de edición digital de textos literarios.&amp;nbsp;&lt;/p&gt;&lt;p paraid=&quot;1583463510&quot; paraeid=&quot;{099d994f-1144-4fc1-9c4c-402790924d4a}{38}&quot;&gt;Entre sus publicaciones recientes, se señala la coordinación de un&amp;nbsp;volumen&amp;nbsp;sobre &lt;i&gt;Teatro clásico y cine&lt;/i&gt; (2019); junto con Claudia&amp;nbsp;Demattè&amp;nbsp;y Eugenio Maggi, &lt;i&gt;La traducción del teatro clásico español &lt;/i&gt;(2020) y, en colaboración Fausta Antonucci, la coordinación de la &lt;i&gt;Parte XXII&lt;/i&gt; de las comedias de Lope de Vega, de le que ha editado la pieza autógrafa&lt;i&gt; Amor, pleito y desafío&lt;/i&gt; (2023). Se ocupa desde 2021, con&amp;nbsp;Sònia&amp;nbsp;Boadas, de la Base de datos AUTESO (Autógrafos españoles del Siglo de Oro) y colabora desde 2017 con el proyecto de edición crítica digital Gondomar digital dirigido por Luigi Giuliani.&amp;nbsp;&lt;/p&gt;&lt;p paraid=&quot;1583463510&quot; paraeid=&quot;{099d994f-1144-4fc1-9c4c-402790924d4a}{38}&quot;&gt;Es miembro del doctorado en &quot;Forme del testo e&amp;nbsp;dello&amp;nbsp;scambio&amp;nbsp;culturale&quot; de la Universidad de Trento desde 2022. Ha sido miembro del doctorado en Literaturas modernas de la Universidad de Bolonia; ha participado a las actividades didácticas del Doctorado en Filología Hispánica de la Universidad de Venecia, Verona, Valencia y de Estudios hispánicos de Brown&amp;nbsp;University; es además miembro de los comités científicos y de redacción de varias revistas especializadas; ha colaborado con varios proyectos de investigación españoles, además de&amp;nbsp;Prolope, entre ellos, «Argumentos y textos del teatro clásico español (Artelope)» dirigido por Joan&amp;nbsp;Oleza&amp;nbsp;de la Universidad de Valencia. Ha sido coordinador de una beca Marie Curie financiada por la Comunidad Europea (periodo 2018-2020). Participa como responsable de la unidad de Trento a las actividades de TESPA (Teatro Español del Siglo de Oro, proyecto PRIN italiano) dirigido por Fausta Antonucci. Ha sido miembro de tribunal de evaluación de tesis de doctorado en las universidades Autónoma de Barcelona, Autónoma de Madrid,&amp;nbsp;Bologna, Florencia, Palermo, Pisa, Sevilla y Valencia. Ha sido miembro de tribunal para la selección de personal docente de Lengua y de Literatura española en varias Universidades italianas y en España. Ha sido director de la colección “Dulcinea” de literatura clásica española (edición bilingüe) de la editorial italiana Marsilio. Ha tenido varios cargos académicos en las universidades de Venecia, Bolonia y Trento. Ha sido elegido&amp;nbsp;Presidente&amp;nbsp;de la Asociación de hispanistas italianos (AISPI) para el trienio 2022-2024.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;!--StartFragment--&gt;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;273969173&quot; paraeid=&quot;{099d994f-1144-4fc1-9c4c-402790924d4a}{44}&quot;&gt;&lt;a href=&quot;https://webapps.unitn.it/du/it/Persona/PER0232202/Curriculum&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener&quot;&gt;https://webapps.unitn.it/du/it/Persona/PER0232202/Curriculum&lt;/a&gt;&amp;nbsp;&lt;/p&gt;&lt;/div&gt;">
+<img class="cphoto" src="../media/presotto_marco.jpg" alt="Marco Presotto" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Marco Presotto</p><p class="crole">Investigador</p><p class="cuni">Università di Trento</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="ilaria-resta" tabindex="0" role="button"
+  data-name="Ilaria Resta" data-role="Investigadora" data-uni="Universidad de Roma III" data-email="ilaria.resta@uniroma3.it" data-orcid="0000-0002-9782-4027 "
+  data-photo="../media/Resta-Ilaria.jpg"
+  data-bio="&lt;div&gt;&lt;p paraid=&quot;964788262&quot; paraeid=&quot;{099d994f-1144-4fc1-9c4c-402790924d4a}{86}&quot;&gt;laria Resta es profesora de Literatura española en el&amp;nbsp;Dipartimento&amp;nbsp;di Lingue,&amp;nbsp;Letterature&amp;nbsp;e Culture&amp;nbsp;Straniere&amp;nbsp;de la&amp;nbsp;Università&amp;nbsp;Roma&amp;nbsp;Tre. Se doctoró en 2013 en “Studi&amp;nbsp;linguistici,&amp;nbsp;storico-letterari&amp;nbsp;e&amp;nbsp;interculturali” (especialidad Literatura española) por la&amp;nbsp;Università&amp;nbsp;del Salento con una tesis sobre la recepción de la&amp;nbsp;novella&amp;nbsp;en el entremés del Siglo de Oro, galardonada en 2014 con el premio TC/12 a la mejor tesis de ese año sobre teatro áureo. Ha desarrollado su actividad investigadora posdoctoral en diversas universidades —entre ellas la&amp;nbsp;Università&amp;nbsp;del Salento, la Universidad Nacional Autónoma de México, la Universidad de Salamanca y la&amp;nbsp;Università&amp;nbsp;Roma&amp;nbsp;Tre— y, desde 2012, participa en diferentes proyectos y grupos de investigación nacionales e internacionales dedicados al estudio del teatro áureo.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;776875561&quot; paraeid=&quot;{099d994f-1144-4fc1-9c4c-402790924d4a}{92}&quot;&gt;Especialista en literatura del Siglo de Oro, sus trabajos se dirigen al estudio y la edición crítica de textos teatrales y narrativos; a la preceptiva teatral aurisecular; a la interrelación literaria ítalo-ibérica (ss. XVI-XVII), con especial atención a la recepción de la&amp;nbsp;novella&amp;nbsp;italiana en España, a la fortuna y reelaboración del teatro español en el teatro italiano barroco y a la influencia de la preceptiva italiana quinientista en el teatro áureo.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;!--StartFragment--&gt;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;794671769&quot; paraeid=&quot;{099d994f-1144-4fc1-9c4c-402790924d4a}{98}&quot;&gt;En su producción científica destacan la monografía&amp;nbsp;&lt;em&gt;Fuentes, reescrituras e&amp;nbsp;intertextos: la&amp;nbsp;novella&amp;nbsp;italiana en el entremés del Siglo de Oro&lt;/em&gt;&amp;nbsp;(Vervuert/Iberoamericana, 2016); las ediciones críticas de las comedias de Lope de Vega&amp;nbsp;&lt;em&gt;El hidalgo&amp;nbsp;Bencerraje&lt;/em&gt;&amp;nbsp;(2018),&amp;nbsp;&lt;em&gt;La mayor vitoria&lt;/em&gt;&amp;nbsp;(2023) y&amp;nbsp;&lt;em&gt;El piadoso veneciano&lt;/em&gt;&amp;nbsp;(2024), publicadas por Gredos en el marco de los proyectos del grupo PROLOPE; y, más recientemente, la coordinación del volumen&amp;nbsp;&lt;em&gt;Mundos novelescos en el teatro del Siglo de Oro&lt;/em&gt;&amp;nbsp;(Peter Lang, 2025).&amp;nbsp;&lt;span style=&quot;font-size: 0.95rem;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;">
+<img class="cphoto" src="../media/Resta-Ilaria.jpg" alt="Ilaria Resta" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Ilaria Resta</p><p class="crole">Investigadora</p><p class="cuni">Universidad de Roma III</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="santiago-restrepo-ramirez" tabindex="0" role="button"
+  data-name="Santiago Restrepo Ramírez" data-role="Investigador" data-uni="Universidad de Los Andes" data-email="srestreporamirez@uniandes.edu.co" data-orcid=""
+  data-photo="../media/restrepo_santiago.jpg"
+  data-bio="&lt;div&gt;&lt;p paraid=&quot;1901845627&quot; paraeid=&quot;{099d994f-1144-4fc1-9c4c-402790924d4a}{190}&quot;&gt;Profesor asociado del Departamento de Humanidades y Literatura de la Universidad de los Andes (Bogotá, Colombia), donde dicta clases de literatura hispánica y miembro del grupo PROLOPE (Universitat&amp;nbsp;Autònoma&amp;nbsp;de Barcelona) desde el 2011. Doctor en Filología Hispánica de la&amp;nbsp;Universitat&amp;nbsp;Autònoma&amp;nbsp;de Barcelona (2016). Su investigación se ha centrado principalmente en el estudio y edición del teatro y la narrativa española de los Siglos de Oro, con énfasis en la obra de Lope de Vega.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;1941624274&quot; paraeid=&quot;{099d994f-1144-4fc1-9c4c-402790924d4a}{200}&quot;&gt;Entre sus aportaciones se destaca su tesis doctoral dirigida por el doctor Ramón Valdés que estudia la relación entre algunas comedias de Lope de Vega y el desarrollo del género picaresco, centrado sobre todo en los últimos años del siglo xvi y los primeros del xvii. En el marco de Prolope, Restrepo ha editado dos comedias de Lope de Vega (&lt;em&gt;El caballero del milagro&lt;/em&gt;, ed. Restrepo y Valdés, &lt;em&gt;Parte XV&lt;/em&gt;, 2016 y &lt;em&gt;El hombre, por su palabra&lt;/em&gt;, &lt;em&gt;Parte XX&lt;/em&gt;, 2021), además de la publicación diversos artículos sobre el teatro de Lope. Su producción académica, por otra parte, se ha beneficiado de su proyecto FAPA (Fondo de Apoyo para Profesores Asistentes) de la Universidad de los Andes (2019-2023). Actualmente trabaja junto al profesor Ramón Valdés en la edición de &lt;em&gt;El diablo Cojuelo&lt;/em&gt; de Luis Vélez de Guevara para Biblioteca Clásica de la RAE. &amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;!--StartFragment--&gt;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;1453658948&quot; paraeid=&quot;{099d994f-1144-4fc1-9c4c-402790924d4a}{238}&quot;&gt;Enlace a su CV completo: &lt;a href=&quot;https://academia.uniandes.edu.co/AcademyCv/srestreporamirez&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener&quot;&gt;https://academia.uniandes.edu.co/AcademyCv/srestreporamirez&lt;/a&gt;&amp;nbsp;&lt;/p&gt;&lt;/div&gt;">
+<img class="cphoto" src="../media/restrepo_santiago.jpg" alt="Santiago Restrepo Ramírez" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Santiago Restrepo Ramírez</p><p class="crole">Investigador</p><p class="cuni">Universidad de Los Andes</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="joel-reverter-lainez" tabindex="0" role="button"
+  data-name="Joel Reverter Lainez" data-role="Investigador" data-uni="Universitat Autònoma de Barcelona" data-email="joelreverter@gmail.com" data-orcid="0009-0000-4396-5994 "
+  data-photo="../media/ReverterJoel_jpg.jpg"
+  data-bio="&lt;div&gt;&lt;p paraid=&quot;1617744130&quot; paraeid=&quot;{5c90edac-6e70-49c7-b494-f17c2b04ef1f}{29}&quot;&gt;Joel Reverter Lainez es graduado en Lengua y Literatura Hispánicas por la Universidad Rovira i Virgili. Es investigador predoctoral FPU y miembro del grupo de investigación PROLOPE. En su investigación, analiza manuscritos teatrales del Siglo de Oro con metodologías de humanidades digitales para detectar las intervenciones del censor Pedro de Vargas Machuca. Colabora con el grupo&amp;nbsp;Thal-IA, en el que está desarrollando modelos de generación sintética de letra manuscrita junto con Álvaro Cuéllar. También estudia al escritor Sebastià Juan&amp;nbsp;Arbó, junto con Joan Antoni Forcadell, con quien ha publicado la&amp;nbsp;&lt;em&gt;Obra dramática&lt;/em&gt;&amp;nbsp;completa del autor y está desarrollando el&amp;nbsp;Arxiu&amp;nbsp;Digital Sebastià Juan&amp;nbsp;Arbó.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;">
+<img class="cphoto" src="../media/ReverterJoel_jpg.jpg" alt="Joel Reverter Lainez" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Joel Reverter Lainez</p><p class="crole">Investigador</p><p class="cuni">Universitat Autònoma de Barcelona</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="alberto-roca" tabindex="0" role="button"
+  data-name="Alberto Roca" data-role="Investigador" data-uni="Universitat Autònoma de Barcelona" data-email="" data-orcid=""
+  data-photo=""
+  data-bio="&lt;p&gt;Biografía del miembro.&lt;/p&gt;">
+<img class="cphoto" src="" alt="Alberto Roca" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Alberto Roca</p><p class="crole">Investigador</p><p class="cuni">Universitat Autònoma de Barcelona</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="melina-rodriguez" tabindex="0" role="button"
+  data-name="Melina Rodríguez" data-role="Investigadora" data-uni="Universitat Autònoma de Barcelona" data-email="" data-orcid=""
+  data-photo=""
+  data-bio="&lt;p&gt;Biografía del miembro.&lt;/p&gt;">
+<img class="cphoto" src="" alt="Melina Rodríguez" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Melina Rodríguez</p><p class="crole">Investigadora</p><p class="cuni">Universitat Autònoma de Barcelona</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="fernando-rodriguez-gallego" tabindex="0" role="button"
+  data-name="Fernando Rodríguez-Gallego" data-role="Investigador" data-uni="Universitat de les Illes Balears" data-email="f.rodriguez-gallego@uib.cat" data-orcid=""
+  data-photo="../media/rodriguez-gallego_fernando.jpg"
+  data-bio="&lt;div&gt;&lt;p paraid=&quot;1277446682&quot; paraeid=&quot;{5c90edac-6e70-49c7-b494-f17c2b04ef1f}{119}&quot;&gt;Fernando Rodríguez-Gallego&amp;nbsp;es profesor titular de literatura española en la&amp;nbsp;Universitat&amp;nbsp;de les Illes Balears, en la que es miembro y subdirector del&amp;nbsp;&lt;a href=&quot;https://iehm.uib.cat/&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener&quot;&gt;Instituto de Estudios Hispánicos en la Modernidad&lt;/a&gt;. Es investigador del grupo de investigación&amp;nbsp;Prolope&amp;nbsp;y del proyecto «&lt;a href=&quot;https://manos.net/&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener&quot;&gt;Manos&lt;/a&gt;. Base de datos de manuscritos teatrales áureos (MANOS)», dirigido por Alejandro García Reidy en la Universidad de Salamanca. Asimismo, es colaborador externo del proyecto «Impresos sueltos del teatro antiguo español: base de datos integrada del teatro clásico español» (&lt;a href=&quot;https://istae.uv.es/&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener&quot;&gt;ISTAE&lt;/a&gt;), y del grupo de investigación&amp;nbsp;&lt;a href=&quot;https://www.calderondelabarca.org/&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener&quot;&gt;Calderón&lt;/a&gt;, de la&amp;nbsp;Universidade&amp;nbsp;de Santiago de Compostela, dentro del que defendió su tesis de doctorado en 2009.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;1096800723&quot; paraeid=&quot;{5c90edac-6e70-49c7-b494-f17c2b04ef1f}{157}&quot;&gt;Sus intereses fundamentales se centran en la edición de textos del Siglo de Oro (Calderón de la Barca, Lope de Vega, Francisco de Quevedo, Agustín Moreto, entre otros), y en el teatro del mismo período, especialmente en aspectos como la participación de los dramaturgos en la publicación de sus comedias y en el fenómeno de la reescritura.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;!--StartFragment--&gt;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;616100501&quot; paraeid=&quot;{5c90edac-6e70-49c7-b494-f17c2b04ef1f}{163}&quot;&gt;Una lista actualizada de sus publicaciones puede consultarse&amp;nbsp;&lt;a href=&quot;https://uib-es.academia.edu/FernandoRodriguezGallego&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener&quot;&gt;aquí&lt;/a&gt;.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;">
+<img class="cphoto" src="../media/rodriguez-gallego_fernando.jpg" alt="Fernando Rodríguez-Gallego" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Fernando Rodríguez-Gallego</p><p class="crole">Investigador</p><p class="cuni">Universitat de les Illes Balears</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="javier-rubiera" tabindex="0" role="button"
+  data-name="Javier Rubiera" data-role="Investigador" data-uni="Université de Montréal" data-email="javier.rubiera@umontreal.ca" data-orcid=""
+  data-photo="../media/rubiera_javier.jpg"
+  data-bio="&lt;div&gt;&lt;p paraid=&quot;761512327&quot; paraeid=&quot;{5c90edac-6e70-49c7-b494-f17c2b04ef1f}{199}&quot;&gt;Javier Rubiera es «professeur&amp;nbsp;titulaire» de la&amp;nbsp;Université&amp;nbsp;de&amp;nbsp;Montréal. Se doctoró en Filología Hispánica por la Universidad de Oviedo en 1993 y dos años más tarde&amp;nbsp;The&amp;nbsp;Japan&amp;nbsp;Foundation&amp;nbsp;le concedió una beca para desarrollar un proyecto de investigación teatral en Kioto y Kobe durante 10 meses (1995-1996), siendo investigador invitado en&amp;nbsp;The&amp;nbsp;Kobe City&amp;nbsp;University&amp;nbsp;of&amp;nbsp;Foreign&amp;nbsp;Studies. Fruto de aquella estancia publicó, en colaboración con el profesor&amp;nbsp;Hidehito&amp;nbsp;Higashitani, un volumen que contenía una larga introducción al teatro japonés, y la traducción anotada de cuatro piezas de teatro&amp;nbsp;Nō&amp;nbsp;y del tratado teatral más prestigioso de aquella tradición oriental (Fūshikaden. Tratado sobre la práctica del teatro&amp;nbsp;Nō, y Cuatro dramas&amp;nbsp;Nō, Trotta, 1999). En 1998 obtuvo un puesto de profesor en el Departamento de literaturas y lenguas modernas de la Universidad de Montreal, donde ha sido director de la sección de estudios hispánicos (2001-2004) y director de estudios superiores (2006-2011).&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;823245244&quot; paraeid=&quot;{5c90edac-6e70-49c7-b494-f17c2b04ef1f}{205}&quot;&gt;Desde 1998 su labor investigadora se ha centrado en el teatro español de los siglos XVI y XVII con una especial dedicación a estos cinco ejes: a) teoría del espacio teatral aplicada al estudio de la comedia española entre 1570 y 1681, que le condujo a la publicación del libro La construcción del espacio en la comedia española del siglo de oro (Arco/Libros, 2005) y a numerosos artículos en revistas especializadas; b) reflexión en torno a la operación de «leer el teatro» y a su origen en la tradición occidental, rescatando un importante texto del humanista español Simón Abril, no reeditado desde 1577 y casi desconocido (Para entender el cómico artificio. Terencio, Donato-Evancio&amp;nbsp;y la traducción de Pedro Simón Abril, Academia del Hispanismo, 2009); c) la edición de textos teatrales clásicos, (coedición junto a Ignacio Arellano de tres comedias sobre el personaje de Judas; coedición con Alejandro García-Reidy de dos comedias sobre san Ginés; coordinación de diversas ediciones dentro del Grupo de investigación Proteo, vinculado a la Universidad de Burgos); d) el estudio del personaje del demonio en la comedia española, financiado por el Consejo de Investigación en Ciencias Humanas de Canadá; e) el teatro misionero ibérico en Japón durante la presencia hispano-portuguesa en tierras niponas en el siglo XVI, también financiado por CRSHC.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;1598625734&quot; paraeid=&quot;{5c90edac-6e70-49c7-b494-f17c2b04ef1f}{211}&quot;&gt;Desde 2007 colaboró en la creación y puesta en marcha de la primera revista digital de teatro de los siglos XVI y XVII, junto a los profesores Alfredo Hermenegildo y Ricardo Serrano, Teatro de palabras. Revista de teatro áureo, siendo coeditor de siete números. Entre sus intereses actuales destacan el desafío de las nuevas tecnologías en relación con la edición de textos dramáticos, y el teatro palaciego en tiempos de Felipe IV y Carlos II.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;!--StartFragment--&gt;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;110341959&quot; paraeid=&quot;{5c90edac-6e70-49c7-b494-f17c2b04ef1f}{217}&quot;&gt;Sus cuatro trabajos principales sobre el teatro de Lope de Vega son:&amp;nbsp;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;1223208523&quot; paraeid=&quot;{5c90edac-6e70-49c7-b494-f17c2b04ef1f}{223}&quot;&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;“Hibridez genérica y unidad artística en la comedia de santos: el proceso de hibridación en Lo fingido verdadero”, Anuario Lope de Vega. Texto, literatura, cultura, XXVIII, 2022, 103-139.&amp;nbsp;&lt;/li&gt;&lt;li&gt;“La edición de las acotaciones: el caso del aparte en los autógrafos de Lope de Vega”, L. Giuliani y V. Pineda (eds.), “Entra el editor y dice”: ecdótica y acotaciones teatrales (siglos XVI y XVII), pp. 29-68.&amp;nbsp;Biblioteca di Rassegna&amp;nbsp;Iberistica&amp;nbsp;10. Venezia: Edizioni Ca’ Foscari, 2018. URL http://edizionicafoscari.unive.it/it/edizioni/collane/biblioteca-di-rassegna-iberistica/&amp;nbsp;&lt;/li&gt;&lt;li&gt;“Arte nuevo, 240-45: Lope contra Lope”, RILCE. Revista de Filología Hispánica, 27.1, pp. 191-203, enero-junio, 2011.&amp;nbsp;&lt;/li&gt;&lt;li&gt;“Amor y mujer en la Novena Parte de comedias”. Felipe B. Pedraza Jiménez, R. González Cañal y Elena&amp;nbsp;Marcello&amp;nbsp;(eds.). Amor y erotismo en el teatro de Lope de Vega. Actas de las XXV Jornadas de Teatro Clásico de Almagro, 283-304. Almagro, Universidad de Castilla-La Mancha / Festival de Almagro, 2003.&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;&lt;p paraid=&quot;110341959&quot; paraeid=&quot;{5c90edac-6e70-49c7-b494-f17c2b04ef1f}{217}&quot;&gt;&lt;!--StartFragment--&gt;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;1065680462&quot; paraeid=&quot;{5c90edac-6e70-49c7-b494-f17c2b04ef1f}{249}&quot;&gt;Enlace a la página personal en Academia.edu:&amp;nbsp;&lt;a href=&quot;http://umontreal.academia.edu/JavierRubiera&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener&quot;&gt;http://umontreal.academia.edu/JavierRubiera&lt;/a&gt;&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;">
+<img class="cphoto" src="../media/rubiera_javier.jpg" alt="Javier Rubiera" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Javier Rubiera</p><p class="crole">Investigador</p><p class="cuni">Université de Montréal</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="veronika-ryjik" tabindex="0" role="button"
+  data-name="Veronika Ryjik" data-role="Investigadora" data-uni="Franklin &amp; Marshall College" data-email="" data-orcid=""
+  data-photo=""
+  data-bio="&lt;p&gt;Biografía del miembro.&lt;/p&gt;">
+<img class="cphoto" src="" alt="Veronika Ryjik" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Veronika Ryjik</p><p class="crole">Investigadora</p><p class="cuni">Franklin &amp; Marshall College</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="antonio-sanchez-jimenez" tabindex="0" role="button"
+  data-name="Antonio Sánchez Jiménez" data-role="Investigador" data-uni="Université de Neuchâtel" data-email="antonio.sanchez@unine.ch" data-orcid="0000-0002-0017-9077"
+  data-photo="../media/sanchez-jimenez_antonio.jpg"
+  data-bio="&lt;div&gt;&lt;p paraid=&quot;1875577499&quot; paraeid=&quot;{4f8c7db4-551b-4cc2-baf0-1ffadbe29ff7}{50}&quot;&gt;Antonio Sánchez Jiménez es doctor por la Universidad de Salamanca (2001) y Brown&amp;nbsp;University&amp;nbsp;(2004). Se especializa en literatura medieval y del Siglo de Oro.  &amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;1673507947&quot; paraeid=&quot;{4f8c7db4-551b-4cc2-baf0-1ffadbe29ff7}{56}&quot;&gt;Como medievalista, ha publicado artículos sobre Berceo, los trovadores y &lt;em&gt;Celestina&lt;/em&gt;. Trabaja sobre las metáforas que acompañan el desarrollo de la monarquía castellana, sobre la relación entre corte y literatura, y sobre la corte de Alfonso VIII de Castilla.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;2130863556&quot; paraeid=&quot;{4f8c7db4-551b-4cc2-baf0-1ffadbe29ff7}{66}&quot;&gt;Como estudioso del Siglo de Oro, se ha centrado en la obra de Lope de Vega. Ha publicado al respecto diversas monografías: sobre el origen del mito de Lope (&lt;em&gt;Lope pintado por sí mismo&lt;/em&gt;,&amp;nbsp;Tamesis), sobre las relaciones de Lope con la pintura (&lt;em&gt;El pincel del Fénix&lt;/em&gt;, Iberoamericana) y una biografía del autor (&lt;em&gt;Lope de Vega. El verso y la vida&lt;/em&gt;, Cátedra). Además, ha publicado ediciones críticas de la obra lopesca: &lt;em&gt;Rimas&lt;/em&gt; &lt;em&gt;sacras&lt;/em&gt; (Iberoamericana), &lt;em&gt;Parte XVIII&lt;/em&gt; (Gredos), &lt;em&gt;La Dragontea&lt;/em&gt;, &lt;em&gt;Isidro&lt;/em&gt;, &lt;em&gt;Arcadia&lt;/em&gt;, &lt;em&gt;Romances de juventud&lt;/em&gt;, &lt;em&gt;Romances de senectud &lt;/em&gt;y &lt;em&gt;La&amp;nbsp;Gatomaquia &lt;/em&gt;(en Cátedra), &lt;em&gt;Rimas &lt;/em&gt;(Real Academia Española). También ha publicado monografías sobre la poesía sevillana del XVII, la Leyenda Negra (&lt;em&gt;Leyenda Negra: la batalla sobre la imagen de España en tiempos de Lope de Vega&lt;/em&gt;, Cátedra), la relación de Saavedra Fajardo con Suiza (&lt;em&gt;Saavedra Fajardo y la Confederación Helvética&lt;/em&gt;,&amp;nbsp;Reichenberger) o la figura de Diego García de Paredes (&lt;em&gt;El Sansón de Extremadura: Diego García de Paredes en la literatura española del siglo XVI&lt;/em&gt;, Juan de la Cuesta). Estos temas han inspirado sus ediciones de autores como Ibargüengoitia (&lt;em&gt;Las muertas&lt;/em&gt;), de la Torre Peralta, Calderón (&lt;em&gt;La cena del rey Baltasar&lt;/em&gt;,&amp;nbsp;Reichenberger; &lt;em&gt;Poesía&lt;/em&gt;, Cátedra), Luis Ulloa Pereira (&lt;em&gt;La Raquel&lt;/em&gt;, Iberoamericana),&amp;nbsp;Exquemelin&amp;nbsp;(&lt;em&gt;Piratas de la América&lt;/em&gt;, Renacimiento) o Salazar (&lt;em&gt;Textos náuticos&lt;/em&gt;, IDEA). &amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;1438057536&quot; paraeid=&quot;{4f8c7db4-551b-4cc2-baf0-1ffadbe29ff7}{160}&quot;&gt;Asimismo, ha publicado 116 artículos en revistas revisadas por pares (incluyendo la Revista de Literatura,&amp;nbsp;Hispanic&amp;nbsp;Review, el Bulletin&amp;nbsp;of&amp;nbsp;Hispanic&amp;nbsp;Studies y el Bulletin&amp;nbsp;of&amp;nbsp;Spanish&amp;nbsp;Studies, La&amp;nbsp;Corónica, el Anuario Calderoniano, etc.), 51 capítulos en libros, 4 entradas de enciclopedia y 76 reseñas. Dirige una revista sobre literatura áurea (Arte nuevo, ISSN 2297-2692), una colección de monografías en Iberoamericana (Clásicos Hispánicos) y una de biografías de escritores en Cátedra (Biografías Cátedra, codirigida con Luis Gómez Canseco), ha organizado 30 congresos y ha participado como conferenciante invitado en 68.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;904819222&quot; paraeid=&quot;{4f8c7db4-551b-4cc2-baf0-1ffadbe29ff7}{166}&quot;&gt;Los tres principales proyectos que ha dirigido como investigador principal son: un estudio sobre la Leyenda Negra financiado por el gobierno holandés («The&amp;nbsp;Black&amp;nbsp;Legend&amp;nbsp;and&amp;nbsp;the&amp;nbsp;Spanish&amp;nbsp;Identity&amp;nbsp;in Golden Age&amp;nbsp;Spanish&amp;nbsp;Theater&amp;nbsp;(1580-1665) (IG-12-07: 236-30-009)»); uno sobre el ritmo acentual en el romancero nuevo, financiado por el gobierno suizo («Verse&amp;nbsp;Rhythm&amp;nbsp;in Golden Age&amp;nbsp;Spanish&amp;nbsp;Poetry: Lope de Vega and Luis de&amp;nbsp;Góngora's&amp;nbsp;Romances») y uno sobre la poesía de la década de 1620, financiado por el mismo organismo («Lope de Vega as a&amp;nbsp;Courtly&amp;nbsp;Writer: &lt;em&gt;La Filomena &lt;/em&gt;(1621) and &lt;em&gt;La Circe&lt;/em&gt; (1624)» (IZSAZ1_173356 / 1)).&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;629693928&quot; paraeid=&quot;{4f8c7db4-551b-4cc2-baf0-1ffadbe29ff7}{180}&quot;&gt;Ha dirigido diversas tesis doctorales: la de Vania Maire-Fivaz&amp;nbsp;(junio de 2015), la de Adrián J. Sáez (diciembre de 2017), la de&amp;nbsp;Virginie&amp;nbsp;Giuliana (junio de 2018), la de Jacobo Llamas (marzo de 2019) y la de Cipriano López (septiembre 2022).&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;847020546&quot; paraeid=&quot;{4f8c7db4-551b-4cc2-baf0-1ffadbe29ff7}{186}&quot;&gt;Desde agosto de 2012 trabaja como catedrático de literatura española en la&amp;nbsp;Université&amp;nbsp;de Neuchâtel.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;!--StartFragment--&gt;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;1868038256&quot; paraeid=&quot;{4f8c7db4-551b-4cc2-baf0-1ffadbe29ff7}{192}&quot;&gt;Enlace&amp;nbsp;al CV completo: &lt;a href=&quot;https://unine.academia.edu/AntonioSanchezJimenez&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener&quot;&gt;https://unine.academia.edu/AntonioSanchezJimenez&lt;/a&gt;&amp;nbsp;&lt;/p&gt;&lt;/div&gt;">
+<img class="cphoto" src="../media/sanchez-jimenez_antonio.jpg" alt="Antonio Sánchez Jiménez" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Antonio Sánchez Jiménez</p><p class="crole">Investigador</p><p class="cuni">Université de Neuchâtel</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="luis-sanchez-lailla" tabindex="0" role="button"
+  data-name="Luis Sánchez Laílla" data-role="Investigador" data-uni="Universidad de Zaragoza" data-email="lsanlai@unizar.es" data-orcid=""
+  data-photo="../media/sanchez-lailla_luis.jpg"
+  data-bio="&lt;div&gt;&lt;p paraid=&quot;1923514301&quot; paraeid=&quot;{4f8c7db4-551b-4cc2-baf0-1ffadbe29ff7}{230}&quot;&gt;Luis Sánchez&amp;nbsp;Laílla&amp;nbsp;es profesor titular del Departamento de Lingüística y Literaturas Hispánicas de la Universidad de Zaragoza, institución en la que se doctoró en 1999, con una tesis sobre la&amp;nbsp;&lt;em&gt;Nueva idea de la tragedia antigua&lt;/em&gt;&amp;nbsp;de González de Salas.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;518414348&quot; paraeid=&quot;{4f8c7db4-551b-4cc2-baf0-1ffadbe29ff7}{247}&quot;&gt;Su principal campo de investigación es la literatura del Siglo de Oro, con especial dedicación a la figura de Baltasar Gracián, de quien ha editado un volumen de&amp;nbsp;&lt;em&gt;Obras completas&amp;nbsp;&lt;/em&gt;(2003), así como ediciones exentas de&amp;nbsp;&lt;em&gt;El Comulgatorio&lt;/em&gt;&amp;nbsp;(2003),&amp;nbsp;&lt;em&gt;El Político don Fernando el Católico&amp;nbsp;&lt;/em&gt;(2010),&amp;nbsp;&lt;em&gt;El Criticón&amp;nbsp;&lt;/em&gt;(2016), realizada junto con M.ª Pilar Cuartero y José Enrique&amp;nbsp;Laplana, que recibió el Premio Real Academia Española de Investigación Filológica 2017, y&amp;nbsp;&lt;em&gt;El Héroe&lt;/em&gt;&amp;nbsp;(2025). Su trabajo se ha desarrollado también en los ámbitos de la teoría literaria áurea, con la edición y estudio de la&amp;nbsp;&lt;em&gt;Nueva idea de la tragedia antigua&amp;nbsp;&lt;/em&gt;de Jusepe Antonio González de Salas (2001), de la poesía&amp;nbsp;tardobarroca&amp;nbsp;y neoclásica, con varias publicaciones sobre Ignacio de&amp;nbsp;Luzán, y del teatro barroco, con la edición científica de obras de Lope de Vega, Ruiz de Alarcón y José Joaquín Núñez.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;!--StartFragment--&gt;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;1002250461&quot; paraeid=&quot;{2d6d84d3-b3ad-4357-947c-1d11399424ef}{36}&quot;&gt;Ha editado para PROLOPE las comedias&amp;nbsp;&lt;em&gt;El galán de la Membrilla&lt;/em&gt;, incluida en la&amp;nbsp;&lt;em&gt;Parte X&lt;/em&gt;&amp;nbsp;(2010),&amp;nbsp;&lt;em&gt;Las flores de don Juan&lt;/em&gt;&amp;nbsp;y&amp;nbsp;&lt;em&gt;Lo que hay que fiar del mundo&lt;/em&gt;, de la&amp;nbsp;&lt;em&gt;Parte XII&lt;/em&gt;&amp;nbsp;(2013), y&amp;nbsp;&lt;em&gt;Servir a buenos&lt;/em&gt;, de la&amp;nbsp;&lt;em&gt;Parte XXIV&lt;/em&gt;. Fue también coordinador de la&amp;nbsp;&lt;em&gt;Parte XV&lt;/em&gt;&amp;nbsp;(2017).&lt;/p&gt;&lt;p paraid=&quot;1002250461&quot; paraeid=&quot;{2d6d84d3-b3ad-4357-947c-1d11399424ef}{36}&quot;&gt;&lt;!--StartFragment--&gt;&lt;a href=&quot;https://unizar.academia.edu/LuisS%C3%A1nchezLa%C3%ADlla&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener&quot;&gt;https://unizar.academia.edu/LuisS%C3%A1nchezLa%C3%ADlla&lt;/a&gt;&amp;nbsp;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;/div&gt;">
+<img class="cphoto" src="../media/sanchez-lailla_luis.jpg" alt="Luis Sánchez Laílla" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Luis Sánchez Laílla</p><p class="crole">Investigador</p><p class="cuni">Universidad de Zaragoza</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="jonathan-thacker" tabindex="0" role="button"
+  data-name="Jonathan Thacker" data-role="Investigador" data-uni="University of Oxford" data-email="jonathan.thacker@mod-langs.ox.ac.uk" data-orcid=""
+  data-photo="../media/thacker_jonathan.jpg"
+  data-bio="&lt;p&gt;Jonathan Thacker es profesor del Merton College de la University of Oxford y doctor por el Emmanuel College de la University of Cambridge (Reino Unido). Es editor general de la serie bilingüe, &lt;em&gt;Aris and Phillips Hispanic Classics&lt;/em&gt;.&lt;/p&gt;&lt;p&gt;Como miembro de los Grupos PROLOPE y &lt;a href=&quot;https://dicat.uv.es/&quot; target=&quot;_blank&quot;&gt;DICAT&lt;/a&gt;, participa en el proyecto &lt;a href=&quot;https://catcom.uv.es/consulta/&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;CATCOM. Las comedias y sus representantes. Base de datos de las comedias mencionadas en la documentación teatral (1540-1700)&lt;/em&gt;&lt;/a&gt; y en el proyecto &lt;a href=&quot;https://hispanismo.cervantes.es/recursos/patrimonio-teatral-clasico-espanol-textos-e-instrumentos-investigacion-tece-tei&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Patrimonio teatral clásico español: textos e instrumentos de investigación&lt;/em&gt;&lt;/a&gt; (2010). También codirige el proyecto &lt;a href=&quot;https://outofthewings.org/&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Out of the Wings&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Es especialista en el teatro del Siglo de Oro, interesado sobre todo en la traducción y la puesta en escena. Ha publicado artículos sobre el teatro de Lope de Vega, Tirso de Molina, Calderón de la Barca, Guillén de Castro y Miguel de Cervantes. Es autor del estudio &lt;em&gt;A Companion to Golden Age Theatre&lt;/em&gt; (2007), y ha tratado sobre el metateatro en la comedia nueva en su &lt;em&gt;Role-Play and the World as Stage in the Comedia&lt;/em&gt; (2002). Ha sido coordinador, junto con Alexander Samson, de &lt;em&gt;A Companion to Lope de Vega&lt;/em&gt; (2008), en el que es además autor de varios capítulos. Como traductor ha publicado una versión de &lt;em&gt;El condenado por desconfiado&lt;/em&gt; de Tirso de Molina, con Laurence Boswell (1992), y una traducción de tres de las &lt;em&gt;Novelas ejemplares&lt;/em&gt; de Cervantes, con Michael Thacker (1992).&lt;/p&gt;">
+<img class="cphoto" src="../media/thacker_jonathan.jpg" alt="Jonathan Thacker" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Jonathan Thacker</p><p class="crole">Investigador</p><p class="cuni">University of Oxford</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="ely-trevino" tabindex="0" role="button"
+  data-name="Ely Treviño" data-role="Investigadora" data-uni="" data-email="" data-orcid=""
+  data-photo=""
+  data-bio="&lt;p&gt;Biografía del miembro.&lt;/p&gt;">
+<img class="cphoto" src="" alt="Ely Treviño" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Ely Treviño</p><p class="crole">Investigadora</p><p class="cuni"></p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="eduard-vilella" tabindex="0" role="button"
+  data-name="Eduard Vilella" data-role="Investigador" data-uni="Universitat Autònoma de Barcelona" data-email="eduard.vilella@uab.cat" data-orcid=""
+  data-photo="../media/vilella_eduard.jpg"
+  data-bio="&lt;p&gt;El foco principal de atención de Eduard Vilella es el estudio de la literatura italiana medieval; este se caracteriza por una perspectiva comparatista de amplio espectro, que engloba el marco de las literaturas románicas y que no desatiende las ramificaciones contemporáneas de las cuestiones.&lt;/p&gt;&lt;p&gt;En lo que a formación se refiere, pese a las dificultades contextuales derivadas de la ubicación en la estructura académica de la UAB, ha dirigido dos tesis doctorales y dirige en la actualidad otras tres.&lt;/p&gt;&lt;p&gt;Es miembro del «Instituto de Estudios Medievales» y de la «Societat catalana d’Estudis Dantescos», desde el inicio de su constitución, habiendo sido también su presidente de 2005 a 2010.&lt;/p&gt;&lt;p&gt;Ha participado en diversos proyectos de investigación y acciones complementarias tanto de ámbito nacional como autonómico. Ha participado directamente en la organización de congresos internacionales sobre Giacomo a Lentini, Guido Cavalcanti, Dante Alighieri, Petrarca y Boccaccio, cuyas Actas figuran como obras de referencia en las principales bibliografías. Destacaría la gestión de las mencionadas revista y red internacional sobre «Dante y el arte» en cuyo ámbito se prevé organizar una serie de seminarios y congresos en Barcelona, Florencia, Potsdam y Los Ángeles UCLA. Con esta última actividad se relaciona el grupo de investigación consolidado (SGR 2014) aprobado por la Generalitat de Cataluña.&lt;/p&gt;&lt;p&gt;Realizó una estancia en 2013 en el CMRS de la UCLA en el programa de la &lt;em&gt;Ahmanson Foundation Fellowships&lt;/em&gt;. En el mismo centro fue también invitado en calidad de &lt;em&gt;Distinguished Visiting Professor&lt;/em&gt;.&lt;/p&gt;">
+<img class="cphoto" src="../media/vilella_eduard.jpg" alt="Eduard Vilella" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Eduard Vilella</p><p class="crole">Investigador</p><p class="cuni">Universitat Autònoma de Barcelona</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="ane-zapatero" tabindex="0" role="button"
+  data-name="Ane Zapatero" data-role="Investigadora" data-uni="Universidad del País Vasco" data-email="ane.zapatero@ehu.eus" data-orcid="0000-0003-0695-9450"
+  data-photo="../media/zapatero_ane.jpg"
+  data-bio="&lt;div&gt;&lt;p paraid=&quot;246259148&quot; paraeid=&quot;{2d6d84d3-b3ad-4357-947c-1d11399424ef}{196}&quot;&gt;Ane Zapatero&amp;nbsp;Molinuevo&amp;nbsp;es Licenciada en Psicología por la Universidad de Deusto (2012) y Graduada en Filología: Estudios Hispánicos (2014) por la Universidad del País Vasco (UPV/EHU). En esta misma institución cursó un máster en Literatura Comparada (2016) y se doctoró posteriormente en Literatura Comparada y Estudios Literarios (2021), mientras disfrutaba de una beca predoctoral concedida por el Gobierno Vasco. Desde diciembre de 2022 es profesora adjunta (ayudante doctora) en la Facultad de Letras de la UPV, donde imparte, dentro del Grado en Filología, asignaturas como Literatura Hispánica Medieval, Teoría de la Literatura o Literatura Española de los Siglos de Oro.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p paraid=&quot;1037291734&quot; paraeid=&quot;{2d6d84d3-b3ad-4357-947c-1d11399424ef}{206}&quot;&gt;Su investigación se ha centrado principalmente en la edición crítica, investigación de las fuentes y recepción de la producción dramática de Lope de Vega, aunque también se ha interesado por otros aspectos de la cultura del Siglo de Oro, así como por la recepción de la comedia áurea en los siglos XVIII, XIX y XX. Su primera edición crítica, de la comedia&amp;nbsp;palatina &lt;em&gt;La boba para los otros y discreta para sí&lt;/em&gt; de Lope de Vega, fue publicada por la editorial Cátedra en 2020. Su tesis, titulada «Estudio y edición crítica de un díptico dramático de Lope de Vega: “Los&amp;nbsp;Tellos&amp;nbsp;de Meneses” y “Valor, fortuna y lealtad de los&amp;nbsp;Tellos&amp;nbsp;de Meneses”», defendida en 2021, obtuvo la mención internacional y el Cum Laude, y la edición de la primera de estas dos piezas fue publicada en la &lt;em&gt;Parte XXI&lt;/em&gt; de comedias (Gredos, 2022) bajo la dirección del grupo PROLOPE. Forma parte también del equipo de editores de la &lt;em&gt;Parte XXIII&lt;/em&gt; de comedias, para la que editará la comedia hagiográfica &lt;em&gt;El saber por no saber y vida de san Julián de Alcalá de Henares&lt;/em&gt;.&amp;nbsp;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;!--StartFragment--&gt;&lt;!--EndFragment--&gt;&lt;/p&gt;&lt;div&gt;&lt;p paraid=&quot;33516544&quot; paraeid=&quot;{2d6d84d3-b3ad-4357-947c-1d11399424ef}{242}&quot;&gt;&lt;strong&gt;ORCID:&lt;/strong&gt; &lt;a href=&quot;https://orcid.org/0000-0003-0695-9450&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener&quot;&gt;https://orcid.org/0000-0003-0695-9450&lt;/a&gt;&amp;nbsp;&lt;/p&gt;&lt;/div&gt;">
+<img class="cphoto" src="../media/zapatero_ane.jpg" alt="Ane Zapatero" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Ane Zapatero</p><p class="crole">Investigadora</p><p class="cuni">Universidad del País Vasco</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="carme-font" tabindex="0" role="button"
+  data-name="Carme Font" data-role="Investigadora" data-uni="Universitat Autònoma de Barcelona" data-email="carme.font@uab.cat" data-orcid=""
+  data-photo="../media/font_carme.jpg"
+  data-bio="&lt;p&gt;Directora de Investigación en Filología Inglesa (sección Literatura) en la Universitat Autònoma de Barcelona. Research Associate del CMRS Center for Early Global Studies, UCLA.&lt;/p&gt;&lt;p&gt;Especialista en literatura premoderna escrita por mujeres con una visión integradora global, su enfoque abarca los estudios de género, la crítica textual, la historia intelectual, estudios sobre recepción, historia social de la religión, y cultura material.&lt;/p&gt;&lt;p&gt;Dirige el proyecto del Consejo Europeo de Investigación ERC Starting Grant &lt;em&gt;WINK: Women’s Invisible Ink: Trans-Genre Writing and the Gendering of Intellectual Value in Early Modernity&lt;/em&gt;. He obtenido becas de investigación postdoctoral de la University of California Los Angeles y Harvard University, entre otras.&lt;/p&gt;&lt;p&gt;Entre sus publicaciones destacan los libros &lt;em&gt;Women’s Prophetic Writings in Seventeenth Century Britain&lt;/em&gt; (Routledge, 2017), y, en coedición con Nina Geerdink, &lt;em&gt;Economic Imperatives for Women’s Writing in Early Modern Europe&lt;/em&gt; (Brill, 2018). Dirige la colección &lt;em&gt;Early Modern Women Writers in Europe: Texts, Debates and Genealogies of Knowledge&lt;/em&gt; (Brepols).&lt;/p&gt;&lt;p&gt;Ha sido galardonada con el premio ICREA Academia y es miembro de la Young Academy of Europe (YAE).&lt;/p&gt;">
+<img class="cphoto" src="../media/font_carme.jpg" alt="Carme Font" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Carme Font</p><p class="crole">Investigadora</p><p class="cuni">Universitat Autònoma de Barcelona</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+</div>
+
+<div class="members-section">
+<h2>Histórico de investigadores</h2>
+</div>
+
+<div class="grid past-grid">
+
+<div class="card" id="miguel-maron-garcia-bermejo" tabindex="0" role="button"
+  data-name="Miguel Maron García-Bermejo" data-role="Investigador" data-uni="Universidad de Salamanca" data-email="mencu@usal.es" data-orcid=""
+  data-photo="../media/garcia-bermejo_miguel-maron.jpg"
+  data-bio="&lt;p&gt;Miguel García-Bermejo Giner ha centrado su investigación en diversos ámbitos de la literatura española de finales de la Edad Media y principios de la Edad Moderna, particularmente en el teatro del siglo de Oro, la poesía de los siglos XV y XVI, los vejámenes universitarios y la interacción entre el mundo académico y la literatura.&lt;/p&gt;&lt;p&gt;El campo de estudio al que más se ha dedicado es el teatro español del siglo XVI. Su &lt;em&gt;Catálogo bibliográfico del teatro español del siglo XVI&lt;/em&gt;, publicado en 1996, es una referencia ineludible para cualquier investigador interesado en el teatro prelopesco. Asimismo, García-Bermejo ha publicado numerosos artículos y presentado diversas ponencias sobre los principales dramaturgos del Renacimiento español, tales como Lucas Fernández, Torres Naharro o Juan del Encina. Por lo que respecta a los otros ámbitos de su investigación, sobresale su monografía &lt;em&gt;Ejercicios paródicos universitarios (Siglos XV-XVII)&lt;/em&gt; (1999).&lt;/p&gt;&lt;p&gt;El profesor García-Bermejo se ha ocupado asimismo de la obra de Lope de Vega; en ese sentido, cabe destacar su edición crítica de la comedia &lt;em&gt;La resistencia honrada y condesa Matilde&lt;/em&gt;, publicada en la &lt;em&gt;Parte II&lt;/em&gt; (1998) a cargo de PROLOPE.&lt;/p&gt;&lt;p&gt;García-Bermejo no solo es profesor titular de la Universidad de Salamanca, sino que desde 2003 viene desempeñando tareas docentes e investigadoras en el CERES (Centro para el Estudio del Renacimiento Español), perteneciente al Romanisches Seminar der Christian-Albrechts-Universität zu Kiel (Alemania). Además, ha impartido cursos y seminarios en numerosas universidades españolas y europeas. Ha presentado setenta conferencias en congresos y reuniones científicas, nacionales e internacionales y emitido informes sobre artículos presentados a revistas relevantes de mi campo científico: &lt;em&gt;Revista de Filología Española&lt;/em&gt;, &lt;em&gt;Revista de poética medieval&lt;/em&gt;, &lt;em&gt;Estudia Aurea&lt;/em&gt;, &lt;em&gt;Castilla&lt;/em&gt;, &lt;em&gt;Letra y Signo&lt;/em&gt; o &lt;em&gt;Hipogrifo&lt;/em&gt;.&lt;/p&gt;">
+<img class="cphoto" src="../media/garcia-bermejo_miguel-maron.jpg" alt="Miguel Maron García-Bermejo" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Miguel Maron García-Bermejo</p><p class="crole">Investigador</p><p class="cuni">Universidad de Salamanca</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="antonio-rojas-castro" tabindex="0" role="button"
+  data-name="Antonio Rojas-Castro" data-role="Investigador principal" data-uni="Berlin-Brandenburgische Akademie der Wissenschaften" data-email="rojas.castro.antonio@gmail.com" data-orcid="0000-0002-8916-4997"
+  data-photo="../media/rojas-castro_antonio.jpg"
+  data-bio="&lt;p&gt;Antonio Rojas Castro es doctorado en Humanidades por la Universitat Pompeu Fabra (2015, Barcelona) en donde fue investigador pre-doctoral, becario FPI del grupo de investigación &lt;a href=&quot;https://arxiu-web.upf.edu/todogongora/proyecto/descriptg2.html&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Todo Góngora II&lt;/em&gt;&lt;/a&gt; y profesor de asignaturas sobre escritura académica y estudios literarios. Ha publicado en revistas como &lt;em&gt;Rilce&lt;/em&gt;, &lt;em&gt;Studia Aurea&lt;/em&gt;, &lt;em&gt;Janus&lt;/em&gt;, &lt;em&gt;Caracteres&lt;/em&gt;, &lt;em&gt;Lectora&lt;/em&gt; o &lt;em&gt;Mélanges de la Casa de Velázquez&lt;/em&gt;.&lt;/p&gt;&lt;p&gt;En 2015 coordinó, junto con María Morrás, un monográfico dedicado a las Humanidades Digitales para la revista &lt;em&gt;Ínsula&lt;/em&gt;. De 2015 a 2017 estuvo al cargo de la comunicación de la &lt;a href=&quot;https://eadh.org/&quot; target=&quot;_blank&quot;&gt;Asociación Europea de Humanidades Digitales&lt;/a&gt; (EADH). Actualmente, trabaja como investigador en el &lt;a href=&quot;https://cceh.uni-koeln.de/en/&quot; target=&quot;_blank&quot;&gt;Cologne Center for eHumanities&lt;/a&gt;, donde desarrolla un proyecto de edición digital de la obra de Albrecht von Haller, y es editor de &lt;a href=&quot;https://programminghistorian.org/es/&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;The Programming Historian en español&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;">
+<img class="cphoto" src="../media/rojas-castro_antonio.jpg" alt="Antonio Rojas-Castro" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Antonio Rojas-Castro</p><p class="crole">Equipo de trabajo</p><p class="cuni">Berlin-Brandenburgische Akademie der Wissenschaften</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+<div class="card" id="ramon-valdes" tabindex="0" role="button"
+  data-name="Ramón Valdés" data-role="Comité científico" data-uni="Universitat Autònoma de Barcelona" data-email="ramon.valdes@uab.cat" data-orcid=""
+  data-photo="../media/valdes_ramon.jpg"
+  data-bio="&lt;p&gt;Ramón Valdés Gázquez es profesor Agregado de la Universitat Autònoma de Barcelona, doctor en Filosofía y Letras por la misma universidad desde 1997 y co-Investigadro prinicipal, junto a Gonzalo Pontón, del Grupo de Investigación PROLOPE, en el que participa desde el año 2000. Sus principales líneas de investigación se centran en la sátira, la sátira menipea del Siglo de Oro; la edición de textos; el estudio del autor Lope de Vega y el Humanismo digital.Su trayectoria científica inicia con la redacción de un trabajo de curso y luego un trabajo de Máster (en el ámbito de los cursos de Doctorado) sobre &lt;em&gt;Los Sueños y discursos de Quevedo: el modelo del sueño humanista y el género de la sátira menipea&lt;/em&gt; (Departament de Filologia Espanyola, UAB, 1990). Ahí inicia su interés por el género de la sátira menipea y por Quevedo, uno de sus principales centros de interés y tema de muchas de sus publicaciones, desde libros colectivos a capítulos de libro y artículos en revistas, así como de ponencias y conferencias. De ahí derivó, asimismo, un encargo editorial para la prestigiosa colección «Biblioteca Clásica» dirigida por Francisco Rico, la edición crítica de &lt;em&gt;El diablo Cojuelo&lt;/em&gt;, de Luis Vélez de Guevara. Ese encargo editorial acabó por convertirse, antes de su publicacion, en su tesis doctoral, dirigida por el profesor Alberto Blecua. Así se produjo su iniciación en el terreno de la Crítica Textual y en la labor de edición de textos.&lt;/p&gt;&lt;p&gt;Como alumno del profesor Alberto Blecua y de la Universitat Autònoma de Barcelona, después de una estancia de ocho años en Italia; la formación y curriculum en Crítica Textual y edición de textos permitieron a Ramón Valdés reincorporarse con una beca postdoctoral en la misma universidad, y dentro del proyecto de edición de textos que llevaba adelante el grupo de investigación PROLOPE.&lt;/p&gt;&lt;p&gt;Desde su llegada al grupo de investigación PROLOPE en el año 2000, su dedicación a la edición del teatro de Lope de Vega ha sido intensa: realizó la edición crítica de varias obras, como &lt;em&gt;La fe rompida&lt;/em&gt; y &lt;em&gt;La batalla del honor&lt;/em&gt;, además de, en colaboración con María Nogués, &lt;em&gt;La octava maravilla&lt;/em&gt;; y ahora, en colaboración con Santiago Restrepo, &lt;em&gt;El caballero del milagro&lt;/em&gt;. Asumió asimismo la coordinación de la &lt;em&gt;Parte IV&lt;/em&gt; de las &lt;em&gt;Comedias de Lope de Vega&lt;/em&gt; con Luigi Giuliani, y con María Morrás la de la &lt;em&gt;Parte X&lt;/em&gt;.&lt;/p&gt;&lt;p&gt;También ha coordinado y participado en las ediciones de &lt;em&gt;Fuenteovejuna&lt;/em&gt; y &lt;em&gt;El castigo sin venganza&lt;/em&gt; para la editorial PPU, y se ha encargado de las relaciones con la compañía de teatro Rakatá, actualmente Fundación Siglo de Oro. Desde junio de 2011 dirige con Gonzalo Pontón, el grupo de investigación PROLOPE.&lt;/p&gt;&lt;p&gt;Entre los años 2003 y 2008 fue investigador Ramón y Cajal, siendo evaluado positivamente en el último año e integrándose como investigador en el Programa I3. Desde el año 2009, y durante el quinquenio 2009-2014, ha sido miembro, a través de PROLOPE, del macroproyecto en red &lt;a href=&quot;https://www.cervantesvirtual.com/portales/teatro_clasico_espanol/investigacion_proyecto_tc12/&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;TC/12 Patrimonio Teatral Clásico Español&lt;/em&gt;&lt;/a&gt;, del Programa Consolider-Ingenio 2010 CSD 2009 00033.&lt;/p&gt;&lt;p&gt;Problemas prácticos y reflexiones teóricas han acercado a Ramón Valdés, además, al ámbito de la edición digital. En 2013, organizó unas Jornadas sobre Humanidades y Ediciones críticas digitales en la UAB en las que participaron varios especialistas de primer orden mundial: A. Bía, D. Fiormonte, S. Hagel, P. Spence y F. Tomasi, entre otros. Ha realizado una propuesta de Máster en Humanidades Digitales que presentó con A. Bía en el I Congreso de HDH («Una propuesta educativa para las HD: el nuevo máster en HD de la UAB», A Coruña, Julio, 2013), la cual fue aprobada por la Comisión de Posgrado de la UAB. En 2014 ha coordinado un número de la revista &lt;a href=&quot;https://revistes.uab.cat/anuariolopedevega/index&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Anuario Lope de Vega&lt;/em&gt;&lt;/a&gt; sobre «Edición digital y edición crítica», con participación de varios de los especialistas ya mencionados así como de otros.&lt;/p&gt;">
+<img class="cphoto" src="../media/valdes_ramon.jpg" alt="Ramón Valdés" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
+<div class="cbody"><p class="cname">Ramón Valdés</p><p class="crole">Comité científico</p><p class="cuni">Universitat Autònoma de Barcelona</p></div>
+<span class="chint">Ver ficha →</span>
+</div>
+
+</div>
+
+    </main>
+
+    <aside class="article-sidebar">
+      <div class="sidebar-card">
+        <p class="sidebar-card-title">En esta sección</p>
+        <ul class="sidebar-nav-list">
+          <li><a href="contacto.html">Contacto y ubicación</a></li>
+          <li><a href="el-grupo.html">El grupo de investigación</a></li>
+          <li><a href="estatutos.html">Estatutos del grupo</a></li>
+          <li><a href="historial-proyectos.html">Historial de proyectos</a></li>
+          <li><a href="miembros.html" class="active">Miembros</a></li>
+        </ul>
+      </div>
+
+    </aside>
+
+  </div>
+
+<div class="ov" id="ov" role="dialog" aria-modal="true" aria-label="Ficha del miembro">
+  <div class="modal" id="modal">
+    <!-- columna foto -->
+    <div class="mph">
+      <img id="mph-img" src="" alt="">
+      <div class="mgrad"></div>
+      <div class="minfo">
+        <p class="mbadge" id="mbadge"></p>
+        <p class="mname" id="mname"></p>
+        <p class="muni" id="muni"></p>
+        <div class="memail" id="memail">
+          <span>✉</span>
+          <a id="memail-a" href=""></a>
+        </div>
+        <div class="morcid" id="morcid">
+          <span>iD</span>
+          <a id="morcid-a" href="" target="_blank" rel="noopener noreferrer"></a>
+        </div>
+      </div>
+    </div>
+    <!-- columna texto -->
+    <div class="mright">
+      <div class="mtop">
+        <span class="mcounter" id="mcounter"></span>
+        <button class="mclose" id="mclose" aria-label="Cerrar">✕</button>
+      </div>
+      <div class="mscroll">
+        <div class="mcontact" id="mcontact">
+          <div class="mcontact-email" id="mcontact-email">
+            <span>✉</span>
+            <a id="mcontact-email-a" href=""></a>
+          </div>
+          <div class="mcontact-orcid" id="mcontact-orcid">
+            <span>iD</span>
+            <a id="mcontact-orcid-a" href="" target="_blank" rel="noopener noreferrer"></a>
+          </div>
+        </div>
+        <p class="mblabel">Semblanza</p>
+        <div class="mbio" id="mbio"></div>
+      </div>
+      <div class="mnav">
+        <button class="mbtn" id="mprev">← Anterior</button>
+        <button class="mbtn" id="mnext">Siguiente →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FUNDERS -->
+  <section class="funders">
+    <div class="funders-inner">
+      <p class="funders-title">Entidades financiadoras</p>
+      <div class="funders-logos">
+        <a class="funder-logo-link" href="https://www.march.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/fundacion-march.png" alt="Fundación March" />
+        </a>
+        <a class="funder-logo-link" href="https://www.culturaydeporte.gob.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/ace.png" alt="ACE" />
+        </a>
+        <a class="funder-logo-link" href="https://agaur.gencat.cat/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/agaur_gencat.png" alt="AGAUR Gencat" />
+        </a>
+        <a class="funder-logo-link" href="https://www.ciencia.gob.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/ministerio-feder.png" alt="Ministerio / FEDER" />
+        </a>
+        <a class="funder-logo-link" href="https://www.uab.cat/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/uab.png" alt="UAB" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="../media/logo-prolope_inici.png" alt="PROLOPE" />
+      </div>
+      <address class="footer-address" style="font-style:normal;">
+        Grupo de investigación PROLOPE.<br />
+        Departament de Filologia Espanyola.<br /><br />
+        Facultat de Filosofia i Lletres UAB<br />
+        CAMPUS DE LA UAB<br />
+        Carrer de la fortuna s/n<br />
+        08193 Bellaterra (Barcelona)
+      </address>
+      <div class="footer-contact">
+        Teléfono (Secretaría): <a href="tel:+34935811034">93 581 10 34</a><br />
+        Correo: <a href="mailto:prolope@uab.es">prolope@uab.es</a>
+        <div class="footer-social">
+          <a href="https://twitter.com/ProlopeUab" target="_blank" rel="noopener noreferrer" title="Seguir en X">𝕏</a>
+          <a href="https://www.facebook.com/prolope.uab" target="_blank" rel="noopener noreferrer" title="Seguir en Facebook">f</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Grupo de Investigación PROLOPE – Universitat Autònoma de Barcelona
+    </div>
+  </footer>
+
+<script>
+// ── Modal ──
+const cards=[...document.querySelectorAll('.card')];
+let cur=0;
+const ov=document.getElementById('ov');
+const mphImg=document.getElementById('mph-img');
+const mbadge=document.getElementById('mbadge');
+const mname=document.getElementById('mname');
+const muni=document.getElementById('muni');
+const memail=document.getElementById('memail');
+const memailA=document.getElementById('memail-a');
+const morcid=document.getElementById('morcid');
+const morcidA=document.getElementById('morcid-a');
+const mcontact=document.getElementById('mcontact');
+const mcontactEmailEl=document.getElementById('mcontact-email');
+const mcontactEmailA=document.getElementById('mcontact-email-a');
+const mcontactOrcidEl=document.getElementById('mcontact-orcid');
+const mcontactOrcidA=document.getElementById('mcontact-orcid-a');
+const mbio=document.getElementById('mbio');
+const mcounter=document.getElementById('mcounter');
+const mprev=document.getElementById('mprev');
+const mnext=document.getElementById('mnext');
+const mscroll=document.querySelector('.mscroll');
+
+function load(i){
+  const d=cards[i].dataset;
+  mphImg.src=d.photo||'';
+  mphImg.alt=d.name||'';
+  mbadge.textContent=d.role||'';
+  mname.textContent=d.name||'';
+  muni.textContent=(d.uni&&d.uni!=='–')?d.uni:'';
+  mbio.innerHTML=d.bio||'';
+  mcounter.textContent=(i+1)+' / '+cards.length;
+  const email=d.email?d.email.trim():'';
+  const orcid=d.orcid?d.orcid.trim().replace(/^orcid\s*/i,''):'';
+
+  if(email){memailA.href='mailto:'+email;memailA.textContent=email;memail.style.display='flex';}
+  else{memail.style.display='none';}
+  if(orcid){const ou='https://orcid.org/'+orcid;morcidA.href=ou;morcidA.textContent=orcid;morcid.style.display='flex';}
+  else{morcid.style.display='none';}
+  if(email){mcontactEmailA.href='mailto:'+email;mcontactEmailA.textContent=email;mcontactEmailEl.style.display='flex';}
+  else{mcontactEmailEl.style.display='none';}
+  if(orcid){const ou2='https://orcid.org/'+orcid;mcontactOrcidA.href=ou2;mcontactOrcidA.textContent=orcid;mcontactOrcidEl.style.display='flex';}
+  else{mcontactOrcidEl.style.display='none';}
+  mcontact.classList.toggle('has-data', !!(email||orcid));
+  mprev.disabled=(i===0);
+  mnext.disabled=(i===cards.length-1);
+  mscroll.scrollTop=0;
+}
+
+function open(i){
+  cur=i;load(cur);
+  ov.classList.add('on');
+  document.body.classList.add('locked');
+  setTimeout(()=>document.getElementById('mclose').focus(),320);
+}
+function close(){
+  ov.classList.remove('on');
+  document.body.classList.remove('locked');
+}
+
+cards.forEach((c,i)=>{
+  c.addEventListener('click',()=>open(i));
+  c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(i);}});
+});
+mprev.addEventListener('click',()=>{if(cur>0){cur--;load(cur);}});
+mnext.addEventListener('click',()=>{if(cur<cards.length-1){cur++;load(cur);}});
+document.getElementById('mclose').addEventListener('click',close);
+ov.addEventListener('click',e=>{if(e.target===ov)close();});
+document.addEventListener('keydown',e=>{
+  if(!ov.classList.contains('on'))return;
+  if(e.key==='Escape')close();
+  if(e.key==='ArrowRight'&&cur<cards.length-1){cur++;load(cur);}
+  if(e.key==='ArrowLeft'&&cur>0){cur--;load(cur);}
+});
+</script>
+  <script>
+    /* ---- Page reveal animations ---- */
+    (function () {
+      if (!('IntersectionObserver' in window)) return;
+      var els = document.querySelectorAll('.card, .sidebar-card, .founder-card, .news-card, .video-card, .congress-card, .funders, .inline-figure, .inline-figure-left');
+      if (!els.length) return;
+      els.forEach(function (el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+      });
+      var obs = new IntersectionObserver(function (entries) {
+        var visible = entries.filter(function (e) { return e.isIntersecting; });
+        visible.forEach(function (e, i) {
+          e.target.style.transition = 'opacity 0.5s ease-out ' + (i * 0.07) + 's, transform 0.5s ease-out ' + (i * 0.07) + 's';
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          obs.unobserve(e.target);
+        });
+      }, { threshold: 0.1 });
+      els.forEach(function (el) { obs.observe(el); });
+    })();
+  </script>
+  <script>
+    // Mobile menu toggle
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('mainNav');
+    toggle.addEventListener('click', () => { nav.classList.toggle('open'); document.body.classList.toggle('menu-open', nav.classList.contains('open')); });
+
+    // Accordion dropdowns on mobile
+    document.querySelectorAll('.has-dropdown > span').forEach(function(el) {
+      el.addEventListener('click', function() {
+        if (window.innerWidth <= 1100) {
+          el.parentElement.classList.toggle('open');
+        }
+      });
+    });
+  </script>
+  <script>var SITE_ROOT='../';</script>
+  <script src="../search-data.js"></script>
+<script src="../site-search.js"></script>
+  <script>
+    // Modo noche
+    (function() {
+      var toggle = document.getElementById('themeToggle');
+      var saved = localStorage.getItem('theme');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      }
+      toggle.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+          document.documentElement.removeAttribute('data-theme');
+          localStorage.setItem('theme', 'light');
+          toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+          } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+          toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" href="../media/favicon_5.gif" type="image/gif" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; base-uri 'self'; connect-src 'self'" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Historial de proyectos | PROLOPE – UAB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../prolope.css" />
+  <!-- early theme -->
+  <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'||(! t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.setAttribute('data-theme','dark');})();
+  </script>
+
+</head>
+<body>
+
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="logo-link">
+        <img src="../media/logo-menu.png" alt="PROLOPE" />
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li class="has-dropdown">
+            <span>El grupo <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="el-grupo.html">El grupo de investigación</a></li>
+                <li><a href="historial-proyectos.html">Historial de proyectos</a></li>
+                <li><a href="estatutos.html">Estatutos del grupo</a></li>
+                <li><a href="miembros.html">Miembros</a></li>
+                <li><a href="contacto.html">Contacto y ubicación</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Objetivos <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../objetivos/vida-obra.html">Vida y obra de Lope de Vega</a></li>
+                <li><a href="../objetivos/transmision.html">Transmisión y edición del teatro de Lope de Vega</a></li>
+                <li><a href="../objetivos/criterios.html">Criterios y materiales para la edición</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Publicaciones <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../publicaciones/partes-comedias.html">Partes de comedias</a></li>
+                <li><a href="https://revistes.uab.cat/anuariolopedevega/index" target="_blank" rel="noopener noreferrer">Anuario Lope de Vega <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="../publicaciones/otras-publicaciones.html">Otras publicaciones</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Proyectos digitales <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../proyectos-digitales/biblioteca-virtual.html">Biblioteca virtual</a></li>
+                <li><a href="https://prolope.uab.cat/biblioteca/" target="_blank" rel="noopener noreferrer">Biblioteca Digital Prolope <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="../proyectos-digitales/mujeres-criados.html">Mujeres y criados</a></li>
+                <li><a href="../proyectos-digitales/mapping-lope.html">Mapping Lope</a></li>
+                <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="https://damaboba.unibo.it/" target="_blank" rel="noopener noreferrer">La dama boba <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="https://gondomar.tespasiglodeoro.it/" target="_blank" rel="noopener noreferrer">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Formación <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../formacion/tesis.html">Tesis</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <span>Eventos <small>▾</small></span>
+            <div class="dropdown">
+              <ul>
+                <li><a href="../eventos/congresos.html">Congresos</a></li>
+                <li><a href="../eventos/seminarios.html">Seminarios</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="../multimedia/multimedia.html">Multimedia</a></li>
+          <li><a href="../noticias/noticias.html">Noticias</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo noche" title="Modo noche"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+      <button class="site-search-btn" id="siteSearchBtn" aria-label="Buscar en el sitio">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <div class="site-search-inline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="siteSearchInput" placeholder="Buscar en el sitio…" autocomplete="off" />
+        <button class="site-search-close" id="siteSearchClose" aria-label="Cerrar búsqueda">✕</button>
+        <div class="site-search-dropdown" id="siteSearchDropdown">
+          <div id="siteSearchCount" class="site-search-count"></div>
+          <div id="siteSearchResults" class="site-search-results"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('../media/fondo-grupo.png'); background-size: fill; background-repeat: no-repeat; background-position: right; opacity: 0.15;"></div>
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        Inicio
+        <span>›</span>
+        El grupo
+        <span>›</span>
+        Historial de proyectos
+      </div>
+      <h1>Historial de proyectos</h1>
+      <p class="page-hero-desc">
+        Lista de proyectos y redes de investigación realizados y en los que ha participado PROLOPE desde su fundación en 1989.
+      </p>
+      <div class="page-hero-rule"></div>
+    </div>
+  </section>
+
+  <div class="page-layout">
+
+    <main>
+
+      <div class="intro-block">
+        <h2>Proyectos y redes de investigación</h2>
+        <p>
+          El Grupo de Investigación PROLOPE ha llevado adelante distintos proyectos y ha formado parte,
+          paralelamente, de otros grupos y redes de investigación que han facilitado su financiación por
+          organismos públicos. A continuación se presenta la lista cronológica de proyectos y redes de
+          investigación que ha realizado y en los que ha participado PROLOPE.
+        </p>
+      </div>
+
+      <div class="timeline-era" id="era-2020">
+        <p class="era-label">Década de 2020</p>
+
+        <div class="project-item" id="2022-2025-la-integral-dramatica-de-lope-de-vega-t">
+          <div class="project-year"><span class="year-text">2022–2025</span></div>
+          <div class="project-card current">
+            <span class="project-badge">Vigente</span>
+            <span class="year-text-mobile">2022–2025</span>
+            <p class="project-title">La integral dramática de Lope de Vega: textos, métodos, problemas, proyección</p>
+            <div class="project-meta">
+              <span class="project-meta-item"><span class="label">IP</span><span class="value">Gonzalo Pontón (UAB)</span></span>
+              <span class="project-meta-item"><span class="label">Ref.</span><span class="value">PID2021-124737NB-I00</span></span>
+              <span class="project-meta-item"><span class="label">Financiación</span><span class="value">Ministerio de Ciencia e Innovación</span></span>
+              <span class="project-meta-item"><span class="label">Presupuesto</span><span class="value">116.644 €</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="timeline-era" id="era-2010">
+        <p class="era-label">Década de 2010</p>
+
+        <div class="project-item" id="2019-2021-edicion-y-estudio-de-treinta-y-seis-come">
+          <div class="project-year"><span class="year-text">2019–2021</span></div>
+          <div class="project-card">
+            <span class="year-text-mobile">2019–2021</span>
+            <p class="project-title">Edición y estudio de treinta y seis comedias de Lope de Vega</p>
+            <div class="project-meta">
+              <span class="project-meta-item"><span class="label">IP</span><span class="value">Ramón Valdés Gázquez (UAB)</span></span>
+              <span class="project-meta-item"><span class="label">Ref.</span><span class="value">PGC2018-094395-B-I00</span></span>
+              <span class="project-meta-item"><span class="label">Financiación</span><span class="value">Ministerio de Ciencia, Innovación y Universidades</span></span>
+              <span class="project-meta-item"><span class="label">Presupuesto</span><span class="value">61.710 €</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="project-item" id="2017-2020-lt-t-literary-traditions-and-texts-of-t">
+          <div class="project-year"><span class="year-text">2017–2020</span></div>
+          <div class="project-card">
+            <span class="year-text-mobile">2017–2020</span>
+            <p class="project-title">LT&amp;T: Literary Traditions and Texts of the Early Modern Period: Iberia and Italy</p>
+            <div class="project-meta">
+              <span class="project-meta-item"><span class="label">IP</span><span class="value">Gonzalo Pontón (UAB)</span></span>
+              <span class="project-meta-item"><span class="label">Ref.</span><span class="value">2017SGR00390</span></span>
+              <span class="project-meta-item"><span class="label">Financiación</span><span class="value">AGAUR (Generalitat de Catalunya)</span></span>
+              <span class="project-meta-item"><span class="label">Presupuesto</span><span class="value">37.200 €</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="project-item" id="2016-2019-edicion-y-estudio-de-treinta-y-seis-come">
+          <div class="project-year"><span class="year-text">2016–2019</span></div>
+          <div class="project-card">
+            <span class="year-text-mobile">2016–2019</span>
+            <p class="project-title">Edición y estudio de treinta y seis comedias de Lope de Vega</p>
+            <div class="project-meta">
+              <span class="project-meta-item"><span class="label">IPs</span><span class="value">Gonzalo Pontón y Ramón Valdés Gázquez (UAB)</span></span>
+              <span class="project-meta-item"><span class="label">Ref.</span><span class="value">FFI2015-66216-P</span></span>
+              <span class="project-meta-item"><span class="label">Financiación</span><span class="value">Ministerio de Economía y Competitividad</span></span>
+              <span class="project-meta-item"><span class="label">Presupuesto</span><span class="value">73.500 €</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="project-item" id="2013-2015-edicion-y-estudio-de-treinta-y-seis-come">
+          <div class="project-year"><span class="year-text">2013–2015</span></div>
+          <div class="project-card">
+            <span class="year-text-mobile">2013–2015</span>
+            <p class="project-title">Edición y estudio de treinta y seis comedias de Lope de Vega</p>
+            <div class="project-meta">
+              <span class="project-meta-item"><span class="label">IP</span><span class="value">Luis Alberto Blecua Perdices (UAB)</span></span>
+              <span class="project-meta-item"><span class="label">Ref.</span><span class="value">FFI2012-35950</span></span>
+              <span class="project-meta-item"><span class="label">Financiación</span><span class="value">Ministerio de Economía y Competitividad</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="project-item" id="2010-2014-tetso-transmision-y-estudio-de-textos-d">
+          <div class="project-year"><span class="year-text">2010–2014</span></div>
+          <div class="project-card">
+            <span class="year-text-mobile">2010–2014</span>
+            <p class="project-title">TETSO: Transmisión y estudio de textos del Siglo de Oro</p>
+            <div class="project-meta">
+              <span class="project-meta-item"><span class="label">Ref.</span><span class="value">2009 SGR 297</span></span>
+              <span class="project-meta-item"><span class="label">Financiación</span><span class="value">AGAUR (Generalitat de Catalunya)</span></span>
+              <span class="project-meta-item"><span class="label">Presupuesto</span><span class="value">43.000 €</span></span>
+            </div>
+            <div class="project-desc">El principal objetivo del grupo consolidado fue la transmisión y el estudio de textos del Siglo de Oro.</div>
+          </div>
+        </div>
+        <div class="project-item" id="2010-2014-tc-12-patrimonio-teatral-clasico-espan">
+          <div class="project-year"><span class="year-text">2010–2014</span></div>
+          <div class="project-card">
+            <span class="year-text-mobile">2010–2014</span>
+            <p class="project-title">TC/12 – Patrimonio teatral clásico español. Textos e instrumentos de investigación</p>
+            <div class="project-meta">
+              <span class="project-meta-item"><span class="label">IP</span><span class="value">Joan Oleza</span></span>
+              <span class="project-meta-item"><span class="label">Ref.</span><span class="value">CSD2009-00033</span></span>
+              <span class="project-meta-item"><span class="label">Financiación</span><span class="value">Ministerio de Ciencia e Innovación (Consolider)</span></span>
+              <span class="project-meta-item"><span class="label">Presupuesto</span><span class="value">2.300.000 €</span></span>
+            </div>
+            <div class="project-desc">Red de excelencia de gran envergadura en la que PROLOPE participó como grupo integrante junto con otros equipos del ámbito del teatro clásico español.</div>
+          </div>
+        </div>
+        <div class="project-item" id="2010-2012-edicion-y-estudio-de-treinta-y-seis-come">
+          <div class="project-year"><span class="year-text">2010–2012</span></div>
+          <div class="project-card">
+            <span class="year-text-mobile">2010–2012</span>
+            <p class="project-title">Edición y estudio de treinta y seis comedias de Lope de Vega</p>
+            <div class="project-meta">
+              <span class="project-meta-item"><span class="label">IP</span><span class="value">Luis Alberto Blecua Perdices (UAB)</span></span>
+              <span class="project-meta-item"><span class="label">Ref.</span><span class="value">FFI2009-13563</span></span>
+              <span class="project-meta-item"><span class="label">Financiación</span><span class="value">Ministerio de Ciencia e Innovación</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="timeline-era" id="era-2000">
+        <p class="era-label">Década de 2000</p>
+
+        <div class="project-item" id="2007-2009-edicion-y-estudio-de-treinta-y-seis-come">
+          <div class="project-year"><span class="year-text">2007–2009</span></div>
+          <div class="project-card">
+            <span class="year-text-mobile">2007–2009</span>
+            <p class="project-title">Edición y estudio de treinta y seis comedias de Lope de Vega</p>
+            <div class="project-meta">
+              <span class="project-meta-item"><span class="label">IP</span><span class="value">Luis Alberto Blecua Perdices (UAB)</span></span>
+              <span class="project-meta-item"><span class="label">Ref.</span><span class="value">HUM2006-09046/FILO</span></span>
+              <span class="project-meta-item"><span class="label">Financiación</span><span class="value">Ministerio de Educación y Ciencia</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="project-item" id="2005-2009-tetso-transmision-y-estudio-de-textos-d">
+          <div class="project-year"><span class="year-text">2005–2009</span></div>
+          <div class="project-card">
+            <span class="year-text-mobile">2005–2009</span>
+            <p class="project-title">TETSO: Transmisión y estudio de textos del Siglo de Oro</p>
+            <div class="project-meta">
+              <span class="project-meta-item"><span class="label">IP</span><span class="value">Francisco Rico (UAB)</span></span>
+              <span class="project-meta-item"><span class="label">Ref.</span><span class="value">2005 SGR 01091</span></span>
+              <span class="project-meta-item"><span class="label">Financiación</span><span class="value">AGAUR (Generalitat de Catalunya)</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="project-item" id="2004-2007-edicion-y-estudio-de-treinta-y-seis-come">
+          <div class="project-year"><span class="year-text">2004–2007</span></div>
+          <div class="project-card">
+            <span class="year-text-mobile">2004–2007</span>
+            <p class="project-title">Edición y estudio de treinta y seis comedias de Lope de Vega</p>
+            <div class="project-meta">
+              <span class="project-meta-item"><span class="label">IP</span><span class="value">Luis Alberto Blecua Perdices (UAB)</span></span>
+              <span class="project-meta-item"><span class="label">Ref.</span><span class="value">BFF 2003-02480</span></span>
+              <span class="project-meta-item"><span class="label">Financiación</span><span class="value">Ministerio de Educación y Ciencia</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="project-item" id="2003-centre-especial-de-recerca-prolope">
+          <div class="project-year"><span class="year-text">2003</span></div>
+          <div class="project-card">
+            <span class="year-text-mobile">2003</span>
+            <p class="project-title">Centre Especial de Recerca PROLOPE</p>
+            <div class="project-meta">
+              <span class="project-meta-item"><span class="label">IP</span><span class="value">Luis Alberto Blecua Perdices (UAB)</span></span>
+              <span class="project-meta-item"><span class="label">Financiación</span><span class="value">Universitat Autònoma de Barcelona</span></span>
+            </div>
+            <div class="project-desc">En el año 2003, la UAB reconoció a PROLOPE como Centre Especial de Recerca, distinción que refrendó su trayectoria y visibilidad institucional.</div>
+          </div>
+        </div>
+        <div class="project-item" id="2001-2004-edicion-y-estudio-de-treinta-y-seis-come">
+          <div class="project-year"><span class="year-text">2001–2004</span></div>
+          <div class="project-card">
+            <span class="year-text-mobile">2001–2004</span>
+            <p class="project-title">Edición y estudio de treinta y seis comedias de Lope de Vega</p>
+            <div class="project-meta">
+              <span class="project-meta-item"><span class="label">IP</span><span class="value">Luis Alberto Blecua Perdices (UAB)</span></span>
+              <span class="project-meta-item"><span class="label">Financiación</span><span class="value">Ministerio de Ciencia y Tecnología – DGICYT</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="timeline-era" id="era-1990">
+        <p class="era-label">Década de 1990</p>
+
+        <div class="project-item" id="1998-2001-edicion-y-estudio-de-treinta-comedias-de">
+          <div class="project-year"><span class="year-text">1998–2001</span></div>
+          <div class="project-card">
+            <span class="year-text-mobile">1998–2001</span>
+            <p class="project-title">Edición y estudio de treinta comedias de Lope de Vega</p>
+            <div class="project-meta">
+              <span class="project-meta-item"><span class="label">IP</span><span class="value">Luis Alberto Blecua Perdices (UAB)</span></span>
+              <span class="project-meta-item"><span class="label">Financiación</span><span class="value">Ministerio de Educación y Cultura – DGICYT</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="project-item" id="1995-1998-edicion-y-estudio-de-veinte-comedias-de">
+          <div class="project-year"><span class="year-text">1995–1998</span></div>
+          <div class="project-card">
+            <span class="year-text-mobile">1995–1998</span>
+            <p class="project-title">Edición y estudio de veinte comedias de Lope de Vega</p>
+            <div class="project-meta">
+              <span class="project-meta-item"><span class="label">IP</span><span class="value">Luis Alberto Blecua Perdices (UAB)</span></span>
+              <span class="project-meta-item"><span class="label">Financiación</span><span class="value">Ministerio de Educación y Cultura – DGICYT</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="project-item" id="1989-1995-edicion-y-estudio-de-las-veinte-primeras">
+          <div class="project-year"><span class="year-text">1989–1995</span></div>
+          <div class="project-card">
+            <span class="year-text-mobile">1989–1995</span>
+            <p class="project-title">Edición y estudio de las veinte primeras obras dramáticas de Lope de Vega</p>
+            <div class="project-meta">
+              <span class="project-meta-item"><span class="label">IP</span><span class="value">Luis Alberto Blecua Perdices (UAB)</span></span>
+              <span class="project-meta-item"><span class="label">Financiación</span><span class="value">Ministerio de Educación y Cultura – DGICYT</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="timeline-era" id="era-otras">
+        <p class="era-label">Otras subvenciones y colaboraciones institucionales</p>
+
+        <div class="project-item" id="otras-subvenciones-y-relaciones-con-instituciones">
+          <div class="project-year"><span class="year-text"></span></div>
+          <div class="project-card">
+            <span class="year-text-mobile"></span>
+            <p class="project-title">Otras subvenciones y relaciones con instituciones</p>
+            <div class="project-meta">
+            </div>
+            <div class="project-desc">
+              El Grupo de Investigación PROLOPE, además de las subvenciones relacionadas en este apartado, ha
+              contado a lo largo de su trayectoria con el apoyo de la Fundación Juan March, la Sociedad Estatal de
+              Celebraciones y Conmemoraciones Culturales y diversas instituciones que han contribuido a la
+              difusión y financiación de sus actividades científicas.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <aside class="article-sidebar">
+      <div class="sidebar-card">
+        <p class="sidebar-card-title">Ir a una etapa</p>
+        <ul class="sidebar-nav-list">
+          <li><a href="historial-proyectos.html" class="active">Historial Proyectos</a></li>
+          <li><a href="#era-2020">Década de 2020</a></li>
+          <li><a href="#era-2010">Década de 2010</a></li>
+          <li><a href="#era-2000">Década de 2000</a></li>
+          <li><a href="#era-1990">Década de 1990</a></li>
+          <li><a href="#era-otras">Otras subvenciones</a></li>
+
+        </ul>
+      </div>
+      <div class="sidebar-card">
+        <p class="sidebar-card-title">En esta sección</p>
+        <ul class="sidebar-nav-list">
+          <li><a href="el-grupo.html">El grupo de investigación</a></li>
+          <li><a href="historial-proyectos.html" class="active">Historial de proyectos</a></li>
+          <li><a href="estatutos.html">Estatutos del grupo</a></li>
+          <li><a href="miembros.html">Miembros</a></li>
+          <li><a href="contacto.html">Contacto y ubicación</a></li>
+
+        </ul>
+      </div>
+
+    </aside>
+
+  </div>
+
+<!-- FUNDERS -->
+  <section class="funders">
+    <div class="funders-inner">
+      <p class="funders-title">Entidades financiadoras</p>
+      <div class="funders-logos">
+        <a class="funder-logo-link" href="https://www.march.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/fundacion-march.png" alt="Fundación March" />
+        </a>
+        <a class="funder-logo-link" href="https://www.culturaydeporte.gob.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/ace.png" alt="ACE" />
+        </a>
+        <a class="funder-logo-link" href="https://agaur.gencat.cat/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/agaur_gencat.png" alt="AGAUR Gencat" />
+        </a>
+        <a class="funder-logo-link" href="https://www.ciencia.gob.es/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/ministerio-feder.png" alt="Ministerio / FEDER" />
+        </a>
+        <a class="funder-logo-link" href="https://www.uab.cat/" target="_blank" rel="noopener noreferrer">
+          <img src="../media/uab.png" alt="UAB" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="../media/logo-prolope_inici.png" alt="PROLOPE" />
+      </div>
+      <address class="footer-address" style="font-style:normal;">
+        Grupo de investigación PROLOPE.<br />
+        Departament de Filologia Espanyola.<br /><br />
+        Facultat de Filosofia i Lletres UAB<br />
+        CAMPUS DE LA UAB<br />
+        Carrer de la fortuna s/n<br />
+        08193 Bellaterra (Barcelona)
+      </address>
+      <div class="footer-contact">
+        Teléfono (Secretaría): <a href="tel:+34935811034">93 581 10 34</a><br />
+        Correo: <a href="mailto:prolope@uab.es">prolope@uab.es</a>
+        <div class="footer-social">
+          <a href="https://twitter.com/ProlopeUab" target="_blank" rel="noopener noreferrer" title="Seguir en X">𝕏</a>
+          <a href="https://www.facebook.com/prolope.uab" target="_blank" rel="noopener noreferrer" title="Seguir en Facebook">f</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Grupo de Investigación PROLOPE – Universitat Autònoma de Barcelona
+    </div>
+  </footer>
+
+
+
+  <script>
+    /* ---- Page reveal animations ---- */
+    (function () {
+      if (!('IntersectionObserver' in window)) return;
+      var els = document.querySelectorAll('.card, .sidebar-card, .founder-card, .news-card, .video-card, .congress-card, .funders, .inline-figure, .inline-figure-left');
+      if (!els.length) return;
+      els.forEach(function (el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+      });
+      var obs = new IntersectionObserver(function (entries) {
+        var visible = entries.filter(function (e) { return e.isIntersecting; });
+        visible.forEach(function (e, i) {
+          e.target.style.transition = 'opacity 0.5s ease-out ' + (i * 0.07) + 's, transform 0.5s ease-out ' + (i * 0.07) + 's';
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          obs.unobserve(e.target);
+        });
+      }, { threshold: 0.1 });
+      els.forEach(function (el) { obs.observe(el); });
+    })();
+  </script>
+  <script>
+    // Mobile menu toggle
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('mainNav');
+    toggle.addEventListener('click', () => { nav.classList.toggle('open'); document.body.classList.toggle('menu-open', nav.classList.contains('open')); });
+
+    // Accordion dropdowns on mobile
+    document.querySelectorAll('.has-dropdown > span').forEach(function(el) {
+      el.addEventListener('click', function() {
+        if (window.innerWidth <= 1100) {
+          el.parentElement.classList.toggle('open');
+        }
+      });
+    });
+  </script>
+  <script>var SITE_ROOT='../';</script>
+  <script src="../search-data.js"></script>
+<script src="../site-search.js"></script>
+  <script>
+    // Modo noche
+    (function() {
+      var toggle = document.getElementById('themeToggle');
+      var saved = localStorage.getItem('theme');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      }
+      toggle.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+          document.documentElement.removeAttribute('data-theme');
+          localStorage.setItem('theme', 'light');
+          toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+          } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+          toggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

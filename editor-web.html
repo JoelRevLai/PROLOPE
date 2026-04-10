@@ -4566,14 +4566,15 @@ async function updatePartesSearchData() {
   var entries = [];
   (S.partesData||[]).forEach(function(p) {
     if (!p.roman) return;
+    var stripHtml = function(s){ return (s||'').replace(/<[^>]+>/g,''); };
     var allPlays = (p.volumes||[]).reduce(function(acc,v){
-      return acc.concat((v.plays||[]).filter(function(pl){ return !pl.history; }).map(function(pl){ return pl.title; }));
+      return acc.concat((v.plays||[]).filter(function(pl){ return !pl.history; }).map(function(pl){ return stripHtml(pl.title); }));
     },[]);
     var allEditors = (p.volumes||[]).reduce(function(acc,v){
-      return acc.concat((v.plays||[]).map(function(pl){ return pl.editors||''; }).filter(Boolean));
+      return acc.concat((v.plays||[]).map(function(pl){ return stripHtml(pl.editors); }).filter(Boolean));
     },[]).join(', ');
     var isbns = (p.volumes||[]).map(function(v){ return v.isbn||''; }).filter(Boolean).join(' ');
-    var s = 'parte-' + slugifyStr(p.roman);
+    var s = 'parte-' + p.num;
     var pContent = ['Parte ' + p.roman, p.year, p.coord||'', p.editorial, p.city]
       .concat(allPlays).concat([allEditors, isbns]).filter(Boolean).join(' ');
     var desc = (p.editorial||'') + ', ' + (p.city||'') + ', ' + (p.year||'') + (p.coord ? '. Coord. ' + p.coord : '');
@@ -4589,13 +4590,17 @@ async function updatePartesSearchData() {
 
 async function updateGenericSearchData() {
   // For article pages: one entry per page
-  if (S.pageType === 'article' || S.pageType === 'news') {
+  if (S.pageType === 'article' || S.pageType === 'news' || S.pageType === 'contact') {
     var html = generateHtml();
     var doc = new DOMParser().parseFromString(html, 'text/html');
     var main = doc.querySelector('.article-main, .article-body, .page-content, .page-content-full, main');
     if (main) { main.querySelectorAll('script, style').forEach(function(el){ el.remove(); }); }
     var content = main ? main.textContent.replace(/\s+/g,' ').trim() : '';
-    await postSearchData(S.currentPath, content);
+    var titleEl = doc.querySelector('title');
+    var titleText = titleEl ? titleEl.textContent.trim() : (S.pageTitle || '');
+    var descEl = doc.querySelector('meta[name="description"]');
+    var descText = descEl ? descEl.getAttribute('content') || '' : '';
+    await postSearchData(S.currentPath, content, {title: titleText, description: descText, upsert: true});
     return;
   }
   // For otras-publicaciones and similar: replace all entries for this page using section approach
@@ -4607,11 +4612,12 @@ async function updateGenericSearchData() {
     try {
       var d = JSON.parse(el.getAttribute('data-lb'));
       if (!d.title) return;
+      var titleClean = d.title.replace(/<[^>]+>/g,'');
       var parts = [d.author, d.editor, d.year, d.editorial, d.city, d.collection, d.isbn];
       (d.extraFields||[]).forEach(function(f){ if(f.value) parts.push(f.value); });
       entries.push({
-        url: S.currentPath + '#' + slugifyStr(d.title),
-        title: d.title,
+        url: S.currentPath + '#' + slugifyStr(titleClean),
+        title: titleClean,
         description: [d.author, d.year].filter(Boolean).join(', '),
         content: parts.filter(Boolean).join(' ')
       });
@@ -4648,7 +4654,7 @@ async function savePage() {
       if (S.pageType==='members') await updateMembersSearchData();
       if (S.pageType==='projects') await updateProjectsSearchData();
       if (S.pageType==='partes') await updatePartesSearchData();
-      if (S.pageType==='news' || S.pageType==='article' || S.pageType==='libros') await updateGenericSearchData();
+      if (S.pageType==='news' || S.pageType==='article' || S.pageType==='libros' || S.pageType==='contact') await updateGenericSearchData();
     } else {
       toast('Error al guardar: '+(data.error||'desconocido'),'err');
     }
@@ -5761,20 +5767,8 @@ async function deleteNews(pagePath, title) {
     await fetch('/api/page?path=noticias-data.js', {method:'POST', headers:{'Content-Type':'application/javascript; charset=utf-8'}, body:newSrc});
   } catch(e) { /* silent */ }
 
-  // 3. Remove from search-data.js (remove the entry with this url)
-  try {
-    var sr = await fetch('/api/page?path=search-data.js');
-    var ssrc = await sr.text();
-    // Remove the object literal for this url from the array
-    var urlPattern = 'noticias/'+filename;
-    var escaped = urlPattern.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-    // Match a full object entry {...} containing this url, with optional trailing comma
-    var re = new RegExp('\\{[^{}]*?"url":\\s*"'+escaped+'"[^{}]*?\\},?\\s*\n?','s');
-    var cleaned = ssrc.replace(re, '');
-    if (cleaned !== ssrc) {
-      await fetch('/api/page?path=search-data.js', {method:'POST', headers:{'Content-Type':'application/javascript; charset=utf-8'}, body:cleaned});
-    }
-  } catch(e) { /* silent */ }
+  // 3. Remove from search-index
+  try { await fetch('/api/search-index', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ action:'remove', entry:{ url: 'noticias/'+filename } }) }); } catch(e) {}
 
   // 4. Refresh nav and reload manager
   try { var pr=await fetch('/api/pages'); S.pages=await pr.json(); renderNav(); } catch(e){}

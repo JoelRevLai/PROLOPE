@@ -41,6 +41,7 @@
                 <li><a href="estatutos.html">Estatutos del grupo</a></li>
                 <li><a href="miembros.html">Miembros</a></li>
                 <li><a href="contacto.html">Contacto y ubicación</a></li>
+                <li><a href="bad-gyal.html">Bad Gyal</a></li>
               </ul>
             </div>
           </li>
@@ -73,8 +74,8 @@
                 <li><a href="../proyectos-digitales/mujeres-criados.html">Mujeres y criados</a></li>
                 <li><a href="../proyectos-digitales/mapping-lope.html">Mapping Lope</a></li>
                 <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
-                <li><a href="../proyectos-digitales/la-dama-boba.html">La dama boba</a></li>
-                <li><a href="../proyectos-digitales/gondomar.html">Gondomar Digital</a></li>
+                <li><a href="https://damaboba.unibo.it/" target="_blank" rel="noopener noreferrer">La dama boba <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="https://gondomar.tespasiglodeoro.it/" target="_blank" rel="noopener noreferrer">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
               </ul>
             </div>
           </li>
@@ -499,7 +500,7 @@
 </div>
 
 <div class="card" id="veronika-ryjik" tabindex="0" role="button"
-  data-name="Veronika Ryjik" data-role="Investigadora" data-uni="Franklin &amp; Marshall College" data-email="" data-orcid=""
+  data-name="Veronika Ryjik" data-role="Investigadora" data-uni="Franklin &amp;amp; Marshall College" data-email="" data-orcid=""
   data-photo=""
   data-bio="&lt;p&gt;Biografía del miembro.&lt;/p&gt;">
 <img class="cphoto" src="" alt="Veronika Ryjik" onerror="this.onerror=null;this.src='../media/logo_positiu.png';this.style.objectFit='contain';this.style.padding='28px'"/>
@@ -618,6 +619,7 @@
           <li><a href="estatutos.html">Estatutos del grupo</a></li>
           <li><a href="historial-proyectos.html">Historial de proyectos</a></li>
           <li><a href="miembros.html" class="active">Miembros</a></li>
+
         </ul>
       </div>
 

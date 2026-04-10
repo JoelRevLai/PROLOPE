@@ -41,6 +41,7 @@
                 <li><a href="../el-grupo/estatutos.html">Estatutos del grupo</a></li>
                 <li><a href="../el-grupo/miembros.html">Miembros</a></li>
                 <li><a href="../el-grupo/contacto.html">Contacto y ubicación</a></li>
+                <li><a href="../el-grupo/bad-gyal.html">Bad Gyal</a></li>
               </ul>
             </div>
           </li>
@@ -73,8 +74,8 @@
                 <li><a href="../proyectos-digitales/mujeres-criados.html">Mujeres y criados</a></li>
                 <li><a href="../proyectos-digitales/mapping-lope.html">Mapping Lope</a></li>
                 <li><a href="https://theatheor-fe.netseven.it" target="_blank" rel="noopener noreferrer">AUTESO <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
-                <li><a href="../proyectos-digitales/la-dama-boba.html">La dama boba</a></li>
-                <li><a href="../proyectos-digitales/gondomar.html">Gondomar Digital</a></li>
+                <li><a href="https://damaboba.unibo.it/" target="_blank" rel="noopener noreferrer">La dama boba <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+                <li><a href="https://gondomar.tespasiglodeoro.it/" target="_blank" rel="noopener noreferrer">Gondomar Digital <svg class="ext-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
               </ul>
             </div>
           </li>
@@ -115,12 +116,12 @@
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="page-hero">
     <div class="page-hero-bg" style="background-image: url('../media/firma-lope.png'); background-size: auto; background-repeat: no-repeat; background-position: right; opacity: 0.15;"></div>
     <div class="page-hero-inner">
       <p class="page-hero-breadcrumb">
-        Inicio<span>›</span>Multimedia
+        Inicio<span>›</span>
+        Multimedia
       </p>
       <h1>Multimedia</h1>
       <p class="page-hero-byline">Documentales, entrevistas y material audiovisual relacionados con la investigación de PROLOPE sobre Lope de Vega y el teatro del Siglo de Oro.</p>
@@ -128,14 +129,10 @@
     </div>
   </section>
 
-  <!-- CONTENT -->
-  <div class="page-content-full">
-
-    
+    <div class="page-content-full">
 
     <div class="video-grid">
 
-      <!-- 1. RTVE Informe Semanal -->
       <article class="video-card" id="informe-semanal-lo-que-aun-esconde-lope" onclick="window.open('https://www.rtve.es/play/videos/informe-semanal/lo-que-aun-esconde-lope/16069618/','_blank')">
         <div class="video-thumb-wrap">
           <img src="../media/documental-lope_rtve.jpg" alt="Informe Semanal: Lo que aún esconde Lope" loading="lazy" />
@@ -155,7 +152,6 @@
         <span class="video-hint">Ver vídeo →</span>
       </article>
 
-      <!-- 2. Olmedo YouTube -->
       <article class="video-card" id="17-jornadas-sobre-teatro-clasico-de-olmedo-cuand" onclick="window.open('https://www.youtube.com/watch?v=7SBshd5ImiU','_blank')">
         <div class="video-thumb-wrap">
           <img src="../media/cuando-prolope-quiere_olmedo_2024.jpg" alt="17 Jornadas sobre teatro clásico de Olmedo" loading="lazy" />
@@ -175,7 +171,6 @@
         <span class="video-hint">Ver vídeo →</span>
       </article>
 
-      <!-- 3. BNE Mujeres y criados YouTube -->
       <article class="video-card" id="biblioteca-nacional-de-espana-acto-de-presentacio" onclick="window.open('https://www.youtube.com/watch?v=3fCWF2y9L3U','_blank')">
         <div class="video-thumb-wrap">
           <img src="../media/mujeres-criados_presentacion.jpg" alt="BNE: Presentación de Mujeres y criados" loading="lazy" />
@@ -195,7 +190,6 @@
         <span class="video-hint">Ver vídeo →</span>
       </article>
 
-      <!-- 4. Qwerty BTV MP4 -->
       <article class="video-card" id="qwerty-btv-dos-nuevos-volumenes-de-las-comedias-d" onclick="openVideo('qwerty')">
         <div class="video-thumb-wrap">
           <img src="../media/qwerty-btv-2012.jpg" alt="Qwerty BTV: Comedias de Lope de Vega" loading="lazy" />
@@ -214,12 +208,11 @@
         </div>
         <span class="video-hint">Ver vídeo →</span>
       </article>
+    </div>
 
-    </div><!-- .video-grid -->
-  </div><!-- .page-content-full -->
+    </div>
 
-
-  <!-- FUNDERS -->
+<!-- FUNDERS -->
   <section class="funders">
     <div class="funders-inner">
       <p class="funders-title">Entidades financiadoras</p>
@@ -292,12 +285,12 @@
 
   <script>
     const videos = {
-      qwerty: {
-        date: '2012',
-        title: 'Qwerty BTV: Dos nuevos volúmenes de las comedias de Lope de Vega',
-        desc: 'La Editorial Gredos ha publicado dos nuevos volúmenes de la edición crítica completa de las comedias de Lope de Vega. Qwerty entrevista a Gonzalo Pontón, co-director de PROLOPE y coordinador del volumen Comedias parte XI, tomo I y II.',
+      "qwerty": {
+        date: "2012",
+        title: "Qwerty BTV: Dos nuevos volúmenes de las comedias de Lope de Vega",
+        desc: "La Editorial Gredos ha publicado dos nuevos volúmenes de la edición crítica completa de las comedias de Lope de Vega. Qwerty entrevista a Gonzalo Pontón, co-director de PROLOPE.",
         type: 'inline',
-        src: '../media/qwerty-btv-2012.mp4'
+        src: "../media/qwerty-btv-2012.mp4"
       }
     };
 
