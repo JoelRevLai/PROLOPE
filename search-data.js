@@ -837,132 +837,6 @@ var SEARCH_INDEX = [
     content: "Contacto y ubicación Las dependencias de PROLOPE se encuentran repartidas por los distintos seminarios y despachos del profesorado del grupo. La sede institucional e histórica del grupo es el seminario B9/122, en el edificio de la Facultat de Lletres de la Universitat Autònoma de Barcelona (en Bellaterra, Barcelona). Aparte de los despachos de los profesores Pontón y Valdés (en el Departament de Filologia Espanyola, Facultat de Lletres) y la mencionada sede institucional, PROLOPE dispone de otro seminario de estudio en el Mòdul de Recerca A (MRA) de la Universitat Autònoma de Barcelona. Grupo de investigación PROLOPE Departament de Filologia Espanyola Facultat de Lletres Universitat Autònoma de Barcelona CAMPUS DE LA UAB 08193 Bellaterra (Barcelona) Teléfono de contacto: Secretaría: 93 581 10 34 Dirección de correo electrónico: prolope@uab.es Mapa e indicaciones de acceso: clique aquí. Mapa y accesos Facultat de Lletres, Campus de la UAB, 08193 Bellaterra (Cerdanyola del Vallès) Ver indicaciones de acceso en la web de la UAB"
   },
   {
-    title: "Comedias de Lope de Vega. Parte I (1997)",
-    url: "publicaciones/partes-comedias.html#parte-1",
-    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 1997",
-    content: "Parte I 1997 Milenio – Universitat Autònoma de Barcelona Lérida Loas Los donaires de Matico Comedia nueva del perseguido El cerco de Santa Fe Comedia de Bamba La traición bien acertada El hijo de Reduán El nacimiento de Ursón y Valentín, reyes de Francia El casamiento en la muerte La escolástica celosa La amistad pagada El molino El testimonio vengado Entremeses Luigi Giuliani, Patrizia Campana, María Morrás y Gonzalo Pontón, ed. Luigi Giuliani, ed. Marco Presotto, ed. Silvia Iriso Ariz y María Morrás, ed. Delmiro Antas, ed. David Roas, ed. Agustín Sánchez Aguilar y Nil Santiáñez-Tió, ed. Gonzalo Pontón, ed. Patrizia Campana y José Ramón Mayol Ferrer, ed. Luigi Giuliani, ed. Nil Santiáñez-Tió y Luis Alberto Blecua Perdices (†), ed. Victoria Pineda, ed. Gerardo Salvador Lipperheide, ed. Gonzalo Pontón y Agustín Sánchez Aguilar 84-89790-01-9 84-89790-02-7 84-89790-03-5"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte II (1998)",
-    url: "publicaciones/partes-comedias.html#parte-2",
-    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 1998. Coord. Silvia Iriso Ariz",
-    content: "Parte II 1998 Silvia Iriso Ariz Milenio – Universitat Autònoma de Barcelona Lérida La fuerza lastimosa La ocasión perdida El gallardo catalán El mayorazgo dudoso La resistencia honrada y condesa Matilde El primero Benavides Los comendadores de Córdoba La bella malmaridada Los tres diamantes La quinta de Florencia El padrino desposado Las ferias de Madrid Silvia Iriso Ariz y José Enrique Laplana Gil, ed. Montgrony Alberola, ed. Enrico di Pastena, ed. Enrique Turpin, ed. Guillermo Serés, ed. Miguel M. García-Bermejo Giner, ed. Silvia Iriso Ariz, ed. José Enrique Laplana Gil, ed. Enric Querol Coll, ed. María Isabel Toro Pascua, ed. Bienvenido Morros Mestres, ed. Agustín Sánchez Aguilar, ed. David Roas 84-89790-17-5 84-89790-18-3 84-89790-19-1"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte III (2002)",
-    url: "publicaciones/partes-comedias.html#parte-3",
-    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 2002. Coord. Luigi Giuliani",
-    content: "Parte III 2002 Luigi Giuliani Milenio – Universitat Autònoma de Barcelona Lérida La noche toledana Las mudanzas de fortuna y sucesos de don Beltrán de Aragón El Santo Negro Rosambuco Luigi Giuliani, ed. Agustín Sánchez Aguilar, ed. Gonzalo Pontón, ed. Luigi Giuliani 84-9743-037-9"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte IV (2002)",
-    url: "publicaciones/partes-comedias.html#parte-4",
-    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 2002. Coord. Luigi Giuliani y Ramón Valdés Gázquez",
-    content: "Parte IV 2002 Luigi Giuliani y Ramón Valdés Gázquez Milenio – Universitat Autònoma de Barcelona Lérida Laura perseguida El nuevo mundo descubierto por Cristóbal Colón El asalto de Mastrique por el príncipe de Parma Tragicomedia de Peribáñez y el comendador de Ocaña El genovés liberal Los torneos de Aragón La boda entre dos maridos El amigo por fuerza El galán Castrucho Los embustes de Celauro La fe rompida El tirano castigado Luigi Giuliani, ed. Silvia Iriso Ariz, ed. Luigi Giuliani, ed. Enrico di Pastena, ed. Luis Alberto Blecua Perdices (†) y Gerardo Salvador Lipperheide, ed. Elvezio Canonica, ed. Patrizia Campana y Jordi Pardo, ed. José Roso Díaz, ed. Gonzalo Pontón y José Enrique Laplana Gil, ed. Julián Molina, ed. Marco Presotto, ed. Ramón Valdés Gázquez, ed. Margarita Freixas 84-9743-059-X 84-9743-060-3 84-9743-061-1"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte V (2004)",
-    url: "publicaciones/partes-comedias.html#parte-5",
-    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 2004. Coord. Marie-Françoise Déodat-Kessedjian y Emmanuelle Garnier",
-    content: "Parte V 2004 Marie-Françoise Déodat-Kessedjian y Emmanuelle Garnier Milenio – Universitat Autònoma de Barcelona Lérida El ejemplo de casadas y prueba de la paciencia Marie-Françoise Déodat-Kessedjian y Emmanuelle Garnier, ed. Marie-Françoise Déodat-Kessedjian y Emmanuelle Garnier 84-9743-133-2"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte VI (2005)",
-    url: "publicaciones/partes-comedias.html#parte-6",
-    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 2005. Coord. Victoria Pineda y Gonzalo Pontón",
-    content: "Parte VI 2005 Victoria Pineda y Gonzalo Pontón Milenio – Universitat Autònoma de Barcelona Lérida La batalla del honor La obediencia laureada y primer Carlos de Hungría El hombre de bien Servir con mala estrella El cuerdo en su casa La reina Juana de Nápoles El duque de Viseo El secretario de sí mismo Llegar en ocasión El testigo contra sí El mármol de Felisardo El mejor maestro, el tiempo Victoria Pineda y Gonzalo Pontón, ed. Ramón Valdés Gázquez, ed. Guillem Usandizaga, ed. María José Borja Rodríguez, ed. Laura Calvo Valdivielso, ed. Laura Fernández y Rafael Ramos, ed. Marcella Trambaioli, ed. Manuel Calderón, ed. Victoria Pineda, ed. Guillermo Serés, ed. José Enrique Laplana Gil, ed. Beatriz Aguilar y Benet Marcos, ed. Íngrid Vindel 84-9743-164-2 84-9743-165-0 84-9743-166-9"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte VII (2008)",
-    url: "publicaciones/partes-comedias.html#parte-7",
-    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 2008. Coord. Enrico di Pastena",
-    content: "Parte VII 2008 Enrico di Pastena Milenio – Universitat Autònoma de Barcelona Lérida El villano en su rincón El castigo del discreto Las pobrezas de Reinaldos El gran duque de Moscovia y Emperador perseguido Las paces de los Reyes y judía de Toledo Los porceles de Murcia La hermosura aborrecida El primer Fajardo Viuda, casada y doncella El príncipe despeñado La serrana de la Vera San Isidro, labrador de Madrid Enrico di Pastena, ed. Guillermo Serés, ed. Enrico di Pastena y Giulia Poggi, ed. Teresa Barjau, ed. Milagros Villar, ed. Julián Acebrón, ed. Francisco Lobera Serrano, ed. Enrico di Pastena, ed. Jorge García López, ed. Ronna S. Feit y Donald McGrady, ed. Andrés Pozo y Guillermo Serés, ed. Lola González, ed. María Morrás 978-84-9743-275-7 978-84-9743-277-1 978-84-9743-278-8"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte VIII (2009)",
-    url: "publicaciones/partes-comedias.html#parte-8",
-    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 2009. Coord. Rafael Ramos",
-    content: "Parte VIII 2009 Rafael Ramos Milenio – Universitat Autònoma de Barcelona Lérida El despertar a quien duerme El anzuelo de Fenisa Los locos por el cielo El más galán portugués, Duque de Berganza El Argel fingido y renegado de amor El postrer godo de España La prisión sin culpa El esclavo de Roma La imperial de Otón El vaquero de Moraña Angélica en el Catay El Niño Inocente de La Guardia Rafael Ramos, ed. Lola Josa, ed. Luis Gómez Canseco, ed. Enric Bassegoda i Pineda, ed. Carlos Mota, ed. Guillermo Serés, ed. Jorge García López, ed. Rafael Ramos, ed. Raquel Rojas Fernández y Francisco Rodríguez Risquete, ed. Emilio Blanco, ed. Sofía Eiroa, ed. Marcella Trambaioli, ed. Fernando Baños Vallejo 978-84-9743-328-0 978-84-9743-329-7 978-84-9743-327-3"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte IX (2007)",
-    url: "publicaciones/partes-comedias.html#parte-9",
-    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 2007. Coord. Marco Presotto",
-    content: "Parte IX 2007 Marco Presotto Milenio – Universitat Autònoma de Barcelona Lérida La prueba de los ingenios La doncella Teodor El Hamete de Toledo El ausente en el lugar La niña de plata El animal de Hungría Del mal, lo menos La hermosa Alfreda Los Ponces de Barcelona La varona castellana La dama boba Los melindres de Belisa Marco Presotto, ed. Julián Molina, ed. Julián González-Barrera, ed. Rafael González Cañal, ed. Abraham Madroñal, ed. Eva Muriel, ed. Xavier Tubau, ed. Gabriel Padilla, ed. Maria Alessandra Giovannini, ed. Marcella Trambaioli, ed. Gonzalo Pontón y Guillermo Serés, ed. Marco Presotto, ed. Jorge León 978-84-9743-231-3 978-84-9743-232-0 978-84-9743-233-7"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte X (2010)",
-    url: "publicaciones/partes-comedias.html#parte-10",
-    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 2010. Coord. Ramón Valdés Gázquez y María Morrás",
-    content: "Parte X 2010 Ramón Valdés Gázquez y María Morrás Milenio – Universitat Autònoma de Barcelona Lérida El galán de la Membrilla La venganza venturosa Don Lope de Cardona La humildad y la soberbia El amante agradecido Los guanches de Tenerife La octava maravilla El sembrar en buena tierra El blasón de los Chaves de Villalba Juan de Dios y Antón Martín La burgalesa de Lerma El poder vencido y amor premiado Ramón Valdés Gázquez y María Morrás, ed. Luis Sánchez Laílla, ed. Eric Calderwood, ed. Eugenia Fosalba Vela, ed. Miguel Zugasti, ed. María Dolores Gómez Martín, ed. José Miguel Martínez Torrejón, ed. Ramón Valdés Gázquez y María Nogués, ed. María Morrás y Xavier Tubau, ed. José Javier Rodríguez Rodríguez (†), ed. Giuseppe Mazzocchi, ed. Roberta Alviti, ed. Jorge Checa 978-84-9743-430-0 978-84-9743-431-7 978-84-9743-432-4"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte XI (2012)",
-    url: "publicaciones/partes-comedias.html#parte-11",
-    description: "Gredos, Madrid, 2012. Coord. Laura Fernández y Gonzalo Pontón",
-    content: "Parte XI 2012 Laura Fernández y Gonzalo Pontón Gredos Madrid El perro del hortelano El acero de Madrid Los ramilletes de Madrid Obras son amores Servir a señor discreto El príncipe perfeto El amigo hasta la muerte La locura por la honra El mayordomo de la duquesa de Amalfi El Arenal de Sevilla La fortuna merecida El bautismo del príncipe de Marruecos Laura Fernández y Gonzalo Pontón, ed. Paola Laskaris, ed. Luis Gómez Canseco, ed. Elizabeth Wright, ed. Carlos Mota, ed. José Enrique Laplana Gil, ed. Judith Farré Vidal, ed. Josefa Badía Herrera, ed. Florence D'Artois, ed. Teresa Ferrer Valls, ed. Manuel Cornejo, ed. Ana Isabel Sánchez, ed. Gonzalo Pontón 978-84-249-36587 978-84-249-3658-7"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte XII (2013)",
-    url: "publicaciones/partes-comedias.html#parte-12",
-    description: "Gredos, Madrid, 2013. Coord. José Enrique Laplana Gil",
-    content: "Parte XII 2013 José Enrique Laplana Gil Gredos Madrid Ello dirá La sortija del olvido Los enemigos en casa La cortesía de España Al pasar del arroyo Los hidalgos del aldea El marqués de Mantua Las flores de don Juan y rico y pobre trocados Lo que hay que fiar del mundo La firmeza en la desdicha Estefanía la desdichada Fuente Ovejuna José Enrique Laplana Gil, ed. Sergio Fernández López, ed. José Enrique López Martínez, ed. Diego Símini, ed. Elena di Pinto, ed. Beatrice Zanusso y José Enrique Laplana Gil, ed. Ignacio García Aguilar, ed. Felipe B. Pedraza Jiménez, ed. Luis Sánchez Laílla, ed. José Enrique Laplana Gil y Luis Sánchez Laílla, ed. María Dolores González, ed. Violeta Romero, ed. Maria Grazia Profeti 978-84-249-36839 978-84-249-36839"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte XIII (2014)",
-    url: "publicaciones/partes-comedias.html#parte-13",
-    description: "Gredos, Madrid, 2014. Coord. Natalia Fernández Rodríguez",
-    content: "Parte XIII 2014 Natalia Fernández Rodríguez Gredos Madrid La arcadia El halcón de Federico El remedio en la desdicha Los esclavos libres El desconfiado El cardenal de Belén El alcalde mayor Los locos de Valencia Santiago el verde La francesilla El desposorio encubierto Los españoles en Flandes Natalia Fernández Rodríguez, ed. Ana María Porteiro Chouciño, ed. Romina Ippolito, ed. Ely Treviño, ed. José Javier Rodríguez Rodríguez (†), ed. Natalia Fernández Rodríguez, ed. José Enrique López Martínez, ed. Carlos Peña, ed. Francisco Sáez Raposo, ed. Marta Latorre Pena, ed. Carlos Mota, ed. Antonio Cortijo Ocaña 978-84-249-26342 978-84-249-26342"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte XIV (2015)",
-    url: "publicaciones/partes-comedias.html#parte-14",
-    description: "Gredos, Madrid, 2015. Coord. José Enrique López Martínez",
-    content: "Parte XIV 2015 José Enrique López Martínez Gredos Madrid"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte XV (2016)",
-    url: "publicaciones/partes-comedias.html#parte-15",
-    description: "Gredos, Madrid, 2016. Coord. Luis Sánchez Laílla",
-    content: "Parte XV 2016 Luis Sánchez Laílla Gredos Madrid La malcasada El caballero del sacramento La Santa Liga El favor agradecido La hermosa Ester El leal criado La buena guarda Historia de Tobías El ingrato arrepentido El caballero del milagro Luis Sánchez Laílla, ed. José Javier Rodríguez Rodríguez (†), ed. Marcella Trambaioli, ed. Juan Udaondo Alegre, ed. Raúl Orellana, ed. José Aragüés Aldaz, ed. Aurora González Roldán, ed. Sònia Boadas, ed. Macarena Cuiñas Gómez, ed. José Enrique Laplana Gil, ed. Santiago Restrepo y Ramón Valdés Gázquez 978-84-249-2930-5 978-84-249-2930-5"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte XVI (2017)",
-    url: "publicaciones/partes-comedias.html#parte-16",
-    description: "Gredos, Madrid, 2017. Coord. Florence D'Artois y Luigi Giuliani",
-    content: "Parte XVI 2017 Florence D'Artois y Luigi Giuliani Gredos Madrid El premio de la hermosura Adonis y Venus Los prados de León Mirad a quién alabáis La fábula de Perseo El laberinto de Creta La serrana de Tormes Las grandezas de Alejandro La Felisarda La inocente Laura Lo fingido verdadero ed. Florence D'Artois y Héctor Ruiz, ed. Mercedes Blanco y Felipe Joannon, ed. Victoria Pineda, ed. Enrico di Pastena, ed. Roland Béhar, ed. Sònia Boadas, ed. Eugenio Maggi, ed. Anne-Marie Lievens, ed. Florence D'Artois, ed. Alejandro García Reidy, ed. Luigi Giuliani 978-84-249-37836 978-84-249-37836"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte XVII (2018)",
-    url: "publicaciones/partes-comedias.html#parte-17",
-    description: "Gredos, Barcelona, 2018. Coord. Daniele Crivellari y Eugenio Maggi",
-    content: "Parte XVII 2018 Daniele Crivellari y Eugenio Maggi Gredos Barcelona Con su pan se lo coma Quien más no puede El soldado amante Muertos vivos El primer rey de Castilla El dómine Lucas Lucinda perseguida El ruiseñor de Sevilla El sol parado La madre de la mejor Jorge Toledano El hidalgo Bencerraje Daniele Crivellari y Eugenio Maggi, ed. Daniele Crivellari, ed. Marco Presotto, ed. Gonzalo Pontón, ed. Luciana Gentilli y Tiziana Pucciarelli, ed. Adrián J. Saez, ed. Miguel Marón García-Bermejo Giner, ed. Esther Borrego Gutiérrez, ed. Eugenio Maggi, ed. Fernando Plata, ed. Elvezio Canonica, ed. Juan Manuel Escudero Baztán, ed. Ilaria Resta 978-84-249-38321 978-84-249-38321"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte XVIII (2019)",
-    url: "publicaciones/partes-comedias.html#parte-18",
-    description: "Gredos, Barcelona, 2019. Coord. Adrián J. Saez y Antonio Sánchez Jiménez",
-    content: "Parte XVIII 2019 Adrián J. Saez y Antonio Sánchez Jiménez Gredos Barcelona El príncipe perfecto, segunda parte La pobreza estimada El divino africano La pastoral de Jacinto El honrado hermano El capellán de la Virgen La piedad ejecutada Las famosas asturianas La campana de Aragón Quien ama no haga fieros El rústico del cielo El valor de las mujeres Adrián J. Saez y Antonio Sánchez Jiménez, ed. Emilio Blanco, ed. Valle Ojeda Calvo y Adrián J. Saez, ed. José Aragüés Aldaz, ed. Paula Casariego Castiñeira, ed. Antonio Sánchez Jiménez, ed. Abraham Madroñal, ed. Ignacio García Aguilar, ed. David Arbesú, ed. Diego Símini, ed. Pedro Ruiz Pérez, ed. Jacobo Llamas, ed. Julio Vélez Sainz 978-84-249-34851 978-84-249-38451"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte XIX (2020)",
-    url: "publicaciones/partes-comedias.html#parte-19",
-    description: "Gredos, Barcelona, 2020. Coord. Alejandro García Reidy y Fernando Plata",
-    content: "Parte XIX 2020 Alejandro García Reidy y Fernando Plata Gredos Barcelona De cosario a cosario Amor secreto hasta celos La inocente sangre El serafín humano El hijo de los leones Primera parte de don Juan de Castro Segunda parte de don Juan de Castro La limpieza no manchada El vellocino de oro La mocedad de Roldán Carlos V en Francia ed. Enrico di Pastena, ed. Patricia Marín Cepeda, ed. Sònia Boadas y Laura Fernández, ed. Fernando Rodríguez Mansilla, ed. Marcella Trambaioli, ed. Alejandro García Reidy, ed. Fernando Rodríguez-Gallego, ed. Fernando Plata, ed. José Javier Rodríguez Rodríguez (†), ed. Carmen Peraita, ed. Luc Capique 978-84-89790-1 978-84-249-3934-2"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte XX (2021)",
-    url: "publicaciones/partes-comedias.html#parte-20",
-    description: "Gredos, Barcelona, 2021. Coord. Daniel Fernández Rodríguez y Guillermo Gómez Sánchez Ferrer",
-    content: "Parte XX 2021 Daniel Fernández Rodríguez y Guillermo Gómez Sánchez Ferrer Gredos Barcelona La discreta venganza Lo cierto por lo dudoso Pobreza no es vileza Arauco domado La ventura sin buscalla El valiente Céspedes El hombre, por su palabra Roma, abrasada Virtud, pobreza y mujer El rey sin reino El mejor mozo de España El marido más firme Daniel Fernández Rodríguez y Guillermo Gómez Sánchez Ferrer, ed. Manuel Piqueras Flores y Blanca Santos de la Morena, ed. Salomé Vuelta García, ed. Federica Cappelli, ed. José Enrique Laplana Gil, ed. Daniele Crivellari, ed. Isabel Hernando Morata, ed. Santiago Restrepo, ed. Victoriano Roncero López, ed. Daniel Fernández Rodríguez, ed. Francesca Leonetti y Oana Andreia Sambrian, ed. Guillermo Gómez Sánchez Ferrer, ed. Clara Monzó Ribes 978-84-249-39786 978-84-249-39786"
-  },
-  {
-    title: "Comedias de Lope de Vega. Parte XXI (2022)",
-    url: "publicaciones/partes-comedias.html#parte-21",
-    description: "Gredos, Barcelona, 2022. Coord. Gonzalo Pontón y Ramón Valdés Gázquez",
-    content: "Parte XXI 2022 Gonzalo Pontón y Ramón Valdés Gázquez Gredos Barcelona La bella Aurora ¡Ay, verdades, que en amor…! La boba para los otros y discreta para sí La noche de san Juan El castigo sin venganza Los bandos de Sena El mejor alcalde, el rey El premio del bien hablar La vitoria de la honra El piadoso aragonés Los Tellos de Meneses Por la puente, Juana Laura Fernández, Fernando Rodríguez-Gallego y Ramón Valdés Gázquez, ed. Rosa Bono Velilla, ed. Fernando Rodríguez-Gallego, ed. Paula Casariego Castiñeira y Alejandra Ulla Lorenzo, ed. Isabel Muguruza, ed. Alejandro García Reidy y Ramón Valdés Gázquez, ed. Clara Monzó Ribes y Daniel Fernández Rodríguez, ed. Fausta Antonucci, ed. Victoria Pineda, ed. José Enrique López Martínez, ed. Gonzalo Pontón y Daniele Crivellari, ed. Ane Zapatero Molinuevo, ed. Enrico di Pastena 978-84-249-99261 978-84-249-99261"
-  },
-  {
     title: "La integral dramática de Lope de Vega: textos, métodos, problemas, proyección (2022–2025)",
     url: "el-grupo/historial-proyectos.html#2022-2025-la-integral-dramatica-de-lope-de-vega-textos-met",
     description: "2022–2025",
@@ -1783,5 +1657,131 @@ var SEARCH_INDEX = [
     url: "publicaciones/otras-publicaciones.html#i-mujeres-y-criados-i",
     description: "Lope de Vega Carpio, 2014",
     content: "Lope de Vega Carpio Alejandro García-Reidy 2014 Gredos Barcelona Biblioteca Lope de Vega 9788424926793"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte I (1997)",
+    url: "publicaciones/partes-comedias.html#parte-1",
+    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 1997",
+    content: "Parte I 1997 Milenio – Universitat Autònoma de Barcelona Lérida Loas Los donaires de Matico Comedia nueva del perseguido El cerco de Santa Fe Comedia de Bamba La traición bien acertada El hijo de Reduán El nacimiento de Ursón y Valentín, reyes de Francia El casamiento en la muerte La escolástica celosa La amistad pagada El molino El testimonio vengado Entremeses Luigi Giuliani, Patrizia Campana, María Morrás y Gonzalo Pontón, ed. Luigi Giuliani, ed. Marco Presotto, ed. Silvia Iriso Ariz y María Morrás, ed. Delmiro Antas, ed. David Roas, ed. Agustín Sánchez Aguilar y Nil Santiáñez-Tió, ed. Gonzalo Pontón, ed. Patrizia Campana y José Ramón Mayol Ferrer, ed. Luigi Giuliani, ed. Nil Santiáñez-Tió y Luis Alberto Blecua Perdices (†), ed. Victoria Pineda, ed. Gerardo Salvador Lipperheide, ed. Gonzalo Pontón y Agustín Sánchez Aguilar 84-89790-01-9 84-89790-02-7 84-89790-03-5"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte II (1998)",
+    url: "publicaciones/partes-comedias.html#parte-2",
+    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 1998. Coord. Silvia Iriso Ariz",
+    content: "Parte II 1998 Silvia Iriso Ariz Milenio – Universitat Autònoma de Barcelona Lérida La fuerza lastimosa La ocasión perdida El gallardo catalán El mayorazgo dudoso La resistencia honrada y condesa Matilde El primero Benavides Los comendadores de Córdoba La bella malmaridada Los tres diamantes La quinta de Florencia El padrino desposado Las ferias de Madrid Silvia Iriso Ariz y José Enrique Laplana Gil, ed. Montgrony Alberola, ed. Enrico di Pastena, ed. Enrique Turpin, ed. Guillermo Serés, ed. Miguel M. García-Bermejo Giner, ed. Silvia Iriso Ariz, ed. José Enrique Laplana Gil, ed. Enric Querol Coll, ed. María Isabel Toro Pascua, ed. Bienvenido Morros Mestres, ed. Agustín Sánchez Aguilar, ed. David Roas 84-89790-17-5 84-89790-18-3 84-89790-19-1"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte III (2002)",
+    url: "publicaciones/partes-comedias.html#parte-3",
+    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 2002. Coord. Luigi Giuliani",
+    content: "Parte III 2002 Luigi Giuliani Milenio – Universitat Autònoma de Barcelona Lérida La noche toledana Las mudanzas de fortuna y sucesos de don Beltrán de Aragón El Santo Negro Rosambuco Luigi Giuliani, ed. Agustín Sánchez Aguilar, ed. Gonzalo Pontón, ed. Luigi Giuliani 84-9743-037-9"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte IV (2002)",
+    url: "publicaciones/partes-comedias.html#parte-4",
+    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 2002. Coord. Luigi Giuliani y Ramón Valdés Gázquez",
+    content: "Parte IV 2002 Luigi Giuliani y Ramón Valdés Gázquez Milenio – Universitat Autònoma de Barcelona Lérida Laura perseguida El nuevo mundo descubierto por Cristóbal Colón El asalto de Mastrique por el príncipe de Parma Tragicomedia de Peribáñez y el comendador de Ocaña El genovés liberal Los torneos de Aragón La boda entre dos maridos El amigo por fuerza El galán Castrucho Los embustes de Celauro La fe rompida El tirano castigado Luigi Giuliani, ed. Silvia Iriso Ariz, ed. Luigi Giuliani, ed. Enrico di Pastena, ed. Luis Alberto Blecua Perdices (†) y Gerardo Salvador Lipperheide, ed. Elvezio Canonica, ed. Patrizia Campana y Jordi Pardo, ed. José Roso Díaz, ed. Gonzalo Pontón y José Enrique Laplana Gil, ed. Julián Molina, ed. Marco Presotto, ed. Ramón Valdés Gázquez, ed. Margarita Freixas 84-9743-059-X 84-9743-060-3 84-9743-061-1"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte V (2004)",
+    url: "publicaciones/partes-comedias.html#parte-5",
+    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 2004. Coord. Marie-Françoise Déodat-Kessedjian y Emmanuelle Garnier",
+    content: "Parte V 2004 Marie-Françoise Déodat-Kessedjian y Emmanuelle Garnier Milenio – Universitat Autònoma de Barcelona Lérida El ejemplo de casadas y prueba de la paciencia Marie-Françoise Déodat-Kessedjian y Emmanuelle Garnier, ed. Marie-Françoise Déodat-Kessedjian y Emmanuelle Garnier 84-9743-133-2"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte VI (2005)",
+    url: "publicaciones/partes-comedias.html#parte-6",
+    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 2005. Coord. Victoria Pineda y Gonzalo Pontón",
+    content: "Parte VI 2005 Victoria Pineda y Gonzalo Pontón Milenio – Universitat Autònoma de Barcelona Lérida La batalla del honor La obediencia laureada y primer Carlos de Hungría El hombre de bien Servir con mala estrella El cuerdo en su casa La reina Juana de Nápoles El duque de Viseo El secretario de sí mismo Llegar en ocasión El testigo contra sí El mármol de Felisardo El mejor maestro, el tiempo Victoria Pineda y Gonzalo Pontón, ed. Ramón Valdés Gázquez, ed. Guillem Usandizaga, ed. María José Borja Rodríguez, ed. Laura Calvo Valdivielso, ed. Laura Fernández y Rafael Ramos, ed. Marcella Trambaioli, ed. Manuel Calderón, ed. Victoria Pineda, ed. Guillermo Serés, ed. José Enrique Laplana Gil, ed. Beatriz Aguilar y Benet Marcos, ed. Íngrid Vindel 84-9743-164-2 84-9743-165-0 84-9743-166-9"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte VII (2008)",
+    url: "publicaciones/partes-comedias.html#parte-7",
+    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 2008. Coord. Enrico di Pastena",
+    content: "Parte VII 2008 Enrico di Pastena Milenio – Universitat Autònoma de Barcelona Lérida El villano en su rincón El castigo del discreto Las pobrezas de Reinaldos El gran duque de Moscovia y Emperador perseguido Las paces de los Reyes y judía de Toledo Los porceles de Murcia La hermosura aborrecida El primer Fajardo Viuda, casada y doncella El príncipe despeñado La serrana de la Vera San Isidro, labrador de Madrid Enrico di Pastena, ed. Guillermo Serés, ed. Enrico di Pastena y Giulia Poggi, ed. Teresa Barjau, ed. Milagros Villar, ed. Julián Acebrón, ed. Francisco Lobera Serrano, ed. Enrico di Pastena, ed. Jorge García López, ed. Ronna S. Feit y Donald McGrady, ed. Andrés Pozo y Guillermo Serés, ed. Lola González, ed. María Morrás 978-84-9743-275-7 978-84-9743-277-1 978-84-9743-278-8"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte VIII (2009)",
+    url: "publicaciones/partes-comedias.html#parte-8",
+    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 2009. Coord. Rafael Ramos",
+    content: "Parte VIII 2009 Rafael Ramos Milenio – Universitat Autònoma de Barcelona Lérida El despertar a quien duerme El anzuelo de Fenisa Los locos por el cielo El más galán portugués, Duque de Berganza El Argel fingido y renegado de amor El postrer godo de España La prisión sin culpa El esclavo de Roma La imperial de Otón El vaquero de Moraña Angélica en el Catay El Niño Inocente de La Guardia Rafael Ramos, ed. Lola Josa, ed. Luis Gómez Canseco, ed. Enric Bassegoda i Pineda, ed. Carlos Mota, ed. Guillermo Serés, ed. Jorge García López, ed. Rafael Ramos, ed. Raquel Rojas Fernández y Francisco Rodríguez Risquete, ed. Emilio Blanco, ed. Sofía Eiroa, ed. Marcella Trambaioli, ed. Fernando Baños Vallejo 978-84-9743-328-0 978-84-9743-329-7 978-84-9743-327-3"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte IX (2007)",
+    url: "publicaciones/partes-comedias.html#parte-9",
+    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 2007. Coord. Marco Presotto",
+    content: "Parte IX 2007 Marco Presotto Milenio – Universitat Autònoma de Barcelona Lérida La prueba de los ingenios La doncella Teodor El Hamete de Toledo El ausente en el lugar La niña de plata El animal de Hungría Del mal, lo menos La hermosa Alfreda Los Ponces de Barcelona La varona castellana La dama boba Los melindres de Belisa Marco Presotto, ed. Julián Molina, ed. Julián González-Barrera, ed. Rafael González Cañal, ed. Abraham Madroñal, ed. Eva Muriel, ed. Xavier Tubau, ed. Gabriel Padilla, ed. Maria Alessandra Giovannini, ed. Marcella Trambaioli, ed. Gonzalo Pontón y Guillermo Serés, ed. Marco Presotto, ed. Jorge León 978-84-9743-231-3 978-84-9743-232-0 978-84-9743-233-7"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte X (2010)",
+    url: "publicaciones/partes-comedias.html#parte-10",
+    description: "Milenio – Universitat Autònoma de Barcelona, Lérida, 2010. Coord. Ramón Valdés Gázquez y María Morrás",
+    content: "Parte X 2010 Ramón Valdés Gázquez y María Morrás Milenio – Universitat Autònoma de Barcelona Lérida El galán de la Membrilla La venganza venturosa Don Lope de Cardona La humildad y la soberbia El amante agradecido Los guanches de Tenerife La octava maravilla El sembrar en buena tierra El blasón de los Chaves de Villalba Juan de Dios y Antón Martín La burgalesa de Lerma El poder vencido y amor premiado Ramón Valdés Gázquez y María Morrás, ed. Luis Sánchez Laílla, ed. Eric Calderwood, ed. Eugenia Fosalba Vela, ed. Miguel Zugasti, ed. María Dolores Gómez Martín, ed. José Miguel Martínez Torrejón, ed. Ramón Valdés Gázquez y María Nogués, ed. María Morrás y Xavier Tubau, ed. José Javier Rodríguez Rodríguez (†), ed. Giuseppe Mazzocchi, ed. Roberta Alviti, ed. Jorge Checa 978-84-9743-430-0 978-84-9743-431-7 978-84-9743-432-4"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte XI (2012)",
+    url: "publicaciones/partes-comedias.html#parte-11",
+    description: "Gredos, Madrid, 2012. Coord. Laura Fernández y Gonzalo Pontón",
+    content: "Parte XI 2012 Laura Fernández y Gonzalo Pontón Gredos Madrid El perro del hortelano El acero de Madrid Los ramilletes de Madrid Obras son amores Servir a señor discreto El príncipe perfeto El amigo hasta la muerte La locura por la honra El mayordomo de la duquesa de Amalfi El Arenal de Sevilla La fortuna merecida El bautismo del príncipe de Marruecos Laura Fernández y Gonzalo Pontón, ed. Paola Laskaris, ed. Luis Gómez Canseco, ed. Elizabeth Wright, ed. Carlos Mota, ed. José Enrique Laplana Gil, ed. Judith Farré Vidal, ed. Josefa Badía Herrera, ed. Florence D'Artois, ed. Teresa Ferrer Valls, ed. Manuel Cornejo, ed. Ana Isabel Sánchez, ed. Gonzalo Pontón 978-84-249-36587 978-84-249-3658-7"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte XII (2013)",
+    url: "publicaciones/partes-comedias.html#parte-12",
+    description: "Gredos, Madrid, 2013. Coord. José Enrique Laplana Gil",
+    content: "Parte XII 2013 José Enrique Laplana Gil Gredos Madrid Ello dirá La sortija del olvido Los enemigos en casa La cortesía de España Al pasar del arroyo Los hidalgos del aldea El marqués de Mantua Las flores de don Juan y rico y pobre trocados Lo que hay que fiar del mundo La firmeza en la desdicha Estefanía la desdichada Fuente Ovejuna José Enrique Laplana Gil, ed. Sergio Fernández López, ed. José Enrique López Martínez, ed. Diego Símini, ed. Elena di Pinto, ed. Beatrice Zanusso y José Enrique Laplana Gil, ed. Ignacio García Aguilar, ed. Felipe B. Pedraza Jiménez, ed. Luis Sánchez Laílla, ed. José Enrique Laplana Gil y Luis Sánchez Laílla, ed. María Dolores González, ed. Violeta Romero, ed. Maria Grazia Profeti 978-84-249-36839 978-84-249-36839"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte XIII (2014)",
+    url: "publicaciones/partes-comedias.html#parte-13",
+    description: "Gredos, Madrid, 2014. Coord. Natalia Fernández Rodríguez",
+    content: "Parte XIII 2014 Natalia Fernández Rodríguez Gredos Madrid La arcadia El halcón de Federico El remedio en la desdicha Los esclavos libres El desconfiado El cardenal de Belén El alcalde mayor Los locos de Valencia Santiago el verde La francesilla El desposorio encubierto Los españoles en Flandes Natalia Fernández Rodríguez, ed. Ana María Porteiro Chouciño, ed. Romina Ippolito, ed. Ely Treviño, ed. José Javier Rodríguez Rodríguez (†), ed. Natalia Fernández Rodríguez, ed. José Enrique López Martínez, ed. Carlos Peña, ed. Francisco Sáez Raposo, ed. Marta Latorre Pena, ed. Carlos Mota, ed. Antonio Cortijo Ocaña 978-84-249-26342 978-84-249-26342"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte XIV (2015)",
+    url: "publicaciones/partes-comedias.html#parte-14",
+    description: "Gredos, Madrid, 2015. Coord. José Enrique López Martínez",
+    content: "Parte XIV 2015 José Enrique López Martínez Gredos Madrid"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte XV (2016)",
+    url: "publicaciones/partes-comedias.html#parte-15",
+    description: "Gredos, Madrid, 2016. Coord. Luis Sánchez Laílla",
+    content: "Parte XV 2016 Luis Sánchez Laílla Gredos Madrid La malcasada El caballero del sacramento La Santa Liga El favor agradecido La hermosa Ester El leal criado La buena guarda Historia de Tobías El ingrato arrepentido El caballero del milagro Luis Sánchez Laílla, ed. José Javier Rodríguez Rodríguez (†), ed. Marcella Trambaioli, ed. Juan Udaondo Alegre, ed. Raúl Orellana, ed. José Aragüés Aldaz, ed. Aurora González Roldán, ed. Sònia Boadas, ed. Macarena Cuiñas Gómez, ed. José Enrique Laplana Gil, ed. Santiago Restrepo y Ramón Valdés Gázquez 978-84-249-2930-5 978-84-249-2930-5"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte XVI (2017)",
+    url: "publicaciones/partes-comedias.html#parte-16",
+    description: "Gredos, Madrid, 2017. Coord. Florence D'Artois y Luigi Giuliani",
+    content: "Parte XVI 2017 Florence D'Artois y Luigi Giuliani Gredos Madrid El premio de la hermosura Adonis y Venus Los prados de León Mirad a quién alabáis La fábula de Perseo El laberinto de Creta La serrana de Tormes Las grandezas de Alejandro La Felisarda La inocente Laura Lo fingido verdadero ed. Florence D'Artois y Héctor Ruiz, ed. Mercedes Blanco y Felipe Joannon, ed. Victoria Pineda, ed. Enrico di Pastena, ed. Roland Béhar, ed. Sònia Boadas, ed. Eugenio Maggi, ed. Anne-Marie Lievens, ed. Florence D'Artois, ed. Alejandro García Reidy, ed. Luigi Giuliani 978-84-249-37836 978-84-249-37836"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte XVII (2018)",
+    url: "publicaciones/partes-comedias.html#parte-17",
+    description: "Gredos, Barcelona, 2018. Coord. Daniele Crivellari y Eugenio Maggi",
+    content: "Parte XVII 2018 Daniele Crivellari y Eugenio Maggi Gredos Barcelona Con su pan se lo coma Quien más no puede El soldado amante Muertos vivos El primer rey de Castilla El dómine Lucas Lucinda perseguida El ruiseñor de Sevilla El sol parado La madre de la mejor Jorge Toledano El hidalgo Bencerraje Daniele Crivellari y Eugenio Maggi, ed. Daniele Crivellari, ed. Marco Presotto, ed. Gonzalo Pontón, ed. Luciana Gentilli y Tiziana Pucciarelli, ed. Adrián J. Saez, ed. Miguel Marón García-Bermejo Giner, ed. Esther Borrego Gutiérrez, ed. Eugenio Maggi, ed. Fernando Plata, ed. Elvezio Canonica, ed. Juan Manuel Escudero Baztán, ed. Ilaria Resta 978-84-249-38321 978-84-249-38321"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte XVIII (2019)",
+    url: "publicaciones/partes-comedias.html#parte-18",
+    description: "Gredos, Barcelona, 2019. Coord. Adrián J. Saez y Antonio Sánchez Jiménez",
+    content: "Parte XVIII 2019 Adrián J. Saez y Antonio Sánchez Jiménez Gredos Barcelona El príncipe perfecto, segunda parte La pobreza estimada El divino africano La pastoral de Jacinto El honrado hermano El capellán de la Virgen La piedad ejecutada Las famosas asturianas La campana de Aragón Quien ama no haga fieros El rústico del cielo El valor de las mujeres Adrián J. Saez y Antonio Sánchez Jiménez, ed. Emilio Blanco, ed. Valle Ojeda Calvo y Adrián J. Saez, ed. José Aragüés Aldaz, ed. Paula Casariego Castiñeira, ed. Antonio Sánchez Jiménez, ed. Abraham Madroñal, ed. Ignacio García Aguilar, ed. David Arbesú, ed. Diego Símini, ed. Pedro Ruiz Pérez, ed. Jacobo Llamas, ed. Julio Vélez Sainz 978-84-249-34851 978-84-249-38451"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte XIX (2020)",
+    url: "publicaciones/partes-comedias.html#parte-19",
+    description: "Gredos, Barcelona, 2020. Coord. Alejandro García Reidy y Fernando Plata",
+    content: "Parte XIX 2020 Alejandro García Reidy y Fernando Plata Gredos Barcelona De cosario a cosario Amor secreto hasta celos La inocente sangre El serafín humano El hijo de los leones Primera parte de don Juan de Castro Segunda parte de don Juan de Castro La limpieza no manchada El vellocino de oro La mocedad de Roldán Carlos V en Francia ed. Enrico di Pastena, ed. Patricia Marín Cepeda, ed. Sònia Boadas y Laura Fernández, ed. Fernando Rodríguez Mansilla, ed. Marcella Trambaioli, ed. Alejandro García Reidy, ed. Fernando Rodríguez-Gallego, ed. Fernando Plata, ed. José Javier Rodríguez Rodríguez (†), ed. Carmen Peraita, ed. Luc Capique 978-84-89790-1 978-84-249-3934-2"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte XX (2021)",
+    url: "publicaciones/partes-comedias.html#parte-20",
+    description: "Gredos, Barcelona, 2021. Coord. Daniel Fernández Rodríguez y Guillermo Gómez Sánchez Ferrer",
+    content: "Parte XX 2021 Daniel Fernández Rodríguez y Guillermo Gómez Sánchez Ferrer Gredos Barcelona La discreta venganza Lo cierto por lo dudoso Pobreza no es vileza Arauco domado La ventura sin buscalla El valiente Céspedes El hombre, por su palabra Roma, abrasada Virtud, pobreza y mujer El rey sin reino El mejor mozo de España El marido más firme Daniel Fernández Rodríguez y Guillermo Gómez Sánchez Ferrer, ed. Manuel Piqueras Flores y Blanca Santos de la Morena, ed. Salomé Vuelta García, ed. Federica Cappelli, ed. José Enrique Laplana Gil, ed. Daniele Crivellari, ed. Isabel Hernando Morata, ed. Santiago Restrepo, ed. Victoriano Roncero López, ed. Daniel Fernández Rodríguez, ed. Francesca Leonetti y Oana Andreia Sambrian, ed. Guillermo Gómez Sánchez Ferrer, ed. Clara Monzó Ribes 978-84-249-39786 978-84-249-39786"
+  },
+  {
+    title: "Comedias de Lope de Vega. Parte XXI (2022)",
+    url: "publicaciones/partes-comedias.html#parte-21",
+    description: "Gredos, Barcelona, 2022. Coord. Gonzalo Pontón y Ramón Valdés Gázquez",
+    content: "Parte XXI 2022 Gonzalo Pontón y Ramón Valdés Gázquez Gredos Barcelona La bella Aurora ¡Ay, verdades, que en amor…! La boba para los otros y discreta para sí La noche de san Juan El castigo sin venganza Los bandos de Sena El mejor alcalde, el rey El premio del bien hablar La vitoria de la honra El piadoso aragonés Los Tellos de Meneses Por la puente, Juana Laura Fernández, Fernando Rodríguez-Gallego y Ramón Valdés Gázquez, ed. Rosa Bono Velilla, ed. Fernando Rodríguez-Gallego, ed. Paula Casariego Castiñeira y Alejandra Ulla Lorenzo, ed. Isabel Muguruza, ed. Alejandro García Reidy y Ramón Valdés Gázquez, ed. Clara Monzó Ribes y Daniel Fernández Rodríguez, ed. Fausta Antonucci, ed. Victoria Pineda, ed. José Enrique López Martínez, ed. Gonzalo Pontón y Daniele Crivellari, ed. Ane Zapatero Molinuevo, ed. Enrico di Pastena 978-84-249-99261 978-84-249-99261"
   }
 ];

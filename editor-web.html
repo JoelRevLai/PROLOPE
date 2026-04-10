@@ -1553,7 +1553,7 @@ function renderEditor() {
 
   // Hero
   if (S.heroData) {
-    h += '<div class="ed-section"><h2>Cabecera <span class="badge">HERO</span></h2>';
+    h += '<div class="ed-section"><h2>Cabecera</h2>';
     h += richLineField('Título principal','edHeroTitle',S.heroData.title);
     h += field('Breadcrumb (último segmento)','edBreadcrumb',S.heroData.breadcrumbLast,'Ej.: El grupo');
     if (S.heroData.type==='article') {
@@ -3454,7 +3454,7 @@ function renderParteCard(p, idx) {
   h += '<div style="padding-top:.75rem">';
   h += '<div class="row">';
   h += '<div>'+field('Número','pnum-'+idx,String(p.num||idx+1))+'</div>';
-  h += '<div>'+field('Romano (ej.: XV)','proman-'+idx,p.roman||'')+'</div>';
+  h += '<div>'+field('Romano','proman-'+idx,p.roman||'')+'</div>';
   h += '<div>'+field('Año','pyear-'+idx,String(p.year||''))+'</div>';
   h += '</div>';
   h += field('Coordinador/es (vacío si no hay)','pcoord-'+idx,p.coord||'','Ej.: Luigi Giuliani y Ramón Valdés');

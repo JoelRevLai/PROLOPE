@@ -238,6 +238,13 @@
   border-color: rgba(255,255,255,0.15);
 }
 
+[data-theme="dark"] .disposicion {
+  color: var(--azul);
+  background: var(--blanco);
+  border-color: #2a2a45;
+  border-left-color: var(--azul-claro);
+}
+
 /* Botón modo noche */
 .theme-toggle {
   background: none;

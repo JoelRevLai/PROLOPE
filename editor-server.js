@@ -107,6 +107,7 @@ function listHtmlFiles(root) {
       if (!/\.html?$/i.test(f)) return;
       if (f === 'editor-web.html' || f === 'generador-noticias.html') return;
       const rel = dir ? dir + '/' + f : f;
+      if (rel === 'proyectos-digitales/la-dama-boba.html') return;
       // Extract <title> from file to preserve special characters (apostrophes, accents…)
       let title = '';
       try {
