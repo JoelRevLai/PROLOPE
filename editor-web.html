@@ -576,8 +576,26 @@
     .nav-link-row .del-lnk:hover { opacity: 1 }
 
     /* ── RESPONSIVE ──────────────────── */
-    @media(max-width:800px) { .ed-nav { width: 210px; min-width: 210px } .ed-body { padding: 1rem } .item-card .row { flex-direction: column; gap: 0 } }
-    @media(max-width:600px) { .ed-nav { display: none } .ed-body { padding: .8rem } }
+    .mobile-nav-toggle { display: none; position: fixed; top: 1rem; left: 1rem; z-index: 2100; background: var(--azul); color: #fff; border: 1px solid var(--borde); border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 1.4rem; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2); line-height: 1; }
+    .mobile-nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 1999; backdrop-filter: blur(2px); }
+    .mobile-nav-overlay.open { display: block; }
+
+    @media(max-width:800px) { 
+      .ed-nav { width: 210px; min-width: 210px } 
+      .ed-body { padding: 1rem } 
+      .ed-topbar { flex-wrap: wrap; padding: .65rem 1rem; gap: .5rem; }
+      .item-card .row { flex-direction: column; gap: 0 } 
+    }
+    @media(max-width:600px) { 
+      .mobile-nav-toggle { display: block; }
+      .welcome { padding-top: 5rem; }
+      .ed-nav { position: fixed !important; left: -100%; top: 0; bottom: 0; height: 100vh; transition: left 0.3s ease; width: 260px !important; min-width: 260px !important; z-index: 2000; display: flex !important; box-shadow: 4px 0 24px rgba(0,0,0,0.5); }
+      .ed-nav.open { left: 0; }
+      .ed-topbar { padding: 3rem 1rem 1rem 1rem; flex-wrap: wrap; gap: .5rem; justify-content: flex-start; }
+      .ed-body { padding: .8rem } 
+      .rich-toolbar-ext select { max-width: 90px; }
+      .btn { padding: .3rem .7rem; font-size: .8rem; }
+    }
 
     /* ── NAV SEARCH ──────────────────── */
     .nav-search-wrap { padding: .6rem .75rem .35rem; flex-shrink: 0 }
@@ -672,6 +690,18 @@
   </style>
 </head>
 <body>
+
+<button class="mobile-nav-toggle" id="mobileNavToggle" onclick="document.querySelector('.ed-nav').classList.toggle('open'); document.getElementById('mobileNavOverlay').classList.toggle('open');" aria-label="Abrir menú">≡</button>
+<div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="document.querySelector('.ed-nav').classList.remove('open'); this.classList.remove('open');"></div>
+<script>
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.nav-item') && window.innerWidth <= 600) {
+      document.querySelector('.ed-nav').classList.remove('open');
+      var overlay = document.getElementById('mobileNavOverlay');
+      if(overlay) overlay.classList.remove('open');
+    }
+  });
+</script>
 
 <!-- ═══════ LEFT NAV ═══════ -->
 <aside class="ed-nav">
