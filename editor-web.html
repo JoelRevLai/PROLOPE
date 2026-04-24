@@ -7161,12 +7161,10 @@
       try {
         var r = await fetch('/api/page?path=noticias-data.js');
         var src = await r.text();
-        var catMatches = src.match(/"cat":\s*"([^"]+)"/g) || [];
+        var newsArr = [];
+        try { newsArr = new Function(src.replace(/\bconst\b/g, 'var').replace(/\blet\b/g, 'var') + ';return typeof news!=="undefined"?news:[];')(); } catch (e) { }
         var seen = {};
-        catMatches.forEach(function (m) {
-          var c = m.replace(/"cat":\s*"/, '').replace(/"$/, '').trim();
-          if (c && !seen[c]) { seen[c] = true; NC.cats.push(c); }
-        });
+        newsArr.forEach(function (n) { if (n.cat && !seen[n.cat]) { seen[n.cat] = true; NC.cats.push(n.cat); } });
         NC.cats.sort();
       } catch (e) { NC.cats = []; }
       // Show topbar with "Crear noticia" action
