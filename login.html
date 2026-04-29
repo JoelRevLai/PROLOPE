@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso — Editor PROLOPE</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --azul: #1a3a5c;
+      --azul-mid: #254e7a;
+      --dorado: #c8a45a;
+      --dorado-hover: #b8923e;
+      --crema: #faf8f4;
+      --crema-oscuro: #f2ede4;
+      --texto: #2c2c2c;
+      --texto-suave: #5a5a5a;
+      --borde: #ddd8ce;
+      --rojo: #b83232;
+      --nav-bg: #162f4a;
+      --bg: #ffffff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      background: #e8e2d8;
+      color: var(--texto);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .login-card {
+      background: var(--bg);
+      border-radius: 8px;
+      box-shadow: 0 4px 24px rgba(26, 58, 92, .12);
+      width: 100%;
+      max-width: 380px;
+      padding: 2.5rem 2rem 2rem;
+    }
+
+    .login-logo {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .login-logo h1 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      color: var(--azul);
+      margin-bottom: .2rem;
+    }
+
+    .login-logo p {
+      font-size: .82rem;
+      color: var(--texto-suave);
+    }
+
+    .login-field {
+      margin-bottom: 1rem;
+    }
+
+    .login-field label {
+      display: block;
+      font-family: 'Raleway', sans-serif;
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--texto-suave);
+      margin-bottom: .3rem;
+      letter-spacing: .02em;
+    }
+
+    .login-field input {
+      width: 100%;
+      padding: .55rem .7rem;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1rem;
+      border: 1px solid var(--borde);
+      border-radius: 4px;
+      background: var(--crema);
+      color: var(--texto);
+      transition: border-color .2s;
+    }
+
+    .login-field input:focus {
+      outline: none;
+      border-color: var(--dorado);
+      box-shadow: 0 0 0 2px rgba(200, 164, 90, .18);
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: .6rem;
+      font-family: 'Raleway', sans-serif;
+      font-size: .88rem;
+      font-weight: 600;
+      letter-spacing: .03em;
+      border: none;
+      border-radius: 4px;
+      background: var(--dorado);
+      color: #fff;
+      cursor: pointer;
+      transition: background .2s;
+      margin-top: .3rem;
+    }
+
+    .login-btn:hover { background: var(--dorado-hover); }
+    .login-btn:disabled { opacity: .6; cursor: not-allowed; }
+
+    .login-error {
+      background: rgba(184, 50, 50, .08);
+      color: var(--rojo);
+      border: 1px solid rgba(184, 50, 50, .18);
+      border-radius: 4px;
+      padding: .5rem .7rem;
+      font-size: .85rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .login-error.show { display: block; }
+
+    .login-warning {
+      background: rgba(200, 164, 90, .12);
+      color: #8a6d1b;
+      border: 1px solid rgba(200, 164, 90, .25);
+      border-radius: 4px;
+      padding: .5rem .7rem;
+      font-size: .82rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .login-warning.show { display: block; }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-card">
+    <div class="login-logo">
+      <h1>PROLOPE</h1>
+      <p>Editor de contenidos</p>
+    </div>
+
+    <div class="login-warning" id="insecureWarning">
+      Conexi&oacute;n no segura. Contacta con el administrador.
+    </div>
+
+    <div class="login-error" id="loginError"></div>
+
+    <form id="loginForm" onsubmit="return handleLogin(event)">
+      <div class="login-field">
+        <label for="username">Usuario</label>
+        <input type="text" id="username" name="username" autocomplete="username" required autofocus>
+      </div>
+      <div class="login-field">
+        <label for="password">Contrase&ntilde;a</label>
+        <input type="password" id="password" name="password" autocomplete="current-password" required>
+      </div>
+      <button class="login-btn" type="submit" id="loginBtn">Entrar</button>
+    </form>
+  </div>
+
+  <script>
+    (function () {
+      if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+        document.getElementById('insecureWarning').classList.add('show');
+      }
+    })();
+
+    async function handleLogin(e) {
+      e.preventDefault();
+      var btn = document.getElementById('loginBtn');
+      var errEl = document.getElementById('loginError');
+      errEl.classList.remove('show');
+      btn.disabled = true;
+      btn.textContent = 'Accediendo\u2026';
+
+      try {
+        var r = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: document.getElementById('username').value,
+            password: document.getElementById('password').value
+          })
+        });
+
+        if (r.ok) {
+          window.location.href = '/editor';
+          return;
+        }
+
+        var data = {};
+        try { data = await r.json(); } catch (_) {}
+
+        if (r.status === 429) {
+          var retry = r.headers.get('Retry-After');
+          errEl.textContent = 'Demasiados intentos. Espera ' + (retry ? retry + ' segundos' : 'unos minutos') + ' antes de volver a intentarlo.';
+        } else {
+          errEl.textContent = data.error || 'Usuario o contrase\u00f1a incorrectos';
+        }
+        errEl.classList.add('show');
+      } catch (_) {
+        errEl.textContent = 'Error de conexi\u00f3n con el servidor';
+        errEl.classList.add('show');
+      }
+
+      btn.disabled = false;
+      btn.textContent = 'Entrar';
+    }
+  </script>
+
+</body>
+
+</html>

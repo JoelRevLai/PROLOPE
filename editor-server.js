@@ -8,13 +8,28 @@
  * No requiere instalar ninguna dependencia (npm install).
  */
 
-const http = require('http');
-const fs   = require('fs');
-const path = require('path');
+const http  = require('http');
+const fs    = require('fs');
+const path  = require('path');
+const crypto = require('crypto');
 
 const PORT = 3000;
 const ROOT = __dirname;
 const VERSIONS_DIR = path.join(ROOT, '_versions');
+const IS_PROD = process.env.NODE_ENV === 'production';
+
+/* ── auth config ──────────────────────────────────────────── */
+const USERS_FILE = path.join(ROOT, 'users.enc');
+const LOGIN_HTML = path.join(ROOT, 'login.html');
+const ACCESS_LOG = path.join(ROOT, 'access.log');
+const SESSION_MAX_AGE    = 8 * 60 * 60 * 1000;
+const SESSION_ABSOLUTE   = 24 * 60 * 60 * 1000;
+const RATE_LIMIT_WINDOW  = 10 * 60 * 1000;
+const RATE_LIMIT_MAX     = 5;
+const RATE_LIMIT_BLOCK   = 30 * 60 * 1000;
+
+const activeSessions = new Map();
+const rateLimits     = new Map();
 
 /* ── versioning helpers ───────────────────────────────────── */
 
@@ -71,6 +86,177 @@ function listVersions(rel) {
     })
     .filter(Boolean);
 }
+
+/* ── auth helpers ─────────────────────────────────────────── */
+
+function getAuthKey() {
+  const prodKey = '/etc/prolope/auth.key';
+  if (fs.existsSync(prodKey)) {
+    return Buffer.from(fs.readFileSync(prodKey, 'utf8').trim(), 'hex');
+  }
+  if (process.env.PROLOPE_AUTH_KEY) {
+    return Buffer.from(process.env.PROLOPE_AUTH_KEY.trim(), 'hex');
+  }
+  const devKey = path.join(ROOT, '.dev-key');
+  if (fs.existsSync(devKey)) {
+    return Buffer.from(fs.readFileSync(devKey, 'utf8').trim(), 'hex');
+  }
+  console.error('ERROR: No se encontro clave de cifrado.');
+  console.error('');
+  console.error('Para desarrollo local, genera una clave:');
+  console.error('  node -e "require(\'fs\').writeFileSync(\'.dev-key\', require(\'crypto\').randomBytes(32).toString(\'hex\'))"');
+  console.error('');
+  console.error('Luego crea el primer usuario:');
+  console.error('  node add-user.js --create prolope');
+  process.exit(1);
+}
+
+function decryptUsers(encBase64, key) {
+  const raw = Buffer.from(encBase64, 'base64');
+  const iv  = raw.subarray(0, 12);
+  const tag = raw.subarray(raw.length - 16);
+  const ciphertext = raw.subarray(12, raw.length - 16);
+  const decipher = crypto.createDecipheriv('aes-256-gcm', key, iv);
+  decipher.setAuthTag(tag);
+  return JSON.parse(decipher.update(ciphertext, undefined, 'utf8') + decipher.final('utf8'));
+}
+
+const AUTH_KEY = getAuthKey();
+let usersStore = [];
+
+if (fs.existsSync(USERS_FILE)) {
+  try {
+    usersStore = decryptUsers(fs.readFileSync(USERS_FILE, 'utf8').trim(), AUTH_KEY);
+  } catch (e) {
+    console.error('ERROR: No se pudo descifrar users.enc. ¿Clave incorrecta o archivo corrupto?');
+    console.error('  ' + e.message);
+    process.exit(1);
+  }
+} else {
+  console.error('ERROR: No existe users.enc.');
+  console.error('Crea el primer usuario con:');
+  console.error('  node add-user.js --create prolope');
+  process.exit(1);
+}
+
+function verifyPassword(password, stored) {
+  const parts = stored.split('$');
+  if (parts[0] !== 'scrypt' || parts.length !== 6) return false;
+  const N = +parts[1], r = +parts[2], p = +parts[3];
+  const salt = Buffer.from(parts[4], 'hex');
+  const expected = Buffer.from(parts[5], 'hex');
+  const hash = crypto.scryptSync(password, salt, expected.length, { N, r, p });
+  try {
+    return crypto.timingSafeEqual(hash, expected);
+  } catch (_) { return false; }
+}
+
+function getClientIP(req) {
+  const remote = req.socket.remoteAddress;
+  if (remote === '127.0.0.1' || remote === '::1' || remote === '::ffff:127.0.0.1') {
+    const xff = req.headers['x-forwarded-for'];
+    if (xff) return xff.split(',')[0].trim();
+  }
+  return remote;
+}
+
+function isHTTPS(req) {
+  if (req.socket.encrypted) return true;
+  const proto = req.headers['x-forwarded-proto'];
+  return proto && proto.toLowerCase() === 'https';
+}
+
+function parseCookies(req) {
+  const hdr = req.headers.cookie || '';
+  const cookies = {};
+  hdr.split(';').forEach(c => {
+    const i = c.indexOf('=');
+    if (i > -1) cookies[c.slice(0, i).trim()] = c.slice(i + 1).trim();
+  });
+  return cookies;
+}
+
+function validateSession(req) {
+  const cookies = parseCookies(req);
+  const tok = cookies.session;
+  if (!tok) return null;
+  const sess = activeSessions.get(tok);
+  if (!sess) return null;
+  const now = Date.now();
+  if (now - sess.lastActivity > SESSION_MAX_AGE) { activeSessions.delete(tok); return null; }
+  if (now - sess.created > SESSION_ABSOLUTE) { activeSessions.delete(tok); return null; }
+  sess.lastActivity = now;
+  return sess;
+}
+
+function checkRateLimit(ip) {
+  const now = Date.now();
+  let entry = rateLimits.get(ip);
+  if (!entry) { entry = { attempts: [], blockedUntil: 0 }; rateLimits.set(ip, entry); }
+  if (now < entry.blockedUntil) {
+    return Math.ceil((entry.blockedUntil - now) / 1000);
+  }
+  entry.attempts = entry.attempts.filter(t => now - t < RATE_LIMIT_WINDOW);
+  if (entry.attempts.length >= RATE_LIMIT_MAX) {
+    entry.blockedUntil = now + RATE_LIMIT_BLOCK;
+    return Math.ceil(RATE_LIMIT_BLOCK / 1000);
+  }
+  return 0;
+}
+
+function recordAttempt(ip) {
+  let entry = rateLimits.get(ip);
+  if (!entry) { entry = { attempts: [], blockedUntil: 0 }; rateLimits.set(ip, entry); }
+  entry.attempts.push(Date.now());
+}
+
+function auditLog(event, ip, extra) {
+  const ts = new Date().toISOString();
+  const line = '[' + ts + '] ' + event + '  ip=' + ip + (extra ? '  ' + extra : '') + '\n';
+  try { fs.appendFileSync(ACCESS_LOG, line, 'utf8'); } catch (_) {}
+}
+
+function setSecurityHeaders(res) {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'no-referrer');
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'");
+  if (IS_PROD) {
+    res.setHeader('Strict-Transport-Security', 'max-age=63072000; includeSubDomains');
+  }
+}
+
+function serveLogin(res) {
+  res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+  res.end(fs.readFileSync(LOGIN_HTML, 'utf8'));
+}
+
+function redirectToLogin(res) {
+  res.writeHead(302, { Location: '/' });
+  res.end();
+}
+
+function jsonRes(res, code, data) {
+  res.writeHead(code, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify(data));
+}
+
+// Cleanup expired sessions + rate limits every 10 minutes
+setInterval(() => {
+  const now = Date.now();
+  for (const [tok, sess] of activeSessions) {
+    if (now - sess.lastActivity > SESSION_MAX_AGE || now - sess.created > SESSION_ABSOLUTE) {
+      activeSessions.delete(tok);
+    }
+  }
+  for (const [ip, entry] of rateLimits) {
+    if (now > entry.blockedUntil && entry.attempts.every(t => now - t >= RATE_LIMIT_WINDOW)) {
+      rateLimits.delete(ip);
+    }
+  }
+}, 10 * 60 * 1000);
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -500,6 +686,108 @@ function buildNewPageHtml({ dir, title, breadcrumbSection, navHtml, bgImage }) {
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, `http://localhost:${PORT}`);
 
+  setSecurityHeaders(res);
+
+  if (IS_PROD && !isHTTPS(req)) {
+    const remote = req.socket.remoteAddress;
+    if (remote !== '127.0.0.1' && remote !== '::1' && remote !== '::ffff:127.0.0.1') {
+      res.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8' });
+      res.end('Se requiere HTTPS para acceder al editor.');
+      return;
+    }
+  }
+
+  const ip = getClientIP(req);
+
+  // ── Login endpoint ──
+  if (url.pathname === '/api/login' && req.method === 'POST') {
+    const retryAfter = checkRateLimit(ip);
+    if (retryAfter) {
+      auditLog('RATE_LIMITED', ip);
+      res.setHeader('Retry-After', String(retryAfter));
+      jsonRes(res, 429, { error: 'Demasiados intentos. Espera ' + retryAfter + ' segundos.' });
+      return;
+    }
+    try {
+      const body = await readBody(req);
+      const { username, password } = JSON.parse(body);
+      if (!username || !password) {
+        recordAttempt(ip);
+        auditLog('LOGIN_FAILURE', ip, 'user=' + (username || ''));
+        jsonRes(res, 401, { error: 'Usuario o contrasena incorrectos' });
+        return;
+      }
+      if (/[{}<>"\\]/.test(username)) {
+        recordAttempt(ip);
+        auditLog('LOGIN_FAILURE', ip, 'user=' + username);
+        jsonRes(res, 401, { error: 'Usuario o contrasena incorrectos' });
+        return;
+      }
+      const user = usersStore.find(u => u.username === username);
+      if (!user || !verifyPassword(password, user.passwordHash)) {
+        recordAttempt(ip);
+        auditLog('LOGIN_FAILURE', ip, 'user=' + username);
+        jsonRes(res, 401, { error: 'Usuario o contrasena incorrectos' });
+        return;
+      }
+      const token = crypto.randomBytes(32).toString('hex');
+      const now = Date.now();
+      activeSessions.set(token, { username: user.username, role: user.role, created: now, lastActivity: now });
+      auditLog('LOGIN_SUCCESS', ip, 'user=' + user.username);
+      let cookie = 'session=' + token + '; HttpOnly; SameSite=Lax; Path=/; Max-Age=28800';
+      if (IS_PROD) cookie += '; Secure';
+      res.setHeader('Set-Cookie', cookie);
+      jsonRes(res, 200, { ok: true });
+    } catch (e) {
+      jsonRes(res, 400, { error: 'Peticion invalida' });
+    }
+    return;
+  }
+
+  // ── Logout endpoint ──
+  if (url.pathname === '/api/logout' && req.method === 'POST') {
+    const cookies = parseCookies(req);
+    if (cookies.session) {
+      const sess = activeSessions.get(cookies.session);
+      if (sess) auditLog('LOGOUT', ip, 'user=' + sess.username);
+      activeSessions.delete(cookies.session);
+    }
+    res.setHeader('Set-Cookie', 'session=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0');
+    jsonRes(res, 200, { ok: true });
+    return;
+  }
+
+  // ── Session check ──
+  const sess = validateSession(req);
+  const wantsHTML = !(url.pathname.startsWith('/api/') || url.pathname.startsWith('/_vp/'));
+
+  if (!sess) {
+    if (url.pathname === '/' || url.pathname === '/editor') {
+      serveLogin(res);
+      return;
+    }
+    if (url.pathname.startsWith('/api/')) {
+      jsonRes(res, 401, { error: 'No autenticado' });
+      return;
+    }
+    // Static files served without auth (CSS, JS, images for login page)
+  }
+
+  // ── CSRF check for POST requests ──
+  if (req.method === 'POST' && sess && url.pathname !== '/api/login' && url.pathname !== '/api/logout') {
+    const origin = req.headers.origin || req.headers.referer;
+    if (origin) {
+      try {
+        const originHost = new URL(origin).host;
+        const expectedHost = req.headers.host || 'localhost:' + PORT;
+        if (originHost !== expectedHost) {
+          jsonRes(res, 403, { error: 'Origin no permitido' });
+          return;
+        }
+      } catch (_) {}
+    }
+  }
+
   // ── Editor entry point ──
   if (url.pathname === '/' || url.pathname === '/editor') {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
@@ -551,6 +839,7 @@ const server = http.createServer(async (req, res) => {
           saveVersion(rel, full);
         }
         fs.writeFileSync(full, body, 'utf8');
+        if (sess) auditLog('FILE_SAVE', ip, 'user=' + sess.username + '  file=' + rel);
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ ok: true, backup: rel + '.bak' }));
       } catch (e) {
@@ -890,6 +1179,7 @@ const server = http.createServer(async (req, res) => {
           } catch(e) { /* ignore individual file errors */ }
         });
       }
+      if (sess) auditLog('FILE_DELETE', ip, 'user=' + sess.username + '  file=' + rel);
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ ok: true }));
     } catch (e) {
@@ -1084,9 +1374,10 @@ server.listen(PORT, () => {
   console.log('  ╔════════════════════════════════════════════╗');
   console.log('  ║   Editor de contenidos PROLOPE             ║');
   console.log(`  ║   http://localhost:${PORT}                    ║`);
+  console.log('  ║   Autenticacion activa (' + usersStore.length + ' usuario' + (usersStore.length !== 1 ? 's' : '') + ')          ║');
   console.log('  ╚════════════════════════════════════════════╝');
   console.log('');
-  console.log('  Abre la dirección de arriba en el navegador.');
+  console.log('  Abre la direccion de arriba en el navegador.');
   console.log('  Pulsa Ctrl+C para detener el servidor.');
   console.log('');
 });
