@@ -17,6 +17,7 @@ const PORT = 3000;
 const ROOT = __dirname;
 const VERSIONS_DIR = path.join(ROOT, '_versions');
 const IS_PROD = process.env.NODE_ENV === 'production';
+const MAX_VERSIONS = 15;
 
 /* ── auth config ──────────────────────────────────────────── */
 const USERS_FILE = path.join(ROOT, 'users.enc');
@@ -47,6 +48,17 @@ function tsNow() {
   return new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, '').replace('T', 'T');
 }
 
+function pruneVersions(rel) {
+  const dir = versionDir(rel);
+  if (!fs.existsSync(dir)) return;
+  const all = fs.readdirSync(dir).filter(f => f.endsWith('.html')).sort();
+  if (all.length <= MAX_VERSIONS) return;
+  const toDelete = all.slice(0, all.length - MAX_VERSIONS);
+  toDelete.forEach(f => {
+    try { fs.unlinkSync(path.join(dir, f)); } catch(e) { /* ignore */ }
+  });
+}
+
 // type: 'save' (default) or 'prerestore' (snapshot taken just before restoring)
 function saveVersion(rel, fullPath, type) {
   if (!fs.existsSync(fullPath)) return null;
@@ -56,6 +68,7 @@ function saveVersion(rel, fullPath, type) {
   const suffix = (type === 'prerestore') ? '_r.html' : '.html';
   const dest = path.join(dir, ts + suffix);
   fs.copyFileSync(fullPath, dest);
+  pruneVersions(rel);
   return ts;
 }
 

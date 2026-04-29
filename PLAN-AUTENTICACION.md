@@ -1,34 +1,193 @@
-# Plan de autenticación para el editor PROLOPE
-
-## 1. Contexto
-
-El editor de contenidos PROLOPE (`editor-server.js`) permite editar todas las páginas del sitio web vía `editor-web.html`. Actualmente **no tiene autenticación**: cualquiera que llegue al servidor puede editar todo.
-
-El objetivo es implementar un sistema de login seguro que proteja el editor cuando se despliegue en el servidor del departamento de la UAB.
+# Autenticacion del editor PROLOPE — Guia completa
 
 ---
 
-## 2. Arquitectura general
+## 1. Resumen rapido
 
-- **Servidor**: Node.js puro (sin Express, sin dependencias externas).
-- **Almacén de usuarios**: archivo cifrado `users.enc` (AES-256-GCM).
-- **Clave de cifrado**: archivo `/etc/prolope/auth.key` con permisos restrictivos del SO.
-- **Sesiones**: tokens aleatorios de 256 bits en cookies httpOnly.
-- **Sin dependencias externas**: solo se usan módulos nativos de Node.js (`crypto`, `http`, `fs`, `path`).
+El editor de contenidos PROLOPE ahora requiere **inicio de sesion**. Nadie puede editar pagaciones sin estar autenticado. El sistema funciona tanto en desarrollo local (Windows, Mac, Linux) como en produccion (servidor UAB).
 
 ---
 
-## 3. Almacenamiento de credenciales
+## 2. Guia de uso paso a paso (para la configuración en el servidor, consúltese el punto 9)
 
-### 3.1. Formato del archivo
+### 2.1. Primera vez: configuracion inicial
 
-El archivo `users.enc` contiene el almacén de usuarios **cifrado con AES-256-GCM**. En disco no es JSON legible; es texto codificado en base64 con la estructura:
+Solo hay que hacer esto **una vez** en cada ordenador donde vayas a trabajar.
+
+#### Paso 1 — Abrir una terminal
+
+- **Windows**: Abre PowerShell (busca "PowerShell" en el menu Inicio)
+- **Mac/Linux**: Abre la Terminal
+
+Navega hasta la carpeta del proyecto:
+
+```
+cd C:\Users\joelr\Desktop\Archivo_Digital\PROLOPE
+```
+
+#### Paso 2 — Generar la clave de desarrollo
+
+Esta clave cifra el archivo de usuarios. Solo existe en tu ordenador, nunca se sube al repositorio Git.
+
+```
+node -e "require('fs').writeFileSync('.dev-key', require('crypto').randomBytes(32).toString('hex'))"
+```
+
+Este comando no muestra nada en pantalla si va bien. Crea un archivo oculto llamado `.dev-key` en la carpeta del proyecto.
+
+> **Si ya tienes `.dev-key`** (porque ya configuraste el proyecto antes), puedes saltarte este paso.
+
+#### Paso 3 — Crear tu usuario
+
+```
+node add-user.js --create prolope
+```
+
+El script te pedira:
+1. **Contrasena**: escribe una contrasena de al menos 12 caracteres y pulsa Enter. En Windows la contrasena sera visible mientras la escribes; en Mac/Linux se mostraran asteriscos.
+2. **Confirmar contrasena**: vuelve a escribir la misma contrasena y pulsa Enter.
+
+Si todo va bien, veras: `Usuario creado: prolope`
+
+> **Importante**: recuerda esta contrasena. No se puede recuperar (solo se guarda un hash irreversible). Si la olvidas, tendras que eliminar el usuario y crearlo de nuevo (ver seccion 2.4).
+
+#### Paso 4 — Arrancar el servidor
+
+```
+node editor-server.js
+```
+
+Veras un mensaje como:
+
+```
+  ╔════════════════════════════════════════════╗
+  ║   Editor de contenidos PROLOPE             ║
+  ║   http://localhost:3000                    ║
+  ║   Autenticacion activa (1 usuario)         ║
+  ╚════════════════════════════════════════════╝
+```
+
+#### Paso 5 — Iniciar sesion en el navegador
+
+1. Abre el navegador y ve a **http://localhost:3000**
+2. Aparecera la pagina de login
+3. Escribe tu usuario (por defecto: `prolope`) y tu contrasena
+4. Haz clic en **Entrar**
+5. Si las credenciales son correctas, seras redirigido al editor de contenidos
+
+Para detener el servidor, ve a la terminal y pulsa **Ctrl+C**.
+
+---
+
+### 2.2. Uso diario
+
+Si ya hiciste la configuracion inicial (tienes `.dev-key` y `users.enc`), el dia a dia es simplemente:
+
+```
+node editor-server.js
+```
+
+Luego abre **http://localhost:3000** en el navegador e inicia sesion.
+
+---
+
+### 2.3. Gestion de usuarios
+
+Todos estos comandos se ejecutan en la terminal, desde la carpeta del proyecto.
+
+#### Listar usuarios existentes
+
+```
+node add-user.js --list
+```
+
+Muestra algo como:
+```
+  prolope  (admin)  creado: 2026-04-29T10:00:00Z
+```
+
+#### Crear un nuevo usuario
+
+```
+node add-user.js --create nombre-usuario
+```
+
+El nombre de usuario solo puede contener letras, numeros, puntos y guiones. La contrasena debe tener al menos 12 caracteres.
+
+#### Eliminar un usuario
+
+```
+node add-user.js --remove nombre-usuario
+```
+
+Se elimina inmediatamente. Si eliminas todos los usuarios, el servidor no arrancara hasta que crees al menos uno.
+
+#### Cambiar la contrasena de un usuario
+
+No hay un comando directo. El procedimiento es eliminar y recrear:
+
+```
+node add-user.js --remove prolope
+node add-user.js --create prolope
+```
+
+La nueva contrasena puede ser la misma o diferente.
+
+---
+
+### 2.4. Solucion de problemas
+
+| Problema | Solucion |
+|---|---|
+| El servidor no arranca y dice "No se encontro clave de cifrado" | Falta el archivo `.dev-key`. Ejecuta el comando del paso 2 de la seccion 2.1 |
+| El servidor no arranca y dice "No existe users.enc" | No hay ningun usuario creado. Ejecuta `node add-user.js --create prolope` |
+| El servidor no arranca y dice "No se pudo descifrar users.enc" | El archivo `.dev-key` ha cambiado o `users.enc` esta corrupto. Borra ambos y repite los pasos 2 y 3 de la seccion 2.1 |
+| `add-user.js --create` se queda colgado (no hace nada) | Esto ya esta corregido. Si ocurre en una version anterior, asegurate de tener la ultima version de `add-user.js` |
+| Intento iniciar sesion y dice "Demasiados intentos" | Has fallado la contrasena 5 veces. Espera 30 minutos o reinicia el servidor (el rate limit es en memoria) |
+| Olvide mi contrasena | Elimina el usuario y crealo de nuevo: `node add-user.js --remove prolope` y luego `node add-user.js --create prolope` |
+| La pagina de login no carga | Asegurate de que el servidor esta arrancado (`node editor-server.js`) y de que estas en `http://localhost:3000` |
+
+---
+
+### 2.5. Reglas de las contrasenas
+
+- **Minimo**: 12 caracteres.
+- **Permitido**: cualquier caracter (letras, numeros, simbolos, espacios, acentos, etc.).
+- **Recomendacion**: usa una frase larga (ej: `correcto caballo bateria estufa`) o una contrasena generada por un gestor de contrasenas.
+
+---
+
+## 3. Archivos del sistema
+
+| Archivo | Que es | Se sube a Git? |
+|---|---|---|
+| `editor-server.js` | Servidor principal (con autenticacion integrada) | Si |
+| `add-user.js` | Script para crear/eliminar/listar usuarios | Si |
+| `login.html` | Pagina de inicio de sesion | Si |
+| `.env.example` | Documentacion de variables de entorno | Si |
+| `.gitignore` | Lista de archivos excluidos de Git | Si |
+| `.dev-key` | Clave de cifrado local (desarrollo) | **No** (cada desarrollador tiene la suya) |
+| `users.enc` | Almacena usuarios cifrados | **No** (contiene credenciales) |
+| `access.log` | Registro de actividad (auditoria) | **No** |
+
+---
+
+## 4. Arquitectura tecnica
+
+### 4.1. Componentes
+
+- **Servidor**: Node.js puro (sin Express, sin dependencias externas). Solo usa modulos nativos: `crypto`, `http`, `fs`, `path`.
+- **Almacena de usuarios**: archivo cifrado `users.enc` (AES-256-GCM).
+- **Clave de cifrado**: `/etc/prolope/auth.key` (produccion) o `.dev-key` (desarrollo) o variable de entorno `PROLOPE_AUTH_KEY`.
+- **Sesiones**: tokens aleatorios de 256 bits almacenados en cookies httpOnly.
+
+### 4.2. Formato del archivo users.enc
+
+El archivo en disco no es legible. Contiene texto codificado en base64 con la estructura:
 
 ```
 [IV aleatorio 12 bytes][ciphertext][Auth Tag 16 bytes]
 ```
-
-> **Nota:** El auth tag se coloca al final porque AES-256-GCM lo genera *después* del cifrado. Este es el orden convencional y simplifica la implementación (se escribe secuencialmente: IV → cifrar → append tag).
 
 El contenido descifrado (solo existe en memoria del proceso) es:
 
@@ -43,239 +202,147 @@ El contenido descifrado (solo existe en memoria del proceso) es:
 ]
 ```
 
-### 3.2. Hash de contraseñas
+### 4.3. Hash de contrasenas
 
-- Algoritmo: **scrypt** (módulo nativo de Node.js).
-- Parámetros: `N=16384, r=8, p=1` (coste alto, resistente a GPU/ASIC).
+- Algoritmo: **scrypt** (modulo nativo de Node.js).
+- Parametros: `N=16384, r=8, p=1` (coste alto, resistente a GPU/ASIC).
 - Cada usuario tiene un **salt aleatorio individual** de 32 bytes.
-- Formato del hash almacenado: `scrypt$N$r$p$<salt>$<hash>`.
-- Verificación con `crypto.timingSafeEqual()` para evitar timing attacks.
-- **Requisito mínimo de contraseña**: 12 caracteres. Se valida en `add-user.js` al crear el usuario. Se permiten todos los caracteres (incluyendo especiales, Unicode, etc.).
+- Formato: `scrypt$N$r$p$<salt>$<hash>`.
+- Verificacion con `crypto.timingSafeEqual()` para evitar timing attacks.
+- Requisito minimo: 12 caracteres, validado en `add-user.js`.
 
-### 3.3. Cifrado del archivo
+### 4.4. Cifrado del archivo
 
 - Algoritmo: **AES-256-GCM** (cifrado autenticado: confidencialidad + integridad).
-- La clave (32 bytes) se lee de `/etc/prolope/auth.key`.
+- La clave (32 bytes) se lee de la fuente disponible (ver prioridad mas arriba).
 - Un IV aleatorio nuevo se genera cada vez que se reescribe el archivo.
-- El auth tag garantiza que **cualquier modificación de un solo byte** del archivo en disco se detecta al descifrar y produce un error.
+- El auth tag garantiza que **cualquier modificacion de un solo byte** del archivo en disco se detecta al descifrar y produce un error.
 
-### 3.4. Protección contra inyección
+### 4.5. Orden de prioridad para la clave de cifrado
 
-Un atacante que intente modificar `users.enc` para inyectar un usuario se encuentra con:
+El servidor (y `add-user.js`) buscan la clave en este orden:
 
-1. **AES-256-GCM (AEAD)**: cualquier alteración invalida el auth tag. El servidor se niega a arrancar.
-2. **Clave fuera del proyecto**: no está en ningún archivo del directorio web.
-3. **Sin API de creación de usuarios**: el servidor no expone ningún endpoint para crear/modificar usuarios. Solo `add-user.js` (CLI con acceso shell) puede hacerlo.
-4. **Validación de input en el username**: el endpoint de login rechaza caracteres sospechosos (`{`, `}`, `<`, `>`, `"`, `\`, etc.) en el campo de usuario. La contraseña **no se filtra** (se hashea directamente, no se interpreta), lo que permite contraseñas fuertes con cualquier carácter.
+1. **`/etc/prolope/auth.key`** — Produccion (Linux). Archivo con permisos restrictivos del SO.
+2. **Variable de entorno `PROLOPE_AUTH_KEY`** — Alternativa. Contiene la clave en hexadecimal.
+3. **`.dev-key`** — Desarrollo local. Archivo en la raiz del proyecto.
 
----
-
-## 4. Almacenamiento de la clave de cifrado
-
-### 4.1. Ubicación
-
-La clave se almacena en `/etc/prolope/auth.key`, **fuera del directorio web**.
-
-### 4.2. Permisos del SO
-
-```
-Archivo: /etc/prolope/auth.key
-Permisos: 0400 (solo lectura, solo el owner)
-Owner:    prolope-service:prolope-service
-```
-
-Se crea un **usuario de sistema dedicado** `prolope-service` que ejecuta el servidor Node.js. Este usuario es el único que puede leer la clave.
-
-El usuario que gestiona el directorio web (o el usuario de Apache/Nginx) **no tiene permisos** para leer ese archivo.
-
-### 4.3. Configuración inicial
-
-```bash
-# Crear usuario de sistema (como root)
-sudo useradd -r -s /bin/false prolope-service
-
-# Crear directorio y archivo de clave
-sudo mkdir -p /etc/prolope
-
-# Generar clave aleatoria de 32 bytes en hex
-node -e "console.log(require('crypto').randomBytes(32).toString('hex'))" \
-  | sudo tee /etc/prolope/auth.key
-
-# Restringir permisos
-sudo chmod 400 /etc/prolope/auth.key
-sudo chown prolope-service:prolope-service /etc/prolope/auth.key
-```
-
-### 4.4. ¿Por qué no una variable de entorno?
-
-Una variable de entorno (`PROLOPE_AUTH_KEY`) es una alternativa válida pero más débil:
-
-| Método | ¿Protegido contra acceso FTP? | ¿Protegido contra shell como usuario web? |
-|---|---|---|
-| Variable de entorno (`.bashrc`, systemd) | Sí | No (`/proc/<pid>/environ`) |
-| Archivo con permisos OS (`/etc/prolope/auth.key`) | Sí | Sí (permisos 0400, otro usuario) |
-
-Por eso el mecanismo principal es el **archivo con permisos del SO**. La variable de entorno se mantiene solo como alternativa para **desarrollo local**.
+Si no existe ninguna fuente de clave, el servidor **no arranca** y muestra instrucciones.
 
 ---
 
-## 5. Flujo de autenticación
+## 5. Flujo de autenticacion
 
 ### 5.1. Login
 
 ```
-Usuario → GET / → Sin sesión válida → Se sirve login.html
+Usuario → GET / → Sin sesion valida → Se sirve login.html
 Usuario → POST /api/login {username, password}
 Servidor:
-  1. Valida formato del username (solo alfanuméricos, guiones y puntos)
-     La contraseña NO se filtra (se hashea directamente)
-  2. Comprueba rate limit de la IP (ver sección 8 para detección de IP real)
-  3. Busca usuario en el almacén en memoria
-  4. Verifica hash scrypt con timingSafeEqual
+  1. Valida formato del username (solo alfanumericos, guiones y puntos).
+     La contrasena NO se filtra (se hashea directamente).
+  2. Comprueba rate limit de la IP (ver seccion 6).
+  3. Busca usuario en el almacen en memoria.
+  4. Verifica hash scrypt con timingSafeEqual.
   5. Si es correcto:
-     - Genera session token (crypto.randomBytes(32))
-     - Almacena en activeSessions (Map en memoria)
+     - Genera session token (crypto.randomBytes(32)).
+     - Almacena en activeSessions (Map en memoria).
      - Devuelve cookie: session=<token>
        Flags: HttpOnly; SameSite=Lax; Path=/; Max-Age=28800
-       Flag Secure: solo en producción (ver 5.5)
-     - Redirige a /editor
+       Flag Secure: solo en produccion.
+     - Redirige a /editor.
   6. Si falla:
-     - Devuelve 401 con mensaje genérico "Usuario o contraseña incorrectos"
-     - Registra intento en access.log
+     - Devuelve 401 con mensaje generico "Usuario o contrasena incorrectos".
+     - Registra intento en access.log.
 ```
 
-### 5.2. Verificación de sesión
+### 5.2. Verificacion de sesion
 
-Todas las rutas `/api/*` (salvo `/api/login`) y `/editor` exigen una cookie de sesión válida:
+Todas las rutas `/api/*` (salvo `/api/login`) y `/editor` exigen una cookie de sesion valida:
 
 1. Extraer cookie `session` del header.
 2. Buscar en `activeSessions`.
-3. Verificar que no ha expirado (8 horas de inactividad **y** 24 horas absolutas desde el login).
-4. Si es válida: renovar timestamp de última actividad y continuar.
-5. Si no: responder 401 (API) o redirigir a login (páginas HTML).
+3. Verificar que no ha expirado (8h de inactividad Y 24h absolutas).
+4. Si es valida: renovar timestamp de ultima actividad y continuar.
+5. Si no: responder 401 (API) o redirigir a login (paginas HTML).
+
+Los archivos estaticos (CSS, JS, imagenes) se sirven **sin autenticacion** para que la pagina de login pueda cargar correctamente.
 
 ### 5.3. Logout
 
 ```
 POST /api/logout
-  - Elimina sesión de activeSessions
+  - Elimina sesion de activeSessions
   - Borra cookie del cliente
 ```
 
-### 5.4. Expiración de sesión
+### 5.4. Expiracion de sesion
 
-- **Timeout de inactividad**: 8 horas sin peticiones (configurable). Cada petición válida renueva el timestamp de última actividad.
-- **Timeout absoluto**: 24 horas desde el momento del login (configurable). Tras 24 horas se fuerza re-login aunque haya habido actividad continua. Esto limita el daño si una sesión se compromete.
-- Las sesiones expiradas (por cualquiera de los dos criterios) se limpian periódicamente (cada 10 minutos).
+- **Timeout de inactividad**: 8 horas sin peticiones. Cada peticion valida renueva el timestamp.
+- **Timeout absoluto**: 24 horas desde el momento del login. Tras 24 horas se fuerza re-login aunque haya habido actividad continua.
+- Las sesiones expiradas se limpian automaticamente cada 10 minutos.
 
 ### 5.5. Cookie Secure condicional
 
-La flag `Secure` en la cookie indica al navegador que solo la envíe por HTTPS. En desarrollo local (sin HTTPS), esta flag impediría que el navegador envíe la cookie y el login no funcionaría.
-
-- **En producción** (`NODE_ENV=production`): la cookie incluye `Secure`.
-- **En desarrollo** (`NODE_ENV` ausente o distinto de `production`): la cookie **no** incluye `Secure`.
-
-Esto permite probar el flujo completo de login en `http://localhost:3000`.
+- **En produccion** (`NODE_ENV=production`): la cookie incluye `Secure` (solo se envia por HTTPS).
+- **En desarrollo** (sin `NODE_ENV` o distinto de `production`): la cookie **no** incluye `Secure` (permite HTTP en localhost).
 
 ---
 
-## 6. Cifrado en tránsito: HTTPS
+## 6. Protecciones de seguridad
 
-### 6.1. Requisito
+### 6.1. Rate limiting
 
-Sin HTTPS, las credenciales y la cookie de sesión viajan en claro por la red. Un atacante en la misma red (WiFi del campus, etc.) puede capturar la sesión.
+- **Limite**: 5 intentos de login por IP en 10 minutos.
+- **Bloqueo**: al exceder el limite, la IP queda bloqueada durante 30 minutos.
+- **Respuesta**: HTTP 429 con cabecera `Retry-After`.
+- El rate limit se almacena en memoria. Al reiniciar el servidor se resetea.
 
-### 6.2. Aplicación en el servidor
+### 6.2. Deteccion de IP real detras de proxy
 
-- **En producción**: el servidor rechaza peticiones HTTP que no vengan de `localhost`/`127.0.0.1`.
-- Detección: se comprueba `req.headers['x-forwarded-proto']` (proxy inverso) o `req.socket.encrypted` (TLS directo).
-- Si no es HTTPS: respuesta 403 con mensaje informativo.
+En produccion, Apache/Nginx hace de proxy y todas las peticiones llegan desde `127.0.0.1`. Sin correccion, todos los usuarios compartirian el mismo rate limit.
 
-### 6.3. Configuración del proxy inverso
+**Solucion:** se lee `X-Forwarded-For` solo cuando la peticion viene de una IP de confianza (loopback). En desarrollo local, `req.socket.remoteAddress` ya es la IP real del cliente.
 
-Si Apache/Nginx está por delante de Node.js:
+### 6.3. Cabeceras de seguridad
 
-```apache
-# Apache: VirtualHost con HTTPS
-<VirtualHost *:443>
-    ServerName prolope.uab.cat
-    SSLEngine on
-    SSLCertificateFile /etc/letsencrypt/live/prolope.uab.cat/cert.pem
-    SSLCertificateKeyFile /etc/letsencrypt/live/prolope.uab.cat/privkey.pem
-
-    # Redirige al puerto de Node.js
-    ProxyPass / http://127.0.0.1:3000/
-    ProxyPassReverse / http://127.0.0.1:3000/
-    RequestHeader set X-Forwarded-Proto https
-    RequestHeader set X-Forwarded-For "%{REMOTE_ADDR}s"
-</VirtualHost>
-
-# Redirigir HTTP a HTTPS
-<VirtualHost *:80>
-    ServerName prolope.uab.cat
-    Redirect permanent / https://prolope.uab.cat/
-</VirtualHost>
-```
-
-### 6.4. Si la UAB no proporciona HTTPS
-
-- Se documenta como limitación de seguridad.
-- Se muestra aviso en la página de login: *"Conexión no segura. Contacta con el administrador."*
-- Se recomienda encarecidamente al departamento de informática que habilite TLS.
-
----
-
-## 7. Cabeceras de seguridad
-
-Todas las respuestas del editor y la API incluyen:
+Todas las respuestas incluyen:
 
 ```
-Strict-Transport-Security: max-age=63072000; includeSubDomains
 X-Content-Type-Options: nosniff
 X-Frame-Options: DENY
 X-XSS-Protection: 1; mode=block
 Referrer-Policy: no-referrer
-Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'
 Cache-Control: no-store
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'
 ```
 
-> **Nota:** `Strict-Transport-Security` solo se envía en producción (cuando se confirma HTTPS), para no causar problemas en desarrollo local.
+En produccion se anade ademas:
+```
+Strict-Transport-Security: max-age=63072000; includeSubDomains
+```
+
+### 6.4. Proteccion contra CSRF
+
+- Cookie con `SameSite=Lax`.
+- Verificacion del header `Origin` en todas las peticiones POST (excepto login/logout).
+
+### 6.5. Proteccion contra inyeccion en users.enc
+
+1. **AES-256-GCM (AEAD)**: cualquier alteracion invalida el auth tag. El servidor se niega a arrancar.
+2. **Clave fuera del proyecto**: no esta en ningun archivo del directorio web.
+3. **Sin API de creacion de usuarios**: el servidor no expone ningun endpoint para crear/modificar usuarios. Solo `add-user.js` (CLI) puede hacerlo.
+4. **Validacion de input**: el endpoint de login rechaza caracteres sospechosos en el campo de usuario. La contrasena se hashea directamente sin filtrarse.
+
+### 6.6. HTTPS en produccion
+
+- El servidor rechaza peticiones HTTP que no vengan de `localhost`/`127.0.0.1`.
+- Si la UAB no proporciona HTTPS, se muestra un aviso en la pagina de login: "Conexion no segura. Contacta con el administrador."
 
 ---
 
-## 8. Rate limiting
+## 7. Logs de auditoria
 
-- **Límite**: 5 intentos de login por IP en 10 minutos.
-- **Bloqueo**: al exceder el límite, la IP queda bloqueada durante 30 minutos.
-- **Almacenamiento**: Map en memoria `{ IP → { attempts: [...timestamps], blockedUntil: timestamp } }`.
-- **Limpieza**: entradas expiradas se eliminan cada 10 minutos.
-- Respuesta al exceder: HTTP 429 con cabecera `Retry-After`.
-
-### 8.1. Detección de IP real detrás de proxy inverso
-
-En producción, Apache/Nginx hace de proxy y todas las peticiones llegan a Node.js desde `127.0.0.1`. Sin corrección, todos los usuarios compartirían el mismo rate limit.
-
-**Solución:** se lee `X-Forwarded-For` solo cuando la petición viene de una IP de confianza (loopback):
-
-```
-function getClientIP(req) {
-  const remote = req.socket.remoteAddress;
-  // Solo confiar en X-Forwarded-For si viene del proxy local
-  if (remote === '127.0.0.1' || remote === '::1' || remote === '::ffff:127.0.0.1') {
-    const xff = req.headers['x-forwarded-for'];
-    if (xff) return xff.split(',')[0].trim();
-  }
-  return remote;
-}
-```
-
-En desarrollo local (sin proxy), `req.socket.remoteAddress` ya es la IP real del cliente, así que no hay impacto.
-
----
-
-## 9. Logs de auditoría
-
-Archivo `access.log` con formato:
+El archivo `access.log` registra toda la actividad de autenticacion y edicion:
 
 ```
 [2026-04-29T10:15:32Z] LOGIN_SUCCESS  ip=147.83.x.x  user=prolope
@@ -286,89 +353,33 @@ Archivo `access.log` con formato:
 [2026-04-29T11:05:00Z] FILE_DELETE    ip=147.83.x.x  user=prolope  file=eventos/old-page.html
 ```
 
-El archivo `access.log` se añade a `.gitignore`.
+El archivo `access.log` esta en `.gitignore` y nunca se sube al repositorio.
 
 ---
 
-## 10. Modelo de amenazas
+## 8. Modelo de amenazas
 
-| Atacante | Qué intenta | Protección |
+| Atacante | Que intenta | Proteccion |
 |---|---|---|
-| Navegador web externo | Acceder al editor sin credenciales | Login + cookie de sesión |
-| Navegador web externo | Fuerza bruta de contraseñas | Rate limiting (5 intentos / 10 min) |
-| Atacante en la red | Capturar sesión (sniffing) | HTTPS + cookie Secure |
+| Navegador web externo | Acceder al editor sin credenciales | Login + cookie de sesion |
+| Navegador web externo | Fuerza bruta de contrasenas | Rate limiting (5 intentos / 10 min) |
+| Atacante en la red | Capturar sesion (sniffing) | HTTPS + cookie Secure |
 | Atacante en la red | Robar cookie (XSS) | Cookie httpOnly + CSP |
-| Atacante en la red | CSRF | SameSite=Lax + verificación de Origin en POST |
-| Acceso FTP al directorio web | Leer credenciales | `users.enc` cifrado + key fuera del directorio |
-| Acceso FTP al directorio web | Inyectar usuario en el JSON | AES-256-GCM detecta alteración |
+| Atacante en la red | CSRF | SameSite=Lax + verificacion de Origin en POST |
+| Acceso FTP al directorio web | Leer credenciales | `users.enc` cifrado + clave fuera del directorio |
+| Acceso FTP al directorio web | Inyectar usuario en el JSON | AES-256-GCM detecta alteracion |
 | Shell como usuario web | Leer la clave de cifrado | Permisos OS (0400, otro owner) |
 | Shell como `prolope-service` | Leer la clave | Responsabilidad de infraestructura (fuera de alcance) |
 | Root en el servidor | Cualquier cosa | Fuera de alcance: parcheo del SO, firewall, etc. |
 
 ---
 
-## 11. Archivos nuevos y modificados
+## 9. Configuracion en el servidor UAB (produccion)
 
-| Archivo | Acción | Descripción |
-|---|---|---|
-| `editor-server.js` | Modificar | Añadir: descifrado de users.enc, middleware de sesión, HTTPS enforcement, rate limiting, cabeceras de seguridad, validación de input, logging |
-| `login.html` | Nuevo | Página de login con estilos coherentes con editor-web.css |
-| `users.enc` | Nuevo | Almacén de usuarios cifrado (reemplaza users.json) |
-| `add-user.js` | Nuevo | Script CLI para crear/eliminar usuarios (`node add-user.js --create <usuario>`) |
-| `.gitignore` | Modificar | Añadir `users.enc`, `access.log`, `.env`, `.dev-key` |
-| `.env.example` | Nuevo | Documentación de variables (sin valores reales) |
-
-### `editor-server.js` — cambios principales
-
-1. Al arrancar:
-   - Lee `/etc/prolope/auth.key` (producción) o `PROLOPE_AUTH_KEY` (env var) o `.dev-key` (desarrollo local).
-   - Si no existe ninguna fuente de clave → **error y salida** (nunca arranca sin autenticación).
-   - Descifra `users.enc` → array de usuarios en memoria.
-   - Si `users.enc` no existe aún → muestra mensaje indicando que se debe crear el primer usuario con `add-user.js` y termina.
-2. Middleware en todas las peticiones:
-   - Cabeceras de seguridad.
-   - Comprobación de HTTPS en producción.
-   - Rate limiting en `/api/login`.
-3. Rutas protegidas:
-   - Todas las `/api/*` (salvo `/api/login`) requieren sesión válida.
-   - `/` y `/editor` requieren sesión válida → si no, sirven `login.html`.
-4. Rutas nuevas:
-   - `POST /api/login` → autenticación.
-   - `POST /api/logout` → cerrar sesión.
-
-### `login.html`
-
-- Página HTML minimalista.
-- Campos: usuario + contraseña + botón "Entrar".
-- Muestra errores genéricos (nunca revela si el usuario existe).
-- Aviso visual si la conexión no es HTTPS.
-- Estilos consistentes con el editor.
-
-### `add-user.js`
+### 9.1. Paso a paso
 
 ```bash
-# Crear usuario (pide contraseña interactivamente, mínimo 12 caracteres)
-node add-user.js --create prolope
-
-# Eliminar usuario
-node add-user.js --remove prolope
-
-# Listar usuarios
-node add-user.js --list
-```
-
-- Lee la clave de `/etc/prolope/auth.key` o `PROLOPE_AUTH_KEY` o `.dev-key`.
-- Si `users.enc` no existe, lo crea desde cero (primer usuario).
-- Descifra `users.enc`, modifica, vuelve a cifrar.
-- Contraseña introducida por teclado con `readline` (no se muestra en pantalla).
-- Valida longitud mínima de 12 caracteres. Acepta cualquier carácter.
-
----
-
-## 12. Configuración en el servidor UAB (paso a paso)
-
-```bash
-# 1. Crear usuario de sistema
+# 1. Crear usuario de sistema dedicado
 sudo useradd -r -s /bin/false prolope-service
 
 # 2. Generar clave de cifrado
@@ -378,10 +389,10 @@ node -e "console.log(require('crypto').randomBytes(32).toString('hex'))" \
 sudo chmod 400 /etc/prolope/auth.key
 sudo chown prolope-service:prolope-service /etc/prolope/auth.key
 
-# 3. Crear primer usuario (pide contraseña interactivamente)
+# 3. Crear primer usuario (pide contrasena interactivamente)
 node add-user.js --create prolope
 
-# 4. Crear service de systemd
+# 4. Crear servicio de systemd
 sudo tee /etc/systemd/system/prolope-editor.service << 'EOF'
 [Unit]
 Description=Editor PROLOPE
@@ -403,90 +414,79 @@ sudo systemctl daemon-reload
 sudo systemctl enable prolope-editor
 sudo systemctl start prolope-editor
 
-# 5. Configurar Apache/Nginx como proxy inverso con HTTPS (ver sección 6.3)
+# 5. Configurar Apache/Nginx como proxy inverso con HTTPS (ver seccion 9.2)
+```
+
+### 9.2. Configuracion del proxy inverso (Apache)
+
+```apache
+# Apache: VirtualHost con HTTPS
+<VirtualHost *:443>
+    ServerName prolope.uab.cat
+    SSLEngine on
+    SSLCertificateFile /etc/letsencrypt/live/prolope.uab.cat/cert.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/prolope.uab.cat/privkey.pem
+
+    ProxyPass / http://127.0.0.1:3000/
+    ProxyPassReverse / http://127.0.0.1:3000/
+    RequestHeader set X-Forwarded-Proto https
+    RequestHeader set X-Forwarded-For "%{REMOTE_ADDR}s"
+</VirtualHost>
+
+# Redirigir HTTP a HTTPS
+<VirtualHost *:80>
+    ServerName prolope.uab.cat
+    Redirect permanent / https://prolope.uab.cat/
+</VirtualHost>
 ```
 
 ---
 
-## 13. Para desarrollo local
+## 10. Resumen de garantias
 
-En local no hace falta ni HTTPS ni el archivo `/etc/prolope/auth.key`. El servidor busca la clave en este orden de prioridad:
-
-1. `/etc/prolope/auth.key` (producción)
-2. Variable de entorno `PROLOPE_AUTH_KEY`
-3. Archivo `.dev-key` en el directorio del proyecto
-
-### Primera vez: setup automático
-
-Si no existe ninguna clave, el servidor **no arranca** y muestra instrucciones:
-
-```
-ERROR: No se encontró clave de cifrado.
-
-Para desarrollo local, genera una clave:
-  node -e "require('fs').writeFileSync('.dev-key', require('crypto').randomBytes(32).toString('hex'))"
-
-Luego crea el primer usuario:
-  node add-user.js --create prolope
-```
-
-### Uso habitual
-
-```bash
-# Generar clave de desarrollo (solo la primera vez)
-node -e "require('fs').writeFileSync('.dev-key', require('crypto').randomBytes(32).toString('hex'))"
-
-# Crear usuario de prueba (solo la primera vez)
-node add-user.js --create prolope
-
-# Arrancar el servidor (con autenticación activa)
-node editor-server.js
-```
-
-El flujo de login funciona exactamente igual que en producción, con estas diferencias:
-
-- La cookie no lleva flag `Secure` (permite HTTP en localhost).
-- No se exige HTTPS.
-- No se envía la cabecera `Strict-Transport-Security`.
-
-> **Importante:** `.dev-key` está en `.gitignore`. Nunca se sube al repositorio. Cada desarrollador genera la suya.
-
----
-
-## 14. Resumen de garantías
-
-| Garantía | Mecanismo |
+| Garantia | Mecanismo |
 |---|---|
-| Contraseñas irreversibles en disco | scrypt (N=16384, salt individual) |
-| Contraseñas mínimamente robustas | Requisito de 12 caracteres en `add-user.js` |
-| Almacén de usuarios ilegible en disco | AES-256-GCM |
-| Almacén de usuarios inmodificable sin clave | Auth tag AEAD |
+| Contrasenas irreversibles en disco | scrypt (N=16384, salt individual) |
+| Contrasenas minimamente robustas | Requisito de 12 caracteres en `add-user.js` |
+| Almacena de usuarios ilegible en disco | AES-256-GCM |
+| Almacena de usuarios inmodificable sin clave | Auth tag AEAD |
 | Clave inaccesible desde el directorio web | Archivo fuera del DocumentRoot + permisos OS 0400 |
 | Clave inaccesible desde shell de usuario web | Owner dedicado (prolope-service) |
-| Credenciales protegidas en tránsito | HTTPS obligatorio en producción |
-| Sesión protegida contra robo (XSS) | Cookie httpOnly + CSP |
-| Sesión protegida contra CSRF | SameSite=Lax + verificación Origin en POST |
-| Sesión con caducidad absoluta | 24h máximo aunque haya actividad |
-| Protección contra fuerza bruta | Rate limiting (5 intentos / 10 min / IP real) |
-| Rate limiting correcto detrás de proxy | Detección de IP real vía X-Forwarded-For (solo desde loopback) |
-| Autenticación siempre activa | El servidor nunca arranca sin clave (ni en desarrollo) |
-| Probado en local antes de producción | Mismo flujo de login con `.dev-key` + cookie sin Secure |
-| Detección de intrusiones | Logs de auditoría (access.log) |
-| Sin dependencias externas | Solo módulos nativos de Node.js |
+| Credenciales protegidas en transito | HTTPS obligatorio en produccion |
+| Sesion protegida contra robo (XSS) | Cookie httpOnly + CSP |
+| Sesion protegida contra CSRF | SameSite=Lax + verificacion Origin en POST |
+| Sesion con caducidad absoluta | 24h maximo aunque haya actividad |
+| Proteccion contra fuerza bruta | Rate limiting (5 intentos / 10 min / IP real) |
+| Rate limiting correcto detras de proxy | Deteccion de IP real via X-Forwarded-For (solo desde loopback) |
+| Autenticacion siempre activa | El servidor nunca arranca sin clave (ni en desarrollo) |
+| Probado en local antes de produccion | Mismo flujo de login con `.dev-key` + cookie sin Secure |
+| Deteccion de intrusiones | Logs de auditoria (access.log) |
+| Sin dependencias externas | Solo modulos nativos de Node.js |
 
 ---
 
-## 15. Changelog de revisiones
+## 11. Changelog de revisiones
 
 ### v2 (2026-04-29)
 
-Correcciones aplicadas tras revisión:
+Correcciones aplicadas tras revision:
 
-1. **Eliminado el "modo sin autenticación"**: el servidor nunca arranca sin clave, ni siquiera en desarrollo. Se usa `.dev-key` autogenerada en local.
-2. **Cookie `Secure` condicional**: solo se aplica en producción (`NODE_ENV=production`), permitiendo probar login en `http://localhost`.
-3. **Detección de IP real detrás de proxy**: `X-Forwarded-For` se lee solo desde IPs de confianza (loopback). Evita que todos los usuarios compartan un único rate limit.
-4. **Validación de input solo en username**: la contraseña ya no se filtra por caracteres especiales (se hashea directamente), permitiendo contraseñas más fuertes.
-5. **Timeout absoluto de sesión**: añadido límite de 24 horas además del timeout de inactividad de 8 horas.
-6. **Requisito mínimo de contraseña**: 12 caracteres, validado en `add-user.js`.
-7. **Orden del formato de archivo corregido**: `[IV][ciphertext][auth tag]` en lugar de `[IV][auth tag][ciphertext]`, siguiendo el orden convencional de GCM.
-8. **`SameSite=Lax` en lugar de `Strict`**: permite navegación desde enlaces externos sin perder sesión, manteniendo protección CSRF en peticiones POST.
+1. **Eliminado el "modo sin autenticacion"**: el servidor nunca arranca sin clave, ni siquiera en desarrollo. Se usa `.dev-key` autogenerada en local.
+2. **Cookie `Secure` condicional**: solo se aplica en produccion (`NODE_ENV=production`), permitiendo probar login en `http://localhost`.
+3. **Deteccion de IP real detras de proxy**: `X-Forwarded-For` se lee solo desde IPs de confianza (loopback).
+4. **Validacion de input solo en username**: la contrasena no se filtra por caracteres especiales (se hashea directamente).
+5. **Timeout absoluto de sesion**: limite de 24 horas ademas del timeout de inactividad de 8 horas.
+6. **Requisito minimo de contrasena**: 12 caracteres, validado en `add-user.js`.
+7. **Orden del formato de archivo corregido**: `[IV][ciphertext][auth tag]` siguiendo el orden convencional de GCM.
+8. **`SameSite=Lax` en lugar de `Strict`**: permite navegacion desde enlaces externos sin perder sesion.
+
+### v3 (2026-04-29)
+
+Implementacion completada:
+
+1. **`editor-server.js` modificado** con autenticacion completa: descifrado de `users.enc`, middleware de sesion, HTTPS enforcement, rate limiting, cabeceras de seguridad, validacion de input, logging, CSRF protection.
+2. **`login.html` creado** con pagina de login minimalista, aviso de conexion insegura, manejo de errores y rate limiting en el cliente.
+3. **`add-user.js` creado** con soporte para crear, eliminar y listar usuarios. Incluye fallback para Windows (readline estandar en lugar de manipulacion de stdin).
+4. **`.gitignore` actualizado** con `users.enc`, `access.log`, `.env`, `.dev-key`, `_versions/`.
+5. **`.env.example` creado** documentando las variables de entorno disponibles.
+6. **Compatibilidad con Windows**: `add-user.js` detecta `process.platform === 'win32'` y usa `readline` estandar en lugar de manipulacion directa de stdin, evitando que PowerShell se cuelgue.

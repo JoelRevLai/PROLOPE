@@ -125,7 +125,7 @@
         <span>›</span>
         Contacto y ubicación
       </div>
-      <h1>Contacto y ubicación</h1>
+      <h1>Contacto y ubicación123</h1>
       <div class="page-hero-rule"></div>
     </div>
   </section>
@@ -135,9 +135,10 @@
     <main class="page-content">
 
 <div class="content-section">
-      <h2>Contacto y ubicación aaaaaa</h2>
+      <h2>Contacto y ubicación</h2>
 
       <p>
+        
         
         
         
@@ -167,9 +168,11 @@
       
       
       
+      
       </p>
 
       <p>
+        
         
         
         
@@ -191,6 +194,7 @@
           <a href="https://www.pruab.cat/ca/serveis/ubica-teves-idees/modul-recerca" target="_blank" rel="noopener noreferrer">Mòdul de Recerca A (MRA)</a>
           de la Universitat Autònoma de Barcelona.
         
+      
       
       
       

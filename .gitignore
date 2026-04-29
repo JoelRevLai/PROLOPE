@@ -2,4 +2,4 @@ users.enc
 access.log
 .env
 .dev-key
-_versions/
+.claude
